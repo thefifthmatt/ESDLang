@@ -9,17 +9,26 @@ namespace SoulsFormats.Formats.ESD.EzSemble
 
     public static partial class EzSembler
     {
+        /// <summary>
+        /// Dissembles a CommandCall object into a line of "EzLanguage" plain text.
+        /// </summary>
         public static string DissembleCommandCall(SoulsFormats.ESD.ESD.CommandCall c)
         {
             return $"{c.CommandBank}:{c.CommandID}({string.Join(", ", c.Arguments)})";
         }
 
+        /// <summary>
+        /// Dissembles a list of CommandCall objects into a plain text "EzLanguage" script.
+        /// </summary>
         public static string DissembleCommandScript(List<SoulsFormats.ESD.ESD.CommandCall> script)
         {
             return string.Join("\n", script.Select(x => $"{DissembleCommandCall(x)};"));
         }
 
-        public static string Dissemble(byte[] bytes)
+        /// <summary>
+        /// Dissembles bytecode into an  "EzLanguage" plain text expression.
+        /// </summary>
+        public static string DissembleExpression(byte[] bytes)
         {
             if (bytes.Last() != 0xA1)
                 throw new Exception("All evaluators must end with 0xA1");
