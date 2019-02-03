@@ -19,6 +19,12 @@ namespace SoulsFormats.Formats.ESD.EzSemble
         public static SoulsFormats.ESD.ESD.CommandCall AssembleCommandCall(string plaintext)
         {
             var regex = System.Text.RegularExpressions.Regex.Match(plaintext, @"^(\d+)\:(\d+)\s*\((.*)\)$");
+
+            if (regex.Groups.Count != 4)
+            {
+                throw new Exception($"Invalid EzLanguage command call text: \"{plaintext}\"");
+            }
+
             var cmdBank = int.Parse(regex.Groups[1].Value);
             var cmdID = int.Parse(regex.Groups[2].Value);
             var cmdArgs = regex.Groups[3].Value.Split(',')
