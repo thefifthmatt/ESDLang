@@ -8,8 +8,14 @@ namespace SoulsFormats.Formats.ESD.EzSemble
     using System.Text;
     using static Common;
 
+    /// <summary>
+    /// Assembles and dissembles "EzLanguage" bytecode.
+    /// </summary>
     public static partial class EzSembler
     {
+        /// <summary>
+        /// Assembles a plain text "EzLanguage" command call into a CommandCall object.
+        /// </summary>
         public static SoulsFormats.ESD.ESD.CommandCall AssembleCommandCall(string plaintext)
         {
             var regex = System.Text.RegularExpressions.Regex.Match(plaintext, @"^(\d+)\:(\d+)\s*\((.*)\)$");
@@ -28,6 +34,9 @@ namespace SoulsFormats.Formats.ESD.EzSemble
             };
         }
 
+        /// <summary>
+        /// Assembles a plain text "EzLanguage" script into a list of CommandCall's.
+        /// </summary>
         public static List<SoulsFormats.ESD.ESD.CommandCall> AssembleCommandScript(string plaintext)
         {
             var result = new List<SoulsFormats.ESD.ESD.CommandCall>();
@@ -38,7 +47,10 @@ namespace SoulsFormats.Formats.ESD.EzSemble
             return result;
         }
 
-        public static byte[] Assemble(string plaintext)
+        /// <summary>
+        /// Assembles a plain text "EzLanguage" expression into bytecode.
+        /// </summary>
+        public static byte[] AssembleExpression(string plaintext)
         {
             using (var ms = new MemoryStream())
             using (var bw = new BinaryWriter(ms, Encoding.Unicode))

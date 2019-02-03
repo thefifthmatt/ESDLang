@@ -429,17 +429,17 @@ namespace SoulsFormats.ESD
             public List<Condition> Conditions;
 
             /// <summary>
-            /// Script to be executed when the state is entered.
+            /// "EzLanguage" script to be executed when the state is entered.
             /// </summary>
             public string EntryScript;
 
             /// <summary>
-            /// Script to be executed when the state is exited.
+            /// "EzLanguage" script to be executed when the state is exited.
             /// </summary>
             public string ExitScript;
 
             /// <summary>
-            /// Script to be executed constantly at 30 Hz while in the state.
+            /// "EzLanguage" script to be executed constantly at 30 Hz while in the state.
             /// </summary>
             public string WhileScript;
 
@@ -592,10 +592,8 @@ namespace SoulsFormats.ESD
             public long? TargetState;
 
             /// <summary>
-            /// Commands to be executed if the condition passes.
+            /// "EzLanguage" script to be executed if the condition passes.
             /// </summary>
-            //internal List<CommandCall> PassCommands;
-
             public string PassScript;
 
             /// <summary>
@@ -604,7 +602,7 @@ namespace SoulsFormats.ESD
             public List<Condition> Subconditions;
 
             /// <summary>
-            /// Bytecode which determines whether the condition passes.
+            /// "EzLanguage" expression which determines whether the condition passes (returns 1 to pass).
             /// </summary>
             public string Evaluator;
 
@@ -655,7 +653,7 @@ namespace SoulsFormats.ESD
                     br.Position = dataStart + conditionOffsetsOffset;
                     conditionOffsets = ReadVarints(br, longFormat, conditionOffsetCount);
 
-                    Evaluator = EzSembler.Dissemble(br.GetBytes(dataStart + evaluatorOffset, (int)evaluatorLength));
+                    Evaluator = EzSembler.DissembleExpression(br.GetBytes(dataStart + evaluatorOffset, (int)evaluatorLength));
                 }
                 br.StepOut();
             }
@@ -703,7 +701,7 @@ namespace SoulsFormats.ESD
                 ReserveVarint(bw, longFormat, $"Condition{groupID}-{index}:ConditionsOffset");
                 WriteVarint(bw, longFormat, Subconditions.Count);
                 ReserveVarint(bw, longFormat, $"Condition{groupID}-{index}:EvaluatorOffset");
-                WriteVarint(bw, longFormat, EzSembler.Assemble(Evaluator).Length);
+                WriteVarint(bw, longFormat, EzSembler.AssembleExpression(Evaluator).Length);
             }
 
             internal void WriteCommandCalls(BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart, List<CommandCall> commands)
@@ -742,7 +740,7 @@ namespace SoulsFormats.ESD
             internal void WriteEvaluator(BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart)
             {
                 FillVarint(bw, longFormat, $"Condition{groupID}-{index}:EvaluatorOffset", bw.Position - dataStart);
-                bw.WriteBytes(EzSembler.Assemble(Evaluator));
+                bw.WriteBytes(EzSembler.AssembleExpression(Evaluator));
             }
         }
 
@@ -762,7 +760,7 @@ namespace SoulsFormats.ESD
             public int CommandID;
 
             /// <summary>
-            /// Bytecode expressions to evaluate and pass as arguments to the command.
+            /// "EzLanguage" expressions to pass as arguments to the command.
             /// </summary>
             public List<string> Arguments;
 
@@ -800,7 +798,7 @@ namespace SoulsFormats.ESD
                     {
                         long argOffset = ReadVarint(br, longFormat);
                         long argSize = ReadVarint(br, longFormat);
-                        Arguments.Add(EzSembler.Dissemble(br.GetBytes(dataStart + argOffset, (int)argSize)));
+                        Arguments.Add(EzSembler.DissembleExpression(br.GetBytes(dataStart + argOffset, (int)argSize)));
                     }
                 }
                 br.StepOut();
@@ -820,7 +818,7 @@ namespace SoulsFormats.ESD
                 for (int i = 0; i < Arguments.Count; i++)
                 {
                     ReserveVarint(bw, longFormat, $"Command{index}-{i}:BytecodeOffset");
-                    WriteVarint(bw, longFormat, EzSembler.Assemble(Arguments[i]).Length);
+                    WriteVarint(bw, longFormat, EzSembler.AssembleExpression(Arguments[i]).Length);
                 }
             }
 
@@ -829,7 +827,7 @@ namespace SoulsFormats.ESD
                 for (int i = 0; i < Arguments.Count; i++)
                 {
                     FillVarint(bw, longFormat, $"Command{index}-{i}:BytecodeOffset", bw.Position - dataStart);
-                    bw.WriteBytes(EzSembler.Assemble(Arguments[i]));
+                    bw.WriteBytes(EzSembler.AssembleExpression(Arguments[i]));
                 }
             }
         }
