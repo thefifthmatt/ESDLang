@@ -46,7 +46,8 @@ namespace SoulsFormats.Formats.ESD.EzSemble
         public static List<SoulsFormats.ESD.ESD.CommandCall> AssembleCommandScript(string plaintext)
         {
             var result = new List<SoulsFormats.ESD.ESD.CommandCall>();
-            foreach (var cmdTxt in plaintext.Split(';').Select(x => x.Trim(' ', '\n')).Where(x => !string.IsNullOrWhiteSpace(x)))
+            foreach (var cmdTxt in plaintext.Split(';').Select(x => 
+                x.Replace("\r", "").Trim(' ', '\n')).Where(x => !string.IsNullOrWhiteSpace(x)))
             {
                 result.Add(AssembleCommandCall(cmdTxt));
             }
