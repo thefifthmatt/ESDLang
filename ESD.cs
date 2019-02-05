@@ -236,7 +236,10 @@ namespace SoulsFormats.ESD
                 throw new FormatException("Orphaned states found.");
 
             foreach (var s in conditions)
+            {
                 s.Value.MetaRefID = s.Key;
+                s.Value.Name = $"Condition[{s.Key:X8}]";
+            }
 
             foreach (var g in StateGroups.Keys)
                 foreach (var s in StateGroups[g])
@@ -404,7 +407,6 @@ namespace SoulsFormats.ESD
                 {
                     Condition cond = conditions[groupID][i];
                     cond.MetaRefID = conditionOffsets[cond] = bw.Position - dataStart;
-                    cond.Name = $"Condition[{cond.MetaRefID:X8}]";
                     cond.WriteHeader(bw, LongFormat, groupID, i, stateOffsets[groupID]);
                 }
             }
