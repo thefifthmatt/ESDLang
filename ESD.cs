@@ -1,4 +1,5 @@
-﻿using SoulsFormats.Formats.ESD.EzSemble;
+﻿using SoulsFormats.Formats.ESD;
+using SoulsFormats.Formats.ESD.EzSemble;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,9 +37,50 @@ namespace SoulsFormats.ESD
         public Dictionary<long, Dictionary<long, State>> StateGroups;
 
         /// <summary>
+        /// Keeps track of names for state groups. Only saved in metadata, not the actual .ESD itself.
+        /// </summary>
+        public Dictionary<long, string> StateGroupNames;
+
+        /// <summary>
         /// Creates a new ESD formatted for DS1 with no state groups. 
         /// </summary>
         public ESD() : this(false, 1) { }
+
+        internal string LastSavedHash;
+
+        /// <summary>
+        /// Metadata for this ESD file.
+        /// </summary>
+        public ESDMetadata Metadata { get; private set; }
+
+        /// <summary>
+        /// Applies metadata to this ESD file.
+        /// Warning: If anything has been modified in this ESD file since it was opened,
+        /// this metadata will no longer be valid!
+        /// </summary>
+        public void ApplyMetadata(ESDMetadata meta)
+        {
+            ESDMetadata.Apply(this, meta);
+        }
+
+        /// <summary>
+        /// Loads metadata from the specified XML file and applies it to this ESD file.
+        /// </summary>
+        public void LoadAndApplyMetadataXML(string xmlFilePath)
+        {
+            var meta = ESDMetadata.ReadFromXml(xmlFilePath);
+            ApplyMetadata(meta);
+        }
+
+        /// <summary>
+        /// Save the current metadata to the specified XML file.
+        /// Note: If anything has been modified in this ESD file since the last
+        /// .Write() call, this metadata will no longer be valid!
+        /// </summary>
+        public void SaveMetadataXML(string xmlFilePath)
+        {
+            Metadata.WriteToXml(xmlFilePath);
+        }
 
         /// <summary>
         /// Creates a new ESD with the given format and no state groups.
@@ -53,6 +95,8 @@ namespace SoulsFormats.ESD
             Unk78 = 0;
             Unk7C = 0;
             StateGroups = new Dictionary<long, Dictionary<long, State>>();
+            StateGroupNames = new Dictionary<long, string>();
+            Metadata = new ESDMetadata();
         }
 
         internal override bool Is(BinaryReaderEx br)
@@ -61,8 +105,41 @@ namespace SoulsFormats.ESD
             return magic == "fSSL" || magic == "fsSL";
         }
 
+        /// <summary>
+        /// Loads an ESD file from the specified path, loading the metadata along with it if applicable "&lt;ESDFileName&gt;.meta".
+        /// If no metadata exists, generates default metadata.
+        /// If metadata does not exist, an exception is thrown if <paramref name="assertMetadataExists"/> is true,
+        /// and default metadata is generated if it is false.
+        /// </summary>
+        public static ESD ReadWithMetadata(string path, bool assertMetadataExists = false)
+        {
+            var esd = ESD.Read(path);
+
+            if (System.IO.File.Exists(path + ".meta"))
+            {
+                esd.LoadAndApplyMetadataXML(path + ".meta");
+            }
+            else if (assertMetadataExists)
+            {
+                throw new Exception($"Metadata file did not exist and {nameof(assertMetadataExists)} was true.");
+            }
+
+            return esd;
+        }
+
+        /// <summary>
+        /// Writes this ESD file to the specified path, saving its metadata to "&lt;ESDFileName&gt;.meta".
+        /// </summary>
+        public void WriteWithMetadata(string path)
+        {
+            Write(path);
+            SaveMetadataXML(path + ".meta");
+        }
+
         internal override void Read(BinaryReaderEx br)
         {
+            LastSavedHash = br.GetMD5HashOfStream();
+
             br.BigEndian = false;
 
             string magic = br.AssertASCII("fSSL", "fsSL");
@@ -129,7 +206,9 @@ namespace SoulsFormats.ESD
 
             var states = new Dictionary<long, State>(stateCount);
             for (int i = 0; i < stateCount; i++)
+            {
                 states[br.Position - dataStart] = new State(br, LongFormat, dataStart);
+            }
 
             var conditions = new Dictionary<long, Condition>(conditionCount);
             for (int i = 0; i < conditionCount; i++)
@@ -154,6 +233,45 @@ namespace SoulsFormats.ESD
 
             if (states.Count > 0)
                 throw new FormatException("Orphaned states found.");
+
+            foreach (var s in conditions)
+                s.Value.MetaRefID = s.Key;
+
+            foreach (var g in StateGroups.Keys)
+                foreach (var s in StateGroups[g])
+                    s.Value.Name = $"State{g}-{s.Value.ID}";
+
+            StateGroupNames.Clear();
+            foreach (var g in StateGroups)
+                StateGroupNames.Add(g.Key, $"StateGroup{g.Key}");
+        }
+
+        internal Dictionary<long, List<Condition>> GetAllConditions()
+        {
+            // Make a list of every unique condition
+            var conditions = new Dictionary<long, List<Condition>>();
+            foreach (long groupID in StateGroups.Keys)
+            {
+                conditions[groupID] = new List<Condition>();
+                void addCondition(Condition cond)
+                {
+                    if (!conditions[groupID].Any(c => ReferenceEquals(cond, c)))
+                    {
+                        conditions[groupID].Add(cond);
+                        foreach (Condition subCond in cond.Subconditions)
+                            addCondition(subCond);
+                    }
+                }
+
+                foreach (State state in StateGroups[groupID].Values)
+                {
+                    foreach (Condition cond in state.Conditions)
+                    {
+                        addCondition(cond);
+                    }
+                }
+            }
+            return conditions;
         }
 
         internal override void Write(BinaryWriterEx bw)
@@ -284,7 +402,8 @@ namespace SoulsFormats.ESD
                 for (int i = 0; i < conditions[groupID].Count; i++)
                 {
                     Condition cond = conditions[groupID][i];
-                    conditionOffsets[cond] = bw.Position - dataStart;
+                    cond.MetaRefID = conditionOffsets[cond] = bw.Position - dataStart;
+                    cond.Name = $"Condition[{cond.MetaRefID:X8}]";
                     cond.WriteHeader(bw, LongFormat, groupID, i, stateOffsets[groupID]);
                 }
             }
@@ -364,6 +483,10 @@ namespace SoulsFormats.ESD
                 bw.Position = offsets[1];
                 bw.WriteBytes(bytes);
             }
+
+            LastSavedHash = bw.GetMD5HashOfStream();
+
+            Metadata = ESDMetadata.Generate(this);
         }
 
         private long[] ReadStateGroup(BinaryReaderEx br, bool longFormat, long dataStart, long stateSize)
@@ -423,6 +546,13 @@ namespace SoulsFormats.ESD
         /// </summary>
         public class State
         {
+            /// <summary>
+            /// Name of this state. Only stored in metadata, not in the .ESD file itself.
+            /// If a metadata file is not applied, this defaults to StateX-Y where X is the state group ID
+            /// and Y is the state ID.
+            /// </summary>
+            public string Name;
+
             /// <summary>
             /// Possible transitions to other states.
             /// </summary>
@@ -586,6 +716,13 @@ namespace SoulsFormats.ESD
         /// </summary>
         public class Condition
         {
+            internal long MetaRefID;
+
+            /// <summary>
+            /// Name of this condition. Only saved in metadata, not in the .ESD itself.
+            /// </summary>
+            public string Name;
+
             /// <summary>
             /// The ID of the state to enter if the condition passes, or null if subconditions are present.
             /// </summary>
