@@ -574,7 +574,7 @@ namespace SoulsFormats.ESD
             /// </summary>
             public string WhileScript;
 
-            internal long ID;
+            public long ID;
             private long[] conditionOffsets;
 
             /// <summary>
@@ -586,6 +586,7 @@ namespace SoulsFormats.ESD
                 EntryScript = "";
                 ExitScript = "";
                 WhileScript = "";
+                Name = "";
             }
 
             internal State(BinaryReaderEx br, bool longFormat, long dataStart)
