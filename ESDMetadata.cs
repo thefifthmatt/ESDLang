@@ -12,6 +12,9 @@ namespace SoulsFormats.Formats.ESD
     /// </summary>
     public class ESDMetadata
     {
+        internal const int CURRENT_BINARY_VERSION = 2019_02_04_01;
+        private static readonly Encoding ShiftJIS = Encoding.GetEncoding("shift-jis");
+
         /// <summary>
         /// Metadata for an ESD State.
         /// </summary>
@@ -103,6 +106,7 @@ namespace SoulsFormats.Formats.ESD
         private void InnerWriteToXml(string xmlFileName)
         {
             XmlWriterSettings xws = new XmlWriterSettings();
+            xws.Encoding = ShiftJIS;
             xws.Indent = true;
             xws.IndentChars = "    ";
             XmlWriter xw = XmlWriter.Create(xmlFileName, xws);
@@ -186,18 +190,56 @@ namespace SoulsFormats.Formats.ESD
             xw.Close();
         }
 
+        private void InnerWriteToBinary(string binFileName)
+        {
+            using (var fileStream = System.IO.File.Open(binFileName, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.Write))
+            {
+                var bw = new BinaryWriterEx(bigEndian: false, stream: fileStream);
+                bw.WriteASCII("ESD_META", terminate: false);
+                bw.WriteInt32(CURRENT_BINARY_VERSION);
+                bw.WriteASCII(ESDHash, terminate: true);
+                bw.WriteInt32(StateGroupNames.Count);
+                foreach (var g in StateGroupNames.Keys)
+                {
+                    bw.WriteInt64(g);
+                    bw.WriteShiftJIS(StateGroupNames[g], terminate: true);
+                    bw.WriteInt32(StateMetadatas[g].Count);
+                    foreach (var kvp in StateMetadatas[g])
+                    {
+                        bw.WriteInt64(kvp.Key);
+                        bw.WriteShiftJIS(kvp.Value.Name, terminate: true);
+                        bw.WriteShiftJIS(kvp.Value.EntryScript, terminate: true);
+                        bw.WriteShiftJIS(kvp.Value.ExitScript, terminate: true);
+                        bw.WriteShiftJIS(kvp.Value.WhileScript, terminate: true);
+                    }
+                }
+                bw.WriteInt32(ConditionMetadatas.Count);
+                foreach (var c in ConditionMetadatas)
+                {
+                    bw.WriteInt64(c.Key);
+                    bw.WriteShiftJIS(c.Value.Name, terminate: true);
+                    bw.WriteShiftJIS(c.Value.Evaluator, terminate: true);
+                    bw.WriteShiftJIS(c.Value.PassScript, terminate: true);
+                }
+            }
+        }
+
         /// <summary>
-        /// Writes metadata to an XML file.
+        /// Writes metadata to the specified file.
         /// </summary>
-        public void WriteToXml(string xmlFileName)
+        public void Write(string fileName, bool isBinary)
         {
             try
             {
-                InnerWriteToXml(xmlFileName);
+                if (isBinary)
+                    InnerWriteToBinary(fileName);
+                else
+                    InnerWriteToXml(fileName);
             }
             catch (Exception e)
             {
-                throw new Exception($"Failed to write XML file \"{xmlFileName}\":\n{e.Message}", e);
+                throw new Exception($"Failed to write {(isBinary ? "binary-format" : "xml-format")} " +
+                    $"ESD metadata file \"{fileName}\":\n{e.Message}", e);
             }
         }
 
@@ -250,18 +292,88 @@ namespace SoulsFormats.Formats.ESD
             return meta;
         }
 
+        private static ESDMetadata InnerReadFromBinary(string binFileName)
+        {
+            var meta = new ESDMetadata();
+            using (var fileStream = System.IO.File.Open(binFileName, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+            {
+                var br = new BinaryReaderEx(bigEndian: false, stream: fileStream);
+                br.AssertASCII("ESD_META");
+                int version = br.AssertInt32(CURRENT_BINARY_VERSION);
+                meta.ESDHash = br.ReadASCII();
+                int stateGroupCount = br.ReadInt32();
+                for (int i = 0; i < stateGroupCount; i++)
+                {
+                    long stateGroupID = br.ReadInt64();
+                    string stateGroupName = br.ReadShiftJIS();
+                    meta.StateGroupNames.Add(stateGroupID, stateGroupName);
+                    meta.StateMetadatas.Add(stateGroupID, new Dictionary<long, StateMetadata>());
+                    int stateCount = br.ReadInt32();
+                    for (int j = 0; j < stateCount; j++)
+                    {
+                        long stateID = br.ReadInt64();
+                        string stateName = br.ReadShiftJIS();
+                        string stateEntryScript = br.ReadShiftJIS();
+                        string stateExitScript = br.ReadShiftJIS();
+                        string stateWhileScript = br.ReadShiftJIS();
+                        meta.StateMetadatas[stateGroupID].Add(stateID, new StateMetadata()
+                        {
+                            Name = stateName,
+                            EntryScript = stateEntryScript,
+                            ExitScript = stateExitScript,
+                            WhileScript = stateWhileScript,
+                        });
+                    }
+                }
+                int conditionCount = br.ReadInt32();
+                for (int i = 0; i < conditionCount; i++)
+                {
+                    long conditionID = br.ReadInt64();
+                    string conditionName = br.ReadShiftJIS();
+                    string conditionEvaluator = br.ReadShiftJIS();
+                    string conditionPassScript = br.ReadShiftJIS();
+                    meta.ConditionMetadatas.Add(conditionID, new ConditionMetadata()
+                    {
+                        Name = conditionName,
+                        Evaluator = conditionEvaluator,
+                        PassScript = conditionPassScript,
+                    });
+                }
+            }
+            return meta;
+        }
+
         /// <summary>
-        /// Reads metadata from an XML file.
+        /// Reads metadata from the specified file.
         /// </summary>
-        public static ESDMetadata ReadFromXml(string xmlFileName)
+        public static ESDMetadata Read(string fileName, bool isBinary)
         {
             try
             {
-                return InnerReadFromXml(xmlFileName);
+                if (isBinary)
+                    return InnerReadFromBinary(fileName);
+                else
+                    return InnerReadFromXml(fileName);
             }
             catch (Exception e)
             {
-                throw new Exception($"Failed to read XML file \"{xmlFileName}\":\n{e.Message}", e);
+                throw new Exception($"Failed to read {(isBinary ? "binary-format" : "xml-format")} " +
+                    $"ESD metadata file \"{fileName}\":\n{e.Message}", e);
+            }
+        }
+
+        /// <summary>
+        /// Reads metadata from a binary file.
+        /// </summary>
+        public static ESDMetadata ReadFromBinary(string binFileName)
+        {
+            try
+            {
+                return InnerReadFromBinary(binFileName);
+            }
+            catch (Exception e)
+            {
+                throw new Exception($"Failed to read binary ESD metadata file \"{binFileName}\":\n{e.Message}", e);
             }
         }
 
