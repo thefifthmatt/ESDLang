@@ -12,7 +12,7 @@ namespace SoulsFormats.Formats.ESD
     /// </summary>
     public class ESDMetadata
     {
-        internal const int CURRENT_BINARY_VERSION = 2019_02_04_01;
+        internal const long CURRENT_BINARY_VERSION = 2019_02_04_02;
         private static readonly Encoding ShiftJIS = Encoding.GetEncoding("shift-jis");
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace SoulsFormats.Formats.ESD
             {
                 var bw = new BinaryWriterEx(bigEndian: false, stream: fileStream);
                 bw.WriteASCII("ESD_META", terminate: false);
-                bw.WriteInt32(CURRENT_BINARY_VERSION);
+                bw.WriteInt64(CURRENT_BINARY_VERSION);
                 bw.WriteASCII(ESDHash, terminate: true);
                 bw.WriteInt32(StateGroupNames.Count);
                 foreach (var g in StateGroupNames.Keys)
@@ -299,7 +299,7 @@ namespace SoulsFormats.Formats.ESD
             {
                 var br = new BinaryReaderEx(bigEndian: false, stream: fileStream);
                 br.AssertASCII("ESD_META");
-                int version = br.AssertInt32(CURRENT_BINARY_VERSION);
+                br.AssertInt64(CURRENT_BINARY_VERSION);
                 meta.ESDHash = br.ReadASCII();
                 int stateGroupCount = br.ReadInt32();
                 for (int i = 0; i < stateGroupCount; i++)
