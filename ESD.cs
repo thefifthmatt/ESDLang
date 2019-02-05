@@ -97,6 +97,7 @@ namespace SoulsFormats.ESD
             StateGroups = new Dictionary<long, Dictionary<long, State>>();
             StateGroupNames = new Dictionary<long, string>();
             Metadata = new ESDMetadata();
+            LastSavedHash = "";
         }
 
         internal override bool Is(BinaryReaderEx br)
