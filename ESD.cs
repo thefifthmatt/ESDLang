@@ -576,6 +576,9 @@ namespace SoulsFormats.ESD
             /// </summary>
             public string WhileScript { get; set; }
 
+            /// <summary>
+            /// The Unique ID of this state.
+            /// </summary>
             public long ID;
             private long[] conditionOffsets;
 
@@ -588,7 +591,7 @@ namespace SoulsFormats.ESD
                 EntryScript = "";
                 ExitScript = "";
                 WhileScript = "";
-                Name = "";
+                Name = "New State";
             }
 
             internal State(BinaryReaderEx br, bool longFormat, long dataStart)
@@ -767,6 +770,7 @@ namespace SoulsFormats.ESD
                 PassScript = "";
                 Subconditions = new List<Condition>();
                 Evaluator = "1;";
+                Name = "New Condition";
             }
 
             /// <summary>
@@ -778,6 +782,7 @@ namespace SoulsFormats.ESD
                 PassScript = "";
                 Subconditions = new List<Condition>();
                 Evaluator = evaluator;
+                Name = "New Condition";
             }
 
             internal Condition(BinaryReaderEx br, bool longFormat, long dataStart)
