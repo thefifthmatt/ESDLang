@@ -24,7 +24,7 @@ namespace SoulsFormats.ESD
         /// <summary>
         /// Name and/or brief description of the file, or null if not present.
         /// </summary>
-        public string Name;
+        public string Name { get; set; }
 
         /// <summary>
         /// Unknown; not bytecode, not floats, not text. Perhaps a hash of something, but if so it isn't checked.
@@ -554,7 +554,7 @@ namespace SoulsFormats.ESD
             /// If a metadata file is not applied, this defaults to StateX-Y where X is the state group ID
             /// and Y is the state ID.
             /// </summary>
-            public string Name;
+            public string Name { get; set; }
 
             /// <summary>
             /// Possible transitions to other states.
@@ -564,17 +564,17 @@ namespace SoulsFormats.ESD
             /// <summary>
             /// "EzLanguage" script to be executed when the state is entered.
             /// </summary>
-            public string EntryScript;
+            public string EntryScript { get; set; }
 
             /// <summary>
             /// "EzLanguage" script to be executed when the state is exited.
             /// </summary>
-            public string ExitScript;
+            public string ExitScript { get; set; }
 
             /// <summary>
             /// "EzLanguage" script to be executed constantly at 30 Hz while in the state.
             /// </summary>
-            public string WhileScript;
+            public string WhileScript { get; set; }
 
             public long ID;
             private long[] conditionOffsets;
@@ -733,7 +733,7 @@ namespace SoulsFormats.ESD
             /// <summary>
             /// Name of this condition. Only saved in metadata, not in the .ESD itself.
             /// </summary>
-            public string Name;
+            public string Name { get; set; }
 
             /// <summary>
             /// The ID of the state to enter if the condition passes, or null if subconditions are present.
@@ -743,7 +743,7 @@ namespace SoulsFormats.ESD
             /// <summary>
             /// "EzLanguage" script to be executed if the condition passes.
             /// </summary>
-            public string PassScript;
+            public string PassScript { get; set; }
 
             /// <summary>
             /// If present and this condition passes, evaluation will continue to these conditions.
@@ -753,7 +753,7 @@ namespace SoulsFormats.ESD
             /// <summary>
             /// "EzLanguage" expression which determines whether the condition passes (returns 1 to pass).
             /// </summary>
-            public string Evaluator;
+            public string Evaluator { get; set; }
 
             private long stateOffset;
             private long[] conditionOffsets;
