@@ -64,22 +64,22 @@ namespace SoulsFormats.ESD
         }
 
         /// <summary>
-        /// Loads metadata from the specified XML file and applies it to this ESD file.
+        /// Loads metadata from the specified file and applies it to this ESD file.
         /// </summary>
-        public void LoadAndApplyMetadataXML(string xmlFilePath)
+        public void LoadAndApplyMetadataFile(string filePath, bool isBinary)
         {
-            var meta = ESDMetadata.ReadFromXml(xmlFilePath);
+            var meta = ESDMetadata.Read(filePath, isBinary);
             ApplyMetadata(meta);
         }
 
         /// <summary>
-        /// Save the current metadata to the specified XML file.
+        /// Save the current metadata to the specified file.
         /// Note: If anything has been modified in this ESD file since the last
         /// .Write() call, this metadata will no longer be valid!
         /// </summary>
-        public void SaveMetadataXML(string xmlFilePath)
+        public void SaveMetadataFile(string filePath, bool isBinary)
         {
-            Metadata.WriteToXml(xmlFilePath);
+            Metadata.Write(filePath, isBinary);
         }
 
         /// <summary>
@@ -107,18 +107,18 @@ namespace SoulsFormats.ESD
         }
 
         /// <summary>
-        /// Loads an ESD file from the specified path, loading the metadata along with it if applicable "&lt;ESDFileName&gt;.meta.xml".
+        /// Loads an ESD file from the specified path, loading the metadata along with it if applicable "&lt;ESDFileName&gt;.meta".
         /// If no metadata exists, generates default metadata.
         /// If metadata does not exist, an exception is thrown if <paramref name="assertMetadataExists"/> is true,
         /// and default metadata is generated if it is false.
         /// </summary>
-        public static ESD ReadWithMetadata(string path, bool assertMetadataExists = false)
+        public static ESD ReadWithMetadata(string path, bool isBinaryMetadata, bool assertMetadataExists = false)
         {
             var esd = ESD.Read(path);
 
-            if (System.IO.File.Exists(path + ".meta.xml"))
+            if (System.IO.File.Exists(path + ".meta"))
             {
-                esd.LoadAndApplyMetadataXML(path + ".meta.xml");
+                esd.LoadAndApplyMetadataFile(path + ".meta", isBinaryMetadata);
             }
             else if (assertMetadataExists)
             {
@@ -129,12 +129,12 @@ namespace SoulsFormats.ESD
         }
 
         /// <summary>
-        /// Writes this ESD file to the specified path, saving its metadata to "&lt;ESDFileName&gt;.meta.xml".
+        /// Writes this ESD file to the specified path, saving its metadata to "&lt;ESDFileName&gt;.meta".
         /// </summary>
-        public void WriteWithMetadata(string path)
+        public void WriteWithMetadata(string path, bool isBinaryMetadata)
         {
             Write(path);
-            SaveMetadataXML(path + ".meta.xml");
+            SaveMetadataFile(path + ".meta", isBinaryMetadata);
         }
 
         internal override void Read(BinaryReaderEx br)
