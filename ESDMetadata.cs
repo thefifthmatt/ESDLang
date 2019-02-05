@@ -89,10 +89,6 @@ namespace SoulsFormats.Formats.ESD
         /// </summary>
         public Dictionary<long, ConditionMetadata> ConditionMetadatas;
 
-        internal const string INDENT = "  ";
-        internal const string INDENT_STATE_SCRIPT = "          ";
-        internal const string INDENT_CONDITION_SCRIPT = "      ";
-
         /// <summary>
         /// Creates a new blank ESD metadata object.
         /// </summary>
@@ -104,27 +100,11 @@ namespace SoulsFormats.Formats.ESD
             ConditionMetadatas = new Dictionary<long, ConditionMetadata>();
         }
 
-        private static string GetIndentedScript(string script, string elementTotalIndent)
-        {
-            string indentStr = elementTotalIndent.Substring(0, elementTotalIndent.Length - INDENT.Length);
-            string joinStr = $"\n{indentStr}{INDENT}";
-            return $"{joinStr}{(string.Join(joinStr, script.Split('\n')))}\n{indentStr}";
-        }
-
-        private static string GetUnindentedScript(string script, string elementTotalIndent)
-        {
-            string indentStr = elementTotalIndent.Substring(0, elementTotalIndent.Length - INDENT.Length);
-            string joinStr = $"\n{indentStr}{INDENT}";
-            return string.Join("\n", script.Split(new string[] { joinStr }, StringSplitOptions.None))
-                .Replace("\r", "")
-                .Trim(' ', '\n');
-        }
-
         private void InnerWriteToXml(string xmlFileName)
         {
             XmlWriterSettings xws = new XmlWriterSettings();
             xws.Indent = true;
-            xws.IndentChars = INDENT;
+            xws.IndentChars = "    ";
             XmlWriter xw = XmlWriter.Create(xmlFileName, xws);
 
             xw.WriteStartElement("EzStateMetadata");
@@ -149,19 +129,19 @@ namespace SoulsFormats.Formats.ESD
 
                                         xw.WriteStartElement("EntryScript");
                                         {
-                                            xw.WriteString(GetIndentedScript(s.Value.EntryScript, INDENT_STATE_SCRIPT));
+                                            xw.WriteString(s.Value.EntryScript);
                                         }
                                         xw.WriteEndElement();
 
                                         xw.WriteStartElement("ExitScript");
                                         {
-                                            xw.WriteString(GetIndentedScript(s.Value.ExitScript, INDENT_STATE_SCRIPT));
+                                            xw.WriteString(s.Value.ExitScript);
                                         }
                                         xw.WriteEndElement();
 
                                         xw.WriteStartElement("WhileScript");
                                         {
-                                            xw.WriteString(GetIndentedScript(s.Value.WhileScript, INDENT_STATE_SCRIPT));
+                                            xw.WriteString(s.Value.WhileScript);
                                         }
                                         xw.WriteEndElement();
 
@@ -187,13 +167,13 @@ namespace SoulsFormats.Formats.ESD
 
                             xw.WriteStartElement("Evaluator");
                             {
-                                xw.WriteString(GetIndentedScript(kvp.Value.Evaluator, INDENT_CONDITION_SCRIPT));
+                                xw.WriteString(kvp.Value.Evaluator);
                             }
                             xw.WriteEndElement();
 
                             xw.WriteStartElement("PassScript");
                             {
-                                xw.WriteString(GetIndentedScript(kvp.Value.PassScript, INDENT_CONDITION_SCRIPT));
+                                xw.WriteString(kvp.Value.PassScript);
                             }
                             xw.WriteEndElement();
                         }
@@ -240,9 +220,9 @@ namespace SoulsFormats.Formats.ESD
                 {
                     long stateID = long.Parse(stateNode.Attributes["ID"].InnerText);
                     string stateName = stateNode.Attributes["Name"].InnerText;
-                    string stateEntryScript = GetUnindentedScript(stateNode.SelectSingleNode("EntryScript").InnerText, INDENT_STATE_SCRIPT);
-                    string stateExitScript = GetUnindentedScript(stateNode.SelectSingleNode("ExitScript").InnerText, INDENT_STATE_SCRIPT);
-                    string stateWhileScript = GetUnindentedScript(stateNode.SelectSingleNode("WhileScript").InnerText, INDENT_STATE_SCRIPT);
+                    string stateEntryScript = stateNode.SelectSingleNode("EntryScript").InnerText;
+                    string stateExitScript = stateNode.SelectSingleNode("ExitScript").InnerText;
+                    string stateWhileScript = stateNode.SelectSingleNode("WhileScript").InnerText;
                     meta.StateMetadatas[stateGroupID].Add(stateID, new StateMetadata()
                     {
                         Name = stateName,
@@ -257,8 +237,8 @@ namespace SoulsFormats.Formats.ESD
             {
                 long conditionID = long.Parse(conditionNode.Attributes["ID"].InnerText);
                 string conditionName = conditionNode.Attributes["Name"].InnerText;
-                string conditionEvaluator = GetUnindentedScript(conditionNode.SelectSingleNode("Evaluator").InnerText, INDENT_CONDITION_SCRIPT);
-                string conditionPassScript = GetUnindentedScript(conditionNode.SelectSingleNode("PassScript").InnerText, INDENT_CONDITION_SCRIPT);
+                string conditionEvaluator = conditionNode.SelectSingleNode("Evaluator").InnerText;
+                string conditionPassScript = conditionNode.SelectSingleNode("PassScript").InnerText;
                 meta.ConditionMetadatas.Add(conditionID, new ConditionMetadata()
                 {
                     Name = conditionName,
