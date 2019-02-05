@@ -713,6 +713,14 @@ namespace SoulsFormats.ESD
                     WriteVarint(bw, longFormat, conditionOffsets[cond]);
                 return Conditions.Count;
             }
+
+            /// <summary>
+            /// Displays state with its metadata name for use in debugging.
+            /// </summary>
+            public override string ToString()
+            {
+                return $"{nameof(ESD)}.{nameof(State)}: \"{Name}\"";
+            }
         }
 
         /// <summary>
@@ -883,6 +891,14 @@ namespace SoulsFormats.ESD
                 FillVarint(bw, longFormat, $"Condition{groupID}-{index}:EvaluatorOffset", bw.Position - dataStart);
                 bw.WriteBytes(EzSembler.AssembleExpression(Evaluator));
             }
+
+            /// <summary>
+            /// Displays condition with its metadata name for use in debugging.
+            /// </summary>
+            public override string ToString()
+            {
+                return $"{nameof(ESD)}.{nameof(Condition)}: \"{Name}\"";
+            }
         }
 
         /// <summary>
@@ -970,6 +986,14 @@ namespace SoulsFormats.ESD
                     FillVarint(bw, longFormat, $"Command{index}-{i}:BytecodeOffset", bw.Position - dataStart);
                     bw.WriteBytes(EzSembler.AssembleExpression(Arguments[i]));
                 }
+            }
+
+            /// <summary>
+            /// Displays command call as a string for use in debugging.
+            /// </summary>
+            public override string ToString()
+            {
+                return $"{nameof(ESD)}.{nameof(CommandCall)}: {CommandBank}:{CommandID}({(string.Join(", ", Arguments))})";
             }
         }
 
