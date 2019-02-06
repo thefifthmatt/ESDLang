@@ -8,8 +8,10 @@ namespace SoulsFormats.Formats.ESD.EzSemble
         public static Dictionary<byte, string> OperatorsByByte = new Dictionary<byte, string>
         {
             [0x8C] = "+",
-            [0x8E] = "*",
-            [0x8F] = "/",
+            [0x8D] = "N",
+            [0x8E] = "-",
+            [0x8F] = "*",
+            [0x90] = "/",
             [0x91] = "<=",
             [0x92] = ">=",
             [0x93] = "<",
