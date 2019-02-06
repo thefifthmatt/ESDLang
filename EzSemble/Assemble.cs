@@ -89,43 +89,49 @@ namespace SoulsFormats.Formats.ESD.EzSemble
             // Number literal
             if (plaintext[current] == '-' || char.IsDigit(plaintext[current]))
             {
+                // Is subtract and not a literal
                 if (plaintext[current] == '-' && (next == plaintext.Length || !char.IsDigit(plaintext[next])))
-                    throw new Exception("Negative sign must be immediately followed by a number");
-
-                while (next < plaintext.Length && char.IsDigit(plaintext[next]))
-                    next++;
-
-                if (next + 1 < plaintext.Length && plaintext[next] == '.' && char.IsDigit(plaintext[next + 1]))
                 {
-                    next++;
-                    while (next < plaintext.Length && char.IsDigit(plaintext[next]))
-                        next++;
-                }
-
-                string str = plaintext.Substring(current, next - current);
-                double value = double.Parse(str);
-                if (value == Math.Floor(value))
-                {
-                    if (value >= -64 && value <= 63)
-                    {
-                        bw.Write((byte)(value + 64));
-                    }
-                    else
-                    {
-                        bw.Write((byte)0x82);
-                        bw.Write((int)value);
-                    }
-                }
-                else if (value == (float)value)
-                {
-                    bw.Write((byte)0x80);
-                    bw.Write((float)value);
+                    bw.Write(BytesByOperator["-"]);
                 }
                 else
                 {
-                    bw.Write((byte)0x81);
-                    bw.Write(value);
+                    while (next < plaintext.Length && char.IsDigit(plaintext[next]))
+                        next++;
+
+                    if (next + 1 < plaintext.Length && plaintext[next] == '.' && char.IsDigit(plaintext[next + 1]))
+                    {
+                        next++;
+                        while (next < plaintext.Length && char.IsDigit(plaintext[next]))
+                            next++;
+                    }
+
+                    string str = plaintext.Substring(current, next - current);
+                    double value = double.Parse(str);
+                    if (value == Math.Floor(value))
+                    {
+                        if (value >= -64 && value <= 63)
+                        {
+                            bw.Write((byte)(value + 64));
+                        }
+                        else
+                        {
+                            bw.Write((byte)0x82);
+                            bw.Write((int)value);
+                        }
+                    }
+                    else if (value == (float)value)
+                    {
+                        bw.Write((byte)0x80);
+                        bw.Write((float)value);
+                    }
+                    else
+                    {
+                        bw.Write((byte)0x81);
+                        bw.Write(value);
+                    }
                 }
+               
             }
             // String literal
             else if (plaintext[current] == '"')
@@ -154,6 +160,11 @@ namespace SoulsFormats.Formats.ESD.EzSemble
             else if (plaintext[current] == '*')
             {
                 bw.Write(BytesByOperator["*"]);
+            }
+            // Negate
+            else if (plaintext[current] == 'N' || plaintext[current] == 'n')
+            {
+                bw.Write(BytesByOperator["N"]);
             }
             else if (plaintext[current] == '/')
             {
