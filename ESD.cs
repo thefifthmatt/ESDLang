@@ -149,7 +149,6 @@ namespace SoulsFormats.ESD
             {
                 BinaryWriterEx bw = new BinaryWriterEx(false, corruptPreventStream);
                 WriteWithContext(bw, context);
-                bw.Finish();
 
                 corruptPreventStream.Position = 0;
 
@@ -157,6 +156,8 @@ namespace SoulsFormats.ESD
                 {
                     corruptPreventStream.CopyTo(actualFileStream);
                 }
+
+                bw.Finish();
             }
 
             SaveMetadataFile(path + ".meta", isBinaryMetadata);
