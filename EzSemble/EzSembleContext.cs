@@ -53,8 +53,9 @@ namespace SoulsFormats.ESD.EzSemble
             else if (s.NeedsCompile)
             {
                 CompiledStatesForSaving[s] = new CompiledState(this, s);
-                s.NeedsCompile = false;
             }
+
+            s.NeedsCompile = false;
 
             return CompiledStatesForSaving[s];
         }
@@ -69,6 +70,8 @@ namespace SoulsFormats.ESD.EzSemble
             {
                 CompiledConditionsForSaving[c] = new CompiledCondition(this, c);
             }
+
+            c.NeedsCompile = false;
 
             return CompiledConditionsForSaving[c];
         }
