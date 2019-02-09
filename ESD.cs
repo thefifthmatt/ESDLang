@@ -303,6 +303,8 @@ namespace SoulsFormats.ESD
 
         public void WriteWithContext(BinaryWriterEx bw, EzSembleContext context)
         {
+            context.CompileESD(this);
+
             bw.BigEndian = false;
 
             bw.WriteASCII(LongFormat ? "fsSL" : "fSSL");
@@ -673,9 +675,9 @@ namespace SoulsFormats.ESD
 
             internal void WriteHeader(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, long stateID)
             {
-                var EntryCommands = EzSembler.AssembleCommandScript(context, EntryScript);
-                var ExitCommands = EzSembler.AssembleCommandScript(context, ExitScript);
-                var WhileCommands = EzSembler.AssembleCommandScript(context, WhileScript);
+                var EntryCommands = context.CompiledStatesForSaving[this].EntryCommands;
+                var ExitCommands = context.CompiledStatesForSaving[this].ExitCommands;
+                var WhileCommands = context.CompiledStatesForSaving[this].WhileCommands;
 
                 WriteVarint(bw, longFormat, stateID);
                 ReserveVarint(bw, longFormat, $"State{groupID}-{stateID}:ConditionsOffset");
@@ -690,9 +692,9 @@ namespace SoulsFormats.ESD
 
             internal void WriteCommandCalls(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, long stateID, long dataStart, List<CommandCall> commands)
             {
-                var EntryCommands = EzSembler.AssembleCommandScript(context, EntryScript);
-                var ExitCommands = EzSembler.AssembleCommandScript(context, ExitScript);
-                var WhileCommands = EzSembler.AssembleCommandScript(context, WhileScript);
+                var EntryCommands = context.CompiledStatesForSaving[this].EntryCommands;
+                var ExitCommands = context.CompiledStatesForSaving[this].ExitCommands;
+                var WhileCommands = context.CompiledStatesForSaving[this].WhileCommands;
 
                 if (EntryCommands.Count == 0)
                 {
@@ -883,12 +885,12 @@ namespace SoulsFormats.ESD
                 ReserveVarint(bw, longFormat, $"Condition{groupID}-{index}:ConditionsOffset");
                 WriteVarint(bw, longFormat, Subconditions.Count);
                 ReserveVarint(bw, longFormat, $"Condition{groupID}-{index}:EvaluatorOffset");
-                WriteVarint(bw, longFormat, EzSembler.AssembleExpression(context, Evaluator).Length);
+                WriteVarint(bw, longFormat, context.CompiledConditionsForSaving[this].Evaluator.Length);
             }
 
             internal void WriteCommandCalls(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart, List<CommandCall> commands)
             {
-                var PassCommands = EzSembler.AssembleCommandScript(context, PassScript);
+                var PassCommands = context.CompiledConditionsForSaving[this].PassCommands;
                 if (PassCommands.Count == 0)
                 {
                     FillVarint(bw, longFormat, $"Condition{groupID}-{index}:PassCommandsOffset", -1);
@@ -922,7 +924,7 @@ namespace SoulsFormats.ESD
             internal void WriteEvaluator(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart)
             {
                 FillVarint(bw, longFormat, $"Condition{groupID}-{index}:EvaluatorOffset", bw.Position - dataStart);
-                bw.WriteBytes(EzSembler.AssembleExpression(context, Evaluator));
+                bw.WriteBytes(context.CompiledConditionsForSaving[this].Evaluator);
             }
 
             /// <summary>
@@ -952,7 +954,7 @@ namespace SoulsFormats.ESD
             /// <summary>
             /// "EzLanguage" expressions to pass as arguments to the command.
             /// </summary>
-            public List<string> Arguments;
+            public List<byte[]> Arguments;
 
             /// <summary>
             /// Creates a new CommandCall with bank 1, ID 0, and no arguments.
@@ -961,13 +963,13 @@ namespace SoulsFormats.ESD
             {
                 CommandBank = 1;
                 CommandID = 0;
-                Arguments = new List<string>();
+                Arguments = new List<byte[]>();
             }
 
             /// <summary>
             /// Creates a new CommandCall with the given bank, ID, and arguments.
             /// </summary>
-            public CommandCall(int commandBank, int commandID, params string[] arguments)
+            public CommandCall(int commandBank, int commandID, params byte[][] arguments)
             {
                 CommandBank = commandBank;
                 CommandID = commandID;
@@ -983,12 +985,12 @@ namespace SoulsFormats.ESD
 
                 br.StepIn(dataStart + argsOffset);
                 {
-                    Arguments = new List<string>((int)argsCount);
+                    Arguments = new List<byte[]>((int)argsCount);
                     for (int i = 0; i < argsCount; i++)
                     {
                         long argOffset = ReadVarint(br, longFormat);
                         long argSize = ReadVarint(br, longFormat);
-                        Arguments.Add(EzSembler.DissembleExpression(context, br.GetBytes(dataStart + argOffset, (int)argSize)));
+                        Arguments.Add(br.GetBytes(dataStart + argOffset, (int)argSize));
                     }
                 }
                 br.StepOut();
@@ -1008,7 +1010,7 @@ namespace SoulsFormats.ESD
                 for (int i = 0; i < Arguments.Count; i++)
                 {
                     ReserveVarint(bw, longFormat, $"Command{index}-{i}:BytecodeOffset");
-                    WriteVarint(bw, longFormat, EzSembler.AssembleExpression(context, Arguments[i]).Length);
+                    WriteVarint(bw, longFormat, Arguments[i].Length);
                 }
             }
 
@@ -1017,7 +1019,7 @@ namespace SoulsFormats.ESD
                 for (int i = 0; i < Arguments.Count; i++)
                 {
                     FillVarint(bw, longFormat, $"Command{index}-{i}:BytecodeOffset", bw.Position - dataStart);
-                    bw.WriteBytes(EzSembler.AssembleExpression(context, Arguments[i]));
+                    bw.WriteBytes(Arguments[i]);
                 }
             }
 
