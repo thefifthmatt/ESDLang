@@ -145,13 +145,20 @@ namespace SoulsFormats.ESD
         /// </summary>
         public void WriteWithMetadata(string path, bool isBinaryMetadata, EzSembleContext context)
         {
-            using (FileStream stream = File.Create(path))
+            using (MemoryStream corruptPreventStream = new MemoryStream())
             {
-                BinaryWriterEx bw = new BinaryWriterEx(false, stream);
+                BinaryWriterEx bw = new BinaryWriterEx(false, corruptPreventStream);
                 WriteWithContext(bw, context);
                 bw.Finish();
+
+                corruptPreventStream.Position = 0;
+
+                using (FileStream actualFileStream = File.Create(path))
+                {
+                    corruptPreventStream.CopyTo(actualFileStream);
+                }
             }
-           
+
             SaveMetadataFile(path + ".meta", isBinaryMetadata);
         }
 
