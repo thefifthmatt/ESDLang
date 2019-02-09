@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 
-namespace SoulsFormats.Formats.ESD
+namespace SoulsFormats.ESD
 {
     /// <summary>
     /// Metadata for an ESD file.

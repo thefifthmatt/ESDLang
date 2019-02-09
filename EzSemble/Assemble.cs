@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Linq;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using static SoulsFormats.ESD.EzSemble.Common;
 
-namespace SoulsFormats.Formats.ESD.EzSemble
+namespace SoulsFormats.ESD.EzSemble
 {
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Text;
-    using static Common;
-
     /// <summary>
     /// Assembles and dissembles "EzLanguage" bytecode.
     /// </summary>
@@ -18,7 +17,7 @@ namespace SoulsFormats.Formats.ESD.EzSemble
         /// </summary>
         public static SoulsFormats.ESD.ESD.CommandCall AssembleCommandCall(string plaintext)
         {
-            var regex = System.Text.RegularExpressions.Regex.Match(plaintext, @"^(\d+)\:(\d+)\s*\((.*)\)$");
+            var regex = System.Text.RegularExpressions.Regex.Match(plaintext, @"^(\d+)\:(\d+)\((.*)\)$");
 
             if (regex.Groups.Count != 4)
             {
@@ -27,16 +26,84 @@ namespace SoulsFormats.Formats.ESD.EzSemble
 
             var cmdBank = int.Parse(regex.Groups[1].Value);
             var cmdID = int.Parse(regex.Groups[2].Value);
-            var cmdArgs = regex.Groups[3].Value.Split(',')
-                .Select(x => x.Trim())
-                .Where(x => !string.IsNullOrWhiteSpace(x))
-                .ToList();
+            var argsText = regex.Groups[3].Value.Trim();
+
+            var finalArgs = new List<string>();
+
+            if (!string.IsNullOrWhiteSpace(argsText))
+            {
+                // If <= 2 chars theres no way there can be more than 1 arg
+                // And obviously if there's no commas
+                if (argsText.Length <= 2 || !argsText.Contains(","))
+                {
+                    finalArgs = new List<string>() { argsText };
+                }
+                else
+                {
+                    int thisArgStartIndex = 0;
+                    int innerParenthesisLevel = 0;
+                    for (int i = 0; i < argsText.Length; i++)
+                    {
+                        if (i < argsText.Length - 1)
+                        {
+                            if (argsText[i] == '(')
+                            {
+                                innerParenthesisLevel++;
+                            }
+                            else if (argsText[i] == ')')
+                            {
+                                if (innerParenthesisLevel > 0)
+                                    innerParenthesisLevel--;
+                                else
+                                    throw new Exception("Extra parenthesis found in command call args.");
+                            }
+
+                            if (argsText[i] == ',')
+                            {
+                                if (innerParenthesisLevel == 0)
+                                {
+                                    finalArgs.Add(argsText.Substring(thisArgStartIndex, i - thisArgStartIndex));
+                                    thisArgStartIndex = i + 1;
+                                }
+                            }
+                        }
+                        else //Very last char
+                        {
+                            if (argsText[i] == ',' || argsText[i] == '(')
+                            {
+                                throw new Exception("Very last char in command args cannot be a '(' or ','");
+                            }
+                            else if (argsText[i] == ')')
+                            {
+                                if (innerParenthesisLevel > 0)
+                                    innerParenthesisLevel--;
+                                else
+                                    throw new Exception("Extra parenthesis found in command call args.");
+                            }
+                        }
+                    }
+
+                    if (thisArgStartIndex < argsText.Length - 1)
+                    {
+                        finalArgs.Add(argsText.Substring(thisArgStartIndex, (argsText.Length) - thisArgStartIndex));
+                    }
+
+                    if (innerParenthesisLevel != 0)
+                    {
+                        throw new Exception("Unclosed parenthesis found in command call args.");
+                    }
+                }
+
+                
+
+               
+            }
 
             return new SoulsFormats.ESD.ESD.CommandCall()
             {
                 CommandBank = cmdBank,
                 CommandID = cmdID,
-                Arguments = cmdArgs,
+                Arguments = finalArgs,
             };
         }
 
@@ -66,16 +133,17 @@ namespace SoulsFormats.Formats.ESD.EzSemble
         /// </summary>
         public static byte[] AssembleExpression(string plaintext)
         {
+            var postfixPlaintext = EzInfixor.InfixToPostFix($"({plaintext.Trim('\n', ' ')})");
             using (var ms = new MemoryStream())
             using (var bw = new BinaryWriter(ms, Encoding.Unicode))
             {
                 int current = 0;
                 int next = 0;
 
-                while (current < plaintext.Length)
+                while (current < postfixPlaintext.Length)
                 {
                     next = current + 1;
-                    Parse(plaintext, bw, current, ref next);
+                    Parse(postfixPlaintext, bw, current, ref next);
                     current = next;
                 }
 
@@ -86,6 +154,11 @@ namespace SoulsFormats.Formats.ESD.EzSemble
 
         private static void Parse(string plaintext, BinaryWriter bw, int current, ref int next)
         {
+            if (current == 0 && plaintext[current] == '.')
+                throw new Exception("Cannot start with an abort if previous number is false byte");
+            else if (current == 0 && plaintext[current] == '~')
+                throw new Exception("Cannot start with a continuation byte thing or whatever");
+
             // Number literal
             if (plaintext[current] == '-' || char.IsDigit(plaintext[current]))
             {
