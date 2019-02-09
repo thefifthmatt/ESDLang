@@ -15,18 +15,18 @@ namespace SoulsFormats.ESD.EzSemble
         /// <summary>
         /// Assembles a plain text "EzLanguage" command call into a CommandCall object.
         /// </summary>
-        public static SoulsFormats.ESD.ESD.CommandCall AssembleCommandCall(string plaintext)
+        public static SoulsFormats.ESD.ESD.CommandCall AssembleCommandCall(EzSembleContext context, string plaintext)
         {
-            var regex = System.Text.RegularExpressions.Regex.Match(plaintext, @"^(\d+)\:(\d+)\((.*)\)$");
+            var regex = System.Text.RegularExpressions.Regex.Match(plaintext, @"^(\S+)\((.*)\)$");
 
-            if (regex.Groups.Count != 4)
+            if (regex.Groups.Count != 3)
             {
                 throw new Exception($"Invalid EzLanguage command call text: \"{plaintext}\"");
             }
 
-            var cmdBank = int.Parse(regex.Groups[1].Value);
-            var cmdID = int.Parse(regex.Groups[2].Value);
-            var argsText = regex.Groups[3].Value.Trim();
+            var command = regex.Groups[1].Value;
+            var cmdId = context.GetCommandID(command);
+            var argsText = regex.Groups[2].Value.Trim();
 
             var finalArgs = new List<string>();
 
@@ -101,8 +101,8 @@ namespace SoulsFormats.ESD.EzSemble
 
             return new SoulsFormats.ESD.ESD.CommandCall()
             {
-                CommandBank = cmdBank,
-                CommandID = cmdID,
+                CommandBank = cmdId.Bank,
+                CommandID = cmdId.ID,
                 Arguments = finalArgs,
             };
         }
@@ -110,7 +110,7 @@ namespace SoulsFormats.ESD.EzSemble
         /// <summary>
         /// Assembles a plain text "EzLanguage" script into a list of CommandCall's.
         /// </summary>
-        public static List<SoulsFormats.ESD.ESD.CommandCall> AssembleCommandScript(string plaintext)
+        public static List<SoulsFormats.ESD.ESD.CommandCall> AssembleCommandScript(EzSembleContext context, string plaintext)
         {
             var result = new List<SoulsFormats.ESD.ESD.CommandCall>();
             foreach (var cmdTxt in plaintext.Split(';').Select(x =>
@@ -123,7 +123,7 @@ namespace SoulsFormats.ESD.EzSemble
                 return cmdLine;
             }).Where(x => !string.IsNullOrWhiteSpace(x)))
             {
-                result.Add(AssembleCommandCall(cmdTxt));
+                result.Add(AssembleCommandCall(context, cmdTxt));
             }
             return result;
         }
@@ -131,9 +131,9 @@ namespace SoulsFormats.ESD.EzSemble
         /// <summary>
         /// Assembles a plain text "EzLanguage" expression into bytecode.
         /// </summary>
-        public static byte[] AssembleExpression(string plaintext)
+        public static byte[] AssembleExpression(EzSembleContext context, string plaintext)
         {
-            var postfixPlaintext = EzInfixor.InfixToPostFix($"({plaintext.Trim('\n', ' ')})");
+            var postfixPlaintext = EzInfixor.InfixToPostFix(context, $"({plaintext.Trim('\n', ' ')})");
             using (var ms = new MemoryStream())
             using (var bw = new BinaryWriter(ms, Encoding.Unicode))
             {

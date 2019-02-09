@@ -12,24 +12,19 @@ namespace SoulsFormats.ESD.EzSemble
     {
         public class EzInfixor
         {
-            private static bool IsFunction(string s)
+            private static bool IsFunction(EzSembleContext context, string s)
             {
-                return s.StartsWith("f") || s.StartsWith("GetREG") || s.StartsWith("SetREG") || (s == "AbortIfFalse");
-            }
-
-            private static int GetFunctionID(string s)
-            {
-                return int.Parse(s.Substring(1));
+                return s.StartsWith("f") || context.FunctionIDsByName.ContainsKey(s) || s.StartsWith("GetREG") || s.StartsWith("SetREG") || (s == "AbortIfFalse");
             }
 
             //Get the precedence of the operator/function passed in
-            private static int GetPrecedence(string s)
+            private static int GetPrecedence(EzSembleContext context, string s)
             {
                 int max = 0;
                 //if the passed is a function, make it the highest precedence
                 //we simply get the max precedence value for all maths operators and add 1
 
-                if (IsFunction(s))
+                if (IsFunction(context, s))
                     max = Math.Max(Operators[Operators.Keys.First()][0], Operators[Operators.Keys.Last()][0]) + 1;
                 else
                     max = Operators[s][0];
@@ -162,7 +157,7 @@ namespace SoulsFormats.ESD.EzSemble
 
             }
 
-            public static string BytecodeToInfix(byte[] Bytes)
+            public static string BytecodeToInfix(EzSembleContext context, byte[] Bytes)
             {
 
                 //string MEOWDEBUG_OLD_DISSEMBLE = MEOWDEBUG_OldDissemble(Bytes);
@@ -171,7 +166,7 @@ namespace SoulsFormats.ESD.EzSemble
 
                 Queue<string> garbage = new Queue<string>();
 
-                string popLastNonGarbageAndStoreGarbage()
+                string popLastNonGarbageAndStoreGarbage(bool wantNumber = false)
                 {
                     var popped = stack.Pop();
                     //while (popped == "~" || popped == ".")
@@ -179,7 +174,11 @@ namespace SoulsFormats.ESD.EzSemble
                     //    garbage.Enqueue(popped);
                     //    popped = stack.Pop();
                     //}
-                    return popped;
+
+                    if (wantNumber)
+                        return popped.Trim('(', ')');
+                    else
+                        return popped;
                 }
 
                 void restoreGarbage()
@@ -223,33 +222,33 @@ namespace SoulsFormats.ESD.EzSemble
                     }
                     else if (b == 0x84)
                     {
-                        var id = popLastNonGarbageAndStoreGarbage();
+                        var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
-                        stack.Push($"f{id}()");
+                        stack.Push($"{context.GetFunctionName(int.Parse(id))}()");
                     }
                     else if (b == 0x85)
                     {
                         var arg1 = popLastNonGarbageAndStoreGarbage();
-                        var id = popLastNonGarbageAndStoreGarbage();
+                        var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
-                        stack.Push($"f{id}({arg1})");
+                        stack.Push($"{context.GetFunctionName(int.Parse(id))}({arg1})");
                     }
                     else if (b == 0x86)
                     {
                         var arg2 = popLastNonGarbageAndStoreGarbage();
                         var arg1 = popLastNonGarbageAndStoreGarbage();
-                        var id = popLastNonGarbageAndStoreGarbage();
+                        var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
-                        stack.Push($"f{id}({arg1}, {arg2})");
+                        stack.Push($"{context.GetFunctionName(int.Parse(id))}({arg1}, {arg2})");
                     }
                     else if (b == 0x87)
                     {
                         var arg3 = popLastNonGarbageAndStoreGarbage();
                         var arg2 = popLastNonGarbageAndStoreGarbage();
                         var arg1 = popLastNonGarbageAndStoreGarbage();
-                        var id = popLastNonGarbageAndStoreGarbage();
+                        var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
-                        stack.Push($"f{id}({arg1}, {arg2}, {arg3})");
+                        stack.Push($"{context.GetFunctionName(int.Parse(id))}({arg1}, {arg2}, {arg3})");
                     }
                     else if (b == 0x88)
                     {
@@ -257,9 +256,9 @@ namespace SoulsFormats.ESD.EzSemble
                         var arg3 = popLastNonGarbageAndStoreGarbage();
                         var arg2 = popLastNonGarbageAndStoreGarbage();
                         var arg1 = popLastNonGarbageAndStoreGarbage();
-                        var id = popLastNonGarbageAndStoreGarbage();
+                        var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
-                        stack.Push($"f{id}({arg1}, {arg2}, {arg3}, {arg4})");
+                        stack.Push($"{context.GetFunctionName(int.Parse(id))}({arg1}, {arg2}, {arg3}, {arg4})");
                     }
                     else if (b == 0x89)
                     {
@@ -268,9 +267,9 @@ namespace SoulsFormats.ESD.EzSemble
                         var arg3 = popLastNonGarbageAndStoreGarbage();
                         var arg2 = popLastNonGarbageAndStoreGarbage();
                         var arg1 = popLastNonGarbageAndStoreGarbage();
-                        var id = popLastNonGarbageAndStoreGarbage();
+                        var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
-                        stack.Push($"f{id}({arg1}, {arg2}, {arg3}, {arg4}, {arg5})");
+                        stack.Push($"{context.GetFunctionName(int.Parse(id))}({arg1}, {arg2}, {arg3}, {arg4}, {arg5})");
                     }
                     else if (b == 0x8A)
                     {
@@ -280,9 +279,9 @@ namespace SoulsFormats.ESD.EzSemble
                         var arg3 = popLastNonGarbageAndStoreGarbage();
                         var arg2 = popLastNonGarbageAndStoreGarbage();
                         var arg1 = popLastNonGarbageAndStoreGarbage();
-                        var id = popLastNonGarbageAndStoreGarbage();
+                        var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
-                        stack.Push($"f{id}({arg1}, {arg2}, {arg3}, {arg4}, {arg5}, {arg6})");
+                        stack.Push($"{context.GetFunctionName(int.Parse(id))}({arg1}, {arg2}, {arg3}, {arg4}, {arg5}, {arg6})");
                     }
                     else if (OperatorsByByte.ContainsKey(b))
                     {
@@ -347,7 +346,7 @@ namespace SoulsFormats.ESD.EzSemble
                 return string.Join(" ", stack);
             }
 
-            public static string InfixToPostFix(string expression)
+            public static string InfixToPostFix(EzSembleContext context, string expression)
             {
                 //expression = expression.Replace("\n", "~");
 
@@ -416,7 +415,7 @@ namespace SoulsFormats.ESD.EzSemble
                 bool popAndEnqueue(bool rightParenthesis = false)
                 {
                     var popped = stack.Pop();
-                    if (IsFunction(popped))
+                    if (IsFunction(context, popped))
                     {
                         //Queue<string> garbage = new Queue<string>();
                         //while (queue[queue.Count - 1] == "~")
@@ -496,8 +495,8 @@ namespace SoulsFormats.ESD.EzSemble
                         //while the stack is not empty and the top of the stack is not an (
                         while (stack.Count > 0 && stack.Peek() != "(")
                         {
-                            if ((GetAssociation(s) == 0 && GetPrecedence(s) <= GetPrecedence(stack.Peek())) ||
-                                (GetAssociation(s) == 1 && GetPrecedence(s) < GetPrecedence(stack.Peek()))
+                            if ((GetAssociation(s) == 0 && GetPrecedence(context, s) <= GetPrecedence(context, stack.Peek())) ||
+                                (GetAssociation(s) == 1 && GetPrecedence(context, s) < GetPrecedence(context, stack.Peek()))
                               )
                                 popAndEnqueue();
                             else
@@ -516,11 +515,11 @@ namespace SoulsFormats.ESD.EzSemble
                         funcArgCounts.Push(0);
                     }
                     //is our token on our defined functions
-                    else if (IsFunction(s))
+                    else if (IsFunction(context, s))
                     {
                         registArgument();
                         stack.Push(s);
-                        queue.Add(GetFunctionID(s).ToString());
+                        queue.Add(context.GetFunctionID(s).ToString());
                         funcArgCounts.Push(0);
                     }
 
@@ -579,6 +578,9 @@ namespace SoulsFormats.ESD.EzSemble
                 {
                     resultExpr = resultExpr.Replace($"{{{i}}}", stringSubstitutions[i]);
                 }
+
+                if (resultExpr == "GetStateChangeType 233")
+                    throw new Exception();
 
                 return resultExpr;
 
