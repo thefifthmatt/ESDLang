@@ -40,40 +40,43 @@ namespace SoulsFormats.ESD.EzSemble
                 Evaluator = EzSembler.AssembleExpression(context, c.Evaluator);
             }
         }
+        
+        private Dictionary<State, CompiledState> CompiledStatesForSaving;
+        private Dictionary<Condition, CompiledCondition> CompiledConditionsForSaving;
 
-        internal Dictionary<long, List<Condition>> AllConditionsListedForSaving;
-        internal Dictionary<State, CompiledState> CompiledStatesForSaving;
-        internal Dictionary<Condition, CompiledCondition> CompiledConditionsForSaving;
-
-        internal void CompileESD(ESD esd)
+        internal CompiledState GetCompiledState(State s)
         {
-            CompiledStatesForSaving.Clear();
-            CompiledConditionsForSaving.Clear();
-
-            foreach (var g in esd.StateGroups.Keys)
+            if (!CompiledStatesForSaving.ContainsKey(s))
             {
-                foreach (var s in esd.StateGroups[g].Keys)
-                {
-                    CompiledStatesForSaving.Add(esd.StateGroups[g][s], new CompiledState(this, esd.StateGroups[g][s]));
-                }
+                CompiledStatesForSaving.Add(s, new CompiledState(this, s));
+            }
+            else if (s.NeedsCompile)
+            {
+                CompiledStatesForSaving[s] = new CompiledState(this, s);
+                s.NeedsCompile = false;
             }
 
-            AllConditionsListedForSaving = esd.GetAllConditions();
+            return CompiledStatesForSaving[s];
+        }
 
-            foreach (var clist in AllConditionsListedForSaving)
+        internal CompiledCondition GetCompiledCondition(Condition c)
+        {
+            if (!CompiledConditionsForSaving.ContainsKey(c))
             {
-                foreach (var c in clist.Value)
-                {
-                    CompiledConditionsForSaving.Add(c, new CompiledCondition(this, c));
-                }
+                CompiledConditionsForSaving.Add(c, new CompiledCondition(this, c));
             }
+            else if (c.NeedsCompile)
+            {
+                CompiledConditionsForSaving[c] = new CompiledCondition(this, c);
+            }
+
+            return CompiledConditionsForSaving[c];
         }
 
         public EzSembleContext()
         {
             CommandNamesByID = new Dictionary<(int Bank, int ID), string>();
             FunctionNamesByID = new Dictionary<int, string>();
-            AllConditionsListedForSaving = new Dictionary<long, List<Condition>>();
             CompiledStatesForSaving = new Dictionary<State, CompiledState>();
             CompiledConditionsForSaving = new Dictionary<Condition, CompiledCondition>();
         }

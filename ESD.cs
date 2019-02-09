@@ -311,8 +311,6 @@ namespace SoulsFormats.ESD
 
         public void WriteWithContext(BinaryWriterEx bw, EzSembleContext context)
         {
-            context.CompileESD(this);
-
             bw.BigEndian = false;
 
             bw.WriteASCII(LongFormat ? "fsSL" : "fSSL");
@@ -599,20 +597,56 @@ namespace SoulsFormats.ESD
             /// </summary>
             public List<Condition> Conditions;
 
+            internal bool NeedsCompile = true;
+
+            private string entryScript;
+            private string exitScript;
+            private string whileScript;
+
             /// <summary>
             /// "EzLanguage" script to be executed when the state is entered.
             /// </summary>
-            public string EntryScript { get; set; }
+            public string EntryScript
+            {
+                get => entryScript;
+                set
+                {
+                    if (entryScript != value)
+                        NeedsCompile = true;
+
+                    entryScript = value;
+                }
+            }
 
             /// <summary>
             /// "EzLanguage" script to be executed when the state is exited.
             /// </summary>
-            public string ExitScript { get; set; }
+            public string ExitScript
+            {
+                get => exitScript;
+                set
+                {
+                    if (exitScript != value)
+                        NeedsCompile = true;
+
+                    exitScript = value;
+                }
+            }
 
             /// <summary>
             /// "EzLanguage" script to be executed constantly at 30 Hz while in the state.
             /// </summary>
-            public string WhileScript { get; set; }
+            public string WhileScript
+            {
+                get => whileScript;
+                set
+                {
+                    if (whileScript != value)
+                        NeedsCompile = true;
+
+                    whileScript = value;
+                }
+            }
 
             /// <summary>
             /// The Unique ID of this state.
@@ -683,9 +717,11 @@ namespace SoulsFormats.ESD
 
             internal void WriteHeader(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, long stateID)
             {
-                var EntryCommands = context.CompiledStatesForSaving[this].EntryCommands;
-                var ExitCommands = context.CompiledStatesForSaving[this].ExitCommands;
-                var WhileCommands = context.CompiledStatesForSaving[this].WhileCommands;
+                var thisCompiled = context.GetCompiledState(this);
+
+                var EntryCommands = thisCompiled.EntryCommands;
+                var ExitCommands = thisCompiled.ExitCommands;
+                var WhileCommands = thisCompiled.WhileCommands;
 
                 WriteVarint(bw, longFormat, stateID);
                 ReserveVarint(bw, longFormat, $"State{groupID}-{stateID}:ConditionsOffset");
@@ -700,9 +736,11 @@ namespace SoulsFormats.ESD
 
             internal void WriteCommandCalls(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, long stateID, long dataStart, List<CommandCall> commands)
             {
-                var EntryCommands = context.CompiledStatesForSaving[this].EntryCommands;
-                var ExitCommands = context.CompiledStatesForSaving[this].ExitCommands;
-                var WhileCommands = context.CompiledStatesForSaving[this].WhileCommands;
+                var thisCompiled = context.GetCompiledState(this);
+
+                var EntryCommands = thisCompiled.EntryCommands;
+                var ExitCommands = thisCompiled.ExitCommands;
+                var WhileCommands = thisCompiled.WhileCommands;
 
                 if (EntryCommands.Count == 0)
                 {
@@ -781,20 +819,43 @@ namespace SoulsFormats.ESD
             /// </summary>
             public long? TargetState;
 
+            internal bool NeedsCompile = true;
+
+            private string passScript;
             /// <summary>
             /// "EzLanguage" script to be executed if the condition passes.
             /// </summary>
-            public string PassScript { get; set; }
+            public string PassScript
+            {
+                get => passScript;
+                set
+                {
+                    if (passScript != value)
+                        NeedsCompile = true;
+
+                    passScript = value;
+                }
+            }
 
             /// <summary>
             /// If present and this condition passes, evaluation will continue to these conditions.
             /// </summary>
             public List<Condition> Subconditions;
 
+            private string evaluator;
             /// <summary>
             /// "EzLanguage" expression which determines whether the condition passes (returns 1 to pass).
             /// </summary>
-            public string Evaluator { get; set; }
+            public string Evaluator
+            {
+                get => evaluator;
+                set
+                {
+                    if (evaluator != value)
+                        NeedsCompile = true;
+                    evaluator = value;
+                }
+            }
 
             private long stateOffset;
             private long[] conditionOffsets;
@@ -893,12 +954,12 @@ namespace SoulsFormats.ESD
                 ReserveVarint(bw, longFormat, $"Condition{groupID}-{index}:ConditionsOffset");
                 WriteVarint(bw, longFormat, Subconditions.Count);
                 ReserveVarint(bw, longFormat, $"Condition{groupID}-{index}:EvaluatorOffset");
-                WriteVarint(bw, longFormat, context.CompiledConditionsForSaving[this].Evaluator.Length);
+                WriteVarint(bw, longFormat, context.GetCompiledCondition(this).Evaluator.Length);
             }
 
             internal void WriteCommandCalls(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart, List<CommandCall> commands)
             {
-                var PassCommands = context.CompiledConditionsForSaving[this].PassCommands;
+                var PassCommands = context.GetCompiledCondition(this).PassCommands;
                 if (PassCommands.Count == 0)
                 {
                     FillVarint(bw, longFormat, $"Condition{groupID}-{index}:PassCommandsOffset", -1);
@@ -932,7 +993,7 @@ namespace SoulsFormats.ESD
             internal void WriteEvaluator(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart)
             {
                 FillVarint(bw, longFormat, $"Condition{groupID}-{index}:EvaluatorOffset", bw.Position - dataStart);
-                bw.WriteBytes(context.CompiledConditionsForSaving[this].Evaluator);
+                bw.WriteBytes(context.GetCompiledCondition(this).Evaluator);
             }
 
             /// <summary>
