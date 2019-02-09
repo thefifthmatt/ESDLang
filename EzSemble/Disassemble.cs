@@ -11,17 +11,17 @@ namespace SoulsFormats.ESD.EzSemble
         /// <summary>
         /// Dissembles a CommandCall object into a line of "EzLanguage" plain text.
         /// </summary>
-        public static string DissembleCommandCall(SoulsFormats.ESD.ESD.CommandCall c)
+        public static string DissembleCommandCall(EzSembleContext context, SoulsFormats.ESD.ESD.CommandCall c)
         {
-            return $"{c.CommandBank}:{c.CommandID}({string.Join(", ", c.Arguments)})";
+            return $"{context.GetCommandName(c.CommandBank, c.CommandID)}({string.Join(", ", c.Arguments)})";
         }
 
         /// <summary>
         /// Dissembles a list of CommandCall objects into a plain text "EzLanguage" script.
         /// </summary>
-        public static string DissembleCommandScript(List<SoulsFormats.ESD.ESD.CommandCall> script)
+        public static string DissembleCommandScript(EzSembleContext context, List<SoulsFormats.ESD.ESD.CommandCall> script)
         {
-            return string.Join("\n", script.Select(x => $"{DissembleCommandCall(x)};"));
+            return string.Join("\n", script.Select(x => $"{DissembleCommandCall(context, x)};"));
         }
 
         //public static string MEOWDEBUG_OldDissemble(byte[] bytes)
@@ -110,9 +110,9 @@ namespace SoulsFormats.ESD.EzSemble
         /// <summary>
         /// Dissembles bytecode into an  "EzLanguage" plain text expression.
         /// </summary>
-        public static string DissembleExpression(byte[] bytes)
+        public static string DissembleExpression(EzSembleContext context, byte[] bytes)
         {
-            return EzInfixor.BytecodeToInfix(bytes);
+            return EzInfixor.BytecodeToInfix(context, bytes);
         }
     }
 }
