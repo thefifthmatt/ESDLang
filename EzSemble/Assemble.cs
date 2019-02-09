@@ -93,17 +93,13 @@ namespace SoulsFormats.ESD.EzSemble
                         throw new Exception("Unclosed parenthesis found in command call args.");
                     }
                 }
-
-                
-
-               
             }
 
             return new SoulsFormats.ESD.ESD.CommandCall()
             {
                 CommandBank = cmdId.Bank,
                 CommandID = cmdId.ID,
-                Arguments = finalArgs,
+                Arguments = finalArgs.Select(x => AssembleExpression(context, x)).ToList(),
             };
         }
 
