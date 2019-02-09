@@ -1,5 +1,4 @@
-﻿using SoulsFormats.Formats.ESD;
-using SoulsFormats.Formats.ESD.EzSemble;
+﻿using SoulsFormats.ESD.EzSemble;
 using System;
 using System.Collections.Generic;
 using System.Linq;
