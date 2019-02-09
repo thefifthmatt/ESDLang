@@ -248,14 +248,14 @@ namespace SoulsFormats.ESD
                     bw.WriteShiftJIS(c.Value.PassScript, terminate: true);
                 }
 
-                bw.Finish();
-
                 corruptPreventStream.Position = 0;
 
                 using (FileStream actualFileStream = File.Create(binFileName))
                 {
                     corruptPreventStream.CopyTo(actualFileStream);
                 }
+
+                bw.Finish();
             }
         }
 
