@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -216,9 +217,10 @@ namespace SoulsFormats.ESD
 
         private void InnerWriteToBinary(string binFileName)
         {
-            using (var fileStream = System.IO.File.Open(binFileName, System.IO.FileMode.OpenOrCreate, System.IO.FileAccess.Write))
+            using (MemoryStream corruptPreventStream = new MemoryStream())
             {
-                var bw = new BinaryWriterEx(bigEndian: false, stream: fileStream);
+                BinaryWriterEx bw = new BinaryWriterEx(false, corruptPreventStream);
+
                 bw.WriteASCII("ESD_META", terminate: false);
                 bw.WriteInt64(CURRENT_BINARY_VERSION);
                 bw.WriteASCII(ESDHash, terminate: true);
@@ -244,6 +246,15 @@ namespace SoulsFormats.ESD
                     bw.WriteShiftJIS(c.Value.Name, terminate: true);
                     bw.WriteShiftJIS(c.Value.Evaluator, terminate: true);
                     bw.WriteShiftJIS(c.Value.PassScript, terminate: true);
+                }
+
+                bw.Finish();
+
+                corruptPreventStream.Position = 0;
+
+                using (FileStream actualFileStream = File.Create(binFileName))
+                {
+                    corruptPreventStream.CopyTo(actualFileStream);
                 }
             }
         }
