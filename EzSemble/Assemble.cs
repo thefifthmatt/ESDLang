@@ -123,7 +123,7 @@ namespace SoulsFormats.ESD.EzSemble
                 return cmdLine;
             }).Where(x => !string.IsNullOrWhiteSpace(x)))
             {
-                result.Add(AssembleCommandCall(context, cmdTxt));
+                result.Add(AssembleCommandCall(context, cmdTxt.Replace("\n", "")));
             }
             return result;
         }

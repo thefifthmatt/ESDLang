@@ -103,6 +103,30 @@ namespace SoulsFormats.ESD
             ConditionMetadatas = new Dictionary<long, ConditionMetadata>();
         }
 
+        public void ImportNamesFromOther(ESDMetadata other)
+        {
+            foreach (var kvp in other.StateGroupNames)
+            {
+                StateGroupNames[kvp.Key] = kvp.Value;
+            }
+
+            foreach (var g in other.StateMetadatas.Keys)
+            {
+                foreach (var s in other.StateMetadatas[g].Keys)
+                {
+                    StateMetadatas[g][s].Name = other.StateMetadatas[g][s].Name;
+                }
+            }
+
+            var thisCondKeys = ConditionMetadatas.Keys.ToList();
+            var otherValues = other.ConditionMetadatas.Values.ToList();
+            for (int i = 0; i < otherValues.Count; i++)
+            {
+                var matchingKey = thisCondKeys[i];
+                ConditionMetadatas[matchingKey].Name = otherValues[i].Name;
+            }
+        }
+
         private void InnerWriteToXml(string xmlFileName)
         {
             XmlWriterSettings xws = new XmlWriterSettings();
