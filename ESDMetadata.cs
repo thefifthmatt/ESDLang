@@ -14,7 +14,6 @@ namespace SoulsFormats.ESD
     public class ESDMetadata
     {
         internal const long CURRENT_BINARY_VERSION = 2019_02_04_02;
-        private static readonly Encoding ShiftJIS = Encoding.GetEncoding("shift-jis");
 
         /// <summary>
         /// Metadata for an ESD State.
@@ -131,7 +130,7 @@ namespace SoulsFormats.ESD
         private void InnerWriteToXml(string xmlFileName)
         {
             XmlWriterSettings xws = new XmlWriterSettings();
-            xws.Encoding = ShiftJIS;
+            xws.Encoding = Encoding.Unicode;
             xws.Indent = true;
             xws.IndentChars = "    ";
             XmlWriter xw = XmlWriter.Create(xmlFileName, xws);

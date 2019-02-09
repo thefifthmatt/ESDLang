@@ -224,14 +224,14 @@ namespace SoulsFormats.ESD.EzSemble
                     {
                         var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
-                        stack.Push($"{context.GetFunctionName(int.Parse(id))}()");
+                        stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}()");
                     }
                     else if (b == 0x85)
                     {
                         var arg1 = popLastNonGarbageAndStoreGarbage();
                         var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
-                        stack.Push($"{context.GetFunctionName(int.Parse(id))}({arg1})");
+                        stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1})");
                     }
                     else if (b == 0x86)
                     {
@@ -239,7 +239,7 @@ namespace SoulsFormats.ESD.EzSemble
                         var arg1 = popLastNonGarbageAndStoreGarbage();
                         var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
-                        stack.Push($"{context.GetFunctionName(int.Parse(id))}({arg1}, {arg2})");
+                        stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1}, {arg2})");
                     }
                     else if (b == 0x87)
                     {
@@ -248,7 +248,7 @@ namespace SoulsFormats.ESD.EzSemble
                         var arg1 = popLastNonGarbageAndStoreGarbage();
                         var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
-                        stack.Push($"{context.GetFunctionName(int.Parse(id))}({arg1}, {arg2}, {arg3})");
+                        stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1}, {arg2}, {arg3})");
                     }
                     else if (b == 0x88)
                     {
@@ -258,7 +258,7 @@ namespace SoulsFormats.ESD.EzSemble
                         var arg1 = popLastNonGarbageAndStoreGarbage();
                         var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
-                        stack.Push($"{context.GetFunctionName(int.Parse(id))}({arg1}, {arg2}, {arg3}, {arg4})");
+                        stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1}, {arg2}, {arg3}, {arg4})");
                     }
                     else if (b == 0x89)
                     {
@@ -269,7 +269,7 @@ namespace SoulsFormats.ESD.EzSemble
                         var arg1 = popLastNonGarbageAndStoreGarbage();
                         var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
-                        stack.Push($"{context.GetFunctionName(int.Parse(id))}({arg1}, {arg2}, {arg3}, {arg4}, {arg5})");
+                        stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1}, {arg2}, {arg3}, {arg4}, {arg5})");
                     }
                     else if (b == 0x8A)
                     {
@@ -281,7 +281,7 @@ namespace SoulsFormats.ESD.EzSemble
                         var arg1 = popLastNonGarbageAndStoreGarbage();
                         var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
-                        stack.Push($"{context.GetFunctionName(int.Parse(id))}({arg1}, {arg2}, {arg3}, {arg4}, {arg5}, {arg6})");
+                        stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1}, {arg2}, {arg3}, {arg4}, {arg5}, {arg6})");
                     }
                     else if (OperatorsByByte.ContainsKey(b))
                     {
