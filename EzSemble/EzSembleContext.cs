@@ -159,24 +159,52 @@ namespace SoulsFormats.ESD.EzSemble
             else
             {
                 var regex = Regex.Match(name, @"(\d+):(\d+)");
-                return (int.Parse(regex.Groups[1].Value), int.Parse(regex.Groups[2].Value));
+                if (regex.Groups.Count == 3 
+                    && int.TryParse(regex.Groups[1].Value, out int cmdBank) 
+                    && int.TryParse(regex.Groups[2].Value, out int cmdID))
+                {
+                    return (cmdBank, cmdID);
+                }
+                else
+                {
+                    throw new Exception($"Command name '{name}' does not exist in the loaded XML documentation and" +
+                        $" couldn't be parsed as a <Bank>:<ID>() representation of the command.");
+                }
             }
         }
 
         public EzSembleMethodInfo GetFunctionInfo(int id)
         {
             if (FunctionInfoByID.ContainsKey(id))
+            {
                 return FunctionInfoByID[id];
+            }
             else
+            {
                 return new EzSembleMethodInfo($"f{id}");
+            }
+                
         }
 
         public int GetFunctionID(string name)
         {
             if (FunctionIDsByName.ContainsKey(name))
+            {
                 return FunctionIDsByName[name];
+            }
             else
-                return int.Parse(name.Substring(1));
+            {
+                if (name.ToUpper().StartsWith("F") && int.TryParse(name.Substring(1), out int funcID))
+                {
+                    return funcID;
+                }
+                else
+                {
+                    throw new Exception($"Function name '{name}' does not exist in the loaded XML documentation and" +
+                        $" couldn't be parsed as a f<ID>() representation of the function.");
+                }
+                
+            }
         }
 
         public List<string> GetAllEnumNames()

@@ -17,7 +17,7 @@ namespace SoulsFormats.ESD.EzSemble
         /// </summary>
         public static SoulsFormats.ESD.ESD.CommandCall AssembleCommandCall(EzSembleContext context, string plaintext)
         {
-            var regex = System.Text.RegularExpressions.Regex.Match(plaintext, @"^(\S+)\((.*)\)$");
+            var regex = System.Text.RegularExpressions.Regex.Match(plaintext, @"^([A-Za-z0-9_:]+)\((.*)\)$");
 
             if (regex.Groups.Count != 3)
             {
