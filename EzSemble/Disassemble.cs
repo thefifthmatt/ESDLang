@@ -13,7 +13,7 @@ namespace SoulsFormats.ESD.EzSemble
         /// </summary>
         public static string DissembleCommandCall(EzSembleContext context, SoulsFormats.ESD.ESD.CommandCall c)
         {
-            return $"{context.GetCommandInfo(c.CommandBank, c.CommandID).Name}({string.Join(", ", c.Arguments.Select(a => DissembleExpression(a)))})";
+            return $"{context.GetCommandInfo(c.CommandBank, c.CommandID).Name}({string.Join(", ", c.Arguments.Select(a => DissembleExpression(context, a)))})";
         }
 
         /// <summary>
