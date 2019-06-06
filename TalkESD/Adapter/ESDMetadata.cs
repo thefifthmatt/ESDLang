@@ -5,15 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using SF = SoulsFormats;
 
-namespace SoulsFormats.ESD
+namespace TalkESD.Adapter
 {
     /// <summary>
     /// Metadata for an ESD file.
     /// </summary>
     public class ESDMetadata
     {
-        internal const long CURRENT_BINARY_VERSION = 2019_02_04_02;
+        internal const long CURRENT_BINARY_VERSION = 2019_06_06_01;
 
         /// <summary>
         /// Metadata for an ESD State.
@@ -218,7 +219,7 @@ namespace SoulsFormats.ESD
         {
             using (MemoryStream corruptPreventStream = new MemoryStream())
             {
-                BinaryWriterEx bw = new BinaryWriterEx(false, corruptPreventStream);
+                SF.BinaryWriterEx bw = new SF.BinaryWriterEx(false, corruptPreventStream);
 
                 bw.WriteASCII("ESD_META", terminate: false);
                 bw.WriteInt64(CURRENT_BINARY_VERSION);
@@ -331,7 +332,7 @@ namespace SoulsFormats.ESD
             var meta = new ESDMetadata();
             using (var fileStream = System.IO.File.Open(binFileName, System.IO.FileMode.Open, System.IO.FileAccess.Read))
             {
-                var br = new BinaryReaderEx(bigEndian: false, stream: fileStream);
+                var br = new SF.BinaryReaderEx(bigEndian: false, stream: fileStream);
                 br.AssertASCII("ESD_META");
                 br.AssertInt64(CURRENT_BINARY_VERSION);
                 meta.ESDHash = br.ReadASCII();
@@ -414,7 +415,7 @@ namespace SoulsFormats.ESD
         /// <summary>
         /// Generates metadata based on the in-memory ESD file.
         /// </summary>
-        public static ESDMetadata Generate(SoulsFormats.ESD.ESD esd)
+        public static ESDMetadata Generate(ESD esd)
         {
             var meta = new ESDMetadata();
 
@@ -456,7 +457,7 @@ namespace SoulsFormats.ESD
         /// <summary>
         /// Applies metadata to an in-memory ESD, adding additional info.
         /// </summary>
-        public static void Apply(SoulsFormats.ESD.ESD esd, ESDMetadata meta)
+        public static void Apply(ESD esd, ESDMetadata meta)
         {
             if (meta.ESDHash.Trim().ToUpper() != esd.LastSavedHash.Trim().ToUpper())
             {

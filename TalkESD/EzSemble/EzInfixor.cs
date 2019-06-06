@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using static SoulsFormats.ESD.EzSemble.Common;
+using static TalkESD.EzSemble.AST;
+using static TalkESD.EzSemble.Common;
 
-namespace SoulsFormats.ESD.EzSemble
+namespace TalkESD.EzSemble
 {
     public static partial class EzSembler
     {
@@ -64,7 +65,7 @@ namespace SoulsFormats.ESD.EzSemble
                                 expr.RemoveAt(i + 1);
                             }
                         }
-                        
+
                     }
                     ////we have a +
                     //else if (expr[i] == "+")
@@ -157,12 +158,15 @@ namespace SoulsFormats.ESD.EzSemble
 
             }
 
-            public static string BytecodeToInfix(EzSembleContext context, byte[] Bytes)
+            public static Expr BytecodeToInfix(EzSembleContext context, byte[] Bytes)
             {
 
                 //string MEOWDEBUG_OLD_DISSEMBLE = MEOWDEBUG_OldDissemble(Bytes);
 
+                var bigEndianReverseBytes = Bytes.Reverse().ToArray();
+
                 Stack<string> stack = new Stack<string>();
+                Stack<Expr> exprs = new Stack<Expr>();
 
                 Queue<string> garbage = new Queue<string>();
 
@@ -186,38 +190,87 @@ namespace SoulsFormats.ESD.EzSemble
                     while (garbage.Count > 0)
                         stack.Push(garbage.Dequeue());
                 }
+                List<Expr> popArgs(int amount)
+                {
+                    List<Expr> args = new List<Expr>();
+                    for (int i = 0; i < amount; i++)
+                    {
+                        args.Add(exprs.Pop());
+                    }
+                    args.Reverse();
+                    return args;
+                }
 
                 for (int i = 0; i < Bytes.Length; i++)
                 {
                     var b = Bytes[i];
+                    // Console.WriteLine($"byte {i} = {b:x2}: stack is {string.Join("; ", stack.Reverse())}");
                     if (b >= 0 && b <= 0x7F)
                     {
                         stack.Push($"{b - 64}");
+                        exprs.Push(new ConstExpr { Value = (sbyte)(b - 64) });
                     }
                     else if (b == 0xA5)
                     {
                         int j = 0;
                         while (Bytes[i + j + 1] != 0 || Bytes[i + j + 2] != 0)
                             j += 2;
-                        string text = Encoding.Unicode.GetString(Bytes, i + 1, j);
+                        string text = context.IsBigEndian ?
+                            Encoding.BigEndianUnicode.GetString(Bytes, i + 1, j)
+                            : Encoding.Unicode.GetString(Bytes, i + 1, j);
+
                         if (text.Contains('"') || text.Contains('\r') || text.Contains('\n'))
                             throw new Exception("Illegal character in string literal");
                         stack.Push($"\"{text}\"");
+                        exprs.Push(new ConstExpr { Value = text });
                         i += j + 2;
                     }
                     else if (b == 0x80)
                     {
-                        stack.Push($"{BitConverter.ToSingle(Bytes, i + 1)}");
+                        float val;
+                        if (!context.IsBigEndian)
+                        {
+                            val = BitConverter.ToSingle(Bytes, i + 1);
+                        }
+                        else
+                        {
+                            val = BitConverter.ToSingle(bigEndianReverseBytes, (bigEndianReverseBytes.Length - 1) - (i + 1) - 4);
+                        }
+                        stack.Push($"{val}");
+                        exprs.Push(new ConstExpr { Value = val });
+
                         i += 4;
                     }
                     else if (b == 0x81)
                     {
-                        stack.Push($"{BitConverter.ToDouble(Bytes, i + 1)}");
+                        double val;
+                        if (!context.IsBigEndian)
+                        {
+                            val = BitConverter.ToDouble(Bytes, i + 1);
+                        }
+                        else
+                        {
+                            val = BitConverter.ToDouble(bigEndianReverseBytes, (bigEndianReverseBytes.Length - 1) - (i + 1) - 8);
+                        }
+                        stack.Push($"{val}");
+                        exprs.Push(new ConstExpr { Value = val });
+
                         i += 8;
                     }
                     else if (b == 0x82)
                     {
-                        stack.Push($"{BitConverter.ToInt32(Bytes, i + 1)}");
+                        int val;
+                        if (!context.IsBigEndian)
+                        {
+                            val = BitConverter.ToInt32(Bytes, i + 1);
+                        }
+                        else
+                        {
+                            val = BitConverter.ToInt32(bigEndianReverseBytes, (bigEndianReverseBytes.Length - 1) - (i + 1) - 4);
+                        }
+                        stack.Push($"{val}");
+                        exprs.Push(new ConstExpr { Value = val });
+
                         i += 4;
                     }
                     else if (b == 0x84)
@@ -225,13 +278,16 @@ namespace SoulsFormats.ESD.EzSemble
                         var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
                         stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}()");
+                        exprs.Push(new FunctionCall { Args = popArgs(0), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
                     }
                     else if (b == 0x85)
                     {
                         var arg1 = popLastNonGarbageAndStoreGarbage();
                         var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
+                        // if (id == "#B8") stack.Push($"?? {id}({arg1}) ??"); else
                         stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1})");
+                        exprs.Push(new FunctionCall { Args = popArgs(1), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
                     }
                     else if (b == 0x86)
                     {
@@ -240,6 +296,7 @@ namespace SoulsFormats.ESD.EzSemble
                         var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
                         stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1}, {arg2})");
+                        exprs.Push(new FunctionCall { Args = popArgs(2), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
                     }
                     else if (b == 0x87)
                     {
@@ -249,6 +306,7 @@ namespace SoulsFormats.ESD.EzSemble
                         var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
                         stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1}, {arg2}, {arg3})");
+                        exprs.Push(new FunctionCall { Args = popArgs(3), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
                     }
                     else if (b == 0x88)
                     {
@@ -259,6 +317,7 @@ namespace SoulsFormats.ESD.EzSemble
                         var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
                         stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1}, {arg2}, {arg3}, {arg4})");
+                        exprs.Push(new FunctionCall { Args = popArgs(4), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
                     }
                     else if (b == 0x89)
                     {
@@ -270,6 +329,7 @@ namespace SoulsFormats.ESD.EzSemble
                         var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
                         stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1}, {arg2}, {arg3}, {arg4}, {arg5})");
+                        exprs.Push(new FunctionCall { Args = popArgs(5), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
                     }
                     else if (b == 0x8A)
                     {
@@ -282,6 +342,7 @@ namespace SoulsFormats.ESD.EzSemble
                         var id = popLastNonGarbageAndStoreGarbage(true);
                         restoreGarbage();
                         stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1}, {arg2}, {arg3}, {arg4}, {arg5}, {arg6})");
+                        exprs.Push(new FunctionCall { Args = popArgs(6), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
                     }
                     else if (OperatorsByByte.ContainsKey(b))
                     {
@@ -292,6 +353,8 @@ namespace SoulsFormats.ESD.EzSemble
 
                         stack.Push($"{GetExpressionWithParenthesesIfContainsOperator(item1, OperatorsByByte[b])} " +
                             $"{OperatorsByByte[b]} {GetExpressionWithParenthesesIfContainsOperator(item2, OperatorsByByte[b])}");
+                        if (OperatorsByByte[b] == "N") throw new Exception();
+                        exprs.Push(new BinaryExpr { Op = OperatorsByByte[b], Rhs = exprs.Pop(), Lhs = exprs.Pop() });
                     }
                     else if (b == 0xA6)
                     {
@@ -322,16 +385,25 @@ namespace SoulsFormats.ESD.EzSemble
                         var item = popLastNonGarbageAndStoreGarbage();
                         restoreGarbage();
                         stack.Push($"SetREG{regIndex}({item})");
+                        exprs.Push(new FunctionCall { Args = popArgs(1), Name = $"SetREG{regIndex}" });
                     }
                     else if (b >= 0xAF && b <= 0xB6)
                     {
                         byte regIndex = (byte)(b - 0xAF);
                         stack.Push($"GetREG{regIndex}()");
+                        exprs.Push(new FunctionCall { Args = popArgs(0), Name = $"GetREG{regIndex}" });
                     }
                     else if (b == 0xB7)
                     {
                         var item = stack.Pop();
                         stack.Push($"AbortIfFalse({item})");
+                        exprs.Push(new FunctionCall { Args = popArgs(1), Name = "AbortIfFalse" });
+                    }
+                    else if (b == 0xB8)
+                    {
+                        var item = stack.Pop();
+                        stack.Push($"StateGroupArg[{item}]");
+                        exprs.Push(new FunctionCall { Args = popArgs(1), Name = "StateGroupArg" });
                     }
                     else if (b == 0xA1)
                     {
@@ -340,10 +412,11 @@ namespace SoulsFormats.ESD.EzSemble
                     else
                     {
                         stack.Push($"#{b:X2}");
+                        exprs.Push(new Unknown { Opcode = b });
                     }
                 }
-
-                return string.Join(" ", stack);
+                if (exprs.Count != 1) throw new Exception("Could not parse expr. Remaining stack: " + string.Join("; ", exprs));
+                return exprs.Pop();
             }
 
             public static string InfixToPostFix(EzSembleContext context, string expression)
@@ -395,10 +468,11 @@ namespace SoulsFormats.ESD.EzSemble
 
                 //populate operators
                 //int format is {precedence, association -> 0=Left 1=Right}
-                
+
 
                 //string pattern = @"(?<=[^\\.a-zA-Z\\d])|(?=[^\\.a-zA-Z\\d])";
-                string pattern = @"(?<=[-+*/(),^<>=&\|~])(?=.)|(?<=.)(?=[-+*/(),^<>=&\|~])";
+                string pattern = @"(?<=[-+*/(),^<>=&\|~!])(?=.)|(?<=.)(?=[-+*/(),^<>=&\|~!])";
+
 
                 expression = expression.Replace(" ", "");
                 Regex regExPattern = new Regex(pattern);
@@ -581,7 +655,6 @@ namespace SoulsFormats.ESD.EzSemble
 
                 if (resultExpr == "GetStateChangeType 233")
                     throw new Exception();
-
                 return resultExpr;
 
             }

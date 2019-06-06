@@ -3,9 +3,10 @@ using System.Linq;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using static SoulsFormats.ESD.EzSemble.Common;
+using SoulsFormats;
+using static TalkESD.EzSemble.Common;
 
-namespace SoulsFormats.ESD.EzSemble
+namespace TalkESD.EzSemble
 {
     /// <summary>
     /// Assembles and dissembles "EzLanguage" bytecode.
@@ -15,7 +16,7 @@ namespace SoulsFormats.ESD.EzSemble
         /// <summary>
         /// Assembles a plain text "EzLanguage" command call into a CommandCall object.
         /// </summary>
-        public static SoulsFormats.ESD.ESD.CommandCall AssembleCommandCall(EzSembleContext context, string plaintext)
+        public static ESD.CommandCall AssembleCommandCall(EzSembleContext context, string plaintext)
         {
             var regex = System.Text.RegularExpressions.Regex.Match(plaintext, @"^([A-Za-z0-9_:]+)\((.*)\)$");
 
@@ -95,7 +96,7 @@ namespace SoulsFormats.ESD.EzSemble
                 }
             }
 
-            return new SoulsFormats.ESD.ESD.CommandCall()
+            return new ESD.CommandCall()
             {
                 CommandBank = cmdId.Bank,
                 CommandID = cmdId.ID,
@@ -106,9 +107,9 @@ namespace SoulsFormats.ESD.EzSemble
         /// <summary>
         /// Assembles a plain text "EzLanguage" script into a list of CommandCall's.
         /// </summary>
-        public static List<SoulsFormats.ESD.ESD.CommandCall> AssembleCommandScript(EzSembleContext context, string plaintext)
+        public static List<ESD.CommandCall> AssembleCommandScript(EzSembleContext context, string plaintext)
         {
-            var result = new List<SoulsFormats.ESD.ESD.CommandCall>();
+            var result = new List<ESD.CommandCall>();
             foreach (var cmdTxt in plaintext.Split(';').Select(x =>
             {
                 var cmdLine = x.Replace("\r", "").Trim(' ', '\n');
