@@ -1,15 +1,17 @@
-﻿using SoulsFormats.ESD.EzSemble;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Crypto = System.Security.Cryptography;
+using SF = SoulsFormats;
+using TalkESD.EzSemble;
 
-namespace SoulsFormats.ESD
+namespace TalkESD.Adapter
 {
     /// <summary>
     /// A state machine used for gameplay, menus, and dialog throughout the series.
     /// </summary>
-    public class ESD : SoulsFile<ESD>
+    public class ESD
     {
         /// <summary>
         /// If true, write in 64-bit format; if false, write in 32-bit format.
@@ -41,11 +43,7 @@ namespace SoulsFormats.ESD
         /// </summary>
         public Dictionary<long, string> StateGroupNames;
 
-        /// <summary>
-        /// Creates a new ESD formatted for DS1 with no state groups. 
-        /// </summary>
-        public ESD() : this(false, 1) { }
-
+        private SF.DCX.Type Compression = SF.DCX.Type.None;
         internal string LastSavedHash;
 
         /// <summary>
@@ -83,6 +81,11 @@ namespace SoulsFormats.ESD
         }
 
         /// <summary>
+        /// Creates a new ESD formatted for DS1 with no state groups. 
+        /// </summary>
+        public ESD() : this(false, 1) { }
+
+        /// <summary>
         /// Creates a new ESD with the given format and no state groups.
         /// </summary>
         public ESD(bool longFormat, int darkSoulsCount)
@@ -90,20 +93,28 @@ namespace SoulsFormats.ESD
             LongFormat = longFormat;
             DarkSoulsCount = darkSoulsCount;
             Name = null;
-            Unk70 = 0;
-            Unk74 = 0;
-            Unk78 = 0;
-            Unk7C = 0;
             StateGroups = new Dictionary<long, Dictionary<long, State>>();
             StateGroupNames = new Dictionary<long, string>();
             Metadata = new ESDMetadata();
             LastSavedHash = "";
         }
 
-        internal override bool Is(BinaryReaderEx br)
+        private static readonly Crypto.MD5 MD5 = Crypto.MD5.Create();
+
+        private static string GetMD5HashOfStream(SF.BinaryReaderEx br)
         {
-            string magic = br.GetASCII(0, 4);
-            return magic == "fSSL" || magic == "fsSL";
+            br.StepIn(0);
+            var hash = MD5.ComputeHash(br.Stream);
+            br.StepOut();
+            return string.Join("", hash.Select(x => x.ToString("X2")));
+        }
+
+        private static string GetMD5HashOfStream(SF.BinaryWriterEx bw)
+        {
+            bw.StepIn(0);
+            var hash = MD5.ComputeHash(bw.Stream);
+            bw.StepOut();
+            return string.Join("", hash.Select(x => x.ToString("X2")));
         }
 
         /// <summary>
@@ -132,9 +143,9 @@ namespace SoulsFormats.ESD
         {
             using (FileStream stream = File.OpenRead(path))
             {
-                BinaryReaderEx br = new BinaryReaderEx(false, stream);
+                SF.BinaryReaderEx br = new SF.BinaryReaderEx(false, stream);
                 ESD file = new ESD();
-                br = SFUtil.GetDecompressedBR(br, out file.Compression);
+                br = SF.SFUtil.GetDecompressedBR(br, out file.Compression);
                 file.ReadWithContext(br, context);
                 return file;
             }
@@ -147,7 +158,7 @@ namespace SoulsFormats.ESD
         {
             using (MemoryStream corruptPreventStream = new MemoryStream())
             {
-                BinaryWriterEx bw = new BinaryWriterEx(false, corruptPreventStream);
+                SF.BinaryWriterEx bw = new SF.BinaryWriterEx(false, corruptPreventStream);
                 WriteWithContext(bw, context);
 
                 corruptPreventStream.Position = 0;
@@ -163,9 +174,9 @@ namespace SoulsFormats.ESD
             SaveMetadataFile(path + ".meta", isBinaryMetadata);
         }
 
-        public void ReadWithContext(BinaryReaderEx br, EzSembleContext context)
+        public void ReadWithContext(SF.BinaryReaderEx br, EzSembleContext context)
         {
-            LastSavedHash = br.GetMD5HashOfStream();
+            LastSavedHash = GetMD5HashOfStream(br);
 
             br.BigEndian = false;
 
@@ -276,7 +287,7 @@ namespace SoulsFormats.ESD
                 StateGroupNames.Add(g.Key, $"StateGroup{g.Key}");
         }
 
-        internal override void Read(BinaryReaderEx br)
+        public void Read(SF.BinaryReaderEx br)
         {
             ReadWithContext(br, new EzSembleContext());
         }
@@ -309,7 +320,7 @@ namespace SoulsFormats.ESD
             return conditions;
         }
 
-        public void WriteWithContext(BinaryWriterEx bw, EzSembleContext context)
+        public void WriteWithContext(SF.BinaryWriterEx bw, EzSembleContext context)
         {
             bw.BigEndian = false;
 
@@ -518,17 +529,17 @@ namespace SoulsFormats.ESD
                 bw.WriteBytes(bytes);
             }
 
-            LastSavedHash = bw.GetMD5HashOfStream();
+            LastSavedHash = GetMD5HashOfStream(bw);
 
             Metadata = ESDMetadata.Generate(this);
         }
 
-        internal override void Write(BinaryWriterEx bw)
+        public void Write(SF.BinaryWriterEx bw)
         {
             WriteWithContext(bw, new EzSembleContext());
         }
 
-        private long[] ReadStateGroup(BinaryReaderEx br, bool longFormat, long dataStart, long stateSize)
+        private long[] ReadStateGroup(SF.BinaryReaderEx br, bool longFormat, long dataStart, long stateSize)
         {
             long statesOffset = ReadVarint(br, longFormat);
             long stateCount = ReadVarint(br, longFormat);
@@ -599,6 +610,31 @@ namespace SoulsFormats.ESD
 
             internal bool NeedsCompile = true;
 
+            internal class CompiledState
+            {
+                internal EzSembleContext Context;
+                internal List<CommandCall> EntryCommands;
+                internal List<CommandCall> ExitCommands;
+                internal List<CommandCall> WhileCommands;
+                internal CompiledState(EzSembleContext context, State s)
+                {
+                    Context = context;
+                    EntryCommands = EzSembler.AssembleCommandScript(context, s.EntryScript).Select(CommandCall.Adapt).ToList();
+                    ExitCommands = EzSembler.AssembleCommandScript(context, s.ExitScript).Select(CommandCall.Adapt).ToList();
+                    WhileCommands = EzSembler.AssembleCommandScript(context, s.WhileScript).Select(CommandCall.Adapt).ToList();
+                }
+            }
+            private CompiledState Compiled;
+            internal CompiledState GetCompiledState(EzSembleContext context)
+            {
+                if (NeedsCompile || (Compiled != null && Compiled.Context != context))
+                {
+                    Compiled = new CompiledState(context, this);
+                    NeedsCompile = false;
+                }
+                return Compiled;
+            }
+
             private string entryScript;
             private string exitScript;
             private string whileScript;
@@ -666,7 +702,7 @@ namespace SoulsFormats.ESD
                 Name = "New State";
             }
 
-            internal State(EzSembleContext context, BinaryReaderEx br, bool longFormat, long dataStart)
+            internal State(EzSembleContext context, SF.BinaryReaderEx br, bool longFormat, long dataStart)
             {
                 ID = ReadVarint(br, longFormat);
                 long conditionOffsetsOffset = ReadVarint(br, longFormat);
@@ -678,31 +714,30 @@ namespace SoulsFormats.ESD
                 long whileCommandsOffset = ReadVarint(br, longFormat);
                 long whileCommandCount = ReadVarint(br, longFormat);
 
+                string DissembleScript(int count)
+                {
+                    var Commands = new List<SF.ESD.CommandCall>(count);
+                    for (int i = 0; i < count; i++)
+                    {
+                        var Call = new CommandCall(context, br, longFormat, dataStart);
+                        Commands.Add(new SF.ESD.CommandCall(Call.CommandBank, Call.CommandID, Call.Arguments.ToArray()));
+                    }
+                    return EzSembler.DissembleCommandScript(context, Commands).ToString();
+                }
+
                 br.StepIn(0);
                 {
                     br.Position = dataStart + conditionOffsetsOffset;
                     conditionOffsets = ReadVarints(br, longFormat, conditionOffsetCount);
 
                     br.Position = dataStart + entryCommandsOffset;
-                    var EntryCommands = new List<CommandCall>((int)entryCommandCount);
-                    for (int i = 0; i < entryCommandCount; i++)
-                        EntryCommands.Add(new CommandCall(context, br, longFormat, dataStart));
-
-                    EntryScript = EzSembler.DissembleCommandScript(context, EntryCommands);
+                    entryScript = DissembleScript((int)entryCommandCount);
 
                     br.Position = dataStart + exitCommandsOffset;
-                    var ExitCommands = new List<CommandCall>((int)exitCommandCount);
-                    for (int i = 0; i < exitCommandCount; i++)
-                        ExitCommands.Add(new CommandCall(context, br, longFormat, dataStart));
-
-                    ExitScript = EzSembler.DissembleCommandScript(context, ExitCommands);
+                    exitScript = DissembleScript((int)exitCommandCount);
 
                     br.Position = dataStart + whileCommandsOffset;
-                    var WhileCommands = new List<CommandCall>((int)whileCommandCount);
-                    for (int i = 0; i < whileCommandCount; i++)
-                        WhileCommands.Add(new CommandCall(context, br, longFormat, dataStart));
-
-                    WhileScript = EzSembler.DissembleCommandScript(context, WhileCommands);
+                    whileScript = DissembleScript((int)whileCommandCount);
                 }
                 br.StepOut();
             }
@@ -715,9 +750,9 @@ namespace SoulsFormats.ESD
                 conditionOffsets = null;
             }
 
-            internal void WriteHeader(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, long stateID)
+            internal void WriteHeader(EzSembleContext context, SF.BinaryWriterEx bw, bool longFormat, long groupID, long stateID)
             {
-                var thisCompiled = context.GetCompiledState(this);
+                var thisCompiled = GetCompiledState(context);
 
                 var EntryCommands = thisCompiled.EntryCommands;
                 var ExitCommands = thisCompiled.ExitCommands;
@@ -734,9 +769,9 @@ namespace SoulsFormats.ESD
                 WriteVarint(bw, longFormat, WhileCommands.Count);
             }
 
-            internal void WriteCommandCalls(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, long stateID, long dataStart, List<CommandCall> commands)
+            internal void WriteCommandCalls(EzSembleContext context, SF.BinaryWriterEx bw, bool longFormat, long groupID, long stateID, long dataStart, List<CommandCall> commands)
             {
-                var thisCompiled = context.GetCompiledState(this);
+                var thisCompiled = GetCompiledState(context);
 
                 var EntryCommands = thisCompiled.EntryCommands;
                 var ExitCommands = thisCompiled.ExitCommands;
@@ -785,7 +820,7 @@ namespace SoulsFormats.ESD
                 }
             }
 
-            internal int WriteConditionOffsets(BinaryWriterEx bw, bool longFormat, long groupID, long stateID, long dataStart, Dictionary<Condition, long> conditionOffsets)
+            internal int WriteConditionOffsets(SF.BinaryWriterEx bw, bool longFormat, long groupID, long stateID, long dataStart, Dictionary<Condition, long> conditionOffsets)
             {
                 FillVarint(bw, longFormat, $"State{groupID}-{stateID}:ConditionsOffset", bw.Position - dataStart);
                 foreach (Condition cond in Conditions)
@@ -820,6 +855,30 @@ namespace SoulsFormats.ESD
             public long? TargetState;
 
             internal bool NeedsCompile = true;
+
+
+            internal class CompiledCondition
+            {
+                internal EzSembleContext Context;
+                internal List<CommandCall> PassCommands;
+                internal byte[] Evaluator;
+                internal CompiledCondition(EzSembleContext context, Condition c)
+                {
+                    Context = context;
+                    PassCommands = EzSembler.AssembleCommandScript(context, c.PassScript).Select(CommandCall.Adapt).ToList();
+                    Evaluator = EzSembler.AssembleExpression(context, c.Evaluator);
+                }
+            }
+            private CompiledCondition Compiled;
+            internal CompiledCondition GetCompiledCondition(EzSembleContext context)
+            {
+                if (NeedsCompile || (Compiled != null && Compiled.Context != context))
+                {
+                    Compiled = new CompiledCondition(context, this);
+                    NeedsCompile = false;
+                }
+                return Compiled;
+            }
 
             private string passScript;
             /// <summary>
@@ -868,7 +927,7 @@ namespace SoulsFormats.ESD
                 TargetState = null;
                 PassScript = "";
                 Subconditions = new List<Condition>();
-                Evaluator = "1;";
+                Evaluator = "1";
                 Name = "New Condition";
             }
 
@@ -884,7 +943,7 @@ namespace SoulsFormats.ESD
                 Name = "New Condition";
             }
 
-            internal Condition(EzSembleContext context, BinaryReaderEx br, bool longFormat, long dataStart)
+            internal Condition(EzSembleContext context, SF.BinaryReaderEx br, bool longFormat, long dataStart)
             {
                 stateOffset = ReadVarint(br, longFormat);
                 long passCommandsOffset = ReadVarint(br, longFormat);
@@ -894,19 +953,26 @@ namespace SoulsFormats.ESD
                 long evaluatorOffset = ReadVarint(br, longFormat);
                 long evaluatorLength = ReadVarint(br, longFormat);
 
+                string DissembleScript(int count)
+                {
+                    var Commands = new List<SF.ESD.CommandCall>(count);
+                    for (int i = 0; i < count; i++)
+                    {
+                        var Call = new CommandCall(context, br, longFormat, dataStart);
+                        Commands.Add(new SF.ESD.CommandCall(Call.CommandBank, Call.CommandID, Call.Arguments.ToArray()));
+                    }
+                    return EzSembler.DissembleCommandScript(context, Commands).ToString();
+                }
+
                 br.StepIn(0);
                 {
                     br.Position = dataStart + passCommandsOffset;
-                    var PassCommands = new List<CommandCall>((int)passCommandCount);
-                    for (int i = 0; i < passCommandCount; i++)
-                        PassCommands.Add(new CommandCall(context, br, longFormat, dataStart));
-
-                    PassScript = EzSembler.DissembleCommandScript(context, PassCommands);
+                    passScript = DissembleScript((int)passCommandCount);
 
                     br.Position = dataStart + conditionOffsetsOffset;
                     conditionOffsets = ReadVarints(br, longFormat, conditionOffsetCount);
 
-                    Evaluator = EzSembler.DissembleExpression(context, br.GetBytes(dataStart + evaluatorOffset, (int)evaluatorLength));
+                    evaluator = EzSembler.DissembleExpression(context, br.GetBytes(dataStart + evaluatorOffset, (int)evaluatorLength)).ToString();
                 }
                 br.StepOut();
             }
@@ -940,7 +1006,7 @@ namespace SoulsFormats.ESD
                     condition.GetStateAndConditions(stateOffsets, conditions);
             }
 
-            internal void WriteHeader(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, int index, Dictionary<long, long> stateOffsets)
+            internal void WriteHeader(EzSembleContext context, SF.BinaryWriterEx bw, bool longFormat, long groupID, int index, Dictionary<long, long> stateOffsets)
             {
                 if (TargetState.HasValue)
                     WriteVarint(bw, longFormat, stateOffsets[TargetState.Value]);
@@ -954,12 +1020,12 @@ namespace SoulsFormats.ESD
                 ReserveVarint(bw, longFormat, $"Condition{groupID}-{index}:ConditionsOffset");
                 WriteVarint(bw, longFormat, Subconditions.Count);
                 ReserveVarint(bw, longFormat, $"Condition{groupID}-{index}:EvaluatorOffset");
-                WriteVarint(bw, longFormat, context.GetCompiledCondition(this).Evaluator.Length);
+                WriteVarint(bw, longFormat, GetCompiledCondition(context).Evaluator.Length);
             }
 
-            internal void WriteCommandCalls(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart, List<CommandCall> commands)
+            internal void WriteCommandCalls(EzSembleContext context, SF.BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart, List<CommandCall> commands)
             {
-                var PassCommands = context.GetCompiledCondition(this).PassCommands;
+                var PassCommands = GetCompiledCondition(context).PassCommands;
                 if (PassCommands.Count == 0)
                 {
                     FillVarint(bw, longFormat, $"Condition{groupID}-{index}:PassCommandsOffset", -1);
@@ -975,7 +1041,7 @@ namespace SoulsFormats.ESD
                 }
             }
 
-            internal int WriteConditionOffsets(BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart, Dictionary<Condition, long> conditionOffsets)
+            internal int WriteConditionOffsets(SF.BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart, Dictionary<Condition, long> conditionOffsets)
             {
                 if (Subconditions.Count == 0)
                 {
@@ -990,10 +1056,10 @@ namespace SoulsFormats.ESD
                 return Subconditions.Count;
             }
 
-            internal void WriteEvaluator(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart)
+            internal void WriteEvaluator(EzSembleContext context, SF.BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart)
             {
                 FillVarint(bw, longFormat, $"Condition{groupID}-{index}:EvaluatorOffset", bw.Position - dataStart);
-                bw.WriteBytes(context.GetCompiledCondition(this).Evaluator);
+                bw.WriteBytes(GetCompiledCondition(context).Evaluator);
             }
 
             /// <summary>
@@ -1026,6 +1092,14 @@ namespace SoulsFormats.ESD
             public List<byte[]> Arguments;
 
             /// <summary>
+            /// Converts a base ESD CommandCall into an adapter CommandCall.
+            /// </summary>
+            public static CommandCall Adapt(SF.ESD.CommandCall other)
+            {
+                return new CommandCall(other.CommandBank, other.CommandID, other.Arguments.ToArray());
+            }
+
+            /// <summary>
             /// Creates a new CommandCall with bank 1, ID 0, and no arguments.
             /// </summary>
             public CommandCall()
@@ -1045,7 +1119,7 @@ namespace SoulsFormats.ESD
                 Arguments = arguments.ToList();
             }
 
-            internal CommandCall(EzSembleContext context, BinaryReaderEx br, bool longFormat, long dataStart)
+            internal CommandCall(EzSembleContext context, SF.BinaryReaderEx br, bool longFormat, long dataStart)
             {
                 CommandBank = br.AssertInt32(1, 5, 6, 7);
                 CommandID = br.ReadInt32();
@@ -1065,7 +1139,7 @@ namespace SoulsFormats.ESD
                 br.StepOut();
             }
 
-            internal void WriteHeader(BinaryWriterEx bw, bool longFormat, int index)
+            internal void WriteHeader(SF.BinaryWriterEx bw, bool longFormat, int index)
             {
                 bw.WriteInt32(CommandBank);
                 bw.WriteInt32(CommandID);
@@ -1073,7 +1147,7 @@ namespace SoulsFormats.ESD
                 WriteVarint(bw, longFormat, Arguments.Count);
             }
 
-            internal void WriteArgs(EzSembleContext context, BinaryWriterEx bw, bool longFormat, int index, long dataStart)
+            internal void WriteArgs(EzSembleContext context, SF.BinaryWriterEx bw, bool longFormat, int index, long dataStart)
             {
                 FillVarint(bw, longFormat, $"Command{index}:ArgsOffset", bw.Position - dataStart);
                 for (int i = 0; i < Arguments.Count; i++)
@@ -1083,7 +1157,7 @@ namespace SoulsFormats.ESD
                 }
             }
 
-            internal void WriteBytecode(EzSembleContext context, BinaryWriterEx bw, bool longFormat, int index, long dataStart)
+            internal void WriteBytecode(EzSembleContext context, SF.BinaryWriterEx bw, bool longFormat, int index, long dataStart)
             {
                 for (int i = 0; i < Arguments.Count; i++)
                 {
@@ -1101,7 +1175,7 @@ namespace SoulsFormats.ESD
             }
         }
 
-        private static long ReadVarint(BinaryReaderEx br, bool longFormat)
+        private static long ReadVarint(SF.BinaryReaderEx br, bool longFormat)
         {
             if (longFormat)
                 return br.ReadInt64();
@@ -1109,7 +1183,7 @@ namespace SoulsFormats.ESD
                 return br.ReadInt32();
         }
 
-        private static long[] ReadVarints(BinaryReaderEx br, bool longFormat, long count)
+        private static long[] ReadVarints(SF.BinaryReaderEx br, bool longFormat, long count)
         {
             if (longFormat)
                 return br.ReadInt64s((int)count);
@@ -1117,7 +1191,7 @@ namespace SoulsFormats.ESD
                 return Array.ConvertAll(br.ReadInt32s((int)count), i => (long)i);
         }
 
-        private static long AssertVarint(BinaryReaderEx br, bool longFormat, params long[] values)
+        private static long AssertVarint(SF.BinaryReaderEx br, bool longFormat, params long[] values)
         {
             if (longFormat)
                 return br.AssertInt64(values);
@@ -1125,7 +1199,7 @@ namespace SoulsFormats.ESD
                 return br.AssertInt32(Array.ConvertAll(values, l => (int)l));
         }
 
-        private static void WriteVarint(BinaryWriterEx bw, bool longFormat, long value)
+        private static void WriteVarint(SF.BinaryWriterEx bw, bool longFormat, long value)
         {
             if (longFormat)
                 bw.WriteInt64(value);
@@ -1133,7 +1207,7 @@ namespace SoulsFormats.ESD
                 bw.WriteInt32((int)value);
         }
 
-        private static void ReserveVarint(BinaryWriterEx bw, bool longFormat, string name)
+        private static void ReserveVarint(SF.BinaryWriterEx bw, bool longFormat, string name)
         {
             if (longFormat)
                 bw.ReserveInt64(name);
@@ -1141,7 +1215,7 @@ namespace SoulsFormats.ESD
                 bw.ReserveInt32(name);
         }
 
-        private static void FillVarint(BinaryWriterEx bw, bool longFormat, string name, long value)
+        private static void FillVarint(SF.BinaryWriterEx bw, bool longFormat, string name, long value)
         {
             if (longFormat)
                 bw.FillInt64(name, value);

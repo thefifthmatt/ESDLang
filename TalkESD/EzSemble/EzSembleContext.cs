@@ -5,9 +5,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
-using static SoulsFormats.ESD.ESD;
+using static TalkESD.Adapter.ESD;
 
-namespace SoulsFormats.ESD.EzSemble
+namespace TalkESD.EzSemble
 {
     public class EzSembleContext
     {
@@ -61,7 +61,9 @@ namespace SoulsFormats.ESD.EzSemble
                 Name = name;
             }
         }
-        
+
+        internal bool IsBigEndian = false;
+
         internal Dictionary<(int Bank, int ID), EzSembleMethodInfo> CommandInfoByID;
         internal Dictionary<string, (int Bank, int ID)> CommandIDsByName 
             => CommandInfoByID.ToDictionary(kvp => kvp.Value.Name, kvp => kvp.Key);
@@ -70,71 +72,10 @@ namespace SoulsFormats.ESD.EzSemble
             => FunctionInfoByID.ToDictionary(kvp => kvp.Value.Name, kvp => kvp.Key);
         internal Dictionary<string, List<EzSembleEnumEntry>> EnumInfo;
 
-        internal class CompiledState
-        {
-            internal List<CommandCall> EntryCommands;
-            internal List<CommandCall> ExitCommands;
-            internal List<CommandCall> WhileCommands;
-            internal CompiledState(EzSembleContext context, State s)
-            {
-                EntryCommands = EzSembler.AssembleCommandScript(context, s.EntryScript);
-                ExitCommands = EzSembler.AssembleCommandScript(context, s.ExitScript);
-                WhileCommands = EzSembler.AssembleCommandScript(context, s.WhileScript);
-            }
-        }
-
-        internal class CompiledCondition
-        {
-            internal List<CommandCall> PassCommands;
-            internal byte[] Evaluator;
-            internal CompiledCondition(EzSembleContext context, Condition c)
-            {
-                PassCommands = EzSembler.AssembleCommandScript(context, c.PassScript);
-                Evaluator = EzSembler.AssembleExpression(context, c.Evaluator);
-            }
-        }
-        
-        private Dictionary<State, CompiledState> CompiledStatesForSaving;
-        private Dictionary<Condition, CompiledCondition> CompiledConditionsForSaving;
-
-        internal CompiledState GetCompiledState(State s)
-        {
-            if (!CompiledStatesForSaving.ContainsKey(s))
-            {
-                CompiledStatesForSaving.Add(s, new CompiledState(this, s));
-            }
-            else if (s.NeedsCompile)
-            {
-                CompiledStatesForSaving[s] = new CompiledState(this, s);
-            }
-
-            s.NeedsCompile = false;
-
-            return CompiledStatesForSaving[s];
-        }
-
-        internal CompiledCondition GetCompiledCondition(Condition c)
-        {
-            if (!CompiledConditionsForSaving.ContainsKey(c))
-            {
-                CompiledConditionsForSaving.Add(c, new CompiledCondition(this, c));
-            }
-            else if (c.NeedsCompile)
-            {
-                CompiledConditionsForSaving[c] = new CompiledCondition(this, c);
-            }
-
-            c.NeedsCompile = false;
-
-            return CompiledConditionsForSaving[c];
-        }
-
         public EzSembleContext()
         {
             CommandInfoByID = new Dictionary<(int Bank, int ID), EzSembleMethodInfo>();
             FunctionInfoByID = new Dictionary<int, EzSembleMethodInfo>();
-            CompiledStatesForSaving = new Dictionary<State, CompiledState>();
-            CompiledConditionsForSaving = new Dictionary<Condition, CompiledCondition>();
             EnumInfo = new Dictionary<string, List<EzSembleEnumEntry>>();
         }
 
