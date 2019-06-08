@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using SoulsFormats;
-using static TalkESD.EzSemble.AST;
+using static ESDLang.EzSemble.AST;
 
-namespace TalkESD.EzSemble
+namespace ESDLang.EzSemble
 {
     public static partial class EzSembler
     {

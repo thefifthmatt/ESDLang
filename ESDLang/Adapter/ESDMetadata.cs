@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using SF = SoulsFormats;
+using SoulsFormats;
 
-namespace TalkESD.Adapter
+namespace ESDLang.Adapter
 {
     /// <summary>
     /// Metadata for an ESD file.
@@ -219,7 +218,7 @@ namespace TalkESD.Adapter
         {
             using (MemoryStream corruptPreventStream = new MemoryStream())
             {
-                SF.BinaryWriterEx bw = new SF.BinaryWriterEx(false, corruptPreventStream);
+                BinaryWriterEx bw = new BinaryWriterEx(false, corruptPreventStream);
 
                 bw.WriteASCII("ESD_META", terminate: false);
                 bw.WriteInt64(CURRENT_BINARY_VERSION);
@@ -332,7 +331,7 @@ namespace TalkESD.Adapter
             var meta = new ESDMetadata();
             using (var fileStream = System.IO.File.Open(binFileName, System.IO.FileMode.Open, System.IO.FileAccess.Read))
             {
-                var br = new SF.BinaryReaderEx(bigEndian: false, stream: fileStream);
+                var br = new BinaryReaderEx(bigEndian: false, stream: fileStream);
                 br.AssertASCII("ESD_META");
                 br.AssertInt64(CURRENT_BINARY_VERSION);
                 meta.ESDHash = br.ReadASCII();
@@ -415,7 +414,7 @@ namespace TalkESD.Adapter
         /// <summary>
         /// Generates metadata based on the in-memory ESD file.
         /// </summary>
-        public static ESDMetadata Generate(ESD esd)
+        public static ESDMetadata Generate(ESDL esd)
         {
             var meta = new ESDMetadata();
 
@@ -457,7 +456,7 @@ namespace TalkESD.Adapter
         /// <summary>
         /// Applies metadata to an in-memory ESD, adding additional info.
         /// </summary>
-        public static void Apply(ESD esd, ESDMetadata meta)
+        public static void Apply(ESDL esd, ESDMetadata meta)
         {
             if (meta.ESDHash.Trim().ToUpper() != esd.LastSavedHash.Trim().ToUpper())
             {
