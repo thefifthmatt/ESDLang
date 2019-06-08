@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using static TalkESD.EzSemble.AST;
-using static TalkESD.EzSemble.Common;
+using static ESDLang.EzSemble.AST;
+using static ESDLang.EzSemble.Common;
 
-namespace TalkESD.EzSemble
+namespace ESDLang.EzSemble
 {
     public static partial class EzSembler
     {
@@ -15,7 +15,7 @@ namespace TalkESD.EzSemble
         {
             private static bool IsFunction(EzSembleContext context, string s)
             {
-                return s.StartsWith("f") || context.FunctionIDsByName.ContainsKey(s) || s.StartsWith("GetREG") || s.StartsWith("SetREG") || (s == "AbortIfFalse");
+                return s.StartsWith("f") || context.FunctionIDsByName.ContainsKey(s) || s.StartsWith("GetREG") || s.StartsWith("SetREG") || s == "AbortIfFalse" || s == "StateGroupArg";
             }
 
             //Get the precedence of the operator/function passed in
@@ -134,13 +134,6 @@ namespace TalkESD.EzSemble
 
             private static string GetExpressionWithParenthesesIfContainsOperator(string exp, string op)
             {
-                //return exp;
-
-                //if (Operators.Any(x => exp.Contains(x.Key)) || exp.Contains(" "))
-                //    return $"({exp})";
-                //else
-                //    return exp;
-
                 if (op == "&&" || op == "||")
                 {
                     if (exp.Contains("&&") || exp.Contains("||"))
@@ -160,36 +153,9 @@ namespace TalkESD.EzSemble
 
             public static Expr BytecodeToInfix(EzSembleContext context, byte[] Bytes)
             {
-
-                //string MEOWDEBUG_OLD_DISSEMBLE = MEOWDEBUG_OldDissemble(Bytes);
-
                 var bigEndianReverseBytes = Bytes.Reverse().ToArray();
 
-                Stack<string> stack = new Stack<string>();
                 Stack<Expr> exprs = new Stack<Expr>();
-
-                Queue<string> garbage = new Queue<string>();
-
-                string popLastNonGarbageAndStoreGarbage(bool wantNumber = false)
-                {
-                    var popped = stack.Pop();
-                    //while (popped == "~" || popped == ".")
-                    //{
-                    //    garbage.Enqueue(popped);
-                    //    popped = stack.Pop();
-                    //}
-
-                    if (wantNumber)
-                        return popped.Trim('(', ')');
-                    else
-                        return popped;
-                }
-
-                void restoreGarbage()
-                {
-                    while (garbage.Count > 0)
-                        stack.Push(garbage.Dequeue());
-                }
                 List<Expr> popArgs(int amount)
                 {
                     List<Expr> args = new List<Expr>();
@@ -204,10 +170,8 @@ namespace TalkESD.EzSemble
                 for (int i = 0; i < Bytes.Length; i++)
                 {
                     var b = Bytes[i];
-                    // Console.WriteLine($"byte {i} = {b:x2}: stack is {string.Join("; ", stack.Reverse())}");
                     if (b >= 0 && b <= 0x7F)
                     {
-                        stack.Push($"{b - 64}");
                         exprs.Push(new ConstExpr { Value = (sbyte)(b - 64) });
                     }
                     else if (b == 0xA5)
@@ -221,7 +185,6 @@ namespace TalkESD.EzSemble
 
                         if (text.Contains('"') || text.Contains('\r') || text.Contains('\n'))
                             throw new Exception("Illegal character in string literal");
-                        stack.Push($"\"{text}\"");
                         exprs.Push(new ConstExpr { Value = text });
                         i += j + 2;
                     }
@@ -236,7 +199,6 @@ namespace TalkESD.EzSemble
                         {
                             val = BitConverter.ToSingle(bigEndianReverseBytes, (bigEndianReverseBytes.Length - 1) - (i + 1) - 4);
                         }
-                        stack.Push($"{val}");
                         exprs.Push(new ConstExpr { Value = val });
 
                         i += 4;
@@ -252,7 +214,6 @@ namespace TalkESD.EzSemble
                         {
                             val = BitConverter.ToDouble(bigEndianReverseBytes, (bigEndianReverseBytes.Length - 1) - (i + 1) - 8);
                         }
-                        stack.Push($"{val}");
                         exprs.Push(new ConstExpr { Value = val });
 
                         i += 8;
@@ -268,141 +229,71 @@ namespace TalkESD.EzSemble
                         {
                             val = BitConverter.ToInt32(bigEndianReverseBytes, (bigEndianReverseBytes.Length - 1) - (i + 1) - 4);
                         }
-                        stack.Push($"{val}");
                         exprs.Push(new ConstExpr { Value = val });
 
                         i += 4;
                     }
                     else if (b == 0x84)
                     {
-                        var id = popLastNonGarbageAndStoreGarbage(true);
-                        restoreGarbage();
-                        stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}()");
                         exprs.Push(new FunctionCall { Args = popArgs(0), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
                     }
                     else if (b == 0x85)
                     {
-                        var arg1 = popLastNonGarbageAndStoreGarbage();
-                        var id = popLastNonGarbageAndStoreGarbage(true);
-                        restoreGarbage();
-                        // if (id == "#B8") stack.Push($"?? {id}({arg1}) ??"); else
-                        stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1})");
                         exprs.Push(new FunctionCall { Args = popArgs(1), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
                     }
                     else if (b == 0x86)
                     {
-                        var arg2 = popLastNonGarbageAndStoreGarbage();
-                        var arg1 = popLastNonGarbageAndStoreGarbage();
-                        var id = popLastNonGarbageAndStoreGarbage(true);
-                        restoreGarbage();
-                        stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1}, {arg2})");
                         exprs.Push(new FunctionCall { Args = popArgs(2), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
                     }
                     else if (b == 0x87)
                     {
-                        var arg3 = popLastNonGarbageAndStoreGarbage();
-                        var arg2 = popLastNonGarbageAndStoreGarbage();
-                        var arg1 = popLastNonGarbageAndStoreGarbage();
-                        var id = popLastNonGarbageAndStoreGarbage(true);
-                        restoreGarbage();
-                        stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1}, {arg2}, {arg3})");
                         exprs.Push(new FunctionCall { Args = popArgs(3), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
                     }
                     else if (b == 0x88)
                     {
-                        var arg4 = popLastNonGarbageAndStoreGarbage();
-                        var arg3 = popLastNonGarbageAndStoreGarbage();
-                        var arg2 = popLastNonGarbageAndStoreGarbage();
-                        var arg1 = popLastNonGarbageAndStoreGarbage();
-                        var id = popLastNonGarbageAndStoreGarbage(true);
-                        restoreGarbage();
-                        stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1}, {arg2}, {arg3}, {arg4})");
                         exprs.Push(new FunctionCall { Args = popArgs(4), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
                     }
                     else if (b == 0x89)
                     {
-                        var arg5 = popLastNonGarbageAndStoreGarbage();
-                        var arg4 = popLastNonGarbageAndStoreGarbage();
-                        var arg3 = popLastNonGarbageAndStoreGarbage();
-                        var arg2 = popLastNonGarbageAndStoreGarbage();
-                        var arg1 = popLastNonGarbageAndStoreGarbage();
-                        var id = popLastNonGarbageAndStoreGarbage(true);
-                        restoreGarbage();
-                        stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1}, {arg2}, {arg3}, {arg4}, {arg5})");
                         exprs.Push(new FunctionCall { Args = popArgs(5), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
                     }
                     else if (b == 0x8A)
                     {
-                        var arg6 = popLastNonGarbageAndStoreGarbage();
-                        var arg5 = popLastNonGarbageAndStoreGarbage();
-                        var arg4 = popLastNonGarbageAndStoreGarbage();
-                        var arg3 = popLastNonGarbageAndStoreGarbage();
-                        var arg2 = popLastNonGarbageAndStoreGarbage();
-                        var arg1 = popLastNonGarbageAndStoreGarbage();
-                        var id = popLastNonGarbageAndStoreGarbage(true);
-                        restoreGarbage();
-                        stack.Push($"{context.GetFunctionInfo(int.Parse(id)).Name}({arg1}, {arg2}, {arg3}, {arg4}, {arg5}, {arg6})");
                         exprs.Push(new FunctionCall { Args = popArgs(6), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
                     }
                     else if (OperatorsByByte.ContainsKey(b))
                     {
-                        var item2 = popLastNonGarbageAndStoreGarbage();
-                        var item1 = popLastNonGarbageAndStoreGarbage();
-
-                        restoreGarbage();
-
-                        stack.Push($"{GetExpressionWithParenthesesIfContainsOperator(item1, OperatorsByByte[b])} " +
-                            $"{OperatorsByByte[b]} {GetExpressionWithParenthesesIfContainsOperator(item2, OperatorsByByte[b])}");
-                        if (OperatorsByByte[b] == "N") throw new Exception();
-                        exprs.Push(new BinaryExpr { Op = OperatorsByByte[b], Rhs = exprs.Pop(), Lhs = exprs.Pop() });
+                        if (OperatorsByByte[b] == "N")
+                        {
+                            exprs.Push(new UnaryExpr { Op = "N", Arg = exprs.Pop() });
+                        }
+                        else
+                        {
+                            exprs.Push(new BinaryExpr { Op = OperatorsByByte[b], Rhs = exprs.Pop(), Lhs = exprs.Pop() });
+                        }
                     }
                     else if (b == 0xA6)
                     {
-                        //if (stack.Count > 2)
-                        //{
-                        //    var stackContents = new string[stack.Count];
-                        //    int j = stack.Count - 1;
-                        //    while (stack.Count > 0)
-                        //    {
-                        //        var latest = stack.Pop();
-                        //        stackContents[j] = latest;
-                        //        j--;
-                        //    }
-
-                        //    stack.Push($"({string.Join(" ", stackContents)})");
-
-                        //    Console.WriteLine("TEST");
-                        //}
-                        //else
-                        //{
-                        //    stack.Push($"({stack.Pop()})");
-                        //}
-                        stack.Push($"({stack.Pop()})");
+                        Expr top = exprs.Peek();
+                        top.IfFalse = FalseCond.CONTINUE;
                     }
                     else if (b >= 0xA7 && b <= 0xAE)
                     {
                         byte regIndex = (byte)(b - 0xA7);
-                        var item = popLastNonGarbageAndStoreGarbage();
-                        restoreGarbage();
-                        stack.Push($"SetREG{regIndex}({item})");
                         exprs.Push(new FunctionCall { Args = popArgs(1), Name = $"SetREG{regIndex}" });
                     }
                     else if (b >= 0xAF && b <= 0xB6)
                     {
                         byte regIndex = (byte)(b - 0xAF);
-                        stack.Push($"GetREG{regIndex}()");
                         exprs.Push(new FunctionCall { Args = popArgs(0), Name = $"GetREG{regIndex}" });
                     }
                     else if (b == 0xB7)
                     {
-                        var item = stack.Pop();
-                        stack.Push($"AbortIfFalse({item})");
-                        exprs.Push(new FunctionCall { Args = popArgs(1), Name = "AbortIfFalse" });
+                        Expr top = exprs.Peek();
+                        top.IfFalse = FalseCond.ABORT;
                     }
                     else if (b == 0xB8)
                     {
-                        var item = stack.Pop();
-                        stack.Push($"StateGroupArg[{item}]");
                         exprs.Push(new FunctionCall { Args = popArgs(1), Name = "StateGroupArg" });
                     }
                     else if (b == 0xA1)
@@ -411,7 +302,6 @@ namespace TalkESD.EzSemble
                     }
                     else
                     {
-                        stack.Push($"#{b:X2}");
                         exprs.Push(new Unknown { Opcode = b });
                     }
                 }
@@ -419,10 +309,8 @@ namespace TalkESD.EzSemble
                 return exprs.Pop();
             }
 
-            public static string InfixToPostFix(EzSembleContext context, string expression)
+            public static string InfixToEzLanguage(EzSembleContext context, string expression)
             {
-                //expression = expression.Replace("\n", "~");
-
                 List<string> queue = new List<string>();
                 Stack<string> stack = new Stack<string>();
 
@@ -439,8 +327,6 @@ namespace TalkESD.EzSemble
 
                         if (expression[current] == '"')
                         {
-                            string thisText = "";
-
                             while (next < expression.Length && expression[next] != '"')
                                 next++;
 
@@ -452,7 +338,6 @@ namespace TalkESD.EzSemble
                                 throw new Exception("String literals may not contain newlines");
 
                             stringSubstitutions.Add(value);
-                            //expression = expression.Replace(value, $"{{{stringSubstitutions.Count - 1}}}");
 
                             next++;
                         }
@@ -469,52 +354,28 @@ namespace TalkESD.EzSemble
                 //populate operators
                 //int format is {precedence, association -> 0=Left 1=Right}
 
-
-                //string pattern = @"(?<=[^\\.a-zA-Z\\d])|(?=[^\\.a-zA-Z\\d])";
-                string pattern = @"(?<=[-+*/(),^<>=&\|~!])(?=.)|(?<=.)(?=[-+*/(),^<>=&\|~!])";
+                string pattern = @"(?<=[-+*/(),^<>=&\|~!\[\]])(?=.)|(?<=.)(?=[-+*/(),^<>=&\|~!\[\]])";
 
 
                 expression = expression.Replace(" ", "");
                 Regex regExPattern = new Regex(pattern);
                 List<string> expr = new List<string>(regExPattern.Split(expression));
-                //expr.RemoveAll(s => String.IsNullOrEmpty(s.Trim()));
 
                 //parse our expression and fix unary + and -
                 ParseUnary(ref expr);
 
-                //int continuationsQueued = 0;
-
                 Stack<int> funcArgCounts = new Stack<int>();
 
-                bool popAndEnqueue(bool rightParenthesis = false)
+                bool popAndEnqueue()
                 {
                     var popped = stack.Pop();
                     if (IsFunction(context, popped))
                     {
-                        //Queue<string> garbage = new Queue<string>();
-                        //while (queue[queue.Count - 1] == "~")
-                        //{
-                        //    garbage.Enqueue(queue[queue.Count - 1]);
-                        //    queue.RemoveAt(queue.Count - 1);
-                        //}
-
                         var argCount = funcArgCounts.Pop();
 
                         if (popped.StartsWith("SetREG"))
                         {
                             queue.Add($">[{popped.Substring(popped.Length - 1, 1)}]");
-
-                            //var argCount = int.Parse(queue[queue.Count - 1]);
-                            //queue.RemoveAt(queue.Count - 1);
-
-                            //if (argCount == 1)
-                            //{
-                            //    queue.Add($">[{popped.Substring(popped.Length - 1, 1)}]");
-                            //}
-                            //else
-                            //{
-                            //    throw new Exception("SetREG must be passed exactly 1 argument.");
-                            //}
                         }
                         else if (popped.StartsWith("GetREG"))
                         {
@@ -527,24 +388,22 @@ namespace TalkESD.EzSemble
 
                             queue.Add($".");
                         }
+                        else if (popped == "StateGroupArg")
+                        {
+                            if (queue.Count == 0 || argCount != 1)
+                                throw new Exception("Invalid StateGroupArg call");
+
+                            queue.Add($"#B8");
+                        }
                         else
                         {
-                            //queue.RemoveAt(queue.Count - 1);
-
                             queue.Add($"({argCount})");
                         }
-
-                        //while (garbage.Count > 0)
-                        //    queue.Add(garbage.Dequeue());
                         return true;
                     }
                     else
                     {
                         queue.Add(popped);
-                        //if (rightParenthesis)
-                        //{
-                        //    queue.Add("~");
-                        //}
                         return false;
                     }
                 }
@@ -557,13 +416,6 @@ namespace TalkESD.EzSemble
 
                 foreach (var s in expr)
                 {
-                    //if (s == "~")
-                    //{
-                    //    continuationsQueued++;
-                    //    //queue[queue.Count - 1] += "~";
-                    //    //queue.Add("~");
-                    //}
-                    //else 
                     if (Operators.ContainsKey(s))
                     {
                         //while the stack is not empty and the top of the stack is not an (
@@ -582,7 +434,7 @@ namespace TalkESD.EzSemble
                     }
                     //These things aren't technically functions and thus do not 
                     //need to push their ID as an expression.
-                    else if (s.StartsWith("GetREG") || s.StartsWith("SetREG") || s == "AbortIfFalse")
+                    else if (s.StartsWith("GetREG") || s.StartsWith("SetREG") || s == "AbortIfFalse" || s == "StateGroupArg")
                     {
                         registArgument();
                         stack.Push(s);
@@ -599,27 +451,23 @@ namespace TalkESD.EzSemble
 
                     //handle opening parenthesis
                     //simply push this on the stack
-                    else if (s == "(")
+                    else if (s == "(" || s == "[")
                     {
-                        stack.Push(s);
+                        stack.Push("(");
                     }
 
                     //handle closing parenthesis
                     //pop all operators off the stack until the matching 
                     //opening parenthesis is found and then discard the
                     //opening parenthesis
-                    else if (s == ")")
+                    else if (s == ")" || s == "]")
                     {
-                        while (stack.Count != 0 && stack.Peek() != "(")
+                        while (stack.Count != 0 && stack.Peek() != "(" && stack.Peek() != "[")
                         {
-                            if (!popAndEnqueue(rightParenthesis: true))
-                            {
-                                queue.Add("~");
-                            }
+                            // This is where we'd add ContinueIfFalse if we cared about it.
+                            popAndEnqueue();
                         }
 
-                        //if (funcArgCounts.Count > 0)
-                        //    queue.Add($"{funcArgCounts.Pop()}");
                         //forget the (
                         stack.Pop();
                     }
@@ -628,7 +476,7 @@ namespace TalkESD.EzSemble
                     //until we reach the opening parenthesis, but leave that on the stack
                     else if (s == ",")
                     {
-                        while (stack.Peek() != "(")
+                        while (stack.Peek() != "(" && stack.Peek() != "[")
                             popAndEnqueue();
                         funcArgCounts.Push(funcArgCounts.Pop() + 1);
                     }
@@ -638,8 +486,6 @@ namespace TalkESD.EzSemble
                         registArgument();
                         queue.Add(s);
                     }
-
-
                 }
 
                 //pop off the rest of the stack

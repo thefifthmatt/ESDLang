@@ -5,9 +5,9 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
-using static TalkESD.Adapter.ESD;
+using static ESDLang.Adapter.ESDL;
 
-namespace TalkESD.EzSemble
+namespace ESDLang.EzSemble
 {
     public class EzSembleContext
     {
@@ -99,7 +99,7 @@ namespace TalkESD.EzSemble
             }
             else
             {
-                var regex = Regex.Match(name, @"(\d+):(\d+)");
+                var regex = Regex.Match(name, @"(\d+):(-?\d+)");
                 if (regex.Groups.Count == 3 
                     && int.TryParse(regex.Groups[1].Value, out int cmdBank) 
                     && int.TryParse(regex.Groups[2].Value, out int cmdID))

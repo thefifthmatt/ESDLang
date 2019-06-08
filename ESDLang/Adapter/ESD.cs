@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Crypto = System.Security.Cryptography;
-using SF = SoulsFormats;
-using TalkESD.EzSemble;
+using ESDLang.EzSemble;
+using SoulsFormats;
 
-namespace TalkESD.Adapter
+namespace ESDLang.Adapter
 {
     /// <summary>
     /// A state machine used for gameplay, menus, and dialog throughout the series.
     /// </summary>
-    public class ESD
+    public class ESDL
     {
         /// <summary>
         /// If true, write in 64-bit format; if false, write in 32-bit format.
@@ -43,7 +43,7 @@ namespace TalkESD.Adapter
         /// </summary>
         public Dictionary<long, string> StateGroupNames;
 
-        private SF.DCX.Type Compression = SF.DCX.Type.None;
+        public DCX.Type Compression = DCX.Type.None;
         internal string LastSavedHash;
 
         /// <summary>
@@ -83,12 +83,12 @@ namespace TalkESD.Adapter
         /// <summary>
         /// Creates a new ESD formatted for DS1 with no state groups. 
         /// </summary>
-        public ESD() : this(false, 1) { }
+        public ESDL() : this(false, 1) { }
 
         /// <summary>
         /// Creates a new ESD with the given format and no state groups.
         /// </summary>
-        public ESD(bool longFormat, int darkSoulsCount)
+        public ESDL(bool longFormat, int darkSoulsCount)
         {
             LongFormat = longFormat;
             DarkSoulsCount = darkSoulsCount;
@@ -101,7 +101,7 @@ namespace TalkESD.Adapter
 
         private static readonly Crypto.MD5 MD5 = Crypto.MD5.Create();
 
-        private static string GetMD5HashOfStream(SF.BinaryReaderEx br)
+        private static string GetMD5HashOfStream(BinaryReaderEx br)
         {
             br.StepIn(0);
             var hash = MD5.ComputeHash(br.Stream);
@@ -109,7 +109,7 @@ namespace TalkESD.Adapter
             return string.Join("", hash.Select(x => x.ToString("X2")));
         }
 
-        private static string GetMD5HashOfStream(SF.BinaryWriterEx bw)
+        private static string GetMD5HashOfStream(BinaryWriterEx bw)
         {
             bw.StepIn(0);
             var hash = MD5.ComputeHash(bw.Stream);
@@ -123,9 +123,9 @@ namespace TalkESD.Adapter
         /// If metadata does not exist, an exception is thrown if <paramref name="assertMetadataExists"/> is true,
         /// and default metadata is generated if it is false.
         /// </summary>
-        public static ESD ReadWithMetadata(string path, bool isBinaryMetadata, bool assertMetadataExists, EzSembleContext context)
+        public static ESDL ReadWithMetadata(string path, bool isBinaryMetadata, bool assertMetadataExists, EzSembleContext context)
         {
-            var esd = ESD.ReadWithContext(path, context);
+            var esd = ESDL.ReadWithContext(path, context);
 
             if (System.IO.File.Exists(path + ".meta"))
             {
@@ -139,13 +139,13 @@ namespace TalkESD.Adapter
             return esd;
         }
 
-        public static ESD ReadWithContext(string path, EzSembleContext context)
+        public static ESDL ReadWithContext(string path, EzSembleContext context)
         {
             using (FileStream stream = File.OpenRead(path))
             {
-                SF.BinaryReaderEx br = new SF.BinaryReaderEx(false, stream);
-                ESD file = new ESD();
-                br = SF.SFUtil.GetDecompressedBR(br, out file.Compression);
+                BinaryReaderEx br = new BinaryReaderEx(false, stream);
+                ESDL file = new ESDL();
+                br = SFUtil.GetDecompressedBR(br, out file.Compression);
                 file.ReadWithContext(br, context);
                 return file;
             }
@@ -158,7 +158,7 @@ namespace TalkESD.Adapter
         {
             using (MemoryStream corruptPreventStream = new MemoryStream())
             {
-                SF.BinaryWriterEx bw = new SF.BinaryWriterEx(false, corruptPreventStream);
+                BinaryWriterEx bw = new BinaryWriterEx(false, corruptPreventStream);
                 WriteWithContext(bw, context);
 
                 corruptPreventStream.Position = 0;
@@ -174,7 +174,7 @@ namespace TalkESD.Adapter
             SaveMetadataFile(path + ".meta", isBinaryMetadata);
         }
 
-        public void ReadWithContext(SF.BinaryReaderEx br, EzSembleContext context)
+        public void ReadWithContext(BinaryReaderEx br, EzSembleContext context)
         {
             LastSavedHash = GetMD5HashOfStream(br);
 
@@ -287,7 +287,7 @@ namespace TalkESD.Adapter
                 StateGroupNames.Add(g.Key, $"StateGroup{g.Key}");
         }
 
-        public void Read(SF.BinaryReaderEx br)
+        public void Read(BinaryReaderEx br)
         {
             ReadWithContext(br, new EzSembleContext());
         }
@@ -320,7 +320,7 @@ namespace TalkESD.Adapter
             return conditions;
         }
 
-        public void WriteWithContext(SF.BinaryWriterEx bw, EzSembleContext context)
+        public void WriteWithContext(BinaryWriterEx bw, EzSembleContext context)
         {
             bw.BigEndian = false;
 
@@ -534,12 +534,12 @@ namespace TalkESD.Adapter
             Metadata = ESDMetadata.Generate(this);
         }
 
-        public void Write(SF.BinaryWriterEx bw)
+        public void Write(BinaryWriterEx bw)
         {
             WriteWithContext(bw, new EzSembleContext());
         }
 
-        private long[] ReadStateGroup(SF.BinaryReaderEx br, bool longFormat, long dataStart, long stateSize)
+        private long[] ReadStateGroup(BinaryReaderEx br, bool longFormat, long dataStart, long stateSize)
         {
             long statesOffset = ReadVarint(br, longFormat);
             long stateCount = ReadVarint(br, longFormat);
@@ -702,7 +702,7 @@ namespace TalkESD.Adapter
                 Name = "New State";
             }
 
-            internal State(EzSembleContext context, SF.BinaryReaderEx br, bool longFormat, long dataStart)
+            internal State(EzSembleContext context, BinaryReaderEx br, bool longFormat, long dataStart)
             {
                 ID = ReadVarint(br, longFormat);
                 long conditionOffsetsOffset = ReadVarint(br, longFormat);
@@ -716,11 +716,11 @@ namespace TalkESD.Adapter
 
                 string DissembleScript(int count)
                 {
-                    var Commands = new List<SF.ESD.CommandCall>(count);
+                    var Commands = new List<ESD.CommandCall>(count);
                     for (int i = 0; i < count; i++)
                     {
                         var Call = new CommandCall(context, br, longFormat, dataStart);
-                        Commands.Add(new SF.ESD.CommandCall(Call.CommandBank, Call.CommandID, Call.Arguments.ToArray()));
+                        Commands.Add(new ESD.CommandCall(Call.CommandBank, Call.CommandID, Call.Arguments.ToArray()));
                     }
                     return EzSembler.DissembleCommandScript(context, Commands).ToString();
                 }
@@ -750,7 +750,7 @@ namespace TalkESD.Adapter
                 conditionOffsets = null;
             }
 
-            internal void WriteHeader(EzSembleContext context, SF.BinaryWriterEx bw, bool longFormat, long groupID, long stateID)
+            internal void WriteHeader(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, long stateID)
             {
                 var thisCompiled = GetCompiledState(context);
 
@@ -769,7 +769,7 @@ namespace TalkESD.Adapter
                 WriteVarint(bw, longFormat, WhileCommands.Count);
             }
 
-            internal void WriteCommandCalls(EzSembleContext context, SF.BinaryWriterEx bw, bool longFormat, long groupID, long stateID, long dataStart, List<CommandCall> commands)
+            internal void WriteCommandCalls(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, long stateID, long dataStart, List<CommandCall> commands)
             {
                 var thisCompiled = GetCompiledState(context);
 
@@ -820,7 +820,7 @@ namespace TalkESD.Adapter
                 }
             }
 
-            internal int WriteConditionOffsets(SF.BinaryWriterEx bw, bool longFormat, long groupID, long stateID, long dataStart, Dictionary<Condition, long> conditionOffsets)
+            internal int WriteConditionOffsets(BinaryWriterEx bw, bool longFormat, long groupID, long stateID, long dataStart, Dictionary<Condition, long> conditionOffsets)
             {
                 FillVarint(bw, longFormat, $"State{groupID}-{stateID}:ConditionsOffset", bw.Position - dataStart);
                 foreach (Condition cond in Conditions)
@@ -833,7 +833,7 @@ namespace TalkESD.Adapter
             /// </summary>
             public override string ToString()
             {
-                return $"{nameof(ESD)}.{nameof(State)}: \"{Name}\"";
+                return $"{nameof(ESDL)}.{nameof(State)}: \"{Name}\"";
             }
         }
 
@@ -943,7 +943,7 @@ namespace TalkESD.Adapter
                 Name = "New Condition";
             }
 
-            internal Condition(EzSembleContext context, SF.BinaryReaderEx br, bool longFormat, long dataStart)
+            internal Condition(EzSembleContext context, BinaryReaderEx br, bool longFormat, long dataStart)
             {
                 stateOffset = ReadVarint(br, longFormat);
                 long passCommandsOffset = ReadVarint(br, longFormat);
@@ -955,11 +955,11 @@ namespace TalkESD.Adapter
 
                 string DissembleScript(int count)
                 {
-                    var Commands = new List<SF.ESD.CommandCall>(count);
+                    var Commands = new List<ESD.CommandCall>(count);
                     for (int i = 0; i < count; i++)
                     {
                         var Call = new CommandCall(context, br, longFormat, dataStart);
-                        Commands.Add(new SF.ESD.CommandCall(Call.CommandBank, Call.CommandID, Call.Arguments.ToArray()));
+                        Commands.Add(new ESD.CommandCall(Call.CommandBank, Call.CommandID, Call.Arguments.ToArray()));
                     }
                     return EzSembler.DissembleCommandScript(context, Commands).ToString();
                 }
@@ -1006,7 +1006,7 @@ namespace TalkESD.Adapter
                     condition.GetStateAndConditions(stateOffsets, conditions);
             }
 
-            internal void WriteHeader(EzSembleContext context, SF.BinaryWriterEx bw, bool longFormat, long groupID, int index, Dictionary<long, long> stateOffsets)
+            internal void WriteHeader(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, int index, Dictionary<long, long> stateOffsets)
             {
                 if (TargetState.HasValue)
                     WriteVarint(bw, longFormat, stateOffsets[TargetState.Value]);
@@ -1023,7 +1023,7 @@ namespace TalkESD.Adapter
                 WriteVarint(bw, longFormat, GetCompiledCondition(context).Evaluator.Length);
             }
 
-            internal void WriteCommandCalls(EzSembleContext context, SF.BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart, List<CommandCall> commands)
+            internal void WriteCommandCalls(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart, List<CommandCall> commands)
             {
                 var PassCommands = GetCompiledCondition(context).PassCommands;
                 if (PassCommands.Count == 0)
@@ -1041,7 +1041,7 @@ namespace TalkESD.Adapter
                 }
             }
 
-            internal int WriteConditionOffsets(SF.BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart, Dictionary<Condition, long> conditionOffsets)
+            internal int WriteConditionOffsets(BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart, Dictionary<Condition, long> conditionOffsets)
             {
                 if (Subconditions.Count == 0)
                 {
@@ -1056,7 +1056,7 @@ namespace TalkESD.Adapter
                 return Subconditions.Count;
             }
 
-            internal void WriteEvaluator(EzSembleContext context, SF.BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart)
+            internal void WriteEvaluator(EzSembleContext context, BinaryWriterEx bw, bool longFormat, long groupID, int index, long dataStart)
             {
                 FillVarint(bw, longFormat, $"Condition{groupID}-{index}:EvaluatorOffset", bw.Position - dataStart);
                 bw.WriteBytes(GetCompiledCondition(context).Evaluator);
@@ -1067,7 +1067,7 @@ namespace TalkESD.Adapter
             /// </summary>
             public override string ToString()
             {
-                return $"{nameof(ESD)}.{nameof(Condition)}: \"{Name}\"";
+                return $"{nameof(ESDL)}.{nameof(Condition)}: \"{Name}\"";
             }
         }
 
@@ -1094,7 +1094,7 @@ namespace TalkESD.Adapter
             /// <summary>
             /// Converts a base ESD CommandCall into an adapter CommandCall.
             /// </summary>
-            public static CommandCall Adapt(SF.ESD.CommandCall other)
+            public static CommandCall Adapt(ESD.CommandCall other)
             {
                 return new CommandCall(other.CommandBank, other.CommandID, other.Arguments.ToArray());
             }
@@ -1119,7 +1119,7 @@ namespace TalkESD.Adapter
                 Arguments = arguments.ToList();
             }
 
-            internal CommandCall(EzSembleContext context, SF.BinaryReaderEx br, bool longFormat, long dataStart)
+            internal CommandCall(EzSembleContext context, BinaryReaderEx br, bool longFormat, long dataStart)
             {
                 CommandBank = br.AssertInt32(1, 5, 6, 7);
                 CommandID = br.ReadInt32();
@@ -1139,7 +1139,7 @@ namespace TalkESD.Adapter
                 br.StepOut();
             }
 
-            internal void WriteHeader(SF.BinaryWriterEx bw, bool longFormat, int index)
+            internal void WriteHeader(BinaryWriterEx bw, bool longFormat, int index)
             {
                 bw.WriteInt32(CommandBank);
                 bw.WriteInt32(CommandID);
@@ -1147,7 +1147,7 @@ namespace TalkESD.Adapter
                 WriteVarint(bw, longFormat, Arguments.Count);
             }
 
-            internal void WriteArgs(EzSembleContext context, SF.BinaryWriterEx bw, bool longFormat, int index, long dataStart)
+            internal void WriteArgs(EzSembleContext context, BinaryWriterEx bw, bool longFormat, int index, long dataStart)
             {
                 FillVarint(bw, longFormat, $"Command{index}:ArgsOffset", bw.Position - dataStart);
                 for (int i = 0; i < Arguments.Count; i++)
@@ -1157,7 +1157,7 @@ namespace TalkESD.Adapter
                 }
             }
 
-            internal void WriteBytecode(EzSembleContext context, SF.BinaryWriterEx bw, bool longFormat, int index, long dataStart)
+            internal void WriteBytecode(EzSembleContext context, BinaryWriterEx bw, bool longFormat, int index, long dataStart)
             {
                 for (int i = 0; i < Arguments.Count; i++)
                 {
@@ -1171,11 +1171,11 @@ namespace TalkESD.Adapter
             /// </summary>
             public override string ToString()
             {
-                return $"{nameof(ESD)}.{nameof(CommandCall)}: {CommandBank}:{CommandID}({(string.Join(", ", Arguments))})";
+                return $"{nameof(ESDL)}.{nameof(CommandCall)}: {CommandBank}:{CommandID}({(string.Join(", ", Arguments))})";
             }
         }
 
-        private static long ReadVarint(SF.BinaryReaderEx br, bool longFormat)
+        private static long ReadVarint(BinaryReaderEx br, bool longFormat)
         {
             if (longFormat)
                 return br.ReadInt64();
@@ -1183,7 +1183,7 @@ namespace TalkESD.Adapter
                 return br.ReadInt32();
         }
 
-        private static long[] ReadVarints(SF.BinaryReaderEx br, bool longFormat, long count)
+        private static long[] ReadVarints(BinaryReaderEx br, bool longFormat, long count)
         {
             if (longFormat)
                 return br.ReadInt64s((int)count);
@@ -1191,7 +1191,7 @@ namespace TalkESD.Adapter
                 return Array.ConvertAll(br.ReadInt32s((int)count), i => (long)i);
         }
 
-        private static long AssertVarint(SF.BinaryReaderEx br, bool longFormat, params long[] values)
+        private static long AssertVarint(BinaryReaderEx br, bool longFormat, params long[] values)
         {
             if (longFormat)
                 return br.AssertInt64(values);
@@ -1199,7 +1199,7 @@ namespace TalkESD.Adapter
                 return br.AssertInt32(Array.ConvertAll(values, l => (int)l));
         }
 
-        private static void WriteVarint(SF.BinaryWriterEx bw, bool longFormat, long value)
+        private static void WriteVarint(BinaryWriterEx bw, bool longFormat, long value)
         {
             if (longFormat)
                 bw.WriteInt64(value);
@@ -1207,7 +1207,7 @@ namespace TalkESD.Adapter
                 bw.WriteInt32((int)value);
         }
 
-        private static void ReserveVarint(SF.BinaryWriterEx bw, bool longFormat, string name)
+        private static void ReserveVarint(BinaryWriterEx bw, bool longFormat, string name)
         {
             if (longFormat)
                 bw.ReserveInt64(name);
@@ -1215,7 +1215,7 @@ namespace TalkESD.Adapter
                 bw.ReserveInt32(name);
         }
 
-        private static void FillVarint(SF.BinaryWriterEx bw, bool longFormat, string name, long value)
+        private static void FillVarint(BinaryWriterEx bw, bool longFormat, string name, long value)
         {
             if (longFormat)
                 bw.FillInt64(name, value);

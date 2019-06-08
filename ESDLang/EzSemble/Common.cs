@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace TalkESD.EzSemble
+namespace ESDLang.EzSemble
 {
     internal static class Common
     {

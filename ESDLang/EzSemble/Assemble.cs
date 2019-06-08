@@ -4,9 +4,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using SoulsFormats;
-using static TalkESD.EzSemble.Common;
+using static ESDLang.EzSemble.AST;
+using static ESDLang.EzSemble.Common;
 
-namespace TalkESD.EzSemble
+namespace ESDLang.EzSemble
 {
     /// <summary>
     /// Assembles and dissembles "EzLanguage" bytecode.
@@ -18,7 +19,7 @@ namespace TalkESD.EzSemble
         /// </summary>
         public static ESD.CommandCall AssembleCommandCall(EzSembleContext context, string plaintext)
         {
-            var regex = System.Text.RegularExpressions.Regex.Match(plaintext, @"^([A-Za-z0-9_:]+)\((.*)\)$");
+            var regex = System.Text.RegularExpressions.Regex.Match(plaintext, @"^([A-Za-z0-9_\-:]+)\((.*)\)$");
 
             if (regex.Groups.Count != 3)
             {
@@ -126,11 +127,119 @@ namespace TalkESD.EzSemble
         }
 
         /// <summary>
+        /// Assembles an Expr into bytecode.
+        /// </summary>
+        public static byte[] AssembleExpression(EzSembleContext context, Expr topExpr)
+        {
+            using (var ms = new MemoryStream())
+            using (var bw = new BinaryWriter(ms, Encoding.Unicode))
+            {
+                void writeExpr(Expr expr)
+                {
+                    // Number
+                    if (expr is ConstExpr ce)
+                    {
+                        if (ce.Value is int i)
+                        {
+                            bw.Write((byte)0x82);
+                            bw.Write(i);
+                        }
+                        else if (ce.Value is sbyte b)
+                        {
+                            bw.Write((byte)(b + 64));
+                        }
+                        else if (ce.Value is float f)
+                        {
+                            bw.Write((byte)0x80);
+                            bw.Write(f);
+                        }
+                        else if (ce.Value is double d)
+                        {
+                            bw.Write((byte)0x81);
+                            bw.Write(d);
+                        }
+                        else if (ce.Value is string s)
+                        {
+                            if (s.Contains('\r') || s.Contains('\n'))
+                                throw new Exception("String literals may not contain newlines");
+                            bw.Write((byte)0xA5);
+                            bw.Write(Encoding.Unicode.GetBytes(s + "\0"));
+                        }
+                        else throw new Exception($"Invalid type {ce.Value.GetType()} for ConstExpr {ce} in {topExpr}");
+                    }
+                    else if (expr is UnaryExpr ue) {
+                        writeExpr(ue.Arg);
+                        bw.Write(BytesByOperator[ue.Op]);
+                    }
+                    else if (expr is BinaryExpr be)
+                    {
+                        writeExpr(be.Rhs);
+                        writeExpr(be.Lhs);
+                        bw.Write(BytesByOperator[be.Op]);
+                    }
+                    else if (expr is FunctionCall func)
+                    {
+                        string name = func.Name;
+                        if (name.StartsWith("SetREG"))
+                        {
+                            int regIndex = byte.Parse(name.Substring(name.Length - 1));
+                            writeExpr(func.Args[0]);
+                            bw.Write((byte)(0xA7 + regIndex));
+                        }
+                        else if (name.StartsWith("GetREG"))
+                        {
+                            int regIndex = byte.Parse(name.Substring(name.Length - 1));
+                            bw.Write((byte)(0xAF + regIndex));
+                        }
+                        else if (name.StartsWith("StateGroupArg"))
+                        {
+                            int index = func.Args[0].AsInt();
+                        }
+                        else
+                        {
+                            for (int i = func.Args.Count - 1; i >= 0; i--)
+                            {
+                                writeExpr(func.Args[i]);
+                            }
+                            int id = context.GetFunctionID(name);
+                            if (id >= -64 && id <= 63)
+                            {
+                                bw.Write((byte)(id + 64));
+                            }
+                            else
+                            {
+                                bw.Write((byte)0x82);
+                                bw.Write(id);
+                            }
+                            bw.Write((byte)(0x84 + func.Args.Count));
+                        }
+                    }
+                    else if (expr is Unknown huh)
+                    {
+                        bw.Write(huh.Opcode);
+                    }
+                    else throw new Exception($"Unknown expression subclass {expr.GetType()}: {expr} in {topExpr}");
+                    if (expr.IfFalse == FalseCond.CONTINUE)
+                    {
+                        bw.Write(BytesByTerminator['~']);
+                    }
+                    else if (expr.IfFalse == FalseCond.ABORT)
+                    {
+                        bw.Write(BytesByTerminator['.']);
+                    }
+                }
+                writeExpr(topExpr);
+                bw.Write((byte)0xA1);
+                return ms.ToArray();
+            }
+        }
+
+        /// <summary>
         /// Assembles a plain text "EzLanguage" expression into bytecode.
         /// </summary>
         public static byte[] AssembleExpression(EzSembleContext context, string plaintext)
         {
-            var postfixPlaintext = EzInfixor.InfixToPostFix(context, $"({plaintext.Trim('\n', ' ')})");
+            var postfixPlaintext = EzInfixor.InfixToEzLanguage(context, plaintext);
             using (var ms = new MemoryStream())
             using (var bw = new BinaryWriter(ms, Encoding.Unicode))
             {
