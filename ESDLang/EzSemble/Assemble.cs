@@ -126,6 +126,22 @@ namespace ESDLang.EzSemble
             return result;
         }
 
+        public static List<ESD.CommandCall> AssembleCommandScript(EzSembleContext context, Block block)
+        {
+            var result = new List<ESD.CommandCall>();
+            foreach (Statement st in block.Cmds)
+            {
+                var cmdId = context.GetCommandID(st.Name);
+                result.Add(new ESD.CommandCall()
+                {
+                    CommandBank = cmdId.Bank,
+                    CommandID = cmdId.ID,
+                    Arguments = st.Args.Select(x => AssembleExpression(context, x)).ToList(),
+                });
+            }
+            return result;
+        }
+
         /// <summary>
         /// Assembles an Expr into bytecode.
         /// </summary>
@@ -173,8 +189,8 @@ namespace ESDLang.EzSemble
                     }
                     else if (expr is BinaryExpr be)
                     {
-                        writeExpr(be.Rhs);
                         writeExpr(be.Lhs);
+                        writeExpr(be.Rhs);
                         bw.Write(BytesByOperator[be.Op]);
                     }
                     else if (expr is FunctionCall func)
@@ -194,13 +210,11 @@ namespace ESDLang.EzSemble
                         else if (name.StartsWith("StateGroupArg"))
                         {
                             int index = func.Args[0].AsInt();
+                            bw.Write((byte)(index + 64));
+                            bw.Write((byte)0xB8);
                         }
                         else
                         {
-                            for (int i = func.Args.Count - 1; i >= 0; i--)
-                            {
-                                writeExpr(func.Args[i]);
-                            }
                             int id = context.GetFunctionID(name);
                             if (id >= -64 && id <= 63)
                             {
@@ -211,8 +225,21 @@ namespace ESDLang.EzSemble
                                 bw.Write((byte)0x82);
                                 bw.Write(id);
                             }
+                            // for (int i = func.Args.Count - 1; i >= 0; i--)
+                            for (int i = 0; i < func.Args.Count; i++)
+                            {
+                                writeExpr(func.Args[i]);
+                            }
                             bw.Write((byte)(0x84 + func.Args.Count));
                         }
+                    }
+                    else if (expr is CallResult)
+                    {
+                        bw.Write((byte)0xB9);
+                    }
+                    else if (expr is CallOngoing)
+                    {
+                        bw.Write((byte)0xBA);
                     }
                     else if (expr is Unknown huh)
                     {
@@ -230,7 +257,9 @@ namespace ESDLang.EzSemble
                 }
                 writeExpr(topExpr);
                 bw.Write((byte)0xA1);
-                return ms.ToArray();
+                byte[] arr = ms.ToArray();
+                if (arr.Length == 1) throw new Exception($"{topExpr}");
+                return arr;
             }
         }
 

@@ -294,7 +294,21 @@ namespace ESDLang.EzSemble
                     }
                     else if (b == 0xB8)
                     {
-                        exprs.Push(new FunctionCall { Args = popArgs(1), Name = "StateGroupArg" });
+                        // exprs.Push(new FunctionCall { Args = popArgs(1), Name = "StateGroupArg" });
+                        FunctionCall func = new FunctionCall { Args = popArgs(1), Name = "StateGroupArg" };
+                        ConstExpr ce = func.Args[0] as ConstExpr;
+                        // Console.WriteLine($"{ce} {ce.Value.GetType()}");
+                        exprs.Push(func);
+                    }
+                    else if (b == 0xB9)
+                    {
+                        exprs.Push(new CallResult());
+                    }
+                    else if (b == 0xBA)
+                    {
+                        // This opcode just returns a constant value 0x7FFFFFFF
+                        // But use higher-level representation of it
+                        exprs.Push(new CallOngoing());
                     }
                     else if (b == 0xA1)
                     {
@@ -305,7 +319,7 @@ namespace ESDLang.EzSemble
                         exprs.Push(new Unknown { Opcode = b });
                     }
                 }
-                if (exprs.Count != 1) throw new Exception("Could not parse expr. Remaining stack: " + string.Join("; ", exprs));
+                if (exprs.Count != 1) throw new Exception("Could not parse expr. Remaining stack: " + string.Join("; ", exprs) + $"; = {string.Join(" ", Bytes.Select(x => x.ToString("X2")))}");
                 return exprs.Pop();
             }
 

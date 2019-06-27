@@ -21,13 +21,14 @@ namespace ESDLang.EzSemble
                 }
                 return new Block { Cmds = newCmds };
             }
-            public void Visit(Func<Expr, Expr> previsit = null, Func<Expr, Expr> postvisit = null)
+            public void Visit(AstVisitor visitor)
             {
                 foreach (Statement st in Cmds)
                 {
-                    st.Visit(previsit, postvisit);
+                    st.Visit(visitor);
                 }
             }
+            public static Block MakeEmpty() => new Block { Cmds = new List<Statement>() };
         }
 
         public class Statement
@@ -46,12 +47,12 @@ namespace ESDLang.EzSemble
                 }
                 return st;
             }
-            public void Visit(Func<Expr, Expr> previsit = null, Func<Expr, Expr> postvisit = null)
+            public void Visit(AstVisitor visitor)
             {
+                visitor.PrevisitSt?.Invoke(this);
                 for (int i = 0; i < Args.Count; i++)
                 {
-                    Expr newArg = Args[i].Visit(previsit, postvisit);
-                    if (newArg != null) Args[i] = newArg;
+                    Args[i] = Args[i].Visit(visitor);
                 }
             }
         }
@@ -64,7 +65,7 @@ namespace ESDLang.EzSemble
         {
             // Any special handling if the expression is false. Seems to be no-op for game ESDs in DS3 and on, used for optimization.
             public FalseCond IfFalse { get; set; }
-            // Can preserve AST info after tree rewriting. Possibly dubious feature
+            // Tag for AST node
             public object SourceInfo { get; set; }
 
             public int AsInt()
@@ -85,11 +86,7 @@ namespace ESDLang.EzSemble
             {
                 Expr expr = this;
                 string s;
-                if (SourceInfo != null)
-                {
-                    s = parent == null ? SourceInfo.ToString() : $"{SourceInfo}";
-                }
-                else if (expr is ConstExpr ce)
+                if (expr is ConstExpr ce)
                 {
                     if (ce.Value is float f) s = f.ToString("R");
                     else if (ce.Value is double d) s = d.ToString("R");
@@ -121,6 +118,15 @@ namespace ESDLang.EzSemble
                 {
                     s = func.Name == "StateGroupArg" ? $"{func.Name}[{func.Args[0]}]" : $"{func.Name}({string.Join(", ", func.Args)})";
                 }
+                else if (expr is CallResult)
+                {
+                    // No special language for this in zeditor yet
+                    s = "#B9";
+                }
+                else if (expr is CallOngoing)
+                {
+                    s = "#BA";
+                }
                 else if (expr is Unknown huh)
                 {
                     s = $"#{huh.Opcode:X2}";
@@ -142,41 +148,41 @@ namespace ESDLang.EzSemble
 
             public Expr Copy()
             {
-                return Visit(previsit: e =>
+                return Visit(AstVisitor.Pre(e =>
                 {
                     e = (Expr)e.MemberwiseClone();
                     if (e is FunctionCall f) f.Args = f.Args.ToList();
                     return e;
-                });
+                }));
             }
-            public Expr Visit(Func<Expr, Expr> previsit = null, Func<Expr, Expr> postvisit = null)
+            public Expr Visit(AstVisitor visitor, Expr parent=null)
             {
-                Expr newArg = null;
-                Expr preExpr = previsit?.Invoke(this);
-                Expr expr = preExpr == null ? this : preExpr;
+                Expr expr = this;
+                Expr newExpr = visitor.Previsit?.Invoke(expr);
+                if (newExpr != null) expr = newExpr;
+                newExpr = visitor.PrevisitParent?.Invoke(expr, parent);
+                if (newExpr != null) expr = newExpr;
                 if (expr is FunctionCall f)
                 {
                     for (int i = 0; i < f.Args.Count; i++)
                     {
-                        newArg = f.Args[i].Visit(previsit, postvisit);
-                        if (newArg != null) f.Args[i] = newArg;
+                        f.Args[i] = f.Args[i].Visit(visitor, expr);
                     }
                 }
                 else if (expr is BinaryExpr b)
                 {
-                    newArg = b.Lhs.Visit(previsit, postvisit);
-                    if (newArg != null) b.Lhs = newArg;
-                    newArg = b.Rhs.Visit(previsit, postvisit);
-                    if (newArg != null) b.Rhs = newArg;
+                    b.Lhs = b.Lhs.Visit(visitor, expr);
+                    b.Rhs = b.Rhs.Visit(visitor, expr);
                 }
                 else if (expr is UnaryExpr u)
                 {
-                    newArg = u.Arg.Visit(previsit, postvisit);
-                    if (newArg != null) u.Arg = newArg;
+                    u.Arg = u.Arg.Visit(visitor, expr);
                 }
-                Expr postExpr = postvisit?.Invoke(expr);
-                if (postExpr != null) expr = postExpr;
-                return preExpr == null && postExpr == null ? null : expr;
+                newExpr = visitor.Postvisit?.Invoke(expr);
+                if (newExpr != null) expr = newExpr;
+                newExpr = visitor.PostvisitParent?.Invoke(expr, parent);
+                if (newExpr != null) expr = newExpr;
+                return expr;
             }
         }
 
@@ -227,9 +233,30 @@ namespace ESDLang.EzSemble
             public string Op { get; set; }
             public Expr Arg { get; set; }
         }
+        public class CallResult : Expr { }
+        public class CallOngoing : Expr { }
         public class Unknown : Expr
         {
             public byte Opcode { get; set; }
+        }
+
+        public class AstVisitor
+        {
+            public static AstVisitor Pre(Func<Expr, Expr> func) => new AstVisitor { Previsit = func };
+            public static AstVisitor Pre(Func<Expr, Expr, Expr> func) => new AstVisitor { PrevisitParent = func };
+            public static AstVisitor PreAct(Action<Expr> func) => new AstVisitor { Previsit = e => { func(e); return null; } };
+            public static AstVisitor Post(Func<Expr, Expr> func) => new AstVisitor { Postvisit = func };
+            public static AstVisitor Post(Func<Expr, Expr, Expr> func) => new AstVisitor { PostvisitParent = func };
+            public static AstVisitor PostAct(Action<Expr> func) => new AstVisitor { Postvisit = e => { func(e); return null; } };
+
+            // AST visitor functions.
+            // If they return a non-null value, that node will be replaced in the tree, or returned at the top level.
+            // This is a bit complex but probably better than setting every node every time.
+            public Func<Expr, Expr> Previsit { get; set; }
+            public Func<Expr, Expr, Expr> PrevisitParent { get; set; }
+            public Func<Expr, Expr> Postvisit { get; set; }
+            public Func<Expr, Expr, Expr> PostvisitParent { get; set; }
+            public Action<Statement> PrevisitSt { get; set; }
         }
     }
 }
