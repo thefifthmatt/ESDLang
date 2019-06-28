@@ -4,7 +4,7 @@ C# ESD library and scripting tool for Fromsoft games.
 
 ## esdtool.exe
 
-See Releases tab, or Script/ directory for source. This also requires a helper library [SoulsIds](https://github.com/thefifthmatt/SouldsIds).
+See Releases tab, or Script/ directory for source. This also requires a helper library [SoulsIds](https://github.com/thefifthmatt/SoulsIds).
 
 Examples of the Python language in examples/.
 

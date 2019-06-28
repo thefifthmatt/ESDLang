@@ -48,7 +48,7 @@ namespace ESDLang.Script
         }
         public void Run()
         {
-            string docPath = options.Flag("talk") ? @"Script\ESDScriptingDocumentation_Talk.xml" : @"Script\ESDScriptingDocumentation_Chr.xml";
+            string docPath = options.Flag("talk") ? @"dist\ESDScriptingDocumentation_Talk.xml" : @"dist\ESDScriptingDocumentation_Chr.xml";
             if (opt is ESDOptions.Info)
             {
                 // Generic info
