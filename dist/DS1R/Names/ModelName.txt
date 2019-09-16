@@ -1,0 +1,164 @@
+c0000 Human
+c1200 Rat
+c1201 Small Rat
+c1202 Large Rat
+c1203 Snow Rat
+c2060 Infested Ghoul
+c2230 Stray Demon
+c2231 Demon Firesage
+c2232 Asylum Demon
+c2240 Capra Demon
+c2250 Taurus Demon
+c2260 Batwing Demon
+c2270 Mushroom Parent
+c2280 Mushroom Child
+c2290 Prototype Chained Prisoner
+c2300 Titanite Demon
+c2310 Crow Demon
+c2320 Iron Golem
+c2330 Demonic Foliage 
+c2360 Smough
+c2370 Channeler
+c2380 Giant Stone Knight
+c2390 Darkwraith
+c2400 Painting Guardian
+c2410 Silver Knight
+c2430 Demonic Statue
+c2500 Hollow
+c2510 Undead Merchant
+c2520 Undead Assassin
+c2530 Blowdart Sniper
+c2540 Armored Hollow
+c2550 Undead Soldier
+c2560 Balder Knight
+c2570 Heavy Knight
+c2590 Prototype Marvelous Chester
+c2591 Prototype Marvelous Chester
+c2600 Prototype Young Beatrice
+c2640 Andre of Astora
+c2650 Necromancer
+c2660 Butcher
+c2670 Ghost (Male)
+c2680 Ghost (Female)
+c2690 Serpent Soldier
+c2700 Serpent Mage
+c2710 Crystal Golem
+c2711 Golden Crystal Golem
+c2730 Crossbreed Priscilla
+c2731 Priscilla's Tail
+c2750 Anastacia of Astora
+c2780 Mimic
+c2790 Black Knight (Sword)
+c2791 Black Knight (Great Sword)
+c2792 Black Knight (Axe)
+c2793 Black Knight (Halberd)
+c2800 Undead Crystal Soldier
+c2810 Infested Barbarian (Club)
+c2811 Infested Barbarian (Boulder)
+c2820 Prototype Claw Hollow
+c2830 Phalanx
+c2840 Engorged Zombie
+c2860 Giant
+c2870 Sentinel or Royal Sentinel
+c2900 Skeleton
+c2910 Giant Skeleton
+c2920 Vamos
+c2930 Bonewheel Skeleton
+c2940 Skeleton Baby
+c2950 Skeleton Beast
+c2960 Bone Tower
+c3090 Giant Mosquito
+c3110 Demon's Souls Crystal Lizard
+c3200 Slime
+c3210 Egg Carrier
+c3220 Vile Maggot
+c3230 Moonlight Butterfly
+c3250 Man-Eater Shell
+c3270 Basilisk
+c3290 Brain Bug
+c3300 Crystal Lizard
+c3320 Pinwheel
+c3330 Pisaca
+c3340 Undead Attack Dog
+c3341 Flaming Attack Dog
+c3350 Possessed Tree
+c3370 Tree Lizard
+c3380 Giant Leech
+c3390 Burrowing Rockworm
+c3400 Crag-Spider
+c3410 Frog-Ray
+c3420 Undead Dragon
+c3421 Bounding Demon
+c3422 Undead Dragon's Wing
+c3430 Hellkite Drake
+c3431 Hellkite Drake's Tail
+c3440 Prototype Kalameet
+c3450 Everlasting Dragon
+c3451 Everlasting Dragon's Tail
+c3460 Armored Tusk
+c3461 Armored Tusk (Reinforced)
+c3470 Prototype Sanctuary Guardian
+c3471 Sanctuary Guardian
+c3480 Chaos Bug
+c3490 Good Vagrant
+c3491 Evil Vagrant
+c3500 Mass of Souls
+c3501 Wisp (exploding skull)
+c3510 Asylum Transport Crow
+c3511 Crow (cutscene version)
+c3520 Drake
+c3530 Hydra
+c3531 Hydra Head
+c4090 Marvelous Chester
+c4091 Alternate Chester?
+c4095 Alternate Chester?
+c4100 Artorias
+c4110 Hawkeye Gough
+c4120 Stone Guardian
+c4130 Scarecrow
+c4140 Elizabeth
+c4150 Bloathead
+c4160 Bloathead Sorcerer
+c4170 Humanity Phantom (small)
+c4171 Humanity Phantom (medium)
+c4172 Humanity Phantom (large)
+c4180 Chained Prisoner
+c4190 Attack Dog (DLC)
+c4500 Manus
+c4510 Black Dragon Kalameet
+c4511 Kalameet's Tail
+c4520 Young Sif
+c4530 Young Alvina
+c4531 Young Alvina
+c5200 Centipede Demon
+c5201 Centipede Demon's Arm
+c5202 Centipede Demon's Tail
+c5210 Sif
+c5220 Gravelord Nito
+c5230 Bed of Chaos
+c5231 Prototype/ Alternate Bed of Chaos
+c5240 Parasitic Wall Hugger
+c5250 Ceaseless Discharge
+c5260 Gaping Dragon
+c5261 Gaping Dragon's Tail
+c5270 Ornstein
+c5271 Super Ornstein
+c5280 Quelaag
+c5290 Seath the Scaleless
+c5290 Seath (First Encounter)
+c5300 Prototype Undead King Jar Eel
+c5310 Gwynevere
+c5320 Gwyndolin
+c5330 Frampt / Kaathe
+c5340 The Fair Lady
+c5350 Bell Gargoyles
+c5351 Lightning Gargoyles
+c5352 Gargoyle Tail
+c5353 Gaygolye Tail
+c5360 Great Feline
+c5361 Alvina
+c5362 Alvina
+c5370 Gwyn
+c5390 Four Kings
+c5400 Bed of Chaos Arm
+c5401 Bed of Chaos part

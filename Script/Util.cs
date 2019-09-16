@@ -57,5 +57,14 @@ namespace ESDLang.Script
                 return ret;
             }
         }
+        public static string WindowsifyPath(string path)
+        {
+            if (path.StartsWith("/mnt/"))
+            {
+                string drive = path[5].ToString();
+                return $"{drive.ToUpper()}:{path.Substring(6)}";
+            }
+            return path;
+        }
     }
 }

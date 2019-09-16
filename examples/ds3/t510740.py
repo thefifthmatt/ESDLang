@@ -1,24 +1,24 @@
 # -*- coding: utf-8 -*-
 def t510740_1():
-    """ State 0,1 """
+    """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """ State 2 """
+    """State 2"""
     while True:
         call = t510740_x12()
         assert IsClientPlayer() == 1
-        """ State 3 """
+        """State 3"""
         call = t510740_x13()
         assert not IsClientPlayer()
 
 def t510740_x0(z4=6000, flag4=1835, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
-    """ State 0,1 """
+    """State 0,1"""
     while True:
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
-        """ State 3 """
+        """State 3"""
         assert (GetEventStatus(flag4) == 1 or GetEventStatus(flag5) == 1 or GetEventStatus(flag6) ==
                 1 or GetEventStatus(flag7) == 1 or GetEventStatus(flag8) == 1)
-        """ State 2 """
+        """State 2"""
         if (not (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
             and not IsPlayerDead() and not IsCharacterDisabled())):
             pass
@@ -27,383 +27,409 @@ def t510740_x0(z4=6000, flag4=1835, flag5=6000, flag6=6000, flag7=6000, flag8=60
             pass
         elif CheckActionButtonArea(z4):
             break
-    """ State 4 """
+    """State 4"""
     return 0
 
 def t510740_x1():
-    """ State 0,1 """
+    """State 0,1"""
     if not CheckSpecificPersonTalkHasEnded(0):
-        """ State 7 """
+        """State 7"""
         ClearTalkProgressData()
         StopEventAnimWithoutForcingConversationEnd(0)
-        """ State 6 """
+        """State 6"""
         ReportConversationEndToHavokBehavior()
     else:
         pass
-    """ State 2 """
+    """State 2"""
     if CheckSpecificPersonGenericDialogIsOpen(0) == 1:
-        """ State 3 """
+        """State 3"""
         ForceCloseGenericDialog()
     else:
         pass
-    """ State 4 """
+    """State 4"""
     if CheckSpecificPersonMenuIsOpen(-1, 0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0):
-        """ State 5 """
+        """State 5"""
         ForceCloseMenu()
     else:
         pass
-    """ State 8 """
+    """State 8"""
     return 0
 
 def t510740_x2():
-    """ State 0,1 """
+    """State 0,1"""
     ClearTalkProgressData()
     StopEventAnimWithoutForcingConversationEnd(0)
     ForceCloseGenericDialog()
     ForceCloseMenu()
     ReportConversationEndToHavokBehavior()
-    """ State 2 """
+    """State 2"""
     return 0
 
 def t510740_x3(text3=_, z3=_, flag3=0, mode3=1):
-    """ State 0,5 """
+    """State 0,5"""
     assert t510740_x2() and CheckSpecificPersonTalkHasEnded(0) == 1
-    """ State 2 """
+    """State 2"""
     SetEventState(z3, 1)
-    """ State 1 """
+    """State 1"""
     TalkToPlayer(text3, -1, -1, flag3)
     assert CheckSpecificPersonTalkHasEnded(0) == 1
-    """ State 4 """
+    """State 4"""
     if not mode3:
         pass
     else:
-        """ State 3 """
+        """State 3"""
         ReportConversationEndToHavokBehavior()
-    """ State 6 """
+    """State 6"""
     return 0
 
 def t510740_x4(text2=_, z2=_, flag2=0, mode2=1):
-    """ State 0,5 """
+    """State 0,5"""
     assert t510740_x2() and CheckSpecificPersonTalkHasEnded(0) == 1
-    """ State 1 """
+    """State 1"""
     TalkToPlayer(text2, -1, -1, flag2)
     assert CheckSpecificPersonTalkHasEnded(0) == 1
-    """ State 4 """
+    """State 4"""
     if not mode2:
         pass
     else:
-        """ State 3 """
+        """State 3"""
         ReportConversationEndToHavokBehavior()
-    """ State 2 """
+    """State 2"""
     SetEventState(z2, 1)
-    """ State 6 """
+    """State 6"""
     return 0
 
 def t510740_x5(text1=_, flag1=0, mode1=1):
-    """ State 0,4 """
+    """State 0,4"""
     assert t510740_x2() and CheckSpecificPersonTalkHasEnded(0) == 1
-    """ State 1 """
+    """State 1"""
     TalkToPlayer(text1, -1, -1, flag1)
     assert CheckSpecificPersonTalkHasEnded(0) == 1
-    """ State 3 """
+    """State 3"""
     if not mode1:
         pass
     else:
-        """ State 2 """
+        """State 2"""
         ReportConversationEndToHavokBehavior()
-    """ State 5 """
+    """State 5"""
     return 0
 
 def t510740_x6(lot1=_):
-    """ State 0,1 """
+    """State 0,1"""
     GetItemFromItemLot(lot1)
     assert not IsMenuOpen(63) and GetCurrentStateElapsedFrames() > 1
-    """ State 2 """
+    """State 2"""
     return 0
 
 def t510740_x7():
-    """ State 0,5 """
+    """State 0,5"""
     if not GetEventStatus(75100150):
-        """ State 32 """
+        """State 32"""
+        # talk:84000000:" "
         assert t510740_x4(text2=84000000, z2=75100150, flag2=0, mode2=1)
     else:
-        """ State 6 """
+        """State 6"""
         if not GetEventStatus(75100152):
-            """ State 7 """
+            """State 7"""
             if not GetEventStatus(75100151):
-                """ State 33 """
+                """State 33"""
+                # talk:84000100:"Speak thee the name of God."
                 assert t510740_x5(text1=84000100, flag1=0, mode1=1)
             else:
-                """ State 34 """
+                """State 34"""
+                # talk:84000800:"Give thy memory a nudge."
                 assert t510740_x5(text1=84000800, flag1=0, mode1=1)
-            """ State 8 """
+            """State 8"""
             ClearTalkListData()
             assert (not (CheckSpecificPersonMenuIsOpen(-1, 2) == 1 and not CheckSpecificPersonGenericDialogIsOpen(2))
                     and not CheckSpecificPersonGenericDialogIsOpen(2))
-            """ State 9 """
+            """State 9"""
             AddTalkListData(1, 14074000, -1)
             AddTalkListData(2, 14074001, -1)
-            """ State 10 """
+            """State 10"""
             OpenConversationChoicesMenu(0)
             assert not (CheckSpecificPersonMenuIsOpen(12, 0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0))
-            """ State 11 """
+            """State 11"""
             if GetTalkListEntryResult() == 1:
-                """ State 12,35 """
+                """State 12,35"""
+                # talk:84000200:"Ahh, then thou'st not forgotten."
                 assert t510740_x4(text2=84000200, z2=75100152, flag2=0, mode2=1)
-                """ State 14 """
+                """State 14"""
                 Label('L0')
                 SetEventState(75100151, 1)
             elif GetTalkListEntryResult() == 2:
-                """ State 13,36 """
+                """State 13,36"""
+                # talk:84000700:"As I thought. Such memories were lost by thy kind, long ago."
                 assert t510740_x5(text1=84000700, flag1=0, mode1=1)
                 Goto('L0')
             else:
                 pass
         else:
-            """ State 31 """
+            """State 31"""
             if not GetEventStatus(75100153):
-                """ State 55 """
+                """State 55"""
+                # talk:84000300:"Thou'st a kind heart."
                 assert t510740_x4(text2=84000300, z2=75100153, flag2=0, mode2=1)
             else:
-                """ State 3 """
+                """State 3"""
                 if GetEventStatus(9326) == 1:
-                    """ State 27 """
+                    """State 27"""
                     if not GetEventStatus(50006630) or not GetEventStatus(50006631):
-                        """ State 47 """
+                        """State 47"""
+                        # talk:84001400:"My most humble thanks."
                         assert t510740_x5(text1=84001400, flag1=0, mode1=1)
-                        """ State 48 """
+                        """State 48"""
                         # lot:66310:Titanite Slab
                         assert t510740_x6(lot1=66310)
                     else:
-                        """ State 28 """
+                        """State 28"""
                         if not GetEventStatus(75100158):
                             pass
                         else:
-                            """ State 1 """
+                            """State 1"""
                             if GetEventStatus(15100724) == 1:
-                                """ State 30 """
+                                """State 30"""
                                 if not GetEventStatus(75100160):
-                                    """ State 53 """
+                                    """State 53"""
+                                    # talk:84001800:"Ah, thou'st... A Divine Spear become!"
                                     assert t510740_x4(text2=84001800, z2=75100160, flag2=0, mode2=1)
                                     Goto('L2')
                                 else:
-                                    """ State 54 """
+                                    """State 54"""
+                                    # talk:84001900:"As the fire waneth, does she lie by the dark, but now with thee to shelter her sleep."
                                     assert t510740_x5(text1=84001900, flag1=0, mode1=1)
                                     Goto('L2')
                             else:
-                                """ State 2 """
+                                """State 2"""
                                 if GetEventStatus(15100723) == 1:
-                                    """ State 29 """
+                                    """State 29"""
                                     if not GetEventStatus(75100159):
-                                        """ State 51 """
+                                        """State 51"""
+                                        # talk:84001600:"Oh! Thou'rt now a spear of the church!"
                                         assert t510740_x4(text2=84001600, z2=75100159, flag2=0, mode2=1)
                                         Goto('L2')
                                     else:
-                                        """ State 52 """
+                                        """State 52"""
+                                        # talk:84001700:"As the fire waneth, does she lie by the dark, but now with thee to shelter her sleep."
                                         assert t510740_x5(text1=84001700, flag1=0, mode1=1)
                                         Goto('L2')
                                 else:
-                                    """ State 50 """
+                                    """State 50"""
+                                    # talk:84001500:"My humblest thanks."
                                     assert t510740_x5(text1=84001500, flag1=0, mode1=1)
                                     Goto('L2')
-                    """ State 49 """
+                    """State 49"""
+                    # talk:84001450:"Now, hasten on thy journey, but wake not the slumbering Princess."
                     assert t510740_x4(text2=84001450, z2=75100158, flag2=0, mode2=1)
                 else:
-                    """ State 15 """
+                    """State 15"""
                     if not GetEventStatus(50006630):
-                        """ State 16 """
+                        """State 16"""
                         if not GetEventStatus(75100154):
-                            """ State 37 """
+                            """State 37"""
+                            # talk:84000400:"May I ask thee a kindness?"
                             assert t510740_x5(text1=84000400, flag1=0, mode1=1)
                         else:
-                            """ State 38 """
+                            """State 38"""
+                            # talk:84001000:"Carest thou to speak thy peace?"
                             assert t510740_x5(text1=84001000, flag1=0, mode1=1)
-                        """ State 17 """
+                        """State 17"""
                         ClearTalkListData()
                         assert (not (CheckSpecificPersonMenuIsOpen(-1, 2) == 1 and not CheckSpecificPersonGenericDialogIsOpen(2))
                                 and not CheckSpecificPersonGenericDialogIsOpen(2))
-                        """ State 18 """
+                        """State 18"""
                         AddTalkListData(1, 14074010, -1)
                         AddTalkListDataIf(not GetEventStatus(75100154), 2, 14074011, -1)
                         AddTalkListDataIf(GetEventStatus(75100154) == 1, 2, 14074012, -1)
-                        """ State 20 """
+                        """State 20"""
                         OpenConversationChoicesMenu(0)
                         assert not (CheckSpecificPersonMenuIsOpen(12, 0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0))
-                        """ State 19 """
+                        """State 19"""
                         if GetTalkListEntryResult() == 1:
-                            """ State 21,39 """
+                            """State 21,39"""
+                            # talk:84000500:"I offer my sincerest gratitude, thou who art ken to God's name."
                             assert t510740_x5(text1=84000500, flag1=0, mode1=1)
-                            """ State 41 """
+                            """State 41"""
                             assert t510740_x6(lot1=66300)
-                            """ State 42 """
+                            """State 42"""
                             Label('L1')
+                            # talk:84000550:"I have asked a thing most terrible of thee. May this token of thanks be of aid."
                             assert t510740_x4(text2=84000550, z2=75100155, flag2=0, mode2=1)
                         elif GetTalkListEntryResult() == 2:
-                            """ State 22,40 """
+                            """State 22,40"""
+                            # talk:84000900:"Very well. Then hasten on thy journey."
                             assert t510740_x5(text1=84000900, flag1=0, mode1=1)
                         else:
                             Goto('L2')
                     else:
-                        """ State 24 """
+                        """State 24"""
                         if not GetEventStatus(75100155):
                             Goto('L1')
                         else:
-                            """ State 4 """
+                            """State 4"""
                             if GetEventStatus(15100200) == 1:
-                                """ State 25 """
+                                """State 25"""
                                 if not GetEventStatus(75100156):
-                                    """ State 44 """
+                                    """State 44"""
+                                    # talk:84001100:"So, Midir hath into the chasm fallen."
                                     assert t510740_x4(text2=84001100, z2=75100156, flag2=0, mode2=1)
                                     Goto('L2')
                                 else:
-                                    """ State 26 """
+                                    """State 26"""
                                     if not GetEventStatus(75100157):
-                                        """ State 45 """
+                                        """State 45"""
+                                        # talk:84001200:"Just afore the church of the Princess standeth a tower, honouring ancient knights."
                                         assert t510740_x4(text2=84001200, z2=75100157, flag2=0, mode2=1)
                                         Goto('L2')
                                     else:
-                                        """ State 46 """
+                                        """State 46"""
+                                        # talk:84001300:"I know, I have asked of thee a thing most terrible."
                                         assert t510740_x5(text1=84001300, flag1=0, mode1=1)
                                         Goto('L2')
                             else:
-                                """ State 43 """
+                                """State 43"""
+                                # talk:84000600:"I beg of thee, put the great dragon to rest."
                                 assert t510740_x5(text1=84000600, flag1=0, mode1=1)
                                 Goto('L2')
-                    """ State 23 """
+                    """State 23"""
                     SetEventState(75100154, 1)
-    """ State 56 """
+    """State 56"""
     Label('L2')
     return 0
 
 def t510740_x8():
-    """ State 0,6 """
+    """State 0,6"""
     assert t510740_x1()
-    """ State 3 """
+    """State 3"""
     assert GetCurrentStateElapsedFrames() > 1
-    """ State 1,2 """
+    """State 1,2"""
     if GetDistanceToPlayer() < 10:
-        """ State 4,8 """
+        """State 4,8"""
         call = t510740_x16()
         if call.Done():
             pass
         elif GetDistanceToPlayer() > 12:
-            """ State 7 """
+            """State 7"""
             assert t510740_x1()
     else:
-        """ State 5 """
+        """State 5"""
         pass
-    """ State 9 """
+    """State 9"""
     return 0
 
 def t510740_x9():
-    """ State 0,1 """
+    """State 0,1"""
     if GetEventStatus(1838) == 1:
-        """ State 2 """
+        """State 2"""
         pass
     else:
-        """ State 3 """
+        """State 3"""
         if GetDistanceToPlayer() < 10:
-            """ State 4,7 """
+            """State 4,7"""
             call = t510740_x18()
             if call.Done():
                 pass
             elif GetDistanceToPlayer() > 12:
-                """ State 6 """
+                """State 6"""
                 assert t510740_x1()
         else:
-            """ State 5 """
+            """State 5"""
             pass
-    """ State 8 """
+    """State 8"""
     return 0
 
 def t510740_x10():
-    """ State 0,3 """
+    """State 0,3"""
     if GetEventStatus(1836) == 1 or GetEventStatus(1837) == 1:
-        """ State 1 """
+        """State 1"""
         if GetDistanceToPlayer() < 10:
-            """ State 4 """
+            """State 4"""
             pass
         else:
-            """ State 5 """
+            """State 5"""
             pass
     else:
-        """ State 2 """
+        """State 2"""
         pass
-    """ State 7 """
+    """State 7"""
     return 0
 
 def t510740_x11():
-    """ State 0,1 """
+    """State 0,1"""
     if (CheckSpecificPersonMenuIsOpen(-1, 0) == 1 and not CheckSpecificPersonMenuIsOpen(12, 0) and not
         CheckSpecificPersonGenericDialogIsOpen(0)):
-        """ State 2 """
+        """State 2"""
         pass
     else:
-        """ State 3,4 """
+        """State 3,4"""
         assert t510740_x1()
-    """ State 5 """
+    """State 5"""
     return 0
 
 def t510740_x12():
-    """ State 0,1 """
+    """State 0,1"""
     while True:
         call = t510740_x14()
         assert not GetEventStatus(1820) and not GetEventStatus(1822)
-        """ State 2 """
+        """State 2"""
         call = t510740_x15()
         assert GetEventStatus(1820) == 1 or GetEventStatus(1822) == 1
 
 def t510740_x13():
-    """ State 0,1 """
+    """State 0,1"""
     assert t510740_x1()
-    """ State 2 """
+    """State 2"""
     return 0
 
 def t510740_x14():
-    """ State 0,2 """
+    """State 0,2"""
     call = t510740_x17(z1=-1)
     assert CheckSelfDeath() == 1
-    """ State 1 """
+    """State 1"""
     t510740_x9()
 
 def t510740_x15():
-    """ State 0,1 """
+    """State 0,1"""
     assert t510740_x1()
-    """ State 2 """
+    """State 2"""
     return 0
 
 def t510740_x16():
-    """ State 0,1 """
+    """State 0,1"""
     if not GetEventStatus(75100171):
-        """ State 3 """
+        """State 3"""
+        # talk:84002300:" "
         assert t510740_x3(text3=84002300, z3=75100171, flag3=0, mode3=1)
     elif not GetEventStatus(75100172):
-        """ State 4 """
+        """State 4"""
+        # talk:84002310:" "
         assert t510740_x3(text3=84002310, z3=75100172, flag3=0, mode3=1)
     elif not GetEventStatus(75100173):
-        """ State 5 """
+        """State 5"""
+        # talk:84002320:" "
         assert t510740_x3(text3=84002320, z3=75100173, flag3=0, mode3=1)
     else:
-        """ State 2 """
+        """State 2"""
         SetEventState(75100171, 0)
         SetEventState(75100172, 0)
         SetEventState(75100173, 0)
-        """ State 6 """
+        """State 6"""
+        # talk:84002330:" "
         assert t510740_x5(text1=84002330, flag1=0, mode1=1)
-    """ State 7 """
+    """State 7"""
     return 0
 
 def t510740_x17(z1=-1):
-    """ State 0,5 """
+    """State 0,5"""
     while True:
         call = t510740_x0(z4=6000, flag4=1835, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
-            """ State 3 """
+            """State 3"""
             call = t510740_x7()
             if call.Done():
                 pass
             elif IsAttackedBySomeone() == 1:
-                """ State 1 """
+                """State 1"""
                 Label('L0')
                 call = t510740_x8()
                 def ExitPause():
@@ -415,7 +441,7 @@ def t510740_x17(z1=-1):
             elif IsPlayerDead() == 1:
                 break
             elif GetDistanceToPlayer() > 5:
-                """ State 4 """
+                """State 4"""
                 call = t510740_x11()
                 if call.Done() and GetDistanceToPlayer() < 4.9:
                     pass
@@ -425,12 +451,13 @@ def t510740_x17(z1=-1):
             Goto('L0')
         elif IsPlayerDead() == 1:
             break
-    """ State 2 """
+    """State 2"""
     t510740_x10()
 
 def t510740_x18():
-    """ State 0,1 """
+    """State 0,1"""
+    # talk:84002500:" "
     assert t510740_x5(text1=84002500, flag1=0, mode1=1)
-    """ State 2 """
+    """State 2"""
     return 0
 

@@ -143,6 +143,7 @@ namespace ESDLang.Script
             // Per-machine properties
             public string Machine { get; set; }
             public List<int> UsedStates { get; set; }
+            public bool DocAllowed { get; set; }
             public (string, int) ID { get => Machines[Machine]; }
             public int ParamIndex(string argName)
             {
@@ -159,6 +160,7 @@ namespace ESDLang.Script
                 {
                     other.Machine = machine;
                     other.UsedStates = new List<int>();
+                    other.DocAllowed = true;
                 }
                 if (inCommand) other.InCommand = true;
                 if (inCond) other.InCond = true;
@@ -191,13 +193,11 @@ namespace ESDLang.Script
                         context.Error(stmt, "Top-level functions must be named");
                         continue;
                     }
-                    string[] parts = func.Name.Split('_');
-                    if (parts.Length < 2)
+                    (string mEsd, string mIdStr) = ESDName.ParseFunction(func.Name);
+                    if (mEsd == "" || mIdStr == "")
                     {
                         context.Error(stmt, $"Unexpected name format {func.Name} - expected \"<esd name>_<machine id>\", potentially with other underscore segments in the middle");
                     }
-                    string mEsd = parts.First();
-                    string mIdStr = parts.Last();
                     if (!int.TryParse(mIdStr, out int mId))
                     {
                         if (mIdStr.StartsWith("x") && int.TryParse(mIdStr.Substring(1), out int diffpart))
@@ -639,7 +639,7 @@ namespace ESDLang.Script
                         {
                             constructJumps(branch.Result, loopStack);
                             // TODO: Make this work for non-cfgs
-                            if (options.Flag("cfg") && nextState == after) context.Error($"Internal error - if/else branch at {nextState} had no associated states");
+                            if (options.Flag("cfg") && nextState == after) context.Error($"Internal error - if/else branch at {nextState} to {branch.Cond} goes to self");
                             branch.Cond.TargetState = nextState;
                         }
                     }
@@ -747,17 +747,29 @@ namespace ESDLang.Script
             if (debug) Console.WriteLine($"{sp}- {node}");
             if (node is Py.SuiteStatement suite)
             {
-                // TODO: Use where specifically needed? Or is this top level case fine
                 // Used whenever new level of indentation. This happens in function definition, in if statement, and in loop bodies
+                // Because it is the first statement encountered in a function, it is used to whitelist (ignore) the first docstring if pure documentation.
+                bool docAllowed = context.DocAllowed;
+                context.DocAllowed = false;
                 List<ProgramNode> nodes = new List<ProgramNode>();
-                foreach (Py.Statement stmt in suite.Statements)
+                for (int i = 0; i < suite.Statements.Count; i++)
                 {
+                    Py.Statement stmt = suite.Statements[i];
+                    if (i == 0 && docAllowed && stmt is Py.ExpressionStatement exprSt && exprSt.Expression is Py.ConstantExpression ce && ce.Value is string doc && !doc.Trim().StartsWith("State "))
+                    {
+                        continue;
+                    }
                     if (inIfElse && stmt is Py.EmptyStatement)
                     {
                         if (suite.Statements.Count > 1) continue;
-                        context.Error(stmt, "internal error - pass statement is the only statement in if/else context, but not detected as empty block");
+                        context.Error(stmt, "Internal error - pass statement is the only statement in if/else context, but not detected as empty block");
                     }
                     nodes.Add(WalkStatement(stmt, context, d + 1, inIfElse));
+                }
+                if (nodes.Count == 0)
+                {
+                    context.Error(node, $"Internal error - had nodes {string.Join(", ", suite.Statements)}");
+                    return new ProgError();
                 }
                 return ProgSeq.From(nodes);
             }
@@ -883,7 +895,7 @@ namespace ESDLang.Script
                     ProgAnnotation ann = new ProgAnnotation();
                     if (parts.Length >= 2 && parts[0] == "State")
                     {
-                        string[] states = parts[1].Split(',');
+                        string[] states = parts[1].TrimEnd(':').Split(',');
                         foreach (string stateStr in states)
                         {
                             if (int.TryParse(stateStr, out int stateId))
@@ -1191,7 +1203,9 @@ namespace ESDLang.Script
                 }
                 else if (name.StartsWith("c") && context.InCommand && name.Length >= 3)
                 {
-                    name = $"{name[1]}:{name.Substring(2)}";
+                    // Optionally, use _ separating bank and command id
+                    if (name[2] == '_') name = $"{name[1]}:{name.Substring(3)}";
+                    else name = $"{name[1]}:{name.Substring(2)}";
                 }
                 return new FunctionCall { Name = name, Args = args };
             }

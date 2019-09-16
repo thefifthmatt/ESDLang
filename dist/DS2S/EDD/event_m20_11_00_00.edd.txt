@@ -1,0 +1,1594 @@
+2000: Treasure corpse branch
+2000_s0: Start state
+2000_s1: Finish
+2000_s1_e0: [System] Termination notification
+2000_s2: [Preset] Treasure corpse branch _SubState
+6000: Door of the living
+6000_s0: Start state
+6000_s1: Finish
+6000_s1_e0: [System] Termination notification
+6000_s2: [Preset] Door of the living person_SubState
+7000: Door of the dead
+7000_s0: Start state
+7000_s1: Finish
+7000_s1_e0: [System] Termination notification
+7000_s2: [Preset] Dead Door_SubState
+4000: Elevator
+4000_s0: Start state
+4000_s1: Rerun
+4000_s1_e0: [System] Re-execution notification
+4000_s2: Has the initialization event ended?
+4000_s3: [Lib] [Preset] Elevator_SubState
+4010: Elevator lever _ top
+4010_s0: Start state
+4010_s1: Rerun
+4010_s1_e0: [System] Re-execution notification
+4010_s2: [Lib] [Preset] Elevator lever_SubState
+4020: Elevator lever_bottom
+4020_s0: Start state
+4020_s1: Rerun
+4020_s1_e0: [System] Re-execution notification
+4020_s2: [Lib] [Preset] Elevator lever_SubState
+111302: NPC: Bard Girl 1: Grave
+111302_s0: Start state
+111302_s1: NPC: Bard Girl 1: Grave Placement_SubState
+111303: NPC: Bard Girl 1: Key Guide
+111303_s0: Start state
+111303_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111312: NPC: Bard Girl 2: Tomb
+111312_s0: Start state
+111312_s1: NPC: Bard Girl 2: Grave Placement_SubState
+111313: NPC: Bard Girl 2: Key Guide
+111313_s0: Start state
+111313_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111304: NPC: Bard Girl 1: Hoarseness
+111304_s0: Start state
+111304_s1: [Lib] Bard Girl: Hoarse _SubState
+3000: Boss: Beautiful voice frog battle
+3000_s0: Start state
+3000_s1: Finish
+3000_s1_e0: [System] Termination notification
+3000_s2: [Lib] [Preset] Boss Battle Cut Scene No _SubState
+5000: Altar of the living
+5000_s0: Start state
+5000_s1: Rerun
+5000_s1_e0: [System] Re-execution notification
+5000_s2: [Preset] Living Altar_SubState
+111314: NPC: Bard Girl 2: Hoarseness
+111314_s0: Start state
+111314_s1: [Lib] Bard Girl: Hoarse _SubState
+4030: Elevator_initialization
+4030_s0: Start state
+4030_s1: Finish
+4030_s1_e0: [System] Termination notification
+4030_s2: [Lib] [Preset] Elevator_Initialization_SubState
+1000: Connection flag ON
+1000_s0: Start state
+1000_s1: Rerun
+1000_s1_e0: [System] Re-execution notification
+1000_s2: [Lib] [Preset] Switch connection flag when in map_SubState
+118130: Multi-use NPC: Lancer (Female): White phantom sign display
+118130_s0: Start state
+118130_s1: NPC White Phantom Appearance: Unconditional_SubState
+80000: Fireworks for regeneration 01_Upper tower of entrance tower
+80000_s0: Start state
+80000_s1: Finish
+80000_s1_e0: [System] Termination notification
+80000_s2: [Lib] [Preset] Reproduction fire _SubState
+81000: Fireworks for Regeneration 02_ A collapsed building next to aquatic plants
+81000_s0: Start state
+81000_s1: Finish
+81000_s1_e0: [System] Termination notification
+81000_s2: [Lib] [Preset] Reproduction fire _SubState
+82000: Rebirth Fire 03_Cave to parent tree
+82000_s0: Start state
+82000_s1: Finish
+82000_s1_e0: [System] Termination notification
+82000_s2: [Lib] [Preset] Reproduction fire _SubState
+83000: Rebirth Fire 04_Lower tower in front of the living altar
+83000_s0: Start state
+83000_s1: Finish
+83000_s1_e0: [System] Termination notification
+83000_s2: [Lib] [Preset] Reproduction fire _SubState
+3010: Beautiful voice frog singing voice
+3010_s0: Start state
+3010_s1: Finish
+3010_s1_e0: [System] Termination notification
+3010_s2: Rerun
+3010_s2_e0: [System] Re-execution notification
+3010_s3: [Preset] Voice frog singing voice_SubState
+118220: Multi-use NPC: Magician (Male): Black Phantom Appears
+118220_s0: Start state
+118220_s1: [Lib] NPC Black Phantom Appearance: Online: Unconditional_SubState
+8000: [Insect key] Hidden door ① For activation
+8000_s0: Start state
+8000_s1: Finish
+8000_s1_e0: [System] Termination notification
+8000_s2: [Lib] [Asynchronous] [Preset] Bug key (floor) _SubState
+8010: [Insect key] Hidden door ①
+8010_s0: Start state
+8010_s1: Finish
+8010_s1_e0: [System] Termination notification
+8010_s2: [Lib] [Preset] Hidden door 1_Face SFX_SubState
+8020: [Insect key] Hidden door ①_Navimesh change
+8020_s0: Start state
+8020_s1: Finish
+8020_s1_e0: [System] Termination notification
+8020_s2: [Lib] [Preset] Switch Navimesh according to OBJ state_SubState
+9000: Get King Soul
+9000_s0: Start state
+9000_s1: Finish
+9000_s1_e0: [System] Termination notification
+9000_s2: [Preset] _SubState to acquire the king's soul
+7010: Banshee's Ascension
+7010_s0: Start state
+7010_s1: Finish
+7010_s1_e0: [System] Termination notification
+7010_s2: [Preset] Banshee's Ascension_SubState
+14000: Photoworm that reacts to enemy and PC approach_cave_1
+14000_s0: Start state
+14000_s1: Finish
+14000_s1_e0: [System] Termination notification
+14000_s2: [Preset] Photoworm_Girl_SubState reacts to enemy and PC approach
+14010: The photoworm that reacts to the enemy and PC approach_cave_2
+14010_s0: Start state
+14010_s1: Finish
+14010_s1_e0: [System] Termination notification
+14010_s2: [Preset] Photoworm_Girl_SubState reacts to enemy and PC approach
+14020: Photoworm reacts to enemy and PC approach_cave_3
+14020_s0: Start state
+14020_s1: Finish
+14020_s1_e0: [System] Termination notification
+14020_s2: [Preset] Photoworm_Girl_SubState reacts to enemy and PC approach
+15000: Photoworm_Plaza_1 reacts to enemy and PC approach
+15000_s0: Start state
+15000_s1: Finish
+15000_s1_e0: [System] Termination notification
+15000_s2: [Preset] Photoworm_Frog_SubState reacts to enemy and PC approach
+15010: Photoworm _Square_2 reacts to enemy and PC approach
+15010_s0: Start state
+15010_s1: Finish
+15010_s1_e0: [System] Termination notification
+15010_s2: [Preset] Photoworm_Frog_SubState reacts to enemy and PC approach
+15020: The photoworm that reacts to the enemy and the PC approach_Plaza_3
+15020_s0: Start state
+15020_s1: Finish
+15020_s1_e0: [System] Termination notification
+15020_s2: [Preset] Photoworm_Frog_SubState reacts to enemy and PC approach
+15060: The photoworm that reacts to the enemy and PC approach_Plaza_7
+15060_s0: Start state
+15060_s1: Finish
+15060_s1_e0: [System] Termination notification
+15060_s2: [Preset] Photoworm_Frog_SubState reacts to enemy and PC approach
+15030: The photoworm that responds to the enemy and PC approach_Plaza_4
+15030_s0: Start state
+15030_s1: Finish
+15030_s1_e0: [System] Termination notification
+15030_s2: [Preset] Photoworm_Frog_SubState reacts to enemy and PC approach
+15040: The photoworm that reacts to the enemy and PC approach_Square_5
+15040_s0: Start state
+15040_s1: Finish
+15040_s1_e0: [System] Termination notification
+15040_s2: [Preset] Photoworm_Frog_SubState reacts to enemy and PC approach
+15050: The photoworm that responds to the enemy and PC approach_Square_6
+15050_s0: Start state
+15050_s1: Finish
+15050_s1_e0: [System] Termination notification
+15050_s2: [Preset] Photoworm_Frog_SubState reacts to enemy and PC approach
+3020: Beautiful voice frog singing_flag
+3020_s0: Start state
+3020_s1: Finish
+3020_s1_e0: [System] Termination notification
+3020_s2: [Preset] Beautiful frog singing voice_flag_SubState
+16000: Lizard extinction judgment_cave
+16000_s0: Start state
+16000_s1: Finish
+16000_s1_e0: [System] Termination notification
+16000_s2: [Preset] lizard extinction judgment_4 bodies_SubState
+16010: Lizard extinction judgment _ open space
+16010_s0: Start state
+16010_s1: Finish
+16010_s1_e0: [System] Termination notification
+16010_s2: [DC] [Preset] Lizard extinction judgment_3 bodies_SubState
+4000000: [DC] Traveler's Dead _ Petrification Stop_ Key Guide
+4000000_s0: Start state
+4000000_s1: Finish
+4000000_s1_e0: [System] Termination notification
+4000000_s2: [Lib] Character: Petrified: Key Guide_SubState
+4000010: [DC] Traveler's deceased_Stop petrification_Appearance setting
+4000010_s0: Start state
+4000010_s1: Finish
+4000010_s1_e0: [System] Termination notification
+4000010_s2: [Lib] Character: Petrified: Appearance setting_SubState
+4000020: [DC] Traveller's Dead _ Petrochemical Stop _ Navigation Switch
+4000020_s0: Start state
+4000020_s1: Finish
+4000020_s1_e0: [System] Termination notification
+4000020_s2: [Lib] [Preset] Navigation mesh switching by flag judgment_SubState
+118131: Multi-use NPC: Small White Spirit: White Phantom Sign Display
+118131_s0: Start state
+118131_s1: NPC White Phantom Appearance: Unconditional_SubState
+4030000: [DC] Transparent character_1
+4030000_s0: Start state
+4030000_s1: Finish
+4030000_s1_e0: [System] Termination notification
+4030000_s2: [Lib] [DC] [Preset] Transparent character_SubState
+4030010: [DC] Transparent character_2
+4030010_s0: Start state
+4030010_s1: Finish
+4030010_s1_e0: [System] Termination notification
+4030010_s2: [Lib] [DC] [Preset] Transparent character_SubState
+4001000: [DC] Wanderer A_Random lottery and generation
+4001000_s0: Start state
+4001000_s1: Finish
+4001000_s1_e0: [System] Termination notification
+4001000_s2: Start flag ON
+4001000_s2_e0: [Flag] Set flag
+4001000_s3: [Lib] [DC] [Preset] Wanderer_Random Drawing_SubState
+4001000_s4: [Lib] [DC] [Preset] Wanderer_Generation_SubState
+4001000_s5: [Lib] [DC] [Preset] Wanderer_Generation_2_SubState
+4001000_s6: [Lib] [DC] [Preset] Wanderer_Generation_3_SubState
+4001010: [DC] Wanderer A_Destroy
+4001010_s0: Start state
+4001010_s1: Finish
+4001010_s1_e0: [System] Termination notification
+4001010_s2: [Lib] [DC] [Preset] Wanderer_Destroy_SubState
+x76: [Preset] Door of the dead
+x76_p0: OBJ instance ID of the door
+x76_p1: Navimesh change point ID
+x76_p2: Banshee's Ascension Flag
+x76_s0: Start state
+x76_s1: Rerun
+x76_s1_e0: [System] Re-execution notification
+x76_s2: [Reproduction] Living / December Door_SubState
+x76_s3: [Execution] Doors of living and dead people_Message display_SubState
+x76_s4: [Condition] Door of the dead_SubState
+x76_s5: End state
+x77: [Preset] Door of the living
+x77_p0: OBJ instance ID of the door
+x77_p1: Navimesh change point ID
+x77_s0: Start state
+x77_s1: Rerun
+x77_s1_e0: [System] Re-execution notification
+x77_s2: [Execution] Doors of living and dead people_Message display_SubState
+x77_s3: [Reproduction] Living / December Door_SubState
+x77_s4: [Condition] Door of living person_SubState
+x77_s5: End state
+x78: [Reproduction] The living altar _ Sky
+x78_s0: Start state
+x78_s1: State
+x78_s1_e0: [OBJ] OBJ state transition request
+x78_s2: End state
+x79: [Condition] Altar of the living
+x79_s0: Start state
+x79_s1: Key guide access standby
+x79_s1_e0: [Group condition: OBJ] Judgment to examine OBJ
+x79_s2: Are the conditions met?
+x79_s2_e0: [Group condition: Character] Character death determination
+x79_s2_e1: [Group condition: Character] Character death determination
+x79_s2_e2: [Group condition: Character] Player sinner level comparison
+x79_s2_e3: [Group condition: Character] Player dead or dead determination
+x79_s2_e4: [Group condition: Item] Comparison of number of possessed items
+x79_s2_e5: [Group condition: Item] Judgment of items left by me
+x79_s3: End state
+x79_s4: Nothing happens
+x80: [Execution] Living Altar_Back to Living
+x80_s0: Start state
+x80_s1: Prayer action
+x80_s1_e0: [Character action] Request action from player
+x80_s2: Special effects: Return to the living
+x80_s2_e0: [Status] Activates special effects of players
+x80_s3: End of prayer action
+x80_s3_e0: [Character action] Action end request to the player
+x80_s4: End state
+x81: [Execution] Living Altar_Nothing happens
+x81_s0: Start state
+x81_s1: Prayer action
+x81_s1_e0: [Character action] Request action from player
+x81_s2: Dialog display: Nothing happened
+x81_s2_e0: [FE] Window display only for YES
+x81_s3: End of prayer action
+x81_s3_e0: [Character action] Action end request to the player
+x81_s4: End state
+x82: [Preset] Living Altar
+x82_s0: Start state
+x82_s1: [Reproduction] Living Altar_Sky_SubState
+x82_s2: [Conditions] Living Altar_SubState
+x82_s3: [Execution] Altar of the living_Return to the living_SubState
+x82_s4: [Execution] Living Altar_Nothing happens_SubState
+x82_s5: End state
+x83: [Reproduction] Treasure corpse branch _ sky
+x83_s0: Start state
+x83_s1: End state
+x84: [Condition] Treasure corpse branch
+x84_p0: Branch instance ID
+x84_s0: Start state
+x84_s1: Wait for branch destruction
+x84_s1_e0: [Group condition: OBJ] OBJ destruction status judgment
+x84_s2: End state
+x85: [Execution] Treasure corpse branch
+x85_p0: Instance ID of treasure corpse
+x85_p1: Falling state ID
+x85_s0: Start state
+x85_s1: OBJ state transition: treasure corpse
+x85_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x85_s2: End state
+x86: [Preset] Treasure corpse branch
+x86_p0: Branch instance ID
+x86_p1: Instance ID of treasure corpse
+x86_p2: Falling state ID
+x86_s0: Start state
+x86_s1: [Reproduction] Treasure corpse branch_sky_SubState
+x86_s2: [Condition] Treasure corpse branch_SubState
+x86_s3: [Execution] Treasure corpse branch _SubState
+x86_s4: End state
+x87: [Execution] Doors of living and dead people_Message display
+x87_p0: OBJ instance ID of the door
+x87_s0: Start state
+x87_s1: Message display
+x87_s1_e0: [FE] Window display only for YES
+x87_s2: End state
+x88: [Reproduction] Doors of living and dead
+x88_p0: OBJ instance ID of the door
+x88_s0: Start state
+x88_s1: Judgment of door status
+x88_s2: Not open
+x88_s3: Opened
+x89: [Condition] Door of the living
+x89_p0: OBJ instance ID of the door
+x89_s0: Start state
+x89_s1: Is the player living or dead?
+x89_s1_e0: [Group condition: Character] Player dead or dead determination
+x89_s2: The door cannot be opened or closed
+x89_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x89_s3: The door can be opened and closed
+x89_s3_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x89_s4: Have you examined the door? Or did you become a living person?
+x89_s4_e0: [Group condition: OBJ] Judgment to examine OBJ
+x89_s4_e1: [Group condition: Character] Player dead or dead determination
+x89_s5: Did you open the door?
+x89_s5_e0: [Group condition: OBJ] OBJ state ID comparison
+x89_s6: Did you destroy the king?
+x89_s6_e0: [Group condition: Flag] Event flag comparison
+x89_s7: Unopenable door_2
+x89_s7_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x89_s8: Have you examined the door?
+x89_s8_e0: [Group condition: OBJ] Judgment to examine OBJ
+x89_s9: Opened the door
+x89_s10: The door does not open
+x90: [Condition] Door of the dead
+x90_p0: OBJ instance ID of the door
+x90_p1: Banshee's Ascension Flag
+x90_s0: Start state
+x90_s1: Is the player living or dead?
+x90_s1_e0: [Group condition: Character] Player dead or dead determination
+x90_s2: The door cannot be opened or closed
+x90_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x90_s3: The door can be opened and closed
+x90_s3_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x90_s4: Did you open the door? Or did you become a living person?
+x90_s4_e0: [Group condition: OBJ] OBJ state ID comparison
+x90_s4_e1: [Group condition: Character] Player dead or dead determination
+x90_s5: Have you examined the door? or Did Banshee Ascend?
+x90_s5_e0: [Group condition: OBJ] Judgment to examine OBJ
+x90_s5_e1: [Group condition: Flag] Event flag comparison
+x90_s6: Have you lifted Banshee?
+x90_s6_e0: [Group condition: Flag] Event flag comparison
+x90_s7: Unopenable door_2
+x90_s7_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x90_s8: Have you examined the door?
+x90_s8_e0: [Group condition: OBJ] Judgment to examine OBJ
+x90_s9: The door does not open
+x90_s10: Opened the door
+x91: [Reproduction] Voice of a beautiful frog
+x91_p0: Boss destruction flag
+x91_p1: Generator ID
+x91_s0: Start state
+x91_s1: Did you destroy the beautiful frog?
+x91_s2: Stop generator following sound
+x91_s2_e0: [Sound] Generator following sound stop
+x91_s3: Not defeated
+x91_s4: Defeated
+x92: [Conditions] Voice of a beautiful frog
+x92_p0: Singing voice playback start point ID
+x92_p1: Singing voice end point ID
+x92_s0: Start state
+x92_s1: Did you break into the starting point?
+x92_s1_e0: [Group condition: Character] Judgment within player points
+x92_s2: Play singing voice
+x93: [Execution] Voice frog singing voice
+x93_p0: Sound ID
+x93_p1: Frog generator ID
+x93_s0: Start state
+x93_s1: Play generator-following sound
+x93_s1_e0: [Sound] Generator follow-up sound playback
+x93_s2: End state
+x94: [Reproduction] Voice of a beautiful voice frog_Sky
+x94_s0: Start state
+x94_s1: End state
+x95: [Conditions] Voice frog singing voice_stop judgment
+x95_p0: Boss destruction flag
+x95_p1: Generator ID
+x95_p2: Singing stop point ID
+x95_p3: Singing stop end point ID
+x95_s0: Start state
+x95_s1: The or boss from the stop point destroyed the or boss that was released from the activation state.
+x95_s1_e0: [Group condition: Character] Judgment within player points
+x95_s1_e1: [Group condition: Flag] Event flag comparison
+x95_s1_e2: [Group condition: Character] Start state comparison
+x95_s2: Stop singing voice: restart
+x95_s3: Stop singing: End
+x96: [Execution] Voice frog singing voice_stop
+x96_p0: Generator ID
+x96_s0: Start state
+x96_s1: Stop generator following sound
+x96_s1_e0: [Sound] Generator following sound stop
+x96_s2: End state
+x97: [Preset] Voice of a beautiful frog
+x97_p0: Boss destruction flag
+x97_p1: Sound ID
+x97_p2: Generator ID
+x97_p3: Singing voice playback start point ID
+x97_p4: Singing voice playback end point ID
+x97_p5: Singing stop point ID
+x97_p6: Singing stop end point ID
+x97_s0: Start state
+x97_s1: [Reproduction] Voice frog singing voice_SubState
+x97_s2: [Reproduction] Voice frog singing voice_Sky_SubState
+x97_s3: [Execution] Voice frog singing voice_Play_SubState
+x97_s4: [Execution] Voice frog singing voice_Stop_SubState
+x97_s5: [Conditions] Voice of a beautiful frog _SubState
+x97_s6: [Conditions] Voice frog singing voice_Stop judgment_SubState
+x97_s7: [Execution] Voice frog singing voice_stop_2_SubState
+x97_s8: Finish
+x97_s9: Rerun
+x98: [Reproduction] Obtaining King's Soul _ Sky
+x98_s0: Start state
+x98_s1: End state
+x99: [Conditions] Obtaining King's Soul
+x99_p0: King Soul OBJ Instance ID
+x99_p1: BEST_Wang Soul OBJ Instance ID
+x99_s0: Start state
+x99_s1: Got King Soul?
+x99_s1_e0: [Group condition: Item] OBJ item acquisition judgment
+x99_s1_e1: [Group condition: Item] OBJ item acquisition judgment
+x99_s2: End state
+x100: [Run] Get King Soul
+x100_p0: King's Soul Acquisition Global Event Flag
+x100_s0: Start state
+x100_s1: Acquisition flag ON
+x100_s1_e0: [Flag] Set flag
+x100_s2: End state
+x101: [Preset] Acquire King's Soul
+x101_p0: King's Soul Acquisition Global Event Flag
+x101_p1: King Soul OBJ Instance ID
+x101_p2: BEST_Wang Soul OBJ Instance ID
+x101_s0: Start state
+x101_s1: [Reproduction] Get the king's soul_Sky_SubState
+x101_s2: [Execution] Get the king's soul_SubState
+x101_s3: [Condition] _SubState to acquire the king's soul
+x101_s4: End state
+x102: [Reproduction] Banshee's Ascension
+x102_p0: Ascension flag
+x102_s0: Start state
+x102_s1: Key guide creation
+x102_s1_e0: [FE] Create key guide area
+x102_s2: Have you already ascended?
+x102_s3: Host?
+x102_s4: Wait for decision to check
+x102_s5: Ascended
+x102_s6: Guest: Exit
+x103: [Condition] Banshee Ascension
+x103_p0: Banshee's generator ID
+x103_s0: Start state
+x103_s1: Examined or died
+x103_s1_e0: [Group condition: Character] Judgment to examine character
+x103_s1_e1: [Group condition: Character] Character death determination
+x103_s2: Talked
+x103_s3: Died
+x104: [Execution] Banshee's Ascension_Ascension
+x104_p0: Ascension flag
+x104_p1: Banshee's generator ID
+x104_s0: Start state
+x104_s1: Ascension flag ON
+x104_s1_e0: [Flag] Set flag
+x104_s2: Delete key guide
+x104_s2_e0: [FE] Delete key guide area
+x104_s3: Waiting for the ascension to end
+x104_s3_e0: [Group condition: Character] Compare EzState flag of logic
+x104_s4: Delete character
+x104_s4_e0: [Generator] Forced enemy deletion
+x104_s5: Ascension SFX playback
+x104_s5_e0: [SFX] SFX playback with point designation
+x104_s6: End state
+x105: [Preset] Banshee's Ascension
+x105_p0: Banshee's generator ID
+x105_p1: Ascension flag
+x105_s0: Start state
+x105_s1: [Reproduction] Banshee's Ascension_SubState
+x105_s2: [Execution] Banshee's Ascension_SubState
+x105_s3: [Condition] Banshee's Ascension_SubState
+x105_s4: [Execution] Banshee's Ascension_Death_SubState
+x105_s5: End state
+x106: [Execution] Banshee's Ascension_Death
+x106_s0: Start state
+x106_s1: Delete key guide
+x106_s1_e0: [FE] Delete key guide area
+x106_s2: End state
+x107: [Reproduction] Voice frog singing voice_flag
+x107_p0: Boss destruction flag
+x107_p1: Frog singing flag
+x107_p2: Generator ID
+x107_s0: Start state
+x107_s1: Did you destroy the beautiful frog?
+x107_s2: Singing flag OFF
+x107_s2_e0: [Flag] Set flag
+x107_s3: Singing flag ON
+x107_s3_e0: [Flag] Set flag
+x107_s4: Not defeated
+x107_s5: Defeated
+x108: [Condition] Voice frog singing voice_flag
+x108_p0: Boss destruction flag
+x108_p1: Generator ID
+x108_s0: Start state
+x108_s1: Defeated the boss that the boss released from the activation state or
+x108_s1_e0: [Group condition: Flag] Event flag comparison
+x108_s1_e1: [Group condition: Character] Start state comparison
+x108_s2: Stop singing: End
+x109: [Execution] Voice frog singing voice_flag
+x109_p0: Frog singing flag
+x109_p1: Generator ID
+x109_s0: Start state
+x109_s1: Frog singing voice flag OFF
+x109_s1_e0: [Flag] Set flag
+x109_s2: End state
+x110: [Preset] Beautiful Voice Frog Singing Voice_Flag
+x110_p0: Boss destruction flag
+x110_p1: Generator ID
+x110_p2: Frog singing flag
+x110_s0: Start state
+x110_s1: [Reproduction] Voice frog singing voice_flag_SubState
+x110_s2: [Execution] Voice frog singing voice_flag_SubState
+x110_s3: [Condition] Singing voice frog_flag_SubState
+x110_s4: Finish
+x111: [Reproduction] Photoworm reacts to enemy and PC approach
+x111_p0: Extinction event ID
+x111_p1: Mitsu insect OBJ instance ID
+x111_s0: Start state
+x111_s1: End of extinction event
+x111_s2: Is the photoworm in its initial state?
+x111_s3: Spread waiting
+x111_s4: Spreading: End
+x112: [Reproduction] Lizard extinction judgment_sky
+x112_s0: Start state
+x112_s1: End state
+x113: [Condition] Lizard extinction judgment_4 bodies
+x113_p0: Generator ID ①
+x113_p1: Generator ID ②
+x113_p2: Generator ID ③
+x113_p3: Generator ID ④
+x113_s0: Start state
+x113_s1: Upper limit judgment of lizards
+x113_s1_e0: [Group condition: Character] Maximum number of generations
+x113_s1_e1: [Group condition: Character] Maximum number of generations
+x113_s1_e2: [Group condition: Character] Maximum number of generations
+x113_s1_e3: [Group condition: Character] Maximum number of generations
+x113_s2: extinction
+x113_s3: Not extinct
+x114: [Execution] lizard extinction judgment
+x114_p0: Lizard extinction flag
+x114_s0: Start state
+x114_s1: Extinction flag ON
+x114_s1_e0: [Flag] Set flag
+x114_s2: End state
+x115: [Execution] Photoworm reacts to enemy and PC approach
+x115_p0: Mitsu insect OBJ instance ID
+x115_s0: Start state
+x115_s1: Flying animation playback
+x115_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x115_s2: End state
+x116: [Conditions] Photoworm_frog that reacts to enemy and PC approach
+x116_p0: PC approach distance
+x116_p1: Generator ID
+x116_p2: Mitsu insect OBJ instance ID
+x116_p3: Extinction flag
+x116_p4: Frog Destruction Flag
+x116_p5: Frog generator ID
+x116_s0: Start state
+x116_s1: Photoworm spread test
+x116_s1_e0: [Group condition: Character] Compare EzState flag of logic
+x116_s1_e1: [Group condition: OBJ] Comparison of distance between OBJ and player
+x116_s1_e2: [Group condition: Flag] Event flag comparison
+x116_s1_e3: [Group condition: Flag] Event flag comparison
+x116_s1_e4: [Group condition: Character] Start state comparison
+x116_s2: Spread: End
+x117: [Preset] Photoworm frog reacts to enemy and PC approach
+x117_p0: PC approach distance
+x117_p1: Generator ID
+x117_p2: Mitsu insect OBJ instance ID
+x117_p3: Extinction flag
+x117_p4: Extinction event ID
+x117_p5: Frog Destruction Flag
+x117_p6: Frog generator ID
+x117_s0: Start state
+x117_s1: [Reproduction] Photoworm_SubState reacts to enemy and PC approach
+x117_s2: [Execution] Photoworm_SubState reacts to enemy and PC approach
+x117_s3: [Condition] Photoworm_Frog_SubState reacts to enemy and PC approach
+x117_s4: Finish
+x118: [Preset] lizard extinction judgment_4 bodies
+x118_p0: Lizard extinction flag
+x118_s0: Start state
+x118_s1: [Reproduction] Lizard extinction judgment_sky_SubState
+x118_s2: [Execution] Lizard extinction judgment_SubState
+x118_s3: [Condition] Lizard extinction judgment_4 bodies_SubState
+x118_s4: End state
+x119: [Condition] Photoworm_girl reacts to enemy and PC approach
+x119_p0: PC approach distance
+x119_p1: Generator ID
+x119_p2: Mitsu insect OBJ instance ID
+x119_p3: Extinction flag
+x119_p4: Girl death flag
+x119_s0: Start state
+x119_s1: Photoworm spread test
+x119_s1_e0: [Group condition: Character] Compare EzState flag of logic
+x119_s1_e1: [Group condition: OBJ] Comparison of distance between OBJ and player
+x119_s1_e2: [Group condition: Flag] Event flag comparison
+x119_s1_e3: [Group condition: Flag] Event flag comparison
+x119_s2: Spread: End
+x120: [Preset] Mitsuguru_Girl reacts to enemy and PC approach
+x120_p0: PC approach distance
+x120_p1: Generator ID
+x120_p2: Mitsu insect OBJ instance ID
+x120_p3: Extinction flag
+x120_p4: Extinction event ID
+x120_p5: Girl death flag
+x120_s0: Start state
+x120_s1: [Reproduction] Photoworm_SubState reacts to enemy and PC approach
+x120_s2: [Execution] Photoworm_SubState reacts to enemy and PC approach
+x120_s3: [Condition] Photoworm_Girl_SubState reacts to enemy and PC approach
+x120_s4: Finish
+x121: [DC] [Condition] Lizard extinction judgment_3 bodies
+x121_p0: Generator ID ①
+x121_p1: Generator ID ②
+x121_p2: Generator ID ③
+x121_s0: Start state
+x121_s1: Upper limit judgment of lizards
+x121_s1_e0: [Group condition: Character] Maximum number of generations
+x121_s1_e1: [Group condition: Character] Maximum number of generations
+x121_s1_e2: [Group condition: Character] Maximum number of generations
+x121_s2: extinction
+x121_s3: Not extinct
+x122: [DC] [Preset] lizard extinction judgment_3 bodies
+x122_p0: Lizard extinction flag
+x122_s0: Start state
+x122_s1: [Reproduction] Lizard extinction judgment_sky_SubState
+x122_s2: [Execution] Lizard extinction judgment_SubState
+x122_s3: [DC] [Condition] Lizard extinction judgment_3 bodies_SubState
+x122_s4: End state
+x0: [Lib] NPC: Grave Placement: General purpose
+x0_p0: Death map: Global event flag
+x0_p1: Tomb: OBJ instance ID
+x0_p2: Tomb move to: Generator ID
+x0_p3: NPC information parameter ID
+x0_s0: Start state
+x0_s1: Grave Placement: Start
+x0_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x0_s2: Grave placement: branch
+x0_s2_e0: [Group condition: Flag] Event flag comparison
+x0_s2_e1: [Group condition: other] Grave generation possibility judgment
+x0_s3: Grave Placement: Survival
+x0_s3_e0: [OBJ] OBJ state transition request
+x0_s3_e1: [Group condition: OBJ] OBJ state ID comparison
+x0_s4: Grave Placement: Death
+x0_s4_e0: [OBJ] OBJ state transition request
+x0_s4_e1: [Group condition: OBJ] OBJ state ID comparison
+x0_s5: Grave Placement: System: Finish
+x0_s5_e0: [System] Termination notification
+x0_s6: Grave Placement: Warp Move
+x0_s7: End state
+x1: [Lib] NPC: Grave: Key Guide: Key Guide
+x1_p0: Global: death flag
+x1_p1: Grave OBJ instance ID
+x1_p2: NPC information parameter ID
+x1_s0: Start state
+x1_s1: Key guide: Start
+x1_s2: Key guide: Key guide display
+x1_s2_e0: [FE] Create key guide area
+x1_s3: Key Guide: Use Soul dialog
+x1_s3_e0: [FE] Display of YES / NO selection window
+x1_s4: Key guide: Soul shortage dialog
+x1_s4_e0: [FE] Window display only for YES
+x1_s5: Key guide: Grave display judgment
+x1_s5_e0: [Group condition: OBJ] OBJ state ID comparison
+x1_s5_e1: [Group condition: OBJ] OBJ state ID comparison
+x1_s6: Key guide: Reset
+x1_s6_e0: [FE] Delete key guide area
+x1_s6_e1: [System] Re-execution notification
+x1_s7: Key Guide: Use Soul dialog: Wait for input
+x1_s8: Key guide: Soul shortage dialog: Waiting for input
+x1_s9: Key guide: Delete key guide
+x1_s9_e0: [FE] Delete key guide area
+x1_s10: Key Guide: System: Exit
+x1_s10_e0: [System] Termination notification
+x1_s11: Key guide: Waiting for input
+x1_s11_e0: [Group condition: OBJ] Judgment to examine OBJ
+x1_s11_e1: [Group condition: Map] Judgment that the player is in the map
+x1_s12: End state
+x2: [Lib] NPC: Grave: Key Guide: Appearance of Ghosts
+x2_p0: Area other flags: Ghost appearance
+x2_p1: Area other flags: Conversation start
+x2_p2: NPC information parameter ID
+x2_s0: Start state
+x2_s1: Ghost appearance: Appearance
+x2_s1_e0: [Flag] Set flag
+x2_s1_e1: [Group condition: Flag] Event flag comparison
+x2_s2: Ghost appearance: Character action waiting
+x2_s2_e0: [Group condition: Character] Player event action judgment
+x2_s3: Appearance of ghost: End of player action
+x2_s3_e0: [Character action] Action end request to the player
+x2_s4: Ghost appearance: Conversation start flag
+x2_s4_e0: [Flag] Set flag
+x2_s4_e1: [Group condition: Flag] Event flag comparison
+x2_s5: Appearance of ghost: Player action starts
+x2_s5_e0: [Character action] Request action from player
+x2_s5_e1: [Group condition: Character] Player event action judgment
+x2_s6: Ghost appearance: Seoul consumption
+x2_s6_e0: [Others] Soul value addition
+x2_s7: Appearance of ghost: Waiting for player action
+x2_s7_e0: [Group condition: Event] State elapsed time comparison
+x2_s8: Ghost appearance: waiting for completion
+x2_s8_e0: [Group condition: Event] State elapsed time comparison
+x2_s9: Ghost appearance: Waiting for conversation
+x2_s9_e0: [Group condition: Event] State elapsed time comparison
+x2_s10: End state
+x3: [Lib] NPC: Grave: Key guide: General purpose
+x3_p0: Ghost Appearance: Area Other Flag
+x3_p1: Conversation start: Area and other flags
+x3_p2: Death: Global event flag
+x3_p3: Tomb: OBJ instance ID
+x3_p4: Grave event ID
+x3_p5: NPC information parameter ID
+x3_s0: Start state
+x3_s1: Key guide: Start
+x3_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x3_s1_e1: [Group condition: Event] Event status judgment
+x3_s1_e2: [Group condition: Flag] Event flag comparison
+x3_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x3_s2: Key Guide: System: Exit
+x3_s2_e0: [System] Termination notification
+x3_s3: Key guide: Start conversation: Set flag
+x3_s3_e0: [Flag] Set flag
+x3_s3_e1: [Group condition: Flag] Event flag comparison
+x3_s4: [Lib] NPC: Grave: Key Guide: Key Guide_SubState
+x3_s5: [Lib] NPC: Grave: Key Guide: Ghost Appearance_SubState
+x3_s6: End state
+x4: [Lib] Bard Girl: Hoarseness
+x4_p0: Death: Global event flag
+x4_p1: Hoarseness: Occurrence: Point ID
+x4_p2: Hoar: Stop: Point ID
+x4_p3: Sound ID
+x4_p4: Hoarseness: Reoccurrence point ID
+x4_p5: Dead behavior: Area and other flags
+x4_p6: Generator ID
+x4_s0: Start state
+x4_s1: Hoar: Start
+x4_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x4_s2: Hoar: Branch: Wait
+x4_s2_e0: [Group condition: Flag] Event flag comparison
+x4_s2_e1: [Group condition: Character] Judgment within player points
+x4_s2_e2: [Group condition: Character] Judgment within player points
+x4_s2_e3: [Group condition: Character] Judgment within player points
+x4_s2_e4: [Group condition: Character] Judgment within player points
+x4_s3: Hoar: Play area intrusion: Standby
+x4_s3_e0: [Group condition: Character] Judgment within player points
+x4_s3_e1: [Group condition: Character] Judgment within player points
+x4_s3_e2: [Group condition: Flag] Event flag comparison
+x4_s4: Hoarseness: System: Rerun
+x4_s4_e0: [System] Re-execution notification
+x4_s5: Hoarseness: System: End
+x4_s5_e0: [Sound] Generator following sound stop
+x4_s5_e1: [System] Termination notification
+x4_s6: Hoar: Stop area invading: Waiting
+x4_s6_e0: [Group condition: Character] Judgment within player points
+x4_s6_e1: [Group condition: Flag] Event flag comparison
+x4_s7: Hoar: Stopping area intrusion: Stop playback
+x4_s7_e0: [Flag] Set flag
+x4_s7_e1: [Sound] Generator following sound stop
+x4_s7_e2: [Group condition: Flag] Event flag comparison
+x4_s8: Hoarseness: Death determination
+x4_s8_e0: [Group condition: Flag] Event flag comparison
+x4_s9: Hoar: Play area intrusion: Play
+x4_s9_e0: [Flag] Set flag
+x4_s9_e1: [Group condition: Flag] Event flag comparison
+x4_s9_e2: [Sound] Generator follow-up sound playback
+x4_s10: Hoar: Out of playback area Outside: Stop playback
+x4_s10_e0: [Flag] Set flag
+x4_s10_e1: [Sound] Generator following sound stop
+x4_s10_e2: [Group condition: Flag] Event flag comparison
+x4_s11: Hoar: Playback area intrusion Outside: Standby
+x4_s11_e0: [Group condition: Character] Judgment within player points
+x4_s11_e1: [Group condition: Flag] Event flag comparison
+x4_s12: End state
+x5: [Lib] [Preset] Boss Battle Start
+x5_p0: Boss destruction flag
+x5_p1: Start point ID
+x5_p2: End point ID
+x5_p3: Sound ID
+x5_p4: Boss Battle ID
+x5_p5: Other flags for logic
+x5_p6: BGM stop time
+x5_s0: Start state
+x5_s1: [Reproduction] Boss Battle_Start_SubState
+x5_s2: [Reproduction] Boss Battle_Sky_SubState
+x5_s3: [Execution] Boss Battle_Start_SubState
+x5_s4: [Execution] Boss Battle_End_SubState
+x5_s5: [Condition] Boss Battle_Start_SubState
+x5_s6: [Condition] Boss Battle_End Judgment_SubState
+x5_s7: End state
+x6: [Reproduction] Boss Battle_Start
+x6_p0: Boss destruction flag
+x6_s0: Start state
+x6_s1: Are you destroying the boss?
+x6_s2: Not destroy the boss
+x6_s3: Defeated the boss
+x7: [Condition] Boss Battle_Start
+x7_p0: Start point ID
+x7_p1: End point ID
+x7_s0: Start state
+x7_s1: Did you enter the boss room point?
+x7_s1_e0: [Group condition: Character] Judgment within player points
+x7_s1_e1: [Group condition: Net] Host judgment
+x7_s1_e2: [Group condition: System] Group condition is satisfied
+x7_s1_e3: [Group condition: Character] Judgment within player points
+x7_s1_e4: [Group condition: Net] Host judgment
+x7_s1_e5: [Group condition: System] Group condition is satisfied
+x7_s2: End state
+x8: [Execution] Boss Battle_Start
+x8_p0: Sound ID
+x8_p1: Boss Battle ID
+x8_p2: Other flags for logic
+x8_s0: Start state
+x8_s1: Boss battle start notification
+x8_s1_e0: [Others] Boss battle started
+x8_s2: Boss battle flag notification for logic
+x8_s2_e0: [Flag] Set flag
+x8_s3: Boss BGM playback
+x8_s3_e0: [Sound] Sound playback with point designation
+x8_s4: End state
+x9: [Reproduction] Boss Battle_Sky
+x9_s0: Start state
+x9_s1: End state
+x10: [Condition] Boss Battle_End Judgment
+x10_p0: Boss Battle ID
+x10_s0: Start state
+x10_s1: Did you beat the boss?
+x10_s1_e0: [Group condition: Event] Boss defeat determination
+x10_s2: End state
+x11: [Execute] Boss Battle_End
+x11_p0: Sound ID
+x11_p1: Boss Battle ID
+x11_p2: Other flags for logic
+x11_p3: BGM stop time
+x11_s0: Start state
+x11_s1: Logic flag OFF
+x11_s1_e0: [Flag] Set flag
+x11_s2: Boss battle end notification
+x11_s2_e0: [Others] End of boss battle
+x11_s3: Boss BGM stop
+x11_s3_e0: [Sound] Stop sound at specified point
+x11_s4: BGM stop standby
+x11_s5: End state
+x12: [Lib] [Preset] Elevator
+x12_p0: OBJ instance ID of the elevator
+x12_p1: On elevator point ID_
+x12_p2: Elevator point ID_below
+x12_p3: Upper lever OBJ instance ID
+x12_p4: Lower lever OBJ instance ID
+x12_s0: Start state
+x12_s1: [Reproduction] Elevator_SubState
+x12_s2: [Condition] Elevator_SubState
+x12_s3: [Execution] Elevator_Descent_SubState
+x12_s4: [Execution] Elevator_Rise_SubState
+x12_s5: [Execution] Elevator_Return switch after descending_SubState
+x12_s6: [Execution] Elevator_Return switch after ascending_SubState
+x12_s7: End state
+x13: [Reproduction] Elevator
+x13_s0: Start state
+x13_s1: End state
+x14: [Condition] Elevator
+x14_p0: Elevator OBJ instance ID
+x14_p1: On elevator point ID_
+x14_p2: Elevator point ID_below
+x14_p3: Upper lever OBJ instance ID
+x14_p4: Lower lever OBJ instance ID
+x14_s0: Start state
+x14_s1: Elevator position determination
+x14_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x14_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x14_s1_e2: [Group condition: OBJ] OBJ state ID comparison
+x14_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x14_s1_e4: [Group condition: OBJ] OBJ state ID comparison
+x14_s1_e5: [Group condition: OBJ] OBJ state ID comparison
+x14_s2: Point or lever standby
+x14_s2_e0: [Group condition: Character] Judgment within player points
+x14_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+x14_s2_e2: [Group condition: OBJ] OBJ state ID comparison
+x14_s3: Point or lever standby_2
+x14_s3_e0: [Group condition: Character] Judgment within player points
+x14_s3_e1: [Group condition: OBJ] OBJ state ID comparison
+x14_s3_e2: [Group condition: OBJ] OBJ state ID comparison
+x14_s4: The elevator is below
+x14_s5: The elevator is on top
+x14_s6: During descent or waiting for descent completion
+x14_s7: Ascending or waiting to finish rising
+x14_s8: Lift the elevator
+x14_s9: Lower the elevator
+x14_s10: Return the switch after descending
+x14_s11: Return the switch after rising
+x15: [Execution] Elevator_Rise
+x15_p0: Elevator OBJ instance ID
+x15_p1: On point ID_
+x15_s0: Start state
+x15_s1: Start moving elevator
+x15_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x15_s2: Did you get off the elevator?
+x15_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x15_s2_e1: [Group condition: Character] Judgment within player points
+x15_s2_e2: [Group condition: System] Judge whether the player is an actor
+x15_s2_e3: [Group condition: System] Judge whether an actor exists
+x15_s2_e4: [Group condition: System] Group condition is satisfied
+x15_s3: Switch returns
+x15_s3_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x15_s4: End state
+x16: [Execution] Elevator_Descent
+x16_p0: Elevator OBJ instance ID
+x16_p1: Point ID_below
+x16_s0: Start state
+x16_s1: Start moving elevator
+x16_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x16_s2: Did you get off the elevator?
+x16_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x16_s2_e1: [Group condition: Character] Judgment within player points
+x16_s2_e2: [Group condition: System] Judge whether the player is an actor
+x16_s2_e3: [Group condition: System] Judge whether an actor exists
+x16_s2_e4: [Group condition: System] Group condition is satisfied
+x16_s3: Switch returns
+x16_s3_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x16_s4: End state
+x17: [Lib] [Preset] Elevator lever
+x17_p0: OBJ instance ID of the elevator
+x17_p1: Lever OBJ instance ID
+x17_p2: Elevator state ID on the opposite side of the lever
+x17_s0: Start state
+x17_s1: [Reproduction] Elevator lever_empty_SubState
+x17_s2: [Execution] Elevator lever_Key guide disabled_SubState
+x17_s3: [Execution] Elevator lever_Key guide valid_SubState
+x17_s4: [Conditions] Elevator lever_Use determination_SubState
+x17_s5: Rerun
+x18: [Reproduction] Elevator lever _ empty
+x18_s0: Start state
+x18_s1: End state
+x19: [Condition] Elevator lever_use judgment
+x19_p0: OBJ instance ID of the elevator
+x19_p1: Lever OBJ instance ID
+x19_p2: Elevator state ID on the opposite side of the lever
+x19_s0: Start state
+x19_s1: Elevator position determination
+x19_s2: Lever disable
+x19_s3: Lever activation
+x20: [Execution] Elevator lever_Key guide valid
+x20_p0: OBJ instance ID of the elevator
+x20_p1: Lever OBJ instance ID
+x20_p2: Elevator state ID on the opposite side of the lever
+x20_s0: Start state
+x20_s1: Enable key guide for lever
+x20_s1_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x20_s2: Wait for next decision
+x20_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x20_s3: End state
+x21: [Execute] Elevator lever_key guide disabled
+x21_p0: OBJ instance ID of the elevator
+x21_p1: Lever OBJ instance ID
+x21_p2: Elevator state ID on the opposite side of the lever
+x21_s0: Start state
+x21_s1: Disabling the key guide of the lever
+x21_s1_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x21_s2: Wait for next decision
+x21_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x21_s3: End state
+x22: [Lib] [Reproduction] Elevator_Initialization
+x22_p0: Initialization completion flag
+x22_s0: Start state
+x22_s1: Already initialized?
+x22_s2: Uninitialized
+x22_s3: Initialized
+x23: [Lib] [Condition] Elevator_Initialization
+x23_s0: Start state
+x23_s1: Host?
+x23_s2: host
+x23_s3: The guests
+x24: [Lib] [Execution] Elevator_Initialization
+x24_p0: Elevator OBJ instance ID
+x24_p1: Initial position OBJ state ID
+x24_p2: Initialization completion flag
+x24_p3: OBJ state after initialization
+x24_s0: Start state
+x24_s1: Elevator initialization
+x24_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x24_s2: Initialization completion flag ON
+x24_s2_e0: [Flag] Set flag
+x24_s3: End state
+x25: [Lib] [Preset] Elevator_Initialization
+x25_p0: Elevator OBJ instance ID
+x25_p1: Initial position OBJ state ID
+x25_p2: Initialization completion flag
+x25_p3: OBJ state after initialization
+x25_s0: Start state
+x25_s1: [Lib] [Reproduction] Elevator_Initialization_SubState
+x25_s2: [Lib] [Execution] Elevator_Initialization_SubState
+x25_s3: [Lib] [Condition] Elevator_Initialization_SubState
+x25_s4: End state
+x26: [Private] [Asynchronous] [Reproduction] Bug Key
+x26_p0: Object instance ID
+x26_s0: Start state
+x26_s1: OBJ status judgment
+x26_s2: OBJ initialization: 10
+x26_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x26_s3: Before execution
+x26_s4: After execution
+x26_s5: Guest termination
+x27: [Private] [Asynchronous] [Condition] Host insect key
+x27_p0: Object instance ID
+x27_p1: Number consumed
+x27_p2: Consumption items
+x27_s0: Start state
+x27_s1: Judgment to examine
+x27_s1_e0: [Group condition: OBJ] Judgment to examine OBJ
+x27_s2: Available branch
+x27_s3: Available end
+x27_s4: Unusable termination
+x28: [Private] [Asynchronous] [Execution] Use bug key dialog
+x28_p0: Object instance ID
+x28_p1: Key guide type
+x28_p2: Event action
+x28_p3: Number consumed
+x28_p4: Consumption items
+x28_s0: Start state
+x28_s1: Dialog display
+x28_s1_e0: [FE] YES / NO selection window display (specify object instance ID)
+x28_s1_e1: [FE] YES / NO selection window display (specify object instance ID)
+x28_s2: Result judgment
+x28_s3: Rerun
+x28_s3_e0: [System] Re-execution notification
+x28_s4: Action request to player
+x28_s4_e0: [Character action] OBJ animation control request to player (Instance ID specified version)
+x28_s5: OBJ status judgment
+x28_s5_e0: [Group condition: Character] Player event action judgment
+x28_s5_e1: [Group condition: Item] Comparison of number of possessed items
+x28_s5_e2: [Group condition: OBJ] OBJ state ID comparison
+x28_s5_e3: [Group condition: OBJ] OBJ state ID comparison
+x28_s6: Insect key consumption
+x28_s6_e0: [Item] Item consumption
+x28_s7: Bug key transition waiting: 30
+x28_s7_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x28_s8: Bug key: Initial state: 10
+x28_s8_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x28_s9: End state
+x29: [Private] [Asynchronous] [Execution] Unusable key
+x29_p0: Object instance ID
+x29_p1: Number consumed
+x29_p2: Consumption items
+x29_s0: Start state
+x29_s1: Dialog display
+x29_s1_e0: [FE] Display window only for YES (specify object instance ID)
+x29_s2: Rerun
+x29_s2_e0: [System] Re-execution notification
+x29_s3: End state
+x30: [Private] [Asynchronous] [Condition] Guest Bug Key
+x30_p0: Object instance ID
+x30_s0: Start state
+x30_s1: OBJ standby
+x30_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x30_s2: End state
+x31: [Lib] [execution] dummy
+x31_s0: Start state
+x31_s1: End state
+x32: [Lib] [Asynchronous] [Preset] Bug key (floor)
+x32_p0: Object instance ID
+x32_s0: Start state
+x32_s1: [Private] [Asynchronous] [Reproduction] Bug key _SubState
+x32_s2: [Private] [Asynchronous] [Condition] Bug key _SubState
+x32_s3: [Private] [Asynchronous] [Execution] Use bug key _SubState
+x32_s4: [Private] [Asynchronous] [Execution] Insect key unavailable dialog _SubState
+x32_s5: [Private] [Asynchronous] [Condition] Guest Bug Key_SubState
+x32_s6: [Lib] [Execution] Dummy_SubState
+x32_s7: End of reproduction
+x32_s8: End of execution
+x33: [Reproduction] Hidden door 1_face SFX
+x33_p0: OBJ instance ID of the bug key
+x33_p1: Event light ID
+x33_s0: Start state
+x33_s1: Is the insect key activated?
+x33_s2: Event light reproduction judgment
+x33_s3: Event light ON
+x33_s3_e0: [Map] Point light effective setting
+x33_s4: Event light OFF
+x33_s4_e0: [Map] Point light effective setting
+x33_s5: Event light usage judgment
+x33_s6: Hidden door status judgment
+x33_s7: Hidden door lighting: 30
+x33_s7_e0: [OBJ] OBJ state transition request
+x33_s8: Activated
+x33_s9: Not started
+x34: [Conditions] Hidden door 1_Face SFX
+x34_p0: OBJ instance ID of the bug key
+x34_s0: Start state
+x34_s1: Waiting for insect key activation
+x34_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x34_s2: End state
+x35: [Execution] Hidden door 1_Face SFX
+x35_p0: OBJ instance ID of the bug key
+x35_p1: Event light ID
+x35_p2: Light fade time
+x35_p3: Wait until face SFX playback
+x35_s0: Start state
+x35_s1: Event light ON
+x35_s1_e0: [Map] Point light effective setting
+x35_s2: Event light usage judgment
+x35_s3: Hidden door OBJ state transition: 30
+x35_s3_e0: [OBJ] OBJ state transition request
+x35_s4: Hidden door OBJ state transition: 30
+x35_s4_e0: [OBJ] OBJ state transition request
+x35_s5: Wait until face SFX playback
+x35_s6: Finish
+x36: [Lib] [Preset] Hidden door 1_Face SFX
+x36_p0: OBJ instance ID of the bug key
+x36_p1: Event light ID
+x36_p2: Light fade time
+x36_p3: Wait until face SFX playback
+x36_s0: Start state
+x36_s1: [Reproduction] Hidden door 1_face SFX_SubState
+x36_s2: [Execution] Hidden door 1_face SFX_SubState
+x36_s3: [Condition] Hidden door 1_face SFX_SubState
+x36_s4: Finish
+x37: [Lib] Character: Petrochemical: Key guide
+x37_p0: generator
+x37_p1: Death: Global event flag
+x37_p2: Event action
+x37_p3: Petrified: Area and other flags
+x37_p4: Petrified: Global event flag
+x37_p5: Key guide parameters
+x37_p6: Petrification start state ID
+x37_p7: Petrification appearance event
+x37_s0: Start state
+x37_s1: Petrochemical: System: End
+x37_s1_e0: [System] Termination notification
+x37_s2: Petrochemical: Key guide: Display
+x37_s2_e0: [FE] Create key guide area
+x37_s3: Petrochemical: Key guide: Waiting for input
+x37_s3_e0: [Group condition: Character] Judgment to examine character
+x37_s3_e1: [Group condition: Map] Judgment that the player is in the map
+x37_s4: Petrochemical: System: Re-execution
+x37_s4_e0: [System] Re-execution notification
+x37_s5: Petrification: Key guide: Deleted
+x37_s5_e0: [FE] Delete key guide area
+x37_s6: Petrification: Event action: Regeneration
+x37_s6_e0: [Character action] Request action from player
+x37_s6_e1: [Group condition: Character] Player event action judgment
+x37_s7: Petrification: Event action: Standby: Elapsed time
+x37_s7_e0: [Group condition: Event] State elapsed time comparison
+x37_s8: Petrification: Petrified
+x37_s8_e0: [Item] Item consumption
+x37_s8_e1: [Flag] Set flag
+x37_s8_e2: [Group condition: Flag] Event flag comparison
+x37_s8_e3: [Flag] Set flag
+x37_s8_e4: [Group condition: Flag] Event flag comparison
+x37_s9: Petrochemical: Event action: Wait
+x37_s9_e0: [Group condition: Character] Player event action judgment
+x37_s10: Petrochemical: Item usage selection dialog
+x37_s10_e0: [FE] Display of YES / NO selection window
+x37_s11: Petrochemical: Item usage selection dialog: Waiting for input
+x37_s12: Petrification: Item not owned dialog
+x37_s12_e0: [FE] Window display only for YES
+x37_s13: Petrochemical: Item not owned dialog: Waiting for input
+x37_s14: Petrochemical: Event action: Start
+x37_s14_e0: [Group condition: Character] Player event action start possible decision
+x37_s15: Petrochemical: Item consumption
+x37_s16: Petrochemical: Start
+x37_s16_e0: [Group condition: Character] Start state comparison
+x37_s16_e1: [Group condition: Event] Event status judgment
+x37_s16_e2: [Group condition: Flag] Event flag comparison
+x37_s16_e3: [Group condition: Flag] Event flag comparison
+x37_s17: End state
+x38: [Lib] [Preset] Switch Navimesh according to OBJ status
+x38_p0: Object instance ID
+x38_p1: OBJ state ID
+x38_p2: Navimesh switching point ID
+x38_p3: Additional attributes
+x38_p4: Delete attribute
+x38_s0: Start state
+x38_s1: [Lib] [Reproduction] Navi mesh switching according to OBJ state_SubState
+x38_s2: [Lib] [Execution] Navigation mesh switching according to OBJ state_SubState
+x38_s3: [Lib] [Conditions] Switching the navigation mesh according to the OBJ state_SubState
+x38_s4: End state
+x39: [Lib] [Reproduction] Navi mesh switching according to OBJ status
+x39_p0: Target OBJ instance ID
+x39_p1: Target OBJ state ID
+x39_p2: Navimesh switching point ID
+x39_p3: Additional attributes
+x39_p4: Delete attribute
+x39_s0: Start state
+x39_s1: OBJ status judgment
+x39_s2: Navimesh attribute change
+x39_s2_e0: [Map] Added Navimesh attribute
+x39_s2_e1: [Map] Navimesh attribute deletion
+x39_s3: Already started
+x39_s4: Not running
+x40: [Lib] [Condition] Switch to Navimesh according to OBJ status
+x40_p0: Target OBJ instance ID
+x40_p1: Target OBJ state ID
+x40_p2: Navimesh switching point ID
+x40_s0: Start state
+x40_s1: OBJ transition wait
+x40_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x40_s2: End state
+x41: [Lib] [Execution] Switch Navimesh according to OBJ status
+x41_p0: Target OBJ instance ID
+x41_p1: Target OBJ state ID
+x41_p2: Navimesh switching point ID
+x41_p3: Additional attributes
+x41_p4: Delete attribute
+x41_s0: Start state
+x41_s1: Navimesh attribute change
+x41_s1_e0: [Map] Added Navimesh attribute
+x41_s1_e1: [Map] Navimesh attribute deletion
+x41_s2: End state
+x42: [Lib] [Reproduction] Switch the connection flag when in the map
+x42_s0: Start state
+x42_s1: End state
+x43: [Lib] [Condition] Switch to connection flag when in map
+x43_s0: Start state
+x43_s1: Are you in the map?
+x43_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x43_s2: End state
+x44: [Lib] [Execution] Switch to connection flag when in map
+x44_p0: Global event flag for connection
+x44_p1: Flag switching
+x44_s0: Start state
+x44_s1: Switch global event flag for connection
+x44_s1_e0: [Flag] Set flag
+x44_s2: Wait for flag transition
+x44_s2_e0: [Group condition: Flag] Event flag comparison
+x44_s3: For next judgment: Did you get out of the map?
+x44_s3_e0: [Group condition: Map] Judgment that the player is in the map
+x44_s4: End state
+x45: [Lib] [Preset] Switch the connection flag when in the map
+x45_p0: Global event flag for connection
+x45_p1: Flag switching
+x45_s0: Start state
+x45_s1: [Lib] [Reproduction] Switch connection flag when in map_SubState
+x45_s2: [Lib] [Execution] Switch to connection flag when in map _SubState
+x45_s3: [Lib] [Condition] Switch to the connection flag when in the map_SubState
+x45_s4: End state
+x46: [Execution] Elevator_Return switch after lift
+x46_p0: Elevator OBJ instance ID
+x46_p1: On point ID_
+x46_s0: Start state
+x46_s1: Did you get off the elevator?
+x46_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x46_s1_e1: [Group condition: Character] Judgment within player points
+x46_s1_e2: [Group condition: System] Judge whether the player is an actor
+x46_s1_e3: [Group condition: System] Judge whether an actor exists
+x46_s1_e4: [Group condition: System] Group condition is satisfied
+x46_s2: Switch returns
+x46_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x46_s3: End state
+x47: [Execution] Elevator_Return switch after descending
+x47_p0: Elevator OBJ instance ID
+x47_p1: Point ID_below
+x47_s0: Start state
+x47_s1: Did you get off the elevator?
+x47_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x47_s1_e1: [Group condition: Character] Judgment within player points
+x47_s1_e2: [Group condition: System] Judge whether the player is an actor
+x47_s1_e3: [Group condition: System] Judge whether an actor exists
+x47_s1_e4: [Group condition: System] Group condition is satisfied
+x47_s2: Switch returns
+x47_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x47_s3: End state
+x48: [Lib] Character: Petrified: Appearance setting
+x48_p0: Generator ID
+x48_p1: Death: Global event flag
+x48_p2: Petrified: Area and other flags
+x48_p3: Petrified: Global event flag
+x48_p4: Startup state
+x48_p5: Key guide: Event ID
+x48_s0: Start state
+x48_s1: Petrification appearance setting: Start
+x48_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x48_s2: Petrification appearance setting: System: End
+x48_s2_e0: [System] Termination notification
+x48_s3: Petrification appearance setting: Death determination: Generator
+x48_s3_e0: [Group condition: Character] Character death determination
+x48_s4: Petrification appearance setting: Death determination: Global event flag
+x48_s4_e0: [Group condition: Flag] Event flag comparison
+x48_s5: Petrification: Judgment cancellation decision
+x48_s5_e0: [Group condition: Flag] Event flag comparison
+x48_s5_e1: [Group condition: Flag] Event flag comparison
+x48_s6: Petrified Appearance Setting: Switching startup state
+x48_s6_e0: [Generator] Start state override
+x48_s7: Petrification appearance: Petrified state appearance
+x48_s8: End state
+x49: [Lib] NPC White Phantom Appearance: Unconditional
+x49_p0: Generator ID
+x49_s0: Start state
+x49_s1: Appearance: Start
+x49_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x49_s2: Appearance: Phantom appearance permission
+x49_s2_e0: [Generator] NPC spirit body generation
+x49_s3: Appearance: System: End
+x49_s3_e0: [System] Termination notification
+x49_s4: End state
+x50: [Lib] [Reproduction] Rebirth fire _ sky
+x50_s0: Start state
+x50_s1: End state
+x51: [Lib] [execute] Rebirth fire
+x51_p0: Flag start ID
+x51_p1: Flag end ID
+x51_s0: Start state
+x51_s1: Flag reset
+x51_s1_e0: [Flag] Set the flags within the specified range set in the parameter.
+x51_s2: End state
+x52: [Lib] [Condition] Rebirth fire_sky
+x52_s0: Start state
+x52_s1: End state
+x53: [Lib] [Preset] Rebirth
+x53_p0: Flag start ID
+x53_p1: Flag end ID
+x53_s0: Start state
+x53_s1: [Lib] [Reproduction] Reproduction of fire_sky_SubState
+x53_s2: [Lib] [Execution] Regenerative fire _SubState
+x53_s3: [Lib] [Condition] Reproduction fire_Sky_SubState
+x53_s4: End state
+x54: [Lib] [Reproduction] Switch Navimesh with flag judgment
+x54_p0: Other flags
+x54_p1: Global flag
+x54_p2: Additional attributes
+x54_p3: Delete attribute
+x54_p4: Navimesh switching point ID
+x54_s0: Start state
+x54_s1: Flag judgment
+x54_s2: Navimesh attribute change
+x54_s2_e0: [Map] Added Navimesh attribute
+x54_s2_e1: [Map] Navimesh attribute deletion
+x54_s3: Flag OFF
+x54_s4: Already flag on
+x55: [Lib] [Condition] Switch to Navimesh by flag judgment
+x55_p0: Other flags
+x55_p1: Global flag
+x55_s0: Start state
+x55_s1: Flag waiting
+x55_s1_e0: [Group condition: Flag] Event flag comparison
+x55_s1_e1: [Group condition: Flag] Event flag comparison
+x55_s2: Flag ON
+x56: [Lib] [execution] Navi mesh switching by flag judgment
+x56_p0: Navimesh switching point ID
+x56_p1: Additional attributes
+x56_p2: Delete attribute
+x56_s0: Start state
+x56_s1: Navimesh attribute change
+x56_s1_e0: [Map] Added Navimesh attribute
+x56_s1_e1: [Map] Navimesh attribute deletion
+x56_s2: End state
+x57: [Lib] [Preset] Navimesh switching by flag judgment
+x57_p0: Navimesh switching point ID
+x57_p1: Additional attributes
+x57_p2: Delete attribute
+x57_p3: Other flags
+x57_p4: Global flag
+x57_s0: Start state
+x57_s1: [Lib] [Reproduction] Navimesh switching with flag judgment_SubState
+x57_s2: [Lib] [execution] Navimesh switching with flag judgment_SubState
+x57_s3: [Lib] [Condition] Navigation mesh switching by flag judgment_SubState
+x57_s4: End state
+x58: [Lib] NPC Black Phantom Appearance: Online: Unconditional
+x58_p0: Summon range
+x58_p1: Generator ID
+x58_p2: Appearance: Minimum time
+x58_p3: Appearance: Maximum time
+x58_s0: Start state
+x58_s1: Black Phantom Appearance: Start
+x58_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x58_s2: Black Phantom Appearance: Summoning Conditions: Standby
+x58_s2_e0: [Group condition: Character] Judgment within player points
+x58_s3: Black Phantom Appearance: Timer: Start
+x58_s3_e0: [Group condition: Event] State elapsed time comparison
+x58_s3_e1: [Group condition: Character] Judgment within player points
+x58_s4: Black Phantom Appearance: System: End
+x58_s4_e0: [System] Termination notification
+x58_s5: Black phantom appearance: Black phantom generation
+x58_s5_e0: [Generator] NPC spirit body generation
+x58_s6: Black Phantom Appearance: System: Re-execution
+x58_s6_e0: [System] Re-execution notification
+x58_s7: [DC] Is it in game?
+x58_s8: End state
+x59: [Lib] [DC] [Reproduction] Wanderer _ random lottery
+x59_p0: Lottery determination flag
+x59_p1: Defeat flag
+x59_s0: Start state
+x59_s1: Have you already drawn?
+x59_s2: Host?
+x59_s3: Already destroyed?
+x59_s4: Is it in game?
+x59_s5: Not drawn
+x59_s6: Lottery completed
+x59_s7: Guest: Exit
+x59_s8: Defeated
+x60: [Lib] [DC] [Condition] Wanderer_Random lottery
+x60_p0: Random number comparison value
+x60_s0: Start state
+x60_s1: Random number generation
+x60_s1_e0: [System] Obtains the clamped integer value
+x60_s2: Random number judgment [[DEBUG]] flag 109990 ON can be reliably attached
+x60_s2_e0: [Group condition: Event] Random number comparison
+x60_s2_e1: [Group condition: Flag] Event flag comparison
+x60_s3: Atari: Can be generated
+x60_s4: Lost: Cannot be generated
+x61: [Lib] [DC] [execution] wanderer_random lottery_atari
+x61_p0: Lottery determination flag
+x61_p1: Number of appearance judgment points
+x61_p2: Lottery result point variable
+x61_s0: Start state
+x61_s1: Lottery determination flag ON
+x61_s1_e0: [Flag] Set flag
+x61_s2: Appearance judging point lottery: random number generation
+x61_s2_e0: [System] Obtains the clamped integer value
+x61_s3: Lottery result point variable: random number substitution
+x61_s3_e0: [Flag] Area variable setting
+x61_s4: End state
+x62: [Lib] [DC] [Preset] Wanderer_Random lottery
+x62_p0: Lottery determination flag
+x62_p1: Random number comparison value
+x62_p2: Defeat flag
+x62_p3: Number of appearance judgment points
+x62_p4: Lottery result point variable
+x62_s0: Start state
+x62_s1: [Lib] [DC] [Reproduction] Wanderer_Random Drawing_SubState
+x62_s2: [Lib] [DC] [Execution] Wanderer_Random lottery_Atari_SubState
+x62_s3: [Lib] [DC] [Condition] Wanderer_Random lottery_SubState
+x62_s4: [Lib] [DC] [Execution] Wanderer_Random Lottery_Loose_SubState
+x62_s5: Defeated: Finished
+x62_s6: End of lottery
+x62_s7: Guest: Exit
+x63: [Lib] [DC] [Reproduction] Wanderer_Generation
+x63_p0: Appearance judgment number
+x63_p1: Lottery result point variable
+x63_s0: Start state
+x63_s1: Host?
+x63_s2: Is the appearance judgment point here?
+x63_s3: Is it in game?
+x63_s4: Finish
+x63_s5: Waiting for generation
+x64: [Lib] [DC] [Condition] Wanderer_Generation
+x64_p0: Appearance judgment point ID
+x64_p1: Minimum appearance time
+x64_p2: Maximum time to appear
+x64_s0: Start state
+x64_s1: Point judgment
+x64_s1_e0: [Group condition: Character] Judgment within player points
+x64_s2: Random weight
+x64_s2_e0: [Group condition: Event] State elapsed time comparison
+x64_s3: Generation
+x65: [Lib] [DC] [Execution] Wanderer_Generation
+x65_p0: Generator ID
+x65_p1: Appearance start point ID
+x65_p2: Appearance end point ID
+x65_s0: Start state
+x65_s1: Wanderer: Generation
+x65_s1_e0: [Generator] NPC spirit body generation
+x65_s2: Hostile / Friendship Judgment and Random Weight
+x65_s3: Randomly overwrite the initial position
+x65_s3_e0: [Generator] Overwrites the initial start position by randomly selecting from the specified point
+x65_s4: Finish
+x66: [Lib] [DC] [Reproduction] Wanderer_Destroy
+x66_p0: Defeat flag
+x66_s0: Start state
+x66_s1: Already destroyed?
+x66_s2: Host?
+x66_s3: Not defeated
+x66_s4: Defeated
+x67: [Lib] [DC] [Preset] Wanderer_Generation
+x67_p0: Intrusion detection point ID
+x67_p1: Minimum appearance time
+x67_p2: Maximum time to appear
+x67_p3: Generator ID
+x67_p4: Appearance judgment number
+x67_p5: Lottery result point variable
+x67_p6: Appearance start point ID
+x67_p7: Appearance end point ID
+x67_s0: Start state
+x67_s1: [Lib] [DC] [Reproduction] Wanderer_Generation_SubState
+x67_s2: [Lib] [DC] [Execution] Wanderer_Generation_SubState
+x67_s3: [Lib] [DC] [Condition] Wanderer_Generation_SubState
+x67_s4: Finish
+x68: [Lib] [DC] [Condition] Wanderer_Destroy
+x68_p0: Generator ID
+x68_p1: Wanderer equipment
+x68_s0: Start state
+x68_s1: Defeat determination
+x68_s1_e0: [Group condition: Character] Character death determination
+x68_s2: Wanderer equipment check
+x68_s3: Large sword
+x68_s4: Kama
+x69: [Lib] [DC] [Execution] Wanderer_Destroy
+x69_p0: Defeat flag
+x69_p1: Weapon flag
+x69_s0: Start state
+x69_s1: Defeat flag ON
+x69_s1_e0: [Flag] Set flag
+x69_s2: Head flag judgment
+x69_s2_e0: [Group condition: Flag] Event flag comparison
+x69_s3: Head flag ON
+x69_s3_e0: [Flag] Set flag
+x69_s4: Hand flag judgment
+x69_s4_e0: [Group condition: Flag] Event flag comparison
+x69_s5: Foot flag judgment
+x69_s5_e0: [Group condition: Flag] Event flag comparison
+x69_s6: Torso flag judgment
+x69_s6_e0: [Group condition: Flag] Event flag comparison
+x69_s7: Torso flag ON
+x69_s7_e0: [Flag] Set flag
+x69_s8: Hand flag ON
+x69_s8_e0: [Flag] Set flag
+x69_s9: Foot flag ON
+x69_s9_e0: [Flag] Set flag
+x69_s10: Weapon flag ON
+x69_s10_e0: [Flag] Set flag
+x69_s11: End state
+x70: [Lib] [DC] [Preset] Wanderer_Destroy
+x70_p0: Defeat flag
+x70_p1: Generator ID
+x70_p2: Wanderer equipment
+x70_s0: Start state
+x70_s1: [Lib] [DC] [Reproduction] Wanderer_Destroy_SubState
+x70_s2: [Lib] [DC] [execution] wanderer_defeat determination_sword ver_SubState
+x70_s3: [Lib] [DC] [Condition] Wanderer_Destroy_SubState
+x70_s4: [Lib] [DC] [Execution] Wanderer_Destroy_Kama ver_SubState
+x70_s5: End state
+x71: [Lib] [DC] [Execute] Transparent characters
+x71_p0: Generator ID
+x71_p1: Parameter ID
+x71_s0: Start state
+x71_s1: Cancel special effects
+x71_s1_e0: [Status] Cancel special effects of specified enemy
+x71_s2: End state
+x72: [Lib] [DC] [Reproduction] Transparent characters
+x72_p0: Generator ID
+x72_p1: Parameter ID
+x72_s0: Start state
+x72_s1: Special effects: draw only shadows
+x72_s1_e0: [Status] Activate the special effects of the specified enemy
+x72_s2: End state
+x73: [Lib] [DC] [Condition] Transparent characters
+x73_p0: Generator ID
+x73_s0: Start state
+x73_s1: Defeat determination
+x73_s1_e0: [Group condition: Character] Character death determination
+x73_s2: End state
+x74: [Lib] [DC] [Preset] Transparent characters
+x74_p0: Generator ID
+x74_p1: Parameter ID
+x74_s0: Start state
+x74_s1: [Lib] [DC] [Reproduction] Transparent character _SubState
+x74_s2: [Lib] [DC] [Execution] Transparent character _SubState
+x74_s3: [Lib] [DC] [Condition] Transparent character _SubState
+x74_s4: End state
+x75: [Lib] [DC] [Execution] Wanderer_Random lottery_Loose
+x75_p0: Lottery determination flag
+x75_p1: Lottery result point variable
+x75_s0: Start state
+x75_s1: Lottery determination flag ON
+x75_s1_e0: [Flag] Set flag
+x75_s2: Lottery result point variable: Substitute 0
+x75_s2_e0: [Flag] Area variable setting
+x75_s3: End state

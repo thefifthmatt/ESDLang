@@ -1,0 +1,741 @@
+1000: Elevator body
+1000_s0: Start state
+1000_s1: Rerun
+1000_s1_e0: [System] Re-execution notification
+1000_s2: [Lib] [Preset] Elevator_SubState
+1020: Below the elevator lever
+1020_s0: Start state
+1020_s1: Rerun
+1020_s1_e0: [System] Re-execution notification
+1020_s2: [Lib] [Preset] Elevator lever_SubState
+1010: On elevator lever
+1010_s0: Start state
+1010_s1: Rerun
+1010_s1_e0: [System] Re-execution notification
+1010_s2: [Lib] [Preset] Elevator lever_SubState
+2000: Boss: Agaturan Stand _ Battle
+2000_s0: Start state
+2000_s1: Finish
+2000_s1_e0: [System] Termination notification
+2000_s2: [Lib] [Preset] Boss Battle Cut Scene No _SubState
+2010: Agaturan Wormhole Generation
+2010_s0: Start state
+2010_s1: Rerun
+2010_s1_e0: [System] Re-execution notification
+2010_s2: Finish
+2010_s2_e0: [System] Termination notification
+2010_s3: [Preset] Wormhole generation_SubState
+6000: Water drops fall and torches disappear
+6000_s0: Start state
+6000_s1: Rerun
+6000_s1_e0: [System] Re-execution notification
+6000_s2: [Lib] [Preset] _SubState that erases torches with point intrusion
+4000: Fall into the hole and warp bottom
+4000_s0: Start state
+4000_s1: Finish
+4000_s1_e0: [System] Termination notification
+4000_s2: [Preset] Fall into the hole and warp_SubState
+5000: Shenzhen Lighthouse 1
+5000_s0: Start state
+5000_s1: Finish
+5000_s1_e0: [System] Termination notification
+5000_s2: Rerun
+5000_s2_e0: [System] Re-execution notification
+5000_s3: [Preset] Shenzhen Lighthouse_SubState
+5010: Shenzhen Lighthouse 2
+5010_s0: Start state
+5010_s1: Finish
+5010_s1_e0: [System] Termination notification
+5010_s2: Rerun
+5010_s2_e0: [System] Re-execution notification
+5010_s3: [Preset] Shenzhen Lighthouse_SubState
+5020: Shenzhen Lighthouse 3
+5020_s0: Start state
+5020_s1: Finish
+5020_s1_e0: [System] Termination notification
+5020_s2: Rerun
+5020_s2_e0: [System] Re-execution notification
+5020_s3: [Preset] Shenzhen Lighthouse_SubState
+4030: Fall into the hole and warp (return from the boss room)
+4030_s0: Start state
+4030_s1: Finish
+4030_s1_e0: [System] Termination notification
+4030_s2: [Preset] Fall into the hole and warp (return from the boss room) _SubState
+4010: Fall into the hole and warp_Forest Shadow Forest
+4010_s0: Start state
+4010_s1: Finish
+4010_s1_e0: [System] Termination notification
+4010_s2: [Preset] Fall into the hole and warp_SubState
+4020: Falling into the hole and warping_Dragon Greig
+4020_s0: Start state
+4020_s1: Finish
+4020_s1_e0: [System] Termination notification
+4020_s2: [Preset] Fall into the hole and warp_SubState
+2020: Agaduran alternation
+2020_s0: Start state
+2020_s1: Finish
+2020_s1_e0: [System] Termination notification
+2020_s2: [Preset] Agaduran's alternate death process_SubState
+8000: White door opening setting_Scrap bottom
+8000_s0: Start state
+8000_s1: Finish
+8000_s1_e0: [System] Termination notification
+8000_s2: [Preset] Opening the white door_Scrap bottom_SubState
+8010: White door opening setting_Forest shadow forest
+8010_s0: Start state
+8010_s1: Finish
+8010_s1_e0: [System] Termination notification
+8010_s2: [Preset] White door opening setting_Forest Shadow Forest_SubState
+8020: Opening the white door_Dolan Greig
+8020_s0: Start state
+8020_s1: Finish
+8020_s1_e0: [System] Termination notification
+8020_s2: [Preset] Opening of the white door_Drungreig_SubState
+60000: Pledge: Shenzhen Pilgrimage_Contribution UP
+60000_s0: Start state
+60000_s1: Rerun
+60000_s1_e0: [System] Re-execution notification
+60000_s2: Finish
+60000_s2_e0: [System] Termination notification
+60000_s3: [Preset] Pledge: Shenzhen Pilgrimage_Contribution UP_SubState
+80000: Rebirth of Fire 01_Dragon Craig_In front of the pilgrims in the underground Shenzhen
+80000_s0: Start state
+80000_s1: Finish
+80000_s1_e0: [System] Termination notification
+80000_s2: [Lib] [Preset] Reproduction fire _SubState
+9000: Moya drawing switching
+9000_s0: Start state
+9000_s1: Finish
+9000_s1_e0: [System] Termination notification
+9000_s2: [Preset] Complicated drawing switching_SubState
+x27: [Reproduction] Generation of wormholes
+x27_s0: Start state
+x27_s1: End state
+x28: [Condition] Wormhole generation
+x28_p0: Agaduran Generator ID
+x28_s0: Start state
+x28_s1: Agaduran special effects
+x28_s1_e0: [Group condition: Character] Character special effect determination
+x28_s1_e1: [Group condition: Character] Character death determination
+x28_s2: End state
+x28_s3: Defeat the boss
+x29: [Execution] Wormhole generation
+x29_p0: Wormhole generator ID
+x29_p1: Start point ID
+x29_p2: End point ID
+x29_p3: Generation distance order
+x29_p4: Agaduran Generator ID
+x29_s0: Start state
+x29_s1: Wormhole generation
+x29_s1_e0: [Generator] Forced generation from specified point based on character position
+x29_s2: Deleting a wormhole
+x29_s2_e0: [Generator] Forced enemy deletion
+x29_s3: Wormhole deletion judgment
+x29_s3_e0: [Group condition: Character] Compare EzState flag of logic
+x29_s3_e1: [Group condition: Character] Character death determination
+x29_s4: Agaduran special effects
+x29_s4_e0: [Group condition: Character] Character special effect determination
+x29_s5: Delete Wormhole_2
+x29_s5_e0: [Generator] Forced enemy deletion
+x29_s6: End state
+x29_s7: Defeat the boss
+x30: [Preset] Wormhole generation
+x30_p0: Wormhole generator ID
+x30_p1: Start point ID
+x30_p2: End point ID
+x30_p3: Generation distance order
+x30_p4: Agaduran Generator ID
+x30_s0: Start state
+x30_s1: [Reproduction] Wormhole generation_SubState
+x30_s2: [Execution] Wormhole generation_SubState
+x30_s3: [Condition] Wormhole generation_SubState
+x30_s4: Rerun
+x30_s5: Finish
+x31: [Preset] Drop into the hole and warp
+x31_p0: Warp area point ID
+x31_p1: Boss room warp point ID
+x31_p2: MAPID has moved
+x31_p3: Warp point ID of the moving MAP
+x31_p4: Shenzhen Lighthouse Flag
+x31_p5: Shenzhen Lighthouse OBJ instance ID
+x31_s0: Start state
+x31_s1: [Reproduction] Falling into the hole and warp_SubState
+x31_s2: [Condition] Fall into the hole and warp_SubState
+x31_s3: [Execution] Fall into the hole and warp to boss room_SubState
+x31_s4: [Execution] Falling into the hole and warping _SubState to the moving MAP_SubState
+x31_s5: End state
+x32: [Reproduction] Warp falling into a hole
+x32_s0: Start state
+x32_s1: End state
+x33: [Condition] Falling into the hole and warping
+x33_p0: Warp area point ID
+x33_p1: Shenzhen Lighthouse Flag
+x33_p2: Shenzhen Lighthouse OBJ instance ID
+x33_s0: Start state
+x33_s1: Did you enter the warp area?
+x33_s1_e0: [Group condition: Character] Judgment within player points
+x33_s2: Can you go to the boss room?
+x33_s2_e0: [Group condition: Flag] Event flag comparison
+x33_s2_e1: [Group condition: Flag] Event flag comparison
+x33_s2_e2: [Group condition: Flag] Event flag comparison
+x33_s3: Judging the state of the lighthouse
+x33_s3_e0: [Group condition: OBJ] OBJ state ID comparison
+x33_s3_e1: [Group condition: OBJ] OBJ state ID comparison
+x33_s4: Judgment of Shenzhen Lighthouse Flag State
+x33_s4_e0: [Group condition: Flag] Event flag comparison
+x33_s5: Raise the Shenzhen Lighthouse Flag
+x33_s5_e0: [Flag] Set flag
+x33_s6: Boss room
+x33_s7: Maps that have moved
+x34: [Execution] Fall into the hole and go to the warp boss room
+x34_p0: Boss room warp point ID
+x34_s0: Start state
+x34_s1: Warp to boss room
+x34_s1_e0: [Map] Warp players to poly drama
+x34_s2: Save execution
+x34_s2_e0: [Others] Save execution
+x34_s3: End state
+x35: [Execution] Falling into the hole and going to the warped map
+x35_p0: MAPID has moved
+x35_p1: Warp point ID of the moving MAP
+x35_s0: Start state
+x35_s1: Warp to MAP that has moved here
+x35_s1_e0: [Map] Warp players to poly drama
+x35_s2: Save execution
+x35_s2_e0: [Others] Save execution
+x35_s3: Turn off the intrusion flag
+x35_s4: End state
+x36: [Preset] Shenzhen Lighthouse
+x36_p0: Shenzhen Lighthouse Flag
+x36_p1: Shenzhen Lighthouse OBJ instance ID
+x36_s0: Start state
+x36_s1: [Reproduction] Lighthouse in Shenzhen_SubState
+x36_s2: [Condition] Lighthouse in Shenzhen_SubState
+x36_s3: [Execution] Shenzhen Lighthouse_SubState
+x36_s4: End state
+x36_s5: Rerun
+x37: [Reproduction] Lighthouse in Shenzhen
+x37_p0: Shenzhen Lighthouse Flag
+x37_p1: Shenzhen Lighthouse OBJ instance ID
+x37_s0: Start state
+x37_s1: Flag state determination
+x37_s2: Transition to lighting
+x37_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x37_s3: Judgment of lighthouse OBJ status
+x37_s4: Unlit
+x37_s5: Lighted
+x38: [Conditions] Shenzhen Lighthouse
+x38_p0: Lighthouse OBJ instance ID
+x38_s0: Start state
+x38_s1: Judging the state of the lighthouse
+x38_s2: With key guide
+x38_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x38_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+x38_s2_e2: [Group condition: Character] Judge whether the player uses torches
+x38_s2_e3: [Group condition: Net] Host judgment
+x38_s3: Without key guide
+x38_s3_e0: [Group condition: OBJ] OBJ state ID comparison
+x38_s3_e1: [Group condition: OBJ] OBJ state ID comparison
+x38_s3_e2: [Group condition: Character] Judge whether the player uses torches
+x38_s3_e3: [Group condition: Net] Host judgment
+x38_s4: Transition to no key guide: 10
+x38_s4_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x38_s4_e1: [Group condition: OBJ] OBJ state ID comparison
+x38_s5: Transition to key guide existence: 30
+x38_s5_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x38_s6: Lighthouse: Lit
+x38_s7: Rerun
+x39: [Execution] Lighthouse in Shenzhen
+x39_p0: Lighthouse OBJ instance ID
+x39_s0: Start state
+x39_s1: Lights up: 70
+x39_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x39_s2: Waiting for lighting
+x39_s3: Lighting complete
+x39_s4: End state
+x40: [Preset] Fall into the hole and warp (return from the boss room)
+x40_s0: Start state
+x40_s1: [Execution] Falling into the hole and warping to the bottom of the waste_SubState
+x40_s2: [Execution] Falling into the hole and warping to the forest of the shadow of shadows_SubState
+x40_s3: [Execution] Falling into the hole and going to warp
+x40_s4: [Reproduction] Falling into the hole and warping (returning from the boss room) _SubState
+x40_s5: [Condition] Fall into the hole and warp (return from the boss room) _SubState
+x40_s6: End state
+x41: [Reproduction] Falling into the hole and warping (returning from the boss room)
+x41_s0: Start state
+x41_s1: End state
+x42: [Condition] Falling into the hole and warping (return from the boss room)
+x42_p0: Judgment flag 1 from which map
+x42_p1: Judgment flag 2 from which map
+x42_p2: Flag 3 for judging which map came from
+x42_s0: Start state
+x42_s1: Did you enter the warp area?
+x42_s1_e0: [Group condition: Character] Judgment within player points
+x42_s2: To the map that has moved: From which MAP?
+x42_s2_e0: [Group condition: Flag] Event flag comparison
+x42_s2_e1: [Group condition: Flag] Event flag comparison
+x42_s2_e2: [Group condition: Flag] Event flag comparison
+x42_s3: None of the flags were standing
+x42_s4: The map that has moved (scrap bottom)
+x42_s5: A moving map (empty)
+x42_s6: The map that has moved (Wangcheng)
+x43: [Conditions] Agaduran's alternate death treatment
+x43_p0: Boss Battle ID
+x43_s0: Start state
+x43_s1: Boss destruction waiting
+x43_s1_e0: [Group condition: Event] Boss defeat determination
+x43_s2: Boss battle start waiting
+x43_s2_e0: [Group condition: Event] Boss battle determination
+x43_s3: End state
+x44: [Reproduction] Agaduran's alternate death process
+x44_s0: Start state
+x44_s1: Are you destroying the boss?
+x44_s2: Not defeated
+x44_s3: Defeated
+x45: [Execution] Agaduran's alternate death process
+x45_p0: Alternator generator ID
+x45_s0: Start state
+x45_s1: Alternate death treatment
+x45_s1_e0: [Character action] Action request to the enemy
+x45_s2: End state
+x46: [Preset] Agaduran's alternate death process
+x46_p0: Boss Battle ID
+x46_p1: Alternator generator ID
+x46_s0: Start state
+x46_s1: [Reproduction] Agaduran's alternate death process_SubState
+x46_s2: [Execution] Agaduran's alternate death process_SubState
+x46_s3: [Condition] Agaduran's alternate death process_SubState
+x46_s4: End state
+x47: [Preset] Opening the white door_Scrap bottom
+x47_p0: Generator ID of subjugation target 1
+x47_p1: Generator ID of subjugation target 2
+x47_p2: Generator ID of the target 3
+x47_p3: Generator ID of subjugation target 4
+x47_p4: Generator ID of subjugation target 5
+x47_p5: Generator ID of the target 6
+x47_p6: White door open flag
+x47_s0: Start state
+x47_s1: [Reproduction] Opening the white door_SubState
+x47_s2: [Conditions] Opening the white door_Scrap bottom_SubState
+x47_s3: [Execution] Opening the white door_SubState
+x47_s4: End state
+x48: [Reproduction] Opening the white door
+x48_s0: Start state
+x48_s1: End state
+x49: [Condition] White door opening setting_Scrap bottom
+x49_p0: Generator ID of subjugation target 1
+x49_p1: Generator ID of subjugation target 2
+x49_p2: Generator ID of the target 3
+x49_p3: Generator ID of subjugation target 4
+x49_p4: Generator ID of subjugation target 5
+x49_p5: Generator ID of the target 6
+x49_s0: Start state
+x49_s1: Annihilation
+x49_s1_e0: [Group condition: Character] Judgment that a character is dead or not generated by the upper limit
+x49_s1_e1: [Group condition: Character] Judgment that a character is dead or not generated by the upper limit
+x49_s1_e2: [Group condition: Character] Judgment that a character is dead or not generated by the upper limit
+x49_s1_e3: [Group condition: Character] Judgment that a character is dead or not generated by the upper limit
+x49_s1_e4: [Group condition: Character] Judgment that a character is dead or not generated by the upper limit
+x49_s1_e5: [Group condition: Character] Judgment that a character is dead or not generated by the upper limit
+x49_s2: End state
+x50: [Execution] Opening the white door
+x50_p0: White door open flag
+x50_s0: Start state
+x50_s1: Turn on the white door open flag
+x50_s1_e0: [Flag] Set flag
+x50_s2: End state
+x51: [Condition] Opening of white doors_Forest shadow forest
+x51_p0: Generator ID of subjugation target 1
+x51_p1: Generator ID of subjugation target 2
+x51_p2: Generator ID of the target 3
+x51_p3: Generator ID of subjugation target 4
+x51_s0: Start state
+x51_s1: Annihilation
+x51_s1_e0: [Group condition: Character] Judgment that a character is dead or not generated by the upper limit
+x51_s1_e1: [Group condition: Character] Judgment that a character is dead or not generated by the upper limit
+x51_s1_e2: [Group condition: Character] Judgment that a character is dead or not generated by the upper limit
+x51_s1_e3: [Group condition: Character] Judgment that a character is dead or not generated by the upper limit
+x51_s2: End state
+x52: [Conditions] White door opening setting_Dolan Greig
+x52_p0: Generator ID of subjugation target 1
+x52_p1: Generator ID of subjugation target 2
+x52_p2: Generator ID of the target 3
+x52_p3: Generator ID of subjugation target 4
+x52_s0: Start state
+x52_s1: Annihilation
+x52_s1_e0: [Group condition: Character] Judgment that a character is dead or not generated by the upper limit
+x52_s1_e1: [Group condition: Character] Judgment that a character is dead or not generated by the upper limit
+x52_s1_e2: [Group condition: Character] Judgment that a character is dead or not generated by the upper limit
+x52_s1_e3: [Group condition: Character] Judgment that a character is dead or not generated by the upper limit
+x52_s2: End state
+x53: [Preset] White door opening setting_Forest shadow forest
+x53_p0: Generator ID of subjugation target 1
+x53_p1: Generator ID of subjugation target 2
+x53_p2: Generator ID of the target 3
+x53_p3: Generator ID of subjugation target 4
+x53_p4: White door open flag
+x53_s0: Start state
+x53_s1: [Reproduction] Opening the white door_SubState
+x53_s2: [Conditions] Opening of white doors_Forest Shadow Forest_SubState
+x53_s3: [Execution] Opening the white door_SubState
+x53_s4: End state
+x54: [Preset] Opening the white door _ Dolan Greig
+x54_p0: Generator ID of subjugation target 1
+x54_p1: Generator ID of subjugation target 2
+x54_p2: Generator ID of the target 3
+x54_p3: Generator ID of subjugation target 4
+x54_p4: White door open flag
+x54_s0: Start state
+x54_s1: [Reproduction] Opening the white door_SubState
+x54_s2: [Conditions] Opening the white door_Drungreig_SubState
+x54_s3: [Execution] Opening the white door_SubState
+x54_s4: End state
+x55: [Reproduction] Pledge: Shenzhen Pilgrimage_Contribution UP
+x55_s0: Start state
+x55_s1: Shenzhen Pilgrimage: What are the pledge levels?
+x55_s2: Host?
+x55_s3: Is the pledge a Shenzhen pilgrimage?
+x55_s4: Level 3: Do nothing
+x55_s5: Level 2: Boss destruction judgment
+x55_s6: Level 1: Lighthouse judgment
+x55_s7: Level 0: Hole fall detection
+x55_s8: The guests
+x55_s9: Pledge difference: End
+x56: [Conditions] Pledge: Shenzhen Pilgrimage_Contribution UP_LV0
+x56_p0: Hole warp_start point ID
+x56_p1: Hole warp_end point ID
+x56_s0: Start state
+x56_s1: Did you fall into the hole?
+x56_s1_e0: [Group condition: Character] Judgment within player points
+x56_s2: End state
+x57: [Execution] Pledge: Shenzhen Pilgrimage_Contribution UP
+x57_s0: Start state
+x57_s1: Shenzhen Pilgrimage: Contribution +1
+x57_s1_e0: [Status] Add player's commitment contribution
+x57_s2: End state
+x58: [Conditions] Pledge: Shenzhen Pilgrimage _ Contribution UP_LV1
+x58_p0: Lighthouse ignition flag ①
+x58_p1: Lighthouse ignition flag ②
+x58_p2: Lighthouse ignition flag ③
+x58_s0: Start state
+x58_s1: Are the three lighthouse lighting flags ON?
+x58_s1_e0: [Group condition: Flag] Event flag comparison
+x58_s1_e1: [Group condition: Flag] Event flag comparison
+x58_s1_e2: [Group condition: Flag] Event flag comparison
+x58_s2: End state
+x59: [Conditions] Pledge: Shenzhen Pilgrimage_Contribution UP_LV2
+x59_p0: Boss destruction flag
+x59_s0: Start state
+x59_s1: Boss: Did you destroy Agaduran?
+x59_s1_e0: [Group condition: Flag] Event flag comparison
+x59_s2: End state
+x60: [Preset] Pledge: Shenzhen Pilgrimage_Contribution UP
+x60_p0: Hole warp_start point ID
+x60_p1: Hole warp_end point ID
+x60_p2: Lighthouse ignition flag ①
+x60_p3: Lighthouse ignition flag ②
+x60_p4: Lighthouse ignition flag ③
+x60_p5: Boss destruction flag
+x60_s0: Start state
+x60_s1: [Reproduction] Pledge: Shenzhen Pilgrimage_Contribution UP_SubState
+x60_s2: [Execution] Pledge: Shenzhen Pilgrimage_Contribution UP_SubState
+x60_s3: [Conditions] Pledge: Shenzhen Pilgrimage_Contribution UP_LV0_SubState
+x60_s4: [Conditions] Pledge: Shenzhen Pilgrimage_Contribution UP_LV1 o'clock_SubState
+x60_s5: [Conditions] Pledge: Shenzhen Pilgrimage_Contribution UP_LV2_SubState
+x60_s6: Rerun
+x60_s7: Finish
+x61: [Condition] Complicated drawing of haze
+x61_p0: Boss destruction flag
+x61_s0: Start state
+x61_s1: Did you destroy the boss?
+x61_s1_e0: [Group condition: Flag] Event flag comparison
+x61_s2: End state
+x62: [Execution] Complicated drawing
+x62_p0: Moya OBJ instance ID
+x62_s0: Start state
+x62_s1: Display of haze
+x62_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x62_s2: End state
+x63: [Reproduce] Complicated drawing
+x63_p0: Moya OBJ instance ID
+x63_p1: Boss destruction flag
+x63_s0: Start state
+x63_s1: Display of haze
+x63_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x63_s2: Has the boss been destroyed?
+x63_s3: Hidden hiding
+x63_s3_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x63_s4: Finish
+x63_s5: Waiting for the white door to open
+x64: [Preset] Complicated drawing
+x64_p0: Boss destruction flag
+x64_p1: Moya OBJ instance ID
+x64_s0: Start state
+x64_s1: [Reproduction] Switching of Complicated Drawing_SubState
+x64_s2: [Execution] Complicated drawing_SubState
+x64_s3: [Condition] Switching of Complicated Drawing_SubState
+x64_s4: End state
+x0: [Lib] [Preset] Boss Battle Start
+x0_p0: Boss destruction flag
+x0_p1: Start point ID
+x0_p2: End point ID
+x0_p3: Sound ID
+x0_p4: Boss Battle ID
+x0_p5: Other flags for logic
+x0_p6: BGM stop time
+x0_s0: Start state
+x0_s1: [Reproduction] Boss Battle_Start_SubState
+x0_s2: [Reproduction] Boss Battle_Sky_SubState
+x0_s3: [Execution] Boss Battle_Start_SubState
+x0_s4: [Execution] Boss Battle_End_SubState
+x0_s5: [Condition] Boss Battle_Start_SubState
+x0_s6: [Condition] Boss Battle_End Judgment_SubState
+x0_s7: End state
+x1: [Reproduction] Boss Battle_Start
+x1_p0: Boss destruction flag
+x1_s0: Start state
+x1_s1: Are you destroying the boss?
+x1_s2: Not destroy the boss
+x1_s3: Defeated the boss
+x2: [Condition] Boss Battle_Start
+x2_p0: Start point ID
+x2_p1: End point ID
+x2_s0: Start state
+x2_s1: Did you enter the boss room point?
+x2_s1_e0: [Group condition: Character] Judgment within player points
+x2_s1_e1: [Group condition: Net] Host judgment
+x2_s1_e2: [Group condition: System] Group condition is satisfied
+x2_s1_e3: [Group condition: Character] Judgment within player points
+x2_s1_e4: [Group condition: Net] Host judgment
+x2_s1_e5: [Group condition: System] Group condition is satisfied
+x2_s2: End state
+x3: [Execution] Boss Battle_Start
+x3_p0: Sound ID
+x3_p1: Boss Battle ID
+x3_p2: Other flags for logic
+x3_s0: Start state
+x3_s1: Boss battle start notification
+x3_s1_e0: [Others] Boss battle started
+x3_s2: Boss battle flag notification for logic
+x3_s2_e0: [Flag] Set flag
+x3_s3: Boss BGM playback
+x3_s3_e0: [Sound] Sound playback with point designation
+x3_s4: End state
+x4: [Reproduction] Boss Battle_Sky
+x4_s0: Start state
+x4_s1: End state
+x5: [Condition] Boss Battle_End Judgment
+x5_p0: Boss Battle ID
+x5_s0: Start state
+x5_s1: Did you beat the boss?
+x5_s1_e0: [Group condition: Event] Boss defeat determination
+x5_s2: End state
+x6: [Execute] Boss Battle_End
+x6_p0: Sound ID
+x6_p1: Boss Battle ID
+x6_p2: Other flags for logic
+x6_p3: BGM stop time
+x6_s0: Start state
+x6_s1: Logic flag OFF
+x6_s1_e0: [Flag] Set flag
+x6_s2: Boss battle end notification
+x6_s2_e0: [Others] End of boss battle
+x6_s3: Boss BGM stop
+x6_s3_e0: [Sound] Stop sound at specified point
+x6_s4: BGM stop standby
+x6_s5: End state
+x7: [Lib] [Preset] Elevator
+x7_p0: OBJ instance ID of the elevator
+x7_p1: On elevator point ID_
+x7_p2: Elevator point ID_below
+x7_p3: Upper lever OBJ instance ID
+x7_p4: Lower lever OBJ instance ID
+x7_s0: Start state
+x7_s1: [Reproduction] Elevator_SubState
+x7_s2: [Condition] Elevator_SubState
+x7_s3: [Execution] Elevator_Descent_SubState
+x7_s4: [Execution] Elevator_Rise_SubState
+x7_s5: [Execution] Elevator_Return switch after descending_SubState
+x7_s6: [Execution] Elevator_Return switch after ascending_SubState
+x7_s7: End state
+x8: [Reproduction] Elevator
+x8_s0: Start state
+x8_s1: End state
+x9: [Condition] Elevator
+x9_p0: Elevator OBJ instance ID
+x9_p1: On elevator point ID_
+x9_p2: Elevator point ID_below
+x9_p3: Upper lever OBJ instance ID
+x9_p4: Lower lever OBJ instance ID
+x9_s0: Start state
+x9_s1: Elevator position determination
+x9_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x9_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x9_s1_e2: [Group condition: OBJ] OBJ state ID comparison
+x9_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x9_s1_e4: [Group condition: OBJ] OBJ state ID comparison
+x9_s1_e5: [Group condition: OBJ] OBJ state ID comparison
+x9_s2: Point or lever standby
+x9_s2_e0: [Group condition: Character] Judgment within player points
+x9_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+x9_s2_e2: [Group condition: OBJ] OBJ state ID comparison
+x9_s3: Point or lever standby_2
+x9_s3_e0: [Group condition: Character] Judgment within player points
+x9_s3_e1: [Group condition: OBJ] OBJ state ID comparison
+x9_s3_e2: [Group condition: OBJ] OBJ state ID comparison
+x9_s4: The elevator is below
+x9_s5: The elevator is on top
+x9_s6: During descent or waiting for descent completion
+x9_s7: Ascending or waiting to finish rising
+x9_s8: Lift the elevator
+x9_s9: Lower the elevator
+x9_s10: Return the switch after descending
+x9_s11: Return the switch after rising
+x10: [Execution] Elevator_Rise
+x10_p0: Elevator OBJ instance ID
+x10_p1: On point ID_
+x10_s0: Start state
+x10_s1: Start moving elevator
+x10_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x10_s2: Did you get off the elevator?
+x10_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x10_s2_e1: [Group condition: Character] Judgment within player points
+x10_s2_e2: [Group condition: System] Judge whether the player is an actor
+x10_s2_e3: [Group condition: System] Judge whether an actor exists
+x10_s2_e4: [Group condition: System] Group condition is satisfied
+x10_s3: Switch returns
+x10_s3_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x10_s4: End state
+x11: [Execution] Elevator_Descent
+x11_p0: Elevator OBJ instance ID
+x11_p1: Point ID_below
+x11_s0: Start state
+x11_s1: Start moving elevator
+x11_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x11_s2: Did you get off the elevator?
+x11_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x11_s2_e1: [Group condition: Character] Judgment within player points
+x11_s2_e2: [Group condition: System] Judge whether the player is an actor
+x11_s2_e3: [Group condition: System] Judge whether an actor exists
+x11_s2_e4: [Group condition: System] Group condition is satisfied
+x11_s3: Switch returns
+x11_s3_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x11_s4: End state
+x12: [Lib] [Preset] Elevator lever
+x12_p0: OBJ instance ID of the elevator
+x12_p1: Lever OBJ instance ID
+x12_p2: Elevator state ID on the opposite side of the lever
+x12_s0: Start state
+x12_s1: [Reproduction] Elevator lever_empty_SubState
+x12_s2: [Execution] Elevator lever_Key guide disabled_SubState
+x12_s3: [Execution] Elevator lever_Key guide valid_SubState
+x12_s4: [Conditions] Elevator lever_Use determination_SubState
+x12_s5: Rerun
+x13: [Reproduction] Elevator lever _ empty
+x13_s0: Start state
+x13_s1: End state
+x14: [Condition] Elevator lever_use judgment
+x14_p0: OBJ instance ID of the elevator
+x14_p1: Lever OBJ instance ID
+x14_p2: Elevator state ID on the opposite side of the lever
+x14_s0: Start state
+x14_s1: Elevator position determination
+x14_s2: Lever disable
+x14_s3: Lever activation
+x15: [Execution] Elevator lever_Key guide valid
+x15_p0: OBJ instance ID of the elevator
+x15_p1: Lever OBJ instance ID
+x15_p2: Elevator state ID on the opposite side of the lever
+x15_s0: Start state
+x15_s1: Enable key guide for lever
+x15_s1_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x15_s2: Wait for next decision
+x15_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x15_s3: End state
+x16: [Execute] Elevator lever_key guide disabled
+x16_p0: OBJ instance ID of the elevator
+x16_p1: Lever OBJ instance ID
+x16_p2: Elevator state ID on the opposite side of the lever
+x16_s0: Start state
+x16_s1: Disabling the key guide of the lever
+x16_s1_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x16_s2: Wait for next decision
+x16_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x16_s3: End state
+x17: [Lib] [Reproduction] Erase torches with point intrusion
+x17_s0: Start state
+x17_s1: End state
+x18: [Lib] [Condition] The torch is erased by point intrusion.
+x18_p0: Start point ID
+x18_p1: End point ID
+x18_s0: Start state
+x18_s1: Did you enter the point with a torch on?
+x18_s1_e0: [Group condition: Character] Judgment within player points
+x18_s1_e1: [Group condition: Character] Judge whether the player uses torches
+x18_s2: End state
+x19: [Lib] [Execution] erase torches with point intrusion
+x19_p0: Torches digestion parameter ID
+x19_p1: Start point ID
+x19_p2: End point ID
+x19_s0: Start state
+x19_s1: Turn off torches
+x19_s1_e0: [Status] Erase the player's torches
+x19_s2: Has the torch disappeared?
+x19_s2_e0: [Group condition: Character] Judge whether the player uses torches
+x19_s3: End state
+x20: [Lib] [Preset] Erase torches with point intrusion
+x20_p0: Start point ID
+x20_p1: End point ID
+x20_p2: Torches digestion parameter ID
+x20_s0: Start state
+x20_s1: [Lib] [Reproduction] _SubState that erases torches with point intrusion
+x20_s2: [Lib] [Execution] _SubState that erases torches with point intrusion
+x20_s3: [Lib] [Condition] _SubState that erases torches with point intrusion
+x20_s4: End state
+x21: [Execution] Elevator_Return switch after lift
+x21_p0: Elevator OBJ instance ID
+x21_p1: On point ID_
+x21_s0: Start state
+x21_s1: Did you get off the elevator?
+x21_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x21_s1_e1: [Group condition: Character] Judgment within player points
+x21_s1_e2: [Group condition: System] Judge whether the player is an actor
+x21_s1_e3: [Group condition: System] Judge whether an actor exists
+x21_s1_e4: [Group condition: System] Group condition is satisfied
+x21_s2: Switch returns
+x21_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x21_s3: End state
+x22: [Execution] Elevator_Return switch after descending
+x22_p0: Elevator OBJ instance ID
+x22_p1: Point ID_below
+x22_s0: Start state
+x22_s1: Did you get off the elevator?
+x22_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x22_s1_e1: [Group condition: Character] Judgment within player points
+x22_s1_e2: [Group condition: System] Judge whether the player is an actor
+x22_s1_e3: [Group condition: System] Judge whether an actor exists
+x22_s1_e4: [Group condition: System] Group condition is satisfied
+x22_s2: Switch returns
+x22_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x22_s3: End state
+x23: [Lib] [Reproduction] Rebirth fire _ sky
+x23_s0: Start state
+x23_s1: End state
+x24: [Lib] [execute] Rebirth fire
+x24_p0: Flag start ID
+x24_p1: Flag end ID
+x24_s0: Start state
+x24_s1: Flag reset
+x24_s1_e0: [Flag] Set the flags within the specified range set in the parameter.
+x24_s2: End state
+x25: [Lib] [Condition] Rebirth fire_sky
+x25_s0: Start state
+x25_s1: End state
+x26: [Lib] [Preset] Rebirth
+x26_p0: Flag start ID
+x26_p1: Flag end ID
+x26_s0: Start state
+x26_s1: [Lib] [Reproduction] Reproduction of fire_sky_SubState
+x26_s2: [Lib] [Execution] Regenerative fire _SubState
+x26_s3: [Lib] [Condition] Reproduction fire_Sky_SubState
+x26_s4: End state

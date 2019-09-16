@@ -8,32 +8,70 @@ using System.Threading.Tasks;
 using SoulsFormats;
 using SoulsIds;
 using static SoulsIds.GameSpec;
+using static ESDLang.Script.Util;
 
 namespace ESDLang.Script
 {
     public class ESDOptions
     {
         // Options to process
-        public /* . */ Queue<Option> opts = new Queue<Option>();
+        public Queue<Option> opts = new Queue<Option>();
         // State
-        public Dictionary<string, bool> Flags = new Dictionary<string, bool>();
+        public Dictionary<string, bool> Flags = new Dictionary<string, bool>(defaultFlags);
         // For now, all flags are default true
-        public bool Flag(string name) => Flags.TryGetValue(name, out bool val) ? val : true;
+        public bool Flag(string name) => Flags[name];
         public List<string> Chrs = new List<string>();
         public List<string> Maps = new List<string>();
         public List<string> Esds = new List<string>();
         public List<string> PyInputs = new List<string>();
         public List<string> EsdInputs = new List<string>();
+        public string EddDir = null;
+        public CmdType Type = CmdType.Unknown;
+        public EDDText.EDDFormat EddFormat = EDDText.EDDFormat.Flat;
         public GameSpec Spec = new GameSpec();
         public Option LastAction = null;
 
-        private static readonly HashSet<string> yesFlags = new HashSet<string> { "cfg", "stateinfo", "newstates", "talk" };
-        private static readonly HashSet<string> allFlags = new HashSet<string>(yesFlags.Concat(yesFlags.Select(f => $"no{f}")));
-        private static readonly List<FromGame> gamesList = ((FromGame[])Enum.GetValues(typeof(FromGame))).Where(g => g != FromGame.UNKNOWN).ToList();
-        private static readonly Dictionary<string, FromGame> games = gamesList.ToDictionary(f => f.ToString().ToLower(), f => f);
-        private static readonly List<DCX.Type> dcxsList = ((DCX.Type[])Enum.GetValues(typeof(DCX.Type))).Where(d => d != DCX.Type.Unknown).ToList();
-        private static readonly Dictionary<string, DCX.Type> dcxs = dcxsList.ToDictionary(f => f.ToString().ToLower(), f => f);
+        // TODO: Change default... also in accessor function
+        private static readonly Dictionary<string, bool> defaultFlags = new Dictionary<string, bool> {
+            { "cfg", true },
+            { "stateinfo", true },
+            { "newstates", true },
+            { "cmdedd", false },
+            { "copysame", false },
+        };
+        private static readonly HashSet<string> allFlags = new HashSet<string>(defaultFlags.Keys.Concat(defaultFlags.Keys.Select(f => $"no{f}")));
+        private static readonly EnumOption<FromGame> games = EnumOption<FromGame>.Create();
+        private static readonly EnumOption<DCX.Type> dcxs = EnumOption<DCX.Type>.Create();
+        private static readonly EnumOption<CmdType> cmdTypes = EnumOption<CmdType>.Create();
+        private static readonly EnumOption<EDDText.EDDFormat> eddFormats = EnumOption<EDDText.EDDFormat>.Create();
+        // private static readonly List<FromGame> gamesList = ((FromGame[])Enum.GetValues(typeof(FromGame))).Where(g => g != FromGame.UNKNOWN).ToList();
+        // private static readonly Dictionary<string, FromGame> games = gamesList.ToDictionary(f => f.ToString().ToLower(), f => f);
+        // private static readonly List<DCX.Type> dcxsList = ((DCX.Type[])Enum.GetValues(typeof(DCX.Type))).Where(d => d != DCX.Type.Unknown).ToList();
+        // private static readonly Dictionary<string, DCX.Type> dcxs = dcxsList.ToDictionary(f => f.ToString().ToLower(), f => f);
         public static readonly HashSet<string> specFlags = new HashSet<string> { "basedir", "esddir", "maps", "msgs", "names", "layouts", "params", "outdcx" };
+
+        internal class EnumOption<T>
+        {
+            public List<T> List { get; set; }
+            public Dictionary<string, T> Names { get; set; }
+            public static EnumOption<T> Create()
+            {
+                List<T> list = ((T[])Enum.GetValues(typeof(T))).Where(d => d.ToString().ToLower() != "unknown").ToList();
+                return new EnumOption<T>
+                {
+                    List = list,
+                    Names = list.ToDictionary(f => f.ToString().ToLower(), f => f)
+                };
+            }
+            public T this[string val]
+            {
+                get
+                {
+                    if (!Names.TryGetValue(val.ToLower(), out T type)) throw new Exception($"Unrecognized {typeof(T).ToString().ToLower()} {val} - expected {string.Join(", ", List)}");
+                    return type;
+                }
+            }
+        }
 
         private ESDOptions(List<Option> opts)
         {
@@ -41,11 +79,12 @@ namespace ESDLang.Script
         }
         public static string GetShortUsage()
         {
-            return $@"Usage: esdtool.exe [-h] [{string.Join(" | ", gamesList.Select(g => $"-{g}".ToLower()))}]
+            return $@"Usage: esdtool.exe [-h] [{string.Join(" | ", games.List.Select(g => $"-{g}".ToLower()))}]
                    [-basedir DIR] [-esddir DIR] [-maps DIR] [-msgs DIR] [-params FILE] [-names DIR]
                    [-layouts DIR] [-outdcx DCXTYPE] [-i FILE1 FILE2 etc] [-f ESD MAP CHR etc]
-                   [-writepy TEMPLATE] [-writebnd DIR] [-writeloose TEMPLATE]
-                   [-[no]cfg] [-[no]stateinfo] [-[no]newstates] [-[no]talk]
+                   [-[no]cfg] [-[no]stateinfo] [-[no]newstates] [-[no]talk] [-[no]cmdedd]
+                   [-[no]copysame] [-cmdtype TYPE] [-edddir DIR]
+                   [-writepy TEMPLATE] [-writebnd DIR] [-writeloose TEMPLATE] [-writeedd DIR] [-info]
 ";
         }
         public static string GetUsage()
@@ -54,15 +93,14 @@ namespace ESDLang.Script
 
 esdtool decompiles ESDs to a high-level Python representation, which can be compiled back to ESD.
 Similar to ffmpeg or ImageMagick, the order of command line arguments determines the order of
-operations. For instance, -ds3 -esddir mod\script\talk will default everything to DS3, but then
-change the subdirectory used for ESDs. The other way around will end up with the DS3 default
-directory for ESDs only.
+operations. For instance, -ds1 -esddir chr will default everything to DS1, but then change
+the subdirectory used for ESD inputs. The other way around will not work.
 
 > Game flag
-{string.Join(", ", gamesList.Select(g => $"-{g}".ToLower()))}
+{string.Join(", ", games.List.Select(g => $"-{g}".ToLower()))}
     Sets all game data flags to default known values for Steam installations of the given game, or
-    clears them if unknown. This overrides all values which were there before. Note: esddir is
-    currently only set for DS1R, DS3, and SDT. Contact me to add support for other games.
+    clears them if unknown. This overrides all values which were there before. These default values
+    are kept in SoulsIds in GameSpec.cs
 
 > Game data flags
 (not necessary to set if set by the game flag)
@@ -73,7 +111,7 @@ directory for ESDs only.
     that directory. Overrides -i for a list of ESDs and clears -f.
 -maps DIR
     Sets the relative dir for all MSB files. Used to look up chr info on ESDs, currently for
-    Sekiro only.
+    DS1, DS1R, DS3, and Sekiro.
 -msgs DIR
     Sets the relative dir where FMG bnds can be found. Used to annotate ESDs with game info.
 -params FILE
@@ -83,7 +121,7 @@ directory for ESDs only.
     A directory with names for game ids. Currently ModelName.txt is used alongside chr info.
 -layouts DIR
     A directory with layout xml files, required to use -params.
--outdcx [{string.Join(" | ", dcxsList)}]
+-outdcx [{string.Join(" | ", dcxs.List)}]
     Sets the DCX type to use when writing ESDs (writebnd/writeloose).
 
 > Input/output flags
@@ -94,10 +132,13 @@ directory for ESDs only.
     relative to the current directory if relative paths.
 -f ESD MAP CHR etc
     A list of one or more filters for -esddir or -i inputs, replacing previous list of filters
-    (if any). ESD is an ESD name (like t300330), MAP is a prefix for a BND name (like m40_00),
-    and CHR is a character model with an ESD (like c1400, if -maps is supported). The ESDs
-    output/replaced are a union of all filters. Filters do nothing if no input ESD matches them.
-    Note that chresdbnd are already prefixed with the map name.
+    (if any). ESD is an ESD name or prefix (like t300330 or event), MAP is a prefix for a BND
+    name (like m40_00), and CHR is a character model with an ESD (like c1400, if -maps is
+    supported). The ESDs output/replaced are a union of all filters. Filters do nothing if no
+    input ESD matches them.
+-edddir DIR
+    The directory to use to find .edd or .edd.txt files, default dist\<game>\edd when it exists
+    for English translations. This can be set to the same as -esddir to use the original EDD files.
 -writepy TEMPLATE
     Given ESD inputs (with -esddir or -i), decompile all ESDs, with filters if those exist. The
     template is a file name, with %e, %m, and %c replaced with ESD, map name prefix, and chr name
@@ -108,19 +149,30 @@ directory for ESDs only.
     Given Python inputs (with -i), and also ESD inputs (with -esddir or -i), write copies of those
     ESD/bnd files to the given directory if they have compiled ESDs. If the given directory is a
     relative path and gamedir is also provided, it will be relative to the game directory. Can be
-    used to write out final files for a mod. This does not create backups. Does not yet handle
-    chresdbnds in DS1 chr.
+    used to write out final files for a mod. This does not create backups.
+-[no]copysame
+    When enabled (default false), writebnd not only writes copied of the compiled ESDs, but also
+    copies of all ESDs which are identical to it. This can be used to decompile only one bonfire
+    and change all other bonfires at once. Equivalence is determined an ESD's hash, which is shown
+    by -info.
 -writeloose TEMPLATE
     Writes out individual .esd files. If there are Python inputs (with -i), there also must be
     ESD inputs (with -esddir or -i) to use as a template; then writes out individual .esd files
     contained in those Python files. If there is more than one .esd, the template must include
     %e, which is the ESD id. If not given any Python files, just writes out the given ESD
     bnds/dcxs as individual .esd files.
+-writeedd TEMPLATE
+    Writes out .edd.txt files for EDD files alongside input ESD files, which can be used to
+    annotate Python files with developer documentation. %e is the ESD id. Translated EDD dumps are
+    already included with esdtool so this is not usually necessary.
 -info
     Print basic info on the given input files - some parsing but no compilation/decompilation.
--mapinfo
-    For the current game flags, print info about where all ESDs are used. Only supported if -maps
-    is supported.
+    If -maps is supported, also prints where the ESDs are used.
+
+> EDD writing options
+-eddformat {string.Join(" | ", eddFormats.List)}
+    How to write .edd.txt files. This can be done flat (basically a direct dump), chunked with
+    all strings in shared files at most 500 lines long, or joining chunked inputs from -edddir.
 
 > Compilation options
 -[no]cfg
@@ -133,17 +185,30 @@ directory for ESDs only.
 -[no]newstates
     When enabled (default true), allows creating states with fresh ids, rather than getting all ids
     from docstrings (with -stateinfo).
--[no]talk
-    When enabled (default true), use talk ESD commands and functions. Otherwise, uses chr ESD.
-    Disable this for ESDs in chr directory in DS1.
+-[no]cmdedd
+    When enabled (default false) and EDD is available, output text for each individual command
+    where given a description. This appears to be automatically inserted based on the command id,
+    rather than custom text like state or machine descriptions.
+-cmdtype [{string.Join(" | ", cmdTypes.List)}]
+    The source to use for command and function names, for both reading and writing. If not
+    provided, this is inferred from .esd/.py name and provided game where possible. Otherwise, None
+    is used.
 
 > Some examples
+Show all known ESDs for a game:
+    $ esdtool.exe -ds2s
 Decompile all ESDs for a game to one Python file:
     $ esdtool.exe -ds3 -writepy ds3.py
 Decompile all ESDs for a game to different Python files:
     $ esdtool.exe -ds1r -writepy %e.py
-Replace game talkesdbnds with the given compiled Python files:
+Decompile a specific ESD from a game by name:
+    $ esdtool.exe -sdt -f t000001 -writepy %e.py
+Decompile and recompile a lone ESD file (cmd type inferred from name):
+    $ esdtool.exe -ds2s -i work\event_m10_04_00_00.esd -writepy work\%e.py
+    $ esdtool.exe -ds2s -i work\event_m10_04_00_00.py -writeloose work\%e_recompiled.esd
+Recompile the given Python files into a subdirectory of the game, copying relevant bnds:
     $ esdtool.exe -sdt -i *.py -writebnd mymod\script\talk
+    $ esdtool.exe -ds2s -i mymod\event_m10_04_00_00.py -writebnd mymod\ezstate
 ";
         }
 
@@ -197,9 +262,9 @@ Replace game talkesdbnds with the given compiled Python files:
                         if (!formats.Contains(ch)) throw new Exception($"Unknown format %{ch} for flag -{arg}");
                     }
                 }
-                if (games.ContainsKey(arg))
+                if (games.Names.ContainsKey(arg))
                 {
-                    opts.Add(new SetGame { Game = games[arg] });
+                    opts.Add(new SetGame { Game = games.Names[arg] });
                 }
                 else if (specFlags.Contains(arg))
                 {
@@ -207,7 +272,6 @@ Replace game talkesdbnds with the given compiled Python files:
                     string val = getOnlyArg();
                     if (arg == "outdcx")
                     {
-                        if (!dcxs.ContainsKey(val.ToLower())) throw new Exception($"Unrecognized {arg} {val} - expected {string.Join(", ", dcxs.Keys)}");
                         opt.Dcx = dcxs[val.ToLower()];
                     }
                     else
@@ -216,10 +280,26 @@ Replace game talkesdbnds with the given compiled Python files:
                     }
                     opts.Add(opt);
                 }
+                else if (arg == "cmdtype")
+                {
+                    string val = getOnlyArg();
+                    opts.Add(new SetCmdType { Type = cmdTypes[val] });
+                }
+                else if (arg == "eddformat")
+                {
+                    string val = getOnlyArg();
+                    opts.Add(new SetEddFormat { Type = eddFormats[val] });
+                }
+                else if (arg == "edddir")
+                {
+                    string val = getOnlyArg();
+                    checkFilename(val);
+                    opts.Add(new SetEddDir { DirName = val });
+                }
                 else if (allFlags.Contains(arg))
                 {
                     bool val = true;
-                    if (!yesFlags.Contains(arg))
+                    if (!defaultFlags.ContainsKey(arg))
                     {
                         arg = arg.Substring(2);
                         val = false;
@@ -231,8 +311,7 @@ Replace game talkesdbnds with the given compiled Python files:
                     List<string> vals = getMultiArg();
                     foreach (string val in vals)
                     {
-                        // TODO: Add support for enemyCommon and chresdbnds
-                        if (!(val.StartsWith("t") || val.StartsWith("c") || val.StartsWith("m") || val.EndsWith("dummy") || val == "enemyCommon")) throw new Exception($"Unrecognized filter value {val}");
+                        if (!(val.StartsWith("c") || val.StartsWith("h") || val.StartsWith("m") || ESDName.IsKnownPrefix(val))) throw new Exception($"Unrecognized filter value {val}");
                     }
                     opts.Add(new AddFilter { Name = vals });
                 }
@@ -265,13 +344,17 @@ Replace game talkesdbnds with the given compiled Python files:
                     checkTemplate(val, "ecm");
                     opts.Add(new WritePy { Template = val });
                 }
+                else if (arg == "writeedd")
+                {
+                    string val = getOnlyArg();
+                    checkFilename(val);
+                    checkTemplate(val, "e");
+                    if (!val.EndsWith(".edd.txt")) throw new Exception("writeedd argument does not end with .edd.txt");
+                    opts.Add(new WriteEdd { Template = val });
+                }
                 else if (arg == "info")
                 {
                     opts.Add(new Info());
-                }
-                else if (arg == "mapinfo")
-                {
-                    opts.Add(new MapInfo());
                 }
                 else throw new Exception($"Unknown command line flag -{arg}");
             }
@@ -294,17 +377,17 @@ Replace game talkesdbnds with the given compiled Python files:
                     string val = gameOpt.Value;
                     switch (gameOpt.Name)
                     {
-                        case "basedir": Spec.GameDir = val; break;
+                        case "basedir": Spec.GameDir = WindowsifyPath(val); break;
                         case "esddir":
-                            Spec.EsdDir = val;
+                            Spec.EsdDir = WindowsifyPath(val);
                             EsdInputs.Clear();
                             ClearFilters();
                             break;
                         case "maps": Spec.MsbDir = val; break;
                         case "names": Spec.NameDir = val; break;
                         case "msgs": Spec.MsgDir = val; break;
-                        case "layouts": Spec.LayoutDir = val; break;
-                        case "params": Spec.ParamFile = val; break;
+                        case "layouts": Spec.LayoutDir = WindowsifyPath(val); break;
+                        case "params": Spec.ParamFile = WindowsifyPath(val); break;
                         case "outdcx": Spec.Dcx = gameOpt.Dcx; break;
                         default: break;
                     }
@@ -319,15 +402,15 @@ Replace game talkesdbnds with the given compiled Python files:
                     ClearFilters();
                     foreach (string val in filter.Name)
                     {
-                        if (val.StartsWith("m"))
-                        {
-                            Maps.Add(val);
-                        }
-                        else if (val.StartsWith("t") || val.EndsWith("dummy") || val == "enemyCommon")
+                        if (ESDName.IsKnownPrefix(val))
                         {
                             Esds.Add(val);
                         }
-                        else if (val.StartsWith("c"))
+                        else if (val.StartsWith("m"))
+                        {
+                            Maps.Add(val);
+                        }
+                        else if (val.StartsWith("c") || val.StartsWith("h"))
                         {
                             Chrs.Add(val);
                         }
@@ -355,6 +438,18 @@ Replace game talkesdbnds with the given compiled Python files:
                         EsdInputs.AddRange(input.Name);
                     }
                 }
+                else if (opt is SetCmdType cmd)
+                {
+                    Type = cmd.Type;
+                }
+                else if (opt is SetEddFormat eddFormat)
+                {
+                    EddFormat = eddFormat.Type;
+                }
+                else if (opt is SetEddDir eddDir)
+                {
+                    EddDir = eddDir.DirName;
+                }
                 else
                 {
                     // All others are actions
@@ -374,6 +469,18 @@ Replace game talkesdbnds with the given compiled Python files:
         public class SetGame : Option
         {
             public FromGame Game { get; set; }
+        }
+        public class SetCmdType : Option
+        {
+            public CmdType Type { get; set; }
+        }
+        public class SetEddFormat : Option
+        {
+            public EDDText.EDDFormat Type { get; set; }
+        }
+        public class SetEddDir : Option
+        {
+            public string DirName { get; set; }
         }
         public class SetGameOpt : Option
         {
@@ -406,7 +513,12 @@ Replace game talkesdbnds with the given compiled Python files:
         {
             public string Template { get; set; }
         }
+        public class WriteEdd : Option
+        {
+            public string Template { get; set; }
+        }
         public class Info : Option { }
-        public class MapInfo : Option { }
+
+        public enum CmdType { Unknown, None, Talk, Chr, Event, AI }
     }
 }

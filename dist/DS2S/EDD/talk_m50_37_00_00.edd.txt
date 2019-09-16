@@ -1,0 +1,227 @@
+110000: White Miko: Warning ①
+110000_s0: Start state
+110000_s1: Conversation: Start
+110000_s2: Conversation: System termination
+110000_s2_e0: [System] Termination notification
+110000_s3: [Lib] Conversation: Initial _SubState
+110010: White Miko: Warning ②
+110010_s0: Start state
+110010_s1: Conversation: Start
+110010_s2: Conversation: System termination
+110010_s2_e0: [System] Termination notification
+110010_s3: [Lib] Conversation: Initial _SubState
+110020: White Miko: Warning ③
+110020_s0: Start state
+110020_s1: Conversation: Start
+110020_s2: Conversation: System termination
+110020_s2_e0: [System] Termination notification
+110020_s3: [Lib] Conversation: Initial _SubState
+110030: White Miko: Conversation
+110030_s0: Start state
+110030_s1: Conversation: Start
+110030_s2: Conversation: System termination
+110030_s2_e0: [System] Termination notification
+110030_s3: Attacked: White Miko
+110030_s3_e0: [Status] Reset the number of times damaged
+110030_s3_e1: [Conversation] Notification of conversation cancellation
+110030_s4: Flag setting
+110030_s4_e0: [Flag] Set flag
+110030_s4_e1: [Flag] Set flag
+110030_s4_e2: [Flag] Set flag
+110030_s4_e3: [Flag] Set flag
+110030_s4_e4: [Flag] Set flag
+110030_s4_e5: [Flag] Set flag
+110030_s4_e6: [Flag] Set flag
+110030_s5: White shrine maiden_SubState
+110030_s6: Death state: white priest _SubState
+110011: White Miko: Warning ②_1
+110011_s0: Start state
+110011_s1: Conversation: Start
+110011_s2: Conversation: System termination
+110011_s2_e0: [System] Termination notification
+110011_s3: Wait
+110011_s3_e0: [Flag] Set flag
+110011_s4: [Lib] Conversation: Initial _SubState
+110021: White Miko: Warning ④
+110021_s0: Start state
+110021_s1: Conversation: Start
+110021_s2: Conversation: System termination
+110021_s2_e0: [System] Termination notification
+110021_s3: Wait
+110021_s3_e0: [Flag] Set flag
+110021_s4: [Lib] Conversation: Initial _SubState
+x7: White priestess
+x7_s0: Start state
+x7_s1: Conversation: Start
+x7_s2: Conversation: End
+x7_s3: YN dialog
+x7_s3_e0: [FE] Display of YES / NO selection window
+x7_s4: Ice seal state change 1
+x7_s4_e0: [Flag] Set flag
+x7_s5: Ice seal state change 2
+x7_s5_e0: [Flag] Set flag
+x7_s6: Ice seal state change 3
+x7_s6_e0: [Flag] Set flag
+x7_s7: Shop addition flag
+x7_s7_e0: [Flag] Set flag
+x7_s8: Unsealing
+x7_s8_e0: [Flag] Set flag
+x7_s8_e1: [Flag] Set flag
+x7_s9: Ice seal state change 4
+x7_s9_e0: [Flag] Set flag
+x7_s10: [Lib] Conversation: 1_A_SubState to speak
+x7_s11: [Lib] Conversation: 2_SubState talking
+x7_s12: [Lib] Conversation: 3_SubState talking
+x7_s13: [Lib] Conversation: 4_SubState talking
+x7_s14: [Lib] Conversation: Talk to 5_SubState
+x7_s15: [Lib] Conversation: 6_SubState talking
+x7_s16: [Lib] Conversation: Repeat 1_SubState
+x7_s17: [Lib] Conversation: Repeat after defeating the boss_SubState
+x7_s18: [Lib] Conversation: After NO_SubState
+x7_s19: [Lib] Conversation: YES selection_SubState
+x7_s20: [Lib] Conversation: NO selection_SubState
+x7_s21: [Lib] Conversation: 1_1_SubState collecting knight souls
+x7_s22: [Lib] Conversation: 1_2_SubState collecting knight souls
+x7_s23: [Lib] Conversation: 1 repeat of knight's souls_SubState
+x7_s24: [Lib] Conversation: 2_1_SubState collecting knight souls
+x7_s25: [Lib] Conversation: 2_2_SubState collecting knight souls
+x7_s26: [Lib] Conversation: 2 repeats of knight souls_SubState
+x7_s27: [Lib] Conversation: 3_1_SubState collecting knight souls
+x7_s28: [Lib] Conversation: 3_2_SubState collecting knight souls
+x7_s29: [Lib] Conversation: 3 repeats of knight souls_SubState
+x7_s30: [Lib] Conversation: 4_SubState collecting knight souls
+x7_s31: [Lib] Conversation: 4 repeats of knight souls_SubState
+x7_s32: [Lib] Conversation: Item transfer: 1_1_SubState collecting knight souls
+x7_s33: [Lib] Conversation: Item transfer 4_SubState
+x7_s34: [Lib] Conversation: Conversation before Item Transfer 4_SubState
+x7_s35: Conversation: Item Transfer: White Miko: Item Transfer 1_SubState
+x7_s36: Conversation: Item Transfer: White Miko: Item Transfer 2_SubState
+x7_s37: Conversation: Item Transfer: White Miko: Item Transfer 3_SubState
+x7_s38: [Lib] Conversation: Repeat 2_SubState
+x7_s39: [Lib] Conversation: Repeat 1 display only_SubState
+x7_s40: End state
+x8: Conversation: Item Transfer: White Miko: Item: NOKey
+x8_p0: Item lottery
+x8_p1: Item transfer: Global event flag
+x8_s0: Start state
+x8_s1: Conversation: Start
+x8_s2: [Lib] Item acquisition dialog_SubState
+x8_s3: [Lib] Inventory full dialog: Item display_SubState
+x8_s4: Inventory full dialog: White Miko _SubState
+x8_s5: Conversation: End
+x9: Inventory full dialog: White Miko
+x9_p0: Text ID
+x9_p1: Item lottery ID
+x9_s0: Start state
+x9_s1: OK dialog: Display
+x9_s1_e0: [FE] Display item acquisition failure window
+x9_s2: OK dialog: Wait
+x9_s3: End state
+x10: Death status: white priestess
+x10_p0: Conversation ID
+x10_p1: Global: death flag
+x10_s0: Start state
+x10_s1: Death status: Start
+x10_s1_e0: [Character action] Action end request to the player
+x10_s1_e1: [FE] Delete key guide area
+x10_s1_e2: [FE] Close NPC window
+x10_s1_e3: [Conversation] Notification of conversation cancellation
+x10_s2: Conversation: Death Message: White Miko _SubState
+x10_s3: End state
+x11: Conversation: Death Message: White Miko
+x11_p0: Conversation ID
+x11_p1: Conversation flag
+x11_s0: Start state
+x11_s1: Conversation: Start
+x11_s2: Conversation: Message
+x11_s2_e0: [Conversation] Notification of conversation start
+x11_s3: Conversation: flag setting
+x11_s3_e0: [Flag] Set flag
+x11_s4: Conversation: End
+x0: [Lib] Conversation: Display only
+x0_p0: Conversation ID
+x0_p1: Conversation flag
+x0_p2: Display distance
+x0_p3: Global event flag
+x0_s0: Start state
+x0_s1: Conversation: Start
+x0_s2: Conversation: Message
+x0_s2_e0: [Conversation] Notification of conversation start
+x0_s3: Conversation: flag setting
+x0_s3_e0: [Flag] Set flag
+x0_s4: Conversation: Wait for message
+x0_s5: Conversation: End
+x1: [Lib] Item acquisition dialog
+x1_p0: Item lottery ID
+x1_p1: Global flag
+x1_s0: Start state
+x1_s1: Item acquisition dialog: Display
+x1_s1_e0: [Flag] Set flag
+x1_s1_e1: [Item] Add item
+x1_s2: Item acquisition dialog: Wait
+x1_s3: End state
+x2: [Lib] Item acquisition dialog: Conversation
+x2_p0: Item lottery ID
+x2_p1: Item transfer: Global event flag
+x2_p2: Conversation: Global conversation flag
+x2_p3: Trophy acquisition: Area and other flags
+x2_p4: Emigration permission: Global event flag
+x2_p5: White Phantom Appearance: Global Event Flag
+x2_s0: Start state
+x2_s1: Item acquisition dialog: Display
+x2_s1_e0: [Flag] Set flag
+x2_s1_e1: [Flag] Set flag
+x2_s1_e2: [Flag] Set flag
+x2_s1_e3: [Flag] Set flag
+x2_s1_e4: [Flag] Set flag
+x2_s1_e5: [Item] Add item
+x2_s2: Item acquisition dialog: Wait
+x2_s3: End state
+x3: [Lib] Conversation: For unique key guide
+x3_p0: Conversation ID
+x3_p1: Conversation flag
+x3_p2: Key guide parameters
+x3_p3: Cancel distance
+x3_s0: Start state
+x3_s1: Conversation: Start
+x3_s2: Conversation: key guide creation
+x3_s2_e0: [FE] Create key guide area
+x3_s3: Conversation: waiting
+x3_s4: Conversation: Message
+x3_s4_e0: [FE] Delete key guide area
+x3_s4_e1: [Conversation] Notification of conversation start
+x3_s5: Conversation: flag setting
+x3_s5_e0: [Flag] Set flag
+x3_s6: Conversation: Message waiting
+x3_s7: Conversation: End
+x4: [Lib] Inventory full dialog: Item display
+x4_p0: Text ID
+x4_p1: Item lottery ID
+x4_s0: Start state
+x4_s1: OK dialog: Display
+x4_s1_e0: [FE] Display item acquisition failure window
+x4_s2: OK dialog: Wait
+x4_s3: End state
+x5: [Lib] Conversation: Item transfer: Mes⇒Item: Important items
+x5_p0: Item lottery ID
+x5_p1: Item transfer: Global event flag
+x5_p2: Conversation ID
+x5_p3: Conversation: Global conversation flag
+x5_p4: Trophy acquisition: Area and other flags
+x5_p5: Important items
+x5_s0: Start state
+x5_s1: Item transfer: Start
+x5_s2: Item transfer: Conversation flag: Setting
+x5_s2_e0: [Flag] Set flag
+x5_s3: Item transfer: Conversation_SubState
+x5_s4: [Lib] Item acquisition dialog: Conversation_SubState
+x5_s5: [Lib] Inventory full dialog: Item display_SubState
+x5_s6: End state
+x6: [Lib] Conversation: Item transfer: Item: NOKey
+x6_p0: Item lottery
+x6_p1: Item transfer: Global event flag
+x6_s0: Start state
+x6_s1: Conversation: Start
+x6_s2: [Lib] Item acquisition dialog_SubState
+x6_s3: [Lib] Inventory full dialog: Item display_SubState
+x6_s4: Conversation: End

@@ -1,0 +1,456 @@
+1000: Elevator Hidden Port
+1000_s0: Start state
+1000_s1: Has the initialization event been completed?
+1000_s2: Rerun
+1000_s2_e0: [System] Re-execution notification
+1000_s3: [Lib] [Preset] Elevator_SubState
+1010: Elevator lever _ top
+1010_s0: Start state
+1010_s1: Rerun
+1010_s1_e0: [System] Re-execution notification
+1010_s2: [Lib] [Preset] Elevator lever_SubState
+1020: Elevator lever_bottom
+1020_s0: Start state
+1020_s1: Rerun
+1020_s1_e0: [System] Re-execution notification
+1020_s2: [Lib] [Preset] Elevator lever_SubState
+1030: Elevator_initialization
+1030_s0: Start state
+1030_s1: Finish
+1030_s1_e0: [System] Termination notification
+1030_s2: [Lib] [Preset] Elevator_Initialization_SubState
+1040: Elevator_Connection replacement
+1040_s0: Start state
+1040_s1: Rerun
+1040_s1_e0: [System] Re-execution notification
+1040_s2: [Lib] [Preset] Elevator_Read Connection_SubState
+80000: Reproduction Fire 01_Heide Great Fire Tower_Boss Heavy Cavalry Lighthouse
+80000_s0: Start state
+80000_s1: Finish
+80000_s1_e0: [System] Termination notification
+80000_s2: [Lib] [Preset] Reproduction fire _SubState
+4000000: [DC] Traveler's Dead _ Petrification Stop_ Key Guide
+4000000_s0: Start state
+4000000_s1: Finish
+4000000_s1_e0: [System] Termination notification
+4000000_s2: [Lib] Character: Petrified: Key Guide_SubState
+4000010: [DC] Traveler's deceased_Stop petrification_Appearance setting
+4000010_s0: Start state
+4000010_s1: Finish
+4000010_s1_e0: [System] Termination notification
+4000010_s2: [Lib] Character: Petrified: Appearance setting_SubState
+4000020: [DC] Traveller's Dead _ Petrochemical Stop _ Navigation Switch
+4000020_s0: Start state
+4000020_s1: Finish
+4000020_s1_e0: [System] Termination notification
+4000020_s2: [Lib] [Preset] Navigation mesh switching by flag judgment_SubState
+x0: [Lib] [Preset] Elevator
+x0_p0: OBJ instance ID of the elevator
+x0_p1: On elevator point ID_
+x0_p2: Elevator point ID_below
+x0_p3: Upper lever OBJ instance ID
+x0_p4: Lower lever OBJ instance ID
+x0_s0: Start state
+x0_s1: [Reproduction] Elevator_SubState
+x0_s2: [Condition] Elevator_SubState
+x0_s3: [Execution] Elevator_Descent_SubState
+x0_s4: [Execution] Elevator_Rise_SubState
+x0_s5: [Execution] Elevator_Return switch after descending_SubState
+x0_s6: [Execution] Elevator_Return switch after ascending_SubState
+x0_s7: End state
+x1: [Reproduction] Elevator
+x1_s0: Start state
+x1_s1: End state
+x2: [Condition] Elevator
+x2_p0: Elevator OBJ instance ID
+x2_p1: On elevator point ID_
+x2_p2: Elevator point ID_below
+x2_p3: Upper lever OBJ instance ID
+x2_p4: Lower lever OBJ instance ID
+x2_s0: Start state
+x2_s1: Elevator position determination
+x2_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x2_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x2_s1_e2: [Group condition: OBJ] OBJ state ID comparison
+x2_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x2_s1_e4: [Group condition: OBJ] OBJ state ID comparison
+x2_s1_e5: [Group condition: OBJ] OBJ state ID comparison
+x2_s2: Point or lever standby
+x2_s2_e0: [Group condition: Character] Judgment within player points
+x2_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+x2_s2_e2: [Group condition: OBJ] OBJ state ID comparison
+x2_s3: Point or lever standby_2
+x2_s3_e0: [Group condition: Character] Judgment within player points
+x2_s3_e1: [Group condition: OBJ] OBJ state ID comparison
+x2_s3_e2: [Group condition: OBJ] OBJ state ID comparison
+x2_s4: The elevator is below
+x2_s5: The elevator is on top
+x2_s6: During descent or waiting for descent completion
+x2_s7: Ascending or waiting to finish rising
+x2_s8: Lift the elevator
+x2_s9: Lower the elevator
+x2_s10: Return the switch after descending
+x2_s11: Return the switch after rising
+x3: [Execution] Elevator_Rise
+x3_p0: Elevator OBJ instance ID
+x3_p1: On point ID_
+x3_s0: Start state
+x3_s1: Start moving elevator
+x3_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x3_s2: Did you get off the elevator?
+x3_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x3_s2_e1: [Group condition: Character] Judgment within player points
+x3_s2_e2: [Group condition: System] Judge whether the player is an actor
+x3_s2_e3: [Group condition: System] Judge whether an actor exists
+x3_s2_e4: [Group condition: System] Group condition is satisfied
+x3_s3: Switch returns
+x3_s3_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x3_s4: End state
+x4: [Execution] Elevator_Descent
+x4_p0: Elevator OBJ instance ID
+x4_p1: Point ID_below
+x4_s0: Start state
+x4_s1: Start moving elevator
+x4_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x4_s2: Did you get off the elevator?
+x4_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x4_s2_e1: [Group condition: Character] Judgment within player points
+x4_s2_e2: [Group condition: System] Judge whether the player is an actor
+x4_s2_e3: [Group condition: System] Judge whether an actor exists
+x4_s2_e4: [Group condition: System] Group condition is satisfied
+x4_s3: Switch returns
+x4_s3_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x4_s4: End state
+x5: [Lib] [Preset] Elevator lever
+x5_p0: OBJ instance ID of the elevator
+x5_p1: Lever OBJ instance ID
+x5_p2: Elevator state ID on the opposite side of the lever
+x5_s0: Start state
+x5_s1: [Reproduction] Elevator lever_empty_SubState
+x5_s2: [Execution] Elevator lever_Key guide disabled_SubState
+x5_s3: [Execution] Elevator lever_Key guide valid_SubState
+x5_s4: [Conditions] Elevator lever_Use determination_SubState
+x5_s5: Rerun
+x6: [Reproduction] Elevator lever _ empty
+x6_s0: Start state
+x6_s1: End state
+x7: [Condition] Elevator lever_use judgment
+x7_p0: OBJ instance ID of the elevator
+x7_p1: Lever OBJ instance ID
+x7_p2: Elevator state ID on the opposite side of the lever
+x7_s0: Start state
+x7_s1: Elevator position determination
+x7_s2: Lever disable
+x7_s3: Lever activation
+x8: [Execution] Elevator lever_Key guide valid
+x8_p0: OBJ instance ID of the elevator
+x8_p1: Lever OBJ instance ID
+x8_p2: Elevator state ID on the opposite side of the lever
+x8_s0: Start state
+x8_s1: Enable key guide for lever
+x8_s1_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x8_s2: Wait for next decision
+x8_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x8_s3: End state
+x9: [Execute] Elevator lever_key guide disabled
+x9_p0: OBJ instance ID of the elevator
+x9_p1: Lever OBJ instance ID
+x9_p2: Elevator state ID on the opposite side of the lever
+x9_s0: Start state
+x9_s1: Disabling the key guide of the lever
+x9_s1_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x9_s2: Wait for next decision
+x9_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x9_s3: End state
+x10: [Lib] [Reproduction] Elevator_Initialization
+x10_p0: Initialization completion flag
+x10_s0: Start state
+x10_s1: Already initialized?
+x10_s2: Uninitialized
+x10_s3: Initialized
+x11: [Lib] [Condition] Elevator_Initialization
+x11_s0: Start state
+x11_s1: Host?
+x11_s2: host
+x11_s3: The guests
+x12: [Lib] [Execution] Elevator_Initialization
+x12_p0: Elevator OBJ instance ID
+x12_p1: Initial position OBJ state ID
+x12_p2: Initialization completion flag
+x12_p3: OBJ state after initialization
+x12_s0: Start state
+x12_s1: Elevator initialization
+x12_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x12_s2: Initialization completion flag ON
+x12_s2_e0: [Flag] Set flag
+x12_s3: End state
+x13: [Lib] [Preset] Elevator_Initialization
+x13_p0: Elevator OBJ instance ID
+x13_p1: Initial position OBJ state ID
+x13_p2: Initialization completion flag
+x13_p3: OBJ state after initialization
+x13_s0: Start state
+x13_s1: [Lib] [Reproduction] Elevator_Initialization_SubState
+x13_s2: [Lib] [Execution] Elevator_Initialization_SubState
+x13_s3: [Lib] [Condition] Elevator_Initialization_SubState
+x13_s4: End state
+x14: [Lib] Character: Petrochemical: Key guide
+x14_p0: generator
+x14_p1: Death: Global event flag
+x14_p2: Event action
+x14_p3: Petrified: Area and other flags
+x14_p4: Petrified: Global event flag
+x14_p5: Key guide parameters
+x14_p6: Petrification start state ID
+x14_p7: Petrification appearance event
+x14_s0: Start state
+x14_s1: Petrochemical: System: End
+x14_s1_e0: [System] Termination notification
+x14_s2: Petrochemical: Key guide: Display
+x14_s2_e0: [FE] Create key guide area
+x14_s3: Petrochemical: Key guide: Waiting for input
+x14_s3_e0: [Group condition: Character] Judgment to examine character
+x14_s3_e1: [Group condition: Map] Judgment that the player is in the map
+x14_s4: Petrochemical: System: Re-execution
+x14_s4_e0: [System] Re-execution notification
+x14_s5: Petrification: Key guide: Deleted
+x14_s5_e0: [FE] Delete key guide area
+x14_s6: Petrification: Event action: Regeneration
+x14_s6_e0: [Character action] Request action from player
+x14_s6_e1: [Group condition: Character] Player event action judgment
+x14_s7: Petrification: Event action: Standby: Elapsed time
+x14_s7_e0: [Group condition: Event] State elapsed time comparison
+x14_s8: Petrification: Petrified
+x14_s8_e0: [Item] Item consumption
+x14_s8_e1: [Flag] Set flag
+x14_s8_e2: [Group condition: Flag] Event flag comparison
+x14_s8_e3: [Flag] Set flag
+x14_s8_e4: [Group condition: Flag] Event flag comparison
+x14_s9: Petrochemical: Event action: Wait
+x14_s9_e0: [Group condition: Character] Player event action judgment
+x14_s10: Petrochemical: Item usage selection dialog
+x14_s10_e0: [FE] Display of YES / NO selection window
+x14_s11: Petrochemical: Item usage selection dialog: Waiting for input
+x14_s12: Petrification: Item not owned dialog
+x14_s12_e0: [FE] Window display only for YES
+x14_s13: Petrochemical: Item not owned dialog: Waiting for input
+x14_s14: Petrochemical: Event action: Start
+x14_s14_e0: [Group condition: Character] Player event action start possible decision
+x14_s15: Petrochemical: Item consumption
+x14_s16: Petrochemical: Start
+x14_s16_e0: [Group condition: Character] Start state comparison
+x14_s16_e1: [Group condition: Event] Event status judgment
+x14_s16_e2: [Group condition: Flag] Event flag comparison
+x14_s16_e3: [Group condition: Flag] Event flag comparison
+x14_s17: End state
+x15: [Lib] [Reproduction] Elevator_Connection replacement
+x15_s0: Start state
+x15_s1: End state
+x16: [Lib] [Condition] Elevator_Connection replacement
+x16_p0: Replacement point
+x16_p1: OBJ instance ID of the elevator
+x16_p2: Top_Hit group ID
+x16_p3: Bottom_Hit group ID
+x16_s0: Start state
+x16_s1: Waiting for intrusion or hitting or hitting a replacement point
+x16_s1_e0: [Group condition: Character] Judgment within player points
+x16_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x16_s1_e2: [Group condition: Character] Judgment within player points
+x16_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x16_s1_e4: [Group condition: Map] Judgment that the player is on the specified hit group
+x16_s1_e5: [Group condition: Map] Judgment that the player is on the specified hit group
+x16_s2: Ascent point intrusion
+x16_s3: Point entry while descending
+x16_s4: Be on top
+x16_s5: Be down
+x17: [Lib] [Execution] Elevator_Connection reading rise_Point
+x17_p0: Replacement point
+x17_p1: Global flag for connection
+x17_p2: ON / OFF of global flag
+x17_p3: Top_Hit group ID
+x17_p4: OBJ instance ID of the elevator
+x17_s0: Start state
+x17_s1: Connect event global event flag
+x17_s1_e0: [Flag] Set flag
+x17_s2: Did you get out of the point?
+x17_s2_e0: [Group condition: Character] Judgment within player points
+x17_s3: Wait for next decision
+x17_s3_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x17_s3_e1: [Group condition: Character] Judgment within player points
+x17_s3_e2: [Group condition: OBJ] OBJ state ID comparison
+x17_s3_e3: [Group condition: System] Group condition is satisfied
+x17_s4: End state
+x18: [Lib] [Execution] Elevator_Upon connection replacement_Hit
+x18_p0: Global flag for connection
+x18_p1: ON / OFF of global flag
+x18_p2: Hit group ID
+x18_p3: Replacement point ID
+x18_p4: OBJ instance ID of the elevator
+x18_s0: Start state
+x18_s1: Connect event global event flag
+x18_s1_e0: [Flag] Set flag
+x18_s2: Wait for next decision
+x18_s2_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x18_s2_e1: [Group condition: Character] Judgment within player points
+x18_s2_e2: [Group condition: OBJ] OBJ state ID comparison
+x18_s2_e3: [Group condition: System] Group condition is satisfied
+x18_s3: End state
+x19: [Lib] [Preset] Elevator_Connection replacement
+x19_p0: Replacement point
+x19_p1: OBJ instance ID of the elevator
+x19_p2: Global flag for connection
+x19_p3: Top_Hit group ID
+x19_p4: Bottom_Hit group ID
+x19_p5: Up_Global flag when rising
+x19_p6: Global flag transition when down
+x19_s0: Start state
+x19_s1: [Lib] [Reproduction] Elevator_Read Connection_SubState
+x19_s2: [Lib] [Condition] Elevator_Connection replacement_SubState
+x19_s3: [Lib] [Execution] Elevator_Under Connection_Read_Hit_SubState
+x19_s4: [Lib] [Execution] Elevator_Connection replacement descent_Point_SubState
+x19_s5: [Lib] [Execution] Elevator_Upon Connection Reading_Hit_SubState
+x19_s6: [Lib] [Execution] Elevator_Connection reading rise_Point_SubState
+x19_s7: End state
+x20: [Lib] [Execution] Elevator_Replaced connection_Hit
+x20_p0: Global flag for connection
+x20_p1: ON / OFF of global flag
+x20_p2: Hit group ID
+x20_p3: Replacement point ID
+x20_p4: OBJ instance ID of the elevator
+x20_s0: Start state
+x20_s1: Connect event global event flag
+x20_s1_e0: [Flag] Set flag
+x20_s2: Wait for next decision
+x20_s2_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x20_s2_e1: [Group condition: Character] Judgment within player points
+x20_s2_e2: [Group condition: OBJ] OBJ state ID comparison
+x20_s2_e3: [Group condition: System] Group condition is satisfied
+x20_s3: End state
+x21: [Lib] [Execution] Elevator_Deletion of connection replacement_Point
+x21_p0: Replacement point
+x21_p1: Global flag for connection
+x21_p2: ON / OFF of global flag
+x21_p3: Bottom_Hit group ID
+x21_p4: OBJ instance ID of the elevator
+x21_s0: Start state
+x21_s1: Connect event global event flag
+x21_s1_e0: [Flag] Set flag
+x21_s2: Did you get out of the point?
+x21_s2_e0: [Group condition: Character] Judgment within player points
+x21_s3: Wait for next decision
+x21_s3_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x21_s3_e1: [Group condition: Character] Judgment within player points
+x21_s3_e2: [Group condition: OBJ] OBJ state ID comparison
+x21_s3_e3: [Group condition: System] Group condition is satisfied
+x21_s4: End state
+x22: [Execution] Elevator_Return switch after lift
+x22_p0: Elevator OBJ instance ID
+x22_p1: On point ID_
+x22_s0: Start state
+x22_s1: Did you get off the elevator?
+x22_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x22_s1_e1: [Group condition: Character] Judgment within player points
+x22_s1_e2: [Group condition: System] Judge whether the player is an actor
+x22_s1_e3: [Group condition: System] Judge whether an actor exists
+x22_s1_e4: [Group condition: System] Group condition is satisfied
+x22_s2: Switch returns
+x22_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x22_s3: End state
+x23: [Execution] Elevator_Return switch after descending
+x23_p0: Elevator OBJ instance ID
+x23_p1: Point ID_below
+x23_s0: Start state
+x23_s1: Did you get off the elevator?
+x23_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x23_s1_e1: [Group condition: Character] Judgment within player points
+x23_s1_e2: [Group condition: System] Judge whether the player is an actor
+x23_s1_e3: [Group condition: System] Judge whether an actor exists
+x23_s1_e4: [Group condition: System] Group condition is satisfied
+x23_s2: Switch returns
+x23_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x23_s3: End state
+x24: [Lib] Character: Petrified: Appearance setting
+x24_p0: Generator ID
+x24_p1: Death: Global event flag
+x24_p2: Petrified: Area and other flags
+x24_p3: Petrified: Global event flag
+x24_p4: Startup state
+x24_p5: Key guide: Event ID
+x24_s0: Start state
+x24_s1: Petrification appearance setting: Start
+x24_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x24_s2: Petrification appearance setting: System: End
+x24_s2_e0: [System] Termination notification
+x24_s3: Petrification appearance setting: Death determination: Generator
+x24_s3_e0: [Group condition: Character] Character death determination
+x24_s4: Petrification appearance setting: Death determination: Global event flag
+x24_s4_e0: [Group condition: Flag] Event flag comparison
+x24_s5: Petrification: Judgment cancellation decision
+x24_s5_e0: [Group condition: Flag] Event flag comparison
+x24_s5_e1: [Group condition: Flag] Event flag comparison
+x24_s6: Petrified Appearance Setting: Switching startup state
+x24_s6_e0: [Generator] Start state override
+x24_s7: Petrification appearance: Petrified state appearance
+x24_s8: End state
+x25: [Lib] [Reproduction] Rebirth fire _ sky
+x25_s0: Start state
+x25_s1: End state
+x26: [Lib] [execute] Rebirth fire
+x26_p0: Flag start ID
+x26_p1: Flag end ID
+x26_s0: Start state
+x26_s1: Flag reset
+x26_s1_e0: [Flag] Set the flags within the specified range set in the parameter.
+x26_s2: End state
+x27: [Lib] [Condition] Rebirth fire_sky
+x27_s0: Start state
+x27_s1: End state
+x28: [Lib] [Preset] Rebirth
+x28_p0: Flag start ID
+x28_p1: Flag end ID
+x28_s0: Start state
+x28_s1: [Lib] [Reproduction] Reproduction of fire_sky_SubState
+x28_s2: [Lib] [Execution] Regenerative fire _SubState
+x28_s3: [Lib] [Condition] Reproduction fire_Sky_SubState
+x28_s4: End state
+x29: [Lib] [Reproduction] Switch Navimesh with flag judgment
+x29_p0: Other flags
+x29_p1: Global flag
+x29_p2: Additional attributes
+x29_p3: Delete attribute
+x29_p4: Navimesh switching point ID
+x29_s0: Start state
+x29_s1: Flag judgment
+x29_s2: Navimesh attribute change
+x29_s2_e0: [Map] Added Navimesh attribute
+x29_s2_e1: [Map] Navimesh attribute deletion
+x29_s3: Flag OFF
+x29_s4: Already flag on
+x30: [Lib] [Condition] Switch to Navimesh by flag judgment
+x30_p0: Other flags
+x30_p1: Global flag
+x30_s0: Start state
+x30_s1: Flag waiting
+x30_s1_e0: [Group condition: Flag] Event flag comparison
+x30_s1_e1: [Group condition: Flag] Event flag comparison
+x30_s2: Flag ON
+x31: [Lib] [execution] Navi mesh switching by flag judgment
+x31_p0: Navimesh switching point ID
+x31_p1: Additional attributes
+x31_p2: Delete attribute
+x31_s0: Start state
+x31_s1: Navimesh attribute change
+x31_s1_e0: [Map] Added Navimesh attribute
+x31_s1_e1: [Map] Navimesh attribute deletion
+x31_s2: End state
+x32: [Lib] [Preset] Navimesh switching by flag judgment
+x32_p0: Navimesh switching point ID
+x32_p1: Additional attributes
+x32_p2: Delete attribute
+x32_p3: Other flags
+x32_p4: Global flag
+x32_s0: Start state
+x32_s1: [Lib] [Reproduction] Navimesh switching with flag judgment_SubState
+x32_s2: [Lib] [execution] Navimesh switching with flag judgment_SubState
+x32_s3: [Lib] [Condition] Navigation mesh switching by flag judgment_SubState
+x32_s4: End state

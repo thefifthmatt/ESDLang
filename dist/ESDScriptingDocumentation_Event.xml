@@ -1,0 +1,474 @@
+<?xml version="1.0"?>
+<EzSembleContext>
+    <CommandList>
+        <Command Bank="1" ID="130001" Name="EndMachine" Description=""/>
+        <Command Bank="1" ID="130002" Name="RestartMachine" Description=""/>
+        <Command Bank="1" ID="130003" Name="ExecuteEvent" Description=""/>
+        <Command Bank="1" ID="130004" Name="ExitAndExecuteEvent" Description="Unused"/>
+        <Command Bank="1" ID="130021" Name="StandbyNotification" Description=""/>
+        <Command Bank="1" ID="130101" Name="SetEventFlag" Description=""/>
+        <Command Bank="5" ID="130101" Name="SetEventFlagIf" Description=""/>
+        <Command Bank="1" ID="130121" Name="SetAreaVariable" Description=""/>
+        <Command Bank="5" ID="130121" Name="SetAreaVariableIf" Description=""/>
+        <Command Bank="1" ID="130122" Name="SetGlobalVariable" Description=""/>
+        <Command Bank="5" ID="130122" Name="SetGlobalVariableIf" Description=""/>
+        <Command Bank="1" ID="130123" Name="AddAreaVariable" Description=""/>
+        <Command Bank="1" ID="130124" Name="AddGlobalVariable" Description=""/>
+        <Command Bank="1" ID="130125" Name="SetCharacterLocalVariable" Description="Unused"/>
+        <Command Bank="1" ID="130126" Name="AddCharacterLocalVariable" Description="Unused"/>
+        <Command Bank="1" ID="130127" Name="SetLocalVariable" Description="Unused"/>
+        <Command Bank="1" ID="130128" Name="AddLocalVariable" Description="Unused"/>
+        <Command Bank="1" ID="130131" Name="SetEventFlagsInRange" Description=""/>
+        <Command Bank="1" ID="130151" Name="SetLinkedGeneratorRestartProhibitionFlag" Description="Unused"/>
+        <Command Bank="1" ID="130301" Name="BecomeInvincibleInCurrentState" Description=""/>
+        <Command Bank="1" ID="130302" Name="ReleaseInvincibilitySetInGenerator" Description="Unused"/>
+        <Command Bank="1" ID="130303" Name="SetPlayerInvincible" Description=""/>
+        <Command Bank="1" ID="130304" Name="BecomeHostile" Description=""/>
+        <Command Bank="1" ID="130305" Name="AttachCharacterToObj" Description=""/>
+        <Command Bank="1" ID="130306" Name="DetachCharacterFromObj" Description=""/>
+        <Command Bank="1" ID="130307" Name="DisablePlayerFallDamageOnce" Description=""/>
+        <Command Bank="1" ID="130308" Name="DisableEnemyFallDamageOnce" Description=""/>
+        <Command Bank="1" ID="130309" Name="SetHidePlayer" Description=""/>
+        <Command Bank="1" ID="130310" Name="ResetSinCounter" Description=""/>
+        <Command Bank="1" ID="130311" Name="SetHpValue" Description="Unused"/>
+        <Command Bank="1" ID="130312" Name="SetHpPercentage" Description="Unused"/>
+        <Command Bank="1" ID="130313" Name="SetMinimumHpValue" Description="Unused"/>
+        <Command Bank="1" ID="130314" Name="SetMinimumHpPercentage" Description="Unused"/>
+        <Command Bank="1" ID="130317" Name="SetHpRatioFromGenerator" Description=""/>
+        <Command Bank="1" ID="130331" Name="ChangeLockOnParameter" Description=""/>
+        <Command Bank="1" ID="130332" Name="ResetLockOnParameter" Description=""/>
+        <Command Bank="1" ID="130333" Name="SetEnemySpEffect" Description=""/>
+        <Command Bank="1" ID="130334" Name="SetPlayerSpEffect" Description=""/>
+        <Command Bank="1" ID="130335" Name="ClearEnemySpEffect" Description=""/>
+        <Command Bank="1" ID="130336" Name="ClearPlayerSpEffect" Description=""/>
+        <Command Bank="1" ID="130341" Name="RemovePlayerTorches" Description=""/>
+        <Command Bank="1" ID="130342" Name="StartPlayerLevelUpMotion" Description="Unused"/>
+        <Command Bank="1" ID="130343" Name="EndPlayerLevelUpMotion" Description="Unused"/>
+        <Command Bank="1" ID="130351" Name="ResetDamageTakenCount" Description=""/>
+        <Command Bank="5" ID="130351" Name="ResetDamageTakenCountIf" Description=""/>
+        <Command Bank="1" ID="130361" Name="ChangeEquipment" Description="Unused"/>
+        <Command Bank="1" ID="130381" Name="ChangePlayerCovenant" Description=""/>
+        <Command Bank="5" ID="130381" Name="ChangePlayerCovenantIf" Description=""/>
+        <Command Bank="1" ID="130382" Name="AddPlayerCovenantContribution" Description=""/>
+        <Command Bank="1" ID="130407" Name="DeleteKeyGuideArea" Description=""/>
+        <Command Bank="1" ID="130408" Name="CreateKeyGuideArea" Description=""/>
+        <Command Bank="1" ID="130431" Name="KeyGuideTemporarilyInvalid" Description=""/>
+        <Command Bank="5" ID="130431" Name="KeyGuideTemporarilyInvalidIf" Description=""/>
+        <Command Bank="1" ID="130432" Name="ProhibitInGameMenu" Description=""/>
+        <Command Bank="1" ID="130441" Name="DisplayOwnYesNoMenu" Description=""/>
+        <Command Bank="1" ID="130442" Name="CloseYesNoMenu" Description=""/>
+        <Command Bank="1" ID="130443" Name="DisplayOwnOkMenu" Description=""/>
+        <Command Bank="1" ID="130444" Name="CloseOkMenu" Description=""/>
+        <Command Bank="1" ID="130445" Name="DisplayYesNoMenu" Description=""/>
+        <Command Bank="1" ID="130446" Name="DisplayOkMenu" Description=""/>
+        <Command Bank="1" ID="130447" Name="DisplayEventMessage" Description=""/>
+        <Command Bank="1" ID="130448" Name="CloseEventMessage" Description=""/>
+        <Command Bank="1" ID="130451" Name="OpenCharacterCreationMenu" Description=""/>
+        <Command Bank="1" ID="130452" Name="OpenNameSettingMenu" Description=""/>
+        <Command Bank="1" ID="130453" Name="DisplayObeliskMessage" Description=""/>
+        <Command Bank="1" ID="130454" Name="DisplayObeliskDeathNumber" Description=""/>
+        <Command Bank="1" ID="130455" Name="OpenRespecMenu" Description=""/>
+        <Command Bank="1" ID="130461" Name="OpenNpcMenu" Description=""/>
+        <Command Bank="1" ID="130462" Name="CloseNpcMenu" Description=""/>
+        <Command Bank="5" ID="130462" Name="CloseNpcMenuIf" Description=""/>
+        <Command Bank="1" ID="130463" Name="ClearNpcMenuResults" Description=""/>
+        <Command Bank="1" ID="130464" Name="ClearNpcMenuSelection" Description=""/>
+        <Command Bank="1" ID="130465" Name="ClearNpcMenuAction" Description=""/>
+        <Command Bank="1" ID="130466" Name="StartNpcWindowMonitoring" Description=""/>
+        <Command Bank="1" ID="130467" Name="EndNpcWindowMonitoring" Description=""/>
+        <Command Bank="1" ID="130471" Name="OpenPresentationWindow" Description=""/>
+        <Command Bank="1" ID="130481" Name="DisplayMultiOptionMenu" Description=""/>
+        <Command Bank="1" ID="130482" Name="CloseMultiOptionMenu" Description=""/>
+        <Command Bank="1" ID="130491" Name="ShowGestureMenu" Description=""/>
+        <Command Bank="1" ID="130492" Name="CloseGestureMenu" Description=""/>
+        <Command Bank="1" ID="130493" Name="OpenNetworkMessageMenu" Description=""/>
+        <Command Bank="1" ID="130494" Name="DisplayItemAwardFailure" Description=""/>
+        <Command Bank="1" ID="130511" Name="PlayGimmickAnimation" Description="Unused"/>
+        <Command Bank="1" ID="130541" Name="CancelPermanentlyStayingAnimation" Description="Unused"/>
+        <Command Bank="1" ID="130611" Name="ProhibitInvading" Description=""/>
+        <Command Bank="1" ID="130612" Name="ProhibitBeingInvadedOrSummoned" Description=""/>
+        <Command Bank="1" ID="130613" Name="ProhibitMultiplayer" Description=""/>
+        <Command Bank="1" ID="130631" Name="NotifyServerOfBellKeeperRinging" Description=""/>
+        <Command Bank="1" ID="130632" Name="ClearBellKeeperRingingHistory" Description=""/>
+        <Command Bank="1" ID="130633" Name="AddAwestoneRankingCount" Description=""/>
+        <Command Bank="1" ID="130641" Name="WarpAndSyncRemoteCharacters" Description=""/>
+        <Command Bank="1" ID="130651" Name="StartDuelMatch" Description=""/>
+        <Command Bank="1" ID="130652" Name="CancelDuelMatch" Description=""/>
+        <Command Bank="1" ID="130701" Name="DisplayWinSwitch" Description="Unused"/>
+        <Command Bank="1" ID="130702" Name="ChangeDrawHit" Description=""/>
+        <Command Bank="1" ID="130711" Name="FadeInCharacter" Description="Unused"/>
+        <Command Bank="1" ID="130712" Name="FadeOutCharacter" Description="Unused"/>
+        <Command Bank="1" ID="130713" Name="FadeInCharacterGeneratorSpecifiedVersion" Description="Unused"/>
+        <Command Bank="1" ID="130714" Name="FadeOutCharactersGeneratorSpecifiedVersion" Description="Unused"/>
+        <Command Bank="1" ID="130721" Name="SetSpecialDrawingMode" Description=""/>
+        <Command Bank="1" ID="130801" Name="PlayCutscene" Description=""/>
+        <Command Bank="1" ID="130901" Name="SetCameraType" Description=""/>
+        <Command Bank="1" ID="130902" Name="ChangeCameraParameters" Description=""/>
+        <Command Bank="1" ID="130903" Name="ResetCameraParameters" Description=""/>
+        <Command Bank="1" ID="130911" Name="ShakeCameraAroundMe" Description=""/>
+        <Command Bank="1" ID="130912" Name="ShakeCameraAroundPoint" Description=""/>
+        <Command Bank="1" ID="130913" Name="ShakeCameraGlobal" Description=""/>
+        <Command Bank="1" ID="130914" Name="StopCameraVibration" Description=""/>
+        <Command Bank="1" ID="130921" Name="StartEventCamera" Description=""/>
+        <Command Bank="1" ID="130922" Name="EndEventCamera" Description=""/>
+        <Command Bank="1" ID="130923" Name="StartEventCameraAtPoint" Description=""/>
+        <Command Bank="1" ID="131101" Name="EnableAreaWithPlayerMessagesDisabled" Description=""/>
+        <Command Bank="1" ID="131111" Name="EnableDamageArea" Description="Meow"/>
+        <Command Bank="1" ID="131201" Name="PlaySoundAtPoint" Description=""/>
+        <Command Bank="1" ID="131202" Name="StopSoundAtPoint" Description=""/>
+        <Command Bank="1" ID="131203" Name="PlayOneShotSoundAtPoint" Description=""/>
+        <Command Bank="1" ID="131204" Name="SetRpcSoundAtPoint" Description="Unused"/>
+        <Command Bank="1" ID="131220" Name="PlayOneShotSoundFollowingListener" Description=""/>
+        <Command Bank="1" ID="131221" Name="PlaySoundFollowingSelf" Description=""/>
+        <Command Bank="1" ID="131222" Name="StopSoundFollowingSelf" Description=""/>
+        <Command Bank="1" ID="131223" Name="PlaySoundFollowingGenerator" Description=""/>
+        <Command Bank="1" ID="131224" Name="StopSoundFollowingGenerator" Description=""/>
+        <Command Bank="1" ID="131231" Name="PlayOneShotSoundAtYourPosition" Description=""/>
+        <Command Bank="1" ID="131301" Name="StartAreaTimer" Description=""/>
+        <Command Bank="1" ID="131302" Name="PauseAreaTimer" Description=""/>
+        <Command Bank="1" ID="131303" Name="RestartAreaTimer" Description=""/>
+        <Command Bank="1" ID="131304" Name="EndAreaTimer" Description=""/>
+        <Command Bank="1" ID="131311" Name="StartGlobalTimer" Description=""/>
+        <Command Bank="1" ID="131312" Name="SuspendGlobalTimer" Description=""/>
+        <Command Bank="1" ID="131313" Name="RestartGlobalTimer" Description=""/>
+        <Command Bank="1" ID="131314" Name="EndGlobalTimer" Description=""/>
+        <Command Bank="1" ID="131401" Name="ConsumeItem" Description=""/>
+        <Command Bank="1" ID="131402" Name="AwardItem" Description=""/>
+        <Command Bank="1" ID="131411" Name="ActivateObjItem" Description=""/>
+        <Command Bank="1" ID="131412" Name="ResetObjItem" Description=""/>
+        <Command Bank="1" ID="131421" Name="StrengthenEstus" Description=""/>
+        <Command Bank="1" ID="131501" Name="PlaySfxAtPoint" Description=""/>
+        <Command Bank="1" ID="131502" Name="StopSfxAtPoint" Description=""/>
+        <Command Bank="1" ID="131503" Name="PlayOneShotSfxAtPoint" Description=""/>
+        <Command Bank="1" ID="131511" Name="PlaySfxSelfGenerated" Description=""/>
+        <Command Bank="1" ID="131512" Name="StopSfxSelfGenerated" Description=""/>
+        <Command Bank="1" ID="131513" Name="FadeStopSfxSelfGenerated" Description=""/>
+        <Command Bank="1" ID="131514" Name="StopSfxSelfGeneratedImmediately" Description=""/>
+        <Command Bank="1" ID="131532" Name="StopResidentSfx" Description=""/>
+        <Command Bank="1" ID="131533" Name="FadeStopResidentSfx" Description=""/>
+        <Command Bank="1" ID="131534" Name="FadeStopResidentSfxWithAnimation" Description=""/>
+        <Command Bank="1" ID="131602" Name="SetUnlockInfo" Description=""/>
+        <Command Bank="1" ID="131611" Name="DestroyOwnObj" Description=""/>
+        <Command Bank="1" ID="131612" Name="DestroyObjBasedOnCharacterHitPosition" Description=""/>
+        <Command Bank="1" ID="131613" Name="DestroyObj" Description=""/>
+        <Command Bank="1" ID="131622" Name="DisableWhiteDoorKeyGuide" Description=""/>
+        <Command Bank="1" ID="131631" Name="TouchOwnObj" Description=""/>
+        <Command Bank="1" ID="131632" Name="TouchObj" Description=""/>
+        <Command Bank="1" ID="131633" Name="ChangeSelfToDynamicObj" Description=""/>
+        <Command Bank="1" ID="131634" Name="ChangeToDynamicObj" Description=""/>
+        <Command Bank="1" ID="131635" Name="ChangeOwnObjState" Description=""/>
+        <Command Bank="1" ID="131636" Name="ChangeObjState" Description=""/>
+        <Command Bank="5" ID="131636" Name="ChangeObjStateIf" Description=""/>
+        <Command Bank="1" ID="131637" Name="WarpObjToCharacter" Description=""/>
+        <Command Bank="1" ID="131638" Name="DisableObjKeyGuide" Description=""/>
+        <Command Bank="1" ID="131639" Name="WarpObjToGeneratorPosition" Description=""/>
+        <Command Bank="1" ID="131640" Name="WarpObjToObjPosition" Description=""/>
+        <Command Bank="1" ID="131641" Name="AttachObjToObj" Description=""/>
+        <Command Bank="1" ID="131642" Name="WarpObjToPoint" Description=""/>
+        <Command Bank="1" ID="131643" Name="DisableObjSfx" Description=""/>
+        <Command Bank="1" ID="131651" Name="SetObjSync" Description=""/>
+        <Command Bank="1" ID="131652" Name="InitializeObj" Description=""/>
+        <Command Bank="1" ID="131661" Name="SetObjPhantomParameters" Description=""/>
+        <Command Bank="1" ID="131702" Name="OverrideGeneratorStartupState" Description=""/>
+        <Command Bank="1" ID="131703" Name="OverrideGeneratorStartPosition" Description=""/>
+        <Command Bank="1" ID="131704" Name="OverrideGeneratorStartPositionAndWarpGenerated" Description=""/>
+        <Command Bank="1" ID="131705" Name="OverrideGeneratorStartPositionRandom" Description=""/>
+        <Command Bank="1" ID="131711" Name="ForceGenerationFromPointBasedOnPosition" Description=""/>
+        <Command Bank="1" ID="131712" Name="ForceGenerationFromPoint" Description=""/>
+        <Command Bank="1" ID="131713" Name="ForceRandomGeneration" Description=""/>
+        <Command Bank="1" ID="131714" Name="ForceGenerationFromPointBasedOnPositionAndCameraOfAllUsers" Description=""/>
+        <Command Bank="1" ID="131721" Name="DeleteEnemyByGenerator" Description=""/>
+        <Command Bank="1" ID="131722" Name="DeleteEnemyByGeneratorGroup" Description=""/>
+        <Command Bank="1" ID="131731" Name="PauseEnemy" Description=""/>
+        <Command Bank="1" ID="131732" Name="PauseEnemyGroup" Description=""/>
+        <Command Bank="1" ID="131741" Name="GenerateNpcPhantom" Description=""/>
+        <Command Bank="1" ID="131742" Name="DeleteNpcPhantom" Description=""/>
+        <Command Bank="1" ID="131801" Name="LaunchBulletFromPoint" Description=""/>
+        <Command Bank="1" ID="131804" Name="LaunchBulletFromCharacterToCharacter" Description=""/>
+        <Command Bank="1" ID="131821" Name="AttachBulletToTheEnemy" Description=""/>
+        <Command Bank="1" ID="131831" Name="SetDamageImmunityByCharacterId" Description=""/>
+        <Command Bank="1" ID="131832" Name="SetDamageImmunityByGeneratorId" Description=""/>
+        <Command Bank="1" ID="131911" Name="VibrateGamepadAroundYou" Description=""/>
+        <Command Bank="1" ID="131912" Name="VibrateGamepadAroundPoint" Description=""/>
+        <Command Bank="1" ID="131913" Name="VibrateGamepadGlobal" Description=""/>
+        <Command Bank="1" ID="131914" Name="StopGamepadVibration" Description=""/>
+        <Command Bank="1" ID="132001" Name="StartConversation" Description=""/>
+        <Command Bank="1" ID="132002" Name="CancelConversation" Description=""/>
+        <Command Bank="1" ID="132003" Name="ClearConversationResult" Description=""/>
+        <Command Bank="1" ID="132004" Name="ShowYesNoSelection" Description=""/>
+        <Command Bank="1" ID="132101" Name="SetPointLightEnabled" Description=""/>
+        <Command Bank="1" ID="132111" Name="ActivateWindGenerator" Description=""/>
+        <Command Bank="1" ID="132112" Name="StopWindGenerator" Description=""/>
+        <Command Bank="1" ID="132113" Name="SetWindSpeedMultiplier" Description=""/>
+        <Command Bank="1" ID="132121" Name="WarpPlayersWithinMap" Description=""/>
+        <Command Bank="5" ID="132121" Name="WarpPlayersWithinMapIf" Description=""/>
+        <Command Bank="1" ID="132122" Name="WarpEnemiesWithinMap" Description=""/>
+        <Command Bank="1" ID="132123" Name="WarpSelfWithinMap" Description="Unused"/>
+        <Command Bank="1" ID="132125" Name="PlayCutsceneAndWarpToMap" Description=""/>
+        <Command Bank="1" ID="132131" Name="AddNavimeshAttribute" Description=""/>
+        <Command Bank="1" ID="132132" Name="DeleteNavimeshAttribute" Description=""/>
+        <Command Bank="1" ID="132133" Name="ChangeNavimeshType" Description=""/>
+        <Command Bank="1" ID="132134" Name="ChangeNavimeshSize" Description=""/>
+        <Command Bank="1" ID="132141" Name="SetRespawnPoint" Description=""/>
+        <Command Bank="1" ID="132151" Name="ChangeHitBrightnessSetting" Description=""/>
+        <Command Bank="1" ID="132152" Name="ChangeMapAreaBrightnessSetting" Description=""/>
+        <Command Bank="1" ID="132153" Name="SetHitEnabled" Description=""/>
+        <Command Bank="1" ID="132154" Name="SetMapPartDisplay" Description=""/>
+        <Command Bank="1" ID="132155" Name="PushFogFilter" Description=""/>
+        <Command Bank="1" ID="132156" Name="PopFogFilter" Description=""/>
+        <Command Bank="1" ID="132157" Name="PushParallelLightFilter" Description=""/>
+        <Command Bank="1" ID="132158" Name="PopParallelLightFilter" Description=""/>
+        <Command Bank="1" ID="132159" Name="PushVolumeFogFilter" Description=""/>
+        <Command Bank="1" ID="132160" Name="PopVolumeFogFilter" Description=""/>
+        <Command Bank="1" ID="132161" Name="SetGroundMaterial" Description=""/>
+        <Command Bank="1" ID="132162" Name="SetLastSfxIdOfCamera" Description="Unused"/>
+        <Command Bank="1" ID="132163" Name="CancelLastSfxIdOfCamera" Description="Unused"/>
+        <Command Bank="1" ID="132164" Name="SetLastSfxTrackingCamera" Description="Unused"/>
+        <Command Bank="1" ID="132165" Name="CancelLastSfxTrackingCamera" Description="Unused"/>
+        <Command Bank="1" ID="132166" Name="FilterConditionRegistration" Description=""/>
+        <Command Bank="1" ID="132201" Name="StartBossFight" Description=""/>
+        <Command Bank="1" ID="132202" Name="EndBossFight" Description=""/>
+        <Command Bank="1" ID="132203" Name="DisplayBossHpBar" Description=""/>
+        <Command Bank="1" ID="132204" Name="CancelBossFight" Description=""/>
+        <Command Bank="1" ID="132211" Name="AddSouls" Description=""/>
+        <Command Bank="1" ID="132212" Name="ObtainSoulsFromPoint" Description=""/>
+        <Command Bank="1" ID="132213" Name="AddSoulAcquisitionTarget" Description=""/>
+        <Command Bank="1" ID="132221" Name="EnablePlayerMessages" Description="Unused"/>
+        <Command Bank="1" ID="132231" Name="GenerateObjFromCharacter" Description=""/>
+        <Command Bank="1" ID="132241" Name="SaveExecution" Description=""/>
+        <Command Bank="1" ID="132242" Name="DisableAutoSave" Description=""/>
+        <Command Bank="1" ID="132243" Name="ProhibitPlayerOperation" Description=""/>
+        <Command Bank="1" ID="132251" Name="RollCredits" Description=""/>
+        <Command Bank="1" ID="132261" Name="AwardTrophy" Description=""/>
+        <Command Bank="1" ID="132271" Name="NextShaderSwitch" Description=""/>
+        <Command Bank="1" ID="132301" Name="PlayerActionRequest" Description=""/>
+        <Command Bank="1" ID="132302" Name="PlayerInsectKeyAnimationControlRequest" Description="Unused"/>
+        <Command Bank="1" ID="132303" Name="EndPlayerActionRequest" Description=""/>
+        <Command Bank="1" ID="132304" Name="SelfObjAnimationPlayerControlRequest" Description=""/>
+        <Command Bank="1" ID="132305" Name="ObjAnimationPlayerControlRequest" Description=""/>
+        <Command Bank="1" ID="132306" Name="CancelPlayerActionRequest" Description=""/>
+        <Command Bank="1" ID="132311" Name="EnemyActionRequest" Description=""/>
+        <Command Bank="1" ID="132321" Name="ForceDisablePlayerAnimationCancelling" Description=""/>
+        <Command Bank="1" ID="132331" Name="PlayerDeathRequest" Description=""/>
+        <Command Bank="1" ID="140001" Name="SetConditionGroup" Description=""/>
+        <Command Bank="1" ID="140011" Name="CompareBossBattleIds" Description=""/>
+        <Command Bank="1" ID="140021" Name="SetConditionGroupTrue" Description=""/>
+        <Command Bank="1" ID="140031" Name="IsPlayerAnActor" Description=""/>
+        <Command Bank="1" ID="140032" Name="DoesActorExist" Description=""/>
+        <Command Bank="1" ID="140101" Name="CompareChrPlayerDistance" Description=""/>
+        <Command Bank="1" ID="140111" Name="IsChrDead" Description=""/>
+        <Command Bank="1" ID="140112" Name="IsChrMaxRespawnCount" Description=""/>
+        <Command Bank="1" ID="140113" Name="IsChrDeadOrRespawnOver" Description=""/>
+        <Command Bank="1" ID="140121" Name="CompareChrHpRatio" Description=""/>
+        <Command Bank="1" ID="140122" Name="CompareChrHpValue" Description=""/>
+        <Command Bank="1" ID="140123" Name="IsChrPartDead" Description=""/>
+        <Command Bank="1" ID="140125" Name="ComparePlayerHpValue" Description=""/>
+        <Command Bank="1" ID="140126" Name="ComparePlayerHpDecrease" Description=""/>
+        <Command Bank="1" ID="140131" Name="IsChrInsidePoint" Description=""/>
+        <Command Bank="1" ID="140132" Name="IsPlayerInsidePoint" Description=""/>
+        <Command Bank="1" ID="140141" Name="IsChrSearched" Description=""/>
+        <Command Bank="1" ID="140151" Name="IsPlayerPlayingMotion" Description=""/>
+        <Command Bank="1" ID="140152" Name="CompareChrStartUpState" Description=""/>
+        <Command Bank="1" ID="140153" Name="IsPlayerUsingTorch" Description=""/>
+        <Command Bank="1" ID="140154" Name="IsPlayerHollow" Description=""/>
+        <Command Bank="1" ID="140155" Name="DoesPlayerEventAction" Description=""/>
+        <Command Bank="1" ID="140156" Name="IsPlayerDamaged" Description=""/>
+        <Command Bank="1" ID="140157" Name="ComparePlayerFallTime" Description=""/>
+        <Command Bank="1" ID="140161" Name="IsPlayerInCovenant" Description=""/>
+        <Command Bank="1" ID="140162" Name="ComparePlayerVowLevel" Description=""/>
+        <Command Bank="1" ID="140163" Name="ComparePlayerSinLevel" Description=""/>
+        <Command Bank="1" ID="140171" Name="CompareChrEzStateValue" Description=""/>
+        <Command Bank="1" ID="140181" Name="ChrHasSpEffect" Description=""/>
+        <Command Bank="1" ID="140182" Name="PlayerHasSpEffect" Description=""/>
+        <Command Bank="1" ID="140191" Name="IsChrActive" Description=""/>
+        <Command Bank="1" ID="140192" Name="CompareActiveChrNum" Description=""/>
+        <Command Bank="1" ID="140201" Name="CompareObjState" Description=""/>
+        <Command Bank="1" ID="140202" Name="IsObjBroken" Description=""/>
+        <Command Bank="1" ID="140203" Name="IsObjDamaged" Description=""/>
+        <Command Bank="1" ID="140204" Name="CompareObjRideNum" Description=""/>
+        <Command Bank="1" ID="140205" Name="IsObjSearched" Description=""/>
+        <Command Bank="1" ID="140206" Name="CompareObjBreakNum" Description=""/>
+        <Command Bank="1" ID="140207" Name="CheckObjHeardSound" Description=""/>
+        <Command Bank="1" ID="140208" Name="CompareObjPlayerDistance" Description=""/>
+        <Command Bank="1" ID="140209" Name="IsObjActive" Description=""/>
+        <Command Bank="1" ID="140301" Name="CompareEventFlag" Description=""/>
+        <Command Bank="1" ID="140311" Name="CompareEventFlagValue" Description=""/>
+        <Command Bank="1" ID="140321" Name="CompareEventFlagValueId" Description=""/>
+        <Command Bank="1" ID="140401" Name="IsPlayerOnHitGroup" Description=""/>
+        <Command Bank="1" ID="140402" Name="IsPlayerInTheMap" Description=""/>
+        <Command Bank="1" ID="140403" Name="IsMapReadAndBackreadStable" Description=""/>
+        <Command Bank="1" ID="140404" Name="IsMapActive" Description=""/>
+        <Command Bank="1" ID="140405" Name="CompareHowManyCharactersOnHitGroupAreHostileOrFriendly" Description=""/>
+        <Command Bank="1" ID="140406" Name="IsPlayerInMultiplayerSection" Description=""/>
+        <Command Bank="1" ID="140411" Name="IsMapUsable" Description=""/>
+        <Command Bank="1" ID="140501" Name="CompareEventStatus" Description=""/>
+        <Command Bank="1" ID="140511" Name="CompareStateTime" Description=""/>
+        <Command Bank="1" ID="140512" Name="CompareGlobalTimer" Description=""/>
+        <Command Bank="1" ID="140513" Name="CompareAreaTimer" Description=""/>
+        <Command Bank="1" ID="140521" Name="IsEventBossBattle" Description=""/>
+        <Command Bank="1" ID="140522" Name="IsEventBossKill" Description=""/>
+        <Command Bank="1" ID="140523" Name="CompareEventBossHpRatio" Description=""/>
+        <Command Bank="1" ID="140531" Name="CompareEventRandValue" Description=""/>
+        <Command Bank="1" ID="140601" Name="IsMultiplayer" Description=""/>
+        <Command Bank="1" ID="140602" Name="IsHost" Description=""/>
+        <Command Bank="1" ID="140611" Name="IsBellKeeperRingingHistoryCleared" Description=""/>
+        <Command Bank="1" ID="140621" Name="IsDuelStartPossible" Description=""/>
+        <Command Bank="1" ID="140622" Name="HasDuelMatched" Description=""/>
+        <Command Bank="1" ID="140623" Name="IsDuelMatching" Description=""/>
+        <Command Bank="1" ID="140631" Name="CompareMultiplayerPlayerCount" Description=""/>
+        <Command Bank="1" ID="140641" Name="HasNpcPhantomSpawned" Description=""/>
+        <Command Bank="1" ID="140651" Name="IsHostDead" Description=""/>
+        <Command Bank="1" ID="140661" Name="IsBoneOfOrderAvailable" Description=""/>
+        <Command Bank="1" ID="140671" Name="IsOffline" Description=""/>
+        <Command Bank="1" ID="140701" Name="CompareCurrentSouls" Description=""/>
+        <Command Bank="1" ID="140702" Name="CompareCumulativeSouls" Description=""/>
+        <Command Bank="1" ID="140711" Name="CompareGameCycleForBonfire" Description=""/>
+        <Command Bank="1" ID="140721" Name="IsGraveGeneratable" Description=""/>
+        <Command Bank="1" ID="140731" Name="IsGameSaving" Description=""/>
+        <Command Bank="1" ID="140741" Name="CompareChunkPhase" Description=""/>
+        <Command Bank="1" ID="140801" Name="DoesPlayerHaveItem" Description=""/>
+        <Command Bank="1" ID="140802" Name="IsItemEquipped" Description=""/>
+        <Command Bank="1" ID="140803" Name="IsItemLeft" Description=""/>
+        <Command Bank="1" ID="140811" Name="WasObjItemAcquired" Description=""/>
+        <Command Bank="1" ID="1" Name="GenerateRandomNumber" Description=""/>
+        <Command Bank="5" ID="1" Name="GenerateRandomNumberIf" Description=""/>
+        <Command Bank="1" ID="2" Name="ResetTimer" Description=""/>
+        <Command Bank="1" ID="3" Name="StartTimer" Description=""/>
+        <Command Bank="1" ID="4" Name="StopTimer" Description=""/>
+    </CommandList>
+    <FunctionList>
+        <Function ID="130001" Name="ClampInt" Description=""/>
+        <Function ID="130002" Name="ClampDecimal" Description=""/>
+        <Function ID="130031" Name="EventEnded" Description=""/>
+        <Function ID="130041" Name="ActorJudgment" Description=""/>
+        <Function ID="130121" Name="GetAreaVariable" Description=""/>
+        <Function ID="130122" Name="GetGlobalVariable" Description=""/>
+        <Function ID="130123" Name="GetCharacterLocalVariable" Description=""/>
+        <Function ID="130124" Name="GetLocalVariable" Description=""/>
+        <Function ID="130201" Name="DistanceFromPlayer" Description=""/>
+        <Function ID="130301" Name="HpValue" Description=""/>
+        <Function ID="130302" Name="HpRatio" Description=""/>
+        <Function ID="130303" Name="IsDead" Description="Unused"/>
+        <Function ID="130304" Name="GetPlayerStat" Description=""/>
+        <Function ID="130305" Name="GetPlayerGender" Description="Unused"/>
+        <Function ID="130306" Name="IsPlayerOnGround" Description=""/>
+        <Function ID="130307" Name="GetPlayerHollowState" Description=""/>
+        <Function ID="130308" Name="GetPlayerDeathCountByPhantomType" Description=""/>
+        <Function ID="130309" Name="IsOwnBodyPartDestroyed" Description=""/>
+        <Function ID="130310" Name="IsBodyPartDestroyed" Description=""/>
+        <Function ID="130311" Name="NumberOfTimesDamaged" Description=""/>
+        <Function ID="130312" Name="PlayerHp" Description=""/>
+        <Function ID="130321" Name="KilledPlayer" Description=""/>
+        <Function ID="130331" Name="GetPlayerWetness" Description=""/>
+        <Function ID="130332" Name="GetWetCondition" Description=""/>
+        <Function ID="130341" Name="PlayerIsInEventAction" Description=""/>
+        <Function ID="130351" Name="GetCurrentActivationState" Description=""/>
+        <Function ID="130361" Name="GetPlayerCovenant" Description=""/>
+        <Function ID="130362" Name="GetPlayerCovenantLevel" Description=""/>
+        <Function ID="130363" Name="GetPlayerSinnerLevel" Description="Unused"/>
+        <Function ID="130364" Name="GetPlayerSinnerCount" Description=""/>
+        <Function ID="130371" Name="CompareOwnEzStateFlag" Description=""/>
+        <Function ID="130372" Name="CompareEzStateFlag" Description=""/>
+        <Function ID="130411" Name="WarningWindowDisplay" Description=""/>
+        <Function ID="130412" Name="ItemAwardDisplay" Description=""/>
+        <Function ID="130413" Name="ItemAwardFailureDisplay" Description=""/>
+        <Function ID="130421" Name="YesNoMenuResult" Description=""/>
+        <Function ID="130422" Name="YesNoMenuDisplay" Description=""/>
+        <Function ID="130423" Name="MultiOptionMenuResult" Description=""/>
+        <Function ID="130431" Name="OkMenuDisplay" Description=""/>
+        <Function ID="130432" Name="EventMessageDisplay" Description=""/>
+        <Function ID="130433" Name="MultiOptionMenuDisplay" Description=""/>
+        <Function ID="130434" Name="RespecMenuDisplay" Description=""/>
+        <Function ID="130441" Name="CharacterCreationMenuDisplay" Description=""/>
+        <Function ID="130442" Name="NameSettingMenuDisplay" Description=""/>
+        <Function ID="130443" Name="ObeliskMessageDisplay" Description=""/>
+        <Function ID="130444" Name="ObeliskDeathCountWindow" Description=""/>
+        <Function ID="130451" Name="NpcMenuDisplay" Description=""/>
+        <Function ID="130452" Name="NpcMenuResult" Description=""/>
+        <Function ID="130453" Name="NpcMenuUsageResult" Description=""/>
+        <Function ID="130461" Name="InPlayerKeyGuideRegion" Description="Unused"/>
+        <Function ID="130471" Name="GestureMenuDisplay" Description=""/>
+        <Function ID="130481" Name="PresentationWindowDisplay" Description=""/>
+        <Function ID="130491" Name="CrowExhangePossibleDisplay" Description=""/>
+        <Function ID="130501" Name="AnimationEnded" Description=""/>
+        <Function ID="130502" Name="GetNormalizedAnimationTime" Description=""/>
+        <Function ID="130601" Name="IsHost" Description=""/>
+        <Function ID="130602" Name="IsGuest" Description=""/>
+        <Function ID="130621" Name="ComparePlayerPhantom" Description=""/>
+        <Function ID="130631" Name="GetPlayerNetNumber" Description=""/>
+        <Function ID="130641" Name="TotalInvasionCount" Description=""/>
+        <Function ID="130642" Name="PhantomMultiplayerCount" Description=""/>
+        <Function ID="130651" Name="DuelStartPossible" Description=""/>
+        <Function ID="130661" Name="MultiplayerComparison" Description=""/>
+        <Function ID="130671" Name="NpcPhantomCreated" Description=""/>
+        <Function ID="130681" Name="IsOffline" Description=""/>
+        <Function ID="130801" Name="CutscenePlaying" Description=""/>
+        <Function ID="130901" Name="DoesCharacterExistWithinCamera" Description="Unused"/>
+        <Function ID="131001" Name="GetCommonEventParamInt" Description=""/>
+        <Function ID="131002" Name="GetCommonEventParamDecimal" Description=""/>
+        <Function ID="131101" Name="PlayerInPoint" Description=""/>
+        <Function ID="131102" Name="AmIInPoint" Description="Unused"/>
+        <Function ID="131103" Name="NumberOfCharactersInPoint" Description=""/>
+        <Function ID="131104" Name="EnemyInPoint" Description=""/>
+        <Function ID="131105" Name="GetPointCloseToCharacter" Description=""/>
+        <Function ID="131201" Name="LastOneShotBgmIsPlaying" Description=""/>
+        <Function ID="131301" Name="GetAreaTimerTime" Description=""/>
+        <Function ID="131302" Name="AreaTimerStopped" Description=""/>
+        <Function ID="131311" Name="GetGlobalTimerTime" Description=""/>
+        <Function ID="131312" Name="GlobalTimerStopped" Description=""/>
+        <Function ID="131401" Name="ItemCount" Description=""/>
+        <Function ID="131402" Name="CanGetItem" Description=""/>
+        <Function ID="131403" Name="EquippedItemCount" Description=""/>
+        <Function ID="131404" Name="DidILeaveItem" Description="Unused"/>
+        <Function ID="131411" Name="ObjItemAcquired" Description=""/>
+        <Function ID="131421" Name="EstusAtMaxStrength" Description=""/>
+        <Function ID="131431" Name="CanGetItemLot" Description=""/>
+        <Function ID="131501" Name="IsSfxSlotUsed" Description=""/>
+        <Function ID="131611" Name="DoorOpen" Description=""/>
+        <Function ID="131621" Name="CountCharactersOnObj" Description="Unused"/>
+        <Function ID="131622" Name="CountCharactersByTypeOnObj" Description="Unused"/>
+        <Function ID="131641" Name="DamageReceivedByAttribute" Description="Unused"/>
+        <Function ID="131651" Name="CompareObjStateTransitionRequest" Description="Unused"/>
+        <Function ID="131652" Name="CompareOwnObjStateId" Description=""/>
+        <Function ID="131653" Name="CompareObjStateId" Description=""/>
+        <Function ID="131711" Name="GeneratorOperationOngoing" Description=""/>
+        <Function ID="131721" Name="GeneratorResourceHasBeenRead" Description="Unused"/>
+        <Function ID="132001" Name="CompareConversationState" Description="Unused"/>
+        <Function ID="132002" Name="ConversationEnded" Description=""/>
+        <Function ID="132003" Name="ConversationRequest" Description=""/>
+        <Function ID="132004" Name="ComparePlayerAudibleDistance" Description="Unused"/>
+        <Function ID="132005" Name="CompareConversationResult" Description=""/>
+        <Function ID="132101" Name="CutsceneWarpEnded" Description="Unused"/>
+        <Function ID="132111" Name="GetFogFilterOverride" Description=""/>
+        <Function ID="132112" Name="GetParallelLightFilterOverride" Description=""/>
+        <Function ID="132113" Name="GetVolumeFogFilterOverride" Description=""/>
+        <Function ID="132121" Name="CompareHowManyCharactersOnHitGroupAreHostileOrFriendly" Description=""/>
+        <Function ID="132131" Name="IsMapUsable" Description=""/>
+        <Function ID="132201" Name="BossBattleOngoing" Description=""/>
+        <Function ID="132202" Name="InGame" Description=""/>
+        <Function ID="132211" Name="CurrentSouls" Description=""/>
+        <Function ID="132212" Name="CumulativeSouls" Description=""/>
+        <Function ID="132213" Name="PardonSoulsRequired" Description=""/>
+        <Function ID="132221" Name="NumberOfTimesPlayerMessageWasRead" Description="Unused"/>
+        <Function ID="132231" Name="GetOwnerId" Description="Unused"/>
+        <Function ID="132241" Name="GetGameCycle" Description=""/>
+        <Function ID="132242" Name="GetLitBonfireCount" Description="Unused"/>
+        <Function ID="132243" Name="GetBonfireAsceticCount" Description=""/>
+        <Function ID="132244" Name="GetGameCycleForBonfire" Description=""/>
+        <Function ID="132251" Name="NpcInfoValue" Description=""/>
+        <Function ID="132252" Name="NpcParamTextId" Description=""/>
+        <Function ID="132261" Name="IsGraveGeneratable" Description=""/>
+        <Function ID="132262" Name="GraveSoulsRequired" Description=""/>
+        <Function ID="132271" Name="JumpButtonL3Enabled" Description=""/>
+        <Function ID="140001" Name="ConditionGroup" Description=""/>
+        <Function ID="140002" Name="HostConditionGroup" Description=""/>
+        <Function ID="1" Name="GetRandomValue" Description=""/>
+        <Function ID="2" Name="GetTimerValue" Description="Unused"/>
+        <Function ID="3" Name="GetStateTime" Description=""/>
+        <Function ID="4" Name="GetRandomValueForStateTime" Description=""/>
+        <Function ID="5" Name="GetCommonParameters" Description="Unused"/>
+        <Function ID="6" Name="GetEventFlag" Description=""/>
+    </FunctionList>
+    <EnumList>
+    </EnumList>
+</EzSembleContext>

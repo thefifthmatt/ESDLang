@@ -3,7 +3,7 @@ This is a high-level language for viewing and editing ESD scripts, primarily to 
 It decompiles ESD files into a subset of Python, using Python constructs to represent various ESD features.
 However, the Python cannot currently be executed or linked with other files.
 
-Decompilation and compilation should work for vanilla ESDs from DS1, DS3, and Sekiro. Other games have yet to be tested.
+Decompilation and compilation should work for vanilla ESDs from DS1, DS2, Bloodborne, DS3, and Sekiro.
 
 See examples of this from games in the top-level examples/ directory.
 
@@ -86,15 +86,14 @@ Usage: esdtool.exe <args>
 
 esdtool decompiles ESDs to a high-level Python representation, which can be compiled back to ESD.
 Similar to ffmpeg or ImageMagick, the order of command line arguments determines the order of
-operations. For instance, -ds3 -esddir mod\script\talk will default everything to DS3, but then
-change the subdirectory used for ESDs. The other way around will end up with the DS3 default
-directory for ESDs only.
+operations. For instance, -ds1 -esddir chr will default everything to DS1, but then change
+the subdirectory used for ESD inputs. The other way around will not work.
 
 > Game flag
 -ds1, -ds1r, -ds2, -ds2s, -bb, -ds3, -sdt
     Sets all game data flags to default known values for Steam installations of the given game, or
-    clears them if unknown. This overrides all values which were there before. Note: esddir is
-    currently only set for DS1R, DS3, and SDT. Contact me to add support for other games.
+    clears them if unknown. This overrides all values which were there before. These default values
+    are kept in SoulsIds in GameSpec.cs
 
 > Game data flags
 (not necessary to set if set by the game flag)
@@ -105,7 +104,7 @@ directory for ESDs only.
     that directory. Overrides -i for a list of ESDs and clears -f.
 -maps DIR
     Sets the relative dir for all MSB files. Used to look up chr info on ESDs, currently for
-    Sekiro only.
+    DS1, DS1R, DS3, and Sekiro.
 -msgs DIR
     Sets the relative dir where FMG bnds can be found. Used to annotate ESDs with game info.
 -params FILE
@@ -126,10 +125,13 @@ directory for ESDs only.
     relative to the current directory if relative paths.
 -f ESD MAP CHR etc
     A list of one or more filters for -esddir or -i inputs, replacing previous list of filters
-    (if any). ESD is an ESD name (like t300330), MAP is a prefix for a BND name (like m40_00),
-    and CHR is a character model with an ESD (like c1400, if -maps is supported). The ESDs
-    output/replaced are a union of all filters. Filters do nothing if no input ESD matches them.
-    Note that chresdbnd are already prefixed with the map name.
+    (if any). ESD is an ESD name or prefix (like t300330 or event), MAP is a prefix for a BND
+    name (like m40_00), and CHR is a character model with an ESD (like c1400, if -maps is
+    supported). The ESDs output/replaced are a union of all filters. Filters do nothing if no
+    input ESD matches them.
+-edddir DIR
+    The directory to use to find .edd or .edd.txt files, default dist\<game>\edd when it exists
+    for English translations. This can be set to the same as -esddir to use the original EDD files.
 -writepy TEMPLATE
     Given ESD inputs (with -esddir or -i), decompile all ESDs, with filters if those exist. The
     template is a file name, with %e, %m, and %c replaced with ESD, map name prefix, and chr name
@@ -140,19 +142,30 @@ directory for ESDs only.
     Given Python inputs (with -i), and also ESD inputs (with -esddir or -i), write copies of those
     ESD/bnd files to the given directory if they have compiled ESDs. If the given directory is a
     relative path and gamedir is also provided, it will be relative to the game directory. Can be
-    used to write out final files for a mod. This does not create backups. Does not yet handle
-    chresdbnds in DS1 chr.
+    used to write out final files for a mod. This does not create backups.
+-[no]copysame
+    When enabled (default false), writebnd not only writes copied of the compiled ESDs, but also
+    copies of all ESDs which are identical to it. This can be used to decompile only one bonfire
+    and change all other bonfires at once. Equivalence is determined an ESD's hash, which is shown
+    by -info.
 -writeloose TEMPLATE
     Writes out individual .esd files. If there are Python inputs (with -i), there also must be
     ESD inputs (with -esddir or -i) to use as a template; then writes out individual .esd files
     contained in those Python files. If there is more than one .esd, the template must include
     %e, which is the ESD id. If not given any Python files, just writes out the given ESD
     bnds/dcxs as individual .esd files.
+-writeedd TEMPLATE
+    Writes out .edd.txt files for EDD files alongside input ESD files, which can be used to
+    annotate Python files with developer documentation. %e is the ESD id. Translated EDD dumps are
+    already included with esdtool so this is not usually necessary.
 -info
     Print basic info on the given input files - some parsing but no compilation/decompilation.
--mapinfo
-    For the current game flags, print info about where all ESDs are used. Only supported if -maps
-    is supported.
+    If -maps is supported, also prints where the ESDs are used.
+
+> EDD writing options
+-eddformat Flat | Chunk | Join
+    How to write .edd.txt files. This can be done flat (basically a direct dump), chunked with
+    all strings in shared files at most 500 lines long, or joining chunked inputs from -edddir.
 
 > Compilation options
 -[no]cfg
@@ -165,15 +178,28 @@ directory for ESDs only.
 -[no]newstates
     When enabled (default true), allows creating states with fresh ids, rather than getting all ids
     from docstrings (with -stateinfo).
--[no]talk
-    When enabled (default true), use talk ESD commands and functions. Otherwise, uses chr ESD.
-    Disable this for ESDs in chr directory in DS1.
+-[no]cmdedd
+    When enabled (default false) and EDD is available, output text for each individual command
+    where given a description. This appears to be automatically inserted based on the command id,
+    rather than custom text like state or machine descriptions.
+-cmdtype [None | Talk | Chr | Event | AI]
+    The source to use for command and function names, for both reading and writing. If not
+    provided, this is inferred from .esd/.py name and provided game where possible. Otherwise, None
+    is used.
 
 > Some examples
+Show all known ESDs for a game:
+    $ esdtool.exe -ds2s
 Decompile all ESDs for a game to one Python file:
     $ esdtool.exe -ds3 -writepy ds3.py
 Decompile all ESDs for a game to different Python files:
     $ esdtool.exe -ds1r -writepy %e.py
-Replace game talkesdbnds with the given compiled Python files:
+Decompile a specific ESD from a game by name:
+    $ esdtool.exe -sdt -f t000001 -writepy %e.py
+Decompile and recompile a lone ESD file (cmd type inferred from name):
+    $ esdtool.exe -ds2s -i work\event_m10_04_00_00.esd -writepy work\%e.py
+    $ esdtool.exe -ds2s -i work\event_m10_04_00_00.py -writeloose work\%e_recompiled.esd
+Recompile the given Python files into a subdirectory of the game, copying relevant bnds:
     $ esdtool.exe -sdt -i *.py -writebnd mymod\script\talk
+    $ esdtool.exe -ds2s -i mymod\event_m10_04_00_00.py -writebnd mymod\ezstate
 ```

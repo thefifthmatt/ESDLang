@@ -1,0 +1,858 @@
+1000: Madura-Forest Shadow Gimmick Door
+1000_s0: Start state
+1000_s1: Rerun
+1000_s1_e0: [System] Re-execution notification
+1000_s2: [Preset] Madura-The Shadow Shadow Forest Gimmy Door_Lever Operation Judgment-Opening the Gimmick Door_SubState
+1000_s3: [Preset] Madura-The Shadow Shadow Forest Gimmick Door_Destination Determination-Gimmick Door Closure_SubState
+111242: OBJ: Moonlight Jun: Tomb
+111242_s0: Start state
+111242_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111243: OBJ: Satoshi Moonlight: Key Guide
+111243_s0: Start state
+111243_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111244: OBJ: Satoshi Moonlight: Judgment of death
+111244_s0: Start state
+111244_s1: [Lib] NPC: Death determination: General purpose_SubState
+111352: OBJ: Magician: Tomb
+111352_s0: Start state
+111352_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111353: OBJ: Magician: Key Guide
+111353_s0: Start state
+111353_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111354: OBJ: Magician: Death check
+111354_s0: Start state
+111354_s1: [Lib] NPC: Death decision: _SubState for the map appearance
+1010: Toggle global flags related to gimmick doors
+1010_s0: Start state
+1010_s1: Rerun
+1010_s1_e0: [System] Re-execution notification
+1010_s2: [Preset] Switch global flags related to gimmick doors_SubState
+1020: Madura-Giant Door in the Shadow Shadow Forest_Initial setting
+1020_s0: Start state
+1020_s1: Finish
+1020_s1_e0: [System] Termination notification
+1020_s2: [Preset] Madura-The Shadow Shadow Forest Gimmick Door_Initial Settings_SubState
+111355: OBJ: Magician: Petrification setting
+111355_s0: Start state
+111355_s1: [Lib] Character: Petrified: Key Guide_SubState
+111356: OBJ: Magician: Appearance setting
+111356_s0: Start state
+111356_s1: Appearance setting: Start
+111356_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111356_s2: Appearance setting: Death determination
+111356_s2_e0: [Group condition: Flag] Event flag comparison
+111356_s3: Appearance setting: System: Exit
+111356_s3_e0: [System] Termination notification
+111356_s4: Appearance setting: Migration determination
+111356_s4_e0: [Group condition: Flag] Event flag comparison
+111356_s4_e1: [Group condition: Flag] Event flag comparison
+111356_s5: Appearance setting: Petrification judgment
+111356_s5_e0: [Group condition: Flag] Event flag comparison
+111356_s6: Appearance setting: Madura connection: Impossible to appear
+111356_s6_e0: [Flag] Set flag
+111356_s6_e1: [Group condition: Flag] Event flag comparison
+111356_s7: Appearance setting: Madura connection: Appearance allowed
+111356_s7_e0: [Flag] Set flag
+111356_s7_e1: [System] Execute other events
+111356_s7_e2: [Group condition: Flag] Event flag comparison
+1100: Door 1 that opens in conjunction with the gimmick door
+1100_s0: Start state
+1100_s1: Finish
+1100_s1_e0: [System] Termination notification
+1100_s2: [Preset] Door that opens in conjunction with the gimmick door_SubState
+1110: Door 2 that opens in conjunction with the gimmick door
+1110_s0: Start state
+1110_s1: Finish
+1110_s1_e0: [System] Termination notification
+1110_s2: [Preset] Door that opens in conjunction with the gimmick door_SubState
+1120: Door that opens in conjunction with the gimmick door 3
+1120_s0: Start state
+1120_s1: Finish
+1120_s1_e0: [System] Termination notification
+1120_s2: [Preset] Door that opens in conjunction with the gimmick door_SubState
+1130: Door 4 that opens in conjunction with the gimmick door
+1130_s0: Start state
+1130_s1: Finish
+1130_s1_e0: [System] Termination notification
+1130_s2: [Preset] Door that opens in conjunction with the gimmick door_SubState
+1140: Door 5 that opens in conjunction with the gimmick door
+1140_s0: Start state
+1140_s1: Finish
+1140_s1_e0: [System] Termination notification
+1140_s2: [Preset] Door that opens in conjunction with the gimmick door_SubState
+1150: Door 6 that opens in conjunction with the gimmick door
+1150_s0: Start state
+1150_s1: Finish
+1150_s1_e0: [System] Termination notification
+1150_s2: [Preset] Door that opens in conjunction with the gimmick door_SubState
+1160: Door 7 that opens in conjunction with the gimmick door
+1160_s0: Start state
+1160_s1: Finish
+1160_s1_e0: [System] Termination notification
+1160_s2: [Preset] Door that opens in conjunction with the gimmick door_SubState
+1170: Door 8 that opens in conjunction with the gimmick door
+1170_s0: Start state
+1170_s1: Finish
+1170_s1_e0: [System] Termination notification
+1170_s2: [Preset] Door that opens in conjunction with the gimmick door_SubState
+1180: Door 9 that opens in conjunction with the gimmick door 9
+1180_s0: Start state
+1180_s1: Finish
+1180_s1_e0: [System] Termination notification
+1180_s2: [Preset] Door that opens in conjunction with the gimmick door_SubState
+1190: Door 10 that opens in conjunction with the gimmick door
+1190_s0: Start state
+1190_s1: Finish
+1190_s1_e0: [System] Termination notification
+1190_s2: [Preset] Door that opens in conjunction with the gimmick door_SubState
+1200: Door 11 that opens in conjunction with the gimmick door
+1200_s0: Start state
+1200_s1: Finish
+1200_s1_e0: [System] Termination notification
+1200_s2: [Preset] Door that opens in conjunction with the gimmick door_SubState
+1210: Door 12 that opens in conjunction with the gimmick door
+1210_s0: Start state
+1210_s1: Finish
+1210_s1_e0: [System] Termination notification
+1210_s2: [Preset] Door that opens in conjunction with the gimmick door_SubState
+111357: OBJ: Magician: Move setting
+111357_s0: Start state
+111357_s1: Move setting: Start
+111357_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111357_s2: Move setting: System: Exit
+111357_s2_e0: [System] Termination notification
+111357_s3: Movement setting: Judgment release judgment
+111357_s3_e0: [Group condition: Flag] Event flag comparison
+111357_s3_e1: [Group condition: Flag] Event flag comparison
+111357_s3_e2: [Group condition: Flag] Event flag comparison
+111357_s4: Move setting: Move permission
+111357_s4_e0: [Flag] Set flag
+111357_s4_e1: [Group condition: Flag] Event flag comparison
+111357_s5: Appearance setting: Death determination
+111357_s5_e0: [Group condition: Flag] Event flag comparison
+111357_s6: Appearance setting: Migration determination
+111357_s6_e0: [Group condition: Flag] Event flag comparison
+111357_s6_e1: [Group condition: Flag] Event flag comparison
+111357_s7: Move setting: Stop generation
+111357_s7_e0: [Flag] Set flag
+111357_s7_e1: [Group condition: Flag] Event flag comparison
+111357_s8: Move setting: Previous generator: Erase
+111357_s8_e0: [Generator] Forced deletion of enemies by generator group specification
+80000: Rebirth Fire 01_Madura ~ Valent Shadow Forest Connection Path
+80000_s0: Start state
+80000_s1: Finish
+80000_s1_e0: [System] Termination notification
+80000_s2: [Lib] [Preset] Reproduction fire _SubState
+120110: Trophy: Moonlight Sword
+120110_s0: Start state
+120110_s1: System: Exit
+120110_s1_e0: [System] Termination notification
+120110_s2: [Lib] [Preset] Get Trophy_SubState
+3000: Navi-mesh changes after unlocking a magician
+3000_s0: Start state
+3000_s1: Finish
+3000_s1_e0: [System] Termination notification
+3000_s2: [Lib] [Preset] Navigation mesh switching by flag judgment_SubState
+111358: OBJ: Magician: Character Erasure
+111358_s0: Start state
+111358_s1: Character erase: Start
+111358_s1_e0: [Group condition: Event] Event status judgment
+111358_s2: Character erase: Erase judgment
+111358_s2_e0: [Group condition: Flag] Event flag comparison
+111358_s3: Character erasure: System: Exit
+111358_s3_e0: [System] Termination notification
+111358_s4: Character erase: Erase: Standby
+111358_s4_e0: [Group condition: Flag] Event flag comparison
+111358_s4_e1: [Group condition: Flag] Event flag comparison
+111358_s4_e2: [Group condition: Character] Character generation status judgment
+111358_s5: Move setting: Previous generator: Erase
+111358_s5_e0: [Flag] Set flag
+111358_s5_e1: [Generator] Forced deletion of enemies by generator group specification
+111358_s5_e2: [Group condition: Flag] Event flag comparison
+111359: OBJ: Magician: Character Erasure 2
+111359_s0: Start state
+111359_s1: Character erase: Start
+111359_s2: Character erasure: System: Exit
+111359_s2_e0: [System] Termination notification
+111359_s3: Character erase: Erase: Standby
+111359_s3_e0: [Group condition: Flag] Event flag comparison
+111359_s3_e1: [Group condition: Flag] Event flag comparison
+111359_s3_e2: [Group condition: Flag] Event flag comparison
+111359_s3_e3: [Group condition: Flag] Event flag comparison
+111359_s3_e4: [Group condition: Character] Character generation status judgment
+111359_s3_e5: [Group condition: Flag] Event flag comparison
+111359_s4: Move setting: Previous generator: Erase
+111359_s4_e0: [Generator] Forced deletion of enemies by generator group specification
+4000000: [DC] Activating enemy linked to OBJ_Madura side
+4000000_s0: Start state
+4000000_s1: Finish
+4000000_s1_e0: [System] Termination notification
+4000000_s2: [DC] [Preset] Enemy activation linked to OBJ_Madura side_SubState
+4000010: [DC] Enemies start in conjunction with OBJ.
+4000010_s0: Start state
+4000010_s1: Finish
+4000010_s1_e0: [System] Termination notification
+4000010_s2: [DC] [Preset] Enemies start in conjunction with OBJ
+x16: [Preset] Madura-empty shadow woods gimmick door_lever operation judgment-opening of gimmick door
+x16_p0: Instance ID of gimmick door OBJ
+x16_p1: Instance ID of the madura lever
+x16_p2: Instance ID of the forest side lever of the imaginary shadow
+x16_p3: Instance ID of Madura side door OBJ
+x16_p4: Instance ID of the door OBJ on the forest side of the imaginary shadow
+x16_p5: Lever operated flag
+x16_p6: Both doors closed flag
+x16_p7: Gimmick door opening completion flag
+x16_s0: Start state
+x16_s1: [Reproduction] Madura-Forest Shadow Gimmick Door_Lever Operation Judgment-Gimmick Door Open_SubState
+x16_s2: [Conditions] Madura-Void Shadow Woods Gimmick Door_Lever Operation Judgment_SubState
+x16_s3: [Execution] Madura-The Shadow Shadow Forest Gimmick Door_Both Door Closure_SubState
+x16_s4: [Execution] Madura-The Shadow Shadow Forest Gimmick Door_Gimmic Door Open_SubState
+x16_s5: End state
+x17: [Reproduction] Madura-Forest Shadow Gimmick Door_Lever Operation Judgment-Gimmick Door Open
+x17_p0: Instance ID of the madura lever
+x17_p1: Instance ID of the forest side lever of the imaginary shadow
+x17_p2: [Group condition: Event] Area timer comparison
+x17_p3: Gimmick door opening completion flag
+x17_p4: Both doors closed flag
+x17_p5: Lever operated flag
+x17_s0: Start state
+x17_s1: Enable key guide for lever
+x17_s1_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x17_s1_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x17_s2: Did the initial setting event end and unlock the magician's petrification?
+x17_s3: Has the lever been operated?
+x17_s4: Are both doors closed?
+x17_s5: Is the opening of the gimmick door complete?
+x17_s6: Disabling the key guide of the lever
+x17_s6_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x17_s6_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x17_s7: Changing the state of the navigation mesh of each door
+x17_s7_e0: [Map] Navimesh attribute deletion
+x17_s7_e1: [Map] Added Navimesh attribute
+x17_s7_e2: [Map] Added Navimesh attribute
+x17_s8: Navi mesh on both doors made inaccessible
+x17_s8_e0: [Map] Added Navimesh attribute
+x17_s8_e1: [Map] Added Navimesh attribute
+x17_s9: Not executed
+x17_s10: Both doors closed
+x17_s11: Lever operated
+x17_s12: Gimmick door opening complete
+x18: [Conditions] Madura-hollow shadow woods gimmick door_lever operation judgment
+x18_p0: Instance ID of the madura lever
+x18_p1: Instance ID of the forest side lever of the imaginary shadow
+x18_p2: Lever operated flag
+x18_s0: Start state
+x18_s1: Lever operation standby
+x18_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x18_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x18_s1_e2: [Group condition: OBJ] OBJ state ID comparison
+x18_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x18_s2: Disabling the key guide of the lever
+x18_s2_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x18_s2_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x18_s3: Lever operated flag: ON
+x18_s3_e0: [Flag] Set flag
+x18_s4: End state
+x19: [Execution] Madura-empty shadow of the forest gimmick door _ opening the destination door
+x19_p0: Instance ID of moving side door OBJ
+x19_p1: Point ID for navigation mesh change of moving side door
+x19_p2: Destination MAPID
+x19_p3: Destination door opening completion flag
+x19_s0: Start state
+x19_s1: Open the moving door
+x19_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x19_s2: Has the moving door fully opened?
+x19_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x19_s3: Make the navigation mesh of the moving door accessible
+x19_s3_e0: [Map] Navimesh attribute deletion
+x19_s4: Wait for completion of reading destination MAP
+x19_s4_e0: [Group condition: Map] Check if the specified map is read and the backread status is stable
+x19_s5: Destination door opening completion flag: ON
+x19_s5_e0: [Flag] Set flag
+x19_s6: End state
+x20: [Preset] Switch global flags related to gimmick doors
+x20_p0: Hit group ID on the Madura side
+x20_p1: Hit group ID on the forest side
+x20_p2: Hit group ID of the gimmick door room
+x20_p3: Instance ID of Madura side door OBJ
+x20_p4: Instance ID of the door OBJ on the forest side of the imaginary shadow
+x20_p5: Instance ID of gimmick door OBJ
+x20_p6: Instance ID of the madura lever
+x20_p7: Instance ID of the forest side lever of the imaginary shadow
+x20_s0: Start state
+x20_s1: [Reproduction] Switching global flags related to gimmick doors_SubState
+x20_s2: [Condition] Switch global flags related to gimmick doors_SubState
+x20_s3: [Execution] Switch global flags related to gimmick doors_Madura_SubState
+x20_s4: [Execution] Switching global flags related to gimmick doors_Valve Shadow Forest_SubState
+x20_s5: [Execution] Switching global flags related to gimmick doors_In the room (Destination: Forest of Shadow of Shadows) _SubState
+x20_s6: [Execution] Switching global flags related to gimmick doors_In the room (Destination: Madura) _SubState
+x20_s7: End state
+x21: [Reproduction] Switching global flags related to gimmick doors
+x21_s0: Start state
+x21_s1: End state
+x22: [Conditions] Switching global flags related to gimmick doors
+x22_p0: Hit group ID on the Madura side
+x22_p1: Hit group ID on the forest side
+x22_p2: Hit group ID of the gimmick door room
+x22_p3: Instance ID of Madura side door OBJ
+x22_p4: Instance ID of the door OBJ on the forest side of the imaginary shadow
+x22_p5: Instance ID of the madura lever
+x22_p6: Instance ID of the forest side lever of the imaginary shadow
+x22_s0: Start state
+x22_s1: Which hit group are you on?
+x22_s1_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x22_s1_e1: [Group condition: Map] Judgment that the player is on the specified hit group
+x22_s1_e2: [Group condition: Map] Judgment that the player is on the specified hit group
+x22_s2: Which door started to close?
+x22_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x22_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+x22_s3: Was the gimmick door lever pulled?
+x22_s3_e0: [Group condition: OBJ] OBJ state ID comparison
+x22_s3_e1: [Group condition: OBJ] OBJ state ID comparison
+x22_s3_e2: [Group condition: OBJ] OBJ state ID comparison
+x22_s3_e3: [Group condition: OBJ] OBJ state ID comparison
+x22_s3_e4: [Group condition: Map] Judgment that the player is on the specified hit group
+x22_s4: Madura side
+x22_s5: Forest side of the shadow of emptiness
+x22_s6: Inside the room (destination: Madura)
+x22_s7: Inside the room (Destination: Forest of Shadow)
+x22_s8: Rerun
+x23: [Execution] Switching global flags related to gimmick doors
+x23_p0: ON / OFF of global flag
+x23_p1: ID of the hit group you are riding on
+x23_s0: Start state
+x23_s1: Change global event flag
+x23_s1_e0: [Flag] Set flag
+x23_s2: Did you disappear from the hit group you were riding on?
+x23_s2_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x23_s3: End state
+x24: [Execution] Switch global flags related to gimmick doors_in the room
+x24_p0: ID of the hit group you are riding on
+x24_p1: ON / OFF of global flag
+x24_p2: Instance ID of gimmick door OBJ
+x24_s0: Start state
+x24_s1: Was the condition for exiting execution processing satisfied?
+x24_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x24_s1_e1: [Group condition: Map] Judgment that the player is on the specified hit group
+x24_s2: Change global event flag
+x24_s2_e0: [Flag] Set flag
+x24_s3: End state
+x25: [Preset] Door that opens in conjunction with the gimmick door
+x25_p0: Linked lever OBJ instance ID
+x25_p1: Instance ID of door OBJ to open
+x25_s0: Start state
+x25_s1: [Execution] Door that opens in conjunction with the gimmick door_SubState
+x25_s2: [Reproduction] Door that opens in conjunction with the gimmick door_SubState
+x25_s3: [Condition] Door that opens in conjunction with the gimmick door_SubState
+x25_s4: End state
+x26: [Condition] Door that opens in conjunction with gimmick door
+x26_p0: Linked lever OBJ instance ID
+x26_p1: Instance ID of door OBJ to open
+x26_s0: Start state
+x26_s1: Check the status of the door to be opened
+x26_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x26_s2: Has the linked lever been operated?
+x26_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x26_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+x26_s3: End state
+x26_s4: Open the door
+x27: [Reproduction] Door that opens in conjunction with gimmick door
+x27_s0: Start state
+x27_s1: End state
+x28: [Execution] Door that opens in conjunction with the gimmick door
+x28_p0: Instance ID of door OBJ to open
+x28_s0: Start state
+x28_s1: Open the door
+x28_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x28_s2: End state
+x29: [Preset] Madura to the shadow of the forest gimmick door _ initial setting
+x29_p0: Intrusion MAP determination flag
+x29_p1: Instance ID of Madura side door OBJ
+x29_p2: Instance ID of OBJ
+x29_p3: OBJ instance ID of the gimmick door
+x29_p4: Point ID for changing the navigation mesh of the Madura side door
+x29_p5: Point ID for navigating mesh change of the forest door
+x29_p6: Point ID for changing the navigation mesh of the gimmick door
+x29_p7: Initialization execution flag
+x29_s0: Start state
+x29_s1: [Reproduction] Madura-hollow shadow forest mamic door_initial setting_SubState
+x29_s2: [Conditions] Madura-City Shadow Forest Gimmick Door_Initial Settings_SubState
+x29_s3: [Execution] Madura-The Shadow Shadow Forest Gimmy Door_Initial Setting_The Shadow Shadow Forest_SubState
+x29_s4: [Execution] Madura to the Shadow Shadow Forest Gimmick Door_Initial Settings_Madura_SubState
+x29_s5: End state
+x30: [Reproduction] Madura-empty shadow of the forest gimmick door _ initial setting
+x30_p0: Instance ID of Madura side door OBJ
+x30_p1: Instance ID of OBJ
+x30_p2: OBJ instance ID of the gimmick door
+x30_p3: Point ID for changing the navigation mesh of the Madura side door
+x30_p4: Point ID for navigating mesh change of the forest door
+x30_p5: Point ID for changing the navigation mesh of the gimmick door
+x30_p6: Initialization execution flag
+x30_s0: Start state
+x30_s1: Initialize the state of each door and Navimesh
+x30_s1_e0: [OBJ] Initialize OBJ state
+x30_s1_e1: [OBJ] Initialize OBJ state
+x30_s1_e2: [OBJ] Initialize OBJ state
+x30_s1_e3: [Map] Added Navimesh attribute
+x30_s1_e4: [Map] Added Navimesh attribute
+x30_s1_e5: [Map] Added Navimesh attribute
+x30_s2: Has initialization been performed?
+x30_s3: Not executed
+x30_s4: Executed
+x31: [Conditions] Madura-Void Shadow Woods Gimmick Door_Initial setting
+x31_p0: Intrusion MAP determination flag
+x31_s0: Start state
+x31_s1: Global event flag judgment
+x31_s1_e0: [Group condition: Flag] Event flag comparison
+x31_s2: Forest of the shadow of emptiness
+x31_s3: Madura
+x32: [Execution] Madura-empty shadow of forest gimmick door _ initial setting
+x32_p0: Intrusion MAP side door instance ID
+x32_p1: Point ID for changing the navigation mesh on the intrusion MAP side door
+x32_p2: Initialization execution flag
+x32_s0: Start state
+x32_s1: Set initial state of intrusion MAP side door
+x32_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x32_s1_e1: [Map] Navimesh attribute deletion
+x32_s2: Initialization execution flag: ON
+x32_s2_e0: [Flag] Set flag
+x32_s3: End state
+x33: [Execution] Madura-empty shadow of the forest gimmick door_close both doors
+x33_p0: Instance ID of Madura side door OBJ
+x33_p1: Instance ID of the door OBJ on the forest side of the imaginary shadow
+x33_p2: Point ID for changing the navigation mesh of the Madura side door
+x33_p3: Point ID for navigating mesh doors of the Forest of Shadows
+x33_p4: Both doors closed flag
+x33_s0: Start state
+x33_s1: Close both doors
+x33_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x33_s1_e1: [OBJ] OBJ state transition request (with instance ID specified)
+x33_s2: Have both doors been closed?
+x33_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x33_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+x33_s3: Both doors closed flag: ON
+x33_s3_e0: [Flag] Set flag
+x33_s4: Navi mesh on both doors made inaccessible
+x33_s4_e0: [Map] Added Navimesh attribute
+x33_s4_e1: [Map] Added Navimesh attribute
+x33_s5: End state
+x34: [Execution] Madura-empty shadow forest forest gimmick door _ gimmick door opening
+x34_p0: Instance ID of gimmick door OBJ
+x34_p1: Point ID for changing the navigation mesh of the gimmick door
+x34_p2: Gimmick door opening completion flag
+x34_s0: Start state
+x34_s1: Open the gimmick door
+x34_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x34_s2: Has the gimmick door fully opened?
+x34_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x34_s3: Make the gimmick door navigation mesh ready to enter
+x34_s3_e0: [Map] Navimesh attribute deletion
+x34_s4: Gimmick door opening completion flag: ON
+x34_s4_e0: [Flag] Set flag
+x34_s5: End state
+x35: [Conditions] Madura-empty shadow forest forest gimmick door _ Gimmick door closure waiting
+x35_s0: Start state
+x35_s1: Has the waiting time been exceeded?
+x35_s1_e0: [Group condition: Event] Area timer comparison
+x35_s2: Timer start judgment
+x35_s2_e0: [Group condition: Event] Area timer comparison
+x35_s2_e1: [Group condition: Event] Area timer comparison
+x35_s3: Start area timer
+x35_s3_e0: [Timer] Area timer start
+x35_s4: Restart area timer
+x35_s4_e0: [Timer] Area timer restart
+x35_s5: Stop area timer
+x35_s5_e0: [Timer] Area timer pause
+x35_s6: End state
+x36: [Execution] Madura to the Shadow Shadow Forest Gimmick Door_Closed Gimmick Door
+x36_p0: Instance ID of gimmick door OBJ
+x36_p1: Point ID for changing the navigation mesh of the gimmick door
+x36_s0: Start state
+x36_s1: Close the gimmick door
+x36_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x36_s2: Has the gimmick door been closed?
+x36_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x36_s3: Unable to enter the gimmick door navigation mesh
+x36_s3_e0: [Map] Added Navimesh attribute
+x36_s4: Reset gimmick door operation determination flag
+x36_s4_e0: [Flag] Set flag
+x36_s4_e1: [Flag] Set flag
+x36_s4_e2: [Flag] Set flag
+x36_s4_e3: [Flag] Set flag
+x36_s5: Reset area timer
+x36_s5_e0: [Timer] Area timer end
+x36_s6: End state
+x37: [Preset] Madura-Gimmick Shadow Forest Forest Gimmick Door_Destination Determination-Gimmick Door Closure
+x37_p0: Global scenario flag ID for intrusion MAP determination
+x37_p1: Instance ID of Madura side door OBJ
+x37_p2: Instance ID of the door OBJ on the forest side of the imaginary shadow
+x37_p3: Point ID for changing the navigation mesh of the Madura side door
+x37_p4: Point ID for navigating mesh doors of the Forest of Shadows
+x37_p5: Instance ID of gimmick door OBJ
+x37_p6: Point ID for changing the navigation mesh of the gimmick door
+x37_p7: Destination door opening completion flag
+x37_s0: Start state
+x37_s1: [Conditions] Madura-Void Shadow Forest Gimmick Door_Destination Determination_SubState
+x37_s2: [Reproduction] Madura-Forest Shadow Gimmick Door_Destination Determination-Gimmick Door Closure_SubState
+x37_s3: [Execution] Madura-The Shadow Shadow Forest Gimmick Door_Gimmic Door Closure_SubState
+x37_s4: [Conditions] Madura to the Shadow Shadow Forest Gimmick Door_Gimmick Door Closed Waiting_SubState
+x37_s5: [Execution] Madura-The Shadow Shadow Forest Gimmick Door_Opening the Destination Door (The Shadow Shadow Forest) _SubState
+x37_s6: [Execution] Madura-The Shadow Shadow Forest Gimmick Door_Opening the Destination Door (Madura) _SubState
+x37_s7: End state
+x38: [Conditions] Madura to the empty shadow of the forest gimmick door_destination judgment
+x38_p0: Global scenario flag ID for intrusion MAP determination
+x38_s0: Start state
+x38_s1: Intrusion MAP determination
+x38_s1_e0: [Group condition: Flag] Event flag comparison
+x38_s2: Move to: Madura side
+x38_s3: Move to: Forest side of the imaginary shadow
+x39: [Reproduction] Madura-empty shadow forest forest gimmick_moving destination judgment-gimmick door closure
+x39_p0: Global scenario flag ID for intrusion MAP determination
+x39_p1: Instance ID of Madura side door OBJ
+x39_p2: Instance ID of the door OBJ on the forest side of the imaginary shadow
+x39_p3: Point ID for changing the navigation mesh of the Madura side door
+x39_p4: Point ID for navigating mesh doors of the Forest of Shadows
+x39_p5: Madura MAPID
+x39_p6: MAPID of the Forest of Shadow
+x39_p7: Destination door opening completion flag
+x39_s0: Start state
+x39_s1: Is the destination door open?
+x39_s2: Intrusion MAP determination
+x39_s2_e0: [Group condition: Flag] Event flag comparison
+x39_s3: Waiting for completion of reading of the Shadow Shadow Forest MAP
+x39_s3_e0: [Group condition: Map] Check if the specified map is read and the backread status is stable
+x39_s4: Wait for completion of reading Madura MAP
+x39_s4_e0: [Group condition: Map] Check if the specified map is read and the backread status is stable
+x39_s5: Open the Madura side door
+x39_s5_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x39_s6: Open the door on the forest side of the hollow shadow
+x39_s6_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x39_s7: Made the Madura side door mesh mesh accessible
+x39_s7_e0: [Map] Navimesh attribute deletion
+x39_s8: Navimesh of the door on the forest side of the empty shadow is ready to enter
+x39_s8_e0: [Map] Navimesh attribute deletion
+x39_s9: Destination door opening complete
+x39_s10: Destination door opening not completed
+x40: [DC] [Reproduction] Activating enemy in conjunction with OBJ_sky
+x40_s0: Start state
+x40_s1: End state
+x41: [DC] [Condition] Enemies start in conjunction with OBJ_Madura side
+x41_p0: Linked lever OBJ instance ID
+x41_p1: Door ①OBJ instance ID
+x41_p2: Door ② OBJ instance ID
+x41_p3: Door ③ OBJ instance ID
+x41_p4: Door ④ OBJ instance ID
+x41_p5: Flame barrel ①OBJ instance ID
+x41_p6: Flame barrel ② OBJ instance ID
+x41_s0: Start state
+x41_s1: The interlocked lever is operated or the door is destroyed or the flame barrel is destroyed
+x41_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x41_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x41_s1_e2: [Group condition: OBJ] OBJ state ID comparison
+x41_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x41_s1_e4: [Group condition: OBJ] OBJ state ID comparison
+x41_s1_e5: [Group condition: OBJ] OBJ state ID comparison
+x41_s1_e6: [Group condition: OBJ] OBJ state ID comparison
+x41_s1_e7: [Group condition: OBJ] OBJ state ID comparison
+x41_s2: End state
+x42: [DC] [execution] Enemy starts in conjunction with OBJ
+x42_p0: Enemy activation flag
+x42_s0: Start state
+x42_s1: Flag ON
+x42_s1_e0: [Flag] Set flag
+x42_s2: End state
+x43: [DC] [Conditions] Enemies are activated in conjunction with OBJ.
+x43_p0: Linked lever OBJ instance ID
+x43_p1: Door ①OBJ instance ID
+x43_p2: Door ② OBJ instance ID
+x43_p3: Door ③ OBJ instance ID
+x43_p4: Door ④ OBJ instance ID
+x43_s0: Start state
+x43_s1: The door with the linked lever operated or the door is destroyed
+x43_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x43_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x43_s1_e2: [Group condition: OBJ] OBJ state ID comparison
+x43_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x43_s1_e4: [Group condition: OBJ] OBJ state ID comparison
+x43_s1_e5: [Group condition: OBJ] OBJ state ID comparison
+x43_s2: End state
+x44: [DC] [Preset] Enemy activation linked to OBJ_Madura side
+x44_p0: Linked lever OBJ instance ID
+x44_p1: Door ①OBJ instance ID
+x44_p2: Door ② OBJ instance ID
+x44_p3: Door ③ OBJ instance ID
+x44_p4: Door ④ OBJ instance ID
+x44_p5: Flame barrel ①OBJ instance ID
+x44_p6: Flame barrel ② OBJ instance ID
+x44_p7: Enemy activation flag
+x44_s0: Start state
+x44_s1: [DC] [Reproduction] Activating enemy in conjunction with OBJ_Sky_SubState
+x44_s2: [DC] [execution] Enemy activation linked to OBJ_SubState
+x44_s3: [DC] [Condition] Enemies start in conjunction with OBJ_Madura side_SubState
+x44_s4: End state
+x45: [DC] [Preset] Enemies are activated in conjunction with OBJ.
+x45_p0: Linked lever OBJ instance ID
+x45_p1: Door ①OBJ instance ID
+x45_p2: Door ② OBJ instance ID
+x45_p3: Door ③ OBJ instance ID
+x45_p4: Door ④ OBJ instance ID
+x45_p5: Enemy activation flag
+x45_s0: Start state
+x45_s1: [DC] [Reproduction] Activating enemy in conjunction with OBJ_Sky_SubState
+x45_s2: [DC] [execution] Enemy activation linked to OBJ_SubState
+x45_s3: [DC] [Condition] Enemies start in conjunction with OBJ
+x45_s4: End state
+x0: [Lib] NPC: Grave Placement: General purpose
+x0_p0: Death map: Global event flag
+x0_p1: Tomb: OBJ instance ID
+x0_p2: Tomb move to: Generator ID
+x0_p3: NPC information parameter ID
+x0_s0: Start state
+x0_s1: Grave Placement: Start
+x0_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x0_s2: Grave placement: branch
+x0_s2_e0: [Group condition: Flag] Event flag comparison
+x0_s2_e1: [Group condition: other] Grave generation possibility judgment
+x0_s3: Grave Placement: Survival
+x0_s3_e0: [OBJ] OBJ state transition request
+x0_s3_e1: [Group condition: OBJ] OBJ state ID comparison
+x0_s4: Grave Placement: Death
+x0_s4_e0: [OBJ] OBJ state transition request
+x0_s4_e1: [Group condition: OBJ] OBJ state ID comparison
+x0_s5: Grave Placement: System: Finish
+x0_s5_e0: [System] Termination notification
+x0_s6: Grave Placement: Warp Move
+x0_s7: End state
+x1: [Lib] NPC: Grave: Key Guide: Key Guide
+x1_p0: Global: death flag
+x1_p1: Grave OBJ instance ID
+x1_p2: NPC information parameter ID
+x1_s0: Start state
+x1_s1: Key guide: Start
+x1_s2: Key guide: Key guide display
+x1_s2_e0: [FE] Create key guide area
+x1_s3: Key Guide: Use Soul dialog
+x1_s3_e0: [FE] Display of YES / NO selection window
+x1_s4: Key guide: Soul shortage dialog
+x1_s4_e0: [FE] Window display only for YES
+x1_s5: Key guide: Grave display judgment
+x1_s5_e0: [Group condition: OBJ] OBJ state ID comparison
+x1_s5_e1: [Group condition: OBJ] OBJ state ID comparison
+x1_s6: Key guide: Reset
+x1_s6_e0: [FE] Delete key guide area
+x1_s6_e1: [System] Re-execution notification
+x1_s7: Key Guide: Use Soul dialog: Wait for input
+x1_s8: Key guide: Soul shortage dialog: Waiting for input
+x1_s9: Key guide: Delete key guide
+x1_s9_e0: [FE] Delete key guide area
+x1_s10: Key Guide: System: Exit
+x1_s10_e0: [System] Termination notification
+x1_s11: Key guide: Waiting for input
+x1_s11_e0: [Group condition: OBJ] Judgment to examine OBJ
+x1_s11_e1: [Group condition: Map] Judgment that the player is in the map
+x1_s12: End state
+x2: [Lib] NPC: Grave: Key Guide: Appearance of Ghosts
+x2_p0: Area other flags: Ghost appearance
+x2_p1: Area other flags: Conversation start
+x2_p2: NPC information parameter ID
+x2_s0: Start state
+x2_s1: Ghost appearance: Appearance
+x2_s1_e0: [Flag] Set flag
+x2_s1_e1: [Group condition: Flag] Event flag comparison
+x2_s2: Ghost appearance: Character action waiting
+x2_s2_e0: [Group condition: Character] Player event action judgment
+x2_s3: Appearance of ghost: End of player action
+x2_s3_e0: [Character action] Action end request to the player
+x2_s4: Ghost appearance: Conversation start flag
+x2_s4_e0: [Flag] Set flag
+x2_s4_e1: [Group condition: Flag] Event flag comparison
+x2_s5: Appearance of ghost: Player action starts
+x2_s5_e0: [Character action] Request action from player
+x2_s5_e1: [Group condition: Character] Player event action judgment
+x2_s6: Ghost appearance: Seoul consumption
+x2_s6_e0: [Others] Soul value addition
+x2_s7: Appearance of ghost: Waiting for player action
+x2_s7_e0: [Group condition: Event] State elapsed time comparison
+x2_s8: Ghost appearance: waiting for completion
+x2_s8_e0: [Group condition: Event] State elapsed time comparison
+x2_s9: Ghost appearance: Waiting for conversation
+x2_s9_e0: [Group condition: Event] State elapsed time comparison
+x2_s10: End state
+x3: [Lib] NPC: Grave: Key guide: General purpose
+x3_p0: Ghost Appearance: Area Other Flag
+x3_p1: Conversation start: Area and other flags
+x3_p2: Death: Global event flag
+x3_p3: Tomb: OBJ instance ID
+x3_p4: Grave event ID
+x3_p5: NPC information parameter ID
+x3_s0: Start state
+x3_s1: Key guide: Start
+x3_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x3_s1_e1: [Group condition: Event] Event status judgment
+x3_s1_e2: [Group condition: Flag] Event flag comparison
+x3_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x3_s2: Key Guide: System: Exit
+x3_s2_e0: [System] Termination notification
+x3_s3: Key guide: Start conversation: Set flag
+x3_s3_e0: [Flag] Set flag
+x3_s3_e1: [Group condition: Flag] Event flag comparison
+x3_s4: [Lib] NPC: Grave: Key Guide: Key Guide_SubState
+x3_s5: [Lib] NPC: Grave: Key Guide: Ghost Appearance_SubState
+x3_s6: End state
+x4: [Lib] NPC: Death determination: General purpose
+x4_p0: Generator ID
+x4_p1: Death map: Global event flag
+x4_s0: Start state
+x4_s1: Death determination: Start
+x4_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x4_s2: Death determination: Wait
+x4_s2_e0: [Group condition: Character] Character death determination
+x4_s3: Death determination: branch
+x4_s3_e0: [Group condition: Flag] Event flag comparison
+x4_s4: Death determination: System: End
+x4_s4_e0: [System] Termination notification
+x4_s5: Death determination: death flag setting
+x4_s5_e0: [Flag] Set flag
+x4_s5_e1: [Group condition: Flag] Event flag comparison
+x4_s6: End state
+x5: [Lib] Character: Petrochemical: Key guide
+x5_p0: generator
+x5_p1: Death: Global event flag
+x5_p2: Event action
+x5_p3: Petrified: Area and other flags
+x5_p4: Petrified: Global event flag
+x5_p5: Key guide parameters
+x5_p6: Petrification start state ID
+x5_p7: Petrification appearance event
+x5_s0: Start state
+x5_s1: Petrochemical: System: End
+x5_s1_e0: [System] Termination notification
+x5_s2: Petrochemical: Key guide: Display
+x5_s2_e0: [FE] Create key guide area
+x5_s3: Petrochemical: Key guide: Waiting for input
+x5_s3_e0: [Group condition: Character] Judgment to examine character
+x5_s3_e1: [Group condition: Map] Judgment that the player is in the map
+x5_s4: Petrochemical: System: Re-execution
+x5_s4_e0: [System] Re-execution notification
+x5_s5: Petrification: Key guide: Deleted
+x5_s5_e0: [FE] Delete key guide area
+x5_s6: Petrification: Event action: Regeneration
+x5_s6_e0: [Character action] Request action from player
+x5_s6_e1: [Group condition: Character] Player event action judgment
+x5_s7: Petrification: Event action: Standby: Elapsed time
+x5_s7_e0: [Group condition: Event] State elapsed time comparison
+x5_s8: Petrification: Petrified
+x5_s8_e0: [Item] Item consumption
+x5_s8_e1: [Flag] Set flag
+x5_s8_e2: [Group condition: Flag] Event flag comparison
+x5_s8_e3: [Flag] Set flag
+x5_s8_e4: [Group condition: Flag] Event flag comparison
+x5_s9: Petrochemical: Event action: Wait
+x5_s9_e0: [Group condition: Character] Player event action judgment
+x5_s10: Petrochemical: Item usage selection dialog
+x5_s10_e0: [FE] Display of YES / NO selection window
+x5_s11: Petrochemical: Item usage selection dialog: Waiting for input
+x5_s12: Petrification: Item not owned dialog
+x5_s12_e0: [FE] Window display only for YES
+x5_s13: Petrochemical: Item not owned dialog: Waiting for input
+x5_s14: Petrochemical: Event action: Start
+x5_s14_e0: [Group condition: Character] Player event action start possible decision
+x5_s15: Petrochemical: Item consumption
+x5_s16: Petrochemical: Start
+x5_s16_e0: [Group condition: Character] Start state comparison
+x5_s16_e1: [Group condition: Event] Event status judgment
+x5_s16_e2: [Group condition: Flag] Event flag comparison
+x5_s16_e3: [Group condition: Flag] Event flag comparison
+x5_s17: End state
+x6: [Lib] [Reproduction] Rebirth fire _ sky
+x6_s0: Start state
+x6_s1: End state
+x7: [Lib] [execute] Rebirth fire
+x7_p0: Flag start ID
+x7_p1: Flag end ID
+x7_s0: Start state
+x7_s1: Flag reset
+x7_s1_e0: [Flag] Set the flags within the specified range set in the parameter.
+x7_s2: End state
+x8: [Lib] [Condition] Rebirth fire_sky
+x8_s0: Start state
+x8_s1: End state
+x9: [Lib] [Preset] Rebirth
+x9_p0: Flag start ID
+x9_p1: Flag end ID
+x9_s0: Start state
+x9_s1: [Lib] [Reproduction] Reproduction of fire_sky_SubState
+x9_s2: [Lib] [Execution] Regenerative fire _SubState
+x9_s3: [Lib] [Condition] Reproduction fire_Sky_SubState
+x9_s4: End state
+x10: [Lib] [Reproduction] Switch Navimesh with flag judgment
+x10_p0: Other flags
+x10_p1: Global flag
+x10_p2: Additional attributes
+x10_p3: Delete attribute
+x10_p4: Navimesh switching point ID
+x10_s0: Start state
+x10_s1: Flag judgment
+x10_s2: Navimesh attribute change
+x10_s2_e0: [Map] Added Navimesh attribute
+x10_s2_e1: [Map] Navimesh attribute deletion
+x10_s3: Flag OFF
+x10_s4: Already flag on
+x11: [Lib] [Condition] Switch to Navimesh by flag judgment
+x11_p0: Other flags
+x11_p1: Global flag
+x11_s0: Start state
+x11_s1: Flag waiting
+x11_s1_e0: [Group condition: Flag] Event flag comparison
+x11_s1_e1: [Group condition: Flag] Event flag comparison
+x11_s2: Flag ON
+x12: [Lib] [execution] Navi mesh switching by flag judgment
+x12_p0: Navimesh switching point ID
+x12_p1: Additional attributes
+x12_p2: Delete attribute
+x12_s0: Start state
+x12_s1: Navimesh attribute change
+x12_s1_e0: [Map] Added Navimesh attribute
+x12_s1_e1: [Map] Navimesh attribute deletion
+x12_s2: End state
+x13: [Lib] [Preset] Navimesh switching by flag judgment
+x13_p0: Navimesh switching point ID
+x13_p1: Additional attributes
+x13_p2: Delete attribute
+x13_p3: Other flags
+x13_p4: Global flag
+x13_s0: Start state
+x13_s1: [Lib] [Reproduction] Navimesh switching with flag judgment_SubState
+x13_s2: [Lib] [execution] Navimesh switching with flag judgment_SubState
+x13_s3: [Lib] [Condition] Navigation mesh switching by flag judgment_SubState
+x13_s4: End state
+x14: [Lib] [Preset] Get trophy
+x14_p0: Acquisition trigger_other flags
+x14_p1: Trophy type
+x14_s0: Start state
+x14_s1: Have you acquired a trophy?
+x14_s2: Wait for specified flag
+x14_s2_e0: [Group condition: Flag] Event flag comparison
+x14_s3: Trophy acquisition
+x14_s3_e0: [Others] Trophy cancellation
+x14_s4: End state
+x15: [Lib] NPC: Death determination: For the appearance of the map
+x15_p0: First generator ID
+x15_p1: Death map: Global event flag
+x15_p2: Second generator ID
+x15_s0: Start state
+x15_s1: Death determination: Start
+x15_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x15_s2: Death determination: Wait
+x15_s2_e0: [Group condition: Character] Character death determination
+x15_s2_e1: [Group condition: Character] Character generation status judgment
+x15_s2_e2: [Group condition: Character] Character death determination
+x15_s2_e3: [Group condition: Character] Character generation status judgment
+x15_s3: Death determination: branch
+x15_s3_e0: [Group condition: Flag] Event flag comparison
+x15_s4: Death determination: System: End
+x15_s4_e0: [System] Termination notification
+x15_s5: Death determination: death flag setting
+x15_s5_e0: [Flag] Set flag
+x15_s5_e1: [Group condition: Flag] Event flag comparison
+x15_s6: End state

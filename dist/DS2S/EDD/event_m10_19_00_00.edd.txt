@@ -1,0 +1,2717 @@
+1000: Scaffold moving up and down with lever
+1000_s0: Start state
+1000_s1: Rerun
+1000_s1_e0: [System] Re-execution notification
+1000_s2: [Preset] Scaffolding up and down with lever_SubState
+5000: Bridge descending with lever
+5000_s0: Start state
+5000_s1: Rerun
+5000_s1_e0: [System] Re-execution notification
+5000_s2: Finish
+5000_s2_e0: [System] Termination notification
+5000_s3: [Preset] Bridge descending with lever_SubState
+2000: One-way door from the bonfire room
+2000_s0: Start state
+2000_s1: Finish
+2000_s1_e0: [System] Termination notification
+2000_s2: [Lib] Area specified door unlocked_SubState
+3000: [Insect Key] For Recovery Fountain _01
+3000_s0: Start state
+3000_s1: Finish
+3000_s1_e0: [System] Termination notification
+3000_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+3010: [Insect Key Activation] Recovery Fountain_01
+3010_s0: Start state
+3010_s1: Finish
+3010_s1_e0: [System] Termination notification
+3010_s2: [Lib] [Preset] Recovery Fountain_SubState
+4000: [Insect Key] For Recovery Fountain _02
+4000_s0: Start state
+4000_s1: Finish
+4000_s1_e0: [System] Termination notification
+4000_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+4010: [Insect Key Activation] Recovery Fountain_02
+4010_s0: Start state
+4010_s1: Finish
+4010_s1_e0: [System] Termination notification
+4010_s2: [Lib] [Preset] Recovery Fountain_SubState
+6000: Burning furnace_shutter opening / closing
+6000_s0: Start state
+6000_s1: Finish
+6000_s1_e0: [System] Termination notification
+6000_s2: [Preset] Burning furnace_Shutter and damage_SubState
+7000: Molten iron pot 01
+7000_s0: Start state
+7000_s1: Finish
+7000_s1_e0: [System] Termination notification
+7000_s2: [Preset] Floor switch_Fused iron_SubState
+12000: Falling scaffold 01_ back left
+12000_s0: Start state
+12000_s1: Finish
+12000_s1_e0: [System] Termination notification
+12000_s2: [Preset] OBJ action_SubState with floor switch
+12010: Falling scaffold 02_back right
+12010_s0: Start state
+12010_s1: Finish
+12010_s1_e0: [System] Termination notification
+12010_s2: [Preset] OBJ action_SubState with floor switch
+12020: Falling scaffold 03_ right front
+12020_s0: Start state
+12020_s1: Finish
+12020_s1_e0: [System] Termination notification
+12020_s2: [Preset] OBJ action_SubState with floor switch
+12030: Falling scaffold 04_left front
+12030_s0: Start state
+12030_s1: Finish
+12030_s1_e0: [System] Termination notification
+12030_s2: [Preset] OBJ action_SubState with floor switch
+7010: Molten iron pot 02
+7010_s0: Start state
+7010_s1: Finish
+7010_s1_e0: [System] Termination notification
+7010_s2: [Preset] Floor switch_Fused iron_SubState
+7020: Molten iron pot 03
+7020_s0: Start state
+7020_s1: Finish
+7020_s1_e0: [System] Termination notification
+7020_s2: [Preset] Floor switch_Fused iron_SubState
+111442: NPC: Curiosity Shop: Grave
+111442_s0: Start state
+111442_s1: NPC: Curiosity Shop: Grave Placement_SubState
+111283: NPC: Kanemori: Vain: Key Guide
+111283_s0: Start state
+111283_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111282: NPC: Kanemori: Vane: Tomb
+111282_s0: Start state
+111282_s1: NPC: Kanemori: Vane: Grave Placement_SubState
+111443: NPC: Curio Shop: Key Guide
+111443_s0: Start state
+111443_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+8000: Boss: Demon Knight Battle
+8000_s0: Start state
+8000_s1: Finish
+8000_s1_e0: [System] Termination notification
+8000_s2: [Lib] [Preset] Boss Battle Cut Scene No _SubState
+15000: Boss: Molten demon battle
+15000_s0: Start state
+15000_s1: Finish
+15000_s1_e0: [System] Termination notification
+15000_s2: Is the poly drama replay event over?
+15000_s3: Waiting for white door
+15000_s3_e0: [Group condition: OBJ] OBJ state ID comparison
+15000_s4: Auto save prohibited
+15000_s4_e0: [Others] Disable auto save
+15000_s5: Auto save enabled
+15000_s5_e0: [Others] Disable auto save
+15000_s6: Host?
+15000_s7: Host? _2
+15000_s8: [BEST] [Lib] [Preset] Molten Iron Demon Battle_SubState
+11000: [Insect key] For hidden door 1_01
+11000_s0: Start state
+11000_s1: Finish
+11000_s1_e0: [System] Termination notification
+11000_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+9000: Lever that stops all flame images
+9000_s0: Start state
+9000_s1: End (re-executable)
+9000_s1_e0: [System] Re-execution notification
+9000_s2: [Reproduction] Lever that stops all flame images _SubState
+9000_s3: [Execute] Lever to stop all flame images
+9000_s4: [Condition] Lever that stops all flame images _OFF to ON_SubState
+9000_s5: [Condition] Lever that stops all flame images _ON to OFF_SubState
+9000_s6: [Execute] Lever to stop all flame images_Turn flag OFF_SubState
+8010: Flames linked to boss actions
+8010_s0: Start state
+8010_s1: Finish
+8010_s1_e0: [System] Termination notification
+8010_s2: [Preset] Flame _SubState linked to the behavior of the boss
+10000: Bell guard_bell lever
+10000_s0: Start state
+10000_s1: Rerun
+10000_s1_e0: [System] Re-execution notification
+10000_s2: Finish
+10000_s2_e0: [System] Termination notification
+10000_s3: [Lib] [Preset] Bell guard_Lever that rings the bell_SubState
+15010: Boss: Molten Iron Demon_Poly Play
+15010_s0: Start state
+15010_s1: Finish
+15010_s1_e0: [System] Termination notification
+15010_s2: [Preset] Molten Iron Daemon_Poly Play_SubState
+6010: Burning furnace _ flame when opening the door
+6010_s0: Start state
+6010_s1: Finish
+6010_s1_e0: [System] Termination notification
+6010_s2: Rerun
+6010_s2_e0: [System] Re-execution notification
+6010_s3: [Preset] Burning furnace _ Flame when opening the door _ SubState
+6020: Burning furnace
+6020_s0: Start state
+6020_s1: Rerun
+6020_s1_e0: [System] Re-execution notification
+6020_s2: Finish
+6020_s2_e0: [System] Termination notification
+6020_s3: [Preset] Burning furnace _ Flame when opening the door _ SubState
+11010: [Insect key activation] Hidden door 1_01
+11010_s0: Start state
+11010_s1: Finish
+11010_s1_e0: [System] Termination notification
+11010_s2: [Lib] [Preset] Hidden door 1_Face SFX_SubState
+13000: Attaching a flame in two directions_attach
+13000_s0: Start state
+13000_s1: Finish
+13000_s1_e0: [System] Termination notification
+13000_s2: [Lib] [Preset] OBJ attach_SubState
+13000_s3: [Lib] [Preset] OBJ attach_2_SubState
+14000: Disabling damage
+14000_s0: Start state
+14000_s1: Disabling the damage floor
+14000_s1_e0: [Bullet] Damage invalid setting (generator ID specification)
+14000_s1_e1: [Bullet] Damage invalid setting (generator ID specification)
+14000_s1_e2: [Bullet] Damage invalid setting (generator ID specification)
+14000_s1_e3: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e4: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e5: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e6: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e7: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e8: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e9: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e10: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e11: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e12: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e13: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e14: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e15: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e16: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e17: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e18: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e19: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e20: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e21: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e22: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e23: [Bullet] Damage invalid setting (character ID designation)
+14000_s1_e24: [Bullet] Damage invalid setting (character ID designation)
+14000_s2: Finish
+14000_s2_e0: [System] Termination notification
+16000: Connection flag ON
+16000_s0: Start state
+16000_s1: Rerun
+16000_s1_e0: [System] Re-execution notification
+16000_s2: [Lib] [Preset] Switch connection flag when in map_SubState
+10010: Kanemori_Receiving the bell net
+10010_s0: Start state
+10010_s1: Rerun
+10010_s1_e0: [System] Re-execution notification
+10010_s2: [Lib] [Preset] Kanemori_Net reception_SubState
+17000: Bridges destroyed by enemies_Navigation change
+17000_s0: Start state
+17000_s1: Finish
+17000_s1_e0: [System] Termination notification
+17000_s2: [Preset] Bridge destroyed by enemies _SubState
+111276: Multi NPC: Woman Knight: White Phantom Sign Display
+111276_s0: Start state
+111276_s1: [Lib] NPC White Phantom Appearance: General: Single_SubState
+80000: After the fire of rebirth 01_ Boss Demon Knight, a one-way door room
+80000_s0: Start state
+80000_s1: Finish
+80000_s1_e0: [System] Termination notification
+80000_s2: [Lib] [Preset] Reproduction fire _SubState
+81000: Regenerative fire 02_Stairs under the entrance bridge
+81000_s0: Start state
+81000_s1: Finish
+81000_s1_e0: [System] Termination notification
+81000_s2: [Lib] [Preset] Reproduction fire _SubState
+82000: Reproduction Fire 03_Head of a Giant Cow
+82000_s0: Start state
+82000_s1: Finish
+82000_s1_e0: [System] Termination notification
+82000_s2: [Lib] [Preset] Reproduction fire _SubState
+83000: Reproduction flame 04_ depression in front of Kanemori area
+83000_s0: Start state
+83000_s1: Finish
+83000_s1_e0: [System] Termination notification
+83000_s2: [Lib] [Preset] Reproduction fire _SubState
+11020: [Insect key] Hidden door_Navimesh change
+11020_s0: Start state
+11020_s1: Finish
+11020_s1_e0: [System] Termination notification
+11020_s2: [Lib] [Preset] Switch Navimesh according to OBJ state_SubState
+111277: Multi NPC: Female Knight: White Phantom
+111277_s0: Start state
+111277_s1: [Lib] NPC: White Phantom: Summoning Count: General Purpose_SubState
+19000: Guillotine door
+19000_s0: Start state
+19000_s1: Rerun
+19000_s1_e0: [System] Re-execution notification
+19000_s2: [Preset] Guillotine Door_SubState
+15020: Boss: Molten Iron Daemon
+15020_s0: Start state
+15020_s1: Finish
+15020_s1_e0: [System] Termination notification
+15020_s2: Wait for damage invalid event to end
+15020_s3: [Preset] Molten iron daemon_Initial location change_SubState
+111284: NPC: Kanemori: Vane: Black Phantom Appearance: Offline
+111284_s0: Start state
+111284_s1: [Lib] NPC Black Phantom Appearance: Offline: Unconditional_SubState
+8020: Vegrant generation determination
+8020_s0: Start state
+8020_s1: Finish
+8020_s1_e0: [System] Termination notification
+8020_s2: [Preset] Vegrant generation determination_SubState
+90000: Trophy_Lost Iron
+90000_s0: Start state
+90000_s1: Finish
+90000_s1_e0: [System] Termination notification
+90000_s2: [Lib] [Preset] Get Trophy_Global_SubState
+20000: End bonfire_molten iron
+20000_s0: Start state
+20000_s1: Rerun
+20000_s1_e0: [System] Re-execution notification
+20000_s2: [Lib] [Preset] End special bonfire_SubState
+120050: Trophy: Bell Pledge
+120050_s0: Start state
+120050_s1: System: Exit
+120050_s1_e0: [System] Termination notification
+120050_s2: [Lib] [Preset] Get Trophy_SubState
+120060: Trophy: Old Pledge
+120060_s0: Start state
+120060_s1: System: Exit
+120060_s1_e0: [System] Termination notification
+120060_s2: [Lib] [Preset] Get Trophy_SubState
+23000: Hidden Door Navi Mesh Change 1
+23000_s0: Start state
+23000_s1: Finish
+23000_s1_e0: [System] Termination notification
+23000_s2: [Lib] [Preset] Switch Navimesh according to OBJ state_SubState
+23010: Hidden door navigation mesh change 2
+23010_s0: Start state
+23010_s1: Finish
+23010_s1_e0: [System] Termination notification
+23010_s2: [Lib] [Preset] Switch Navimesh according to OBJ state_SubState
+24000: Navimesh changes due to varistor destruction
+24000_s0: Start state
+24000_s1: Finish
+24000_s1_e0: [System] Termination notification
+24000_s2: [Lib] [Preset] Switch Navimesh according to OBJ state_SubState
+10020: Jewel guard
+10020_s0: Start state
+10020_s1: Finish
+10020_s1_e0: [System] Termination notification
+10020_s2: [Lib] [Preset] Kanemori _ Judgment Spirit Lever Use Decision_SubState
+8030: Vegrant removal judgment
+8030_s0: Start state
+8030_s1: Finish
+8030_s1_e0: [System] Termination notification
+8030_s2: [Preset] Vegrant defeat determination_SubState
+111444: NPC: Curio Shop: Shop List
+111444_s0: Start state
+111444_s1: Shop list: Start
+111444_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111444_s2: Shop List: Defeating the King's Heavy Cavalry Boss: Judgment
+111444_s2_e0: [Group condition: Flag] Event flag comparison
+111444_s3: Shop list: Fire lap: Judgment
+111444_s3_e0: [Group condition: Other] Comparison of laps
+111444_s4: Shop list: System: End
+111444_s4_e0: [System] Termination notification
+111444_s5: Shop list: Flag update
+111444_s5_e0: [Flag] Set flag
+111444_s5_e1: [Group condition: Flag] Event flag comparison
+82010: Shop lineup expansion_molten iron demon
+82010_s0: Start state
+82010_s1: Finish
+82010_s1_e0: [System] Termination notification
+82010_s2: [Lib] [Preset] Shop Lineup_SubState
+60000: Pledge: Kanemori_Contribution UP
+60000_s0: Start state
+60000_s1: Finish
+60000_s1_e0: [System] Termination notification
+60000_s2: Has the generation determination event ended?
+60000_s3: [Preset] Pledge: Kanemori_Contribution UP_SubState
+60010: Pledge: Kanemori_Contribution UP_Intruder Generation Judgment
+60010_s0: Start state
+60010_s1: Finish
+60010_s1_e0: [System] Termination notification
+60010_s2: [Preset] Pledge: Kanemori_Contribution UP_Intruder Generation Judgment_SubState
+2000000: [DLC] Warp to ash map
+2000000_s0: Start state
+2000000_s1: Rerun
+2000000_s1_e0: [System] Re-execution notification
+2000000_s2: [Lib] [Preset] Warp move of main part and DLC_SubState
+2001000: [DLC] Stone monument displayed in text
+2001000_s0: Start state
+2001000_s1: Rerun
+2001000_s1_e0: [System] Re-execution notification
+2001000_s2: [DLC] [Preset] Stone monument_SubState displayed in text
+2001010: [DLC] Stone monument displayed in text_2
+2001010_s0: Start state
+2001010_s1: Rerun
+2001010_s1_e0: [System] Re-execution notification
+2001010_s2: [DLC] [Preset] Stone monument_SubState displayed in text
+2001020: [DLC] Stone monument displayed in text_3
+2001020_s0: Start state
+2001020_s1: Rerun
+2001020_s1_e0: [System] Re-execution notification
+2001020_s2: [DLC] [Preset] Stone monument_SubState displayed in text
+2001030: [DLC] Stone monument displayed as text_4
+2001030_s0: Start state
+2001030_s1: Rerun
+2001030_s1_e0: [System] Re-execution notification
+2001030_s2: [DLC] [Preset] Stone monument_SubState displayed in text
+4000000: [BEST] Andyur appearance _ molten iron castle
+4000000_s0: Start state
+4000000_s1: Finish
+4000000_s1_e0: [System] Termination notification
+4000000_s2: Rerun
+4000000_s2_e0: [System] Re-execution notification
+4000000_s3: [Lib] [BEST] [Preset] Ander_Termination_SubState
+4001000: [BEST] Bonfire key guide management
+4001000_s0: Start state
+4001000_s1: Finish
+4001000_s1_e0: [System] Termination notification
+4001000_s2: Rerun
+4001000_s2_e0: [System] Re-execution notification
+4001000_s3: [Lib] [BEST] [Preset] Bonfire Key Guide Management_SubState
+4002000: [BEST] SFX management of bonfire
+4002000_s0: Start state
+4002000_s1: Finish
+4002000_s1_e0: [System] Termination notification
+4002000_s2: Rerun
+4002000_s2_e0: [System] Re-execution notification
+4002000_s3: [Lib] [BEST] [Preset] Bonfire SFX Management_SubState
+4010000: [BEST] Hidden door navigation mesh change 3
+4010000_s0: Start state
+4010000_s1: Finish
+4010000_s1_e0: [System] Termination notification
+4010000_s2: [Lib] [Preset] Switch Navimesh according to OBJ state_SubState
+118100: Multi-use NPC: White Spirit Test: White Phantom Sign Display
+118100_s0: Start state
+118100_s1: NPC White Phantom Appearance: Unconditional_SubState
+118110: Multi NPC: White Spirit Test 2: White Phantom Sign Display
+118110_s0: Start state
+118110_s1: NPC White Phantom Appearance: Unconditional_SubState
+118210: Multi NPC: Dark Spirit Test 1: Black Phantom Appears
+118210_s0: Start state
+118210_s1: [Lib] NPC Black Phantom Appearance: Online: Unconditional_SubState
+118220: Multi NPC: Dark Spirit Test 2: Black Phantom Appears
+118220_s0: Start state
+118220_s1: [Lib] NPC Black Phantom Appearance: Online: Unconditional_SubState
+118230: Multi NPC: Dark Spirit Test 3: Black Phantom Appears
+118230_s0: Start state
+118230_s1: [Lib] NPC Black Phantom Appearance: Online: Unconditional_SubState
+4020000: [DC] Treasure box changes mimic
+4020000_s0: Start state
+4020000_s1: Finish
+4020000_s1_e0: [System] Termination notification
+4020000_s2: [DC] [Preset] Treasure box changes mimic_SubState
+4021000: [DC] Wanderer A_Random lottery and generation
+4021000_s0: Start state
+4021000_s1: Finish
+4021000_s1_e0: [System] Termination notification
+4021000_s2: Start flag ON
+4021000_s2_e0: [Flag] Set flag
+4021000_s3: [Lib] [DC] [Preset] Wanderer_Random Drawing_SubState
+4021000_s4: [Lib] [DC] [Preset] Wanderer_Generation_SubState
+4021000_s5: [Lib] [DC] [Preset] Wanderer_Generation_2_SubState
+4021010: [DC] Wanderer A_Destroy
+4021010_s0: Start state
+4021010_s1: Finish
+4021010_s1_e0: [System] Termination notification
+4021010_s2: [Lib] [DC] [Preset] Wanderer_Destroy_SubState
+4022000: [DC] Two pairs of fire-blowing cows rotating
+4022000_s0: Start state
+4022000_s1: Rerun
+4022000_s1_e0: [System] Re-execution notification
+4022000_s2: [Preset] Two pairs of rotating fire-blowing cows_SubState
+4022010: [DC] Two pairs of rotating fire-blowing cows_attach_1
+4022010_s0: Start state
+4022010_s1: Finish
+4022010_s1_e0: [System] Termination notification
+4022010_s2: [Lib] [Preset] OBJ attach_SubState
+4022020: [DC] Two pairs of rotating fire-blowing cows_attach_2
+4022020_s0: Start state
+4022020_s1: Finish
+4022020_s1_e0: [System] Termination notification
+4022020_s2: [Lib] [Preset] OBJ attach_SubState
+4031000: [DC] NPC White Spirit_Gesture Management_Demon Knight
+4031000_s0: Start state
+4031000_s1: Finish
+4031000_s1_e0: [System] Termination notification
+4031000_s2: [Lib] [DC] [Preset] NPC White Spirit_Gesture Management_SubState
+4031010: [DC] NPC White Spirit _ Gesture Management _ Molten Iron Daemon
+4031010_s0: Start state
+4031010_s1: Finish
+4031010_s1_e0: [System] Termination notification
+4031010_s2: [Lib] [DC] [Preset] NPC White Spirit_Gesture Management_SubState
+x117: [Reproduction] Scaffold moving up and down with lever
+x117_p0: Scaffold instance ID
+x117_s0: Start state
+x117_s1: Scaffold status determination
+x117_s2: Navimesh attribute switching_1_Descent
+x117_s2_e0: [Map] Navimesh attribute deletion
+x117_s2_e1: [Map] Navimesh attribute deletion
+x117_s2_e2: [Map] Navimesh attribute deletion
+x117_s2_e3: [Map] Added Navimesh attribute
+x117_s2_e4: [Map] Added Navimesh attribute
+x117_s2_e5: [Map] Added Navimesh attribute
+x117_s3: Navimesh attribute switching_2 when rising
+x117_s3_e0: [Map] Navimesh attribute deletion
+x117_s3_e1: [Map] Navimesh attribute deletion
+x117_s3_e2: [Map] Navimesh attribute deletion
+x117_s3_e3: [Map] Navimesh attribute deletion
+x117_s3_e4: [Map] Added Navimesh attribute
+x117_s3_e5: [Map] Added Navimesh attribute
+x117_s4: [SEQ19188 compatible] Loop count adjustment with dummy synchronization
+x117_s4_e0: [Group condition: System] Always satisfy the condition
+x117_s5: End state
+x118: [Condition] Scaffold moving up and down with lever
+x118_p0: Lever instance ID
+x118_p1: Scaffold instance ID
+x118_s0: Start state
+x118_s1: Lever standby
+x118_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x118_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x118_s2: Scaffold status determination
+x118_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x118_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+x118_s3: Descent
+x118_s4: Rise
+x119: [Execute] Scaffolding up and down with lever
+x119_p0: Scaffold instance ID
+x119_p1: Lever instance ID
+x119_s0: Start state
+x119_s1: OBJ state transition
+x119_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x119_s2: Navigation mesh attribute switching_3_ moving
+x119_s2_e0: [Map] Added Navimesh attribute
+x119_s2_e1: [Map] Added Navimesh attribute
+x119_s2_e2: [Map] Added Navimesh attribute
+x119_s2_e3: [Map] Added Navimesh attribute
+x119_s2_e4: [Map] Added Navimesh attribute
+x119_s2_e5: [Map] Added Navimesh attribute
+x119_s3: Waiting for scaffolding to finish
+x119_s3_e0: [Group condition: OBJ] OBJ state ID comparison
+x119_s4: Navimesh attribute switching_1_Descent
+x119_s4_e0: [Map] Navimesh attribute deletion
+x119_s4_e1: [Map] Navimesh attribute deletion
+x119_s4_e2: [Map] Navimesh attribute deletion
+x119_s4_e3: [Map] Added Navimesh attribute
+x119_s4_e4: [Map] Added Navimesh attribute
+x119_s4_e5: [Map] Added Navimesh attribute
+x119_s5: Disabling the key guide of the lever
+x119_s5_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x119_s6: Enable key guide for lever
+x119_s6_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x119_s7: End state
+x120: [Execution] Scaffolding up and down with lever
+x120_p0: Scaffold instance ID
+x120_p1: Lever instance ID
+x120_s0: Start state
+x120_s1: OBJ state transition
+x120_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x120_s2: Navigation mesh attribute switching_3_ moving
+x120_s2_e0: [Map] Added Navimesh attribute
+x120_s2_e1: [Map] Added Navimesh attribute
+x120_s2_e2: [Map] Added Navimesh attribute
+x120_s2_e3: [Map] Added Navimesh attribute
+x120_s2_e4: [Map] Added Navimesh attribute
+x120_s2_e5: [Map] Added Navimesh attribute
+x120_s3: Waiting for the scaffold to rise
+x120_s3_e0: [Group condition: OBJ] OBJ state ID comparison
+x120_s4: Navimesh attribute switching_2 when rising
+x120_s4_e0: [Map] Navimesh attribute deletion
+x120_s4_e1: [Map] Navimesh attribute deletion
+x120_s4_e2: [Map] Navimesh attribute deletion
+x120_s4_e3: [Map] Navimesh attribute deletion
+x120_s4_e4: [Map] Added Navimesh attribute
+x120_s4_e5: [Map] Added Navimesh attribute
+x120_s5: Disabling the key guide of the lever
+x120_s5_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x120_s6: Enable key guide for lever
+x120_s6_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x120_s7: End state
+x121: [Preset] Scaffold moving up and down with lever
+x121_p0: Scaffold instance ID
+x121_p1: Lever instance ID
+x121_s0: Start state
+x121_s1: Disable OBJ sync
+x121_s1_e0: [OBJ] OBJ synchronization setting
+x121_s2: [Reproduction] Scaffolding up and down with lever _SubState
+x121_s3: [Condition] Scaffolding up and down with lever_SubState
+x121_s4: [Execution] Scaffolding up and down with lever_Descent_SubState
+x121_s5: [Execution] Scaffolding up and down with lever
+x121_s6: End state
+x122: [Reproduction] Floor switch_Folding scaffold
+x122_p0: Navigation switching area ID
+x122_s0: Start state
+x122_s1: Navigation switching
+x122_s1_e0: [Map] Navimesh attribute deletion
+x122_s2: End state
+x123: [Condition] Floor switch_Folding scaffold
+x123_p0: Switch instance ID
+x123_s0: Start state
+x123_s1: Did you get on the switch?
+x123_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x123_s2: End state
+x124: [Execution] Floor switch
+x124_p0: OBJ instance ID to be run
+x124_p1: Navigation switching area ID
+x124_s0: Start state
+x124_s1: OBJ state transition
+x124_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x124_s2: Navigation switching
+x124_s2_e0: [Map] Added Navimesh attribute
+x124_s3: End state
+x125: [Preset] Floor switch
+x125_p0: OBJ instance ID
+x125_p1: Floor switch instance ID
+x125_p2: Navigation switching area ID
+x125_s0: Start state
+x125_s1: Disable OBJ sync
+x125_s1_e0: [OBJ] OBJ synchronization setting
+x125_s2: [Reproduction] OBJ action _SubState with floor switch
+x125_s3: [Condition] OBJ action _SubState with floor switch
+x125_s4: [Execution] OBJ action with floor switch_Folding scaffolding_SubState
+x125_s5: End state
+x126: [Reproduction] Burning furnace_Shutter and damage
+x126_p0: Shutter instance ID
+x126_p1: Damage area ID1
+x126_p2: Damage area ID2
+x126_p3: Damipoli instance ID under shutter
+x126_p4: Damipoli instance ID on the ladder
+x126_p5: Navimesh change point ID
+x126_s0: Start state
+x126_s1: Has the shutter already closed?
+x126_s2: Burning damage disabled
+x126_s2_e0: [Point] Invalidation of damage area
+x126_s2_e1: [Point] Invalidation of damage area
+x126_s3: Burning damage ON
+x126_s3_e0: [Point] Invalidation of damage area
+x126_s3_e1: [Point] Invalidation of damage area
+x126_s4: Shutter flame stop
+x126_s4_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x126_s5: Flame regeneration under the shutter
+x126_s5_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x126_s6: Fire on the ladder
+x126_s6_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x126_s7: Flame stop on ladder
+x126_s7_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x126_s8: Navigation mesh change
+x126_s8_e0: [Map] Navimesh attribute deletion
+x126_s9: End state
+x126_s10: Reproduce and finish
+x127: [Condition] Burning furnace_Shutter and damage
+x127_p0: Valve instance ID
+x127_s0: Start state
+x127_s1: Wait for valve operation
+x127_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x127_s2: End state
+x128: [Execution] Burning furnace_Shutter and damage
+x128_p0: Shutter instance ID
+x128_p1: Damage area ID1
+x128_p2: Damage area ID2
+x128_p3: Damipoli instance ID under shutter
+x128_p4: Damipoli instance ID on the ladder
+x128_p5: Navimesh change point ID
+x128_s0: Start state
+x128_s1: Shutter close animation playback
+x128_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x128_s2: Burning damage disabled
+x128_s2_e0: [Point] Invalidation of damage area
+x128_s2_e1: [Point] Invalidation of damage area
+x128_s3: Stop flame under shutter
+x128_s3_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x128_s4: Flame stop on ladder
+x128_s4_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x128_s5: Did the shutter close to a certain level?
+x128_s5_e0: [Group condition: OBJ] OBJ state ID comparison
+x128_s6: Is the shutter completely closed?
+x128_s6_e0: [Group condition: OBJ] OBJ state ID comparison
+x128_s7: Navigation mesh change
+x128_s7_e0: [Map] Navimesh attribute deletion
+x128_s8: End state
+x129: [Preset] Burning furnace_Shutter and damage
+x129_p0: Valve instance ID
+x129_p1: Shutter instance ID
+x129_p2: Damage area ID1
+x129_p3: Damage area ID2
+x129_p4: Damipoli instance ID under shutter
+x129_p5: Damipoli instance ID on the ladder
+x129_p6: Navimesh change point ID
+x129_s0: Start state
+x129_s1: Disable OBJ synchronization
+x129_s1_e0: [OBJ] OBJ synchronization setting
+x129_s2: [Reproduction] Burning furnace_Shutter and damage_SubState
+x129_s3: [Condition] Burning furnace_Shutter and damage_SubState
+x129_s4: [Execution] Burning furnace_Shutter and damage_SubState
+x129_s5: End state
+x130: [Reproduction] Lever that stops all flame images
+x130_s0: Start state
+x130_s1: Judgment of status of fire flag
+x130_s2: Navi Mesh Delete
+x130_s2_e0: [Map] Navimesh attribute deletion
+x130_s3: Navi Mesh added
+x130_s3_e0: [Map] Added Navimesh attribute
+x130_s4: OFF to ON
+x130_s5: ON to OFF
+x131: [Condition] Lever to stop all flame images
+x131_p0: Lever OBJ object instance ID
+x131_p1: Lever state_Start confirmed
+x131_p2: Lever state_Standby
+x131_s0: Start state
+x131_s1: Is the lever ready to start?
+x131_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x131_s2: Is the lever in standby mode?
+x131_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x131_s3: End state
+x132: [Execute] Lever that stops all flame images
+x132_p0: Flame statue working flag
+x132_p1: Flag setting
+x132_s0: Start state
+x132_s1: Flame flag operation flag switching
+x132_s1_e0: [Flag] Set flag
+x132_s2: End state
+x133: [Reproduction] Flame linked to boss action
+x133_p0: Boss destruction flag
+x133_s0: Start state
+x133_s1: Has the boss been destroyed?
+x133_s2: Undefeated
+x133_s3: Defeated
+x134: [Execution] Flames linked to boss actions
+x134_p0: OBJ state ID for ON / OFF
+x134_p1: OBJ instance ID of stone statue 1
+x134_p2: OBJ instance ID of stone statue 2
+x134_p3: ON / OFF completion confirmation OBJ state ID
+x134_s0: Start state
+x134_s1: OBJ status change
+x134_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x134_s1_e1: [OBJ] OBJ state transition request (with instance ID specified)
+x134_s2: Has the OBJ status change been completed?
+x134_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x134_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+x134_s3: End state
+x135: [Reproduction] Floor switch _ Molten iron pot
+x135_p0: OBJ instance ID to be run
+x135_p1: Hit group ID
+x135_p2: Grand material ID
+x135_s0: Start state
+x135_s1: Gimmick already activated?
+x135_s2: Invalidate damage area
+x135_s2_e0: [Map] Switching the ground material
+x135_s3: Activate damage
+x135_s3_e0: [Map] Switching the ground material
+x135_s4: End state
+x135_s5: Simple end
+x136: [Conditions] Floor switch_molten iron pot
+x136_p0: Switch instance ID
+x136_s0: Start state
+x136_s1: Did you get on the switch?
+x136_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x136_s2: End state
+x137: [Execution] Floor switch _ Molten iron pot
+x137_p0: OBJ instance ID to be run
+x137_p1: Floor switch instance ID
+x137_p2: Display OBJ instance ID
+x137_p3: Hit group ID
+x137_p4: Grand material ID
+x137_s0: Start state
+x137_s1: OBJ state transition
+x137_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x137_s2: Activate damage
+x137_s2_e0: [Map] Switching the ground material
+x137_s3: OBJ display
+x137_s3_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x137_s4: End state
+x138: [Preset] Floor switch _ Molten iron pot
+x138_p0: OBJ instance ID
+x138_p1: Floor switch instance ID
+x138_p2: Display OBJ instance ID
+x138_p3: Hit group ID
+x138_p4: Grand material ID
+x138_s0: Start state
+x138_s1: Disable OBJ sync
+x138_s1_e0: [OBJ] OBJ synchronization setting
+x138_s2: [Reproduction] Floor switch_molten iron_SubState
+x138_s3: [Conditions] Floor switch _ Molten iron _ SubState
+x138_s4: [Execution] Floor switch_molten iron_SubState
+x138_s5: End state
+x139: [Reproduction] Burning furnace _ flame when opening the door
+x139_p0: Shutter OBJ instance ID
+x139_s0: Start state
+x139_s1: Is the shutter closed?
+x139_s2: The shutter is open
+x139_s3: The shutter is closed
+x140: [Preset] Burning furnace
+x140_p0: Shutter OBJ instance ID
+x140_p1: Door OBJ instance ID
+x140_p2: Instance ID of OBJ that emits flame
+x140_s0: Start state
+x140_s1: [Reproduction] Burning furnace _ SubState
+x140_s2: [Execution] Burning furnace _ Flame when opening the door _ Flame complete stop _ SubState
+x140_s3: [Conditions] Burning furnace_Open door and flame_SubState
+x140_s4: [Execution] Burning furnace _ Flame when opening the door _ Flame operation _ SubState
+x140_s5: [Execution] Burning furnace _ Flame when opening the door _ Flame stop _ SubState
+x140_s6: The shutter is closed
+x140_s7: Rerun
+x141: [Execution] Burning furnace _ Flame when opening the door _ Flame complete stop
+x141_p0: Instance ID of OBJ that emits flame
+x141_s0: Start state
+x141_s1: Complete stop of fire from the door
+x141_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x141_s2: Has the flame stopped completely?
+x141_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x141_s3: End state
+x142: [Condition] Fire linked to the boss's action
+x142_p0: Boss generator ID
+x142_p1: Boss special state effect ID
+x142_s0: Start state
+x142_s1: Boss status judgment
+x142_s1_e0: [Group condition: Character] Character special effect determination
+x142_s1_e1: [Group condition: Character] Character death determination
+x142_s2: Turn off due to status change
+x142_s3: Boss death
+x143: [Preset] Flames linked to boss actions
+x143_p0: Boss generator ID
+x143_p1: State ID with stone statue on
+x143_p2: State ID with stone statue flame OFF
+x143_p3: OBJ instance ID of stone statue 1
+x143_p4: OBJ instance ID of stone statue 2
+x143_p5: Boss special state effect ID
+x143_p6: Boss destruction flag
+x143_s0: Start state
+x143_s1: [Reproduction] Flame_SubState linked to the boss's behavior
+x143_s2: [Execution] Flames linked to boss actions
+x143_s3: [Execution] Flames linked to boss actions
+x143_s4: [Condition] Fire linked to the boss's behavior_Boss is in anger state_SubState
+x143_s5: [Conditions] Flames linked to boss actions_Boss dies_SubState
+x143_s6: Finish
+x144: [Condition] Fire linked to the boss's action
+x144_p0: Boss generator ID
+x144_s0: Start state
+x144_s1: Boss status judgment
+x144_s1_e0: [Group condition: Character] Character death determination
+x144_s2: End state
+x145: [Reproduction] Guillotine door
+x145_p0: Guillotine door OBJ instance ID
+x145_p1: Lever 1_OBJ instance ID
+x145_p2: Lever 2_OBJ instance ID
+x145_p3: Navigation change point ID
+x145_s0: Start state
+x145_s1: Is the blade in the initial state?
+x145_s2: Disabling the key guide of the lever
+x145_s2_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x145_s2_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x145_s3: Navigation mesh switching: Allowed to pass
+x145_s3_e0: [Map] Navimesh attribute deletion
+x145_s4: Blade lowering standby
+x145_s4_e0: [Group condition: OBJ] OBJ state ID comparison
+x145_s5: Enable key guide for lever
+x145_s5_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x145_s5_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x145_s6: Navi mesh switching: Not allowed
+x145_s6_e0: [Map] Added Navimesh attribute
+x145_s7: End state
+x146: [Conditions] Guillotine door
+x146_p0: Lever 1_OBJ instance ID
+x146_p1: Lever 2_OBJ instance ID
+x146_s0: Start state
+x146_s1: Lever operation standby
+x146_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x146_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x146_s1_e2: [Group condition: OBJ] OBJ state ID comparison
+x146_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x146_s2: End state
+x147: [Execution] Guillotine door
+x147_p0: Guillotine door OBJ instance ID
+x147_p1: Lever 1_OBJ instance ID
+x147_p2: Lever 2_OBJ instance ID
+x147_p3: Navigation change point ID
+x147_s0: Start state
+x147_s1: The door blade rises: 70
+x147_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x147_s2: Blade lowering standby
+x147_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x147_s3: Disabling the key guide of the lever
+x147_s3_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x147_s3_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x147_s4: Enable key guide for lever
+x147_s4_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x147_s4_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x147_s5: Navigation mesh switching: Allowed to pass
+x147_s5_e0: [Map] Navimesh attribute deletion
+x147_s6: Blade rising standby
+x147_s6_e0: [Group condition: OBJ] OBJ state ID comparison
+x147_s7: Navi mesh switching: Not allowed
+x147_s7_e0: [Map] Added Navimesh attribute
+x147_s8: End state
+x148: [Preset] Guillotine door
+x148_p0: Lever 1_OBJ instance ID
+x148_p1: Lever 2_OBJ instance ID
+x148_p2: OBJ instance ID of the guillotine door
+x148_p3: Navigation change point ID
+x148_s0: Start state
+x148_s1: [Reproduction] Guillotine door_SubState
+x148_s2: [Condition] Guillotine door_SubState
+x148_s3: [Execution] Guillotine door_SubState
+x148_s4: End state
+x149: [Reproduction] Vegrant generation determination
+x149_p0: Vegrant generation flag
+x149_s0: Start state
+x149_s1: Has it already been judged?
+x149_s2: Undecided
+x149_s3: Judged
+x150: [Condition] Vegrant generation determination
+x150_p0: Demon Knight Defeat Flag
+x150_s0: Start state
+x150_s1: Demon Knight Defeat Determination
+x150_s1_e0: [Group condition: Flag] Event flag comparison
+x150_s1_e1: [Group condition: Flag] Event flag comparison
+x150_s2: Defeated
+x150_s3: Not defeated
+x151: [Execution] Vegrant generation determination
+x151_p0: Vagrant creation permission flag
+x151_p1: Vegrant generation flag
+x151_p2: Generation permission ON / OFF
+x151_s0: Start state
+x151_s1: Vagrant creation permission flag
+x151_s1_e0: [Flag] Set flag
+x151_s2: Vagrant generation determination flag ON
+x151_s2_e0: [Flag] Set flag
+x151_s3: End state
+x152: [Preset] Vegrant generation determination
+x152_p0: Vagrant creation permission flag
+x152_p1: Vegrant generation flag
+x152_p2: Demon Knight Defeat Flag
+x152_s0: Start state
+x152_s1: [Reproduction] Vegrant generation determination_SubState
+x152_s2: [Execution] Vegrant generation determination_ON_SubState
+x152_s3: [Condition] Vegrant generation determination_SubState
+x152_s4: [Execution] Vegrant generation determination_OFF_SubState
+x152_s5: End state
+x153: [Preset] Molten iron daemon
+x153_p0: Flag to perform first battle or rematch determination
+x153_p1: Molten Daemon Generator ID
+x153_p2: Point ID for relocation during rematch
+x153_p3: Activation state ID at the time of rematch
+x153_p4: Destruction flag of molten iron demon
+x153_s0: Start state
+x153_s1: Wait for battle
+x153_s1_e0: [Group condition: Flag] Event flag comparison
+x153_s2: Wait for save
+x153_s3: Waiting for white door
+x153_s3_e0: [Group condition: OBJ] OBJ state ID comparison
+x153_s4: [Reproduction] Molten Iron Daemon_Initial Location Change_SubState
+x153_s5: [Condition] Molten iron daemon_Initial location change_SubState
+x153_s6: [Execution] Molten iron daemon_Initial location change_SubState
+x153_s7: End state
+x154: [Reproduction] Molten iron daemon
+x154_p0: Destruction flag of molten iron demon
+x154_s0: Start state
+x154_s1: Are you destroying the molten iron demon?
+x154_s2: Undefeated
+x154_s3: Defeated
+x155: [Condition] Molten iron daemon_Initial location change
+x155_p0: Flag to perform first battle or rematch determination
+x155_s0: Start state
+x155_s1: Is it the first game? Is it a rematch?
+x155_s1_e0: [Group condition: Flag] Event flag comparison
+x155_s2: First match
+x155_s3: rematch
+x156: [Execution] Molten iron daemon
+x156_p0: Molten Daemon Generator ID
+x156_p1: Point ID for relocation during rematch
+x156_p2: Activation state ID at the time of rematch
+x156_s0: Start state
+x156_s1: Boss placement during rematch
+x156_s1_e0: [Generator] Overwrite initial start position
+x156_s2: Start state change
+x156_s2_e0: [Generator] Start state override
+x156_s3: End state
+x157: [Reproduction] Bridge descending with lever
+x157_p0: OBJ instance ID of the bridge
+x157_s0: Start state
+x157_s1: Is the bridge in a finished state
+x157_s2: Right is falling
+x157_s3: Is the left falling
+x157_s4: Navimesh switching_up
+x157_s4_e0: [Map] Navimesh attribute deletion
+x157_s5: Navi mesh switching
+x157_s5_e0: [Map] Added Navimesh attribute
+x157_s5_e1: [Map] Added Navimesh attribute
+x157_s5_e2: [Map] Navimesh attribute deletion
+x157_s6: Navimesh switching_falling right
+x157_s6_e0: [Map] Added Navimesh attribute
+x157_s6_e1: [Map] Navimesh attribute deletion
+x157_s7: Navi mesh switching_falling left
+x157_s7_e0: [Map] Added Navimesh attribute
+x157_s7_e1: [Map] Navimesh attribute deletion
+x157_s8: initial state
+x157_s9: The left is falling
+x157_s10: Right falls
+x157_s11: Both fall
+x158: [Condition] Bridge descending with lever_Initial
+x158_p0: Right lever OBJ instance ID
+x158_p1: Left lever OBJ instance ID
+x158_s0: Start state
+x158_s1: Waiting for two levers to start
+x158_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x158_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x158_s2: Right falls
+x158_s3: The left is falling
+x159: [Execution] Bridge descending with lever_Initial right fall
+x159_p0: OBJ instance ID of the bridge
+x159_p1: Right lever OBJ instance ID
+x159_p2: Left lever OBJ instance ID
+x159_s0: Start state
+x159_s1: Bridge _ right falls: 80
+x159_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x159_s2: Lever key guide disabled
+x159_s2_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x159_s2_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x159_s3: Waiting for falling anime
+x159_s4: Navimesh switching_falling right
+x159_s4_e0: [Map] Added Navimesh attribute
+x159_s4_e1: [Map] Navimesh attribute deletion
+x159_s5: Lever key guide enabled
+x159_s5_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x159_s5_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x159_s6: Waiting for the left to fall
+x160: [Execution] Bridge descending with lever _ Initial left fall
+x160_p0: OBJ instance ID of the bridge
+x160_p1: Right lever OBJ instance ID
+x160_p2: Left lever OBJ instance ID
+x160_s0: Start state
+x160_s1: Bridge _ left falls: 70
+x160_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x160_s2: Lever key guide disabled
+x160_s2_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x160_s2_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x160_s3: Waiting for falling anime
+x160_s4: Lever key guide enabled
+x160_s4_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x160_s4_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x160_s5: Navi mesh switching_falling left
+x160_s5_e0: [Map] Added Navimesh attribute
+x160_s5_e1: [Map] Navimesh attribute deletion
+x160_s6: Waiting for the right fall
+x161: [Condition] Bridge descending by lever_2
+x161_p0: Second lever OBJ instance ID
+x161_s0: Start state
+x161_s1: Waiting for lever to start
+x161_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x161_s2: Fall
+x162: [Execution] Bridge descending with lever _ 2nd right fall
+x162_p0: OBJ instance ID of the bridge
+x162_p1: Right lever OBJ instance ID
+x162_p2: Left lever OBJ instance ID
+x162_s0: Start state
+x162_s1: Bridge_Right falls: 71
+x162_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x162_s2: Lever key guide disabled
+x162_s2_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x162_s2_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x162_s3: Waiting for falling anime
+x162_s4: Lever key guide enabled
+x162_s4_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x162_s4_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x162_s5: Navi mesh switching
+x162_s5_e0: [Map] Added Navimesh attribute
+x162_s5_e1: [Map] Added Navimesh attribute
+x162_s5_e2: [Map] Navimesh attribute deletion
+x162_s6: Complete
+x163: [Execution] Bridge descending with lever _ 2nd left fall
+x163_p0: OBJ instance ID of the bridge
+x163_p1: Right lever OBJ instance ID
+x163_p2: Left lever OBJ instance ID
+x163_s0: Start state
+x163_s1: Bridge _ left falls: 81
+x163_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x163_s2: Lever key guide disabled
+x163_s2_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x163_s2_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x163_s3: Waiting for falling anime
+x163_s4: Lever key guide enabled
+x163_s4_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x163_s4_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x163_s5: Navi mesh switching
+x163_s5_e0: [Map] Added Navimesh attribute
+x163_s5_e1: [Map] Added Navimesh attribute
+x163_s5_e2: [Map] Navimesh attribute deletion
+x163_s6: Complete
+x164: [Preset] Bridge descending with lever
+x164_p0: OBJ instance ID of the bridge
+x164_p1: Right lever OBJ instance ID
+x164_p2: Left lever OBJ instance ID
+x164_s0: Start state
+x164_s1: [Reproduction] Bridge descending with a lever_SubState
+x164_s2: [Execution] Bridge descending with lever_2 Falling right_SubState
+x164_s3: [Execution] Bridge descending with lever _ 2nd fall left_SubState
+x164_s4: [Execution] Bridge descending with lever_Initial right fall_SubState
+x164_s5: [Execute] Bridge descending with lever_Initial left fall_SubState
+x164_s6: [Condition] Bridge descending with lever _ 2nd_SubState
+x164_s7: [Condition] Bridge descending with lever_Initial_SubState
+x164_s8: [Condition] Bridge descending with lever _ 2nd _ SubState
+x164_s9: Rerun
+x164_s10: Finish
+x165: [Preset] Bridge destroyed by enemies
+x165_p0: Instance ID of the bridge OBJ
+x165_p1: State ID of the destruction state of the bridge OBJ
+x165_p2: Navimesh change point ID
+x165_p3: Bridge destruction complete flag
+x165_s0: Start state
+x165_s1: [Reproduction] Bridge _SubState destroyed by enemies
+x165_s2: [Condition] Bridge destroyed by enemy _SubState
+x165_s3: [Execution] Bridge _SubState destroyed by enemies
+x165_s4: End state
+x166: [Reproduction] Bridge destroyed by enemies
+x166_p0: Instance ID of the bridge OBJ
+x166_p1: State ID of the destruction state of the bridge OBJ
+x166_s0: Start state
+x166_s1: OBJ status judgment
+x166_s2: Undestructed
+x166_s3: Destroyed
+x167: [Condition] Bridge destroyed by enemies
+x167_p0: Instance ID of the bridge OBJ
+x167_p1: State ID of the destruction state of the bridge OBJ
+x167_s0: Start state
+x167_s1: OBJ destruction determination
+x167_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x167_s2: End state
+x168: [Execution] Bridge destroyed by enemies
+x168_p0: Navimesh change point ID
+x168_p1: Bridge destruction complete flag
+x168_s0: Start state
+x168_s1: Navigation mesh change
+x168_s1_e0: [Map] Added Navimesh attribute
+x168_s2: Bridge destruction complete flag: ON
+x168_s2_e0: [Flag] Set flag
+x168_s3: End state
+x169: [Reproduction] Vegrant Deletion Determination_Sky
+x169_s0: Start state
+x169_s1: End state
+x170: [Condition] Vegrant removal determination
+x170_p0: Generator ID
+x170_s0: Start state
+x170_s1: Has Vegrant finished the return action?
+x170_s1_e0: [Group condition: Character] Compare EzState flag of logic
+x170_s2: Has a vegrant been generated?
+x170_s2_e0: [Group condition: Character] Character generation status judgment
+x170_s3: Returned
+x171: [Execution] Vegrant removal determination
+x171_p0: Generator ID
+x171_s0: Start state
+x171_s1: Delete character
+x171_s1_e0: [Generator] Forced enemy deletion
+x171_s2: End state
+x172: [Preset] Vegrant removal judgment
+x172_p0: Generator ID
+x172_s0: Start state
+x172_s1: [Reproduction] Vegrant deletion judgment_empty_SubState
+x172_s2: [Execution] Vegrant deletion determination_SubState
+x172_s3: [Condition] Vegrant deletion determination_SubState
+x172_s4: End state
+x173: [Condition] Burning furnace _ Flame when opening the door
+x173_p0: Shutter OBJ instance ID
+x173_p1: Door OBJ instance ID
+x173_s0: Start state
+x173_s1: Shutter and door status judgment
+x173_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x173_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x173_s1_e2: [Group condition: OBJ] OBJ state ID comparison
+x173_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x173_s2: The door is open
+x173_s3: The door is closed
+x173_s4: The shutter is closed
+x174: [Execution] Burning furnace _ Flame when opening the door _ Flame operation
+x174_p0: Instance ID of OBJ that emits flame
+x174_p1: Shutter OBJ instance ID
+x174_p2: Door OBJ instance ID
+x174_s0: Start state
+x174_s1: Flame state transition
+x174_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x174_s2: Shutter and door status judgment
+x174_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x174_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+x174_s3: There was a change in the condition of the door
+x174_s4: The shutter is closed
+x175: [Execution] Burning furnace _ Flame when opening the door _ Flame stop
+x175_p0: Instance ID of OBJ that emits flame
+x175_p1: Shutter OBJ instance ID
+x175_p2: Door OBJ instance ID
+x175_s0: Start state
+x175_s1: Flame state transition
+x175_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x175_s2: Shutter and door status judgment
+x175_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x175_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+x175_s2_e2: [Group condition: OBJ] OBJ state ID comparison
+x175_s3: There was a change in the condition of the door
+x175_s4: The shutter is closed
+x176: [Reproduction] Pledge: Kanemori_Contribution UP_Intruder generation determination
+x176_p0: Intruder generation determination flag
+x176_s0: Start state
+x176_s1: Has it already been judged?
+x176_s2: Is it a bell defense pledge?
+x176_s3: Undecided
+x176_s4: Judged
+x176_s5: Not a bell guard
+x177: [Condition] Pledge: Kanemori_Contribution UP_Intruder generation determination
+x177_s0: Start state
+x177_s1: Random number generation
+x177_s1_e0: [System] Obtains the clamped integer value
+x177_s2: Random number judgment
+x177_s2_e0: [Group condition: Event] Random number comparison
+x177_s3: Intruder: Generate
+x177_s4: Do not generate
+x178: [Execution] Pledge: Kanemori_Contribution UP_Intruder Generation Judgment
+x178_p0: Intruder generation permission flag
+x178_p1: Intruder generation determination flag
+x178_p2: Generation permission ON / OFF
+x178_s0: Start state
+x178_s1: Intruder generation permission flag
+x178_s1_e0: [Flag] Set flag
+x178_s2: Intruder generation determination flag ON
+x178_s2_e0: [Flag] Set flag
+x178_s3: End state
+x179: [Preset] Pledge: Kanemori_Contribution UP_Intruder Generation Judgment
+x179_p0: Intruder generation permission flag
+x179_p1: Intruder generation determination flag
+x179_s0: Start state
+x179_s1: [Reproduction] Pledge: Kanemori_Contribution UP_Intruder Generation Judgment_SubState
+x179_s2: [Execution] Pledge: Kanemori_Contribution UP_Intruder Generation Determination_OFF_SubState
+x179_s3: [Condition] Pledge: Kanemori_Contribution UP_Intruder Generation Judgment_SubState
+x179_s4: [Execution] Pledge: Kanemori_Contribution UP_Intruder Generation Judgment_ON_SubState
+x179_s5: End state
+x180: [Reproduction] Pledge: Kanemori_Contribution UP
+x180_p0: Intruder Destruction Flag
+x180_p1: Intruder generation permission flag
+x180_s0: Start state
+x180_s1: Host?
+x180_s2: Has the intruder been destroyed?
+x180_s3: Has an intruder been generated?
+x180_s4: host
+x180_s5: Finish
+x181: [Condition] Pledge: Kanemori_Contribution UP
+x181_p0: Intruder generator ID
+x181_s0: Start state
+x181_s1: Pledge and intruder defeat determination
+x181_s1_e0: [Group condition: Character] Character death determination
+x181_s1_e1: [Group condition: Character] Player pledge determination
+x181_s1_e2: [Group condition: Character] Character death determination
+x181_s1_e3: [Group condition: Character] Player pledge determination
+x181_s2: Increased contribution
+x181_s3: do nothing
+x182: [Execution] Pledge: Kanemori_Contribution UP
+x182_p0: Intruder Destruction Flag
+x182_s0: Start state
+x182_s1: Kanemori: Increased contribution
+x182_s1_e0: [Status] Add player's commitment contribution
+x182_s2: Defeat flag ON
+x182_s2_e0: [Flag] Set flag
+x182_s3: Finish
+x183: [Preset] Pledge: Kanemori_Contribution UP
+x183_p0: Intruder generator ID
+x183_p1: Intruder Destruction Flag
+x183_p2: Intruder generation permission flag
+x183_s0: Start state
+x183_s1: [Reproduction] Pledge: Kanemori_Contribution UP_SubState
+x183_s2: [Execution] Pledge: Kanemori_Contribution UP_SubState
+x183_s3: [Condition] Pledge: Kanemori_Contribution UP_SubState
+x183_s4: [Execution] Pledge: Kanemori_Contribution UP_Destroy only_SubState
+x183_s5: Finish
+x184: [Execution] Pledge: Kanemori_Contribution UP_Destroy only
+x184_p0: Intruder Destruction Flag
+x184_s0: Start state
+x184_s1: Defeat flag ON
+x184_s1_e0: [Flag] Set flag
+x184_s2: Finish
+x185: [Reproduction] Molten iron demon
+x185_p0: Poly drama played flag
+x185_s0: Start state
+x185_s1: Has the boss been destroyed? Is the poly drama already played?
+x185_s2: Wait for in-game start
+x185_s3: Poly play
+x185_s4: No poly play
+x186: [Condition] Molten iron demon
+x186_p0: White door OBJ instance ID
+x186_s0: Start state
+x186_s1: Did you pass the white door?
+x186_s2: End state
+x187: [Execution] Molten Iron Daemon
+x187_p0: Poly play ID
+x187_p1: Poly drama played flag
+x187_p2: Warp point ID
+x187_p3: Weight until poly play
+x187_p4: Boss generation flag
+x187_s0: Start state
+x187_s1: For time adjustment
+x187_s2: Poly drama playback started
+x187_s2_e0: [Poly drama] Poly drama reproduction
+x187_s3: During poly play: Generation flag ON
+x187_s3_e0: [Flag] Set flag
+x187_s4: Poly play stop
+x187_s5: Host judgment
+x187_s6: Remote character sync
+x187_s6_e0: [Net] Forcibly warp and synchronize remote character position
+x187_s7: Warp to boss battle start position
+x187_s7_e0: [Map] Warp players in the area
+x187_s8: Poly drama replayed flag ON
+x187_s8_e0: [Flag] Set flag
+x187_s9: Save execution
+x187_s9_e0: [Others] Save execution
+x187_s10: End state
+x188: [Preset] Molten Iron Demon_Poly Play
+x188_p0: White door instance ID
+x188_p1: Poly play ID
+x188_p2: Poly drama played flag
+x188_p3: Warp point ID
+x188_p4: Wait time
+x188_p5: Boss generation flag
+x188_s0: Start state
+x188_s1: [Reproduction] Molten Iron Daemon_Poly Play_SubState
+x188_s2: [Execution] Molten Iron Daemon_Poly Play_SubState
+x188_s3: [Condition] Molten iron daemon_Poly play_SubState
+x188_s4: End state
+x189: [DLC] [Reproduction] Stone monument displayed in text
+x189_s0: Start state
+x189_s1: End state
+x190: [DLC] [Condition] Stone monument displayed in text
+x190_p0: Stele OBJ instance ID
+x190_s0: Start state
+x190_s1: Wait for decision to check
+x190_s1_e0: [Group condition: OBJ] Judgment to examine OBJ
+x190_s2: End state
+x191: [DLC] [execution] Stone monument displayed as text
+x191_p0: Text ID
+x191_p1: Stele OBJ instance ID
+x191_s0: Start state
+x191_s1: Text display
+x191_s1_e0: [FE] Event window display
+x191_s2: Disable key guide
+x191_s2_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x191_s3: Activate key guide
+x191_s3_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x191_s4: End state
+x192: [DLC] [Preset] Stone monument displayed as text
+x192_p0: Stele OBJ instance ID
+x192_p1: Text ID
+x192_s0: Start state
+x192_s1: [DLC] [Reproduction] Stone monument_SubState displayed in text
+x192_s2: [DLC] [Execution] Stone monument_SubState displayed in text
+x192_s3: [DLC] [Condition] Stone monument_SubState displayed in text
+x192_s4: End state
+x193: [BEST] [Lib] [Preset] Molten Iron Demon Battle
+x193_p0: Boss destruction flag
+x193_p1: Start point ID
+x193_p2: End point ID
+x193_p3: Sound ID
+x193_p4: Boss Battle ID
+x193_p5: Other flags for logic
+x193_p6: BGM stop time
+x193_s0: Start state
+x193_s1: [Reproduction] Boss Battle_Start_SubState
+x193_s2: [Reproduction] Boss Battle_Sky_SubState
+x193_s3: [Execution] Boss Battle_End_SubState
+x193_s4: [Condition] Boss Battle_Start_SubState
+x193_s5: [Condition] Boss Battle_End Judgment_SubState
+x193_s6: [BEST] [Execute] Molten Iron Daemon Battle_Start_SubState
+x193_s7: End state
+x194: [BEST] [Execution] Molten Iron Demon Battle_Start
+x194_p0: Sound ID
+x194_p1: Boss Battle ID
+x194_p2: Other flags for logic
+x194_s0: Start state
+x194_s1: Boss battle start notification
+x194_s1_e0: [Others] Boss battle started
+x194_s2: Boss battle flag notification for logic
+x194_s2_e0: [Flag] Set flag
+x194_s3: Boss BGM playback
+x194_s3_e0: [Sound] Sound playback with point designation
+x194_s4: Enable auto save
+x194_s4_e0: [Others] Disable auto save
+x194_s5: Host?
+x194_s6: End state
+x195: [DC] [Preset] Treasure chest changes mimic
+x195_p0: Bonfire ID
+x195_p1: Treasure chest OBJ instance ID
+x195_s0: Start state
+x195_s1: [DC] [Reproduction] Treasure box changes mimic_SubState
+x195_s2: [DC] [execution] treasure box changes mimic_SubState
+x195_s3: [DC] [Condition] Treasure box changes mimic_SubState
+x195_s4: End state
+x196: [DC] [Reproduction] Treasure box changes mimic
+x196_s0: Start state
+x196_s1: Is it in game?
+x196_s2: End state
+x197: [DC] [execution] treasure chest changes mimic
+x197_p0: Treasure chest OBJ instance ID
+x197_s0: Start state
+x197_s1: Hidden treasure box and key guide disabled
+x197_s1_e0: [Drawing] Switching between display and hit by specifying object instance ID
+x197_s1_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x197_s2: End state
+x198: [DC] [Condition] Treasure chest changes mimic
+x198_p0: Bonfire ID
+x198_s0: Start state
+x198_s1: Is the total number of laps more than the second lap?
+x198_s1_e0: [Group condition: Other] Comparison of laps
+x198_s2: End state
+x199: [Preset] Two pairs of fire-blowing cows that rotate
+x199_p0: Cow OBJ instance ID
+x199_s0: Start state
+x199_s1: [Reproduction] Two pairs of fire-blowing cows _SubState rotating
+x199_s2: [Execution] Two pairs of rotating fire-blowing cows_SubState
+x199_s3: [Condition] Two pairs of rotating fire-blowing cows_SubState
+x199_s4: Rerun
+x200: [Reproduction] Two pairs of rotating fire-blowing cows
+x200_p0: Cow OBJ instance ID
+x200_s0: Start state
+x200_s1: Judgment of fire-blown cow
+x200_s2: State of standstill
+x200_s3: During the rotation
+x200_s4: Waiting for stop
+x200_s5: End state
+x201: [Execution] 2 pairs of fire-blowing cows rotating
+x201_p0: Cow OBJ instance ID
+x201_s0: Start state
+x201_s1: Rotating fire bull
+x201_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x201_s2: Wait for rotation to end
+x201_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x201_s3: End state
+x202: [Conditions] Two pairs of rotating fired cows
+x202_p0: Cow OBJ instance ID
+x202_s0: Start state
+x202_s1: Damage judgment
+x202_s1_e0: [Group condition: OBJ] OBJ damage judgment
+x202_s2: End state
+x0: [Lib] Area designated door unlocked
+x0_p0: Text ID when opened
+x0_p1: Point ID
+x0_p2: Key gimmick flag
+x0_s0: Start state
+x0_s1: Setting unlocking information
+x0_s1_e0: [OBJ] Setting information for unlocking
+x0_s2: End state
+x1: [Lib] Warp between maps after poly play
+x1_p0: Pre-warp poly play ID
+x1_p1: Poly Play ID after Warp
+x1_p2: Map ID
+x1_p3: Point ID
+x1_s0: Start state
+x1_s1: Poly drama warp
+x1_s1_e0: [Map] Warp players to poly drama
+x1_s2: End state
+x2: [Lib] NPC: Grave Placement: General purpose
+x2_p0: Death map: Global event flag
+x2_p1: Tomb: OBJ instance ID
+x2_p2: Tomb move to: Generator ID
+x2_p3: NPC information parameter ID
+x2_s0: Start state
+x2_s1: Grave Placement: Start
+x2_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x2_s2: Grave placement: branch
+x2_s2_e0: [Group condition: Flag] Event flag comparison
+x2_s2_e1: [Group condition: other] Grave generation possibility judgment
+x2_s3: Grave Placement: Survival
+x2_s3_e0: [OBJ] OBJ state transition request
+x2_s3_e1: [Group condition: OBJ] OBJ state ID comparison
+x2_s4: Grave Placement: Death
+x2_s4_e0: [OBJ] OBJ state transition request
+x2_s4_e1: [Group condition: OBJ] OBJ state ID comparison
+x2_s5: Grave Placement: System: Finish
+x2_s5_e0: [System] Termination notification
+x2_s6: Grave Placement: Warp Move
+x2_s7: End state
+x3: [Lib] NPC: Grave: Key Guide: Key Guide
+x3_p0: Global: death flag
+x3_p1: Grave OBJ instance ID
+x3_p2: NPC information parameter ID
+x3_s0: Start state
+x3_s1: Key guide: Start
+x3_s2: Key guide: Key guide display
+x3_s2_e0: [FE] Create key guide area
+x3_s3: Key Guide: Use Soul dialog
+x3_s3_e0: [FE] Display of YES / NO selection window
+x3_s4: Key guide: Soul shortage dialog
+x3_s4_e0: [FE] Window display only for YES
+x3_s5: Key guide: Grave display judgment
+x3_s5_e0: [Group condition: OBJ] OBJ state ID comparison
+x3_s5_e1: [Group condition: OBJ] OBJ state ID comparison
+x3_s6: Key guide: Reset
+x3_s6_e0: [FE] Delete key guide area
+x3_s6_e1: [System] Re-execution notification
+x3_s7: Key Guide: Use Soul dialog: Wait for input
+x3_s8: Key guide: Soul shortage dialog: Waiting for input
+x3_s9: Key guide: Delete key guide
+x3_s9_e0: [FE] Delete key guide area
+x3_s10: Key Guide: System: Exit
+x3_s10_e0: [System] Termination notification
+x3_s11: Key guide: Waiting for input
+x3_s11_e0: [Group condition: OBJ] Judgment to examine OBJ
+x3_s11_e1: [Group condition: Map] Judgment that the player is in the map
+x3_s12: End state
+x4: [Lib] NPC: Grave: Key Guide: Appearance of Ghosts
+x4_p0: Area other flags: Ghost appearance
+x4_p1: Area other flags: Conversation start
+x4_p2: NPC information parameter ID
+x4_s0: Start state
+x4_s1: Ghost appearance: Appearance
+x4_s1_e0: [Flag] Set flag
+x4_s1_e1: [Group condition: Flag] Event flag comparison
+x4_s2: Ghost appearance: Character action waiting
+x4_s2_e0: [Group condition: Character] Player event action judgment
+x4_s3: Appearance of ghost: End of player action
+x4_s3_e0: [Character action] Action end request to the player
+x4_s4: Ghost appearance: Conversation start flag
+x4_s4_e0: [Flag] Set flag
+x4_s4_e1: [Group condition: Flag] Event flag comparison
+x4_s5: Appearance of ghost: Player action starts
+x4_s5_e0: [Character action] Request action from player
+x4_s5_e1: [Group condition: Character] Player event action judgment
+x4_s6: Ghost appearance: Seoul consumption
+x4_s6_e0: [Others] Soul value addition
+x4_s7: Appearance of ghost: Waiting for player action
+x4_s7_e0: [Group condition: Event] State elapsed time comparison
+x4_s8: Ghost appearance: waiting for completion
+x4_s8_e0: [Group condition: Event] State elapsed time comparison
+x4_s9: Ghost appearance: Waiting for conversation
+x4_s9_e0: [Group condition: Event] State elapsed time comparison
+x4_s10: End state
+x5: [Lib] NPC: Grave: Key guide: General purpose
+x5_p0: Ghost Appearance: Area Other Flag
+x5_p1: Conversation start: Area and other flags
+x5_p2: Death: Global event flag
+x5_p3: Tomb: OBJ instance ID
+x5_p4: Grave event ID
+x5_p5: NPC information parameter ID
+x5_s0: Start state
+x5_s1: Key guide: Start
+x5_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x5_s1_e1: [Group condition: Event] Event status judgment
+x5_s1_e2: [Group condition: Flag] Event flag comparison
+x5_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x5_s2: Key Guide: System: Exit
+x5_s2_e0: [System] Termination notification
+x5_s3: Key guide: Start conversation: Set flag
+x5_s3_e0: [Flag] Set flag
+x5_s3_e1: [Group condition: Flag] Event flag comparison
+x5_s4: [Lib] NPC: Grave: Key Guide: Key Guide_SubState
+x5_s5: [Lib] NPC: Grave: Key Guide: Ghost Appearance_SubState
+x5_s6: End state
+x6: [Lib] [Preset] Boss Battle Start
+x6_p0: Boss destruction flag
+x6_p1: Start point ID
+x6_p2: End point ID
+x6_p3: Sound ID
+x6_p4: Boss Battle ID
+x6_p5: Other flags for logic
+x6_p6: BGM stop time
+x6_s0: Start state
+x6_s1: [Reproduction] Boss Battle_Start_SubState
+x6_s2: [Reproduction] Boss Battle_Sky_SubState
+x6_s3: [Execution] Boss Battle_Start_SubState
+x6_s4: [Execution] Boss Battle_End_SubState
+x6_s5: [Condition] Boss Battle_Start_SubState
+x6_s6: [Condition] Boss Battle_End Judgment_SubState
+x6_s7: End state
+x7: [Reproduction] Boss Battle_Start
+x7_p0: Boss destruction flag
+x7_s0: Start state
+x7_s1: Are you destroying the boss?
+x7_s2: Not destroy the boss
+x7_s3: Defeated the boss
+x8: [Condition] Boss Battle_Start
+x8_p0: Start point ID
+x8_p1: End point ID
+x8_s0: Start state
+x8_s1: Did you enter the boss room point?
+x8_s1_e0: [Group condition: Character] Judgment within player points
+x8_s1_e1: [Group condition: Net] Host judgment
+x8_s1_e2: [Group condition: System] Group condition is satisfied
+x8_s1_e3: [Group condition: Character] Judgment within player points
+x8_s1_e4: [Group condition: Net] Host judgment
+x8_s1_e5: [Group condition: System] Group condition is satisfied
+x8_s2: End state
+x9: [Execution] Boss Battle_Start
+x9_p0: Sound ID
+x9_p1: Boss Battle ID
+x9_p2: Other flags for logic
+x9_s0: Start state
+x9_s1: Boss battle start notification
+x9_s1_e0: [Others] Boss battle started
+x9_s2: Boss battle flag notification for logic
+x9_s2_e0: [Flag] Set flag
+x9_s3: Boss BGM playback
+x9_s3_e0: [Sound] Sound playback with point designation
+x9_s4: End state
+x10: [Reproduction] Boss Battle_Sky
+x10_s0: Start state
+x10_s1: End state
+x11: [Condition] Boss Battle_End Judgment
+x11_p0: Boss Battle ID
+x11_s0: Start state
+x11_s1: Did you beat the boss?
+x11_s1_e0: [Group condition: Event] Boss defeat determination
+x11_s2: End state
+x12: [Execute] Boss Battle_End
+x12_p0: Sound ID
+x12_p1: Boss Battle ID
+x12_p2: Other flags for logic
+x12_p3: BGM stop time
+x12_s0: Start state
+x12_s1: Logic flag OFF
+x12_s1_e0: [Flag] Set flag
+x12_s2: Boss battle end notification
+x12_s2_e0: [Others] End of boss battle
+x12_s3: Boss BGM stop
+x12_s3_e0: [Sound] Stop sound at specified point
+x12_s4: BGM stop standby
+x12_s5: End state
+x13: [Lib] [Asynchronous] [Preset] Bug key (wall)
+x13_p0: Object instance ID
+x13_s0: Start state
+x13_s1: [Private] [Asynchronous] [Reproduction] Bug key _SubState
+x13_s2: [Private] [Asynchronous] [Condition] Bug key _SubState
+x13_s3: [Private] [Asynchronous] [Execution] Use bug key _SubState
+x13_s4: [Private] [Asynchronous] [Execution] Insect key unavailable dialog _SubState
+x13_s5: [Private] [Asynchronous] [Condition] Guest Bug Key_SubState
+x13_s6: [Lib] [Execution] Dummy_SubState
+x13_s7: End of reproduction
+x13_s8: End of execution
+x14: [Private] [Asynchronous] [Reproduction] Bug Key
+x14_p0: Object instance ID
+x14_s0: Start state
+x14_s1: OBJ status judgment
+x14_s2: OBJ initialization: 10
+x14_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x14_s3: Before execution
+x14_s4: After execution
+x14_s5: Guest termination
+x15: [Private] [Asynchronous] [Condition] Host insect key
+x15_p0: Object instance ID
+x15_p1: Number consumed
+x15_p2: Consumption items
+x15_s0: Start state
+x15_s1: Judgment to examine
+x15_s1_e0: [Group condition: OBJ] Judgment to examine OBJ
+x15_s2: Available branch
+x15_s3: Available end
+x15_s4: Unusable termination
+x16: [Private] [Asynchronous] [Execution] Use bug key dialog
+x16_p0: Object instance ID
+x16_p1: Key guide type
+x16_p2: Event action
+x16_p3: Number consumed
+x16_p4: Consumption items
+x16_s0: Start state
+x16_s1: Dialog display
+x16_s1_e0: [FE] YES / NO selection window display (specify object instance ID)
+x16_s1_e1: [FE] YES / NO selection window display (specify object instance ID)
+x16_s2: Result judgment
+x16_s3: Rerun
+x16_s3_e0: [System] Re-execution notification
+x16_s4: Action request to player
+x16_s4_e0: [Character action] OBJ animation control request to player (Instance ID specified version)
+x16_s5: OBJ status judgment
+x16_s5_e0: [Group condition: Character] Player event action judgment
+x16_s5_e1: [Group condition: Item] Comparison of number of possessed items
+x16_s5_e2: [Group condition: OBJ] OBJ state ID comparison
+x16_s5_e3: [Group condition: OBJ] OBJ state ID comparison
+x16_s6: Insect key consumption
+x16_s6_e0: [Item] Item consumption
+x16_s7: Bug key transition waiting: 30
+x16_s7_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x16_s8: Bug key: Initial state: 10
+x16_s8_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x16_s9: End state
+x17: [Private] [Asynchronous] [Execution] Unusable key
+x17_p0: Object instance ID
+x17_p1: Number consumed
+x17_p2: Consumption items
+x17_s0: Start state
+x17_s1: Dialog display
+x17_s1_e0: [FE] Display window only for YES (specify object instance ID)
+x17_s2: Rerun
+x17_s2_e0: [System] Re-execution notification
+x17_s3: End state
+x18: [Reproduction] Spring of recovery
+x18_p0: OBJ instance ID of the bug key
+x18_p1: Hit group ID
+x18_p2: Replacement GMID
+x18_p3: Switching GM slot
+x18_s0: Start state
+x18_s1: Is the insect key activated?
+x18_s2: Water OBJ: OBJ state transition: 20
+x18_s2_e0: [OBJ] OBJ state transition request
+x18_s3: Enable recovery
+x18_s3_e0: [Map] Switching the ground material
+x18_s4: Activated
+x18_s5: Not running
+x19: [Condition] Spring of recovery
+x19_p0: OBJ instance ID of the bug key
+x19_s0: Start state
+x19_s1: Waiting for insect key activation
+x19_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x19_s2: End state
+x20: [Execution] Recovery Fountain
+x20_p0: Hit group ID
+x20_p1: Replacement GMID
+x20_p2: Switching GM slot
+x20_s0: Start state
+x20_s1: Water OBJ: OBJ state transition: 70
+x20_s1_e0: [OBJ] OBJ state transition request
+x20_s2: Enable recovery
+x20_s2_e0: [Map] Switching the ground material
+x20_s3: Waiting for the end of anime
+x20_s4: End state
+x21: [Private] [Asynchronous] [Condition] Guest Bug Key
+x21_p0: Object instance ID
+x21_s0: Start state
+x21_s1: OBJ standby
+x21_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x21_s2: End state
+x22: [Lib] [execution] dummy
+x22_s0: Start state
+x22_s1: End state
+x23: [Lib] [Preset] Recovery Fountain
+x23_p0: OBJ instance ID of the bug key
+x23_p1: Hit group ID
+x23_p2: Replacement GMID
+x23_p3: Switching GM slot
+x23_s0: Start state
+x23_s1: [Reproduction] Recovery Fountain_SubState
+x23_s2: [Execution] Recovery Fountain_SubState
+x23_s3: [Condition] Recovery Fountain_SubState
+x23_s4: End state
+x24: [Reproduction] Hidden door 1_face SFX
+x24_p0: OBJ instance ID of the bug key
+x24_p1: Event light ID
+x24_s0: Start state
+x24_s1: Is the insect key activated?
+x24_s2: Event light reproduction judgment
+x24_s3: Event light ON
+x24_s3_e0: [Map] Point light effective setting
+x24_s4: Event light OFF
+x24_s4_e0: [Map] Point light effective setting
+x24_s5: Event light usage judgment
+x24_s6: Hidden door status judgment
+x24_s7: Hidden door lighting: 30
+x24_s7_e0: [OBJ] OBJ state transition request
+x24_s8: Activated
+x24_s9: Not started
+x25: [Conditions] Hidden door 1_Face SFX
+x25_p0: OBJ instance ID of the bug key
+x25_s0: Start state
+x25_s1: Waiting for insect key activation
+x25_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x25_s2: End state
+x26: [Execution] Hidden door 1_Face SFX
+x26_p0: OBJ instance ID of the bug key
+x26_p1: Event light ID
+x26_p2: Light fade time
+x26_p3: Wait until face SFX playback
+x26_s0: Start state
+x26_s1: Event light ON
+x26_s1_e0: [Map] Point light effective setting
+x26_s2: Event light usage judgment
+x26_s3: Hidden door OBJ state transition: 30
+x26_s3_e0: [OBJ] OBJ state transition request
+x26_s4: Hidden door OBJ state transition: 30
+x26_s4_e0: [OBJ] OBJ state transition request
+x26_s5: Wait until face SFX playback
+x26_s6: Finish
+x27: [Lib] [Preset] Hidden door 1_Face SFX
+x27_p0: OBJ instance ID of the bug key
+x27_p1: Event light ID
+x27_p2: Light fade time
+x27_p3: Wait until face SFX playback
+x27_s0: Start state
+x27_s1: [Reproduction] Hidden door 1_face SFX_SubState
+x27_s2: [Execution] Hidden door 1_face SFX_SubState
+x27_s3: [Condition] Hidden door 1_face SFX_SubState
+x27_s4: Finish
+x28: [Lib] [Reproduction] OBJ attach_sky
+x28_s0: Start state
+x28_s1: End state
+x29: [Lib] [Condition] OBJ attach_empty
+x29_s0: Start state
+x29_s1: End state
+x30: [Lib] [execute] OBJ attach
+x30_p0: Parent OBJ instance ID
+x30_p1: Parent Damipoli ID
+x30_p2: Child OBJ instance ID
+x30_s0: Start state
+x30_s1: OBJ attach
+x30_s1_e0: [OBJ] Attach OBJ to OBJ
+x30_s2: End state
+x31: [Lib] [Preset] OBJ attach
+x31_p0: Parent OBJ instance ID
+x31_p1: Parent Damipoli ID
+x31_p2: Child OBJ instance ID
+x31_s0: Start state
+x31_s1: [Lib] [Reproduction] OBJ attach_empty_SubState
+x31_s2: [Lib] [Execution] OBJ attach_SubState
+x31_s3: [Lib] [Condition] OBJ attach_empty_SubState
+x31_s4: End state
+x32: [Lib] [Preset] Switch Navimesh according to OBJ status
+x32_p0: Object instance ID
+x32_p1: OBJ state ID
+x32_p2: Navimesh switching point ID
+x32_p3: Additional attributes
+x32_p4: Delete attribute
+x32_s0: Start state
+x32_s1: [Lib] [Reproduction] Navi mesh switching according to OBJ state_SubState
+x32_s2: [Lib] [Execution] Navigation mesh switching according to OBJ state_SubState
+x32_s3: [Lib] [Conditions] Switching the navigation mesh according to the OBJ state_SubState
+x32_s4: End state
+x33: [Lib] [Reproduction] Navi mesh switching according to OBJ status
+x33_p0: Target OBJ instance ID
+x33_p1: Target OBJ state ID
+x33_p2: Navimesh switching point ID
+x33_p3: Additional attributes
+x33_p4: Delete attribute
+x33_s0: Start state
+x33_s1: OBJ status judgment
+x33_s2: Navimesh attribute change
+x33_s2_e0: [Map] Added Navimesh attribute
+x33_s2_e1: [Map] Navimesh attribute deletion
+x33_s3: Already started
+x33_s4: Not running
+x34: [Lib] [Condition] Switch to Navimesh according to OBJ status
+x34_p0: Target OBJ instance ID
+x34_p1: Target OBJ state ID
+x34_p2: Navimesh switching point ID
+x34_s0: Start state
+x34_s1: OBJ transition wait
+x34_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x34_s2: End state
+x35: [Lib] [Execution] Switch Navimesh according to OBJ status
+x35_p0: Target OBJ instance ID
+x35_p1: Target OBJ state ID
+x35_p2: Navimesh switching point ID
+x35_p3: Additional attributes
+x35_p4: Delete attribute
+x35_s0: Start state
+x35_s1: Navimesh attribute change
+x35_s1_e0: [Map] Added Navimesh attribute
+x35_s1_e1: [Map] Navimesh attribute deletion
+x35_s2: End state
+x36: [Lib] [Reproduction] Switch the connection flag when in the map
+x36_s0: Start state
+x36_s1: End state
+x37: [Lib] [Condition] Switch to connection flag when in map
+x37_s0: Start state
+x37_s1: Are you in the map?
+x37_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x37_s2: End state
+x38: [Lib] [Execution] Switch to connection flag when in map
+x38_p0: Global event flag for connection
+x38_p1: Flag switching
+x38_s0: Start state
+x38_s1: Switch global event flag for connection
+x38_s1_e0: [Flag] Set flag
+x38_s2: Wait for flag transition
+x38_s2_e0: [Group condition: Flag] Event flag comparison
+x38_s3: For next judgment: Did you get out of the map?
+x38_s3_e0: [Group condition: Map] Judgment that the player is in the map
+x38_s4: End state
+x39: [Lib] [Preset] Switch the connection flag when in the map
+x39_p0: Global event flag for connection
+x39_p1: Flag switching
+x39_s0: Start state
+x39_s1: [Lib] [Reproduction] Switch connection flag when in map_SubState
+x39_s2: [Lib] [Execution] Switch to connection flag when in map _SubState
+x39_s3: [Lib] [Condition] Switch to the connection flag when in the map_SubState
+x39_s4: End state
+x40: [Lib] NPC White Phantom Appearance: Unconditional
+x40_p0: Generator ID
+x40_s0: Start state
+x40_s1: Appearance: Start
+x40_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x40_s2: Appearance: Phantom appearance permission
+x40_s2_e0: [Generator] NPC spirit body generation
+x40_s3: Appearance: System: End
+x40_s3_e0: [System] Termination notification
+x40_s4: End state
+x41: [Lib] [Reproduction] Rebirth fire _ sky
+x41_s0: Start state
+x41_s1: End state
+x42: [Lib] [execute] Rebirth fire
+x42_p0: Flag start ID
+x42_p1: Flag end ID
+x42_s0: Start state
+x42_s1: Flag reset
+x42_s1_e0: [Flag] Set the flags within the specified range set in the parameter.
+x42_s2: End state
+x43: [Lib] [Condition] Rebirth fire_sky
+x43_s0: Start state
+x43_s1: End state
+x44: [Lib] [Preset] Rebirth
+x44_p0: Flag start ID
+x44_p1: Flag end ID
+x44_s0: Start state
+x44_s1: [Lib] [Reproduction] Reproduction of fire_sky_SubState
+x44_s2: [Lib] [Execution] Regenerative fire _SubState
+x44_s3: [Lib] [Condition] Reproduction fire_Sky_SubState
+x44_s4: End state
+x45: [Lib] NPC: White Phantom: Summoning Count: General
+x45_p0: Defeat Boss 1: Area and other flags
+x45_p1: Summon Achievement: Global Event Flag
+x45_p2: Summon achievement count: global variable
+x45_p3: NPC information parameter ID
+x45_s0: Start state
+x45_s1: Summon: Start
+x45_s2: Summon: Defeat Boss: Wait
+x45_s2_e0: [Group condition: Flag] Event flag comparison
+x45_s3: Summon: Achievement setting
+x45_s3_e0: [Flag] Set flag
+x45_s3_e1: [Group condition: Flag] Event flag comparison
+x45_s4: Summon: Achievement Judgment
+x45_s4_e0: [Group condition: Flag] Event flag comparison
+x45_s5: Summon: System: End
+x45_s5_e0: [System] Termination notification
+x45_s6: Summon: Count of summons
+x45_s6_e0: [Flag] Global variable addition
+x45_s7: Summon: Achievement Judgment
+x45_s7_e0: [Group condition: Flag] Event variable comparison
+x45_s8: End state
+x46: [Lib] NPC Black Phantom Appearance: Online: Unconditional
+x46_p0: Summon range
+x46_p1: Generator ID
+x46_p2: Appearance: Minimum time
+x46_p3: Appearance: Maximum time
+x46_s0: Start state
+x46_s1: Black Phantom Appearance: Start
+x46_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x46_s2: Black Phantom Appearance: Summoning Conditions: Standby
+x46_s2_e0: [Group condition: Character] Judgment within player points
+x46_s3: Black Phantom Appearance: Timer: Start
+x46_s3_e0: [Group condition: Event] State elapsed time comparison
+x46_s3_e1: [Group condition: Character] Judgment within player points
+x46_s4: Black Phantom Appearance: System: End
+x46_s4_e0: [System] Termination notification
+x46_s5: Black phantom appearance: Black phantom generation
+x46_s5_e0: [Generator] NPC spirit body generation
+x46_s6: Black Phantom Appearance: System: Re-execution
+x46_s6_e0: [System] Re-execution notification
+x46_s7: [DC] Is it in game?
+x46_s8: End state
+x47: [Lib] NPC Black Phantom Appearance: Offline: Unconditional
+x47_p0: Summon range
+x47_p1: Generator ID
+x47_p2: Appearance: Minimum time
+x47_p3: Appearance: Maximum time
+x47_s0: Start state
+x47_s1: Black Phantom Appearance: Start
+x47_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x47_s2: Black Phantom Appearance: Summoning Conditions: Standby
+x47_s2_e0: [Group condition: Character] Judgment within player points
+x47_s2_e1: [Group condition: Net] Offline judgment
+x47_s3: Black Phantom Appearance: Timer: Start
+x47_s3_e0: [Group condition: Event] State elapsed time comparison
+x47_s3_e1: [Group condition: Character] Judgment within player points
+x47_s3_e2: [Group condition: Net] Offline judgment
+x47_s4: Black Phantom Appearance: System: End
+x47_s4_e0: [System] Termination notification
+x47_s5: Black phantom appearance: Black phantom generation
+x47_s5_e0: [Generator] NPC spirit body generation
+x47_s6: Black Phantom Appearance: System: Re-execution
+x47_s6_e0: [System] Re-execution notification
+x47_s7: Black Phantom Appearance: Online
+x47_s7_e0: [Group condition: Net] Offline judgment
+x47_s8: Black Phantom Appearance: Online
+x47_s8_e0: [Group condition: Net] Offline judgment
+x47_s9: Black Phantom Appearance: Sign removed
+x47_s9_e0: [Generator] Delete NPC spirit body
+x47_s10: [DC] Is it in game?
+x47_s11: End state
+x48: [Lib] [Preset] Get trophy
+x48_p0: Acquisition trigger_other flags
+x48_p1: Trophy type
+x48_s0: Start state
+x48_s1: Have you acquired a trophy?
+x48_s2: Wait for specified flag
+x48_s2_e0: [Group condition: Flag] Event flag comparison
+x48_s3: Trophy acquisition
+x48_s3_e0: [Others] Trophy cancellation
+x48_s4: End state
+x49: [Lib] NPC White Phantom Appearance: General-purpose: Single
+x49_p0: White Phantom can appear: Global event flag
+x49_p1: White Phantom: Generator ID
+x49_p2: Death: Global event flag
+x49_p3: Hostile: Global event flag
+x49_p4: Body: Generator ID
+x49_s0: Start state
+x49_s1: Appearance: Start
+x49_s1_e0: [Generator] Delete NPC spirit body
+x49_s1_e1: [Group condition: Map] Judgment that the player is in the map
+x49_s2: Appearance: Phantom sign Appearance: Judgment
+x49_s2_e0: [Group condition: Flag] Event flag comparison
+x49_s2_e1: [Group condition: Flag] Event flag comparison
+x49_s2_e2: [Group condition: Flag] Event flag comparison
+x49_s3: Appearance: Phantom sign display: Permission
+x49_s3_e0: [Generator] NPC spirit body generation
+x49_s4: Appearance: System: End
+x49_s4_e0: [System] Termination notification
+x49_s5: Appearance: System: Rerun
+x49_s5_e0: [System] Re-execution notification
+x49_s6: Appearance: Phantom is appearing: Waiting
+x49_s6_e0: [Group condition: Net] NPC spirit body generation judgment
+x49_s7: Appearance: Sign & Phantom: Stop generation
+x49_s7_e0: [Generator] Delete NPC spirit body
+x49_s8: Appearance: Phantom sign displayed: Waiting
+x49_s8_e0: [Group condition: Flag] Event flag comparison
+x49_s8_e1: [Group condition: Flag] Event flag comparison
+x49_s8_e2: [Group condition: Net] NPC spirit body generation judgment
+x49_s9: Appearance: Sign & Phantom: Not allowed
+x49_s9_e0: [Generator] Delete NPC spirit body
+x49_s10: Appearance: Hostile: Standby
+x49_s10_e0: [Group condition: Flag] Event flag comparison
+x49_s10_e1: [Group condition: Flag] Event flag comparison
+x49_s11: End state
+x50: [Lib] [Preset] Kanemori_Net reception
+x50_p0: Event sound ID for bell
+x50_p1: Wait 1 after SE playback
+x50_p2: Wait 2 after SE playback
+x50_p3: Wait 3 after playing SE
+x50_s0: Start state
+x50_s1: [Lib] [Reproduction] Kanemori_Net reception_SubState
+x50_s2: [Lib] [Execution] Kanemori_Net reception_SubState
+x50_s3: [Lib] [Conditions] Kanemori_Net reception_SubState
+x50_s4: End state
+x51: [Lib] [Reproduction] Kanemori_Net reception
+x51_s0: Start state
+x51_s1: End state
+x52: [Lib] [Conditions] Kanemori_Net reception
+x52_s0: Start state
+x52_s1: Waiting for reception: If a host dies in a multiplayer, it will not be played back
+x52_s1_e0: [Group condition: Net] Judgment of receiving a ringing bell for pledge
+x52_s1_e1: [Group condition: Net] Host death judgment
+x52_s1_e2: [Group condition: Net] Judgment of receiving a ringing bell for pledge
+x52_s1_e3: [Group condition: Net] Host death judgment
+x52_s1_e4: [Group condition: Net] Multi-play judgment
+x52_s2: Have you finished multiplayer?
+x52_s2_e0: [Group condition: Net] Multi-play judgment
+x52_s3: Reception: Bell ringing process
+x53: [Lib] [Execution] Kanemori_Net reception_Playback
+x53_p0: Event sound ID for bell
+x53_p1: Wait 1 after SE playback
+x53_p2: Wait 2 after SE playback
+x53_p3: Wait 3 after playing SE
+x53_s0: Start state
+x53_s1: Ring the bell: first time
+x53_s1_e0: [Sound] Sound playback with point designation
+x53_s2: Clear reception history
+x53_s2_e0: [Net] Clear the reception history of ringing bell for bell guard pledge
+x53_s3: Clear confirmation of received history
+x53_s3_e0: [Group condition: Net] Judgment of receiving a ringing bell for pledge
+x53_s4: Ring the bell: second time
+x53_s4_e0: [Sound] Sound playback with point designation
+x53_s5: Ring the bell: 3rd time
+x53_s5_e0: [Sound] Sound playback with point designation
+x53_s6: End state
+x54: [Lib] [reproduction] Kanemori _ judgment of lever use of Kanemori spirit
+x54_p0: Lever OBJ instance ID
+x54_s0: Start state
+x54_s1: Host?
+x54_s2: Disable key guide
+x54_s2_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x54_s3: Guest: Spirit guard
+x54_s4: Host: Exit
+x55: [Lib] [Conditions] Kanemori _ Judgment spirit lever usage judgment
+x55_s0: Start state
+x55_s1: Has the host died?
+x55_s1_e0: [Group condition: Net] Host death judgment
+x55_s2: Bell guard spirit: lever operation possible
+x56: [Lib] [Execution] Kanemori _ Judgment Spirit use lever judgment
+x56_p0: Lever OBJ instance ID
+x56_s0: Start state
+x56_s1: Activate key guide
+x56_s1_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x56_s2: Finish
+x57: [Lib] [Preset] Kanemori _ Judgment Spirit's lever usage judgment
+x57_p0: Lever OBJ instance ID
+x57_s0: Start state
+x57_s1: [Lib] [Reproduction] Kanemori _ Jerusalem Spirit Lever Use Judgment_SubState
+x57_s2: [Lib] [Execution] Kanemori_Legend of lever guard_SubState
+x57_s3: [Lib] [Conditions] Kanemori_Bellguard spirit lever usage judgment_SubState
+x57_s4: Finish
+x58: [Lib] [Preset] Bell guard_bell lever
+x58_p0: Lever_OBJ instance ID
+x58_p1: Bell 1_OBJ instance ID
+x58_p2: Bell 2_OBJ instance ID
+x58_p3: Bell 3_OBJ instance ID
+x58_p4: Bell 4_OBJ instance ID
+x58_p5: Door OBJ instance ID
+x58_p6: White door OBJ instance ID
+x58_p7: Navigation change point ID
+x58_s0: Start state
+x58_s1: [Lib] [Reproduction] Bell guard_Lever that bell rings_SubState
+x58_s2: [Lib] [execution] bell guard_bell lever_guest_SubState
+x58_s3: [Lib] [Conditions] Bell guard_Lever that rings bell_SubState
+x58_s4: [Lib] [execution] bell guard_bell lever_host_SubState
+x58_s5: [Lib] [Execution] Bell guard_Lever that bell rings_Navigation change_SubState
+x58_s6: [Lib] [Conditions] Bell guard_Lever that rings bell_Guest_SubState
+x58_s7: Rerun
+x58_s8: Guest termination
+x59: [Lib] [reproduction] bell guard _ bell ringing lever
+x59_p0: Door OBJ instance ID
+x59_p1: White door OBJ instance ID
+x59_p2: Navigation change point ID
+x59_s0: Start state
+x59_s1: Is the door open?
+x59_s2: White door key guide disabled
+x59_s2_e0: [OBJ] Disable the key guide for the white door (specify instance ID)
+x59_s3: Host?
+x59_s4: Navimesh change: passable
+x59_s4_e0: [Map] Navimesh attribute deletion
+x59_s5: host
+x59_s6: Guest termination
+x60: [Lib] [Conditions] Bell guard_bell lever
+x60_p0: OBJ instance ID of the lever
+x60_s0: Start state
+x60_s1: Lever standby
+x60_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x60_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x60_s1_e2: [Group condition: System] Group condition is satisfied
+x60_s1_e3: [Group condition: Net] Host death judgment
+x60_s1_e4: [Group condition: OBJ] OBJ state ID comparison
+x60_s1_e5: [Group condition: OBJ] OBJ state ID comparison
+x60_s1_e6: [Group condition: System] Group condition is satisfied
+x60_s1_e7: [Group condition: Net] Host death judgment
+x60_s2: Host is alive: Host processing
+x60_s3: Host dies: guest processing
+x61: [Lib] [Execution] Kanemori_Lever that rings the bell_Host
+x61_p0: Lever_OBJ instance ID
+x61_p1: Bell 1_OBJ instance ID
+x61_p2: Bell 2_OBJ instance ID
+x61_p3: Bell 3_OBJ instance ID
+x61_p4: Bell 4_OBJ instance ID
+x61_p5: Door OBJ instance ID
+x61_p6: White door OBJ instance ID
+x61_p7: Navigation change point ID
+x61_s0: Start state
+x61_s1: Ring bell 1-4
+x61_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x61_s1_e1: [OBJ] OBJ state transition request (with instance ID specified)
+x61_s1_e2: [OBJ] OBJ state transition request (with instance ID specified)
+x61_s1_e3: [OBJ] OBJ state transition request (with instance ID specified)
+x61_s2: Lever key guide disabled
+x61_s2_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x61_s3: Lever key guide enabled
+x61_s3_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x61_s4: Bell 1 animation end
+x61_s4_e0: [Group condition: OBJ] OBJ state ID comparison
+x61_s5: Judgment of door
+x61_s5_e0: [Group condition: OBJ] OBJ state ID comparison
+x61_s5_e1: [Group condition: OBJ] OBJ state ID comparison
+x61_s6: Open the door: 70
+x61_s6_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x61_s7: Door animation end judgment
+x61_s7_e0: [Group condition: OBJ] OBJ state ID comparison
+x61_s8: Bell 1 animation playback judgment
+x61_s8_e0: [Group condition: OBJ] OBJ state ID comparison
+x61_s9: Ringing bell judgment
+x61_s10: Ring bell 1
+x61_s10_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x61_s11: Bell 1-4 animation playback judgment
+x61_s11_e0: [Group condition: OBJ] OBJ state ID comparison
+x61_s11_e1: [Group condition: OBJ] OBJ state ID comparison
+x61_s11_e2: [Group condition: OBJ] OBJ state ID comparison
+x61_s11_e3: [Group condition: OBJ] OBJ state ID comparison
+x61_s12: Bell 1 ~ 4 anime end judgment
+x61_s12_e0: [Group condition: OBJ] OBJ state ID comparison
+x61_s12_e1: [Group condition: OBJ] OBJ state ID comparison
+x61_s12_e2: [Group condition: OBJ] OBJ state ID comparison
+x61_s12_e3: [Group condition: OBJ] OBJ state ID comparison
+x61_s13: Enable key guide for white door
+x61_s13_e0: [OBJ] Disable the key guide for the white door (specify instance ID)
+x61_s14: Navimesh change: passable
+x61_s14_e0: [Map] Navimesh attribute deletion
+x61_s15: End state
+x62: [Lib] [execution] Kanemori _ Lever singing bell _ Guest
+x62_p0: Lever_OBJ instance ID
+x62_p1: Bell 1_OBJ instance ID
+x62_p2: Bell 2_OBJ instance ID
+x62_p3: Bell 3_OBJ instance ID
+x62_p4: Bell 4_OBJ instance ID
+x62_s0: Start state
+x62_s1: Ring bell 1-4
+x62_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x62_s1_e1: [OBJ] OBJ state transition request (with instance ID specified)
+x62_s1_e2: [OBJ] OBJ state transition request (with instance ID specified)
+x62_s1_e3: [OBJ] OBJ state transition request (with instance ID specified)
+x62_s2: Bell 1 animation end
+x62_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x62_s3: Ringing the bell_server information
+x62_s3_e0: [Net] Notify that the bell for the bell guard pledge was sounded
+x62_s4: Bell 1 animation playback judgment
+x62_s4_e0: [Group condition: OBJ] OBJ state ID comparison
+x62_s5: Ringing bell judgment
+x62_s6: Ring bell 1
+x62_s6_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x62_s7: Anime end judgment for bells 1 to 4_2
+x62_s7_e0: [Group condition: OBJ] OBJ state ID comparison
+x62_s7_e1: [Group condition: OBJ] OBJ state ID comparison
+x62_s7_e2: [Group condition: OBJ] OBJ state ID comparison
+x62_s7_e3: [Group condition: OBJ] OBJ state ID comparison
+x62_s8: Bell ringing_server information transmission_2
+x62_s8_e0: [Net] Notify that the bell for the bell guard pledge was sounded
+x62_s9: Bell 1-4 animation playback judgment
+x62_s9_e0: [Group condition: OBJ] OBJ state ID comparison
+x62_s9_e1: [Group condition: OBJ] OBJ state ID comparison
+x62_s9_e2: [Group condition: OBJ] OBJ state ID comparison
+x62_s9_e3: [Group condition: OBJ] OBJ state ID comparison
+x62_s10: End state
+x63: [Lib] [Reproduction] Special bonfire at the end
+x63_p0: Lighting completion flag
+x63_s0: Start state
+x63_s1: Is the bonfire already lit?
+x63_s2: Unlit
+x63_s3: Already lit
+x64: [Lib] [Condition] Terminal special fire
+x64_p0: Bonfire OBJ instance ID
+x64_s0: Start state
+x64_s1: Judgment to examine
+x64_s1_e0: [Group condition: OBJ] Judgment to examine OBJ
+x64_s2: End state
+x65: [Lib] [Execution] End special bonfire_ignition
+x65_p0: Bonfire OBJ instance ID
+x65_p1: Lighting completion flag
+x65_s0: Start state
+x65_s1: Production FE display
+x65_s1_e0: [FE] Open the production FE window
+x65_s2: Event message display
+x65_s2_e0: [FE] Event window display
+x65_s3: Lighting completion flag ON
+x65_s3_e0: [Flag] Set flag
+x65_s4: Waiting for non-display of production FE
+x65_s5: Bonfire ignition
+x65_s5_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x65_s6: Bonfire light action
+x65_s6_e0: [Character action] Request action from player
+x65_s7: Wait for action to finish
+x65_s7_e0: [Group condition: Event] State elapsed time comparison
+x65_s7_e1: [Group condition: Character] Player event action judgment
+x65_s8: End state
+x66: [Lib] [Execution] End special bonfire_warp
+x66_p0: Bonfire OBJ instance ID
+x66_p1: Lighting completion flag
+x66_s0: Start state
+x66_s1: Warp PC action
+x66_s1_e0: [Character action] Request action from player
+x66_s2: Wait for action to finish
+x66_s2_e0: [Group condition: Event] State elapsed time comparison
+x66_s2_e1: [Group condition: Character] Player event action judgment
+x66_s3: Warp SFX playback PC invincible
+x66_s3_e0: [SFX] Play SFX from yourself
+x66_s3_e1: [Status] Player invincibility setting
+x66_s4: Invincible OFF
+x66_s4_e0: [Status] Player invincibility setting
+x66_s5: [Lib] Warp between maps after poly play_SubState
+x66_s6: End state
+x67: [Lib] [Preset] Special bonfire at the end
+x67_p0: Bonfire OBJ instance ID
+x67_p1: Lighting completion flag
+x67_s0: Start state
+x67_s1: [Lib] [Reproduction] End special bonfire _SubState
+x67_s2: [Lib] [Execution] End special bonfire_warp_SubState
+x67_s3: [Lib] [Execution] End special bonfire_At ignition_SubState
+x67_s4: [Lib] [Condition] End special bonfire_SubState
+x67_s5: [Lib] [Condition] End special bonfire_2_SubState
+x67_s6: Rerun
+x68: [Lib] [Preset] Trophy Acquisition_Global
+x68_p0: Acquisition trigger_global flag
+x68_p1: Trophy type
+x68_s0: Start state
+x68_s1: Have you acquired a trophy?
+x68_s2: Wait for specified flag
+x68_s2_e0: [Group condition: Flag] Event flag comparison
+x68_s3: Trophy acquisition
+x68_s3_e0: [Others] Trophy cancellation
+x68_s4: End state
+x69: [Lib] [Reproduction] Shop Lineup
+x69_p0: Global flag for shop
+x69_s0: Start state
+x69_s1: Is the shop flag already ON?
+x69_s2: OFF: Judgment
+x69_s3: ON: End
+x70: [Lib] [Conditions] Shop lineup
+x70_p0: Bonfire ID
+x70_p1: Boss destruction flag
+x70_s0: Start state
+x70_s1: Is the total number of laps 2 or more and is the boss destroyed?
+x70_s1_e0: [Group condition: Other] Comparison of laps
+x70_s1_e1: [Group condition: Flag] Event flag comparison
+x70_s2: End state
+x71: [Lib] [execution] shop lineup
+x71_p0: Global flag for shop
+x71_s0: Start state
+x71_s1: Shop flag ON
+x71_s1_e0: [Flag] Set flag
+x71_s2: End state
+x72: [Lib] [Preset] Shop Lineup
+x72_p0: Bonfire ID
+x72_p1: Boss destruction flag
+x72_p2: Global flag for shop
+x72_s0: Start state
+x72_s1: [Lib] [Reproduction] Shop Lineup_SubState
+x72_s2: [Lib] [Execution] Shop Lineup_SubState
+x72_s3: [Lib] [Conditions] Shop lineup_SubState
+x72_s4: End state
+x73: [Lib] [Conditions] Kanemori _ Lever that rings the bell _ Guest
+x73_p0: Door OBJ instance ID
+x73_s0: Start state
+x73_s1: Waiting for the door to open
+x73_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x73_s2: End state
+x74: [Lib] [execution] bell guard_bell change lever_navigation change
+x74_p0: Door OBJ instance ID
+x74_p1: Navigation change point ID
+x74_s0: Start state
+x74_s1: Navimesh change: passable
+x74_s1_e0: [Map] Navimesh attribute deletion
+x74_s2: End state
+x75: [Lib] [DLC] [Reproduction] Warp move between main part and DLC
+x75_p0: Warp OBJ instance ID
+x75_s0: Start state
+x75_s1: Warp OBJ state initialization
+x75_s1_e0: [OBJ] Initialize OBJ state
+x75_s2: End state
+x76: [Lib] [DLC] [Conditions] Warp move between main part and DLC
+x76_p0: Warp OBJ instance ID
+x76_s0: Start state
+x76_s1: It became waiting to check or multi
+x76_s1_e0: [Group condition: OBJ] Judgment to examine OBJ
+x76_s1_e1: [Group condition: Net] Multi-play judgment
+x76_s2: Is it single play?
+x76_s2_e0: [Group condition: Net] Multi-play judgment
+x76_s3: Activate key guide
+x76_s3_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x76_s4: Warp execution
+x76_s5: Key guide disabled
+x77: [Lib] [DLC] [Execution] Warp move between main part and DLC
+x77_p0: Warp OBJ instance ID
+x77_p1: Map ID
+x77_p2: Warp point ID
+x77_s0: Start state
+x77_s1: Disable key guide
+x77_s1_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x77_s2: Multiplayer prohibited state: ON
+x77_s2_e0: [Net] No multiplayer
+x77_s3: Save execution
+x77_s3_e0: [Others] Save execution
+x77_s4: Warp PC action
+x77_s4_e0: [Character action] Request action from player
+x77_s5: Wait for action to finish
+x77_s5_e0: [Group condition: Event] State elapsed time comparison
+x77_s5_e1: [Group condition: Character] Player event action judgment
+x77_s6: Warp SFX playback PC invincible
+x77_s6_e0: [SFX] Play SFX from yourself
+x77_s6_e1: [Status] Player invincibility setting
+x77_s7: Invincible OFF
+x77_s7_e0: [Status] Player invincibility setting
+x77_s8: Multiplayer prohibited state: OFF
+x77_s8_e0: [Net] No multiplayer
+x77_s9: [Lib] Warp between maps after poly play_SubState
+x77_s10: End state
+x78: [Lib] [DLC] [Execution] Warp move of main part and DLC_Key guide disabled
+x78_p0: Warp OBJ instance ID
+x78_s0: Start state
+x78_s1: Disable key guide
+x78_s1_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x78_s2: End state
+x79: [Lib] [Preset] Warp move between main part and DLC
+x79_p0: Warp OBJ instance ID
+x79_p1: Map ID
+x79_p2: Warp point ID
+x79_s0: Start state
+x79_s1: [Lib] [DLC] [Reproduction] Warp move of the main part and DLC_SubState
+x79_s2: [Lib] [DLC] [Execution] Warp move between main part and DLC_SubState
+x79_s3: [Lib] [DLC] [Execution] Warp move between main volume and DLC_Key guide disabled_SubState
+x79_s4: [Lib] [DLC] [Condition] Warp move between main part and DLC_SubState
+x79_s5: End state
+x80: [Lib] [BEST] [Condition] Andyel_Appearance_Termination
+x80_p0: Ander OBJ instance ID
+x80_s0: Start state
+x80_s1: Judgment to examine the deal
+x80_s1_e0: [Group condition: OBJ] Judgment to examine OBJ
+x80_s2: End state
+x81: [Lib] [BEST] [Execution] Andyel_Appearance_Termination
+x81_p0: Ander OBJ instance ID
+x81_p1: Conversation start flag
+x81_p2: Encounter flag
+x81_s0: Start state
+x81_s1: Andyir Appearance: 72
+x81_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x81_s2: Waiting for Andyur to appear
+x81_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x81_s3: Conversation start flag ON
+x81_s3_e0: [Flag] Set flag
+x81_s4: Bonfire light action
+x81_s4_e0: [Character action] Request action from player
+x81_s5: Wait for action to finish
+x81_s5_e0: [Group condition: Event] State elapsed time comparison
+x81_s5_e1: [Group condition: Character] Player event action judgment
+x81_s6: Andel encounter flag ON
+x81_s6_e0: [Flag] Set flag
+x81_s7: End state
+x81_s8: Rerun
+x82: [Lib] [BEST] [Conditions] Ander_Destruction_End_Termination
+x82_p0: Event completion flag
+x82_s0: Start state
+x82_s1: Completion flag judgment
+x82_s1_e0: [Group condition: Flag] Event flag comparison
+x82_s2: End state
+x83: [Lib] [BEST] [Execution] Andel_Deletion_End
+x83_p0: Ander OBJ instance ID
+x83_s0: Start state
+x83_s1: Andyel disappearance: 71
+x83_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x83_s2: Waiting for Andyel disappearance
+x83_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x83_s3: End state
+x84: [Lib] [BEST] [Reproduction] Anderl_Appearance determination_Termination
+x84_p0: Ander OBJ instance ID
+x84_p1: Event completion flag
+x84_p2: Conversation start flag
+x84_p3: Encounter flag
+x84_s0: Start state
+x84_s1: Host?
+x84_s2: Has the event been completed?
+x84_s3: Was it in conversation?
+x84_s4: Was it in the middle of appearance?
+x84_s5: Wait for completion
+x84_s6: Conversation start flag ON
+x84_s6_e0: [Flag] Set flag
+x84_s7: Was the appearance confirmed?
+x84_s8: Standby state: 30
+x84_s8_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x84_s9: Finish
+x84_s10: Disappearance judgment
+x84_s11: Appearance determination
+x85: [Lib] [BEST] [Reproduction] Ander _ annihilation judgment _ terminal _ empty
+x85_s0: Start state
+x85_s1: End state
+x86: [Lib] [BEST] [Preset] Andyel_Termination
+x86_p0: Ander OBJ instance ID
+x86_p1: Event completion flag
+x86_p2: Encounter flag
+x86_p3: Conversation start flag
+x86_p4: Lighting completion flag
+x86_p5: Bonfire lighting judgment flag ①
+x86_p6: Bonfire lighting judgment flag ②
+x86_p7: Bonfire lighting judgment flag ③
+x86_s0: Start state
+x86_s1: [Lib] [BEST] [Reproduction] Ander_Appearance_Termination_Empty_SubState
+x86_s2: [Lib] [BEST] [Reproduction] Ander _ Appearance determination _ Termination _ SubState
+x86_s3: [Lib] [BEST] [Reproduction] Ander _ annihilation judgment _ terminal _ empty _ SubState
+x86_s4: [Lib] [BEST] [Execution] Andel_Appearance_Termination_SubState
+x86_s5: [Lib] [BEST] [Execution] Andel_Appearance determination_Termination_SubState
+x86_s6: [Lib] [BEST] [Execution] Andel_Destruction_End_SubState
+x86_s7: [Lib] [BEST] [Condition] Ander_Appearance_Termination_SubState
+x86_s8: [Lib] [BEST] [Condition] Ander_Appearance determination_Termination_SubState
+x86_s9: [Lib] [BEST] [Conditions] Ander_Deletion_Termination_Termination_SubState
+x86_s10: Finish
+x86_s11: Rerun
+x87: [Lib] [BEST] [Reproduction] SFX management of bonfire
+x87_p0: Ander OBJ instance ID
+x87_p1: Bonfire OBJ instance ID
+x87_s0: Start state
+x87_s1: Has the Andyir appeared?
+x87_s2: Turn on SFX
+x87_s2_e0: [OBJ] Disable OBJ SFX
+x87_s3: Incomplete
+x87_s4: Finish
+x88: [Lib] [BEST] [Condition] SFX management of bonfire
+x88_p0: Ander OBJ instance ID
+x88_s0: Start state
+x88_s1: Determining the status of the deal
+x88_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x88_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x88_s1_e2: [Group condition: OBJ] OBJ state ID comparison
+x88_s2: SFX off
+x88_s3: Turn on SFX
+x89: [Lib] [BEST] [Execution] Bonfire SFX Management_ON
+x89_p0: Ander OBJ instance ID
+x89_p1: Bonfire OBJ instance ID
+x89_s0: Start state
+x89_s1: Next judgment
+x89_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x89_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x89_s1_e2: [Group condition: OBJ] OBJ state ID comparison
+x89_s2: Enable SFX
+x89_s2_e0: [OBJ] Disable OBJ SFX
+x89_s3: Rerun
+x90: [Lib] [BEST] [execution] Bonfire SFX management_OFF
+x90_p0: Ander OBJ instance ID
+x90_p1: Bonfire OBJ instance ID
+x90_s0: Start state
+x90_s1: Next judgment
+x90_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x90_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x90_s1_e2: [Group condition: OBJ] OBJ state ID comparison
+x90_s2: Disable SFX
+x90_s2_e0: [OBJ] Disable OBJ SFX
+x90_s3: Rerun
+x91: [Lib] [BEST] [Preset] Bonfire SFX Management
+x91_p0: Ander OBJ instance ID
+x91_p1: Bonfire OBJ instance ID
+x91_s0: Start state
+x91_s1: [Lib] [BEST] [Reproduction] Bonfire SFX Management_SubState
+x91_s2: [Lib] [BEST] [Execution] SFX management of bonfire _OFF_SubState
+x91_s3: [Lib] [BEST] [Execute] Bonfire SFX Management_ON_SubState
+x91_s4: [Lib] [BEST] [Conditions] Bonfire SFX Management_SubState
+x91_s5: Finish
+x91_s6: Rerun
+x92: [Lib] [BEST] [Reproduction] Ander_Appearance_Termination_Empty
+x92_s0: Start state
+x92_s1: End state
+x93: [Lib] [BEST] [Conditions] Andyel_Appearance determination_Termination
+x93_p0: Ander OBJ instance ID
+x93_p1: Lighting completion flag
+x93_p2: Bonfire lighting judgment flag ①
+x93_p3: Bonfire lighting judgment flag ②
+x93_p4: Bonfire lighting judgment flag ③
+x93_p5: Andyur encounter flag
+x93_s0: Start state
+x93_s1: Andel appearance determination
+x93_s1_e0: [Group condition: Flag] Event flag comparison
+x93_s1_e1: [Group condition: Flag] Event flag comparison
+x93_s1_e2: [Group condition: Flag] Event flag comparison
+x93_s1_e3: [Group condition: Flag] Event flag comparison
+x93_s1_e4: [Group condition: Flag] Event flag comparison
+x93_s1_e5: [Group condition: Flag] Event flag comparison
+x93_s2: End state
+x93_s3: Rerun
+x94: [Lib] [BEST] [Execution] Andel_Appearance determination_Termination
+x94_p0: Ander OBJ instance ID
+x94_s0: Start state
+x94_s1: Andy key guide activation: 31
+x94_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x94_s2: End state
+x95: [Lib] [BEST] [Reproduction] Bonfire Key Guide Management
+x95_p0: Ander OBJ instance ID
+x95_p1: Bonfire OBJ instance ID
+x95_s0: Start state
+x95_s1: Has the Andyir appeared?
+x95_s2: Activate key guide for bonfire
+x95_s2_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x95_s3: Incomplete
+x95_s4: Finish
+x96: [Lib] [BEST] [Conditions] Key guide management for bonfire
+x96_p0: Ander OBJ instance ID
+x96_s0: Start state
+x96_s1: Determining the status of the deal
+x96_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x96_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x96_s2: OFF key guide
+x96_s3: Turn on key guide
+x97: [Lib] [BEST] [Execution] Bonfire Key Guide Management_ON
+x97_p0: Ander OBJ instance ID
+x97_p1: Bonfire OBJ instance ID
+x97_s0: Start state
+x97_s1: Next judgment
+x97_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x97_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x97_s2: Activate key guide for bonfire
+x97_s2_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x97_s3: Rerun
+x98: [Lib] [BEST] [Execution] Bonfire Key Guide Management_OFF
+x98_p0: Ander OBJ instance ID
+x98_p1: Bonfire OBJ instance ID
+x98_s0: Start state
+x98_s1: Next judgment
+x98_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x98_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x98_s2: Disabling bonfire key guide
+x98_s2_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x98_s3: Rerun
+x99: [Lib] [BEST] [Preset] Bonfire Key Guide Management
+x99_p0: Ander OBJ instance ID
+x99_p1: Bonfire OBJ instance ID
+x99_s0: Start state
+x99_s1: [Lib] [BEST] [Reproduction] Bonfire Key Guide Management_SubState
+x99_s2: [Lib] [BEST] [Execution] Bonfire Key Guide Management_OFF_SubState
+x99_s3: [Lib] [BEST] [Execution] Bonfire Key Guide Management_ON_SubState
+x99_s4: [Lib] [BEST] [Condition] Key guide management of bonfire _SubState
+x99_s5: Rerun
+x99_s6: Finish
+x100: [Lib] [DC] [Reproduction] Wanderer _ random lottery
+x100_p0: Lottery determination flag
+x100_p1: Defeat flag
+x100_s0: Start state
+x100_s1: Have you already drawn?
+x100_s2: Host?
+x100_s3: Already destroyed?
+x100_s4: Is it in game?
+x100_s5: Not drawn
+x100_s6: Lottery completed
+x100_s7: Guest: Exit
+x100_s8: Defeated
+x101: [Lib] [DC] [Condition] Wanderer_Random lottery
+x101_p0: Random number comparison value
+x101_s0: Start state
+x101_s1: Random number generation
+x101_s1_e0: [System] Obtains the clamped integer value
+x101_s2: Random number judgment [[DEBUG]] flag 109990 ON can be reliably attached
+x101_s2_e0: [Group condition: Event] Random number comparison
+x101_s2_e1: [Group condition: Flag] Event flag comparison
+x101_s3: Atari: Can be generated
+x101_s4: Lost: Cannot be generated
+x102: [Lib] [DC] [execution] wanderer_random lottery_atari
+x102_p0: Lottery determination flag
+x102_p1: Number of appearance judgment points
+x102_p2: Lottery result point variable
+x102_s0: Start state
+x102_s1: Lottery determination flag ON
+x102_s1_e0: [Flag] Set flag
+x102_s2: Appearance judging point lottery: random number generation
+x102_s2_e0: [System] Obtains the clamped integer value
+x102_s3: Lottery result point variable: random number substitution
+x102_s3_e0: [Flag] Area variable setting
+x102_s4: End state
+x103: [Lib] [DC] [Preset] Wanderer_Random lottery
+x103_p0: Lottery determination flag
+x103_p1: Random number comparison value
+x103_p2: Defeat flag
+x103_p3: Number of appearance judgment points
+x103_p4: Lottery result point variable
+x103_s0: Start state
+x103_s1: [Lib] [DC] [Reproduction] Wanderer_Random Drawing_SubState
+x103_s2: [Lib] [DC] [Execution] Wanderer_Random lottery_Atari_SubState
+x103_s3: [Lib] [DC] [Condition] Wanderer_Random lottery_SubState
+x103_s4: [Lib] [DC] [Execution] Wanderer_Random Lottery_Loose_SubState
+x103_s5: Defeated: Finished
+x103_s6: End of lottery
+x103_s7: Guest: Exit
+x104: [Lib] [DC] [Reproduction] Wanderer_Generation
+x104_p0: Appearance judgment number
+x104_p1: Lottery result point variable
+x104_s0: Start state
+x104_s1: Host?
+x104_s2: Is the appearance judgment point here?
+x104_s3: Is it in game?
+x104_s4: Finish
+x104_s5: Waiting for generation
+x105: [Lib] [DC] [Condition] Wanderer_Generation
+x105_p0: Appearance judgment point ID
+x105_p1: Minimum appearance time
+x105_p2: Maximum time to appear
+x105_s0: Start state
+x105_s1: Point judgment
+x105_s1_e0: [Group condition: Character] Judgment within player points
+x105_s2: Random weight
+x105_s2_e0: [Group condition: Event] State elapsed time comparison
+x105_s3: Generation
+x106: [Lib] [DC] [Execution] Wanderer_Generation
+x106_p0: Generator ID
+x106_p1: Appearance start point ID
+x106_p2: Appearance end point ID
+x106_s0: Start state
+x106_s1: Wanderer: Generation
+x106_s1_e0: [Generator] NPC spirit body generation
+x106_s2: Hostile / Friendship Judgment and Random Weight
+x106_s3: Randomly overwrite the initial position
+x106_s3_e0: [Generator] Overwrites the initial start position by randomly selecting from the specified point
+x106_s4: Finish
+x107: [Lib] [DC] [Reproduction] Wanderer_Destroy
+x107_p0: Defeat flag
+x107_s0: Start state
+x107_s1: Already destroyed?
+x107_s2: Host?
+x107_s3: Not defeated
+x107_s4: Defeated
+x108: [Lib] [DC] [Preset] Wanderer_Generation
+x108_p0: Intrusion detection point ID
+x108_p1: Minimum appearance time
+x108_p2: Maximum time to appear
+x108_p3: Generator ID
+x108_p4: Appearance judgment number
+x108_p5: Lottery result point variable
+x108_p6: Appearance start point ID
+x108_p7: Appearance end point ID
+x108_s0: Start state
+x108_s1: [Lib] [DC] [Reproduction] Wanderer_Generation_SubState
+x108_s2: [Lib] [DC] [Execution] Wanderer_Generation_SubState
+x108_s3: [Lib] [DC] [Condition] Wanderer_Generation_SubState
+x108_s4: Finish
+x109: [Lib] [DC] [Condition] Wanderer_Destroy
+x109_p0: Generator ID
+x109_p1: Wanderer equipment
+x109_s0: Start state
+x109_s1: Defeat determination
+x109_s1_e0: [Group condition: Character] Character death determination
+x109_s2: Wanderer equipment check
+x109_s3: Large sword
+x109_s4: Kama
+x110: [Lib] [DC] [Execution] Wanderer_Destroy
+x110_p0: Defeat flag
+x110_p1: Weapon flag
+x110_s0: Start state
+x110_s1: Defeat flag ON
+x110_s1_e0: [Flag] Set flag
+x110_s2: Head flag judgment
+x110_s2_e0: [Group condition: Flag] Event flag comparison
+x110_s3: Head flag ON
+x110_s3_e0: [Flag] Set flag
+x110_s4: Hand flag judgment
+x110_s4_e0: [Group condition: Flag] Event flag comparison
+x110_s5: Foot flag judgment
+x110_s5_e0: [Group condition: Flag] Event flag comparison
+x110_s6: Torso flag judgment
+x110_s6_e0: [Group condition: Flag] Event flag comparison
+x110_s7: Torso flag ON
+x110_s7_e0: [Flag] Set flag
+x110_s8: Hand flag ON
+x110_s8_e0: [Flag] Set flag
+x110_s9: Foot flag ON
+x110_s9_e0: [Flag] Set flag
+x110_s10: Weapon flag ON
+x110_s10_e0: [Flag] Set flag
+x110_s11: End state
+x111: [Lib] [DC] [Preset] Wanderer_Destroy
+x111_p0: Defeat flag
+x111_p1: Generator ID
+x111_p2: Wanderer equipment
+x111_s0: Start state
+x111_s1: [Lib] [DC] [Reproduction] Wanderer_Destroy_SubState
+x111_s2: [Lib] [DC] [execution] wanderer_defeat determination_sword ver_SubState
+x111_s3: [Lib] [DC] [Condition] Wanderer_Destroy_SubState
+x111_s4: [Lib] [DC] [Execution] Wanderer_Destroy_Kama ver_SubState
+x111_s5: End state
+x112: [Lib] [DC] [Execution] Wanderer_Random lottery_Loose
+x112_p0: Lottery determination flag
+x112_p1: Lottery result point variable
+x112_s0: Start state
+x112_s1: Lottery determination flag ON
+x112_s1_e0: [Flag] Set flag
+x112_s2: Lottery result point variable: Substitute 0
+x112_s2_e0: [Flag] Area variable setting
+x112_s3: End state
+x113: [Lib] [DC] [Reproduction] NPC White Spirit_Gesture Management
+x113_p0: Defeat flag
+x113_s0: Start state
+x113_s1: Has the boss been destroyed?
+x113_s2: Not defeated
+x113_s3: Defeated
+x114: [Lib] [DC] [Condition] NPC White Spirit_Gesture Management
+x114_p0: Boss generator ID
+x114_s0: Start state
+x114_s1: Has the boss's HP dropped below 0?
+x114_s1_e0: [Group condition: Character] HP value comparison
+x114_s2: End state
+x115: [Lib] [DC] [execution] NPC white spirit _ gesture management
+x115_p0: Gesture flag
+x115_s0: Start state
+x115_s1: Gesture flag ON
+x115_s1_e0: [Flag] Set flag
+x115_s2: End state
+x116: [Lib] [DC] [Preset] NPC White Spirit_Gesture Management
+x116_p0: Boss destruction flag
+x116_p1: Boss generator ID
+x116_p2: Gesture flag
+x116_s0: Start state
+x116_s1: [Lib] [DC] [Reproduction] NPC White Spirit_Gesture Management_SubState
+x116_s2: [Lib] [DC] [Execution] NPC White Spirit_Gesture Management_SubState
+x116_s3: [Lib] [DC] [Condition] NPC White Spirit_Gesture Management_SubState
+x116_s4: End state

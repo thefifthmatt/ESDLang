@@ -1,0 +1,1230 @@
+111512: OBJ: King of the mouse (Faros door): Tomb
+111512_s0: Start state
+111512_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111513: OBJ: Mouse king (Faros door): Key guide
+111513_s0: Start state
+111513_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+2000: Boss: Giant Mouse _ Battle
+2000_s0: Start state
+2000_s1: Finish
+2000_s1_e0: [System] Termination notification
+2000_s2: [Preset] Giant Mouse Battle_Start_SubState
+3000: Bug key A_ 檻
+3000_s0: Start state
+3000_s1: Finish
+3000_s1_e0: [System] Termination notification
+3000_s2: [Preset] Bug key _ 檻, hidden road _SubState
+4000: Bug key B_ 檻
+4000_s0: Start state
+4000_s1: Finish
+4000_s1_e0: [System] Termination notification
+4000_s2: [Preset] Bug key _ 檻, hidden road _SubState
+5000: Bug key C_ 檻
+5000_s0: Start state
+5000_s1: Finish
+5000_s1_e0: [System] Termination notification
+5000_s2: [Preset] Bug key _ 檻, hidden road _SubState
+6000: Bug Key D1_ Strong enemy
+6000_s0: Start state
+6000_s1: Finish
+6000_s1_e0: [System] Termination notification
+6000_s2: [Preset] Bug key _ 檻, hidden road _SubState
+8000: Bug key F_ 檻
+8000_s0: Start state
+8000_s1: Finish
+8000_s1_e0: [System] Termination notification
+8000_s2: [Preset] Bug key _ 檻, hidden road _SubState
+9000: Bug key G_ 檻
+9000_s0: Start state
+9000_s1: Finish
+9000_s1_e0: [System] Termination notification
+9000_s2: [Preset] Bug key _ 檻, hidden road _SubState
+10000: Bug Key H_Hidden Road
+10000_s0: Start state
+10000_s1: Finish
+10000_s1_e0: [System] Termination notification
+10000_s2: [Preset] Bug key _ 檻, hidden road _SubState
+11000: Bug key I1_ 檻
+11000_s0: Start state
+11000_s1: Finish
+11000_s1_e0: [System] Termination notification
+11000_s2: [Preset] Bug key _ 檻, hidden road _SubState
+12000: Bug Key J_Hidden Road
+12000_s0: Start state
+12000_s1: Finish
+12000_s1_e0: [System] Termination notification
+12000_s2: [Preset] Bug key _ 檻, hidden road _SubState
+13000: Bug Key K_Closed
+13000_s0: Start state
+13000_s1: Finish
+13000_s1_e0: [System] Termination notification
+13000_s2: [Preset] Bug key_Closed, Spike_SubState
+15000: Bug Key M_Dwarf Statue
+15000_s0: Start state
+15000_s1: Rerun
+15000_s1_e0: [System] Re-execution notification
+15000_s2: [Preset] Bug Key_Dwarf Statue_SubState
+16000: Bug Key N_ Launch Disc
+16000_s0: Start state
+16000_s1: Rerun
+16000_s1_e0: [System] Re-execution notification
+16000_s2: [Preset] Bug Key_Dwarf Statue, Launch Disc_SubState
+17000: Bug Key O_Dwarf Statue
+17000_s0: Start state
+17000_s1: Rerun
+17000_s1_e0: [System] Re-execution notification
+17000_s2: [Preset] Bug Key_Dwarf Statue_SubState
+18000: Bug Key P_Dwarf Statue
+18000_s0: Start state
+18000_s1: Rerun
+18000_s1_e0: [System] Re-execution notification
+18000_s2: [Preset] Bug Key_Dwarf Statue_SubState
+19000: Bug key Q_ 檻
+19000_s0: Start state
+19000_s1: Finish
+19000_s1_e0: [System] Termination notification
+19000_s2: [Preset] Bug key _ 檻, hidden road _SubState
+20000: Bug Key R_Hidden Road
+20000_s0: Start state
+20000_s1: Finish
+20000_s1_e0: [System] Termination notification
+20000_s2: [Preset] Bug key _ 檻, hidden road _SubState
+21000: Bug Key S_Dwarf Statue
+21000_s0: Start state
+21000_s1: Rerun
+21000_s1_e0: [System] Re-execution notification
+21000_s2: [Preset] Bug Key_Dwarf Statue_SubState
+22000: Bug Key T_Dwarf Statue
+22000_s0: Start state
+22000_s1: Rerun
+22000_s1_e0: [System] Re-execution notification
+22000_s2: [Preset] Bug Key_Dwarf Statue_SubState
+23000: Bug key U1
+23000_s0: Start state
+23000_s1: Rerun
+23000_s1_e0: [System] Re-execution notification
+23000_s2: [Preset] Bug Key_Dwarf Statue, Launch Disc_SubState
+24000: Bug Key V1_ Strong enemy
+24000_s0: Start state
+24000_s1: Finish
+24000_s1_e0: [System] Termination notification
+24000_s2: [Preset] OBJ operation with bug keys, navigation switching_SubState
+6010: Bug Key D2_ Strong enemy
+6010_s0: Start state
+6010_s1: Finish
+6010_s1_e0: [System] Termination notification
+6010_s2: [Preset] Bug key _ 檻, hidden road _SubState
+6020: Bug Key D3_ Strong enemy
+6020_s0: Start state
+6020_s1: Finish
+6020_s1_e0: [System] Termination notification
+6020_s2: [Preset] Bug key _ 檻, hidden road _SubState
+24010: Bug Key V2_ Strong enemy
+24010_s0: Start state
+24010_s1: Finish
+24010_s1_e0: [System] Termination notification
+24010_s2: [Preset] OBJ operation with bug keys, navigation switching_SubState
+24020: Bug Key V3_ Strong enemy
+24020_s0: Start state
+24020_s1: Finish
+24020_s1_e0: [System] Termination notification
+24020_s2: [Preset] OBJ operation with bug keys, navigation switching_SubState
+11010: Bug Key I2_Dwarf Statue
+11010_s0: Start state
+11010_s1: Rerun
+11010_s1_e0: [System] Re-execution notification
+11010_s2: [Preset] Bug key_Dwarf statue_Wall interlocking_SubState
+23010: Bug key U2
+23010_s0: Start state
+23010_s1: Rerun
+23010_s1_e0: [System] Re-execution notification
+23010_s2: [Preset] Bug Key_Dwarf Statue, Launch Disc_SubState
+23020: Bug key U3
+23020_s0: Start state
+23020_s1: Rerun
+23020_s1_e0: [System] Re-execution notification
+23020_s2: [Preset] Bug Key_Dwarf Statue, Launch Disc_SubState
+23030: Bug key U4
+23030_s0: Start state
+23030_s1: Rerun
+23030_s1_e0: [System] Re-execution notification
+23030_s2: [Preset] Bug Key_Dwarf Statue, Launch Disc_SubState
+23040: Bug Key U5_ Launch Disc
+23040_s0: Start state
+23040_s1: Rerun
+23040_s1_e0: [System] Re-execution notification
+23040_s2: [Preset] Bug Key_Dwarf Statue, Launch Disc_SubState
+3100: Bug key A_ using bug key
+3100_s0: Start state
+3100_s1: Finish
+3100_s1_e0: [System] Termination notification
+3100_s2: [Lib] [Asynchronous] [Preset] Bug key (floor) _SubState
+4100: Bug key B_ using bug key
+4100_s0: Start state
+4100_s1: Finish
+4100_s1_e0: [System] Termination notification
+4100_s2: [Lib] [Asynchronous] [Preset] Bug key (floor) _SubState
+5100: Bug key C_Use bug key
+5100_s0: Start state
+5100_s1: Finish
+5100_s1_e0: [System] Termination notification
+5100_s2: [Lib] [Asynchronous] [Preset] Bug key (floor) _SubState
+6120: Bug key D3_Use bug key
+6120_s0: Start state
+6120_s1: Finish
+6120_s1_e0: [System] Termination notification
+6120_s2: [Lib] [Asynchronous] [Preset] Bug key (floor) _SubState
+8100: Bug key F_ using bug key
+8100_s0: Start state
+8100_s1: Finish
+8100_s1_e0: [System] Termination notification
+8100_s2: [Lib] [Asynchronous] [Preset] Bug key (floor) _SubState
+9100: Bug key G_ using bug key
+9100_s0: Start state
+9100_s1: Finish
+9100_s1_e0: [System] Termination notification
+9100_s2: [Lib] [Asynchronous] [Preset] Bug key (floor) _SubState
+17100: Bug key O_ using bug key
+17100_s0: Start state
+17100_s1: Finish
+17100_s1_e0: [System] Termination notification
+17100_s2: [Lib] [Asynchronous] [Preset] Bug key (floor) _SubState
+22100: Bug key T_ Bug key use
+22100_s0: Start state
+22100_s1: Finish
+22100_s1_e0: [System] Termination notification
+22100_s2: [Lib] [Asynchronous] [Preset] Bug key (floor) _SubState
+20100: Bug key R_ using bug key
+20100_s0: Start state
+20100_s1: Finish
+20100_s1_e0: [System] Termination notification
+20100_s2: [Lib] [Asynchronous] [Preset] Bug key (floor) _SubState
+6100: Bug key D1_Use bug key
+6100_s0: Start state
+6100_s1: Finish
+6100_s1_e0: [System] Termination notification
+6100_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+6110: Bug key D2_Use bug key
+6110_s0: Start state
+6110_s1: Finish
+6110_s1_e0: [System] Termination notification
+6110_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+10100: Bug key H_
+10100_s0: Start state
+10100_s1: Finish
+10100_s1_e0: [System] Termination notification
+10100_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+11100: Bug key I1_Use bug key
+11100_s0: Start state
+11100_s1: Finish
+11100_s1_e0: [System] Termination notification
+11100_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+12100: Bug key J_ Bug key use
+12100_s0: Start state
+12100_s1: Finish
+12100_s1_e0: [System] Termination notification
+12100_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+13100: Bug key K_ Bug key use
+13100_s0: Start state
+13100_s1: Finish
+13100_s1_e0: [System] Termination notification
+13100_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+15100: Bug key M_ using bug key
+15100_s0: Start state
+15100_s1: Finish
+15100_s1_e0: [System] Termination notification
+15100_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+16100: Bug key N_ Bug key use
+16100_s0: Start state
+16100_s1: Finish
+16100_s1_e0: [System] Termination notification
+16100_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+18100: Bug key P_Use bug key
+18100_s0: Start state
+18100_s1: Finish
+18100_s1_e0: [System] Termination notification
+18100_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+19100: Bug key Q_Use bug key
+19100_s0: Start state
+19100_s1: Finish
+19100_s1_e0: [System] Termination notification
+19100_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+21100: Bug key S_ Bug key use
+21100_s0: Start state
+21100_s1: Finish
+21100_s1_e0: [System] Termination notification
+21100_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+23100: Bug key U_ using bug key
+23100_s0: Start state
+23100_s1: Finish
+23100_s1_e0: [System] Termination notification
+23100_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+24100: Bug key V1_ using bug key
+24100_s0: Start state
+24100_s1: Finish
+24100_s1_e0: [System] Termination notification
+24100_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+24110: Bug key V2_ using bug key
+24110_s0: Start state
+24110_s1: Finish
+24110_s1_e0: [System] Termination notification
+24110_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+24120: Bug key V3_ using bug key
+24120_s0: Start state
+24120_s1: Finish
+24120_s1_e0: [System] Termination notification
+24120_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+111514: OBJ: Mouse king (Faros door): Death determination
+111514_s0: Start state
+111514_s1: [Lib] NPC: Death determination: General purpose_SubState
+80000: Fireworks for regeneration 01_In front of the pledge area
+80000_s0: Start state
+80000_s1: Finish
+80000_s1_e0: [System] Termination notification
+80000_s2: [Lib] [Preset] Reproduction fire _SubState
+81000: After the prayer area 02_ in front of the boss room
+81000_s0: Start state
+81000_s1: Finish
+81000_s1_e0: [System] Termination notification
+81000_s2: [Lib] [Preset] Reproduction fire _SubState
+1000: Thorns with switch
+1000_s0: Start state
+1000_s1: Rerun
+1000_s1_e0: [System] Re-execution notification
+1000_s2: [Preset] Switch with switch_SubState
+118220: Multi-use NPC: Mage (male): Black Phantom Appearance: Offline
+118220_s0: Start state
+118220_s1: [DC] Total lap count judgment
+118220_s2: [Lib] NPC Black Phantom Appearance: Offline: Unconditional_SubState
+118220_s3: [Lib] NPC Black Phantom Appearance: Offline: Unconditional_2_SubState
+120040: Trophy: Mouse Pledge
+120040_s0: Start state
+120040_s1: System: Exit
+120040_s1_e0: [System] Termination notification
+120040_s2: [Lib] [Preset] Get Trophy_SubState
+111202: OBJ: Dwarf (Faros Door): Tomb
+111202_s0: Start state
+111202_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111203: OBJ: Dwarf (Hidden Port): Key Guide
+111203_s0: Start state
+111203_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111204: OBJ: Dwarf (hidden port): Death determination
+111204_s0: Start state
+111204_s1: [Lib] NPC: Death determination: General purpose_SubState
+111205: OBJ: Dwarf (Hidden Port): Appearance Judgment
+111205_s0: Start state
+111205_s1: [Lib] Appearance determination: Generic _SubState
+30000: Map light switch_overhead_1
+30000_s0: Start state
+30000_s1: Rerun
+30000_s1_e0: [System] Re-execution notification
+30000_s2: [Preset] Map light switching_Target hits 4_SubState
+30010: Map light switch_NPC room
+30010_s0: Start state
+30010_s1: Rerun
+30010_s1_e0: [System] Re-execution notification
+30010_s2: [Preset] Map light switch_Target hits 3_SubState
+30020: Map light switch_rock surface
+30020_s0: Start state
+30020_s1: Rerun
+30020_s1_e0: [System] Re-execution notification
+30020_s2: [Preset] Map light switching_Target hits 4_SubState
+30030: Map light switch_Wall
+30030_s0: Start state
+30030_s1: Rerun
+30030_s1_e0: [System] Re-execution notification
+30030_s2: [Preset] Map light switching_Target hits 4_SubState
+30040: Map light switch_stairs
+30040_s0: Start state
+30040_s1: Rerun
+30040_s1_e0: [System] Re-execution notification
+30040_s2: [Preset] Map light switch_5 target hits_SubState
+30050: Map light switch_Boss base
+30050_s0: Start state
+30050_s1: Rerun
+30050_s1_e0: [System] Re-execution notification
+30050_s2: [Preset] Map light switch_Subject hits 2_SubState
+30060: Map light switch_Boss room entrance
+30060_s0: Start state
+30060_s1: Rerun
+30060_s1_e0: [System] Re-execution notification
+30060_s2: [Preset] Map light switch_Subject hits 2_SubState
+30070: Map light switch_Overhead_2
+30070_s0: Start state
+30070_s1: Rerun
+30070_s1_e0: [System] Re-execution notification
+30070_s2: [Preset] Map light switch_Target hits 3_SubState
+30080: Map light switch_Overhead_3
+30080_s0: Start state
+30080_s1: Rerun
+30080_s1_e0: [System] Re-execution notification
+30080_s2: [Preset] Map light switch_Target hits 3_SubState
+30090: Map light switch_Overhead_4
+30090_s0: Start state
+30090_s1: Rerun
+30090_s1_e0: [System] Re-execution notification
+30090_s2: [Preset] Map light switch_Subject hits 2_SubState
+30100: Map light switch_Overhead_5
+30100_s0: Start state
+30100_s1: Rerun
+30100_s1_e0: [System] Re-execution notification
+30100_s2: [Preset] Map light switch_Subject hits 2_SubState
+30110: Map light switch_Torch_1
+30110_s0: Start state
+30110_s1: Rerun
+30110_s1_e0: [System] Re-execution notification
+30110_s2: [Preset] Map light switch_Target hits 6_SubState
+30120: Map light switch_Torch_2
+30120_s0: Start state
+30120_s1: Rerun
+30120_s1_e0: [System] Re-execution notification
+30120_s2: [Preset] Map light switch_Subject hits 2_SubState
+30130: Map light switch_Torch_3
+30130_s0: Start state
+30130_s1: Rerun
+30130_s1_e0: [System] Re-execution notification
+30130_s2: [Preset] Map light switch_Subject hits 2_SubState
+4030000: [DC] Transparent character_1
+4030000_s0: Start state
+4030000_s1: Finish
+4030000_s1_e0: [System] Termination notification
+4030000_s2: [Lib] [DC] [Preset] Transparent character_SubState
+x24: [Reproduction] Bug key _ 檻, hidden road
+x24_p0: Bug key instance ID
+x24_p1: Navimesh switching point ID
+x24_p2: Instance ID of operation OBJ
+x24_s0: Start state
+x24_s1: Is the insect key activated?
+x24_s2: Navigation switching
+x24_s2_e0: [Map] Added Navimesh attribute
+x24_s3: Skip without navigation switching
+x24_s4: Navigation switch_2
+x24_s4_e0: [Map] Navimesh attribute deletion
+x24_s5: OBJ status change
+x24_s5_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x24_s6: End state
+x24_s7: Simple end
+x25: [Condition] OBJ operation with bug keys, navigation switching
+x25_p0: Bug key instance ID
+x25_s0: Start state
+x25_s1: Did you use an insect key?
+x25_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x25_s2: End state
+x26: [Execution] Bug key _, hidden road
+x26_p0: イ ン ス タ ン ス Instance ID
+x26_p1: Navi Mesh Switching Point Id
+x26_s0: Start state
+x26_s1: OBJ state transition: 檻
+x26_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x26_s2: Skip without navigation switching
+x26_s3: Navigation switching
+x26_s3_e0: [Map] Navimesh attribute deletion
+x26_s4: Did the coffin open?
+x26_s4_e0: [Group condition: OBJ] OBJ state ID comparison
+x26_s5: End state
+x27: [Preset] Bug key _ 檻, hidden road
+x27_p0: Bug key instance ID
+x27_p1: Instance ID of operation OBJ
+x27_p2: Navimesh switching point ID
+x27_s0: Start state
+x27_s1: [Condition] OBJ operation with bug keys, navigation switching_SubState
+x27_s2: [Reproduction] Bug key _ 檻, hidden road _SubState
+x27_s3: [Execution] Bug key _ 檻, hidden road _SubState
+x27_s4: End state
+x28: [Execution] Insect key
+x28_p0: イ ン ス タ ン ス Instance ID
+x28_p1: Navi Mesh Switching Point Id
+x28_s0: Start state
+x28_s1: OBJ state transition: 檻
+x28_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x28_s2: Skip without navigation switching
+x28_s3: Navigation switching
+x28_s3_e0: [Map] Added Navimesh attribute
+x28_s4: End state
+x29: [Reproduction] Bug key
+x29_p0: Bug key instance ID
+x29_p1: Navimesh switching point ID
+x29_p2: Instance ID of operation OBJ
+x29_s0: Start state
+x29_s1: Is the insect key activated?
+x29_s2: Navigation switching
+x29_s2_e0: [Map] Navimesh attribute deletion
+x29_s3: Skip without navigation switching
+x29_s4: Navigation switch_2
+x29_s4_e0: [Map] Navimesh attribute deletion
+x29_s5: OBJ status change
+x29_s5_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x29_s6: End state
+x29_s7: Simple end
+x30: [Preset] Bug key _ traffic stop, thorn
+x30_p0: Bug key instance ID
+x30_p1: Instance ID of operation OBJ
+x30_p2: Navimesh switching point ID
+x30_s0: Start state
+x30_s1: [Condition] OBJ operation with bug keys, navigation switching_SubState
+x30_s2: [Reproduction] Insect Key_Closed_Spotted_SubState
+x30_s3: [Execution] Insect Key_Closed, Spike_SubState
+x30_s4: End state
+x31: [Condition] Bug key_Dwarf statue, Launch disk
+x31_p0: Bug key instance ID
+x31_p1: Shooting start point ID
+x31_s0: Start state
+x31_s1: Did you enter the point after using the bug key?
+x31_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x31_s1_e1: [Group condition: Character] Judgment within player points
+x31_s2: End state
+x32: [Execution] Bug key _ launch disk
+x32_p0: Instance ID of operation OBJ
+x32_p1: Cool time
+x32_p2: Shooting start point
+x32_s0: Start state
+x32_s1: OBJ state transition
+x32_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x32_s2: Cool time state
+x32_s2_e0: [Group condition: Event] State elapsed time comparison
+x32_s2_e1: [Group condition: System] Judge whether the player is an actor
+x32_s2_e2: [Group condition: System] Judge whether an actor exists
+x32_s2_e3: [Group condition: System] Group condition is satisfied
+x32_s3: End state
+x33: [Preset] Bug Key _ Launch Disc
+x33_p0: Bug key instance ID
+x33_p1: Shooting start point ID
+x33_p2: OBJ instance ID
+x33_s0: Start state
+x33_s1: Disable OBJ sync
+x33_s1_e0: [OBJ] OBJ synchronization setting
+x33_s2: [Condition] Bug key_Dwarf statue, Launch disk_SubState
+x33_s3: [Execution] Bug key_Dwarf statue, Launch disk_SubState
+x33_s4: [Reproduction] Bug Key_Dwarf Statue, Launch Disc_SubState
+x33_s5: End state
+x34: [Preset] Bug key_Dwarf statue
+x34_p0: Bug key instance ID
+x34_p1: Shooting start point ID
+x34_p2: OBJ instance ID
+x34_s0: Start state
+x34_s1: [Condition] Bug key_Dwarf statue, Launch disk_SubState
+x34_s2: [Reproduction] Bug Key_Dwarf Statue, Launch Disc_SubState
+x34_s3: [Execution] Bug key_Dwarf statue_SubState
+x34_s4: End state
+x35: [Reproduction] Switch with thorns
+x35_p0: Switch OBJ instance ID
+x35_p1: Thorn 1_OBJ instance ID
+x35_p2: Thorn 2_OBJ instance ID
+x35_p3: Navigation change point ID_1
+x35_p4: Navigation change point ID_2
+x35_p5: Switch status flag
+x35_s0: Start state
+x35_s1: Waiting for thorn withdrawal
+x35_s2: Undo switch: 80
+x35_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x35_s3: Wait for switch to return
+x35_s4: Navi mesh switching: Not allowed
+x35_s5: Navimesh switching: Allowed to pass
+x35_s6: Are thorns in the initial state?
+x35_s7: Switch status flag ON
+x35_s7_e0: [Flag] Set flag
+x35_s8: Switch status flag OFF
+x35_s8_e0: [Flag] Set flag
+x35_s9: End state
+x36: [Condition] With a switch
+x36_p0: Switch OBJ instance ID
+x36_s0: Start state
+x36_s1: Was the switch pressed?
+x36_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x36_s2: End state
+x37: [Execute]
+x37_p0: Switch OBJ instance ID
+x37_p1: Thorn 1_OBJ instance ID
+x37_p2: Thorn 2_OBJ instance ID
+x37_p3: Navigation change point ID_1
+x37_p4: Navigation change point ID_2
+x37_p5: Switch status flag
+x37_s0: Start state
+x37_s1: Spike popping out: 70
+x37_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x37_s1_e1: [OBJ] OBJ state transition request (with instance ID specified)
+x37_s2: Waiting for thorn withdrawal
+x37_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x37_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+x37_s3: Waiting for splinter
+x37_s3_e0: [Group condition: OBJ] OBJ state ID comparison
+x37_s3_e1: [Group condition: OBJ] OBJ state ID comparison
+x37_s4: Undo switch: 80
+x37_s4_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x37_s5: Wait for switch to return
+x37_s5_e0: [Group condition: OBJ] OBJ state ID comparison
+x37_s6: Navi mesh switching: Not allowed
+x37_s7: Navimesh switching: Allowed to pass
+x37_s8: Switch status flag ON
+x37_s8_e0: [Flag] Set flag
+x37_s9: Switch status flag OFF
+x37_s9_e0: [Flag] Set flag
+x37_s10: End state
+x38: [Preset] Switch
+x38_p0: Switch OBJ instance ID
+x38_p1: Thorn 1_OBJ instance ID
+x38_p2: Thorn 2_OBJ instance ID
+x38_p3: Navigation change point ID_1
+x38_p4: Navigation change point ID_2
+x38_p5: Switch status flag
+x38_s0: Start state
+x38_s1: [Reproduction] Thornet_SubState with a switch
+x38_s2: [Execution] Switch with the switch_SubState
+x38_s3: [Condition] With a switch
+x38_s4: End state
+x39: [Reproduction] Bug key _ dwarf statue, launch disk
+x39_s0: Start state
+x39_s1: End state
+x40: [Execution] Bug key_Dwarf statue
+x40_p0: Instance ID of operation OBJ
+x40_p1: Cool time
+x40_p2: Shooting start point ID
+x40_s0: Start state
+x40_s1: OBJ state transition
+x40_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x40_s2: Cool time state
+x40_s2_e0: [Group condition: Event] State elapsed time comparison
+x40_s2_e1: [Group condition: System] Judge whether the player is an actor
+x40_s2_e2: [Group condition: System] Judge whether an actor exists
+x40_s2_e3: [Group condition: System] Group condition is satisfied
+x40_s3: OBJ state transition_2
+x40_s3_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x40_s4: Random lottery
+x40_s4_e0: [System] Obtains the clamped integer value
+x40_s5: Random number judgment
+x40_s5_e0: [Group condition: Event] Random number comparison
+x40_s6: End state
+x41: [Preset] Bug key_Dwarf statue_Wall interlocking
+x41_p0: Bug key instance ID
+x41_p1: Shooting start point ID
+x41_p2: OBJ instance ID
+x41_p3: Linked wall OBJ instance ID
+x41_s0: Start state
+x41_s1: [Reproduction] Bug Key_Dwarf Statue, Launch Disc_SubState
+x41_s2: [Execution] Bug key_Dwarf statue_SubState
+x41_s3: [Condition] Bug key _ Dwarf image, Launch disk _ Wall interlock _ SubState
+x41_s4: End state
+x42: [Condition] Bug key_Dwarf image, Launch disk_Wall interlock
+x42_p0: Bug key instance ID
+x42_p1: Shooting start point ID
+x42_p2: Linked wall OBJ instance ID
+x42_s0: Start state
+x42_s1: Did you enter the point with the wall open after using the insect key?
+x42_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x42_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x42_s1_e2: [Group condition: Character] Judgment within player points
+x42_s2: End state
+x43: [Reproduction] Giant mouse battle_start
+x43_p0: Boss destruction flag
+x43_s0: Start state
+x43_s1: Are you destroying the boss?
+x43_s2: Not destroy the boss
+x43_s3: Defeated the boss
+x44: [Execution] Giant Mouse Battle_Start
+x44_p0: Boss Battle ID
+x44_s0: Start state
+x44_s1: Boss battle start notification
+x44_s1_e0: [Others] Boss battle started
+x44_s2: End state
+x45: [Reproduction] HP display and BGM playback and boss activation_empty
+x45_s0: Start state
+x45_s1: End state
+x46: [Condition] Giant mouse battle_end judgment
+x46_p0: Boss Battle ID
+x46_s0: Start state
+x46_s1: Did you beat the boss?
+x46_s1_e0: [Group condition: Event] Boss defeat determination
+x46_s2: End state
+x47: [Execution] Giant Mouse Battle_End
+x47_p0: Sound ID
+x47_p1: Boss Battle ID
+x47_p2: Other flags for logic
+x47_p3: BGM stop time
+x47_s0: Start state
+x47_s1: Logic flag OFF
+x47_s1_e0: [Flag] Set flag
+x47_s2: Boss battle end notification
+x47_s2_e0: [Others] End of boss battle
+x47_s3: Boss BGM stop
+x47_s3_e0: [Sound] Stop sound at specified point
+x47_s4: BGM stop standby
+x47_s5: End state
+x48: [Condition] Giant Mouse Battle_Start
+x48_p0: Start point ID
+x48_p1: End point ID
+x48_s0: Start state
+x48_s1: Did you enter the boss room point?
+x48_s1_e0: [Group condition: Character] Judgment within player points
+x48_s1_e1: [Group condition: Net] Host judgment
+x48_s1_e2: [Group condition: System] Group condition is satisfied
+x48_s1_e3: [Group condition: Character] Judgment within player points
+x48_s1_e4: [Group condition: Net] Host judgment
+x48_s1_e5: [Group condition: System] Group condition is satisfied
+x48_s2: End state
+x49: [Condition] HP display, BGM playback and boss activation
+x49_p0: Start point ID
+x49_p1: End point ID
+x49_p2: Boss generator ID
+x49_p3: Zako ① Generator ID
+x49_p4: Zako ② Generator ID
+x49_p5: Zako ③ Generator ID
+x49_p6: Zako ④ Generator ID
+x49_s0: Start state
+x49_s1: Invaded or damaged the starting point
+x49_s1_e0: [Group condition: Character] Judgment within player points
+x49_s1_e1: [Group condition: Character] HP ratio comparison
+x49_s1_e2: [Group condition: Character] HP ratio comparison
+x49_s1_e3: [Group condition: Character] HP ratio comparison
+x49_s1_e4: [Group condition: Character] HP ratio comparison
+x49_s1_e5: [Group condition: Character] HP ratio comparison
+x49_s2: End state
+x50: [Execution] HP display, BGM playback and boss activation
+x50_p0: Sound ID
+x50_p1: Logic flag
+x50_p2: Wait time until display
+x50_p3: Boss Battle ID
+x50_s0: Start state
+x50_s1: BGM battle BGM playback
+x50_s1_e0: [Sound] Sound playback with point designation
+x50_s2: Boss HP gauge display
+x50_s2_e0: [Others] Boss battle HP gauge switching
+x50_s3: Logic flag ON
+x50_s3_e0: [Flag] Set flag
+x50_s4: Wait until BGM playback and HP display
+x50_s4_e0: [Group condition: Event] State elapsed time comparison
+x50_s4_e1: [Group condition: Event] Boss defeat determination
+x50_s5: End state
+x51: [Preset] Giant Mouse Battle_Start
+x51_p0: Boss destruction flag
+x51_p1: Sound ID
+x51_p2: Boss Battle ID
+x51_p3: Other flags for logic
+x51_p4: Wait time
+x51_p5: BGM stop time
+x51_s0: Start state
+x51_s1: [Reproduction] Giant Mouse Battle_Start_SubState
+x51_s2: [Execution] Giant Mouse Battle_Start_SubState
+x51_s3: [Condition] Giant Mouse Battle_Start_SubState
+x51_s4: [Reproduction] HP display and BGM playback and boss activation_empty_SubState
+x51_s5: [Execution] HP display, BGM playback and boss activation_SubState
+x51_s6: [Condition] HP display, BGM playback and boss activation_SubState
+x51_s7: [Reproduction] Giant Mouse Battle_End_Sky_SubState
+x51_s8: [Execution] Giant Mouse Battle_End_SubState
+x51_s9: [Condition] Giant Mouse Battle_End Judgment_SubState
+x51_s10: End state
+x52: [Reproduction] Giant Mouse Battle_End_Sky
+x52_s0: Start state
+x52_s1: End state
+x53: [Reproduction] Map light switching
+x53_p0: Event light ID
+x53_s0: Start state
+x53_s1: Change light to default settings
+x53_s1_e0: [Map] Point light effective setting
+x53_s2: End state
+x54: [Condition] Map light switching_Target 2 hits
+x54_p0: Light switching hit group ID ①
+x54_p1: Light switching hit group ID ②
+x54_s0: Start state
+x54_s1: Did you get a lighting hit?
+x54_s1_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x54_s1_e1: [Group condition: Map] Judgment that the player is on the specified hit group
+x54_s2: End state
+x55: [Execution] Map light switch_Target hits 2
+x55_p0: Event light ID
+x55_p1: Light switching hit group ID ①
+x55_p2: Light switching hit group ID ②
+x55_s0: Start state
+x55_s1: Switch light
+x55_s1_e0: [Map] Point light effective setting
+x55_s2: Did you get out of the lighting hit?
+x55_s2_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x55_s2_e1: [Group condition: Map] Judgment that the player is on the specified hit group
+x55_s3: End state
+x56: [Preset] Map light switch_Target two hits
+x56_p0: Event light ID
+x56_p1: Light switching hit group ID ①
+x56_p2: Light switching hit group ID ②
+x56_s0: Start state
+x56_s1: [Reproduction] Map light switch_SubState
+x56_s2: [Execution] Map light switching_Target hits 2_SubState
+x56_s3: [Condition] Map light switch_Subject hits_SubState
+x56_s4: End state
+x57: [Condition] Map light switching_Target 3 hits
+x57_p0: Light switching hit group ID ①
+x57_p1: Light switching hit group ID ②
+x57_p2: Light switching hit group ID ③
+x57_s0: Start state
+x57_s1: Did you get a lighting hit?
+x57_s1_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x57_s1_e1: [Group condition: Map] Judgment that the player is on the specified hit group
+x57_s1_e2: [Group condition: Map] Judgment that the player is on the specified hit group
+x57_s2: End state
+x58: [Execution] Map light switch_3 target hits
+x58_p0: Event light ID
+x58_p1: Light switching hit group ID ①
+x58_p2: Light switching hit group ID ②
+x58_p3: Light switching hit group ID ③
+x58_s0: Start state
+x58_s1: Switch light
+x58_s1_e0: [Map] Point light effective setting
+x58_s2: Did you get out of the lighting hit?
+x58_s2_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x58_s2_e1: [Group condition: Map] Judgment that the player is on the specified hit group
+x58_s2_e2: [Group condition: Map] Judgment that the player is on the specified hit group
+x58_s3: End state
+x59: [Preset] Map light switch_Target 3 hits
+x59_p0: Event light ID
+x59_p1: Light switching hit group ID ①
+x59_p2: Light switching hit group ID ②
+x59_p3: Light switching hit group ID ③
+x59_s0: Start state
+x59_s1: [Reproduction] Map light switch_SubState
+x59_s2: [Execution] Map light switch_Target hits 3_SubState
+x59_s3: [Conditions] Map light switching_Target hits 3_SubState
+x59_s4: End state
+x60: [Condition] Map light switch_Target 4 hits
+x60_p0: Light switching hit group ID ①
+x60_p1: Light switching hit group ID ②
+x60_p2: Light switching hit group ID ③
+x60_p3: Light switching hit group ID ④
+x60_s0: Start state
+x60_s1: Did you get a lighting hit?
+x60_s1_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x60_s1_e1: [Group condition: Map] Judgment that the player is on the specified hit group
+x60_s1_e2: [Group condition: Map] Judgment that the player is on the specified hit group
+x60_s1_e3: [Group condition: Map] Judgment that the player is on the specified hit group
+x60_s2: End state
+x61: [Execution] Map light switch_Target hit 4
+x61_p0: Event light ID
+x61_p1: Light switching hit group ID ①
+x61_p2: Light switching hit group ID ②
+x61_p3: Light switching hit group ID ③
+x61_p4: Light switching hit group ID ④
+x61_s0: Start state
+x61_s1: Switch light
+x61_s1_e0: [Map] Point light effective setting
+x61_s2: Did you get out of the lighting hit?
+x61_s2_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x61_s2_e1: [Group condition: Map] Judgment that the player is on the specified hit group
+x61_s2_e2: [Group condition: Map] Judgment that the player is on the specified hit group
+x61_s2_e3: [Group condition: Map] Judgment that the player is on the specified hit group
+x61_s3: End state
+x62: [Preset] Map light switching_Target 4 hits
+x62_p0: Event light ID
+x62_p1: Light switching hit group ID ①
+x62_p2: Light switching hit group ID ②
+x62_p3: Light switching hit group ID ③
+x62_p4: Light switching hit group ID ④
+x62_s0: Start state
+x62_s1: [Reproduction] Map light switch_SubState
+x62_s2: [Execution] Map light switching_Target hits 4_SubState
+x62_s3: [Condition] Map light switching_Target hits 4_SubState
+x62_s4: End state
+x63: [Condition] Map light switch_Target 5 hits
+x63_p0: Light switching hit group ID ①
+x63_p1: Light switching hit group ID ②
+x63_p2: Light switching hit group ID ③
+x63_p3: Light switching hit group ID ④
+x63_p4: Light switching hit group ID ⑤
+x63_s0: Start state
+x63_s1: Did you get a lighting hit?
+x63_s1_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x63_s1_e1: [Group condition: Map] Judgment that the player is on the specified hit group
+x63_s1_e2: [Group condition: Map] Judgment that the player is on the specified hit group
+x63_s1_e3: [Group condition: Map] Judgment that the player is on the specified hit group
+x63_s1_e4: [Group condition: Map] Judgment that the player is on the specified hit group
+x63_s2: End state
+x64: [Execution] Map light switch_5 target hits
+x64_p0: Event light ID
+x64_p1: Light switching hit group ID ①
+x64_p2: Light switching hit group ID ②
+x64_p3: Light switching hit group ID ③
+x64_p4: Light switching hit group ID ④
+x64_p5: Light switching hit group ID ⑤
+x64_s0: Start state
+x64_s1: Switch light
+x64_s1_e0: [Map] Point light effective setting
+x64_s2: Did you get out of the lighting hit?
+x64_s2_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x64_s2_e1: [Group condition: Map] Judgment that the player is on the specified hit group
+x64_s2_e2: [Group condition: Map] Judgment that the player is on the specified hit group
+x64_s2_e3: [Group condition: Map] Judgment that the player is on the specified hit group
+x64_s2_e4: [Group condition: Map] Judgment that the player is on the specified hit group
+x64_s3: End state
+x65: [Preset] Map light switch_5 target hits
+x65_p0: Event light ID
+x65_p1: Light switching hit group ID ①
+x65_p2: Light switching hit group ID ②
+x65_p3: Light switching hit group ID ③
+x65_p4: Light switching hit group ID ④
+x65_p5: Light switching hit group ID ⑤
+x65_s0: Start state
+x65_s1: [Reproduction] Map light switch_SubState
+x65_s2: [Execution] Map light switch_5 target hits_SubState
+x65_s3: [Conditions] Map light switching_5 target hits_SubState
+x65_s4: End state
+x66: [Condition] Map light switching_Target 6 hits
+x66_p0: Light switching hit group ID ①
+x66_p1: Light switching hit group ID ②
+x66_p2: Light switching hit group ID ③
+x66_p3: Light switching hit group ID ④
+x66_p4: Light switching hit group ID ⑤
+x66_p5: Light switching hit group ID ⑥
+x66_s0: Start state
+x66_s1: Did you get a lighting hit?
+x66_s1_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x66_s1_e1: [Group condition: Map] Judgment that the player is on the specified hit group
+x66_s1_e2: [Group condition: Map] Judgment that the player is on the specified hit group
+x66_s1_e3: [Group condition: Map] Judgment that the player is on the specified hit group
+x66_s1_e4: [Group condition: Map] Judgment that the player is on the specified hit group
+x66_s1_e5: [Group condition: Map] Judgment that the player is on the specified hit group
+x66_s2: End state
+x67: [Execution] Map light switch_Target 6 hits
+x67_p0: Event light ID
+x67_p1: Light switching hit group ID ①
+x67_p2: Light switching hit group ID ②
+x67_p3: Light switching hit group ID ③
+x67_p4: Light switching hit group ID ④
+x67_p5: Light switching hit group ID ⑤
+x67_p6: Light switching hit group ID ⑥
+x67_s0: Start state
+x67_s1: Switch light
+x67_s1_e0: [Map] Point light effective setting
+x67_s2: Did you get out of the lighting hit?
+x67_s2_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x67_s2_e1: [Group condition: Map] Judgment that the player is on the specified hit group
+x67_s2_e2: [Group condition: Map] Judgment that the player is on the specified hit group
+x67_s2_e3: [Group condition: Map] Judgment that the player is on the specified hit group
+x67_s2_e4: [Group condition: Map] Judgment that the player is on the specified hit group
+x67_s2_e5: [Group condition: Map] Judgment that the player is on the specified hit group
+x67_s3: End state
+x68: [Preset] Map light switch_Target 6 hits
+x68_p0: Event light ID
+x68_p1: Light switching hit group ID ①
+x68_p2: Light switching hit group ID ②
+x68_p3: Light switching hit group ID ③
+x68_p4: Light switching hit group ID ④
+x68_p5: Light switching hit group ID ⑤
+x68_p6: Light switching hit group ID ⑥
+x68_s0: Start state
+x68_s1: [Reproduction] Map light switch_SubState
+x68_s2: [Execution] Map light switch_Target hits 6_SubState
+x68_s3: [Condition] Map light switch_Target hits 6_SubState
+x68_s4: End state
+x0: [Lib] NPC: Grave Placement: General purpose
+x0_p0: Death map: Global event flag
+x0_p1: Tomb: OBJ instance ID
+x0_p2: Tomb move to: Generator ID
+x0_p3: NPC information parameter ID
+x0_s0: Start state
+x0_s1: Grave Placement: Start
+x0_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x0_s2: Grave placement: branch
+x0_s2_e0: [Group condition: Flag] Event flag comparison
+x0_s2_e1: [Group condition: other] Grave generation possibility judgment
+x0_s3: Grave Placement: Survival
+x0_s3_e0: [OBJ] OBJ state transition request
+x0_s3_e1: [Group condition: OBJ] OBJ state ID comparison
+x0_s4: Grave Placement: Death
+x0_s4_e0: [OBJ] OBJ state transition request
+x0_s4_e1: [Group condition: OBJ] OBJ state ID comparison
+x0_s5: Grave Placement: System: Finish
+x0_s5_e0: [System] Termination notification
+x0_s6: Grave Placement: Warp Move
+x0_s7: End state
+x1: [Lib] NPC: Grave: Key Guide: Key Guide
+x1_p0: Global: death flag
+x1_p1: Grave OBJ instance ID
+x1_p2: NPC information parameter ID
+x1_s0: Start state
+x1_s1: Key guide: Start
+x1_s2: Key guide: Key guide display
+x1_s2_e0: [FE] Create key guide area
+x1_s3: Key Guide: Use Soul dialog
+x1_s3_e0: [FE] Display of YES / NO selection window
+x1_s4: Key guide: Soul shortage dialog
+x1_s4_e0: [FE] Window display only for YES
+x1_s5: Key guide: Grave display judgment
+x1_s5_e0: [Group condition: OBJ] OBJ state ID comparison
+x1_s5_e1: [Group condition: OBJ] OBJ state ID comparison
+x1_s6: Key guide: Reset
+x1_s6_e0: [FE] Delete key guide area
+x1_s6_e1: [System] Re-execution notification
+x1_s7: Key Guide: Use Soul dialog: Wait for input
+x1_s8: Key guide: Soul shortage dialog: Waiting for input
+x1_s9: Key guide: Delete key guide
+x1_s9_e0: [FE] Delete key guide area
+x1_s10: Key Guide: System: Exit
+x1_s10_e0: [System] Termination notification
+x1_s11: Key guide: Waiting for input
+x1_s11_e0: [Group condition: OBJ] Judgment to examine OBJ
+x1_s11_e1: [Group condition: Map] Judgment that the player is in the map
+x1_s12: End state
+x2: [Lib] NPC: Grave: Key Guide: Appearance of Ghosts
+x2_p0: Area other flags: Ghost appearance
+x2_p1: Area other flags: Conversation start
+x2_p2: NPC information parameter ID
+x2_s0: Start state
+x2_s1: Ghost appearance: Appearance
+x2_s1_e0: [Flag] Set flag
+x2_s1_e1: [Group condition: Flag] Event flag comparison
+x2_s2: Ghost appearance: Character action waiting
+x2_s2_e0: [Group condition: Character] Player event action judgment
+x2_s3: Appearance of ghost: End of player action
+x2_s3_e0: [Character action] Action end request to the player
+x2_s4: Ghost appearance: Conversation start flag
+x2_s4_e0: [Flag] Set flag
+x2_s4_e1: [Group condition: Flag] Event flag comparison
+x2_s5: Appearance of ghost: Player action starts
+x2_s5_e0: [Character action] Request action from player
+x2_s5_e1: [Group condition: Character] Player event action judgment
+x2_s6: Ghost appearance: Seoul consumption
+x2_s6_e0: [Others] Soul value addition
+x2_s7: Appearance of ghost: Waiting for player action
+x2_s7_e0: [Group condition: Event] State elapsed time comparison
+x2_s8: Ghost appearance: waiting for completion
+x2_s8_e0: [Group condition: Event] State elapsed time comparison
+x2_s9: Ghost appearance: Waiting for conversation
+x2_s9_e0: [Group condition: Event] State elapsed time comparison
+x2_s10: End state
+x3: [Lib] NPC: Grave: Key guide: General purpose
+x3_p0: Ghost Appearance: Area Other Flag
+x3_p1: Conversation start: Area and other flags
+x3_p2: Death: Global event flag
+x3_p3: Tomb: OBJ instance ID
+x3_p4: Grave event ID
+x3_p5: NPC information parameter ID
+x3_s0: Start state
+x3_s1: Key guide: Start
+x3_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x3_s1_e1: [Group condition: Event] Event status judgment
+x3_s1_e2: [Group condition: Flag] Event flag comparison
+x3_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x3_s2: Key Guide: System: Exit
+x3_s2_e0: [System] Termination notification
+x3_s3: Key guide: Start conversation: Set flag
+x3_s3_e0: [Flag] Set flag
+x3_s3_e1: [Group condition: Flag] Event flag comparison
+x3_s4: [Lib] NPC: Grave: Key Guide: Key Guide_SubState
+x3_s5: [Lib] NPC: Grave: Key Guide: Ghost Appearance_SubState
+x3_s6: End state
+x4: [Lib] NPC: Death determination: General purpose
+x4_p0: Generator ID
+x4_p1: Death map: Global event flag
+x4_s0: Start state
+x4_s1: Death determination: Start
+x4_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x4_s2: Death determination: Wait
+x4_s2_e0: [Group condition: Character] Character death determination
+x4_s3: Death determination: branch
+x4_s3_e0: [Group condition: Flag] Event flag comparison
+x4_s4: Death determination: System: End
+x4_s4_e0: [System] Termination notification
+x4_s5: Death determination: death flag setting
+x4_s5_e0: [Flag] Set flag
+x4_s5_e1: [Group condition: Flag] Event flag comparison
+x4_s6: End state
+x5: [Lib] Appearance determination: General purpose
+x5_p0: Death: Global event flag
+x5_p1: Local emigration permission: Global event flag
+x5_p2: Relocation permission after moving: Global event flag
+x5_p3: Appearance determination: Area and other flags
+x5_p4: Pre-movement hostile: Global event flag
+x5_s0: Start state
+x5_s1: Appearance determination: Start
+x5_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x5_s2: Appearance determination: Death determination
+x5_s2_e0: [Group condition: Flag] Event flag comparison
+x5_s3: Appearance determination: Migration determination
+x5_s3_e0: [Group condition: Flag] Event flag comparison
+x5_s3_e1: [Group condition: Flag] Event flag comparison
+x5_s4: Appearance determination: Appearable
+x5_s4_e0: [Flag] Set flag
+x5_s4_e1: [Group condition: Flag] Event flag comparison
+x5_s5: Appearance judgment: Impossible to appear
+x5_s5_e0: [Flag] Set flag
+x5_s5_e1: [Group condition: Flag] Event flag comparison
+x5_s6: Appearance determination: System: End
+x5_s6_e0: [System] Termination notification
+x5_s7: Appearance determination: Appearance determination
+x5_s7_e0: [Group condition: Flag] Event flag comparison
+x5_s7_e1: [Group condition: Flag] Event flag comparison
+x5_s8: Appearance judgment: Appearance stopped
+x5_s8_e0: [Flag] Set flag
+x5_s8_e1: [Group condition: Flag] Event flag comparison
+x5_s9: End state
+x6: [Lib] [Asynchronous] [Preset] Bug key (wall)
+x6_p0: Object instance ID
+x6_s0: Start state
+x6_s1: [Private] [Asynchronous] [Reproduction] Bug key _SubState
+x6_s2: [Private] [Asynchronous] [Condition] Bug key _SubState
+x6_s3: [Private] [Asynchronous] [Execution] Use bug key _SubState
+x6_s4: [Private] [Asynchronous] [Execution] Insect key unavailable dialog _SubState
+x6_s5: [Private] [Asynchronous] [Condition] Guest Bug Key_SubState
+x6_s6: [Lib] [Execution] Dummy_SubState
+x6_s7: End of reproduction
+x6_s8: End of execution
+x7: [Private] [Asynchronous] [Reproduction] Bug Key
+x7_p0: Object instance ID
+x7_s0: Start state
+x7_s1: OBJ status judgment
+x7_s2: OBJ initialization: 10
+x7_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x7_s3: Before execution
+x7_s4: After execution
+x7_s5: Guest termination
+x8: [Private] [Asynchronous] [Condition] Host insect key
+x8_p0: Object instance ID
+x8_p1: Number consumed
+x8_p2: Consumption items
+x8_s0: Start state
+x8_s1: Judgment to examine
+x8_s1_e0: [Group condition: OBJ] Judgment to examine OBJ
+x8_s2: Available branch
+x8_s3: Available end
+x8_s4: Unusable termination
+x9: [Private] [Asynchronous] [Execution] Use bug key dialog
+x9_p0: Object instance ID
+x9_p1: Key guide type
+x9_p2: Event action
+x9_p3: Number consumed
+x9_p4: Consumption items
+x9_s0: Start state
+x9_s1: Dialog display
+x9_s1_e0: [FE] YES / NO selection window display (specify object instance ID)
+x9_s1_e1: [FE] YES / NO selection window display (specify object instance ID)
+x9_s2: Result judgment
+x9_s3: Rerun
+x9_s3_e0: [System] Re-execution notification
+x9_s4: Action request to player
+x9_s4_e0: [Character action] OBJ animation control request to player (Instance ID specified version)
+x9_s5: OBJ status judgment
+x9_s5_e0: [Group condition: Character] Player event action judgment
+x9_s5_e1: [Group condition: Item] Comparison of number of possessed items
+x9_s5_e2: [Group condition: OBJ] OBJ state ID comparison
+x9_s5_e3: [Group condition: OBJ] OBJ state ID comparison
+x9_s6: Insect key consumption
+x9_s6_e0: [Item] Item consumption
+x9_s7: Bug key transition waiting: 30
+x9_s7_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x9_s8: Bug key: Initial state: 10
+x9_s8_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x9_s9: End state
+x10: [Private] [Asynchronous] [Execution] Unusable key
+x10_p0: Object instance ID
+x10_p1: Number consumed
+x10_p2: Consumption items
+x10_s0: Start state
+x10_s1: Dialog display
+x10_s1_e0: [FE] Display window only for YES (specify object instance ID)
+x10_s2: Rerun
+x10_s2_e0: [System] Re-execution notification
+x10_s3: End state
+x11: [Private] [Asynchronous] [Condition] Guest Bug Key
+x11_p0: Object instance ID
+x11_s0: Start state
+x11_s1: OBJ standby
+x11_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x11_s2: End state
+x12: [Lib] [execution] dummy
+x12_s0: Start state
+x12_s1: End state
+x13: [Lib] [Asynchronous] [Preset] Bug key (floor)
+x13_p0: Object instance ID
+x13_s0: Start state
+x13_s1: [Private] [Asynchronous] [Reproduction] Bug key _SubState
+x13_s2: [Private] [Asynchronous] [Condition] Bug key _SubState
+x13_s3: [Private] [Asynchronous] [Execution] Use bug key _SubState
+x13_s4: [Private] [Asynchronous] [Execution] Insect key unavailable dialog _SubState
+x13_s5: [Private] [Asynchronous] [Condition] Guest Bug Key_SubState
+x13_s6: [Lib] [Execution] Dummy_SubState
+x13_s7: End of reproduction
+x13_s8: End of execution
+x14: [Lib] [Reproduction] Rebirth fire _ sky
+x14_s0: Start state
+x14_s1: End state
+x15: [Lib] [execute] Rebirth fire
+x15_p0: Flag start ID
+x15_p1: Flag end ID
+x15_s0: Start state
+x15_s1: Flag reset
+x15_s1_e0: [Flag] Set the flags within the specified range set in the parameter.
+x15_s2: End state
+x16: [Lib] [Condition] Rebirth fire_sky
+x16_s0: Start state
+x16_s1: End state
+x17: [Lib] [Preset] Rebirth
+x17_p0: Flag start ID
+x17_p1: Flag end ID
+x17_s0: Start state
+x17_s1: [Lib] [Reproduction] Reproduction of fire_sky_SubState
+x17_s2: [Lib] [Execution] Regenerative fire _SubState
+x17_s3: [Lib] [Condition] Reproduction fire_Sky_SubState
+x17_s4: End state
+x18: [Lib] NPC Black Phantom Appearance: Offline: Unconditional
+x18_p0: Summon range
+x18_p1: Generator ID
+x18_p2: Appearance: Minimum time
+x18_p3: Appearance: Maximum time
+x18_s0: Start state
+x18_s1: Black Phantom Appearance: Start
+x18_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x18_s2: Black Phantom Appearance: Summoning Conditions: Standby
+x18_s2_e0: [Group condition: Character] Judgment within player points
+x18_s2_e1: [Group condition: Net] Offline judgment
+x18_s3: Black Phantom Appearance: Timer: Start
+x18_s3_e0: [Group condition: Event] State elapsed time comparison
+x18_s3_e1: [Group condition: Character] Judgment within player points
+x18_s3_e2: [Group condition: Net] Offline judgment
+x18_s4: Black Phantom Appearance: System: End
+x18_s4_e0: [System] Termination notification
+x18_s5: Black phantom appearance: Black phantom generation
+x18_s5_e0: [Generator] NPC spirit body generation
+x18_s6: Black Phantom Appearance: System: Re-execution
+x18_s6_e0: [System] Re-execution notification
+x18_s7: Black Phantom Appearance: Online
+x18_s7_e0: [Group condition: Net] Offline judgment
+x18_s8: Black Phantom Appearance: Online
+x18_s8_e0: [Group condition: Net] Offline judgment
+x18_s9: Black Phantom Appearance: Sign removed
+x18_s9_e0: [Generator] Delete NPC spirit body
+x18_s10: [DC] Is it in game?
+x18_s11: End state
+x19: [Lib] [Preset] Get trophy
+x19_p0: Acquisition trigger_other flags
+x19_p1: Trophy type
+x19_s0: Start state
+x19_s1: Have you acquired a trophy?
+x19_s2: Wait for specified flag
+x19_s2_e0: [Group condition: Flag] Event flag comparison
+x19_s3: Trophy acquisition
+x19_s3_e0: [Others] Trophy cancellation
+x19_s4: End state
+x20: [Lib] [DC] [Execute] Transparent characters
+x20_p0: Generator ID
+x20_p1: Parameter ID
+x20_s0: Start state
+x20_s1: Cancel special effects
+x20_s1_e0: [Status] Cancel special effects of specified enemy
+x20_s2: End state
+x21: [Lib] [DC] [Reproduction] Transparent characters
+x21_p0: Generator ID
+x21_p1: Parameter ID
+x21_s0: Start state
+x21_s1: Special effects: draw only shadows
+x21_s1_e0: [Status] Activate the special effects of the specified enemy
+x21_s2: End state
+x22: [Lib] [DC] [Condition] Transparent characters
+x22_p0: Generator ID
+x22_s0: Start state
+x22_s1: Defeat determination
+x22_s1_e0: [Group condition: Character] Character death determination
+x22_s2: End state
+x23: [Lib] [DC] [Preset] Transparent characters
+x23_p0: Generator ID
+x23_p1: Parameter ID
+x23_s0: Start state
+x23_s1: [Lib] [DC] [Reproduction] Transparent character _SubState
+x23_s2: [Lib] [DC] [Execution] Transparent character _SubState
+x23_s3: [Lib] [DC] [Condition] Transparent character _SubState
+x23_s4: End state

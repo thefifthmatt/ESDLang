@@ -1,0 +1,19 @@
+110000: Samurai bride acquired Seoul
+110000_s0: Start state
+110000_s1: Conversation start
+110000_s2: End of conversation
+110000_s2_e0: [System] Termination notification
+110000_s3: [Lib] Conversation: Display only _SubState
+x0: [Lib] Conversation: Display only
+x0_p0: Conversation ID
+x0_p1: Conversation flag
+x0_p2: Display distance
+x0_p3: Global event flag
+x0_s0: Start state
+x0_s1: Conversation: Start
+x0_s2: Conversation: Message
+x0_s2_e0: [Conversation] Notification of conversation start
+x0_s3: Conversation: flag setting
+x0_s3_e0: [Flag] Set flag
+x0_s4: Conversation: Wait for message
+x0_s5: Conversation: End

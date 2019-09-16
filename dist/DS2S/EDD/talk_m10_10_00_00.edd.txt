@@ -1,0 +1,568 @@
+7540: Yorozu Baba
+7540_s0: Start state
+7540_s1: Conversation: Start
+7540_s2: Conversation: System: End
+7540_s2_e0: [System] Termination notification
+7540_s3: [Lib] Event: Branch_SubState
+7540_s4: [Lib] Reunion hostility_SubState
+7540_s5: [Lib] Killing state_SubState
+7540_s6: [Lib] Death state_SubState
+7540_s7: [Lib] Hostile waiting_SubState
+7540_s8: [Lib] Hostile state_SubState
+7540_s9: Yorozu Baba: Conversation_SubState
+7540_s10: [Lib] First adversification_SubState
+7430: Tsukimitsu (Giant Forest: 3rd encounter)
+7430_s0: Start state
+7430_s1: Conversation: Start
+7430_s2: Conversation: System: End
+7430_s2_e0: [System] Termination notification
+7430_s3: [Lib] Event: Branch_SubState
+7430_s4: [Lib] Reunion hostility_SubState
+7430_s5: [Lib] Hostile waiting_SubState
+7430_s6: [Lib] Hostile state_SubState
+7430_s7: [Lib] Death state_SubState
+7430_s8: [Lib] Killing state_SubState
+7430_s9: [Lib] First adversification_SubState
+7430_s10: Tsukimitsu: Conversation_SubState
+7510: Map writing (Giant Forest)
+7510_s0: Start state
+7510_s1: Conversation: Start
+7510_s2: Conversation: System: End
+7510_s2_e0: [System] Termination notification
+7510_s3: [Lib] Event: Branch_SubState
+7510_s4: [Lib] Reunion hostility_SubState
+7510_s5: [Lib] Hostile waiting_SubState
+7510_s6: [Lib] Hostile state_SubState
+7510_s7: [Lib] Death state_SubState
+7510_s8: [Lib] Killing state_SubState
+7510_s9: [Lib] First adversification_SubState
+7510_s10: Map writing: Conversation_SubState
+7440: Patch (Giant Forest)
+7440_s0: Start state
+7440_s1: Conversation: Start
+7440_s2: Conversation: System: End
+7440_s2_e0: [System] Termination notification
+7440_s3: [Lib] Event: Branch_SubState
+7440_s4: [Lib] Reunion hostility_SubState
+7440_s5: [Lib] Killing state_SubState
+7440_s6: [Lib] Death state_SubState
+7440_s7: [Lib] Hostile waiting_SubState
+7440_s8: [Lib] Hostile state_SubState
+7440_s9: [Lib] First adversification_SubState
+7440_s10: Patch: Conversation_SubState
+x28: Yorozu Baba: Conversation
+x28_s0: Start state
+x28_s1: Conversation: Start
+x28_s1_e0: [FE] Clear NPC window results
+x28_s2: Conversation: End
+x28_s2_e0: [FE] Clear NPC window results
+x28_s3: Yorozu Baba: First conversation_SubState
+x28_s4: Yorozu Baba: NPC Menu_SubState
+x28_s5: End state
+x29: Yorozu Baba: First conversation
+x29_s0: Start state
+x29_s1: First conversation: start
+x29_s2: First conversation: Set contact flag
+x29_s2_e0: [Flag] Set flag
+x29_s3: Talk to (first time) _SubState
+x29_s4: Talk: Greeting_SubState
+x29_s5: End state
+x30: Yorozu Baba: NPC Menu
+x30_s0: Start state
+x30_s1: Menu: Start
+x30_s2: [Lib] Menu cancellation: General purpose_SubState
+x30_s3: [Lib] Exit menu: General purpose_SubState
+x30_s4: [Lib] Menu start: General purpose_SubState
+x30_s5: Yorozu Baba: Menu conversation_SubState
+x30_s6: End state
+x31: Yorozu Baba: Menu conversation
+x31_s0: Start state
+x31_s1: Menu conversation: Start
+x31_s2: Menu conversation: Set movement permission flag
+x31_s2_e0: [Flag] Set flag
+x31_s3: Menu conversation: End
+x31_s3_e0: [FE] Clear what you selected in the NPC window
+x31_s4: Menu conversation: Part 1_SubState
+x31_s5: Menu conversation: 2_SubState
+x31_s6: Menu conversation: 3_SubState
+x31_s7: Menu conversation: 4_SubState
+x31_s8: Equipment transfer (Conditions: Shop purchase total is above a certain level) _SubState
+x31_s9: End state
+x32: Moonlight Jun: Conversation
+x32_s0: Start state
+x32_s1: Conversation: Start
+x32_s1_e0: [FE] Clear NPC window results
+x32_s2: Conversation: End
+x32_s2_e0: [FE] Clear NPC window results
+x32_s3: Conversation: Set migration permission flag
+x32_s3_e0: [Flag] Set flag
+x32_s4: Equipment transfer (condition: white phantom summon achievement) _SubState
+x32_s5: Talk: Part 1_SubState
+x32_s6: Talk to: 2_SubState
+x32_s7: Talk: 4_SubState
+x32_s8: Speak: Part 3_SubState
+x32_s9: [Lib] Satoshi Tsutsumi: NPC Menu_SubState
+x32_s10: End state
+x33: Map writing: Conversation
+x33_s0: Start state
+x33_s1: Conversation: Start
+x33_s2: Conversation: End
+x33_s3: Conversation: Set migration permission flag
+x33_s3_e0: [Flag] Set flag
+x33_s4: Talk: Part 1_SubState
+x33_s5: Talk to: 2_SubState
+x33_s6: Speak: Part 3_SubState
+x33_s7: Talk: Part 4: 1_SubState
+x33_s8: Talk: Part 6: 1_SubState
+x33_s9: Talk: Part 7_SubState
+x33_s10: Talk: Part 4: 2_SubState
+x33_s11: Speak: Part 4: 3_SubState
+x33_s12: Talk: Part 5: 1_SubState
+x33_s13: Talk: Part 6: 2_SubState
+x33_s14: Talk: Part 6: 3_SubState
+x33_s15: Speak: Part 5: 2_SubState
+x33_s16: End state
+x34: Patch: Conversation
+x34_s0: Start state
+x34_s1: Conversation: Start
+x34_s1_e0: [FE] Clear NPC window results
+x34_s2: Conversation: End
+x34_s2_e0: [FE] Clear NPC window results
+x34_s3: Conversation: Key Guide: Delete
+x34_s3_e0: [FE] Delete key guide area
+x34_s4: Equipment transfer (condition: white phantom summon achievement) _SubState
+x34_s5: Patch: Before trap activation: Conversation_SubState
+x34_s6: Patch: After trap activation: Conversation_SubState
+x34_s7: Patch: Unread before activation After activation: Conversation_SubState
+x34_s8: End state
+x35: Patch: Before trap activation: Conversation
+x35_s0: Start state
+x35_s1: Before trap activation: Start
+x35_s2: Before trap activation: Talk to 1_SubState
+x35_s3: Before trap activation: Talk to 2_SubState
+x35_s4: Before trap activation: Talk to 3_SubState
+x35_s5: End state
+x36: Patch: After trap activation: Conversation
+x36_s0: Start state
+x36_s1: After trap activation: Start
+x36_s2: After trap activation: Talk to 1_SubState
+x36_s3: After trap activation: Talk to 2_SubState
+x36_s4: After trap activation: Talk to 3_SubState
+x36_s5: [Lib] Conversation: Item transfer: Mes⇒Item⇒Mes: Key: Patch_SubState
+x36_s6: End state
+x37: Patch: Unread before triggering After triggering: Conversation
+x37_s0: Start state
+x37_s1: After unread before triggering: Start
+x37_s2: Set migration permission flag
+x37_s2_e0: [Flag] Set flag
+x37_s2_e1: [Flag] Set flag
+x37_s3: Unread before trap activation: After trap activation: Talk to 1_SubState
+x37_s4: Unread before trap activation: After trap activation: Talk to 2_SubState
+x37_s5: Unread before trap activation: After trap activation: Talk to 3_SubState
+x37_s6: [Lib] Conversation: Item transfer: Mes⇒Item⇒Mes: Key: Patch_SubState
+x37_s7: End state
+x38: [Lib] Conversation: Item transfer: Mes⇒Item⇒Mes: Key: Patch
+x38_p0: Item lottery ID
+x38_p1: Item transfer: Global event flag
+x38_p2: First half: Conversation ID
+x38_p3: Second half: Conversation ID
+x38_p4: Conversation: Global conversation flag
+x38_p5: Trophy acquisition: Area and other flags
+x38_p6: Emigration permission: Global event flag
+x38_p7: White Phantom Appearance: Global Event Flag
+x38_s0: Start state
+x38_s1: Item transfer: Start
+x38_s2: Item transfer: key guide creation
+x38_s2_e0: [FE] Create key guide area
+x38_s3: Item transfer: Waiting for key guide input
+x38_s4: Item transfer: Delete key guide
+x38_s4_e0: [FE] Delete key guide area
+x38_s5: Item transfer: Conversation flag: Setting
+x38_s5_e0: [Flag] Set flag
+x38_s5_e1: [Flag] Set flag
+x38_s5_e2: [Flag] Set flag
+x38_s6: Item transfer: First half of conversation_SubState
+x38_s7: Item transfer: Second half of conversation _SubState
+x38_s8: [Lib] Item acquisition dialog: Conversation_SubState
+x38_s9: Inventory full confirmation dialog_SubState
+x38_s10: End state
+x0: [Lib] Conversation: General purpose
+x0_p0: Conversation ID
+x0_p1: Conversation flag
+x0_p2: Global event flag
+x0_s0: Start state
+x0_s1: Conversation: Start
+x0_s2: Conversation: key guide creation
+x0_s2_e0: [FE] Create key guide area
+x0_s3: Conversation: waiting
+x0_s4: Conversation: Message
+x0_s4_e0: [FE] Delete key guide area
+x0_s4_e1: [Conversation] Notification of conversation start
+x0_s5: Conversation: flag setting
+x0_s5_e0: [Flag] Set flag
+x0_s5_e1: [Flag] Set flag
+x0_s6: Conversation: Message waiting
+x0_s7: Conversation: End
+x1: [Lib] Conversation: Display only
+x1_p0: Conversation ID
+x1_p1: Conversation flag
+x1_p2: Display distance
+x1_p3: Global event flag
+x1_s0: Start state
+x1_s1: Conversation: Start
+x1_s2: Conversation: Message
+x1_s2_e0: [Conversation] Notification of conversation start
+x1_s3: Conversation: flag setting
+x1_s3_e0: [Flag] Set flag
+x1_s4: Conversation: Wait for message
+x1_s5: Conversation: End
+x2: [Lib] Conversation: Event end
+x2_p0: Conversation ID
+x2_p1: Conversation flag
+x2_s0: Start state
+x2_s1: Conversation: Start
+x2_s2: Conversation: Message
+x2_s2_e0: [Conversation] Notification of conversation start
+x2_s3: Conversation: flag setting
+x2_s3_e0: [Flag] Set flag
+x2_s4: Conversation: End
+x3: [Lib] Reunion hostility
+x3_p0: Conversation message ID
+x3_p1: Conversation flag ID
+x3_p2: Display distance
+x3_p3: Audible distance ratio
+x3_s0: Start state
+x3_s1: Reunion hostility: start
+x3_s1_e0: [FE] Clear NPC window results
+x3_s1_e1: [FE] Delete key guide area
+x3_s2: [Lib] Conversation: Hostile display only_SubState
+x3_s3: Reunion hostility: finished
+x4: [Lib] First hostility
+x4_p0: Hostile: Global event flag
+x4_p1: Conversation ID
+x4_p2: Conversation flag
+x4_p3: Hostile map: Global event flag
+x4_s0: Start state
+x4_s1: First hostility: start
+x4_s1_e0: [Character action] Action end request to the player
+x4_s1_e1: [Flag] Set flag
+x4_s1_e2: [Flag] Set flag
+x4_s1_e3: [Flag] Set flag
+x4_s1_e4: [FE] Clear NPC window results
+x4_s1_e5: [FE] Close NPC window
+x4_s1_e6: [FE] Delete key guide area
+x4_s1_e7: [Conversation] Notification of conversation cancellation
+x4_s2: First hostility: save execution
+x4_s2_e0: [Others] Save execution
+x4_s3: Conversation: First hostilization_SubState
+x4_s4: First hostility: end
+x5: [Lib] Hostile waiting
+x5_p0: Conversation ID: 1 attacked
+x5_p1: Conversation ID: Attacked 2
+x5_p2: Conversation ID: 3 attacked
+x5_p3: Conversation ID: 4 attacked
+x5_p4: No use: Area and other flags
+x5_p5: No, twice: Area and other flags
+x5_s0: Start state
+x5_s1: Hostility: Start
+x5_s1_e0: [System] Obtains the clamped integer value
+x5_s1_e1: [FE] Delete key guide area
+x5_s1_e2: [Conversation] Notification of conversation cancellation
+x5_s2: Hostility: Set damage flag
+x5_s2_e0: [Flag] Set flag
+x5_s2_e1: [Flag] Set flag
+x5_s3: Hostility: Branch
+x5_s4: Conversation: Attacked 1_SubState
+x5_s5: Conversation: 2_SubState attacked
+x5_s6: Conversation: Attacked 3_SubState
+x5_s7: Conversation: 4_SubState attacked
+x5_s8: Hostility: End
+x6: [Lib] Hostile state
+x6_p0: Area and other flags: HP decreased
+x6_p1: Conversation ID: HP drop 1
+x6_p2: Conversation ID: HP drop 2
+x6_p3: Conversation ID: HP drop 3
+x6_s0: Start state
+x6_s1: Hostile state: Start
+x6_s1_e0: [Conversation] Notification of conversation cancellation
+x6_s2: Hostile state: standby
+x6_s2_e0: [Status] Treat as hostile
+x6_s3: Hostile state: HP decreased
+x6_s3_e0: [System] Obtains the clamped integer value
+x6_s4: Conversation: HP drop 1_SubState
+x6_s5: Conversation: HP drop 2_SubState
+x6_s6: Conversation: HP drop 3_SubState
+x6_s7: End state
+x7: [Lib] Death status
+x7_p0: Conversation ID
+x7_p1: Global: death flag
+x7_s0: Start state
+x7_s1: Death status: Start
+x7_s1_e0: [Character action] Action end request to the player
+x7_s1_e1: [FE] Delete key guide area
+x7_s1_e2: [FE] Close NPC window
+x7_s1_e3: [Conversation] Notification of conversation cancellation
+x7_s2: Conversation: death message_SubState
+x7_s3: End state
+x8: [Lib] Murder status
+x8_p0: Conversation ID
+x8_p1: Conversation flag
+x8_s0: Start state
+x8_s1: Killed state: Start
+x8_s1_e0: [FE] Delete key guide area
+x8_s1_e1: [Conversation] Notification of conversation cancellation
+x8_s2: Conversation: Killing message_SubState
+x8_s3: End state
+x9: [Lib] Event: Branch
+x9_p0: Hostile flag
+x9_p1: death flag
+x9_p2: Conversation start flag
+x9_s0: Start state
+x9_s1: Event: Branch
+x9_s1_e0: [FE] Clear NPC window results
+x9_s2: Event: Ghosts: Waiting
+x9_s3: Event: End: Normal encounter
+x9_s4: Event: End: Encounter Encounter
+x10: [Lib] Conversation: HP drop
+x10_p0: Conversation ID
+x10_p1: Area and other flags: HP decreased
+x10_s0: Start state
+x10_s1: Conversation: Start
+x10_s2: Conversation: Message
+x10_s2_e0: [Conversation] Notification of conversation start
+x10_s3: Conversation: Other area flag setting
+x10_s3_e0: [Flag] Set flag
+x10_s4: Conversation: End
+x11: [Lib] Conversation: Greeting: General
+x11_p0: Area other flag: Contact flag
+x11_p1: Text ID: Talk to_continuous 1
+x11_p2: Text ID: Talk to_continuous 2
+x11_p3: Text ID: Talk to _After a long time 1
+x11_p4: Text ID: Talk to _After a long time 2
+x11_s0: Start state
+x11_s1: Greeting: Start
+x11_s1_e0: [System] Obtains the clamped integer value
+x11_s2: Continuous or long time: Branch
+x11_s3: Continuous: Branch
+x11_s4: Long time no see: branch
+x11_s5: Long time no see: contact flag set
+x11_s5_e0: [Flag] Set flag
+x11_s6: Talk to _continuous 1_SubState
+x11_s7: Talk to _continuous 2_SubState
+x11_s8: Talk to me after a long time 1_SubState
+x11_s9: Talk to _After a long time 2_SubState
+x11_s10: End state
+x12: [Lib] Menu start: General purpose
+x12_p0: Camera parameter ID
+x12_p1: Target Damipoly ID
+x12_p2: NPC event parameter ID
+x12_p3: Cancel distance
+x12_s0: Start state
+x12_s1: Menu start: Start
+x12_s2: Menu start: Open
+x12_s2_e0: [FE] Open NPC window
+x12_s3: Menu start: Standby
+x12_s4: Menu start: Shop waiting
+x12_s5: Menu start: Shop start
+x12_s5_e0: [FE] Clear what you selected in the NPC window
+x12_s6: Cancel: End state
+x12_s7: Normal: End state
+x12_s8: Conversation: end state
+x12_s9: Pledge Discard: End State
+x12_s10: Votive: End State
+x12_s11: Ladder: End state
+x12_s12: Pledge: End state
+x12_s13: Immunity: End State
+x12_s14: Pass XX: End state
+x12_s15: Route switching: End state
+x12_s16: Gesture: End state
+x12_s17: Point reassignment: end state
+x12_s18: Est bottle enhancement: end state
+x12_s19: Level up: End state
+x13: [Lib] Menu exit: General purpose
+x13_p0: Conversation ID (at the time of purchase)
+x13_p1: Conversation ID (when not purchased)
+x13_s0: Start state
+x13_s1: Menu exit: Close
+x13_s1_e0: [FE] Close NPC window
+x13_s2: Purchase and leave _SubState
+x13_s3: Leave without purchase _SubState
+x13_s4: End state
+x14: [Lib] Menu cancellation: General purpose
+x14_p0: Conversation ID (when away)
+x14_s0: Start state
+x14_s1: Cancel menu: Start
+x14_s2: Cancel menu: Close
+x14_s2_e0: [FE] Close NPC window
+x14_s3: When you leave the shop _SubState
+x14_s4: End state
+x15: [Lib] OK dialog
+x15_p0: Text ID
+x15_s0: Start state
+x15_s1: OK dialog: Display
+x15_s1_e0: [FE] Window display only for YES
+x15_s2: OK dialog: Wait
+x15_s3: End state
+x16: [Lib] Conversation: Item transfer: Mes⇒Item⇒Mes: Key
+x16_p0: Item lottery ID
+x16_p1: Item transfer: Global event flag
+x16_p2: First half: Conversation ID
+x16_p3: Second half: Conversation ID
+x16_p4: Conversation: Global conversation flag
+x16_p5: Trophy acquisition: Area and other flags
+x16_p6: Emigration permission: Global event flag
+x16_p7: White Phantom Appearance: Global Event Flag
+x16_s0: Start state
+x16_s1: Item transfer: Start
+x16_s2: Item transfer: key guide creation
+x16_s2_e0: [FE] Create key guide area
+x16_s3: Item transfer: Waiting for key guide input
+x16_s4: Item transfer: Delete key guide
+x16_s4_e0: [FE] Delete key guide area
+x16_s5: Item transfer: Conversation flag: Setting
+x16_s5_e0: [Flag] Set flag
+x16_s5_e1: [Flag] Set flag
+x16_s5_e2: [Flag] Set flag
+x16_s6: Item transfer: First half of conversation_SubState
+x16_s7: Item transfer: Second half of conversation _SubState
+x16_s8: [Lib] Item acquisition dialog: Conversation_SubState
+x16_s9: [Lib] Inventory full dialog: Item display_SubState
+x16_s10: End state
+x17: [Lib] Conversation: Item transfer: Mes⇒Item: Key
+x17_p0: Item lottery ID
+x17_p1: Item transfer: Global event flag
+x17_p2: Conversation ID
+x17_p3: Conversation: Global conversation flag
+x17_p4: Trophy acquisition: Area and other flags
+x17_s0: Start state
+x17_s1: Item transfer: Start
+x17_s2: Item transfer: key guide creation
+x17_s2_e0: [FE] Create key guide area
+x17_s3: Item transfer: Waiting for key guide input
+x17_s4: Item transfer: Delete key guide
+x17_s4_e0: [FE] Delete key guide area
+x17_s5: Item transfer: Conversation flag: Setting
+x17_s5_e0: [Flag] Set flag
+x17_s6: Item transfer: Conversation_SubState
+x17_s7: [Lib] Item acquisition dialog: Conversation_SubState
+x17_s8: [Lib] Inventory full dialog: Item display_SubState
+x17_s9: End state
+x18: [Lib] Item acquisition dialog: Conversation
+x18_p0: Item lottery ID
+x18_p1: Item transfer: Global event flag
+x18_p2: Conversation: Global conversation flag
+x18_p3: Trophy acquisition: Area and other flags
+x18_p4: Emigration permission: Global event flag
+x18_p5: White Phantom Appearance: Global Event Flag
+x18_s0: Start state
+x18_s1: Item acquisition dialog: Display
+x18_s1_e0: [Flag] Set flag
+x18_s1_e1: [Flag] Set flag
+x18_s1_e2: [Flag] Set flag
+x18_s1_e3: [Flag] Set flag
+x18_s1_e4: [Flag] Set flag
+x18_s1_e5: [Item] Add item
+x18_s2: Item acquisition dialog: Wait
+x18_s3: End state
+x19: [Lib] Conversation: Item transfer: Mes⇒Item⇒Mes
+x19_p0: Item lottery ID
+x19_p1: Item transfer: Global event flag
+x19_p2: First half: Conversation ID
+x19_p3: Second half: Conversation ID
+x19_p4: Conversation: Global conversation flag
+x19_p5: Trophy acquisition: Area and other flags
+x19_s0: Start state
+x19_s1: Item transfer: Start
+x19_s2: Item transfer: Conversation flag: Setting
+x19_s2_e0: [Flag] Set flag
+x19_s3: Item transfer: First half of conversation_SubState
+x19_s4: Item transfer: Second half of conversation _SubState
+x19_s5: [Lib] Item acquisition dialog: Conversation_SubState
+x19_s6: [Lib] Inventory full dialog: Item display_SubState
+x19_s7: End state
+x20: [Lib] Menu exit: No Mes
+x20_s0: Start state
+x20_s1: Menu exit: Close
+x20_s1_e0: [FE] Close NPC window
+x20_s2: End state
+x21: [Lib] Menu canceled: No Mes
+x21_s0: Start state
+x21_s1: Cancel menu: Start
+x21_s2: Cancel menu: Close
+x21_s2_e0: [FE] Close NPC window
+x21_s3: End state
+x22: [Lib] Conversation: Hostile display only
+x22_p0: Conversation ID
+x22_p1: Conversation flag
+x22_p2: Display distance
+x22_p3: Audible distance ratio
+x22_s0: Start state
+x22_s1: Conversation: Start
+x22_s2: Conversation: Message
+x22_s2_e0: [Conversation] Notification of conversation start
+x22_s3: Conversation: flag setting
+x22_s3_e0: [Flag] Set flag
+x22_s4: Conversation: Wait for message
+x22_s5: Conversation: Waiting for display
+x22_s6: Conversation: End
+x23: [Lib] Menu item: Gesture
+x23_p0: Gesture: Item ID
+x23_p1: Gesture acquisition: Global event flag
+x23_s0: Start state
+x23_s1: Gesture: Start
+x23_s2: Gesture: Exit
+x23_s2_e0: [FE] Close NPC window
+x23_s2_e1: [FE] Clear what you selected in the NPC window
+x23_s3: [Lib] Get gesture dialog_SubState
+x23_s4: End state
+x24: [Lib] NPC menu: Gesture alone
+x24_p0: Item: Event item
+x24_p1: Item transfer: Global event flag
+x24_p2: NPC menu: With gesture
+x24_p3: NPC menu: No gesture
+x24_s0: Start state
+x24_s1: Menu: Start
+x24_s1_e0: [FE] Clear NPC window results
+x24_s2: Menu: Exit
+x24_s2_e0: [FE] Clear NPC window results
+x24_s3: Menu: Branch
+x24_s4: [Lib] Menu start: With gesture_SubState
+x24_s5: [Lib] Menu start: No gesture _SubState
+x24_s6: [Lib] Menu exit: No Mes_SubState
+x24_s7: [Lib] Menu canceled: No Mes_SubState
+x24_s8: [Lib] Menu item: Gesture_SubState
+x24_s9: End state
+x25: [Lib] Get gesture dialog
+x25_p0: Item ID
+x25_p1: Global flag
+x25_s0: Start state
+x25_s1: Get gesture dialog: Display
+x25_s1_e0: [FE] Display gesture window
+x25_s1_e1: [Flag] Set flag
+x25_s2: Get gesture dialog: Wait
+x25_s3: End state
+x26: [Lib] Conversation: Item transfer: Mes⇒Item⇒Mes: Important items
+x26_p0: Item lottery ID
+x26_p1: Item transfer: Global event flag
+x26_p2: First half: Conversation ID
+x26_p3: Second half: Conversation ID
+x26_p4: Conversation: Global conversation flag
+x26_p5: Trophy acquisition: Area and other flags
+x26_p6: Important items
+x26_s0: Start state
+x26_s1: Item transfer: Start
+x26_s2: Item transfer: Conversation flag: Setting
+x26_s2_e0: [Flag] Set flag
+x26_s3: Item transfer: First half of conversation_SubState
+x26_s4: Item transfer: Second half of conversation _SubState
+x26_s5: [Lib] Item acquisition dialog: Conversation_SubState
+x26_s6: [Lib] Inventory full dialog: Item display_SubState
+x26_s7: End state
+x27: [Lib] Inventory full dialog: Item display
+x27_p0: Text ID
+x27_p1: Item lottery ID
+x27_s0: Start state
+x27_s1: OK dialog: Display
+x27_s1_e0: [FE] Display item acquisition failure window
+x27_s2: OK dialog: Wait
+x27_s3: End state

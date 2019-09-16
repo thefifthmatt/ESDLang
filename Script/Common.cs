@@ -19,6 +19,7 @@ namespace ESDLang.Script
             public int Machine { get; set; }
             public int ID { get; set; }
             public ESD.State Inner { get; set; }
+            public EDD.StateDesc Desc { get; set; }
             public Block Entry { get; set; }
             public Block While { get; set; }
             public Block Exit { get; set; }
@@ -122,6 +123,21 @@ namespace ESDLang.Script
             }
             return id.ToString();
         }
+        public static bool ParseMachine(string mIdStr, out int mId)
+        {
+            if (!int.TryParse(mIdStr, out mId))
+            {
+                if (mIdStr.StartsWith("x") && int.TryParse(mIdStr.Substring(1), out int diffpart))
+                {
+                    mId = 0x7FFFFFFF - diffpart;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public static int MachineSort(int id)
         {
             string asHex = $"{id:X}";
@@ -155,6 +171,7 @@ namespace ESDLang.Script
             // Should this be its own node? Or attached to another node?
             // It's a bit hacky now to either show or not show it
             public List<int> States = new List<int>();
+            public List<string> StateDoc = new List<string>();
             public override bool IsEmpty() => true;
         }
         public class ProgLabel : ProgramNode
@@ -167,11 +184,18 @@ namespace ESDLang.Script
         {
             public string Operation { get; set; }
             public List<Statement> Statements = new List<Statement>();
+            public List<string> StmtDocs = new List<string>();
+            public void Add(Statement st, string doc = null)
+            {
+                Statements.Add(st);
+                StmtDocs.Add(doc);
+            }
             public override bool IsEmpty() => Statements.Count == 0;
         }
         public class ProgNext : ProgramNode
         {
             public Statement Call { get; set; }
+            public string CallDoc { get; set; }
             public List<ProgBranch> Branches = new List<ProgBranch>();
             public ProgramNode PreBranch { get; set; }
             public override bool IsEmpty() => Call == null && IsEmpty(PreBranch) && Branches.All(b => b.IsEmpty());
@@ -197,6 +221,7 @@ namespace ESDLang.Script
         public class ProgReturn : ProgramNode
         {
             public int? Value { get; set; }
+            public string Doc { get; set; }
             public override bool IsEmpty() => false;
         }
         public class ProgLoop : ProgramNode
@@ -212,7 +237,7 @@ namespace ESDLang.Script
             public override bool IsEmpty() => Nodes.Count == 0 || Nodes.All(n => IsEmpty(n));
             public static ProgramNode From(List<ProgramNode> nodes, bool simplify = true)
             {
-                if (nodes.Count == 0) throw new Exception();
+                if (nodes.Count == 0) throw new Exception("No nodes given");
                 if (nodes.Count == 1) return nodes[0];
                 ProgSeq node = new ProgSeq { State = nodes[0].State, Nodes = nodes };
                 return simplify ? From(node.Simplify(), false) : node;
@@ -236,7 +261,7 @@ namespace ESDLang.Script
         }
 
         // Some utility functions for shared AST
-        public void DebugProgramNode(ProgramNode node, int d)
+        public static void DebugProgramNode(ProgramNode node, int d)
         {
             string col = "  ";
             string sp = string.Concat(Enumerable.Repeat(col, d));
@@ -270,8 +295,12 @@ namespace ESDLang.Script
         {
             string col = "    ";
             string sp = string.Concat(Enumerable.Repeat(col, indent));
-            void maybeComment(Statement statement = null, Expr expr = null)
+            void maybeComment(Statement statement = null, Expr expr = null, string name = null)
             {
+                if (name != null)
+                {
+                    Console.WriteLine($"{sp}# {name}");
+                }
                 string comment = WriteSourceInfo(u, statement: statement, expr: expr);
                 if (comment != null)
                 {
@@ -281,7 +310,9 @@ namespace ESDLang.Script
             }
             if (node is ProgAnnotation label)
             {
-                Console.WriteLine($"{sp}\"\"\" State {string.Join(",", label.States)} \"\"\"");
+                string stateDoc = label.StateDoc.Count == 0 ? null : label.StateDoc.Last();
+                if (stateDoc != null && stateDoc.EndsWith("\"")) stateDoc += " ";
+                Console.WriteLine($"{sp}\"\"\"State {string.Join(",", label.States)}{(stateDoc == null ? "" : $": {stateDoc}")}\"\"\"");
             }
             else if (node is ProgBlock block)
             {
@@ -291,9 +322,11 @@ namespace ESDLang.Script
                     sp2 += col;
                     Console.WriteLine($"{sp}def {block.Operation}():");
                 }
-                foreach (Statement st in block.Statements)
+                for (int i = 0; i < block.Statements.Count; i++)
                 {
-                    maybeComment(statement: st);
+                    Statement st = block.Statements[i];
+                    string name = i < block.StmtDocs.Count ? block.StmtDocs[i] : null;
+                    maybeComment(statement: st, name: name);
                     Console.WriteLine(WriteStatement(sp2, st, replace));
                 }
             }
@@ -308,13 +341,13 @@ namespace ESDLang.Script
                     if (inlineCall)
                     {
                         // Preblock is an issue here...
-                        maybeComment(statement: next.Call);
+                        maybeComment(statement: next.Call, name: next.CallDoc);
                         subreplace = new Dictionary<string, string>(replace);
                         subreplace["done"] = subreplace["result"] = WriteStatement(null, next.Call, replace);
                     }
                     else if (next.Call != null)
                     {
-                        maybeComment(statement: next.Call);
+                        maybeComment(statement: next.Call, name: next.CallDoc);
                         Console.WriteLine(WriteStatement($"{sp}call = ", next.Call, replace));
                     }
                     if (next.PreBranch != null)
@@ -334,7 +367,7 @@ namespace ESDLang.Script
                     if (next.Call != null)
                     {
                         // TODO: Also use inline call? But that would require syntax to identify when it's being used
-                        maybeComment(statement: next.Call);
+                        maybeComment(statement: next.Call, name: next.CallDoc);
                         Console.WriteLine(WriteStatement($"{sp}call = ", next.Call, replace));
                     }
                     if (next.PreBranch != null)
@@ -378,7 +411,7 @@ namespace ESDLang.Script
                             }
                             foreach (ProgAnnotation ann in progs)
                             {
-                                Console.WriteLine($"{sp}{col}\"\"\" State {string.Join(",", ann.States)} \"\"\"");
+                                PrintProgramNode(ann, indent + 1, replace, u);
                             }
                             // This is not strictly needed if there are ProgAnnotations, but it makes output not dependent on printing them or not
                             Console.WriteLine($"{sp}{col}pass");
@@ -438,6 +471,7 @@ namespace ESDLang.Script
                     if (nodes[i] is ProgAnnotation l1 && nodes[i + 1] is ProgAnnotation l2)
                     {
                         l1.States.AddRange(l2.States);
+                        l1.StateDoc.AddRange(l2.StateDoc);
                         nodes.RemoveAt(i + 1);
                     }
                 }
@@ -556,7 +590,7 @@ namespace ESDLang.Script
             if (name.Contains(":"))
             {
                 string[] parts = name.Split(':');
-                name = $"c{parts[0]}{parts[1]}";
+                name = $"c{parts[0]}_{parts[1]}";
                 args = args.Select((arg, i) => replace.TryGetValue($"{name}_{i}", out string argName) ? $"{argName}={arg}" : arg).ToList();
                 if (replace != null && replace.ContainsKey(name)) name = replace[name];
             }
@@ -575,7 +609,7 @@ namespace ESDLang.Script
                 }
                 else
                 {
-                    s = expr.ToString();
+                    s = ce.Value.ToString();
                 }
             }
             else if (expr is UnaryExpr ue)
@@ -596,12 +630,12 @@ namespace ESDLang.Script
                     string lhs = replace != null && replace.ContainsKey("result") ? replace["result"] : "call.Get()";
                     s = $"{lhs} {op} {WriteExpr(be.Rhs, parent: op, rhs: true, replace: replace)}";
                 }
-                else if (op == "==" && be.Rhs.ToString() == "0")
+                else if (op == "==" && be.Rhs is ConstExpr bce && bce.Value.ToString() == "0")
                 {
                     op = "not";
                     s = $"{op} {WriteExpr(be.Lhs, parent: op, rhs: true, replace: replace)}";
                 }
-                else if (op == "==" && be.Rhs.ToString() == "1" && be.Lhs is BinaryExpr be2 && BoolOps.Contains(be2.Op))
+                else if (op == "==" && be.Rhs is ConstExpr bce2 && bce2.Value.ToString() == "1" && be.Lhs is BinaryExpr be2 && BoolOps.Contains(be2.Op))
                 {
                     return WriteExpr(be.Lhs, parent: parent, replace: replace);
                 }

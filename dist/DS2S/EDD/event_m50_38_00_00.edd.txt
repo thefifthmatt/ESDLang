@@ -1,0 +1,175 @@
+51000: Return to immortality_point or attack
+51000_s0: Start state
+51000_s1: Finish
+51000_s1_e0: [System] Termination notification
+51000_s2: [Preset] Return to Immortality_Point or Attack_SubState
+52000: Return to immortality_time limit
+52000_s0: Start state
+52000_s1: Finish
+52000_s1_e0: [System] Termination notification
+52000_s2: [Preset] Return to immortality_Time limit_SubState
+53000: Return to immortality_End of quest
+53000_s0: Start state
+53000_s1: Finish
+53000_s1_e0: [System] Termination notification
+53000_s2: [Preset] Return to Immortality_End of Quest_SubState
+100000: Poly play
+100000_s0: Start state
+100000_s1: Finish
+100000_s1_e0: [System] Termination notification
+100000_s2: Poly play end
+100000_s2_e0: [Flag] Set flag
+100000_s3: [Lib] Normal poly play_SubState
+x1: [Reproduction] Return to immortality _ point or attack
+x1_s0: Start state
+x1_s1: End state
+x2: [Condition] Return to immortality _ point or attack
+x2_p0: Point ID
+x2_p1: Van clad attacks
+x2_s0: Start state
+x2_s1: Did you satisfy the return condition?
+x2_s1_e0: [Group condition: Character] Judgment within player points
+x2_s1_e1: [Group condition: Flag] Event variable comparison
+x2_s2: End state
+x3: [Execution] Return to Immortality_Point or Attack
+x3_p0: Text ID to display in the third phase
+x3_p1: Return Warp Point ID
+x3_p2: Time from message display to warp
+x3_s0: Start state
+x3_s1: Event message display
+x3_s1_e0: [FE] Event window display
+x3_s2: Return to immortality
+x3_s2_e0: [Map] Warp players to poly drama
+x3_s3: Time adjustment state
+x3_s4: End state
+x4: [Preset] Return to Immortality_Point or Attack
+x4_p0: Point ID
+x4_p1: Van clad attacks
+x4_p2: Text ID to display
+x4_p3: Return Warp Point ID
+x4_p4: Time from message display to warp
+x4_s0: Start state
+x4_s1: [Reproduction] Return to Immortality_Point or Attack_SubState
+x4_s2: [Condition] Return to immortality_Point or attack_SubState
+x4_s3: [Execution] Return to Immortality_Point or Attack_SubState
+x4_s4: End state
+x5: [Preset] Return to Immortality_Time limit
+x5_p0: Global timer ID
+x5_p1: Time limit notification flag
+x5_p2: Execution start time of the first phase process
+x5_p3: Execution start time of the second phase process
+x5_p4: Execution start time of the third phase process
+x5_p5: Text ID to display in the first phase
+x5_p6: Text ID to display in the third phase
+x5_p7: Return Warp Point ID
+x5_s0: Start state
+x5_s1: [Reproduction] Return to immortality_Time limit_SubState
+x5_s2: [Conditions & Execution] Return to Immortality_Time Limit_First Phase_SubState
+x5_s3: [Conditions & Execution] Return to Immortality_Time Limit_Second Phase_SubState
+x5_s4: [Conditions & Execution] Return to immortality_Time limit_3rd phase_SubState
+x5_s5: [Conditions & Execution] Return to Immortality_Time Limit_Second Phase_2_SubState
+x5_s6: [Conditions & Execution] Return to immortality_Time limit_3rd phase_2_SubState
+x5_s7: [Conditions & Execution] Return to immortality_Time limit_3rd phase_3_SubState
+x5_s8: [Conditions & Execution] Return to immortality_Time limit_0th phase_SubState
+x5_s9: [Conditions & Execution] Return to Immortality_Time Limit_First Phase_2_SubState
+x5_s10: [Conditions & Execution] Return to immortality_Time limit_Second phase_3_SubState
+x5_s11: [Conditions & Execution] Return to immortality_Time limit_3rd phase_4_SubState
+x5_s12: End state
+x6: [Reproduction] Return to immortality_Time limit
+x6_p0: Global timer ID
+x6_p1: Time limit notification flag
+x6_p2: Execution start time of the first phase process
+x6_p3: Execution start time of the second phase process
+x6_s0: Start state
+x6_s1: Timer start judgment
+x6_s2: Starting the global timer
+x6_s2_e0: [Timer] Start global timer
+x6_s3: Restart global timer
+x6_s3_e0: [Timer] Restart global timer
+x6_s4: Restart global timer_2
+x6_s4_e0: [Timer] Restart global timer
+x6_s5: Restart global timer_3
+x6_s5_e0: [Timer] Restart global timer
+x6_s6: Time limit notification flag ON
+x6_s6_e0: [Flag] Set flag
+x6_s7: From the first phase
+x6_s8: From the second phase
+x6_s9: From the third phase
+x6_s10: From the 0th phase
+x7: [Conditions & Execution] Return to immortality_Time limit_First phase
+x7_p0: Global timer ID
+x7_p1: Execution start time of the first phase process
+x7_p2: Text ID to display in the first phase
+x7_s0: Start state
+x7_s1: Wait for time limit
+x7_s1_e0: [Group condition: Event] Global timer comparison
+x7_s2: Event message display
+x7_s2_e0: [FE] Event window display
+x7_s3: End state
+x8: [Conditions & Execution] Return to immortality_Time limit_Second phase
+x8_p0: Global timer ID
+x8_p1: Execution start time of the second phase process
+x8_p2: Time limit notification flag
+x8_s0: Start state
+x8_s1: Wait for time limit
+x8_s1_e0: [Group condition: Event] Global timer comparison
+x8_s2: Time limit notification flag ON
+x8_s2_e0: [Flag] Set flag
+x8_s3: End state
+x9: [Conditions & Execution] Return to immortality_Time limit_3rd phase
+x9_p0: Global timer ID
+x9_p1: Execution start time of the third phase process
+x9_p2: Text ID to display in the third phase
+x9_p3: Return Warp Point ID
+x9_s0: Start state
+x9_s1: Wait for time limit
+x9_s1_e0: [Group condition: Event] Global timer comparison
+x9_s2: Event message display
+x9_s2_e0: [FE] Event window display
+x9_s3: Return to immortality
+x9_s3_e0: [Map] Warp players to poly drama
+x9_s4: Time adjustment state
+x9_s5: End state
+x10: [Conditions & Execution] Return to immortality_Time limit_Phase 0
+x10_p0: Global timer ID
+x10_p1: Execution start time of the 0th phase process
+x10_p2: Text ID displayed in the 0th phase
+x10_s0: Start state
+x10_s1: Event message display
+x10_s1_e0: [FE] Event window display
+x10_s2: Is it in game?
+x10_s3: Wait for a certain time
+x10_s3_e0: [Group condition: Event] State elapsed time comparison
+x10_s4: End state
+x11: [Condition] Return to immortality_End of quest
+x11_s0: Start state
+x11_s1: Is the quest end flag set?
+x11_s1_e0: [Group condition: Flag] Event flag comparison
+x11_s2: End state
+x12: [Preset] Return to Immortality_End of quest
+x12_p0: Text ID to display
+x12_p1: Return Warp Point ID
+x12_p2: Time from message display to warp
+x12_s0: Start state
+x12_s1: [Reproduction] Return to Immortality_Point or Attack_SubState
+x12_s2: [Execution] Return to Immortality_Point or Attack_SubState
+x12_s3: [Condition] Return to immortality_End of quest_SubState
+x12_s4: End state
+x0: [Lib] Normal poly play
+x0_p0: Poly play ID
+x0_p1: Destination point ID after poly play
+x0_p2: Poly drama played flag
+x0_p3: End fade
+x0_p4: Start fade
+x0_s0: Start state
+x0_s1: Poly play
+x0_s1_e0: [Poly drama] Poly drama reproduction
+x0_s2: Warp after the poly drama
+x0_s2_e0: [Map] Warp players in the area
+x0_s2_e1: [Flag] Set flag
+x0_s3: During the poly play
+x0_s4: Poly Play Pre Warp
+x0_s4_e0: [Map] Warp players in the area
+x0_s5: Played judgment
+x0_s6: Wait for in-game start
+x0_s7: End state

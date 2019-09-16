@@ -1,0 +1,821 @@
+6000: [Insect key interlock] Launch of drawbridge 1
+6000_s0: Start state
+6000_s1: Finish
+6000_s1_e0: [System] Termination notification
+6000_s2: [Preset] Drawbridge_SubState
+10000: [Insect key interlocking] Launch of drawbridge 2
+10000_s0: Start state
+10000_s1: Finish
+10000_s1_e0: [System] Termination notification
+10000_s2: [Preset] Drawbridge_SubState
+8000: [Insect key interlocking] Lights off_Activate
+8000_s0: Start state
+8000_s1: Finish
+8000_s1_e0: [System] Termination notification
+8000_s2: [Preset] Light Off_SubState
+11000: [Insect key interlock] Poisonous rat _ In front of insect key _ activation
+11000_s0: Start state
+11000_s1: Finish
+11000_s1_e0: [System] Termination notification
+11000_s2: [Preset] Poisonous mouse image_SubState
+12000: [Insect key interlock] Poisonous rat _ left hand first body _ activation
+12000_s0: Start state
+12000_s1: Finish
+12000_s1_e0: [System] Termination notification
+12000_s2: [Preset] Poisonous mouse image_SubState
+13000: [Insect key interlock] Poisonous rat _ left eye 2nd body _ activation
+13000_s0: Start state
+13000_s1: Finish
+13000_s1_e0: [System] Termination notification
+13000_s2: [Preset] Poisonous mouse image_SubState
+14000: [Insect key interlock] Poisonous rat _ 3rd left hand _ activation
+14000_s0: Start state
+14000_s1: Finish
+14000_s1_e0: [System] Termination notification
+14000_s2: [Preset] Poisonous mouse image_SubState
+7000: [Insect key interlocking] water dripping _ torches disappear with water
+7000_s0: Start state
+7000_s1: Rerun
+7000_s1_e0: [System] Re-execution notification
+7000_s2: [Preset] Water dripping_SubState
+111512: OBJ: Mouse king (Saint Cemetery): Grave
+111512_s0: Start state
+111512_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111513: OBJ: Mouse King (Saint Cemetery): Key Guide
+111513_s0: Start state
+111513_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+3000: Boss: Dog Mouse_Battle
+3000_s0: Start state
+3000_s1: Finish
+3000_s1_e0: [System] Termination notification
+3000_s2: [Lib] [Preset] Boss Battle Cut Scene No _SubState
+4000: Boss Battle_Death Count
+4000_s0: Start state
+4000_s1: Rerun
+4000_s1_e0: [System] Re-execution notification
+4000_s2: Finish
+4000_s2_e0: [System] Termination notification
+4000_s3: [Preset] Boss Battle_Death Count_SubState
+4010: Boss Battle_Death Count_2
+4010_s0: Start state
+4010_s1: Rerun
+4010_s1_e0: [System] Re-execution notification
+4010_s2: Finish
+4010_s2_e0: [System] Termination notification
+4010_s3: [Preset] Boss Battle_Death Count_SubState
+4020: Boss Battle_Death Count_3
+4020_s0: Start state
+4020_s1: Rerun
+4020_s1_e0: [System] Re-execution notification
+4020_s2: Finish
+4020_s2_e0: [System] Termination notification
+4020_s3: [Preset] Boss Battle_Death Count_SubState
+4030: Boss Battle_Death Count_4
+4030_s0: Start state
+4030_s1: Rerun
+4030_s1_e0: [System] Re-execution notification
+4030_s2: Finish
+4030_s2_e0: [System] Termination notification
+4030_s3: [Preset] Boss Battle_Death Count_SubState
+4040: Boss Battle_Death Count_5
+4040_s0: Start state
+4040_s1: Rerun
+4040_s1_e0: [System] Re-execution notification
+4040_s2: Finish
+4040_s2_e0: [System] Termination notification
+4040_s3: [Preset] Boss Battle_Death Count_SubState
+4050: Boss Battle_Death Count_6
+4050_s0: Start state
+4050_s1: Rerun
+4050_s1_e0: [System] Re-execution notification
+4050_s2: Finish
+4050_s2_e0: [System] Termination notification
+4050_s3: [Preset] Boss Battle_Death Count_SubState
+4060: Boss Battle_Death Count_7
+4060_s0: Start state
+4060_s1: Rerun
+4060_s1_e0: [System] Re-execution notification
+4060_s2: Finish
+4060_s2_e0: [System] Termination notification
+4060_s3: [Preset] Boss Battle_Death Count_SubState
+4070: Boss Battle_Death Count_8
+4070_s0: Start state
+4070_s1: Rerun
+4070_s1_e0: [System] Re-execution notification
+4070_s2: Finish
+4070_s2_e0: [System] Termination notification
+4070_s3: [Preset] Boss Battle_Death Count_SubState
+4080: Boss Battle_Death Count_9
+4080_s0: Start state
+4080_s1: Rerun
+4080_s1_e0: [System] Re-execution notification
+4080_s2: Finish
+4080_s2_e0: [System] Termination notification
+4080_s3: [Preset] Boss Battle_Death Count_SubState
+4090: Boss Battle_Death Count_10
+4090_s0: Start state
+4090_s1: Rerun
+4090_s1_e0: [System] Re-execution notification
+4090_s2: Finish
+4090_s2_e0: [System] Termination notification
+4090_s3: [Preset] Boss Battle_Death Count_SubState
+4100: Boss Battle_Death Count_11
+4100_s0: Start state
+4100_s1: Rerun
+4100_s1_e0: [System] Re-execution notification
+4100_s2: Finish
+4100_s2_e0: [System] Termination notification
+4100_s3: [Preset] Boss Battle_Death Count_SubState
+4110: Boss Battle_Death Count_12
+4110_s0: Start state
+4110_s1: Rerun
+4110_s1_e0: [System] Re-execution notification
+4110_s2: Finish
+4110_s2_e0: [System] Termination notification
+4110_s3: [Preset] Boss Battle_Death Count_SubState
+5000: Boss Battle_Boss Generation Flag Stand
+5000_s0: Start state
+5000_s1: Finish
+5000_s1_e0: [System] Termination notification
+5000_s2: [Preset] Boss Battle_Boss Generation Flag Stand_SubState
+6010: Using bug keys_Drawbridge 1
+6010_s0: Start state
+6010_s1: State
+6010_s1_e0: [System] Termination notification
+6010_s2: [Lib] [Asynchronous] [Preset] Bug key (floor) _SubState
+8010: Using bug keys_Lights off
+8010_s0: Start state
+8010_s1: State
+8010_s1_e0: [System] Termination notification
+8010_s2: [Lib] [Asynchronous] [Preset] Bug key (floor) _SubState
+10010: Using bug keys_Drawbridge 2
+10010_s0: Start state
+10010_s1: State
+10010_s1_e0: [System] Termination notification
+10010_s2: [Lib] [Asynchronous] [Preset] Bug key (floor) _SubState
+11010: Insect key use_Boss
+11010_s0: Start state
+11010_s1: State
+11010_s1_e0: [System] Termination notification
+11010_s2: [Lib] [Asynchronous] [Preset] Bug key (floor) _SubState
+7010: Use insect key _ water dripping
+7010_s0: Start state
+7010_s1: Finish
+7010_s1_e0: [System] Termination notification
+7010_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+12010: Insect key use_poisonous rat_first left hand
+12010_s0: Start state
+12010_s1: Finish
+12010_s1_e0: [System] Termination notification
+12010_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+13010: Using insect keys _ Poisonous mice _ Second left hand
+13010_s0: Start state
+13010_s1: Finish
+13010_s1_e0: [System] Termination notification
+13010_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+14010: Insect key use_Poisoning mouse_Left hand third body
+14010_s0: Start state
+14010_s1: Finish
+14010_s1_e0: [System] Termination notification
+14010_s2: [Lib] [Asynchronous] [Preset] Bug key (wall) _SubState
+111514: OBJ: Mouse King (Saint Cemetery): Death Judgment
+111514_s0: Start state
+111514_s1: [Lib] NPC: Death determination: General purpose_SubState
+80000: After the fire area 01_ pledge area, in front of the boss room
+80000_s0: Start state
+80000_s1: Finish
+80000_s1_e0: [System] Termination notification
+80000_s2: [Lib] [Preset] Reproduction fire _SubState
+81000: Regenerative fire 02_in front of the pledge area
+81000_s0: Start state
+81000_s1: Finish
+81000_s1_e0: [System] Termination notification
+81000_s2: [Lib] [Preset] Reproduction fire _SubState
+118220: Multi-use NPC: Mage (male): Black Phantom Appearance: Offline
+118220_s0: Start state
+118220_s1: [DC] Total lap count judgment
+118220_s2: [Lib] NPC Black Phantom Appearance: Offline: Unconditional_SubState
+118220_s3: [Lib] NPC Black Phantom Appearance: Offline: Unconditional_2_SubState
+120040: Trophy: Mouse Pledge
+120040_s0: Start state
+120040_s1: System: Exit
+120040_s1_e0: [System] Termination notification
+120040_s2: [Lib] [Preset] Get Trophy_SubState
+4500: Boss variable reset
+4500_s0: Start state
+4500_s1: Finish
+4500_s1_e0: [System] Termination notification
+4500_s2: [Preset] Variable reset for boss_SubState
+x26: [Reproduction] Reproduction of vomiting mouse state
+x26_p0: Poison swamp instance ID
+x26_p1: Bug key instance ID
+x26_p2: Hit group ID
+x26_p3: Grand material ID
+x26_p4: Grand material slot ID
+x26_s0: Start state
+x26_s1: Has the insect key been activated?
+x26_s2: Poison swamp OBJ display, damage ON
+x26_s2_e0: [Map] Switching the ground material
+x26_s2_e1: [OBJ] OBJ state transition request (with instance ID specified)
+x26_s3: Damage off
+x26_s3_e0: [Map] Switching the ground material
+x26_s4: Not started
+x26_s5: Activated
+x27: [Conditions] Poisonous rat image
+x27_p0: Bug key instance ID
+x27_s0: Start state
+x27_s1: Bug key waiting
+x27_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x27_s2: End state
+x28: [Execution] Poisonous mouse image
+x28_p0: Statue instance ID
+x28_p1: Poison swamp instance ID
+x28_p2: Hit group ID
+x28_p3: Grand material ID
+x28_p4: Grand material slot ID
+x28_s0: Start state
+x28_s1: OBJ State Transition: Mouse Image: 70
+x28_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x28_s2: OBJ State Transition: Poison Swamp: 70
+x28_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x28_s3: Damage ON
+x28_s3_e0: [Map] Switching the ground material
+x28_s4: End state
+x29: [Preset] Poisonous rat image
+x29_p0: Bug key instance ID
+x29_p1: Statue instance ID
+x29_p2: Poison swamp instance ID
+x29_p3: Hit group ID
+x29_p4: Grand material ID
+x29_p5: Grand material slot ID
+x29_s0: Start state
+x29_s1: [Reproduction] Reproduction of poisoned mouse state_SubState
+x29_s2: [Condition] Insect key activation determination_SubState
+x29_s3: [Execution] Poisonous mouse image_SubState
+x29_s4: End state
+x30: [Reproduction] Drawbridge
+x30_p0: Bug key instance ID
+x30_p1: Navimesh switching point ID
+x30_s0: Start state
+x30_s1: Has the insect key been activated?
+x30_s2: Navi mesh switching
+x30_s2_e0: [Map] Navimesh attribute deletion
+x30_s3: Not started
+x30_s4: Activated
+x31: [Conditions] Lights off
+x31_p0: Bug key instance ID
+x31_s0: Start state
+x31_s1: Bug key waiting
+x31_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x31_s2: End state
+x32: [Execution] drawbridge
+x32_p0: Bridge instance ID
+x32_p1: Navimesh switching point ID
+x32_s0: Start state
+x32_s1: OBJ state transition: 70
+x32_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x32_s2: OBJ state transition completion wait: 20
+x32_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x32_s3: Navi mesh switching
+x32_s3_e0: [Map] Navimesh attribute deletion
+x32_s4: End state
+x33: [Preset] Drawbridge
+x33_p0: Bug key instance ID
+x33_p1: Bridge instance ID
+x33_p2: Navimesh switching point ID
+x33_s0: Start state
+x33_s1: [Condition] Insect key activation_SubState
+x33_s2: [Reproduction] Drawbridge_SubState
+x33_s3: [Execution] Drawbridge_SubState
+x33_s4: End state
+x34: [Execution] water dripping
+x34_s0: Start state
+x34_s1: Torches disappear (water)
+x34_s1_e0: [Status] Erase the player's torches
+x34_s2: End state
+x35: [Preset] Water dripping
+x35_p0: Bug key instance ID
+x35_p1: Water dripping point ID
+x35_s0: Start state
+x35_s1: [Reproduction] Water dripping_SubState
+x35_s2: [Condition] Water dripping_Insect key activation judgment_SubState
+x35_s3: [Execution] Water dripping_SubState
+x35_s4: [Condition] Water dripping_Point intrusion judgment_SubState
+x35_s5: [Execution] Water dripping_Waterfall activation_SubState
+x35_s6: End state
+x36: [Reproduction] Water dripping
+x36_p0: Bug key instance ID
+x36_s0: Start state
+x36_s1: Has the insect key been activated?
+x36_s2: Enable Grand Material Falls
+x36_s2_e0: [Map] Switching the ground material
+x36_s3: Not started
+x36_s4: Activated
+x37: [Condition] Water dripping
+x37_p0: Bug key instance ID
+x37_s0: Start state
+x37_s1: Bug key waiting
+x37_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x37_s2: End state
+x38: [Preset] Lights off
+x38_p0: Bug key instance ID
+x38_p1: Lighting off state ID
+x38_p2: Illuminated state ID
+x38_s0: Start state
+x38_s1: [Reproduction] Light off_SubState
+x38_s2: [Condition] Light off_SubState
+x38_s3: [Execution] Light off_SubState
+x38_s4: [Execution] Light extinguished_2_SubState
+x38_s5: [Execution] Light off_3_SubState
+x38_s6: [Execution] Light extinction_4_SubState
+x38_s7: [Execution] Lights off_5_SubState
+x38_s8: [Execution] Light extinguished_6_SubState
+x38_s9: End state
+x39: [Reproduction] Lights off
+x39_p0: Bug key instance ID
+x39_p1: Illuminated state ID
+x39_s0: Start state
+x39_s1: Has the insect key been activated?
+x39_s2: Light up
+x39_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x39_s2_e1: [OBJ] OBJ state transition request (with instance ID specified)
+x39_s2_e2: [OBJ] OBJ state transition request (with instance ID specified)
+x39_s2_e3: [OBJ] OBJ state transition request (with instance ID specified)
+x39_s2_e4: [OBJ] OBJ state transition request (with instance ID specified)
+x39_s2_e5: [OBJ] OBJ state transition request (with instance ID specified)
+x39_s2_e6: [Map] Point light effective setting
+x39_s2_e7: [Map] Point light effective setting
+x39_s2_e8: [Map] Point light effective setting
+x39_s2_e9: [Map] Point light effective setting
+x39_s2_e10: [Map] Point light effective setting
+x39_s2_e11: [Map] Point light effective setting
+x39_s3: Lighting 1 status judgment
+x39_s4: Lighting 2 status judgment
+x39_s5: Lighting 3 status judgment
+x39_s6: Lighting 4 status judgment
+x39_s7: Lighting 5 status judgment
+x39_s8: Lighting 6 status judgment
+x39_s9: Turn off point light 1
+x39_s9_e0: [Map] Point light effective setting
+x39_s10: Turn off point light 2
+x39_s10_e0: [Map] Point light effective setting
+x39_s11: Turn off point light 3
+x39_s11_e0: [Map] Point light effective setting
+x39_s12: Turn off point light 4
+x39_s12_e0: [Map] Point light effective setting
+x39_s13: Turn off point light 5
+x39_s13_e0: [Map] Point light effective setting
+x39_s14: Turn off point light 6
+x39_s14_e0: [Map] Point light effective setting
+x39_s15: Not started
+x39_s16: Finish
+x39_s17: From lighting 1
+x39_s18: From lighting 2
+x39_s19: From lighting 3
+x39_s20: From lighting 4
+x39_s21: From lighting 5
+x39_s22: From lighting 6
+x40: [Reproduction] Boss Battle_Death Count
+x40_s0: Start state
+x40_s1: Boss destroyed or guest?
+x40_s2: End state
+x40_s3: Simple end
+x41: [Condition] Boss Battle_Death Count
+x41_p0: Generator ID
+x41_s0: Start state
+x41_s1: Character death waiting
+x41_s1_e0: [Group condition: Flag] Event variable comparison
+x41_s1_e1: [Group condition: Character] Character death determination
+x41_s1_e2: [Group condition: Character] In-character judgment
+x41_s1_e3: [Group condition: Flag] Event flag comparison
+x41_s2: End state
+x41_s3: Generator stop
+x41_s4: Enemy deleted
+x42: [Execution] Boss Battle_Death Count
+x42_p0: Generator ID
+x42_s0: Start state
+x42_s1: Death count +1
+x42_s1_e0: [Flag] Area variable addition
+x42_s2: Generator restart waiting
+x42_s2_e0: [Group condition: Character] Character generation status judgment
+x42_s3: End state
+x43: [Preset] Boss Battle_Death Count
+x43_p0: Generator ID
+x43_s0: Start state
+x43_s1: [Reproduction] Boss Battle_Death Count_SubState
+x43_s2: [Condition] Boss Battle_Death Count_SubState
+x43_s3: [Execution] Boss Battle_Death Count_SubState
+x43_s4: [Execution] Boss Battle_Generator Stop Flag ON_SubState
+x43_s5: [Execute] Enemy Delete_SubState
+x43_s6: Rerun
+x43_s7: Finish
+x44: [Execution] Boss Battle_Generator Stop Flag ON
+x44_s0: Start state
+x44_s1: Generator stop flag ON
+x44_s1_e0: [Flag] Set flag
+x44_s2: End state
+x45: [Reproduction] Boss Battle_Boss Generation Flag Stand
+x45_s0: Start state
+x45_s1: Boss destroyed or guest?
+x45_s2: End state
+x45_s3: Simple end
+x46: [Condition] Boss Battle_Boss Generation Flag Stand
+x46_s0: Start state
+x46_s1: Did you destroy a certain number of Zako?
+x46_s1_e0: [Group condition: Flag] Event variable comparison
+x46_s2: End state
+x47: [Execution] Boss Battle_Boss Generation Flag Stand
+x47_s0: Start state
+x47_s1: Boss generation flag ON
+x47_s1_e0: [Flag] Set flag
+x47_s2: Boss HP gauge display
+x47_s2_e0: [Others] Boss battle HP gauge switching
+x47_s3: End state
+x48: [Preset] Boss Battle_Boss Generation Flag Stand
+x48_s0: Start state
+x48_s1: [Reproduction] Boss Battle_Boss Generation Flag Stand_SubState
+x48_s2: [Condition] Boss Battle_Boss Generation Flag Stand_SubState
+x48_s3: [Execution] Boss Battle_Boss Generation Flag Stand_SubState
+x48_s4: End state
+x49: [Execute] Enemy Delete
+x49_p0: Generator ID
+x49_s0: Start state
+x49_s1: Enemy deleted
+x49_s1_e0: [Generator] Pause the specified enemy
+x49_s2: End state
+x50: [Reproduction] Boss variable reset_empty
+x50_s0: Start state
+x50_s1: End state
+x51: [Condition] Boss variable reset_empty
+x51_s0: Start state
+x51_s1: End state
+x52: [Execute] Reset variable for boss
+x52_s0: Start state
+x52_s1: Initializing area variables
+x52_s1_e0: [Flag] Area variable setting
+x52_s2: End state
+x53: [Preset] Boss variable reset
+x53_s0: Start state
+x53_s1: [Reproduce] Boss variable reset_empty_SubState
+x53_s2: [Execution] Boss variable reset_SubState
+x53_s3: [Condition] Boss variable reset_empty_SubState
+x53_s4: End state
+x54: [Condition] Water dripping_Point intrusion judgment
+x54_p0: Water dripping point ID
+x54_s0: Start state
+x54_s1: Got a point with a torch?
+x54_s1_e0: [Group condition: Character] Judgment within player points
+x54_s1_e1: [Group condition: Character] Judge whether the player uses torches
+x54_s2: End state
+x55: [Execution] waterfall _ waterfall start
+x55_s0: Start state
+x55_s1: OBJ State Transition: Waterfall Damipoli: 20
+x55_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x55_s2: Enable Grand Material Falls
+x55_s2_e0: [Map] Switching the ground material
+x55_s3: End state
+x56: [Execution] Lights off
+x56_p0: Instance ID of lighting OBJ
+x56_p1: Lighting off state ID
+x56_p2: State elapsed time
+x56_p3: Point light ID
+x56_p4: Illuminated state ID
+x56_s0: Start state
+x56_s1: Turn off the lights
+x56_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x56_s2: A certain amount of time has elapsed
+x56_s2_e0: [Group condition: Event] State elapsed time comparison
+x56_s3: Point light off
+x56_s3_e0: [Map] Point light effective setting
+x56_s4: Is the light turned off?
+x56_s4_e0: [Group condition: OBJ] OBJ state ID comparison
+x56_s5: End state
+x0: [Lib] NPC: Grave Placement: General purpose
+x0_p0: Death map: Global event flag
+x0_p1: Tomb: OBJ instance ID
+x0_p2: Tomb move to: Generator ID
+x0_p3: NPC information parameter ID
+x0_s0: Start state
+x0_s1: Grave Placement: Start
+x0_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x0_s2: Grave placement: branch
+x0_s2_e0: [Group condition: Flag] Event flag comparison
+x0_s2_e1: [Group condition: other] Grave generation possibility judgment
+x0_s3: Grave Placement: Survival
+x0_s3_e0: [OBJ] OBJ state transition request
+x0_s3_e1: [Group condition: OBJ] OBJ state ID comparison
+x0_s4: Grave Placement: Death
+x0_s4_e0: [OBJ] OBJ state transition request
+x0_s4_e1: [Group condition: OBJ] OBJ state ID comparison
+x0_s5: Grave Placement: System: Finish
+x0_s5_e0: [System] Termination notification
+x0_s6: Grave Placement: Warp Move
+x0_s7: End state
+x1: [Lib] NPC: Grave: Key Guide: Key Guide
+x1_p0: Global: death flag
+x1_p1: Grave OBJ instance ID
+x1_p2: NPC information parameter ID
+x1_s0: Start state
+x1_s1: Key guide: Start
+x1_s2: Key guide: Key guide display
+x1_s2_e0: [FE] Create key guide area
+x1_s3: Key Guide: Use Soul dialog
+x1_s3_e0: [FE] Display of YES / NO selection window
+x1_s4: Key guide: Soul shortage dialog
+x1_s4_e0: [FE] Window display only for YES
+x1_s5: Key guide: Grave display judgment
+x1_s5_e0: [Group condition: OBJ] OBJ state ID comparison
+x1_s5_e1: [Group condition: OBJ] OBJ state ID comparison
+x1_s6: Key guide: Reset
+x1_s6_e0: [FE] Delete key guide area
+x1_s6_e1: [System] Re-execution notification
+x1_s7: Key Guide: Use Soul dialog: Wait for input
+x1_s8: Key guide: Soul shortage dialog: Waiting for input
+x1_s9: Key guide: Delete key guide
+x1_s9_e0: [FE] Delete key guide area
+x1_s10: Key Guide: System: Exit
+x1_s10_e0: [System] Termination notification
+x1_s11: Key guide: Waiting for input
+x1_s11_e0: [Group condition: OBJ] Judgment to examine OBJ
+x1_s11_e1: [Group condition: Map] Judgment that the player is in the map
+x1_s12: End state
+x2: [Lib] NPC: Grave: Key Guide: Appearance of Ghosts
+x2_p0: Area other flags: Ghost appearance
+x2_p1: Area other flags: Conversation start
+x2_p2: NPC information parameter ID
+x2_s0: Start state
+x2_s1: Ghost appearance: Appearance
+x2_s1_e0: [Flag] Set flag
+x2_s1_e1: [Group condition: Flag] Event flag comparison
+x2_s2: Ghost appearance: Character action waiting
+x2_s2_e0: [Group condition: Character] Player event action judgment
+x2_s3: Appearance of ghost: End of player action
+x2_s3_e0: [Character action] Action end request to the player
+x2_s4: Ghost appearance: Conversation start flag
+x2_s4_e0: [Flag] Set flag
+x2_s4_e1: [Group condition: Flag] Event flag comparison
+x2_s5: Appearance of ghost: Player action starts
+x2_s5_e0: [Character action] Request action from player
+x2_s5_e1: [Group condition: Character] Player event action judgment
+x2_s6: Ghost appearance: Seoul consumption
+x2_s6_e0: [Others] Soul value addition
+x2_s7: Appearance of ghost: Waiting for player action
+x2_s7_e0: [Group condition: Event] State elapsed time comparison
+x2_s8: Ghost appearance: waiting for completion
+x2_s8_e0: [Group condition: Event] State elapsed time comparison
+x2_s9: Ghost appearance: Waiting for conversation
+x2_s9_e0: [Group condition: Event] State elapsed time comparison
+x2_s10: End state
+x3: [Lib] NPC: Grave: Key guide: General purpose
+x3_p0: Ghost Appearance: Area Other Flag
+x3_p1: Conversation start: Area and other flags
+x3_p2: Death: Global event flag
+x3_p3: Tomb: OBJ instance ID
+x3_p4: Grave event ID
+x3_p5: NPC information parameter ID
+x3_s0: Start state
+x3_s1: Key guide: Start
+x3_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x3_s1_e1: [Group condition: Event] Event status judgment
+x3_s1_e2: [Group condition: Flag] Event flag comparison
+x3_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x3_s2: Key Guide: System: Exit
+x3_s2_e0: [System] Termination notification
+x3_s3: Key guide: Start conversation: Set flag
+x3_s3_e0: [Flag] Set flag
+x3_s3_e1: [Group condition: Flag] Event flag comparison
+x3_s4: [Lib] NPC: Grave: Key Guide: Key Guide_SubState
+x3_s5: [Lib] NPC: Grave: Key Guide: Ghost Appearance_SubState
+x3_s6: End state
+x4: [Lib] NPC: Death determination: General purpose
+x4_p0: Generator ID
+x4_p1: Death map: Global event flag
+x4_s0: Start state
+x4_s1: Death determination: Start
+x4_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x4_s2: Death determination: Wait
+x4_s2_e0: [Group condition: Character] Character death determination
+x4_s3: Death determination: branch
+x4_s3_e0: [Group condition: Flag] Event flag comparison
+x4_s4: Death determination: System: End
+x4_s4_e0: [System] Termination notification
+x4_s5: Death determination: death flag setting
+x4_s5_e0: [Flag] Set flag
+x4_s5_e1: [Group condition: Flag] Event flag comparison
+x4_s6: End state
+x5: [Lib] [Preset] Boss Battle Start
+x5_p0: Boss destruction flag
+x5_p1: Start point ID
+x5_p2: End point ID
+x5_p3: Sound ID
+x5_p4: Boss Battle ID
+x5_p5: Other flags for logic
+x5_p6: BGM stop time
+x5_s0: Start state
+x5_s1: [Reproduction] Boss Battle_Start_SubState
+x5_s2: [Reproduction] Boss Battle_Sky_SubState
+x5_s3: [Execution] Boss Battle_Start_SubState
+x5_s4: [Execution] Boss Battle_End_SubState
+x5_s5: [Condition] Boss Battle_Start_SubState
+x5_s6: [Condition] Boss Battle_End Judgment_SubState
+x5_s7: End state
+x6: [Reproduction] Boss Battle_Start
+x6_p0: Boss destruction flag
+x6_s0: Start state
+x6_s1: Are you destroying the boss?
+x6_s2: Not destroy the boss
+x6_s3: Defeated the boss
+x7: [Condition] Boss Battle_Start
+x7_p0: Start point ID
+x7_p1: End point ID
+x7_s0: Start state
+x7_s1: Did you enter the boss room point?
+x7_s1_e0: [Group condition: Character] Judgment within player points
+x7_s1_e1: [Group condition: Net] Host judgment
+x7_s1_e2: [Group condition: System] Group condition is satisfied
+x7_s1_e3: [Group condition: Character] Judgment within player points
+x7_s1_e4: [Group condition: Net] Host judgment
+x7_s1_e5: [Group condition: System] Group condition is satisfied
+x7_s2: End state
+x8: [Execution] Boss Battle_Start
+x8_p0: Sound ID
+x8_p1: Boss Battle ID
+x8_p2: Other flags for logic
+x8_s0: Start state
+x8_s1: Boss battle start notification
+x8_s1_e0: [Others] Boss battle started
+x8_s2: Boss battle flag notification for logic
+x8_s2_e0: [Flag] Set flag
+x8_s3: Boss BGM playback
+x8_s3_e0: [Sound] Sound playback with point designation
+x8_s4: End state
+x9: [Reproduction] Boss Battle_Sky
+x9_s0: Start state
+x9_s1: End state
+x10: [Condition] Boss Battle_End Judgment
+x10_p0: Boss Battle ID
+x10_s0: Start state
+x10_s1: Did you beat the boss?
+x10_s1_e0: [Group condition: Event] Boss defeat determination
+x10_s2: End state
+x11: [Execute] Boss Battle_End
+x11_p0: Sound ID
+x11_p1: Boss Battle ID
+x11_p2: Other flags for logic
+x11_p3: BGM stop time
+x11_s0: Start state
+x11_s1: Logic flag OFF
+x11_s1_e0: [Flag] Set flag
+x11_s2: Boss battle end notification
+x11_s2_e0: [Others] End of boss battle
+x11_s3: Boss BGM stop
+x11_s3_e0: [Sound] Stop sound at specified point
+x11_s4: BGM stop standby
+x11_s5: End state
+x12: [Lib] [Asynchronous] [Preset] Bug key (wall)
+x12_p0: Object instance ID
+x12_s0: Start state
+x12_s1: [Private] [Asynchronous] [Reproduction] Bug key _SubState
+x12_s2: [Private] [Asynchronous] [Condition] Bug key _SubState
+x12_s3: [Private] [Asynchronous] [Execution] Use bug key _SubState
+x12_s4: [Private] [Asynchronous] [Execution] Insect key unavailable dialog _SubState
+x12_s5: [Private] [Asynchronous] [Condition] Guest Bug Key_SubState
+x12_s6: [Lib] [Execution] Dummy_SubState
+x12_s7: End of reproduction
+x12_s8: End of execution
+x13: [Private] [Asynchronous] [Reproduction] Bug Key
+x13_p0: Object instance ID
+x13_s0: Start state
+x13_s1: OBJ status judgment
+x13_s2: OBJ initialization: 10
+x13_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x13_s3: Before execution
+x13_s4: After execution
+x13_s5: Guest termination
+x14: [Private] [Asynchronous] [Condition] Host insect key
+x14_p0: Object instance ID
+x14_p1: Number consumed
+x14_p2: Consumption items
+x14_s0: Start state
+x14_s1: Judgment to examine
+x14_s1_e0: [Group condition: OBJ] Judgment to examine OBJ
+x14_s2: Available branch
+x14_s3: Available end
+x14_s4: Unusable termination
+x15: [Private] [Asynchronous] [Execution] Use bug key dialog
+x15_p0: Object instance ID
+x15_p1: Key guide type
+x15_p2: Event action
+x15_p3: Number consumed
+x15_p4: Consumption items
+x15_s0: Start state
+x15_s1: Dialog display
+x15_s1_e0: [FE] YES / NO selection window display (specify object instance ID)
+x15_s1_e1: [FE] YES / NO selection window display (specify object instance ID)
+x15_s2: Result judgment
+x15_s3: Rerun
+x15_s3_e0: [System] Re-execution notification
+x15_s4: Action request to player
+x15_s4_e0: [Character action] OBJ animation control request to player (Instance ID specified version)
+x15_s5: OBJ status judgment
+x15_s5_e0: [Group condition: Character] Player event action judgment
+x15_s5_e1: [Group condition: Item] Comparison of number of possessed items
+x15_s5_e2: [Group condition: OBJ] OBJ state ID comparison
+x15_s5_e3: [Group condition: OBJ] OBJ state ID comparison
+x15_s6: Insect key consumption
+x15_s6_e0: [Item] Item consumption
+x15_s7: Bug key transition waiting: 30
+x15_s7_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x15_s8: Bug key: Initial state: 10
+x15_s8_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x15_s9: End state
+x16: [Private] [Asynchronous] [Execution] Unusable key
+x16_p0: Object instance ID
+x16_p1: Number consumed
+x16_p2: Consumption items
+x16_s0: Start state
+x16_s1: Dialog display
+x16_s1_e0: [FE] Display window only for YES (specify object instance ID)
+x16_s2: Rerun
+x16_s2_e0: [System] Re-execution notification
+x16_s3: End state
+x17: [Private] [Asynchronous] [Condition] Guest Bug Key
+x17_p0: Object instance ID
+x17_s0: Start state
+x17_s1: OBJ standby
+x17_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x17_s2: End state
+x18: [Lib] [execution] dummy
+x18_s0: Start state
+x18_s1: End state
+x19: [Lib] [Asynchronous] [Preset] Bug key (floor)
+x19_p0: Object instance ID
+x19_s0: Start state
+x19_s1: [Private] [Asynchronous] [Reproduction] Bug key _SubState
+x19_s2: [Private] [Asynchronous] [Condition] Bug key _SubState
+x19_s3: [Private] [Asynchronous] [Execution] Use bug key _SubState
+x19_s4: [Private] [Asynchronous] [Execution] Insect key unavailable dialog _SubState
+x19_s5: [Private] [Asynchronous] [Condition] Guest Bug Key_SubState
+x19_s6: [Lib] [Execution] Dummy_SubState
+x19_s7: End of reproduction
+x19_s8: End of execution
+x20: [Lib] [Reproduction] Rebirth fire _ sky
+x20_s0: Start state
+x20_s1: End state
+x21: [Lib] [execute] Rebirth fire
+x21_p0: Flag start ID
+x21_p1: Flag end ID
+x21_s0: Start state
+x21_s1: Flag reset
+x21_s1_e0: [Flag] Set the flags within the specified range set in the parameter.
+x21_s2: End state
+x22: [Lib] [Condition] Rebirth fire_sky
+x22_s0: Start state
+x22_s1: End state
+x23: [Lib] [Preset] Rebirth
+x23_p0: Flag start ID
+x23_p1: Flag end ID
+x23_s0: Start state
+x23_s1: [Lib] [Reproduction] Reproduction of fire_sky_SubState
+x23_s2: [Lib] [Execution] Regenerative fire _SubState
+x23_s3: [Lib] [Condition] Reproduction fire_Sky_SubState
+x23_s4: End state
+x24: [Lib] NPC Black Phantom Appearance: Offline: Unconditional
+x24_p0: Summon range
+x24_p1: Generator ID
+x24_p2: Appearance: Minimum time
+x24_p3: Appearance: Maximum time
+x24_s0: Start state
+x24_s1: Black Phantom Appearance: Start
+x24_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x24_s2: Black Phantom Appearance: Summoning Conditions: Standby
+x24_s2_e0: [Group condition: Character] Judgment within player points
+x24_s2_e1: [Group condition: Net] Offline judgment
+x24_s3: Black Phantom Appearance: Timer: Start
+x24_s3_e0: [Group condition: Event] State elapsed time comparison
+x24_s3_e1: [Group condition: Character] Judgment within player points
+x24_s3_e2: [Group condition: Net] Offline judgment
+x24_s4: Black Phantom Appearance: System: End
+x24_s4_e0: [System] Termination notification
+x24_s5: Black phantom appearance: Black phantom generation
+x24_s5_e0: [Generator] NPC spirit body generation
+x24_s6: Black Phantom Appearance: System: Re-execution
+x24_s6_e0: [System] Re-execution notification
+x24_s7: Black Phantom Appearance: Online
+x24_s7_e0: [Group condition: Net] Offline judgment
+x24_s8: Black Phantom Appearance: Online
+x24_s8_e0: [Group condition: Net] Offline judgment
+x24_s9: Black Phantom Appearance: Sign removed
+x24_s9_e0: [Generator] Delete NPC spirit body
+x24_s10: [DC] Is it in game?
+x24_s11: End state
+x25: [Lib] [Preset] Get trophy
+x25_p0: Acquisition trigger_other flags
+x25_p1: Trophy type
+x25_s0: Start state
+x25_s1: Have you acquired a trophy?
+x25_s2: Wait for specified flag
+x25_s2_e0: [Group condition: Flag] Event flag comparison
+x25_s3: Trophy acquisition
+x25_s3_e0: [Others] Trophy cancellation
+x25_s4: End state

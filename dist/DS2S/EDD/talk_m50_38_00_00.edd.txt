@@ -1,0 +1,164 @@
+6840: Van Clad (birthday)
+6840_s0: Start state
+6840_s1: Conversation: Start
+6840_s2: Hostility: Set damage flag
+6840_s2_e0: [Flag] Area variable addition
+6840_s3: Hostility: Set flag
+6840_s3_e0: [FE] Delete key guide area
+6840_s3_e1: [Flag] Set flag
+6840_s3_e2: [Flag] Set flag
+6840_s3_e3: [Others] Save execution
+6840_s4: Conversation: System: End
+6840_s4_e0: [System] Termination notification
+6840_s5: Enmity: Damage reset
+6840_s5_e0: [Status] Reset the number of times damaged
+6840_s6: King crown check
+6840_s6_e0: [Flag] Set flag
+6840_s6_e1: [Flag] Area variable setting
+6840_s6_e2: [Flag] Set flag
+6840_s7: Underground crown check
+6840_s7_e0: [Flag] Set flag
+6840_s7_e1: [Flag] Area variable setting
+6840_s7_e2: [Flag] Set flag
+6840_s8: Ash crown check
+6840_s8_e0: [Flag] Set flag
+6840_s8_e1: [Flag] Area variable setting
+6840_s8_e2: [Flag] Set flag
+6840_s9: Ice crown check
+6840_s9_e0: [Flag] Set flag
+6840_s9_e1: [Flag] Area variable setting
+6840_s9_e2: [Flag] Set flag
+6840_s10: Van Clad (birthday): Conversation_SubState
+6840_s11: [Lib] Conversation: Display only _SubState
+6841: Crown number check
+6841_s0: Start state
+6841_s1: Check number of possessions
+6841_s2: Possession of the crown of the king
+6841_s2_e0: [Flag] Set flag
+6841_s3: No crown possession
+6841_s4: Underground crown possession
+6841_s4_e0: [Flag] Set flag
+6841_s5: No underground crown possession
+6841_s6: Possession of ash crown
+6841_s6_e0: [Flag] Set flag
+6841_s7: No possession of ash crown
+6841_s8: Possession of a crown of ice
+6841_s8_e0: [Flag] Set flag
+6841_s9: No possession of ice crown
+6841_s10: Conversation: System: End
+6841_s10_e0: [System] Termination notification
+x5: Van Clad (Life): Conversation
+x5_s0: Start state
+x5_s1: Conversation: Start
+x5_s2: Conversation: End
+x5_s3: Check number of possessions
+x5_s4: Possession of the crown of the king
+x5_s4_e0: [Flag] Area variable addition
+x5_s5: No crown possession
+x5_s6: Underground crown possession
+x5_s6_e0: [Flag] Area variable addition
+x5_s7: No underground crown possession
+x5_s8: Crown number check flag
+x5_s8_e0: [Flag] Set flag
+x5_s9: Possession of ash crown
+x5_s9_e0: [Flag] Area variable addition
+x5_s10: No possession of ash crown
+x5_s11: Possession of a crown of ice
+x5_s11_e0: [Flag] Area variable addition
+x5_s12: No possession of ice crown
+x5_s13: Forced return flag
+x5_s13_e0: [Flag] Set flag
+x5_s14: Conversation: key guide creation
+x5_s14_e0: [FE] Create key guide area
+x5_s15: Conversation: Delete key guide area
+x5_s15_e0: [FE] Delete key guide area
+x5_s16: Conversation: Poly play
+x5_s16_e0: [Flag] Set flag
+x5_s17: Conversation: Poly drama playback standby
+x5_s18: No deaths flag
+x5_s18_e0: [Flag] Set flag
+x5_s18_e1: [Flag] Set flag
+x5_s18_e2: [Flag] Set flag
+x5_s19: Wait ①
+x5_s20: Wait ②
+x5_s21: [Lib] Item acquisition dialog_SubState
+x5_s22: [Lib] Conversation: Dedicated to Van Clad Conversation _SubState
+x5_s22_e0: [Flag] Set flag
+x5_s23: Inventory full confirmation dialog_SubState
+x5_s24: [Lib] Conversation: Vanclad Conversation Only: Non-owned 1_SubState
+x5_s25: [Lib] Conversation: Vanclad Conversation Only: Non-owned 2_SubState
+x5_s26: [Lib] Conversation: Van Clad Conversation: One crown possession 1_SubState
+x5_s27: [Lib] Conversation: Vanclad conversation only: 1 crown possession 2_SubState
+x5_s28: [Lib] Conversation: Vanclad conversation only: possessing one crown 3_SubState
+x5_s29: [Lib] Conversation: Vanclad conversation only: 2 crown possession 1_SubState
+x5_s30: [Lib] Conversation: Van Clad Conversation Only: 2 Crowns 2_SubState
+x5_s31: [Lib] Conversation: Vanclad Conversation only: 2 crown possession 3_SubState
+x5_s32: [Lib] Conversation: Vanclad conversation only: 3 crown possession 1_SubState
+x5_s33: [Lib] Conversation: Vanclad conversation only: 3 crown possession 2_SubState
+x5_s34: [Lib] Conversation: Vanclad conversation only: 3 crown possession 3_SubState
+x5_s35: [Lib] Conversation: Vanclad conversation only: possessing 4 crowns 1_SubState
+x5_s36: [Lib] Conversation: Poly Play: Mes⇒Poly⇒Mes_SubState
+x5_s37: [Lib] Conversation: Van Clad Conversation: Four Crowns 1_1: Display only_SubState
+x5_s38: End state
+x0: [Lib] Conversation: Display only
+x0_p0: Conversation ID
+x0_p1: Conversation flag
+x0_p2: Display distance
+x0_p3: Global event flag
+x0_s0: Start state
+x0_s1: Conversation: Start
+x0_s2: Conversation: Message
+x0_s2_e0: [Conversation] Notification of conversation start
+x0_s3: Conversation: flag setting
+x0_s3_e0: [Flag] Set flag
+x0_s4: Conversation: Wait for message
+x0_s5: Conversation: End
+x1: [Lib] OK dialog
+x1_p0: Text ID
+x1_s0: Start state
+x1_s1: OK dialog: Display
+x1_s1_e0: [FE] Window display only for YES
+x1_s2: OK dialog: Wait
+x1_s3: End state
+x2: [Lib] Item acquisition dialog
+x2_p0: Item lottery ID
+x2_p1: Global flag
+x2_s0: Start state
+x2_s1: Item acquisition dialog: Display
+x2_s1_e0: [Flag] Set flag
+x2_s1_e1: [Item] Add item
+x2_s2: Item acquisition dialog: Wait
+x2_s3: End state
+x3: [Lib] Conversation: Poly Play: Mes⇒Poly⇒Mes
+x3_p0: First half conversation: conversation ID
+x3_p1: Second half conversation: conversation ID
+x3_p2: Poly drama play start: area and other flags
+x3_p3: Global event flag 1
+x3_p4: Global event flag 2
+x3_s0: Start state
+x3_s1: Conversation: Poly play
+x3_s1_e0: [Flag] Set flag
+x3_s2: Conversation: Poly drama playback standby
+x3_s3: Conversation: Global event flag setting
+x3_s3_e0: [Flag] Set flag
+x3_s3_e1: [Flag] Set flag
+x3_s4: Poly play: First half: Message_SubState
+x3_s5: Poly play: Second half: Message_SubState
+x3_s6: End state
+x4: [Lib] Conversation: For unique key guide
+x4_p0: Conversation ID
+x4_p1: Conversation flag
+x4_p2: Key guide parameters
+x4_p3: Cancel distance
+x4_s0: Start state
+x4_s1: Conversation: Start
+x4_s2: Conversation: key guide creation
+x4_s2_e0: [FE] Create key guide area
+x4_s3: Conversation: waiting
+x4_s4: Conversation: Message
+x4_s4_e0: [FE] Delete key guide area
+x4_s4_e1: [Conversation] Notification of conversation start
+x4_s5: Conversation: flag setting
+x4_s5_e0: [Flag] Set flag
+x4_s6: Conversation: Message waiting
+x4_s7: Conversation: End

@@ -9,6 +9,7 @@ using SoulsIds;
 
 using static ESDLang.EzSemble.AST;
 using static SoulsIds.Universe;
+using static SoulsFormats.EDD;
 using static ESDLang.Script.Util;
 using static ESDLang.Script.Common;
 
@@ -20,12 +21,14 @@ namespace ESDLang.Script
         private readonly ESDOptions options;
         private readonly string esdId;
         private readonly Universe u;
-        public Decompiler(EzSembleContext ezContext, ESDOptions options, string esdId, Universe u=null)
+        private readonly EDD edd;
+        public Decompiler(EzSembleContext ezContext, ESDOptions options, string esdId, Universe u=null, EDD edd=null)
         {
             this.ezContext = ezContext;
             this.options = options;
             this.esdId = esdId;
             this.u = u;
+            this.edd = edd ?? new EDD();
         }
 
         public void Decompile(ESD esd, TextWriter writer)
@@ -39,7 +42,7 @@ namespace ESDLang.Script
                     TargetState = (int?)esdCond.TargetState,
                 };
                 Expr expr = EzSembler.DissembleExpression(ezContext, esdCond.Evaluator);
-                if (!(expr is ConstExpr con && con.ToString().Equals("1")))
+                if (!(expr is ConstExpr con && con.Value.ToString().Equals("1")))
                 {
                     cond.Expr = expr;
                 }
@@ -73,10 +76,12 @@ namespace ESDLang.Script
             foreach ((int, int, ESD.State) stateDesc in esd.StateGroups.SelectMany(stateGroup => stateGroup.Value.Select(state => (stateGroup.Key, state.Key, state.Value))))
             {
                 (int machine, int id, ESD.State esdState) = stateDesc;
+                MachineDesc eddMachine = edd.Machines.Find(m => m.ID == machine);
                 State state = new State
                 {
                     Machine = machine,
                     ID = id,
+                    Desc = eddMachine == null ? null : eddMachine.States.Find(s => s.ID == id),
                     Inner = esdState
                 };
                 int targets = 0;
@@ -118,7 +123,7 @@ namespace ESDLang.Script
                 }
                 // Decompilation checks
                 bool show = false;
-                if (show) Console.WriteLine(esdId + ": " + state + "\n");
+                if (show) Console.Error.WriteLine(esdId + ": " + state + "\n");
                 if (!machines.ContainsKey(machine)) machines[machine] = new SortedDictionary<int, State>();
                 machines[machine][id] = state;
             }
@@ -140,14 +145,14 @@ namespace ESDLang.Script
             Dictionary<int, MachineArgs> machineArgs = CalculateArgs(machines);
             CalculateArgNames(machineArgs);
             // Renamed values in this block
-            Dictionary<string, string> replace = new Dictionary<string, string>(); // { { "done", "call.Done()" }, { "result", "call.Get()" } };
+            Dictionary<string, string> replace = new Dictionary<string, string>();
             foreach (int machine in machines.Keys)
             {
-                replace[$"c6{machine}"] = $"{esdId}_{FormatMachine(machine)}";
+                replace[$"c6_{machine}"] = $"{esdId}_{FormatMachine(machine)}";
                 MachineArgs args = machineArgs[machine];
                 for (int i = 0; i < args.Count; i++)
                 {
-                    replace[$"c6{machine}_{i}"] = args.Params[i].Name;
+                    replace[$"c6_{machine}_{i}"] = args.Params[i].Name;
                 }
             }
             // Perform decompilation per machine
@@ -228,7 +233,8 @@ namespace ESDLang.Script
             // if (esdId == "t100100" && machine.ID == 1) PrintAst(machine.Node, 0);
             machine.Node = AnnotateStructure(machine.Node);
             string baseName = $"c6{machine.ID}";
-            string funcName = replace.ContainsKey(baseName) ? replace[baseName] : $"{esdId}_{FormatMachine(machine.ID)}";
+            string machineName = FormatMachine(machine.ID);
+            string funcName = replace.ContainsKey(baseName) ? replace[baseName] : $"{esdId}_{machineName}";
             IEnumerable<string> paramList = args.Params.Select((param, i) => $"{param.Name}={(param.Default == null ? "_" : param.Default.ToString())}{(i == args.Count - 1 ? "" : ",")}");
             Console.WriteLine(WordWrap($"def {funcName}", paramList.ToArray(), alwaysParens: true) + ":");
             Dictionary<string, string> subreplace = replace;
@@ -238,6 +244,29 @@ namespace ESDLang.Script
                 for (int i = 0; i < args.Count; i++)
                 {
                     replace[$"arg{i}"] = args.Params[i].Name;
+                }
+            }
+            MachineDesc eddMachine = edd.Machines.Find(m => m.ID == machine.ID);
+            if (eddMachine != null && eddMachine.Name != null)
+            {
+                if (args.Count > 0)
+                {
+                    Console.WriteLine($"    \"\"\"{eddMachine.Name}");
+                    for (int i = 0; i < args.Count; i++)
+                    {
+                        string pname = eddMachine.ParamNames[i];
+                        if (pname != null)
+                        {
+                            Console.WriteLine($"    {args.Params[i].Name}: {pname}");
+                        }
+                    }
+                    Console.WriteLine("    \"\"\"");
+                }
+                else
+                {
+                    string name = eddMachine.Name;
+                    if (name.EndsWith("\"")) name += " ";
+                    Console.WriteLine($"    \"\"\"{name}\"\"\"");
                 }
             }
             PrintProgramNode(machine.Node, 1, replace, u);
@@ -379,44 +408,52 @@ namespace ESDLang.Script
         {
             // Common funcs
             int start = s.Start();
-            (ProgBlock, Statement) processBlock(Block b, string def = null, string specialCmd = null)
+            StateDesc desc = states[start].Desc;
+            (ProgBlock, Statement, string) processBlock(Block b, List<CommandDesc> descs, string def = null, string specialCmd = null)
             {
-                if (b == null) return (null, null);
+                if (b == null) return (null, null, null);
+                if (!options.Flag("cmdedd")) descs = null;
                 ProgBlock pblock = new ProgBlock { State = start };
                 if (def != null) pblock.Operation = def;
                 Statement special = null;
-                foreach (Statement st in b.Cmds)
+                string specialName = null;
+                List<string> names = new List<string>();
+                for (int i = 0; i < b.Cmds.Count; i++)
                 {
+                    Statement st = b.Cmds[i];
                     if (special != null)
                     {
                         throw new Exception($"Special command {special} is not the last in block");
                     }
+                    string name = descs != null && descs.Count > i ? descs[i].Name : null;
                     if (specialCmd != null && st.Name.StartsWith(specialCmd))
                     {
                         special = st;
+                        specialName = name;
                     }
                     else
                     {
-                        pblock.Statements.Add(st);
+                        pblock.Add(st, name);
                     }
                 }
-                return (pblock, special);
+                return (pblock, special, specialName);
             }
             ProgramNode processPassBlock(Block b)
             {
                 List<ProgramNode> resNodes = new List<ProgramNode>();
-                (ProgBlock passBlock, Statement ret) = processBlock(b, specialCmd: "7:-1");
+                // Currently pass docs not passed through here. But returns don't have docs anyway, it seems.
+                (ProgBlock passBlock, Statement ret, string retName) = processBlock(b, null, specialCmd: "7:-1");
                 if (passBlock.Statements.Count > 0) resNodes.Add(passBlock);
-                if (ret != null) resNodes.Add(new ProgReturn { State = start, Value = ret.Args[0].AsInt() });
+                if (ret != null) resNodes.Add(new ProgReturn { State = start, Value = ret.Args[0].AsInt(), Doc = retName });
                 if (resNodes.Count == 0) throw new Exception($"Have pass block {b} but no commands extracted");
                 return ProgSeq.From(resNodes);
             }
             List<ProgramNode> processExtraBlocks(State state)
             {
                 List<ProgramNode> enodes = new List<ProgramNode>();
-                (ProgBlock wb, _) = processBlock(state.While, def: "WhilePaused");
+                (ProgBlock wb, _, _) = processBlock(state.While, desc?.WhileCommands, def: "WhilePaused");
                 if (wb != null) enodes.Add(wb);
-                (ProgBlock eb, _) = processBlock(state.Exit, def: "ExitPause");
+                (ProgBlock eb, _, _) = processBlock(state.Exit, desc?.ExitCommands, def: "ExitPause");
                 if (eb != null) enodes.Add(eb);
                 return enodes;
             }
@@ -445,13 +482,21 @@ namespace ESDLang.Script
             }
             // Logic
             List<ProgramNode> nodes = new List<ProgramNode>();
-            if (!visited.Contains(start)) nodes.Add(new ProgAnnotation { State = start, States = new List<int> { start } });
-            visited.Add(start);
+            // For the most part, declare states as they come up, with the exception of loops - those involve
+            // skipping past the 'while True' and declaring the state there, because in compilation the loop
+            // state is the first visited node of the loop.
+            // XX
+            if (!visited.Contains(start) && !(s is Loop || s is Sequence))
+            {
+                ProgAnnotation ann = new ProgAnnotation { State = start, States = new List<int> { start }, StateDoc = new[] { desc?.Name }.Where(n => n != null).ToList() };
+                nodes.Add(ann);
+                visited.Add(start);
+            }
             int next = s.Next;
             if (s is Exec e)
             {
                 State state = states[e.State];
-                (ProgBlock block, Statement call) = processBlock(state.Entry, specialCmd: "6:");
+                (ProgBlock block, Statement call, string callDoc) = processBlock(state.Entry, desc?.EntryCommands, specialCmd: "6:");
                 if (block != null) nodes.Add(block);
                 // Print call if eligible, to end the entry block. Otherwise if the call is part of the conditions, move that down there.
                 List<List<Condition>> conds = state.FlattenConds();
@@ -461,7 +506,7 @@ namespace ESDLang.Script
                 {
                     if (call != null)
                     {
-                        block.Statements.Add(call);
+                        block.Add(call, callDoc);
                     }
                     nodes.AddRange(processExtraBlocks(state));
                     if (next != -1)
@@ -502,12 +547,12 @@ namespace ESDLang.Script
             else if (s is IfElse ie)
             {
                 State state = states[ie.State];
-                (ProgBlock block, Statement call) = processBlock(state.Entry, specialCmd: "6:");
+                (ProgBlock block, Statement call, string callDoc) = processBlock(state.Entry, desc?.EntryCommands, specialCmd: "6:");
                 if (block != null) nodes.Add(block);
                 // Print call if eligible, to end the entry block. Otherwise if the call is part of the conditions, move that down there.
                 List<List<Condition>> conds = state.FlattenConds();
                 if (conds.Count < 2) throw new Exception($"If statement generated for {state} but not enough branches");
-                ProgNext progNext = new ProgNext { State = start, Call = call };
+                ProgNext progNext = new ProgNext { State = start, Call = call, CallDoc = callDoc };
                 nodes.Add(progNext);
                 List<ProgramNode> extras = processExtraBlocks(state);
                 if (extras.Count > 0) progNext.PreBranch = ProgSeq.From(extras);
@@ -1399,7 +1444,9 @@ namespace ESDLang.Script
                             {
                                 mapping[i] = f.Args[0].AsInt();
                             }
-                            else throw new Exception($"Machine arg should either be constant value or other argument - found {arg} in {esdId}-{caller} calling {id} - needs special handling");
+                            // This is not true anymore in DS2 ai files.
+                            // TODO: Check that this doesn't result in any strange behavior.
+                            // else throw new Exception($"Machine arg should either be constant value or other argument - found {arg} in {esdId}-{caller} calling {id} - needs special handling");
                         }
                         if (mapping.Count != 0)
                         {
@@ -1695,6 +1742,75 @@ namespace ESDLang.Script
                 Extract = args => Obj.Item(3, args[0]),
                 Type = Namespace.GOODS,
             });
+            // DS2
+            IdExtractor messageExtractor = new IdExtractor
+            {
+                Indices = new List<int> { 0 },
+                Extract = args => Obj.Action(args[0]),
+                Type = Namespace.ACTION
+            };
+            AddMulti(extractors, "DisplayOwnYesNoMenu", messageExtractor);
+            AddMulti(extractors, "DisplayYesNoMenu", messageExtractor);
+            AddMulti(extractors, "DisplayOwnOkMenu", messageExtractor);
+            AddMulti(extractors, "DisplayOkMenu", messageExtractor);
+            AddMulti(extractors, "DisplayEventMessage", messageExtractor);
+
+            IdExtractor messageItemExtractor(int index) => new IdExtractor
+            {
+                Indices = new List<int> { index, index + 1 },
+                Extract = args => args[0] == 2 && args[1] != 0 ? Obj.Item(3, args[1]) : null,
+                Type = Namespace.GOODS,
+            };
+            AddMulti(extractors, "DisplayOwnYesNoMenu", messageItemExtractor(3));
+            AddMulti(extractors, "DisplayYesNoMenu", messageItemExtractor(4));
+            AddMulti(extractors, "DisplayOwnOkMenu", messageItemExtractor(4));
+            AddMulti(extractors, "DisplayOkMenu", messageItemExtractor(5));
+
+            IdExtractor dialogueExtractor = new IdExtractor
+            {
+                Indices = new List<int> { 0 },
+                Extract = args => Obj.Talk(args[0]),
+                Type = Namespace.TALK
+            };
+            AddMulti(extractors, "StartConversation", dialogueExtractor);
+            AddMulti(extractors, "ShowYesNoSelection", messageExtractor);
+
+            IdExtractor itemExtractor(int index, bool lot) => new IdExtractor
+            {
+                Indices = new List<int> { index },
+                Extract = args => lot ? Obj.Lot(args[0]) : Obj.Item(3, args[0]),
+                Type = lot ? Namespace.LOT : Namespace.GOODS,
+            };
+            AddMulti(extractors, "ConsumeItem", itemExtractor(0, false));
+            AddMulti(extractors, "AwardItem", itemExtractor(0, true));
+            AddMulti(extractors, "DoesPlayerHaveItem", itemExtractor(1, false));
+            AddMulti(extractors, "IsItemEquipped", itemExtractor(1, false));
+            AddMulti(extractors, "IsItemLeft", itemExtractor(1, false));
+            AddMulti(extractors, "DisplayItemAwardFailure", itemExtractor(0, true));
+            // DS2 functions
+            AddMulti(extractors, "ItemCount", itemExtractor(0, false));
+            AddMulti(extractors, "CanGetItem", itemExtractor(0, false));
+            AddMulti(extractors, "EquippedItemCount", itemExtractor(0, false));
+            AddMulti(extractors, "CanGetItemLot", itemExtractor(0, true));
+            AddMulti(extractors, "NpcParamTextId", new IdExtractor
+            {
+                Indices = new List<int> { 0 },
+                Extract = args => Obj.Npc(args[0]),
+                Type = Namespace.NPC
+            });
+            AddMulti(extractors, "CompareGameCycleForBonfire", new IdExtractor
+            {
+                Indices = new List<int> { 1 },
+                Extract = args => Obj.Bonfire(args[0]),
+                Type = Namespace.BONFIRE
+            });
+            AddMulti(extractors, "GetBonfireAsceticCount", new IdExtractor
+            {
+                Indices = new List<int> { 0 },
+                Extract = args => Obj.Bonfire(args[0]),
+                Type = Namespace.BONFIRE
+            });
+
             return extractors;
         }
     }

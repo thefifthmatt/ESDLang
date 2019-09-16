@@ -1,0 +1,52 @@
+6000 Solaire
+6010 Darkmoon Knight
+6020 Oscar of Astora
+6030 Big Hat Logan
+6040 Griggs of Vinheim
+6050 Dusk of Oolacile
+6070 Rhea of Thorolund
+6071 Hollowed Rhea
+6080 Petrus
+6090 Vince
+6100 Nico
+6130 Laurentius
+6170 Quelana
+6180 Ingward
+6220 Rickert of Vinheim
+6250 Crestfallen Merchant
+6260 Domhnall of Zena
+6270 Crestfallen Warrior
+6271 Crestfallen Warrior (Hollow)
+6280 Siegmeyer of Catarina
+6290 Sieglinde of Catarina
+6300 Lautrec of Carim
+6310 Shiva of the East
+6320 Patches
+6370 Oswald of Carim
+6390 Black Iron Tarkus
+6420 Shiva's Bodyguard
+6490 Lautrec's Guard
+6500 Lautrec's Guard
+6510 Black Iron Tarkus
+6511 Black Iron Tarkus (invasion?)
+6520 Witch Beatrice
+6530 Maneater Mildred
+6531 Maneater Mildred (invasion)
+6540 Solaire
+6550 Paladin Leeroy
+6551 Paladin Leeroy (invasion)
+6560 Kirk
+6570 Xanthous King Jeremiah
+6580 Havel
+6590 Lautrec of Carim
+6600 Undead Prince Ricard
+6610 Crystal General
+6640 Darkmoon Soldier
+6650 Darkmoon Soldier
+6740 Ciaran
+6801 Bandit
+6802 Bandit
+6803 Bandit
+6804 Bandit
+6805 Bandit
+6806 Bandit

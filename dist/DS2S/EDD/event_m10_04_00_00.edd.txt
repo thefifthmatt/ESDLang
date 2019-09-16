@@ -1,0 +1,2054 @@
+111092: OBJ: Ladder Shop: Grave
+111092_s0: Start state
+111092_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111093: OBJ: Ladder Shop: Tomb Key Guide
+111093_s0: Start state
+111093_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+6000: Treasure corpse from well
+6000_s0: Start state
+6000_s1: Finish
+6000_s1_e0: [System] Termination notification
+6000_s2: [Preset] OBJ animation playback by attacking OBJ_SubState
+111095: OBJ: Ladder shop: Small ladder installation
+111095_s0: Start state
+111095_s1: [Lib] Ladder shop: Ladder installation_SubState
+111096: OBJ ： Ladder shop ： Installation of middle ladder
+111096_s0: Start state
+111096_s1: [Lib] Ladder shop: Ladder installation_SubState
+111054: OBJ: Dragon Lady: Boss Defeat Counter
+111054_s0: Start state
+111054_s1: Boss Defeat: Start
+111054_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111054_s2: Defeat Boss: Defeat 4
+111054_s2_e0: [Flag] Set flag
+111054_s2_e1: [Group condition: Flag] Event flag comparison
+111054_s3: Boss Defeat: System: End
+111054_s3_e0: [System] Termination notification
+111054_s4: Boss Defeat: Branch
+111054_s4_e0: [Group condition: Flag] Event flag comparison
+111054_s4_e1: [Group condition: Flag] Event flag comparison
+111054_s4_e2: [Group condition: Flag] Event flag comparison
+111054_s4_e3: [Group condition: Flag] Event flag comparison
+111054_s4_e4: [Group condition: Flag] Event flag comparison
+111054_s4_e5: [Group condition: Flag] Event flag comparison
+111054_s4_e6: [Group condition: Flag] Event flag comparison
+111054_s4_e7: [Group condition: Flag] Event flag comparison
+111054_s5: Dragon Miko: Boss Defeat Counter (Forgotten Sinner) _SubState
+111054_s6: Dragon Miko: Boss Defeat Counter (Fused Iron Demon) _SubState
+111054_s7: Dragon Miko: Boss Defeat Counter (Butcher) _SubState
+111054_s8: Dragon Miko: Boss Defeat Counter (Queen Queen) _SubState
+111292: OBJ: Yorozu Baba: Tomb
+111292_s0: Start state
+111292_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111293: OBJ: Yorozu Baba: Key Guide
+111293_s0: Start state
+111293_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111294: OBJ: Yorozu Baba: Death determination
+111294_s0: Start state
+111294_s1: [Lib] NPC: Death determination: General purpose_SubState
+111052: OBJ: Dragon Maiden: Tomb
+111052_s0: Start state
+111052_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111053: OBJ: Dragon Maiden: Key Guide
+111053_s0: Start state
+111053_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111342: OBJ: Material shop: Tomb
+111342_s0: Start state
+111342_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111343: OBJ: Material shop: Key guide
+111343_s0: Start state
+111343_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111344: OBJ: Material shop: Death determination
+111344_s0: Start state
+111344_s1: [Lib] NPC: Death determination: General purpose_SubState
+111094: OBJ: Ladder shop: Death determination
+111094_s0: Start state
+111094_s1: [Lib] NPC: Death determination: General purpose_SubState
+111392: OBJ: Magician: Tomb
+111392_s0: Start state
+111392_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111393: OBJ: Magician: Key Guide
+111393_s0: Start state
+111393_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111394: OBJ: Magician: Death determination
+111394_s0: Start state
+111394_s1: [Lib] NPC: Death determination: General purpose_SubState
+111222: OBJ: Broken Blue Warrior: Grave
+111222_s0: Start state
+111222_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111223: OBJ: Broken blue warrior: Key guide
+111223_s0: Start state
+111223_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111412: OBJ: Miracle Person: Grave
+111412_s0: Start state
+111412_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111413: OBJ: Miracle Person: Key Guide
+111413_s0: Start state
+111413_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111415: OBJ: Miracle Person: Boss Defeat Counter
+111415_s0: Start state
+111415_s1: Boss Defeat: Start
+111415_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111415_s2: Boss Defeat: System: End
+111415_s2_e0: [System] Termination notification
+111415_s3: Boss Defeat: Branch
+111415_s3_e0: [Group condition: Flag] Event flag comparison
+111415_s3_e1: [Group condition: Flag] Event flag comparison
+111415_s3_e2: [Group condition: Flag] Event flag comparison
+111415_s3_e3: [Group condition: Flag] Event flag comparison
+111415_s3_e4: [Group condition: Flag] Event flag comparison
+111415_s4: Miracle: Boss Defeat Counter (Forgotten Sinner) _SubState
+111415_s5: Miracle: Boss Defeat Counter (Demon Iron) _SubState
+111415_s6: Miracle: Boss Defeat Counter (Butcher) _SubState
+111415_s7: Miracle Person: Boss Defeat Counter (Queen of Amber) _SubState
+111414: OBJ: Miracle: Death decision
+111414_s0: Start state
+111414_s1: [Lib] NPC: Death determination: General purpose_SubState
+111416: OBJ: Miracle Person: Revolving Door
+111416_s0: Start state
+111416_s1: Revolving door: Start
+111416_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111416_s2: Revolving door: Start standby
+111416_s2_e0: [Group condition: Flag] Event flag comparison
+111416_s2_e1: [Group condition: Map] Judgment that the player is in the map
+111416_s3: Revolving door: System: End
+111416_s3_e0: [System] Termination notification
+111416_s4: Revolving door: System: Re-execution
+111416_s4_e0: [System] Re-execution notification
+111416_s5: Revolving door: Playback animation branch
+111416_s5_e0: [Group condition: OBJ] OBJ state ID comparison
+111416_s5_e1: [Group condition: OBJ] OBJ state ID comparison
+111416_s5_e2: [Group condition: OBJ] OBJ state ID comparison
+111416_s5_e3: [Group condition: OBJ] OBJ state ID comparison
+111416_s5_e4: [Group condition: OBJ] OBJ state ID comparison
+111416_s5_e5: [Group condition: OBJ] OBJ state ID comparison
+111416_s5_e6: [Group condition: OBJ] OBJ state ID comparison
+111416_s5_e7: [Group condition: OBJ] OBJ state ID comparison
+111416_s5_e8: [Group condition: OBJ] OBJ state ID comparison
+111416_s5_e9: [Group condition: OBJ] OBJ state ID comparison
+111416_s5_e10: [Group condition: OBJ] OBJ state ID comparison
+111416_s5_e11: [Group condition: OBJ] OBJ state ID comparison
+111416_s6: Revolving door: Animation playback: Initialization
+111416_s6_e0: [Group condition: OBJ] OBJ state ID comparison
+111416_s6_e1: [Group condition: OBJ] OBJ state ID comparison
+111416_s6_e2: [Group condition: OBJ] OBJ state ID comparison
+111416_s6_e3: [Group condition: OBJ] OBJ state ID comparison
+111416_s6_e4: [Group condition: OBJ] OBJ state ID comparison
+111416_s6_e5: [Group condition: OBJ] OBJ state ID comparison
+111416_s6_e6: [Group condition: OBJ] OBJ state ID comparison
+111416_s6_e7: [Group condition: OBJ] OBJ state ID comparison
+111416_s6_e8: [Group condition: OBJ] OBJ state ID comparison
+111416_s6_e9: [Group condition: OBJ] OBJ state ID comparison
+111416_s6_e10: [Group condition: OBJ] OBJ active judgment
+111416_s7: Revolving door: Left lattice start_SubState
+111416_s8: Revolving door: Right lattice start_SubState
+8000: Madura-Giant Morima Gimmick Door
+8000_s0: Start state
+8000_s1: Rerun
+8000_s1_e0: [System] Re-execution notification
+8000_s2: [Preset] Madura-Giant Morima Gimmick Door_SubState
+4000: The key door that opens with the key of Mr. A's house
+4000_s0: Start state
+4000_s1: Finish
+4000_s1_e0: [System] Termination notification
+4000_s2: [Lib] Item specified door unlocking_SubState
+4100: The key door that opens with the key of Mr. B's house
+4100_s0: Start state
+4100_s1: Finish
+4100_s1_e0: [System] Termination notification
+4100_s2: [Lib] Item specified door unlocking_SubState
+111362: OBJ: Blacksmith: Grave
+111362_s0: Start state
+111362_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111363: OBJ: Blacksmith: Key guide
+111363_s0: Start state
+111363_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111365: OBJ: Blacksmith: Judgment of movement
+111365_s0: Start state
+111365_s1: Judgment: Start
+111365_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111365_s2: Movement judgment: Door unlocking judgment
+111365_s2_e0: [Group condition: Flag] Event flag comparison
+111365_s3: Movement judgment: Character movement
+111365_s3_e0: [Flag] Set flag
+111365_s3_e1: [Group condition: Flag] Event flag comparison
+111365_s4: Movement judgment: System: End
+111365_s4_e0: [System] Termination notification
+111365_s5: Movement judgment: Door unlocked judgment
+111365_s5_e0: [Group condition: Flag] Event flag comparison
+111365_s6: Movement judgment: Death judgment
+111365_s6_e0: [Group condition: Flag] Event flag comparison
+111365_s7: Judgment: Previous generator: Delete
+111365_s7_e0: [Generator] Forced deletion of enemies by generator group specification
+111366: OBJ: Blacksmith: Door unlocking judgment
+111366_s0: Start state
+111366_s1: Door unlocking determination: Start
+111366_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111366_s2: Door unlocking determination: Unlocking: Standby
+111366_s2_e0: [Group condition: Map] Judgment that the player is in the map
+111366_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+111366_s3: Door unlocking determination: System: End
+111366_s3_e0: [System] Termination notification
+111366_s4: Door unlocking judgment: unlocking setting
+111366_s4_e0: [Flag] Set flag
+111366_s4_e1: [Group condition: Flag] Event flag comparison
+111366_s5: Door unlocking judgment: Death judgment
+111366_s5_e0: [Group condition: Flag] Event flag comparison
+111366_s6: Door unlocking determination: Unlocking determination
+111366_s6_e0: [Group condition: Flag] Event flag comparison
+111332: OBJ: Armor shop: Tomb
+111332_s0: Start state
+111332_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111333: OBJ: Armor shop: Key guide
+111333_s0: Start state
+111333_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111467: OBJ: Cat: Random generation
+111467_s0: Start state
+111467_s1: Random generation: Start
+111467_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111467_s2: Random generation: random number generation
+111467_s2_e0: [System] Obtains the clamped integer value
+111467_s2_e1: [Group condition: Event] State elapsed time comparison
+111467_s3: Random generation: Flag initialization setting
+111467_s3_e0: [Group condition: Flag] Event flag comparison
+111467_s3_e1: [Group condition: Flag] Event flag comparison
+111467_s3_e2: [Group condition: Flag] Event flag comparison
+111467_s3_e3: [Group condition: Flag] Event flag comparison
+111467_s3_e4: [Group condition: Flag] Event flag comparison
+111467_s4: Random generation: generation branch
+111467_s5: Random generation: Cat: Sitting
+111467_s5_e0: [Generator] Forced deletion of enemies by generator group specification
+111467_s5_e1: [Generator] Forced deletion of enemies by generator group specification
+111467_s5_e2: [Generator] Forced deletion of enemies by generator group specification
+111467_s5_e3: [Generator] Forced deletion of enemies by generator group specification
+111467_s5_e4: [Flag] Set flag
+111467_s5_e5: [Group condition: Flag] Event flag comparison
+111467_s6: Random generation: Cat: sitting in a box
+111467_s6_e0: [Generator] Forced deletion of enemies by generator group specification
+111467_s6_e1: [Generator] Forced deletion of enemies by generator group specification
+111467_s6_e2: [Generator] Forced deletion of enemies by generator group specification
+111467_s6_e3: [Generator] Forced deletion of enemies by generator group specification
+111467_s6_e4: [Flag] Set flag
+111467_s6_e5: [Group condition: Flag] Event flag comparison
+111467_s7: Random generation: Cat: Fits on railing
+111467_s7_e0: [Generator] Forced deletion of enemies by generator group specification
+111467_s7_e1: [Generator] Forced deletion of enemies by generator group specification
+111467_s7_e2: [Generator] Forced deletion of enemies by generator group specification
+111467_s7_e3: [Generator] Forced deletion of enemies by generator group specification
+111467_s7_e4: [Generator] Forced deletion of enemies by generator group specification
+111467_s7_e5: [Generator] Forced deletion of enemies by generator group specification
+111467_s7_e6: [Flag] Set flag
+111467_s7_e7: [Group condition: Flag] Event flag comparison
+111467_s8: Random generation: Cat: Curled in a pot
+111467_s8_e0: [Generator] Forced deletion of enemies by generator group specification
+111467_s8_e1: [Generator] Forced deletion of enemies by generator group specification
+111467_s8_e2: [Generator] Forced deletion of enemies by generator group specification
+111467_s8_e3: [Generator] Forced deletion of enemies by generator group specification
+111467_s8_e4: [Generator] Forced deletion of enemies by generator group specification
+111467_s8_e5: [Generator] Forced deletion of enemies by generator group specification
+111467_s8_e6: [Flag] Set flag
+111467_s8_e7: [Group condition: Flag] Event flag comparison
+111467_s9: Random generation: Cat: Sharpening nails
+111467_s9_e0: [Generator] Forced deletion of enemies by generator group specification
+111467_s9_e1: [Generator] Forced deletion of enemies by generator group specification
+111467_s9_e2: [Generator] Forced deletion of enemies by generator group specification
+111467_s9_e3: [Generator] Forced deletion of enemies by generator group specification
+111467_s9_e4: [Flag] Set flag
+111467_s9_e5: [Group condition: Flag] Event flag comparison
+111467_s10: Random generation: Cat: Leaning on chair back
+111467_s10_e0: [Generator] Forced deletion of enemies by generator group specification
+111467_s10_e1: [Generator] Forced deletion of enemies by generator group specification
+111467_s10_e2: [Generator] Forced deletion of enemies by generator group specification
+111467_s10_e3: [Generator] Forced deletion of enemies by generator group specification
+111467_s10_e4: [Flag] Set flag
+111467_s10_e5: [Group condition: Flag] Event flag comparison
+111467_s11: Random generation: Cat: sleeping on the edge of the table
+111467_s11_e0: [Generator] Forced deletion of enemies by generator group specification
+111467_s11_e1: [Generator] Forced deletion of enemies by generator group specification
+111467_s11_e2: [Generator] Forced deletion of enemies by generator group specification
+111467_s11_e3: [Generator] Forced deletion of enemies by generator group specification
+111467_s11_e4: [Flag] Set flag
+111467_s11_e5: [Group condition: Flag] Event flag comparison
+111467_s12: Random generation: System termination: Wait
+111467_s12_e0: [Group condition: Event] Event status judgment
+111467_s13: Random generation: System: Exit
+111467_s13_e0: [System] Termination notification
+111055: OBJ: Dragon Lady: Random generation
+111055_s0: Start state
+111055_s1: Random generation: Start
+111055_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111055_s2: Random generation: Death determination
+111055_s2_e0: [Group condition: Flag] Event flag comparison
+111055_s3: Random generation: System: Exit
+111055_s3_e0: [System] Termination notification
+111055_s4: Random generation: initial placement determination
+111055_s4_e0: [Group condition: Flag] Event flag comparison
+111055_s5: Random generation: initial placement setting
+111055_s5_e0: [Flag] Set flag
+111055_s5_e1: [Group condition: Flag] Event flag comparison
+111055_s6: Random generation: Relocation determination
+111055_s6_e0: [Group condition: Flag] Event flag comparison
+111055_s6_e1: [Group condition: Flag] Event flag comparison
+111055_s6_e2: [Group condition: Flag] Event flag comparison
+111055_s6_e3: [Group condition: Flag] Event flag comparison
+111055_s6_e4: [Group condition: Flag] Event flag comparison
+111055_s7: Random generation: random number generation
+111055_s7_e0: [System] Obtains the clamped integer value
+111055_s7_e1: [Group condition: Event] State elapsed time comparison
+111055_s8: Random generation: generation branch
+111055_s9: Random generation: Standing 1: Looking at the sky
+111055_s9_e0: [Generator] Forced deletion of enemies by generator group specification
+111055_s9_e1: [Generator] Forced deletion of enemies by generator group specification
+111055_s9_e2: [Generator] Forced deletion of enemies by generator group specification
+111055_s9_e3: [Flag] Set flag
+111055_s9_e4: [Group condition: Flag] Event flag comparison
+111055_s10: Random generation: Rock seat 1: Poke your cheek with your hand
+111055_s10_e0: [Generator] Forced deletion of enemies by generator group specification
+111055_s10_e1: [Generator] Forced deletion of enemies by generator group specification
+111055_s10_e2: [Generator] Forced deletion of enemies by generator group specification
+111055_s10_e3: [Flag] Set flag
+111055_s10_e4: [Group condition: Flag] Event flag comparison
+111055_s11: Random generation: Rock sitting 2: Extend both hands back
+111055_s11_e0: [Generator] Forced deletion of enemies by generator group specification
+111055_s11_e1: [Generator] Forced deletion of enemies by generator group specification
+111055_s11_e2: [Generator] Forced deletion of enemies by generator group specification
+111055_s11_e3: [Flag] Set flag
+111055_s11_e4: [Group condition: Flag] Event flag comparison
+111055_s12: Random generation: Standing 2: Kicking the ground
+111055_s12_e0: [Generator] Forced deletion of enemies by generator group specification
+111055_s12_e1: [Generator] Forced deletion of enemies by generator group specification
+111055_s12_e2: [Generator] Forced deletion of enemies by generator group specification
+111055_s12_e3: [Flag] Set flag
+111055_s12_e4: [Group condition: Flag] Event flag comparison
+112000: OBJ: Strong man's monument (pledge event)
+112000_s0: Start state
+112000_s1: [Lib] OBJ Pledge: Initial _SubState
+111262: OBJ: Mapping: Grave
+111262_s0: Start state
+111262_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111263: OBJ: cartography: key guide
+111263_s0: Start state
+111263_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111264: OBJ: Mapping: Death determination
+111264_s0: Start state
+111264_s1: [Lib] NPC: Death determination: General purpose_SubState
+111097: OBJ: Ladder shop: Large ladder installation
+111097_s0: Start state
+111097_s1: [Lib] Ladder shop: Ladder installation_SubState
+111098: OBJ: Ladder shop: Eliminate all ladders
+111098_s0: Start state
+111098_s1: Complete ladder elimination: Start
+111098_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111098_s2: All ladder elimination: End judgment
+111098_s2_e0: [Group condition: Flag] Event flag comparison
+111098_s2_e1: [Group condition: Flag] Event flag comparison
+111098_s2_e2: [Group condition: Flag] Event flag comparison
+111098_s3: Erasing all ladders: Erasing
+111098_s3_e0: [OBJ] OBJ state transition request (with instance ID specified)
+111098_s3_e1: [OBJ] OBJ state transition request (with instance ID specified)
+111098_s3_e2: [OBJ] OBJ state transition request (with instance ID specified)
+111098_s3_e3: [Group condition: OBJ] OBJ state ID comparison
+111098_s3_e4: [Group condition: OBJ] OBJ state ID comparison
+111098_s3_e5: [Group condition: OBJ] OBJ state ID comparison
+111098_s4: Complete ladder elimination: System: End
+111098_s4_e0: [System] Termination notification
+111098_s5: Short ladder: Erase judgment
+111098_s5_e0: [Group condition: Flag] Event flag comparison
+111098_s6: Normal ladder: Erase judgment
+111098_s6_e0: [Group condition: Flag] Event flag comparison
+111098_s7: Long ladder: Erase judgment
+111098_s7_e0: [Group condition: Flag] Event flag comparison
+111098_s8: Short ladder: erasure
+111098_s8_e0: [OBJ] OBJ state transition request (with instance ID specified)
+111098_s8_e1: [Group condition: OBJ] OBJ state ID comparison
+111098_s9: Normal ladder: Elimination
+111098_s9_e0: [OBJ] OBJ state transition request (with instance ID specified)
+111098_s9_e1: [Group condition: OBJ] OBJ state ID comparison
+111098_s10: Long ladder: erasure
+111098_s10_e0: [Group condition: OBJ] OBJ state ID comparison
+111098_s10_e1: [OBJ] OBJ state transition request (with instance ID specified)
+4200: The key door that opens with the key of death
+4200_s0: Start state
+4200_s1: Finish
+4200_s1_e0: [System] Termination notification
+4200_s2: [Lib] Item specified door unlocking_SubState
+111335: OBJ: Armor shop: Armor arrangement
+111335_s0: Start state
+111335_s1: Armor placement: Start
+111335_s1_e0: [Flag] Global variable setting
+111335_s1_e1: [Group condition: Map] Judgment that the player is in the map
+111335_s1_e2: [Group condition: Flag] Event flag comparison
+111335_s2: Armor placement: All placement judgment
+111335_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e2: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e3: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e4: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e5: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e6: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e7: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e8: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e9: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e10: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e11: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e12: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e13: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e14: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e15: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e16: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e17: [Group condition: OBJ] OBJ state ID comparison
+111335_s2_e18: [Group condition: OBJ] OBJ state ID comparison
+111335_s3: Armor placement: System: End
+111335_s3_e0: [System] Termination notification
+111335_s4: Armor placement: Number of placement settings
+111335_s4_e0: [System] Obtains the clamped integer value
+111335_s4_e1: [System] Obtains the clamped integer value
+111335_s5: Armor placement: Global ⇒ Area: Counter
+111335_s5_e0: [Flag] Area variable setting
+111335_s6: Armor Arrangement: Area: Number of Arrangements ⇒ Global
+111335_s6_e0: [Flag] Global variable setting
+111335_s7: Armor arrangement: Number of arrangements ⇒ Area: Number of arrangements
+111335_s7_e0: [Flag] Area variable setting
+111335_s7_e1: [Flag] Area variable setting
+111335_s7_e2: [Flag] Area variable setting
+111335_s8: Armor placement: System: Re-execution
+111335_s8_e0: [System] Re-execution notification
+111335_s9: Armor placement: Re-execution: Standby
+111335_s9_e0: [Group condition: Map] Judgment that the player is in the map
+111335_s10: Armor placement: Level judgment
+111335_s10_e0: [Group condition: Flag] Event variable comparison
+111335_s10_e1: [Group condition: Flag] Event flag comparison
+111335_s10_e2: [Group condition: Flag] Event flag comparison
+111335_s10_e3: [Group condition: Flag] Event variable comparison
+111335_s10_e4: [Group condition: Flag] Event flag comparison
+111335_s10_e5: [Group condition: Flag] Event flag comparison
+111335_s11: Armor placement: Global: Level setting
+111335_s11_e0: [Flag] Global variable setting
+111335_s11_e1: [Flag] Global variable setting
+111335_s11_e2: [Flag] Global variable setting
+111335_s12: Armor shop: Arrangement armor selection_SubState
+9000: Revolving door switch
+9000_s0: Start state
+9000_s1: Rerun
+9000_s1_e0: [System] Re-execution notification
+9000_s2: [Preset] Revolving door switch_SubState
+111395: OBJ: Magician: Appearance judgment
+111395_s0: Start state
+111395_s1: [Lib] Appearance determination: Magician_SubState
+9010: Toggles global flags related to revolving doors
+9010_s0: Start state
+9010_s1: Rerun
+9010_s1_e0: [System] Re-execution notification
+9010_s2: [Preset] Switching global flags related to revolving doors_SubState
+10000: Switching the gimmick door related flags on the connection path
+10000_s0: Start state
+10000_s1: Rerun
+10000_s1_e0: [System] Re-execution notification
+10000_s2: [Lib] [Preset] Switch connection flag when in map_SubState
+11000: Flame 1 on the updated world map
+11000_s0: Start state
+11000_s1: Finish
+11000_s1_e0: [System] Termination notification
+11000_s2: [Preset] World map to be updated_SubState
+11010: Flame 2 on the updated world map
+11010_s0: Start state
+11010_s1: Finish
+11010_s1_e0: [System] Termination notification
+11010_s2: Has the Flame 1 event ended?
+11010_s3: [Preset] World map to be updated_SubState
+11020: Flame 3 on the updated world map 3
+11020_s0: Start state
+11020_s1: Finish
+11020_s1_e0: [System] Termination notification
+11020_s2: Was the Flame 2 event finished?
+11020_s3: [Preset] World map to be updated_SubState
+11030: Flame 4 on the updated world map
+11030_s0: Start state
+11030_s1: Finish
+11030_s1_e0: [System] Termination notification
+11030_s2: Was the Flame 3 event finished?
+11030_s3: [Preset] World map to be updated_SubState
+11040: Flame 5 on the updated world map
+11040_s0: Start state
+11040_s1: Finish
+11040_s1_e0: [System] Termination notification
+11040_s2: Was the Flame 4 event finished?
+11040_s3: [Preset] World map to be updated_SubState
+11050: Flame 6 on the updated world map
+11050_s0: Start state
+11050_s1: Finish
+11050_s1_e0: [System] Termination notification
+11050_s2: Was the Flame 5 event finished?
+11050_s3: [Preset] World map to be updated_SubState
+11060: Fire 7 on the updated world map
+11060_s0: Start state
+11060_s1: Finish
+11060_s1_e0: [System] Termination notification
+11060_s2: Was the Flame 6 event finished?
+11060_s3: [Preset] Updated World Map_Old Dragon_SubState
+11070: Fire 8 on the updated world map
+11070_s0: Start state
+11070_s1: Finish
+11070_s1_e0: [System] Termination notification
+11070_s2: Has the Fire 7 event ended?
+11070_s3: [Preset] World map to be updated_SubState
+9020: Changing the navigation mesh of the revolving door
+9020_s0: Start state
+9020_s1: Rerun
+9020_s1_e0: [System] Re-execution notification
+9020_s2: [Preset] Navimesh change of the revolving door_SubState
+111352: OBJ: Magician: Tomb
+111352_s0: Start state
+111352_s1: [Lib] NPC: Grave Placement: General Purpose_SubState
+111353: OBJ: Magician: Key Guide
+111353_s0: Start state
+111353_s1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState
+111354: OBJ: Magician: Death check
+111354_s0: Start state
+111354_s1: [Lib] NPC: Death determination: General purpose_SubState
+80000: Rebirth Fire 01_Main bonfire in the middle of the village
+80000_s0: Start state
+80000_s1: Finish
+80000_s1_e0: [System] Termination notification
+80000_s2: [Lib] [Preset] Reproduction fire _SubState
+3010: Invade the world of miracles
+3010_s0: Start state
+3010_s1: Finish
+3010_s1_e0: [System] Termination notification
+3010_s2: Rerun
+3010_s2_e0: [System] Re-execution notification
+3010_s3: [Preset] Intrusion item usage determination_SubState
+3020: Invade the world of miraculous people_return from the destination
+3020_s0: Start state
+3020_s1: Finish
+3020_s1_e0: [System] Termination notification
+3020_s2: [Preset] Return from intrusion_SubState
+111265: OBJ: Map writing: Migration decision
+111265_s0: Start state
+111265_s1: Migration determination: Start
+111265_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111265_s2: Migration decision: death decision
+111265_s2_e0: [Group condition: Flag] Event flag comparison
+111265_s3: Migration determination: System: End
+111265_s3_e0: [System] Termination notification
+111265_s4: Migration decision: Migration decision
+111265_s4_e0: [Group condition: Flag] Event flag comparison
+111265_s4_e1: [Group condition: Flag] Event flag comparison
+111265_s4_e2: [Group condition: Flag] Event flag comparison
+111265_s5: Migration decision: Migration decision
+111265_s5_e0: [Flag] Set flag
+111265_s5_e1: [Group condition: Flag] Event flag comparison
+20000: Defeat Skeleton: Round 1
+20000_s0: Start state
+20000_s1: Zako death determination_SubState
+20001: Defeat Skeleton: Round 2
+20001_s0: Start state
+20001_s1: Zako death determination_SubState
+20002: Defeat Skeleton: Round 3
+20002_s0: Start state
+20002_s1: Zako death determination_SubState
+20003: Defeat Skeleton: Round 4
+20003_s0: Start state
+20003_s1: Zako death determination_SubState
+20004: Defeat Skeleton: Round 5
+20004_s0: Start state
+20004_s1: Zako death determination_SubState
+20005: Defeat Skeleton: Orbit 6
+20005_s0: Start state
+20005_s1: Zako death determination_SubState
+20006: Defeat Skeleton: Orbit 7
+20006_s0: Start state
+20006_s1: Zako death determination_SubState
+20007: Defeat Skeleton: 8 laps
+20007_s0: Start state
+20007_s1: Zako death determination_SubState
+111334: OBJ: Armor shop: State transition
+111334_s0: Start state
+111334_s1: State transition: Start
+111334_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111334_s2: State transition: death judgment
+111334_s2_e0: [Group condition: Flag] Event flag comparison
+111334_s3: State transition: System: Exit
+111334_s3_e0: [System] Termination notification
+111334_s4: State transition: bullish judgment
+111334_s4_e0: [Group condition: Flag] Event variable comparison
+111334_s5: State transition: Normal judgment
+111334_s5_e0: [Group condition: Flag] Event variable comparison
+111334_s6: State transition: bearish setting
+111334_s6_e0: [Flag] Set flag
+111334_s6_e1: [Flag] Set flag
+111334_s6_e2: [Flag] Set flag
+111334_s6_e3: [Group condition: Flag] Event flag comparison
+111334_s6_e4: [Group condition: Flag] Event flag comparison
+111334_s6_e5: [Group condition: Flag] Event flag comparison
+111334_s7: State transition: Normal setting
+111334_s7_e0: [Flag] Set flag
+111334_s7_e1: [Flag] Set flag
+111334_s7_e2: [Flag] Set flag
+111334_s7_e3: [Generator] Forced deletion of enemies by generator group specification
+111334_s7_e4: [Group condition: Flag] Event flag comparison
+111334_s7_e5: [Group condition: Flag] Event flag comparison
+111334_s7_e6: [Group condition: Flag] Event flag comparison
+111334_s8: State transition: bullish setting
+111334_s8_e0: [Flag] Set flag
+111334_s8_e1: [Flag] Set flag
+111334_s8_e2: [Flag] Set flag
+111334_s8_e3: [Generator] Forced deletion of enemies by generator group specification
+111334_s8_e4: [Generator] Forced deletion of enemies by generator group specification
+111334_s8_e5: [Group condition: Flag] Event flag comparison
+111334_s8_e6: [Group condition: Flag] Event flag comparison
+111334_s8_e7: [Group condition: Flag] Event flag comparison
+111334_s9: State transition: Shop list update: Standby
+111334_s9_e0: [Group condition: Event] Event status judgment
+12000: Obelisk _ front side
+12000_s0: Start state
+12000_s1: Rerun
+12000_s1_e0: [System] Re-execution notification
+12000_s2: [Preset] Obelisk_Front Side_SubState
+12010: Obelisk_Backside
+12010_s0: Start state
+12010_s1: Rerun
+12010_s1_e0: [System] Re-execution notification
+12010_s2: [Preset] Obelisk_Backside_SubState
+120030: Trophy: The Weak Pledge
+120030_s0: Start state
+120030_s1: System: Exit
+120030_s1_e0: [System] Termination notification
+120030_s2: [Lib] [Preset] Get Trophy_SubState
+120070: Trophy: The Pledge of the Strong
+120070_s0: Start state
+120070_s1: System: Exit
+120070_s1_e0: [System] Termination notification
+120070_s2: [Lib] [Preset] Get Trophy_SubState
+120090: Trophy: Strange map completion
+120090_s0: Start state
+120090_s1: System: Exit
+120090_s1_e0: [System] Termination notification
+120090_s2: [Lib] [Preset] Get Trophy_SubState
+120100: Trophy: Abandoned people
+120100_s0: Start state
+120100_s1: System: Exit
+120100_s1_e0: [System] Termination notification
+120100_s2: [Lib] [Preset] Get Trophy_SubState
+120150: Trophy: Miser
+120150_s0: Start state
+120150_s1: System: Exit
+120150_s1_e0: [System] Termination notification
+120150_s2: [Lib] [Preset] Get Trophy_SubState
+120101: Trophy: Abandoned people: Survival judgment
+120101_s0: Start state
+120101_s1: Trophy acquisition: Start
+120101_s1_e0: [Group condition: Character] Judgment within player points
+120101_s1_e1: [Group condition: Event] Event status judgment
+120101_s1_e2: [Group condition: Event] Event status judgment
+120101_s1_e3: [Group condition: Event] Event status judgment
+120101_s1_e4: [Group condition: Event] Event status judgment
+120101_s2: Trophy acquisition: System: End
+120101_s2_e0: [System] Termination notification
+120101_s3: Trophy acquisition: flag setting
+120101_s3_e0: [Flag] Set flag
+120101_s3_e1: [Group condition: Flag] Event flag comparison
+120101_s4: Dragon Miko: Single Survival_SubState
+120101_s5: Ladder Shop: Emigration survival_SubState
+120101_s6: Broken spirited warrior: Single survival _SubState
+120101_s7: Map writing: Emigration survival_SubState
+120101_s8: Yorozu Baba: Emigration Survival_SubState
+120101_s9: Armor Shop: Single Survival_SubState
+120101_s10: Material shop: Emigration survival_SubState
+120101_s11: Magician: Immigration Survival_SubState
+120101_s12: Blacksmith: Single Survival_SubState
+120101_s13: Trophy: Survival of Magician Migration_SubState
+120101_s14: Miracle People: Emigration Survival_SubState
+111266: OBJ: Mapping: Skeleton Defeat Count
+111266_s0: Start state
+111266_s1: Defeat count: death judgment
+111266_s1_e0: [Group condition: Flag] Event flag comparison
+111266_s1_e1: [Group condition: Flag] Event flag comparison
+111266_s2: Defeat Count: System: End
+111266_s2_e0: [System] Termination notification
+111266_s3: Defeat count: lap level branch
+111266_s3_e0: [Group condition: Other] Comparison of laps
+111266_s3_e1: [Group condition: Other] Comparison of laps
+111266_s3_e2: [Group condition: Other] Comparison of laps
+111266_s3_e3: [Group condition: Other] Comparison of laps
+111266_s3_e4: [Group condition: Other] Comparison of laps
+111266_s3_e5: [Group condition: Other] Comparison of laps
+111266_s3_e6: [Group condition: Other] Comparison of laps
+111266_s3_e7: [Group condition: Other] Comparison of laps
+111266_s4: Defeat count: lap level 1: standby
+111266_s4_e0: [Group condition: Flag] Event flag comparison
+111266_s5: Defeat count: lap level 2: standby
+111266_s5_e0: [Group condition: Flag] Event flag comparison
+111266_s5_e1: [Group condition: Flag] Event flag comparison
+111266_s6: Defeat count: Defeat all skeletons
+111266_s6_e0: [Flag] Set flag
+111266_s6_e1: [Group condition: Flag] Event flag comparison
+111266_s7: Defeat count: lap level 3: standby
+111266_s7_e0: [Group condition: Flag] Event flag comparison
+111266_s7_e1: [Group condition: Flag] Event flag comparison
+111266_s7_e2: [Group condition: Flag] Event flag comparison
+111266_s8: Defeat count: Circulation level 4: Standby
+111266_s8_e0: [Group condition: Flag] Event flag comparison
+111266_s8_e1: [Group condition: Flag] Event flag comparison
+111266_s8_e2: [Group condition: Flag] Event flag comparison
+111266_s8_e3: [Group condition: Flag] Event flag comparison
+111266_s9: Defeat count: lap level 5: standby
+111266_s9_e0: [Group condition: Flag] Event flag comparison
+111266_s9_e1: [Group condition: Flag] Event flag comparison
+111266_s9_e2: [Group condition: Flag] Event flag comparison
+111266_s9_e3: [Group condition: Flag] Event flag comparison
+111266_s9_e4: [Group condition: Flag] Event flag comparison
+111266_s10: Defeat count: lap level 6: standby
+111266_s10_e0: [Group condition: Flag] Event flag comparison
+111266_s10_e1: [Group condition: Flag] Event flag comparison
+111266_s10_e2: [Group condition: Flag] Event flag comparison
+111266_s10_e3: [Group condition: Flag] Event flag comparison
+111266_s10_e4: [Group condition: Flag] Event flag comparison
+111266_s10_e5: [Group condition: Flag] Event flag comparison
+111266_s11: Defeat count: lap level 7: standby
+111266_s11_e0: [Group condition: Flag] Event flag comparison
+111266_s11_e1: [Group condition: Flag] Event flag comparison
+111266_s11_e2: [Group condition: Flag] Event flag comparison
+111266_s11_e3: [Group condition: Flag] Event flag comparison
+111266_s11_e4: [Group condition: Flag] Event flag comparison
+111266_s11_e5: [Group condition: Flag] Event flag comparison
+111266_s11_e6: [Group condition: Flag] Event flag comparison
+111266_s12: Defeat count: lap level 8: standby
+111266_s12_e0: [Group condition: Flag] Event flag comparison
+111266_s12_e1: [Group condition: Flag] Event flag comparison
+111266_s12_e2: [Group condition: Flag] Event flag comparison
+111266_s12_e3: [Group condition: Flag] Event flag comparison
+111266_s12_e4: [Group condition: Flag] Event flag comparison
+111266_s12_e5: [Group condition: Flag] Event flag comparison
+111266_s12_e6: [Group condition: Flag] Event flag comparison
+111266_s12_e7: [Group condition: Flag] Event flag comparison
+111267: OBJ: Map writing: Appearance determination
+111267_s0: Start state
+111267_s1: Appearance determination: Start old
+111267_s1_e0: [Group condition: Event] Event status judgment
+111267_s1_e1: [Group condition: Event] Event status judgment
+111267_s1_e2: [Group condition: Character] Judgment within player points
+111267_s1_e3: [Group condition: Flag] Event flag comparison
+111267_s2: Appearance determination: System: End
+111267_s2_e0: [System] Termination notification
+111267_s3: Appearance determination: Appearance permission old
+111267_s3_e0: [Flag] Global variable setting
+111267_s3_e1: [Group condition: Flag] Event variable comparison
+111267_s3_e2: [Flag] Set flag
+111267_s3_e3: [Group condition: Flag] Event flag comparison
+111267_s4: Appearance judgment: Appearance disapproval: Setting
+111267_s4_e0: [Flag] Set flag
+111267_s4_e1: [Group condition: Flag] Event flag comparison
+111267_s5: Appearance determination: Start
+111267_s5_e0: [Group condition: Event] Event status judgment
+111267_s5_e1: [Group condition: Event] Event status judgment
+111267_s5_e2: [Group condition: Character] Judgment within player points
+111267_s5_e3: [Group condition: Flag] Event flag comparison
+111267_s5_e4: [Group condition: Event] Event status judgment
+111267_s5_e5: [Group condition: Event] Event status judgment
+111267_s5_e6: [Group condition: Flag] Event flag comparison
+111267_s5_e7: [Group condition: Flag] Event flag comparison
+111267_s6: Appearance judgment: Appearance permission
+111267_s6_e0: [Flag] Global variable setting
+111267_s6_e1: [Group condition: Flag] Event variable comparison
+111267_s6_e2: [Flag] Set flag
+111267_s6_e3: [Group condition: Flag] Event flag comparison
+111267_s6_e4: [Flag] Set flag
+111267_s6_e5: [Group condition: Flag] Event flag comparison
+111336: OBJ: Armor shop: Shop list
+111336_s0: Start state
+111336_s1: Shop list: Start
+111336_s1_e0: [Group condition: Event] Event status judgment
+111336_s2: Shop list: System: End
+111336_s2_e0: [System] Termination notification
+111336_s3: Shop list: State transition judgment
+111336_s3_e0: [Group condition: Flag] Event flag comparison
+111336_s3_e1: [Group condition: Flag] Event flag comparison
+111336_s3_e2: [Group condition: Flag] Event flag comparison
+111336_s4: Shop list: bullish state transition judgment
+111336_s4_e0: [Group condition: Flag] Event flag comparison
+111336_s5: Armor shop: Normal: Shop list_SubState
+111336_s6: Armor Store: Bullish: Shop List_SubState
+111468: OBJ: Cat: Shop list
+111468_s0: Start state
+111468_s1: Shop list: Start
+111468_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111468_s2: Shop List: Boss Defeat: Judgment
+111468_s2_e0: [Group condition: Flag] Event flag comparison
+111468_s2_e1: [Group condition: Flag] Event flag comparison
+111468_s3: Shop list: End
+111468_s3_e0: [System] Termination notification
+111468_s4: Shop List: Defeat Boss: Set Flag
+111468_s4_e0: [Flag] Set flag
+111468_s4_e1: [Group condition: Flag] Event flag comparison
+5000: NPC Ladder Shop Small Ladder_Navigation Mesh Change
+5000_s0: Start state
+5000_s1: Navigation mesh traffic is possible
+5000_s1_e0: [Map] Navimesh attribute deletion
+5000_s2: Finish
+5000_s2_e0: [System] Termination notification
+5010: NPC ladder shop middle ladder_Navimesh change
+5010_s0: Start state
+5010_s1: Navigation mesh traffic is possible
+5010_s1_e0: [Map] Navimesh attribute deletion
+5010_s2: Finish
+5010_s2_e0: [System] Termination notification
+5020: NPC Ladder Shop Large Ladder_Navigation Mesh Change
+5020_s0: Start state
+5020_s1: Navigation mesh traffic is possible
+5020_s1_e0: [Map] Navimesh attribute deletion
+5020_s2: Finish
+5020_s2_e0: [System] Termination notification
+111355: OBJ: Magician: Appearance determination
+111355_s0: Start state
+111355_s1: Appearance determination: Start
+111355_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111355_s2: Appearance determination: Death determination
+111355_s2_e0: [Group condition: Flag] Event flag comparison
+111355_s3: Appearance determination: System: End
+111355_s3_e0: [System] Termination notification
+111355_s4: Appearance determination: Timer start flag determination
+111355_s4_e0: [Group condition: Flag] Event flag comparison
+111355_s4_e1: [Group condition: Flag] Event flag comparison
+111355_s4_e2: [Group condition: Flag] Event flag comparison
+111355_s4_e3: [Group condition: Flag] Event flag comparison
+111355_s5: Appearance determination: Appearable
+111355_s5_e0: [Flag] Set flag
+111355_s5_e1: [Group condition: Flag] Event flag comparison
+111355_s6: Appearance determination: Intrusion setting
+111355_s6_e0: [Flag] Set flag
+111355_s6_e1: [Group condition: Flag] Event flag comparison
+111224: OBJ: Broken warrior: The migrants count
+111224_s0: Start state
+111224_s1: Migrant count: start
+111224_s1_e0: [Group condition: Flag] Event flag comparison
+111224_s2: Emigration count: System: Re-execution
+111224_s2_e0: [System] Re-execution notification
+111224_s3: Emigration count: Set end flag
+111224_s3_e0: [Flag] Set flag
+111224_s3_e1: [Group condition: Flag] Event flag comparison
+111224_s4: Dragon Miko: Count Up
+111224_s4_e0: [Flag] Area variable addition
+111224_s5: Ladder shop: Count up
+111224_s5_e0: [Flag] Area variable addition
+111224_s6: Broken hearted blue warrior: Count up
+111224_s6_e0: [Flag] Area variable addition
+111224_s7: Map writing: Count up
+111224_s7_e0: [Flag] Area variable addition
+111224_s8: Yorozu Baba: Count up
+111224_s8_e0: [Flag] Area variable addition
+111224_s9: Armor shop: Count up
+111224_s9_e0: [Flag] Area variable addition
+111224_s10: Material shop: Count up
+111224_s10_e0: [Flag] Area variable addition
+111224_s11: Magician: Count Up
+111224_s11_e0: [Flag] Area variable addition
+111224_s12: Blacksmith: Count Up
+111224_s12_e0: [Flag] Area variable addition
+111224_s13: Magician: Count up
+111224_s13_e0: [Flag] Area variable addition
+111224_s14: Miracle: Count up
+111224_s14_e0: [Flag] Area variable addition
+111224_s15: Emigration count: initialization
+111224_s15_e0: [Flag] Area variable setting
+111224_s16: Dragon Miko: Single Survival_SubState
+111224_s17: Ladder Shop: Emigration survival_SubState
+111224_s18: Broken spirited warrior: Single survival _SubState
+111224_s19: Map writing: Emigration survival_SubState
+111224_s20: Yorozu Baba: Emigration Survival_SubState
+111224_s21: Armor Shop: Single Survival_SubState
+111224_s22: Material shop: Emigration survival_SubState
+111224_s23: Magician: Immigration Survival_SubState
+111224_s24: Blacksmith: Single Survival_SubState
+111224_s25: Trophy: Survival of Magician Migration_SubState
+111224_s26: Miracle People: Emigration Survival_SubState
+14000: SFX linked to miraculous migration
+14000_s0: Start state
+14000_s1: Finish
+14000_s1_e0: [System] Termination notification
+14000_s2: [Preset] SFX_SubState linked to miraculous migration
+111099: OBJ: Ladder shop: Appearance judgment
+111099_s0: Start state
+111099_s1: Appearance determination: Start
+111099_s1_e0: [Group condition: Map] Judgment that the player is in the map
+111099_s2: Appearance determination: Death determination
+111099_s2_e0: [Group condition: Flag] Event flag comparison
+111099_s3: Appearance determination: System: End
+111099_s3_e0: [System] Termination notification
+111099_s4: Appearance judgment: Naga defeat judgment
+111099_s4_e0: [Group condition: Flag] Event flag comparison
+111099_s5: Appearance determination: Appearance determination
+111099_s5_e0: [Flag] Set flag
+111099_s5_e1: [Group condition: Flag] Event flag comparison
+15000: Miracles emigrated by clearing the hidden port
+15000_s0: Start state
+15000_s1: Finish
+15000_s1_e0: [System] Termination notification
+15000_s2: [Preset] Miracles migrated by clearing the hidden port_SubState
+50000: [DLC] Cheat item purchase flag management
+50000_s0: Start state
+50000_s1: Finish
+50000_s1_e0: [System] Termination notification
+50000_s2: [DLC] [Preset] Cheat item sales flag management_SubState
+4000000: [DC] Pig reincarnation
+4000000_s0: Start state
+4000000_s1: Finish
+4000000_s1_e0: [System] Termination notification
+4000000_s2: [DC] [Preset] Pig Reincarnation_SubState
+4001000: [DC] Treasure box changes mimic
+4001000_s0: Start state
+4001000_s1: Finish
+4001000_s1_e0: [System] Termination notification
+4001000_s2: [DC] [Preset] Treasure box changes mimic_SubState
+x28: Dragon Miko: Boss Defeat Counter
+x28_p0: Main Boss: Global event flag
+x28_p1: Sub 1 boss: Global event flag
+x28_p2: Sub 2 boss: Global event flag
+x28_p3: Sub 3 boss: Global event flag
+x28_s0: Start state
+x28_s1: Defeat Boss
+x28_s2: Defeat Boss: Defeat 1
+x28_s2_e0: [Flag] Set flag
+x28_s2_e1: [Group condition: Flag] Event flag comparison
+x28_s3: Boss Defeat: Main + Sub 1 branch
+x28_s4: Boss Defeated: Main + Sub 2 branch
+x28_s5: Defeat Boss: Defeat 2
+x28_s5_e0: [Flag] Set flag
+x28_s5_e1: [Group condition: Flag] Event flag comparison
+x28_s6: Defeat Boss: Defeat 3
+x28_s6_e0: [Flag] Set flag
+x28_s6_e1: [Group condition: Flag] Event flag comparison
+x28_s7: End state
+x29: Miracle: Boss Defeat Counter
+x29_p0: Main Boss: Global event flag
+x29_p1: Sub 1 boss: Global event flag
+x29_p2: Sub 2 boss: Global event flag
+x29_p3: Sub 3 boss: Global event flag
+x29_s0: Start state
+x29_s1: Defeat Boss
+x29_s2: Defeat Boss: Defeat 1
+x29_s3: Boss Defeat: Main + Sub 1 branch
+x29_s4: Boss Defeated: Main + Sub 2 branch
+x29_s5: Defeat Boss: Defeat 2
+x29_s6: Defeat Boss: Defeat 3
+x29_s6_e0: [Flag] Set flag
+x29_s6_e1: [Group condition: Flag] Event flag comparison
+x29_s7: End state
+x30: Miracle Person: Revolving Door: Single Anime Play
+x30_p0: Animation playback: OBJ State ID
+x30_p1: Target state: OBJ state ID
+x30_s0: Start state
+x30_s1: Animation playback: Playback request
+x30_s1_e0: [OBJ] OBJ state transition request
+x30_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x30_s2: Animation playback: Playback standby
+x30_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x30_s3: End state
+x31: Miracle Person: Revolving Door: Whole Anime Play
+x31_p0: Close: Anime State: OBJ State
+x31_p1: Close: Target state: OBJ state
+x31_p2: Move: Anime State: OBJ State
+x31_p3: Movement: Target state: OBJ state
+x31_p4: Open: Anime State: OBJ State
+x31_p5: Open: Target state: OBJ state
+x31_p6: Reading map ID
+x31_p7: Animation start waiting time
+x31_s0: Start state
+x31_s1: Reserve standby time setting
+x31_s1_e0: [Group condition: Event] State elapsed time comparison
+x31_s2: [DC] Loading completion confirmation and chunk comparison
+x31_s2_e0: [Group condition: Map] Check if the specified map is read and the backread status is stable
+x31_s2_e1: [Group condition: other] Chunk phase comparison
+x31_s3: Animation playback start flag OFF setting
+x31_s3_e0: [Flag] Set flag
+x31_s3_e1: [Group condition: Flag] Event flag comparison
+x31_s4: OBJ active standby
+x31_s4_e0: [Group condition: OBJ] OBJ state ID comparison
+x31_s4_e1: [Group condition: OBJ] OBJ state ID comparison
+x31_s4_e2: [Group condition: OBJ] OBJ state ID comparison
+x31_s5: Judgment during OBJ operation
+x31_s5_e0: [Flag] Set flag
+x31_s5_e1: [Group condition: OBJ] OBJ state ID comparison
+x31_s5_e2: [Group condition: OBJ] OBJ state ID comparison
+x31_s5_e3: [Group condition: OBJ] OBJ state ID comparison
+x31_s5_e4: [Group condition: OBJ] OBJ state ID comparison
+x31_s5_e5: [Group condition: OBJ] OBJ state ID comparison
+x31_s5_e6: [Group condition: OBJ] OBJ state ID comparison
+x31_s6: OBJ state judgment
+x31_s6_e0: [Group condition: OBJ] OBJ state ID comparison
+x31_s6_e1: [Group condition: OBJ] OBJ state ID comparison
+x31_s7: Waiting to open the lattice
+x31_s7_e0: [Group condition: OBJ] OBJ state ID comparison
+x31_s8: Revolving door: Lattice open⇒Close_SubState
+x31_s9: Revolving door: Door movement_SubState
+x31_s10: Revolving door: lattice closed ⇒ open _SubState
+x31_s11: End state
+x32: [Reproduction] Madura-Giant Morima Gimmick Door
+x32_p0: Door instance ID
+x32_p1: Instance ID of the madura lever
+x32_p2: Giant forest lever instance ID
+x32_s0: Start state
+x32_s1: Initialize the OBJ state of the door
+x32_s1_e0: [OBJ] Initialize OBJ state
+x32_s2: Event ends for guests
+x32_s3: Enable key guide for lever
+x32_s3_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x32_s3_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x32_s4: Navi Mesh Change: Unable to progress
+x32_s4_e0: [Map] Added Navimesh attribute
+x32_s5: End state
+x32_s6: Simple end
+x33: [Conditions] Madura-Giant Morima Gimmick Door
+x33_p0: Instance ID of the madura lever
+x33_p1: Giant forest lever instance ID
+x33_s0: Start state
+x33_s1: Lever operation standby
+x33_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x33_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x33_s1_e2: [Group condition: OBJ] OBJ state ID comparison
+x33_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x33_s2: End state
+x34: [Execution] Madura-Giant Morima Gimmick Door
+x34_p0: Door instance ID
+x34_p1: Instance ID of the madura lever
+x34_p2: Giant forest lever instance ID
+x34_p3: Point ID for door closing judgment_Start
+x34_p4: Door closing judgment point ID_End
+x34_p5: Forced door closing point ID_start
+x34_p6: Forced door closing point ID_End
+x34_s0: Start state
+x34_s1: OBJ state transition: Door: 70
+x34_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x34_s2: Disabling the key guide of the lever
+x34_s2_e0: [OBJ] Disable OBJ key guide (specify instance ID)
+x34_s2_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x34_s3: Has the door opened?
+x34_s3_e0: [Group condition: OBJ] OBJ state ID comparison
+x34_s3_e1: [Group condition: Character] Judgment within player points
+x34_s4: Judgment of conditions for closing the door
+x34_s4_e0: [Group condition: Event] State elapsed time comparison
+x34_s4_e1: [Group condition: Character] Judgment within player points
+x34_s4_e2: [Group condition: Character] Judgment within player points
+x34_s5: OBJ state transition: Door: 80
+x34_s5_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x34_s6: Has the door closed or entered the forced door closing point?
+x34_s6_e0: [Group condition: OBJ] OBJ state ID comparison
+x34_s6_e1: [Group condition: Character] Judgment within player points
+x34_s7: Navigation mesh change: Progress possible
+x34_s7_e0: [Map] Navimesh attribute deletion
+x34_s8: End state
+x35: [Preset] Madura-Giant Morima Gimmick Door
+x35_p0: Door instance ID
+x35_p1: Instance ID of the madura lever
+x35_p2: Giant forest lever instance ID
+x35_p3: Point ID for door closing judgment_Start
+x35_p4: Door closing judgment point ID_End
+x35_p5: Forced door closing point ID_start
+x35_p6: Forced door closing point ID_End
+x35_s0: Start state
+x35_s1: Disable OBJ sync
+x35_s1_e0: [OBJ] OBJ synchronization setting
+x35_s2: [Reproduction] Madura-Giant Morima Gimmick Door_SubState
+x35_s3: [Conditions] Madura-Giant Morima Gimmick Door_SubState
+x35_s4: [Execution] Madura-Giant Morima Gimmick Door_SubState
+x35_s5: End state
+x36: Armor shop: Arrangement armor selection
+x36_s0: Start state
+x36_s1: Placement armor selection: random number generation
+x36_s1_e0: [System] Obtains the clamped integer value
+x36_s2: Arrangement armor selection: Area: Counter: Addition
+x36_s2_e0: [Flag] Area variable addition
+x36_s3: Armor_on the desk on the wall_SubState
+x36_s4: Armor_in the box_SubState
+x36_s5: Armor_on the desk in front_SubState
+x36_s6: 籠 Hand_on the desk on the wall_SubState
+x36_s7: The right side of the front desk _SubState
+x36_s8: 籠 手 _in the box_SubState
+x36_s9: 籠 Hand_Center on the front desk_SubState
+x36_s10: 籠 手 _The right side of the wall shelf_SubState
+x36_s11: 籠 手 _Left side of wall shelf_SubState
+x36_s12: On the desk on the wall side_SubState
+x36_s13: Ingredients_Bottom right side of the desk on the wall_SubState
+x36_s14: Ingredients_Left side under the desk on the wall side_SubState
+x36_s15: Ingredients_in the box_SubState
+x36_s16: 兜 _On the right side of the desk on the wall_SubState
+x36_s17: 兜 _On the front desk_SubState
+x36_s18: 兜 _You are on the armor of the desk on the wall_SubState
+x36_s19: 兜 _Left side of wall shelf_SubState
+x36_s20: 兜 _Center on wall shelf_SubState
+x36_s21: 兜 _Right side of the wall shelf_SubState
+x36_s22: End state
+x37: Armor shop: Single armor selection
+x37_p0: OBJ instance ID
+x37_s0: Start state
+x37_s1: Single armor selection: Start
+x37_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x37_s2: Single armor selection: Setting
+x37_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x37_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+x37_s3: Setting: End state
+x37_s4: Not set: End state
+x38: [Reproduction] Revolving door switch
+x38_p0: OBJ instance ID of the switch
+x38_p1: Launch item
+x38_s0: Start state
+x38_s1: Key guide enabled
+x38_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x38_s2: End state
+x39: [Conditions] Revolving door switch
+x39_p0: OBJ instance ID of the switch
+x39_p1: Launch item
+x39_s0: Start state
+x39_s1: Judgment to examine
+x39_s1_e0: [Group condition: OBJ] Judgment to examine OBJ
+x39_s2: Do you have a launch item?
+x39_s2_e0: [Group condition: Item] Comparison of number of possessed items
+x39_s3: Rotate the door
+x39_s4: Show message
+x40: [Execution] Revolving door switch_Revolving door execution
+x40_p0: OBJ instance ID of the switch
+x40_p1: OBJ instance ID of the revolving door
+x40_p2: Rotation flag
+x40_s0: Start state
+x40_s1: Rotation flag ON
+x40_s1_e0: [Flag] Set flag
+x40_s2: Waiting for next start
+x40_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x40_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+x40_s3: Key guide disabled
+x40_s3_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x40_s4: Key guide enabled
+x40_s4_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x40_s5: Wait for flag OFF
+x40_s5_e0: [Group condition: Flag] Event flag comparison
+x40_s6: End of rotation
+x41: [Preset] Revolving door switch
+x41_p0: OBJ instance ID of the switch
+x41_p1: OBJ instance ID of the revolving door
+x41_p2: Rotation start flag
+x41_p3: Launch item
+x41_s0: Start state
+x41_s1: [Reproduction] Revolving door switch_SubState
+x41_s2: [Execution] Revolving door switch_Revolving door execution_SubState
+x41_s3: [Condition] Revolving door switch_SubState
+x41_s4: [Execute] Revolving door switch_Message display_SubState
+x41_s5: Rerun
+x42: [Preset] Switch the global flags related to revolving doors
+x42_p0: Instance ID of revolving door OBJ
+x42_s0: Start state
+x42_s1: [Reproduction] Switching global flags related to revolving doors_SubState
+x42_s2: [Conditions] Switch global flags related to revolving doors_SubState
+x42_s3: [Execution] Switching global flags related to revolving doors_Heide Great Fire Tower_SubState
+x42_s4: [Execution] Switching global flags related to revolving doors_Hunting Forest_SubState
+x42_s5: [Execution] Toggling global flags related to revolving doors_Operation area (Heide large fire tower side door open) _SubState
+x42_s6: [Execution] Switching global flags related to revolving doors_Operation area (hunting forest door open) _SubState
+x42_s7: End state
+x43: [Reproduction] Switching global flags related to revolving doors
+x43_s0: Start state
+x43_s1: End state
+x44: [Condition] Switching global flags related to revolving doors
+x44_p0: Instance ID of revolving door OBJ
+x44_s0: Start state
+x44_s1: Which hit group are you on?
+x44_s1_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x44_s1_e1: [Group condition: Map] Judgment that the player is on the specified hit group
+x44_s1_e2: [Group condition: Map] Judgment that the player is on the specified hit group
+x44_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x44_s1_e4: [Group condition: OBJ] OBJ state ID comparison
+x44_s1_e5: [Group condition: OBJ] OBJ state ID comparison
+x44_s1_e6: [Group condition: OBJ] OBJ state ID comparison
+x44_s1_e7: [Group condition: System] Group condition is satisfied
+x44_s1_e8: [Group condition: Map] Judgment that the player is on the specified hit group
+x44_s1_e9: [Group condition: OBJ] OBJ state ID comparison
+x44_s1_e10: [Group condition: OBJ] OBJ state ID comparison
+x44_s1_e11: [Group condition: OBJ] OBJ state ID comparison
+x44_s1_e12: [Group condition: OBJ] OBJ state ID comparison
+x44_s1_e13: [Group condition: System] Group condition is satisfied
+x44_s2: You are in the passage on the side of the Great Fire Tower in Heide
+x44_s3: In the hunting forest side passage
+x44_s4: Operation area_Heide large fire tower side door opens
+x44_s5: Operation area_Hunting forest side door is open
+x45: [Execute] Switch global flags related to revolving doors_Aisle area
+x45_p0: ON / OFF of global flag
+x45_p1: Hit group ID
+x45_s0: Start state
+x45_s1: Change global event flag
+x45_s1_e0: [Flag] Set flag
+x45_s2: Did you disappear from the hit group you were riding on?
+x45_s2_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x45_s3: End state
+x46: [Execute] Switch global flags related to revolving doors_Operation area
+x46_p0: ON / OFF of global flag
+x46_p1: Hit group ID
+x46_p2: Instance ID of revolving door OBJ
+x46_p3: Revolving door OBJ state ID
+x46_s0: Start state
+x46_s1: Change global event flag
+x46_s1_e0: [Flag] Set flag
+x46_s2: Did you leave the operating area? Or has the open door changed?
+x46_s2_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x46_s2_e1: [Group condition: OBJ] OBJ state ID comparison
+x46_s3: End state
+x47: [Preset] Updated world map
+x47_p0: World map OBJ instance ID
+x47_p1: World map OBJ Damipoli ID
+x47_p2: Instance ID of the flame OBJ on the world map
+x47_p3: Global event flag ID for MAP clear determination
+x47_p4: Bonfire ID for lap level determination
+x47_p5: NPC flag setting
+x47_s0: Start state
+x47_s1: [Reproduction] Updated world map _SubState
+x47_s2: [Condition] World map to be updated_SubState
+x47_s3: [Execute] World map to be updated _ Blue flame _ SubState
+x47_s4: [Execution] World map to be updated_Red Flame_SubState
+x47_s5: End state
+x48: [Reproduction] Updated world map
+x48_p0: World map OBJ instance ID
+x48_p1: World map OBJ Damipoli ID
+x48_p2: Instance ID of the flame OBJ on the world map
+x48_s0: Start state
+x48_s1: [Lib] [Preset] OBJ attach_SubState
+x48_s2: End state
+x49: [Condition] World map to be updated
+x49_p0: Global event flag ID for MAP clear determination
+x49_p1: Bonfire ID for lap level determination
+x49_p2: NPC flag
+x49_s0: Start state
+x49_s1: Has the MAP strategy been completed?
+x49_s1_e0: [Group condition: Flag] Event flag comparison
+x49_s1_e1: [Group condition: Flag] Event flag comparison
+x49_s1_e2: [Group condition: Flag] Event flag comparison
+x49_s2: Is the MAP lap level 8 or higher?
+x49_s2_e0: [Group condition: Other] Comparison of laps
+x49_s3: Set NPC flag and add variable
+x49_s3_e0: [Flag] Area variable addition
+x49_s3_e1: [Flag] Set flag
+x49_s3_e2: [Group condition: Flag] Event flag comparison
+x49_s4: End state
+x49_s5: Lit red flame
+x49_s6: Lit blue flame
+x50: [Execution] Updated world map
+x50_p0: Instance ID of the flame OBJ on the world map
+x50_p1: State ID of the flame lit on the world map OBJ
+x50_s0: Start state
+x50_s1: Lighting the flame
+x50_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x50_s2: End state
+x51: [Preset] Revolving door navigation mesh change
+x51_p0: Instance ID of revolving door OBJ
+x51_p1: Hunting forest door open
+x51_p2: Heide large fire tower side door open
+x51_p3: Navimesh change ID for hunting forest
+x51_p4: Navimesh change ID on Heide Great Fire Tower side
+x51_s0: Start state
+x51_s1: [Reproduction] Navi mesh change of the revolving door_SubState
+x51_s2: [Execution] Revolving door navigation mesh change_Hunting forest side door opening_SubState
+x51_s3: [Execution] Navimesh change of revolving door _ Heide large fire tower side door opening _ SubState
+x51_s4: [Condition] Change navigation mesh of the revolving door_SubState
+x51_s5: End state
+x52: [Reproduction] Navi mesh change of revolving door
+x52_s0: Start state
+x52_s1: End state
+x53: [Conditions] Changing the navigation mesh of the revolving door
+x53_p0: Instance ID of revolving door OBJ
+x53_p1: Hunting forest door open
+x53_p2: Heide large fire tower side door open
+x53_s0: Start state
+x53_s1: Judgment of revolving door status
+x53_s1_e0: [Group condition: OBJ] OBJ state ID comparison
+x53_s1_e1: [Group condition: OBJ] OBJ state ID comparison
+x53_s2: Hunting forest door is open
+x53_s3: Heide Fire Tower side door is open
+x54: [Execution] Changing the navigation mesh of the revolving door
+x54_p0: Navimesh change ID for open door
+x54_p1: Navimesh change ID for closed door
+x54_p2: Instance ID of revolving door OBJ
+x54_p3: Reverse door open state
+x54_s0: Start state
+x54_s1: Navigation mesh change
+x54_s1_e0: [Map] Navimesh attribute deletion
+x54_s1_e1: [Map] Added Navimesh attribute
+x54_s2: Was the opposite door open?
+x54_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x54_s3: End state
+x55: [Execution] Revolving door switch_message display
+x55_s0: Start state
+x55_s1: Message display
+x55_s1_e0: [FE] Window display only for YES
+x55_s2: End state
+x56: [Reproduction] Intrusion item usage judgment
+x56_s0: Start state
+x56_s1: Survival judgment of miraculous person
+x56_s2: Item availability flag OFF
+x56_s2_e0: [Flag] Set flag
+x56_s3: Are miraculous people in Madura
+x56_s4: Are you destroying three root bosses?
+x56_s5: Do you have a collapsed pupil orb?
+x56_s6: Intrusion possible
+x56_s7: No intrusion
+x57: [Condition] Intrusion item usage judgment
+x57_p0: Hit group ID
+x57_s0: Start state
+x57_s1: Waiting for entry into revolving door room
+x57_s1_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x57_s2: Item available
+x58: [Execution] Intrusion item usage judgment
+x58_p0: Hit group ID
+x58_s0: Start state
+x58_s1: Item availability flag ON
+x58_s1_e0: [Flag] Set flag
+x58_s2: Wait for next decision
+x58_s2_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x58_s2_e1: [Group condition: Flag] Event flag comparison
+x58_s3: Network text FE display
+x58_s3_e0: [FE] Open network message window
+x58_s4: Rerun
+x59: [Preset] Intrusion item usage judgment
+x59_p0: Hit group ID
+x59_s0: Start state
+x59_s1: [Reproduction] Intrusion item use determination_SubState
+x59_s2: [Execution] Intrusion item use determination_SubState
+x59_s3: [Condition] Intrusion item use determination_SubState
+x59_s4: Rerun
+x59_s5: Finish
+x60: [Reproduction] Return from the destination
+x60_s0: Start state
+x60_s1: End state
+x61: [Condition] Return from the intruder
+x61_p0: Generator ID
+x61_p1: Hit group ID
+x61_s0: Start state
+x61_s1: Did you defeat the miraculous black spirit?
+x61_s1_e0: [Group condition: Character] Character death determination
+x61_s2: Did you enter the invasion destination?
+x61_s2_e0: [Group condition: Map] Judgment that the player is on the specified hit group
+x61_s3: [BEST] Item acquisition judgment
+x61_s4: All available
+x61_s5: Get key items only
+x62: [Execution] Return from intrusion
+x62_p0: Item lottery
+x62_p1: Network text ID
+x62_p2: Return point ID
+x62_p3: Miracle person_map death flag
+x62_s0: Start state
+x62_s1: Reward acquisition
+x62_s1_e0: [Item] Add item
+x62_s2: Waiting for hidden item acquisition FE
+x62_s3: Network FE display
+x62_s3_e0: [FE] Open network message window
+x62_s4: Network FE hidden waiting
+x62_s5: Miracle map death flag ON
+x62_s5_e0: [Flag] Set flag
+x62_s6: Weight after defeat
+x62_s7: [Lib] Warp between maps after poly play_SubState
+x62_s8: End state
+x63: [Preset] Return from intrusion
+x63_p0: Generator ID
+x63_p1: Hit group ID
+x63_p2: Item lottery
+x63_p3: Network text ID
+x63_p4: Return point ID
+x63_p5: Miracle person_map death flag
+x63_s0: Start state
+x63_s1: [Reproduction] Return from the intrusion_SubState
+x63_s2: [Execution] Return from the intrusion_SubState
+x63_s3: [Condition] Return from the intrusion_SubState
+x63_s4: [BEST] [Execution] Return from intrusion_Key item only_SubState
+x63_s5: End state
+x64: Zako death determination
+x64_p0: Generator ID
+x64_p1: Lap level
+x64_p2: Defeat: Area and other flags
+x64_s0: Start state
+x64_s1: Death determination: Death determination
+x64_s1_e0: [Group condition: Character] Character death determination
+x64_s2: Death determination: Count
+x64_s2_e0: [Flag] Set flag
+x64_s3: Death determination: System: End
+x64_s3_e0: [System] Termination notification
+x64_s4: Death determination: Judgment level determination
+x64_s4_e0: [Group condition: Other] Comparison of laps
+x64_s5: Death determination: cartography: death
+x64_s5_e0: [Group condition: Flag] Event flag comparison
+x64_s6: Death determination: Map writing: Emigration
+x64_s6_e0: [Group condition: Flag] Event flag comparison
+x64_s7: End state
+x65: [Preset] Obelisk _ front side
+x65_p0: Obelisk OBJ instance ID to check
+x65_s0: Start state
+x65_s1: [Reproduction] Obelisk_SubState
+x65_s2: [Condition] Obelisk_SubState
+x65_s3: [Execution] Obelisk_Front_SubState
+x65_s4: End state
+x66: [Preset] Obelisk _ reverse side
+x66_p0: Obelisk OBJ instance ID to check
+x66_s0: Start state
+x66_s1: [Reproduction] Obelisk_SubState
+x66_s2: [Condition] Obelisk_SubState
+x66_s3: [Execution] Obelisk_Backside_SubState
+x66_s4: End state
+x67: [Reproduction] Obelisk
+x67_s0: Start state
+x67_s1: End state
+x68: [Condition] Obelisk
+x68_p0: Obelisk OBJ instance ID to check
+x68_s0: Start state
+x68_s1: Have you examined OBJ?
+x68_s1_e0: [Group condition: OBJ] Judgment to examine OBJ
+x68_s2: End state
+x69: [Execution] Obelisk _ front side
+x69_s0: Start state
+x69_s1: Death number display
+x69_s1_e0: [FE] Display obelisk mortality window
+x69_s2: End state
+x70: [Execution] Obelisk _ reverse side
+x70_s0: Start state
+x70_s1: Message display
+x70_s1_e0: [FE] Display obelisk message window
+x70_s2: End state
+x71: Trophy: Single survival
+x71_p0: Death: Global event flag
+x71_s0: Start state
+x71_s1: Death determination
+x71_s1_e0: [Group condition: Flag] Event flag comparison
+x71_s2: Success: Exit state
+x71_s3: Failure: Exit state
+x72: Trophy: Migration survival
+x72_p0: Death: Global event flag
+x72_p1: Previous map hostile: Global event flag
+x72_p2: Emigration permission: Global event flag
+x72_s0: Start state
+x72_s1: Death determination
+x72_s1_e0: [Group condition: Flag] Event flag comparison
+x72_s2: Hostility
+x72_s2_e0: [Group condition: Flag] Event flag comparison
+x72_s3: Emigration permission judgment
+x72_s3_e0: [Group condition: Flag] Event flag comparison
+x72_s4: Success: Exit state
+x72_s5: Failure: Exit state
+x73: Trophy: Surviving the Magician
+x73_p0: Death: Global event flag
+x73_p1: Previous map hostile: Global event flag
+x73_p2: Emigration permission: Global event flag
+x73_s0: Start state
+x73_s1: Death determination
+x73_s1_e0: [Group condition: Flag] Event flag comparison
+x73_s2: Hostility
+x73_s2_e0: [Group condition: Flag] Event flag comparison
+x73_s3: Emigration permission judgment
+x73_s3_e0: [Group condition: Flag] Event flag comparison
+x73_s4: Conversation judgment
+x73_s4_e0: [Group condition: Flag] Event flag comparison
+x73_s5: Judgment unlocking decision
+x73_s5_e0: [Group condition: Flag] Event flag comparison
+x73_s6: Success: Exit state
+x73_s7: Failure: Exit state
+x74: Armor shop: Normal: Shop list
+x74_s0: Start state
+x74_s1: For Demon Knight Armor: Judgment
+x74_s1_e0: [Group condition: Flag] Event flag comparison
+x74_s2: For Demon Knight Armor: Set Flag
+x74_s2_e0: [Flag] Set flag
+x74_s2_e1: [Group condition: Flag] Event flag comparison
+x74_s3: For Mirror Knight Armor: Judgment
+x74_s3_e0: [Group condition: Flag] Event flag comparison
+x74_s4: For Mirror Knight Armor: Set flag
+x74_s4_e0: [Flag] Set flag
+x74_s4_e1: [Group condition: Flag] Event flag comparison
+x74_s5: Forgotten Sinner Armor: Judgment
+x74_s5_e0: [Group condition: Flag] Event flag comparison
+x74_s6: Forgotten Sinner Armor: Flag Setting
+x74_s6_e0: [Flag] Set flag
+x74_s6_e1: [Group condition: Flag] Event flag comparison
+x74_s7: End state
+x75: Armor shop: Bullish: Shop list
+x75_s0: Start state
+x75_s1: For Princess Knight A & C Armor: Judgment
+x75_s1_e0: [Group condition: Flag] Event flag comparison
+x75_s2: For Princess Knight A & C Armor: Set Flag
+x75_s2_e0: [Flag] Set flag
+x75_s2_e1: [Group condition: Flag] Event flag comparison
+x75_s3: For Princess Knight B Armor: Judgment
+x75_s3_e0: [Group condition: Flag] Event flag comparison
+x75_s4: For Princess Knight B Armor: Set Flag
+x75_s4_e0: [Flag] Set flag
+x75_s4_e1: [Group condition: Flag] Event flag comparison
+x75_s5: For butterfly head equipment: Judgment
+x75_s5_e0: [Group condition: Other] Comparison of laps
+x75_s6: For butterfly head equipment: Set flag
+x75_s6_e0: [Flag] Set flag
+x75_s6_e1: [Group condition: Flag] Event flag comparison
+x75_s7: For butterfly armor:
+x75_s7_e0: [Group condition: Other] Comparison of laps
+x75_s8: For butterfly armor: Set flag
+x75_s8_e0: [Flag] Set flag
+x75_s8_e1: [Group condition: Flag] Event flag comparison
+x75_s9: End state
+x76: [Conditions] SFX linked to miraculous migration
+x76_s0: Start state
+x76_s1: Migration determination
+x76_s1_e0: [Group condition: Flag] Event flag comparison
+x76_s2: End state
+x77: [Reproduction] SFX_sky linked with miraculous people's migration
+x77_s0: Start state
+x77_s1: End state
+x78: [Execution] SFX linked with miraculous migration
+x78_s0: Start state
+x78_s1: SFX playback
+x78_s1_e0: [SFX] SFX playback with point designation
+x78_s2: End state
+x79: [Preset] SFX linked with miraculous migration
+x79_s0: Start state
+x79_s1: [Reproduction] SFX_sky_SubState linked to miraculous people's migration
+x79_s2: [Execution] SFX_SubState linked to miraculous migration
+x79_s3: [Condition] SFX_SubState linked with miraculous people's migration
+x79_s4: End state
+x80: [Condition] World map to be updated
+x80_p0: Global event flag ID for MAP clear determination
+x80_p1: Bonfire ID for lap level determination
+x80_p2: NPC flag
+x80_p3: Global flag for MAP clear determination ②
+x80_s0: Start state
+x80_s1: Has the MAP strategy been completed?
+x80_s1_e0: [Group condition: Flag] Event flag comparison
+x80_s1_e1: [Group condition: Flag] Event flag comparison
+x80_s1_e2: [Group condition: Flag] Event flag comparison
+x80_s1_e3: [Group condition: System] Group condition is satisfied
+x80_s1_e4: [Group condition: Flag] Event flag comparison
+x80_s1_e5: [Group condition: Flag] Event flag comparison
+x80_s2: Is the MAP lap level 8 or higher?
+x80_s2_e0: [Group condition: Other] Comparison of laps
+x80_s3: Set NPC flag and add variable
+x80_s3_e0: [Flag] Area variable addition
+x80_s3_e1: [Flag] Set flag
+x80_s3_e2: [Group condition: Flag] Event flag comparison
+x80_s4: End state
+x80_s5: Lit red flame
+x80_s6: Lit blue flame
+x81: [Preset] World map to be updated
+x81_p0: World map OBJ instance ID
+x81_p1: World map OBJ Damipoli ID
+x81_p2: Instance ID of the flame OBJ on the world map
+x81_p3: Global event flag ID for MAP clear determination
+x81_p4: Bonfire ID for lap level determination
+x81_p5: NPC flag setting
+x81_p6: Global event flag ID for MAP clear determination ②
+x81_s0: Start state
+x81_s1: [Reproduction] Updated world map _SubState
+x81_s2: [Execute] World map to be updated _ Blue flame _ SubState
+x81_s3: [Execution] World map to be updated_Red Flame_SubState
+x81_s4: [Conditions] World map to be updated_Old Dragon_SubState
+x81_s5: End state
+x82: [Reproduction] Miracles migrated by clearing the hidden port
+x82_s0: Start state
+x82_s1: Host?
+x82_s2: host
+x82_s3: The guests
+x83: [Conditions] Miracles emigrated by clearing the hidden port
+x83_p0: Boss Defeat Global Flag
+x83_s0: Start state
+x83_s1: Did you destroy the boss?
+x83_s1_e0: [Group condition: Flag] Event flag comparison
+x83_s2: Defeated
+x83_s3: Undefeated
+x84: [Execution] The miraculous people migrated by clearing the hidden port
+x84_p0: Miracle Person: Emigration Flag
+x84_s0: Start state
+x84_s1: Miracle Person: Immigration Flag ON
+x84_s1_e0: [Flag] Set flag
+x84_s2: End state
+x85: [Preset] Miracles emigrated by clearing the hidden port
+x85_p0: Boss Defeat Global Flag
+x85_p1: Miracle Person: Emigration Flag
+x85_s0: Start state
+x85_s1: [Reproduction] Miracles migrated by clearing the hidden port_SubState
+x85_s2: [Execution] The miraculous people migrated by clearing the hidden port_SubState
+x85_s3: [Conditions] Miracles emigrated by clearing the hidden port_SubState
+x85_s4: End state
+x86: [DLC] [Reproduction] Cheat item sales flag management
+x86_s0: Start state
+x86_s1: Event ends for guests
+x86_s2: Initialize variables for judgment
+x86_s2_e0: [Flag] Area variable setting
+x86_s3: End state
+x86_s4: Guest termination
+x87: [DLC] [Condition] Cheat item sales flag management
+x87_s0: Start state
+x87_s1: Have you purchased DLC?
+x87_s1_e0: [Group condition: Flag] Event flag comparison
+x87_s1_e1: [Group condition: Flag] Event flag comparison
+x87_s1_e2: [Group condition: Flag] Event flag comparison
+x87_s2: Has the castle been cleared?
+x87_s2_e0: [Group condition: Flag] Event flag comparison
+x87_s3: Has Freyadia been defeated?
+x87_s3_e0: [Group condition: Flag] Event flag comparison
+x87_s4: Has the iron king been destroyed?
+x87_s4_e0: [Group condition: Flag] Event flag comparison
+x87_s5: Have you been killed?
+x87_s5_e0: [Group condition: Flag] Event flag comparison
+x87_s6: Was the forgotten sinner defeated?
+x87_s6_e0: [Group condition: Flag] Event flag comparison
+x87_s7: Add variable for judgment
+x87_s7_e0: [Flag] Area variable addition
+x87_s8: Add variable for judgment_2
+x87_s8_e0: [Flag] Area variable addition
+x87_s9: Add variable for judgment_3
+x87_s9_e0: [Flag] Area variable addition
+x87_s10: Add variable for judgment_4
+x87_s10_e0: [Flag] Area variable addition
+x87_s11: Add variable for judgment_5
+x87_s11_e0: [Flag] Area variable addition
+x87_s12: End state
+x87_s13: DLC not purchased
+x88: [DLC] [execute] Cheat item sales flag management
+x88_s0: Start state
+x88_s1: Variable judgment
+x88_s2: Completed the Royal Castle
+x88_s2_e0: [Flag] Set flag
+x88_s2_e1: [Flag] Set flag
+x88_s2_e2: [Flag] Set flag
+x88_s2_e3: [Flag] Set flag
+x88_s2_e4: [Flag] Set flag
+x88_s2_e5: [Flag] Set flag
+x88_s3: Four route clear
+x88_s3_e0: [Flag] Set flag
+x88_s3_e1: [Flag] Set flag
+x88_s3_e2: [Flag] Set flag
+x88_s3_e3: [Flag] Set flag
+x88_s3_e4: [Flag] Set flag
+x88_s4: Three route clear
+x88_s4_e0: [Flag] Set flag
+x88_s4_e1: [Flag] Set flag
+x88_s4_e2: [Flag] Set flag
+x88_s4_e3: [Flag] Set flag
+x88_s5: Two route clear
+x88_s5_e0: [Flag] Set flag
+x88_s5_e1: [Flag] Set flag
+x88_s5_e2: [Flag] Set flag
+x88_s6: One route clear
+x88_s6_e0: [Flag] Set flag
+x88_s6_e1: [Flag] Set flag
+x88_s7: initial state
+x88_s7_e0: [Flag] Set flag
+x88_s8: End state
+x89: [DLC] [Preset] Cheat item sales flag management
+x89_s0: Start state
+x89_s1: [DLC] [Reproduction] Cheat item sales flag management_SubState
+x89_s2: [DLC] [Condition] Cheat item sales flag management_SubState
+x89_s3: [DLC] [execution] Cheat item sales flag management_SubState
+x89_s4: End state
+x90: [DC] [Reproduction] Reincarnation of Pig
+x90_p0: Fate generation flag
+x90_p1: Parent pig generation flag
+x90_s0: Start state
+x90_s1: Has a fang beast appeared?
+x90_s2: Has a parent pig appeared?
+x90_s3: During piglet production
+x90_s4: During parent pig production
+x90_s5: Fang beast generating
+x91: [DC] [Condition] Reincarnation of pigs_pigs
+x91_p0: Piglet generator ID
+x91_p1: Piglet ② generator ID
+x91_p2: Piglet ③ Generator ID
+x91_s0: Start state
+x91_s1: Have all the piglets been depleted?
+x91_s1_e0: [Group condition: Character] Maximum number of generations
+x91_s1_e1: [Group condition: Character] Maximum number of generations
+x91_s1_e2: [Group condition: Character] Maximum number of generations
+x91_s2: End state
+x92: [DC] [execution] pig reincarnation
+x92_p0: Generate flag
+x92_s0: Start state
+x92_s1: Generation flag ON
+x92_s1_e0: [Flag] Set flag
+x92_s2: End state
+x93: [DC] [Condition] Reincarnation of pigs_parent pig
+x93_p0: Parent pig ① generator ID
+x93_p1: Parent pig ② generator ID
+x93_s0: Start state
+x93_s1: Has all the parent pigs been exhausted?
+x93_s1_e0: [Group condition: Character] Maximum number of generations
+x93_s1_e1: [Group condition: Character] Maximum number of generations
+x93_s2: End state
+x94: [DC] [Preset] Pig reincarnation
+x94_p0: Fate generation flag
+x94_p1: Parent pig generation flag
+x94_p2: Piglet generator ID
+x94_p3: Piglet ② generator ID
+x94_p4: Piglet ③ Generator ID
+x94_p5: Parent pig ① generator ID
+x94_p6: Parent pig ② generator ID
+x94_s0: Start state
+x94_s1: [DC] [Reproduction] Reincarnation of pigs_SubState
+x94_s2: [DC] [execution] Reincarnation of pigs_SubState
+x94_s3: [DC] [Condition] Reincarnation of pig
+x94_s4: [DC] [Condition] Reincarnation of pigs_Parent pigs_SubState
+x94_s5: [DC] [Execution] Pig reincarnation_2_SubState
+x94_s6: Finish
+x95: [DC] [Condition] Treasure chest changes mimic
+x95_p0: Bonfire ID
+x95_s0: Start state
+x95_s1: Is the total number of laps more than the second lap?
+x95_s1_e0: [Group condition: Other] Comparison of laps
+x95_s2: End state
+x96: [DC] [execution] treasure chest changes mimic
+x96_p0: Treasure chest OBJ instance ID
+x96_s0: Start state
+x96_s1: Hidden treasure box and key guide disabled
+x96_s1_e0: [Drawing] Switching between display and hit by specifying object instance ID
+x96_s1_e1: [OBJ] Disable OBJ key guide (specify instance ID)
+x96_s2: End state
+x97: [DC] [Reproduction] Treasure box changes mimic
+x97_s0: Start state
+x97_s1: Is it in game?
+x97_s2: End state
+x98: [DC] [Preset] Treasure chest changes mimic
+x98_p0: Bonfire ID
+x98_p1: Treasure chest OBJ instance ID
+x98_s0: Start state
+x98_s1: [DC] [Reproduction] Treasure box changes mimic_SubState
+x98_s2: [DC] [execution] treasure box changes mimic_SubState
+x98_s3: [DC] [Condition] Treasure box changes mimic_SubState
+x98_s4: End state
+x0: [Lib] Normal poly play
+x0_p0: Poly play ID
+x0_p1: Destination point ID after poly play
+x0_p2: Poly drama played flag
+x0_p3: End fade
+x0_p4: Start fade
+x0_s0: Start state
+x0_s1: Poly play
+x0_s1_e0: [Poly drama] Poly drama reproduction
+x0_s2: Warp after the poly drama
+x0_s2_e0: [Map] Warp players in the area
+x0_s2_e1: [Flag] Set flag
+x0_s3: During the poly play
+x0_s4: Poly Play Pre Warp
+x0_s4_e0: [Map] Warp players in the area
+x0_s5: Played judgment
+x0_s6: Wait for in-game start
+x0_s7: End state
+x1: [Lib] Warp between maps after poly play
+x1_p0: Pre-warp poly play ID
+x1_p1: Poly Play ID after Warp
+x1_p2: Map ID
+x1_p3: Point ID
+x1_s0: Start state
+x1_s1: Poly drama warp
+x1_s1_e0: [Map] Warp players to poly drama
+x1_s2: End state
+x2: [Lib] NPC: Grave Placement: General purpose
+x2_p0: Death map: Global event flag
+x2_p1: Tomb: OBJ instance ID
+x2_p2: Tomb move to: Generator ID
+x2_p3: NPC information parameter ID
+x2_s0: Start state
+x2_s1: Grave Placement: Start
+x2_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x2_s2: Grave placement: branch
+x2_s2_e0: [Group condition: Flag] Event flag comparison
+x2_s2_e1: [Group condition: other] Grave generation possibility judgment
+x2_s3: Grave Placement: Survival
+x2_s3_e0: [OBJ] OBJ state transition request
+x2_s3_e1: [Group condition: OBJ] OBJ state ID comparison
+x2_s4: Grave Placement: Death
+x2_s4_e0: [OBJ] OBJ state transition request
+x2_s4_e1: [Group condition: OBJ] OBJ state ID comparison
+x2_s5: Grave Placement: System: Finish
+x2_s5_e0: [System] Termination notification
+x2_s6: Grave Placement: Warp Move
+x2_s7: End state
+x3: [Lib] NPC: Grave: Key Guide: Key Guide
+x3_p0: Global: death flag
+x3_p1: Grave OBJ instance ID
+x3_p2: NPC information parameter ID
+x3_s0: Start state
+x3_s1: Key guide: Start
+x3_s2: Key guide: Key guide display
+x3_s2_e0: [FE] Create key guide area
+x3_s3: Key Guide: Use Soul dialog
+x3_s3_e0: [FE] Display of YES / NO selection window
+x3_s4: Key guide: Soul shortage dialog
+x3_s4_e0: [FE] Window display only for YES
+x3_s5: Key guide: Grave display judgment
+x3_s5_e0: [Group condition: OBJ] OBJ state ID comparison
+x3_s5_e1: [Group condition: OBJ] OBJ state ID comparison
+x3_s6: Key guide: Reset
+x3_s6_e0: [FE] Delete key guide area
+x3_s6_e1: [System] Re-execution notification
+x3_s7: Key Guide: Use Soul dialog: Wait for input
+x3_s8: Key guide: Soul shortage dialog: Waiting for input
+x3_s9: Key guide: Delete key guide
+x3_s9_e0: [FE] Delete key guide area
+x3_s10: Key Guide: System: Exit
+x3_s10_e0: [System] Termination notification
+x3_s11: Key guide: Waiting for input
+x3_s11_e0: [Group condition: OBJ] Judgment to examine OBJ
+x3_s11_e1: [Group condition: Map] Judgment that the player is in the map
+x3_s12: End state
+x4: [Lib] NPC: Grave: Key Guide: Appearance of Ghosts
+x4_p0: Area other flags: Ghost appearance
+x4_p1: Area other flags: Conversation start
+x4_p2: NPC information parameter ID
+x4_s0: Start state
+x4_s1: Ghost appearance: Appearance
+x4_s1_e0: [Flag] Set flag
+x4_s1_e1: [Group condition: Flag] Event flag comparison
+x4_s2: Ghost appearance: Character action waiting
+x4_s2_e0: [Group condition: Character] Player event action judgment
+x4_s3: Appearance of ghost: End of player action
+x4_s3_e0: [Character action] Action end request to the player
+x4_s4: Ghost appearance: Conversation start flag
+x4_s4_e0: [Flag] Set flag
+x4_s4_e1: [Group condition: Flag] Event flag comparison
+x4_s5: Appearance of ghost: Player action starts
+x4_s5_e0: [Character action] Request action from player
+x4_s5_e1: [Group condition: Character] Player event action judgment
+x4_s6: Ghost appearance: Seoul consumption
+x4_s6_e0: [Others] Soul value addition
+x4_s7: Appearance of ghost: Waiting for player action
+x4_s7_e0: [Group condition: Event] State elapsed time comparison
+x4_s8: Ghost appearance: waiting for completion
+x4_s8_e0: [Group condition: Event] State elapsed time comparison
+x4_s9: Ghost appearance: Waiting for conversation
+x4_s9_e0: [Group condition: Event] State elapsed time comparison
+x4_s10: End state
+x5: [Lib] NPC: Grave: Key guide: General purpose
+x5_p0: Ghost Appearance: Area Other Flag
+x5_p1: Conversation start: Area and other flags
+x5_p2: Death: Global event flag
+x5_p3: Tomb: OBJ instance ID
+x5_p4: Grave event ID
+x5_p5: NPC information parameter ID
+x5_s0: Start state
+x5_s1: Key guide: Start
+x5_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x5_s1_e1: [Group condition: Event] Event status judgment
+x5_s1_e2: [Group condition: Flag] Event flag comparison
+x5_s1_e3: [Group condition: OBJ] OBJ state ID comparison
+x5_s2: Key Guide: System: Exit
+x5_s2_e0: [System] Termination notification
+x5_s3: Key guide: Start conversation: Set flag
+x5_s3_e0: [Flag] Set flag
+x5_s3_e1: [Group condition: Flag] Event flag comparison
+x5_s4: [Lib] NPC: Grave: Key Guide: Key Guide_SubState
+x5_s5: [Lib] NPC: Grave: Key Guide: Ghost Appearance_SubState
+x5_s6: End state
+x6: [Lib] Item specified door unlocking_2
+x6_p0: Text ID when opened
+x6_p1: Text ID when not opened
+x6_p2: item
+x6_p3: Key gimmick flag
+x6_s0: Start state
+x6_s1: Setting unlocking information
+x6_s1_e0: [OBJ] Setting information for unlocking
+x6_s2: End state
+x7: [Lib] NPC: Death determination: General purpose
+x7_p0: Generator ID
+x7_p1: Death map: Global event flag
+x7_s0: Start state
+x7_s1: Death determination: Start
+x7_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x7_s2: Death determination: Wait
+x7_s2_e0: [Group condition: Character] Character death determination
+x7_s3: Death determination: branch
+x7_s3_e0: [Group condition: Flag] Event flag comparison
+x7_s4: Death determination: System: End
+x7_s4_e0: [System] Termination notification
+x7_s5: Death determination: death flag setting
+x7_s5_e0: [Flag] Set flag
+x7_s5_e1: [Group condition: Flag] Event flag comparison
+x7_s6: End state
+x8: [Lib] OBJ Pledge: First move
+x8_p0: OBJ instance ID
+x8_p1: During menu operation: Area and other flags
+x8_s0: Start state
+x8_s1: OBJ: Pledge: Start
+x8_s1_e0: [OBJ] OBJ synchronization setting
+x8_s1_e1: [Group condition: Map] Judgment that the player is in the map
+x8_s1_e2: [Group condition: Flag] Event flag comparison
+x8_s2: OBJ: Pledge: Net multiplayer judgment
+x8_s3: OBJ: Pledge: Hide
+x8_s3_e0: [OBJ] OBJ state transition request
+x8_s3_e1: [Group condition: OBJ] OBJ state ID comparison
+x8_s4: OBJ: Pledge: Display
+x8_s4_e0: [OBJ] OBJ state transition request
+x8_s4_e1: [Group condition: OBJ] OBJ state ID comparison
+x8_s5: OBJ: Pledge: Start: Wait
+x8_s5_e0: [Group condition: OBJ] Judgment to examine OBJ
+x8_s6: OBJ: Pledge: System: Re-execution
+x8_s6_e0: [System] Re-execution notification
+x8_s7: OBJ: Pledge: Launch
+x8_s7_e0: [Flag] Set flag
+x8_s7_e1: [Group condition: Flag] Event flag comparison
+x8_s8: OBJ: Pledge: Menu running: Wait
+x8_s8_e0: [Group condition: Flag] Event flag comparison
+x8_s9: OBJ: Pledge: System: End
+x8_s9_e0: [System] Termination notification
+x8_s10: OBJ: Pledge: Initialization
+x8_s10_e0: [Flag] Set flag
+x8_s11: OBJ: Pledge: Timer
+x8_s11_e0: [FE] Sets key guide invalid time
+x8_s11_e1: [Group condition: Event] State elapsed time comparison
+x8_s12: End state
+x9: [Lib] [Reproduction] OBJ attach_sky
+x9_s0: Start state
+x9_s1: End state
+x10: [Lib] [Condition] OBJ attach_empty
+x10_s0: Start state
+x10_s1: End state
+x11: [Lib] [execute] OBJ attach
+x11_p0: Parent OBJ instance ID
+x11_p1: Parent Damipoli ID
+x11_p2: Child OBJ instance ID
+x11_s0: Start state
+x11_s1: OBJ attach
+x11_s1_e0: [OBJ] Attach OBJ to OBJ
+x11_s2: End state
+x12: [Lib] [Preset] OBJ attach
+x12_p0: Parent OBJ instance ID
+x12_p1: Parent Damipoli ID
+x12_p2: Child OBJ instance ID
+x12_s0: Start state
+x12_s1: [Lib] [Reproduction] OBJ attach_empty_SubState
+x12_s2: [Lib] [Execution] OBJ attach_SubState
+x12_s3: [Lib] [Condition] OBJ attach_empty_SubState
+x12_s4: End state
+x13: [Lib] Appearance determination: Magician
+x13_p0: Appearance permission: Global event flag
+x13_s0: Start state
+x13_s1: Appearance determination: Start
+x13_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x13_s2: Appearance determination: Death determination
+x13_s2_e0: [Group condition: Flag] Event flag comparison
+x13_s3: Appearance determination: Appearance determination
+x13_s3_e0: [Group condition: Flag] Event flag comparison
+x13_s3_e1: [Group condition: Flag] Event flag comparison
+x13_s3_e2: [Group condition: Flag] Event flag comparison
+x13_s4: Appearance judgment: Appearance permission
+x13_s4_e0: [Flag] Set flag
+x13_s4_e1: [Group condition: Flag] Event flag comparison
+x13_s5: Generation stop judgment: System: End
+x13_s5_e0: [System] Termination notification
+x13_s6: End state
+x14: [Lib] [Reproduction] Switch the connection flag when in the map
+x14_s0: Start state
+x14_s1: End state
+x15: [Lib] [Condition] Switch to connection flag when in map
+x15_s0: Start state
+x15_s1: Are you in the map?
+x15_s1_e0: [Group condition: Map] Judgment that the player is in the map
+x15_s2: End state
+x16: [Lib] [Execution] Switch to connection flag when in map
+x16_p0: Global event flag for connection
+x16_p1: Flag switching
+x16_s0: Start state
+x16_s1: Switch global event flag for connection
+x16_s1_e0: [Flag] Set flag
+x16_s2: Wait for flag transition
+x16_s2_e0: [Group condition: Flag] Event flag comparison
+x16_s3: For next judgment: Did you get out of the map?
+x16_s3_e0: [Group condition: Map] Judgment that the player is in the map
+x16_s4: End state
+x17: [Lib] [Preset] Switch the connection flag when in the map
+x17_p0: Global event flag for connection
+x17_p1: Flag switching
+x17_s0: Start state
+x17_s1: [Lib] [Reproduction] Switch connection flag when in map_SubState
+x17_s2: [Lib] [Execution] Switch to connection flag when in map _SubState
+x17_s3: [Lib] [Condition] Switch to the connection flag when in the map_SubState
+x17_s4: End state
+x18: [Lib] Ladder shop: Ladder installation
+x18_p0: OBJ instance ID
+x18_p1: Poly play ID
+x18_p2: Size ladder installation: Global event flag
+x18_p3: Size ladder installation: Area and other flags
+x18_p4: Conversation standby: Area and other flags
+x18_s0: Start state
+x18_s1: Ladder installation: Start
+x18_s2: Ladder installation: Ladder display
+x18_s2_e0: [Flag] Set flag
+x18_s2_e1: [OBJ] OBJ state transition request (with instance ID specified)
+x18_s2_e2: [Group condition: OBJ] OBJ state ID comparison
+x18_s2_e3: [Group condition: Flag] Event flag comparison
+x18_s3: Ladder installation: System: End
+x18_s3_e0: [System] Termination notification
+x18_s4: Erasing all ladders: Erasing
+x18_s4_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x18_s4_e1: [OBJ] OBJ state transition request (with instance ID specified)
+x18_s4_e2: [OBJ] OBJ state transition request (with instance ID specified)
+x18_s4_e3: [Group condition: OBJ] OBJ state ID comparison
+x18_s4_e4: [Group condition: OBJ] OBJ state ID comparison
+x18_s4_e5: [Group condition: OBJ] OBJ state ID comparison
+x18_s4_e6: [Flag] Set flag
+x18_s4_e7: [Flag] Set flag
+x18_s4_e8: [Flag] Set flag
+x18_s5: Ladder setting: Area Other flags: Setting
+x18_s5_e0: [Flag] Set flag
+x18_s5_e1: [Group condition: Flag] Event flag comparison
+x18_s6: Ladder setting: conversation waiting
+x18_s6_e0: [Group condition: Flag] Event flag comparison
+x18_s7: [Lib] Normal poly play_SubState
+x18_s8: End state
+x19: [Reproduction] OBJ animation playback by attacking OBJ
+x19_s0: Start state
+x19_s1: End state
+x20: [Condition] OBJ animation playback by attacking OBJ
+x20_p0: Trigger OBJ instance ID
+x20_p1: Damage attribute
+x20_s0: Start state
+x20_s1: Was OBJ attacked?
+x20_s1_e0: [Group condition: OBJ] OBJ damage judgment
+x20_s2: End state
+x21: [Execution] OBJ animation playback by attacking OBJ
+x21_p0: Target OBJ instance ID
+x21_p1: Anime OBJ State ID
+x21_p2: Trigger OBJ instance ID
+x21_p3: Trigger animation OBJ state ID
+x21_s0: Start state
+x21_s1: Animation playback of trigger OBJ and target OBJ
+x21_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x21_s1_e1: [OBJ] OBJ state transition request (with instance ID specified)
+x21_s2: End state
+x22: [Preset] OBJ animation playback by attacking OBJ
+x22_p0: Trigger OBJ instance ID
+x22_p1: Damage attribute
+x22_p2: Target OBJ instance ID
+x22_p3: Anime OBJ State ID
+x22_p4: Trigger animation OBJ state ID
+x22_s0: Start state
+x22_s1: [Reproduction] OBJ animation playback by attacking OBJ_SubState
+x22_s2: [Execution] OBJ animation playback by attacking OBJ_SubState
+x22_s3: [Condition] OBJ animation playback by attacking OBJ_SubState
+x22_s4: End state
+x23: [Lib] [Reproduction] Rebirth fire _ sky
+x23_s0: Start state
+x23_s1: End state
+x24: [Lib] [execute] Rebirth fire
+x24_p0: Flag start ID
+x24_p1: Flag end ID
+x24_s0: Start state
+x24_s1: Flag reset
+x24_s1_e0: [Flag] Set the flags within the specified range set in the parameter.
+x24_s2: End state
+x25: [Lib] [Condition] Rebirth fire_sky
+x25_s0: Start state
+x25_s1: End state
+x26: [Lib] [Preset] Rebirth
+x26_p0: Flag start ID
+x26_p1: Flag end ID
+x26_s0: Start state
+x26_s1: [Lib] [Reproduction] Reproduction of fire_sky_SubState
+x26_s2: [Lib] [Execution] Regenerative fire _SubState
+x26_s3: [Lib] [Condition] Reproduction fire_Sky_SubState
+x26_s4: End state
+x27: [Lib] [Preset] Get trophy
+x27_p0: Acquisition trigger_other flags
+x27_p1: Trophy type
+x27_s0: Start state
+x27_s1: Have you acquired a trophy?
+x27_s2: Wait for specified flag
+x27_s2_e0: [Group condition: Flag] Event flag comparison
+x27_s3: Trophy acquisition
+x27_s3_e0: [Others] Trophy cancellation
+x27_s4: End state

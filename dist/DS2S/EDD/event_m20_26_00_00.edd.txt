@@ -1,0 +1,172 @@
+1000: Ancient Dragon memory time limit
+1000_s0: Start state
+1000_s1: Finish
+1000_s1_e0: [System] Termination notification
+1000_s2: [Preset] Time limit of memory of old dragon_SubState
+2000: Warp to Geldra
+2000_s0: Start state
+2000_s1: Finish
+2000_s1_e0: [System] Termination notification
+2000_s2: [Preset] Warp _SubState to Geldra
+x0: [Preset] Warp to Geldra
+x0_p0: Instance ID of the ancient dragon OBJ
+x0_p1: Lottery ID for item acquisition
+x0_p2: Item acquisition confirmation flag
+x0_p3: Global timer ID
+x0_p4: Acquisition judgment item ID
+x0_s0: Start state
+x0_s1: Rerun
+x0_s1_e0: [System] Re-execution notification
+x0_s2: [Condition] Warp to Jedra_Item Acquisition_SubState
+x0_s3: [Execution] Warp_SubState to Geldra
+x0_s4: [Reproduction] Warp to Subway_SubState
+x0_s5: [Condition] Warp_SubState to Geldra
+x0_s6: [Execution] Warp to Gerdra_Item acquisition_SubState
+x0_s7: [Execution] Warp to Geldra_Items cannot be acquired_SubState
+x0_s8: End state
+x1: [Condition] Warp to Geldra
+x1_p0: Instance ID of the ancient dragon OBJ
+x1_p1: Item ID
+x1_s0: Start state
+x1_s1: Have you examined OBJ?
+x1_s1_e0: [Group condition: OBJ] Judgment to examine OBJ
+x1_s2: Can you get an old dragon soul?
+x1_s3: Available
+x1_s4: Not available
+x2: [Execution] Warp to Geldra
+x2_p0: Instance ID of the ancient dragon OBJ
+x2_p1: Global timer ID
+x2_s0: Start state
+x2_s1: Warp to Geldra
+x2_s1_e0: [Timer] Global timer end
+x2_s1_e1: [Map] Warp players to poly drama
+x2_s2: Key guide disabled: 10
+x2_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x2_s3: Wait for transition completion
+x2_s3_e0: [Group condition: OBJ] OBJ state ID comparison
+x2_s4: End state
+x3: [Execution] Warp to Jedra_Item acquisition
+x3_p0: Instance ID of the ancient dragon OBJ
+x3_p1: Lottery ID for item acquisition
+x3_p2: Item acquisition confirmation flag
+x3_s0: Start state
+x3_s1: Key guide disabled: 10
+x3_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x3_s2: Wait for transition
+x3_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x3_s3: Item acquisition
+x3_s3_e0: [Item] Add item
+x3_s4: Turn on the item acquisition flag
+x3_s4_e0: [Flag] Set flag
+x3_s4_e1: [Flag] Set flag
+x3_s5: End state
+x4: [Reproduction] Warp to Geldra
+x4_p0: Instance ID of the ancient dragon OBJ
+x4_p1: Item acquisition confirmation flag
+x4_s0: Start state
+x4_s1: Did you get the item?
+x4_s2: Key guide activation: 30
+x4_s2_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x4_s3: Wait for transition
+x4_s4: Unacquired
+x4_s5: It has been acquired
+x5: [Preset] Memory time limit for ancient dragons
+x5_p0: Global timer ID
+x5_p1: Time limit notification flag
+x5_p2: Execution start time of the first phase process
+x5_p3: Execution start time of the second phase process
+x5_p4: Execution start time of the third phase process
+x5_p5: Text ID to display in the first phase
+x5_p6: Text ID to display in the third phase
+x5_p7: Return Warp Point ID
+x5_s0: Start state
+x5_s1: [Reproduction] Time limit of memory of ancient dragon_SubState
+x5_s2: [Conditions & Execution] Old Dragon Memory Time Limit_First Phase_SubState
+x5_s3: [Conditions & Execution] Old Dragon Memory Time Limit_Second Phase_SubState
+x5_s4: [Conditions & Execution] Old Dragon Memory Time Limit_3rd Phase_SubState
+x5_s5: [Conditions & Execution] Old Dragon Memory Time Limit_Second Phase_2_SubState
+x5_s6: [Conditions & Execution] Old Dragon Memory Time Limit_3rd Phase_2_SubState
+x5_s7: [Conditions & Execution] Old Dragon Memory Time Limit_3rd Phase_3_SubState
+x5_s8: [Conditions & Execution] Old Dragon Memory Time Limit_0th Phase_SubState
+x5_s9: [Conditions & Execution] Old Dragon Memory Time Limit_First Phase_2_SubState
+x5_s10: [Conditions & Execution] Old Dragon Memory Time Limit_Second Phase_3_SubState
+x5_s11: [Conditions & Execution] Old Dragon Memory Time Limit_3rd Phase_4_SubState
+x5_s12: End state
+x6: [Reproduction] Memory time limit of the ancient dragon
+x6_p0: Global timer ID
+x6_p1: Time limit notification flag
+x6_p2: Execution start time of the first phase process
+x6_p3: Execution start time of the second phase process
+x6_s0: Start state
+x6_s1: Timer start judgment
+x6_s2: Starting the global timer
+x6_s2_e0: [Timer] Start global timer
+x6_s3: Restart global timer
+x6_s3_e0: [Timer] Restart global timer
+x6_s4: Restart global timer_2
+x6_s4_e0: [Timer] Restart global timer
+x6_s5: Restart global timer_3
+x6_s5_e0: [Timer] Restart global timer
+x6_s6: Time limit notification flag ON
+x6_s6_e0: [Flag] Set flag
+x6_s7: From the first phase
+x6_s8: From the second phase
+x6_s9: From the third phase
+x6_s10: From the 0th phase
+x7: [Conditions & Execution] Time limit of memory of old dragon _ 1st phase
+x7_p0: Global timer ID
+x7_p1: Execution start time of the first phase process
+x7_p2: Text ID to display in the first phase
+x7_s0: Start state
+x7_s1: Wait for time limit
+x7_s1_e0: [Group condition: Event] Global timer comparison
+x7_s2: Event message display
+x7_s2_e0: [FE] Event window display
+x7_s3: End state
+x8: [Conditions & Execution] Time limit of memory of old dragon _ 2nd phase
+x8_p0: Global timer ID
+x8_p1: Execution start time of the second phase process
+x8_p2: Time limit notification flag
+x8_s0: Start state
+x8_s1: Wait for time limit
+x8_s1_e0: [Group condition: Event] Global timer comparison
+x8_s2: Time limit notification flag ON
+x8_s2_e0: [Flag] Set flag
+x8_s3: End state
+x9: [Conditions & Execution] Time limit of memory of old dragon _ 3rd phase
+x9_p0: Global timer ID
+x9_p1: Execution start time of the third phase process
+x9_p2: Text ID to display in the third phase
+x9_p3: Return Warp Point ID
+x9_s0: Start state
+x9_s1: Wait for time limit
+x9_s1_e0: [Group condition: Event] Global timer comparison
+x9_s2: Event message display
+x9_s2_e0: [FE] Event window display
+x9_s3: Return to Geldra
+x9_s3_e0: [Timer] Global timer end
+x9_s3_e1: [Map] Warp players to poly drama
+x9_s4: End state
+x10: [Conditions & Execution] Time limit of memory of old dragon _ 0th phase
+x10_p0: Global timer ID
+x10_p1: Execution start time of the 0th phase process
+x10_p2: Text ID displayed in the 0th phase
+x10_s0: Start state
+x10_s1: Event message display
+x10_s1_e0: [FE] Event window display
+x10_s2: Is it in game?
+x10_s3: Wait for a certain time
+x10_s3_e0: [Group condition: Event] State elapsed time comparison
+x10_s4: End state
+x11: [Execution] Warp to Geldra_Item acquisition not possible
+x11_p0: Instance ID of the ancient dragon OBJ
+x11_p1: Lottery ID for item acquisition
+x11_s0: Start state
+x11_s1: Key guide disabled: 10
+x11_s1_e0: [OBJ] OBJ state transition request (with instance ID specified)
+x11_s2: Wait for transition
+x11_s2_e0: [Group condition: OBJ] OBJ state ID comparison
+x11_s3: Acquisition failure window display
+x11_s3_e0: [FE] Display item acquisition failure window
+x11_s4: Waiting for acquisition failure window to be hidden
+x11_s5: End state

@@ -13,6 +13,7 @@
         <Command Bank="1" ID="9"   Name="ClearTalkProgressData" Description=""/>
         <Command Bank="1" ID="10"  Name="ShowShopMessage" Description=""/>
         <Command Bank="1" ID="11"  Name="SetEventState" Description=""/>
+        <Command Bank="5" ID="11"  Name="SetEventStateIf" Description=""/>
         <Command Bank="1" ID="12"  Name="CloseShopMessage" Description=""/>
         <Command Bank="1" ID="13"  Name="OpenCampMenu" Description=""/>
         <Command Bank="1" ID="14"  Name="CloseCampMenu" Description=""/>
@@ -21,6 +22,7 @@
         <Command Bank="1" ID="17"  Name="OpenGenericDialog" Description=""/>
         <Command Bank="1" ID="18"  Name="ForceCloseGenericDialog" Description=""/>
         <Command Bank="1" ID="19"  Name="AddTalkListData" Description=""/>
+        <Command Bank="5" ID="19"  Name="AddTalkListDataIf" Description=""/>
         <Command Bank="1" ID="20"  Name="ClearTalkListData" Description=""/>
         <Command Bank="1" ID="21"  Name="RequestMoviePlayback" Description=""/>
         <Command Bank="1" ID="22"  Name="OpenRegularShop" Description=""/>
@@ -77,6 +79,7 @@
         <Command Bank="1" ID="82"  Name="OpenChooseQuantityDialog" Description=""/>
         <Command Bank="1" ID="83"  Name="ClearQuantityValueOfChooseQuantityDialog" Description=""/>
         <Command Bank="1" ID="100" Name="SetWorkValue" Description=""/>
+        <Command Bank="5" ID="100" Name="SetWorkValueIf" Description=""/>
         <Command Bank="1" ID="101" Name="UpdatePlayerRespawnPoint" Description=""/>
         <Command Bank="1" ID="102" Name="SetMessageTagValue" Description=""/>
         <Command Bank="1" ID="103" Name="TurnCharacterToFaceEntity" Description=""/>
@@ -84,7 +87,23 @@
         <Command Bank="1" ID="105" Name="OpenEstusAllotMenu" Description=""/>
         <Command Bank="1" ID="106" Name="AddRankingPoints" Description=""/>
         <Command Bank="1" ID="107" Name="OpenHollowLevelUpMenu" Description=""/>
-        <Command Bank="5" ID="19" Name="AddTalkListDataIf" Description=""/>
+        <Command Bank="1" ID="108" Name="EstusAllocationUpdate" Description=""/>
+        <Command Bank="1" ID="109" Name="BonfireActivation" Description=""/>
+        <Command Bank="1" ID="110" Name="MainBonfireMenuFlag" Description=""/>
+        <Command Bank="1" ID="111" Name="OpenTranspositionShop" Description=""/>
+        <Command Bank="1" ID="112" Name="SetBonfireMenuData" Description=""/>
+        <Command Bank="1" ID="113" Name="ReallocateAttributes" Description=""/>
+        <Command Bank="1" ID="114" Name="UndeadMatch" Description=""/>
+        <Command Bank="1" ID="115" Name="OpenBonfireMenu" Description=""/>
+        <!-- 116-120 set state in memory but functionality unknown -->
+        <Command Bank="1" ID="121" Name="EnableCharmHardships" Description=""/>
+        <Command Bank="1" ID="122" Name="OpenScalesShop" Description=""/>
+        <Command Bank="1" ID="123" Name="UpgradeProstheticsMenu" Description=""/>
+        <Command Bank="1" ID="124" Name="OpenSkillMenu" Description=""/>
+        <Command Bank="1" ID="125" Name="EquipNinjutsu" Description=""/>
+        <Command Bank="1" ID="126" Name="ShowShopMessageAlt" Description=""/>
+        <Command Bank="1" ID="127" Name="OpenBonfireSubmenu" Description=""/>
+        <Command Bank="1" ID="128" Name="SetMenuDisableTime" Description=""/>      
     </CommandList>
     <FunctionList>
         <Function ID="0"   Name="GetWhetherEnemiesAreNearby" Description=""/>
@@ -159,6 +178,10 @@
         <Function ID="106" Name="GetWhetherChrTurnAnimHasEnded" Description=""/>
         <Function ID="107" Name="GetWhetherChrEventAnimHasEnded" Description=""/>
         <Function ID="108" Name="GetItemHeldNumLimit" Description=""/>
+        <Function ID="109" Name="GetEstusAllocation" Description=""/>
+        <Function ID="110" Name="GetTotalBonfireLevel" Description=""/>
+        <Function ID="111" Name="GetIsOnline" Description=""/>
+        <Function ID="112" Name="GetIsNetPenalizedForArena" Description=""/>
     </FunctionList>
     <EnumList>
         <Enum Name="AttackRequestType">

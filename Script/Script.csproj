@@ -76,6 +76,8 @@
     <Compile Include="Compiler.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Decompiler.cs" />
+    <Compile Include="EDDText.cs" />
+    <Compile Include="ESDName.cs" />
     <Compile Include="ESDOptions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
