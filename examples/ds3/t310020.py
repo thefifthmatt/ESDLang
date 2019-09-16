@@ -2,8 +2,8 @@
 def t310020_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t310020_x13()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -24,8 +24,9 @@ def t310020_x0(action3=12000021):
         return 1
 
 def t310020_x1(z5=6011, flag4=6001, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -183,8 +184,8 @@ def t310020_x9(lot1=4210, goods1=374, lot2=4218, lot3=4217, action1=15000401, ac
     assert t310020_x12(z3=z3, lot2=lot2, lot3=lot3)
     """State 7"""
     MainBonfireMenuFlag()
-    """State 1"""
     while True:
+        """State 1"""
         ClearTalkListData()
         """State 2"""
         # action:15000401:"Establish Covenant"
@@ -230,8 +231,8 @@ def t310020_x11(lot1=4210, goods1=374, lot2=4218, lot3=4217, action1=15000401, a
                 flag3=6001, z6=0, z7=9000, flag4=6001):
     """State 0"""
     ClearPlayerDamageInfo()
-    """State 4"""
     while True:
+        """State 4"""
         assert t310020_x1(z5=z5, flag4=flag4, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         """State 5"""
         ClearPlayerDamageInfo()
@@ -272,8 +273,9 @@ def t310020_x12(z3=26, lot2=4218, lot3=4217):
     return 0
 
 def t310020_x13():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t310020_x15()
         assert not GetEventStatus(6001)
         """State 2"""

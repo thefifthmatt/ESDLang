@@ -2,8 +2,8 @@
 def t400010_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t400010_x2()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -11,8 +11,9 @@ def t400010_1():
         assert not IsClientPlayer()
 
 def t400010_x0(z1=6000, flag1=6001, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6001):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -59,8 +60,9 @@ def t400010_x1():
     return 0
 
 def t400010_x2():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (t400010_x0(z1=6000, flag1=6001, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000,
                 flag7=6001))
         """State 2"""

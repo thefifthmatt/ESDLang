@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def t100010_1():
-    """State 0,25"""
+    """State 0"""
     Label('L0')
     while True:
+        """State 25"""
         DebugEvent('最初')
         if (GetOneLineHelpStatus() == 1 and CompareBonfireState(0) == 1 and HasDisableTalkPeriodElapsed()
             == 1 and not IsTalkingToSomeoneElse() and not CheckSelfDeath() and not IsCharacterDisabled()
@@ -34,8 +35,8 @@ def t100010_1():
             """State 23"""
             ClearTalkDisabledState()
             DebugEvent('会話タイマークリア　最初')
-    """State 1"""
     while Loop('loop1'):
+        """State 1"""
         DebugEvent('待機')
         SetUpdateDistance(10)
         if CompareBonfireLevel(0, 0) == 1:
@@ -79,8 +80,8 @@ def t100010_1():
             elif GetDistanceToPlayer() >= 8 or GetPlayerYDistance() > 1:
                 Goto('L3')
             elif CompareBonfireState(1) == 1:
-                """State 4"""
                 while True:
+                    """State 4"""
                     ShowShopMessage(0, 0, 0)
                     DebugEvent('篝火リスト')
                     RequestSave(0)

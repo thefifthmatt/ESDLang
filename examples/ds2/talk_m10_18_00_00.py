@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_18_7260():
     """Dwarf (Hidden Port)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m10_18_7260():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: [Lib] Dwarf: Conversation_SubState"""
             while True:
+                """State 10: [Lib] Dwarf: Conversation_SubState"""
                 call = talk_m10_18_x27(z14=118020144, z15=102340, z16=0)
                 if call.Done():
                     Continue('mainloop')
@@ -69,8 +70,9 @@ def talk_m10_18_7260():
 
 def talk_m10_18_7520():
     """Woman Knight (Hidden Port)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -96,8 +98,8 @@ def talk_m10_18_7520():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 9: [Lib] Female knight: Before last: Conversation_SubState"""
             while True:
+                """State 9: [Lib] Female knight: Before last: Conversation_SubState"""
                 call = talk_m10_18_x21(z3=102482, z4=102487, z5=102502, z6=118020109)
                 if call.Done():
                     Continue('mainloop')
@@ -137,8 +139,9 @@ def talk_m10_18_7520():
 
 def talk_m10_18_7660():
     """Magician (Hidden Port)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -164,8 +167,8 @@ def talk_m10_18_7660():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Magician: Conversation_SubState"""
             while True:
+                """State 10: Magician: Conversation_SubState"""
                 call = talk_m10_18_x34()
                 if call.Done():
                     Continue('mainloop')
@@ -336,8 +339,8 @@ def talk_m10_18_x6(z30=_, text21=_, text22=_, z31=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z30) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -1014,8 +1017,8 @@ def talk_m10_18_x30():
     """Dwarf: NPC menu"""
     """State 0,1: Menu: Start"""
     ClearNpcMenuResults()
-    """State 6: [Lib] Menu start: General purpose_SubState"""
     while True:
+        """State 6: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_18_x12(z25=0, z26=220, z27=72600000, z28=0)
         if call.Get() == 2:
             """State 5: Dwarf: Menu conversation_SubState"""
@@ -1106,8 +1109,9 @@ def talk_m10_18_x34():
 
 def talk_m10_18_x35():
     """Magician: First conversation"""
-    """State 0,1: First conversation: start"""
+    """State 0: Start state"""
     while True:
+        """State 1: First conversation: start"""
         if GetEventFlag(204800) != 0:
             """State 5: [Lib] Conversation: Greeting: General purpose_SubState"""
             # talk:76601000:"Do you seek my teachings?\nVery well, very well.", talk:76601100:"Back already?\nYour diligence is commendable.", talk:76601200:"Your visit is welcome.\nI trust you've kept up your studies.", talk:76601300:"Oh, there you are. Do you seek my teachings?"
@@ -1139,8 +1143,9 @@ def talk_m10_18_x35():
 
 def talk_m10_18_x36():
     """Magician: NPC Menu"""
-    """State 0,1,3: [Lib] Menu start: General purpose_SubState"""
+    """State 0,1: Menu: Start"""
     while True:
+        """State 3: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_18_x12(z25=0, z26=220, z27=76600000, z28=0)
         if call.Get() == 2:
             """State 6: Magician: Menu conversation_SubState"""

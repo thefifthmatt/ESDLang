@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_19_7530():
     """Kanemori: Vane"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m10_19_7530():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 9: [Lib] Kanemori: Conversation_SubState"""
             while True:
+                """State 9: [Lib] Kanemori: Conversation_SubState"""
                 # action:1335:"Join the Bell Keeper covenant?", action:1345:"Abandon your covenant and\njoin the Bell Keeper covenant?"
                 call = talk_m10_19_x24(z7=60, action1=1335, action2=1345, z8=119020107)
                 if call.Done():
@@ -71,8 +72,9 @@ def talk_m10_19_7530():
 
 def talk_m10_19_7720():
     """Curio shop"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -98,8 +100,8 @@ def talk_m10_19_7720():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 8: Rare goods store: Conversation_SubState"""
             while True:
+                """State 8: Rare goods store: Conversation_SubState"""
                 call = talk_m10_19_x40()
                 if call.Done():
                     Continue('mainloop')
@@ -246,8 +248,8 @@ def talk_m10_19_x5(z52=_, text18=_, text19=_, z53=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z52) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -1288,8 +1290,9 @@ def talk_m10_19_x41():
 
 def talk_m10_19_x42():
     """Curio store: NPC menu"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Menu: Start"""
         if GetEventFlag(102821) != 0:
             """State 7: [Lib] Menu start: Pledge / Dedication available_SubState"""
             call = talk_m10_19_x11(z47=0, z48=220, z49=77200001, z50=0)
@@ -1412,8 +1415,9 @@ def talk_m10_19_x44():
 
 def talk_m10_19_4100000():
     """Andyel"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         elif GetEventFlag(100740) != 0:

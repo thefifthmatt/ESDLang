@@ -2,8 +2,8 @@
 def t300324_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t300324_x7()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -115,8 +115,9 @@ def t300324_x6():
     return 0
 
 def t300324_x7():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t300324_x9()
         assert GetEventStatus(13000830) == 1 or not GetEventStatus(13005830)
         """State 2"""
@@ -158,8 +159,9 @@ def t300324_x11():
     return 0
 
 def t300324_x12():
-    """State 0,3"""
+    """State 0"""
     while True:
+        """State 3"""
         call = t300324_x4()
         if not GetEventStatus(73000200) and GetSelfHP() < 90:
             """State 2"""

@@ -17,15 +17,16 @@ def t110200_1000():
 
 def t110200_x0(val6=7001000, flag14=6001, flag19=6000, flag20=6000, flag21=6000, flag22=6000, mode11=0,
                flag13=6000):
-    """State 0,1"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
         assert (GetEventStatus(flag14) == 1 or GetEventStatus(flag19) == 1 or GetEventStatus(flag20)
                 == 1 or GetEventStatus(flag21) == 1 or GetEventStatus(flag22) == 1)
-        """State 4"""
         while True:
+            """State 4"""
             assert not GetEventStatus(flag13)
             """State 2"""
             if (not (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
@@ -151,8 +152,9 @@ def t110200_x7(z7=4):
 def t110200_x8(flag9=1019, flag10=1015, flag11=1016, val1=5, val2=10, val3=12, val4=10, val5=12, flag12=71100130,
                val6=7001000, flag13=6000, flag14=6001, flag15=71100131, flag16=6000, z5=2, val7=1000000,
                val8=1000000, val9=1000000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         RemoveMyAggro()
         call = t110200_x9(val1=val1, val2=val2, val3=val3, val4=val4, val5=val5, flag12=flag12, val6=val6,
                           flag13=flag13, flag14=flag14, flag15=flag15, flag16=flag16, z5=z5, val7=val7,
@@ -174,8 +176,9 @@ def t110200_x8(flag9=1019, flag10=1015, flag11=1016, val1=5, val2=10, val3=12, v
 
 def t110200_x9(val1=5, val2=10, val3=12, val4=10, val5=12, flag12=71100130, val6=7001000, flag13=6000,
                flag14=6001, flag15=71100131, flag16=6000, z5=2, val7=1000000, val8=1000000, val9=1000000):
-    """State 0,4"""
+    """State 0"""
     while True:
+        """State 4"""
         call = t110200_x26(val6=val6, flag13=flag13, flag14=flag14, val7=val7, val8=val8, val9=val9)
         if call.Done():
             """State 1"""
@@ -372,8 +375,9 @@ def t110200_x23():
     return 0
 
 def t110200_x24(val2=10, val3=12):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t110200_x17(val2=val2, val3=val3)
         if f122() == 1:
             break
@@ -394,15 +398,15 @@ def t110200_x26(val6=7001000, flag13=6000, flag14=6001, val7=1000000, val8=10000
     """State 0,3"""
     call = t110200_x20(z6=2000, mode5=0, mode6=0, mode7=0, mode8=0)
     if call.Get() == 1:
-        """State 4"""
         while Loop('mainloop'):
+            """State 4"""
             call = t110200_x0(val6=val6, flag14=flag14, flag19=6000, flag20=6000, flag21=6000, flag22=6000,
                               mode11=0, flag13=flag13)
             if call.Done():
                 break
             elif not f116(-1) == val7 and not f116(-1) == val8 and not f116(-1) == val9 and not DoesSelfHaveSpEffect(4510):
-                """State 1"""
                 while True:
+                    """State 1"""
                     assert (f116(-1) == val7 or f116(-1) == val8 or f116(-1) == val9 or DoesSelfHaveSpEffect(4510)
                             == 1)
                     """State 2"""
@@ -849,8 +853,8 @@ def t110200_x36():
 def t110200_x37(mode2=_):
     """State 0,4"""
     MainBonfireMenuFlag()
-    """State 3"""
     while True:
+        """State 3"""
         ClearTalkListData()
         """State 5"""
         # action:15010300:"Ask how you got here"
@@ -946,8 +950,8 @@ def t110200_x39():
     assert t110200_x29(flag5=71100575, flag6=71100576, flag7=71100577, flag8=71100578, z4=71100580)
     """State 4"""
     MainBonfireMenuFlag()
-    """State 3"""
     while True:
+        """State 3"""
         ClearTalkListData()
         """State 5"""
         # action:15010000:"Fit New Prosthetic Tool"
@@ -989,8 +993,8 @@ def t110200_x39():
 def t110200_x40(mode1=_):
     """State 0,4"""
     MainBonfireMenuFlag()
-    """State 3"""
     while True:
+        """State 3"""
         ClearTalkListData()
         """State 5"""
         # action:15010000:"Fit New Prosthetic Tool"

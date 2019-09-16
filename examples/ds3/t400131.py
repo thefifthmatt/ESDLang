@@ -2,8 +2,8 @@
 def t400131_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t400131_x11()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -29,8 +29,8 @@ def t400131_x0(weapon1=6260000, weapon2=6280000):
 def t400131_x1(weapon1=6260000, weapon2=6280000):
     """State 0,7"""
     MainBonfireMenuFlag()
-    """State 1"""
     while True:
+        """State 1"""
         ClearTalkListData()
         """State 10"""
         assert t400131_x2(weapon1=weapon1, weapon2=weapon2)
@@ -153,8 +153,9 @@ def t400131_x6(action2=12003001):
         return 1
 
 def t400131_x7(z3=6132, flag1=6001, flag2=6000, flag3=6000, flag4=6000, flag5=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -214,8 +215,9 @@ def t400131_x10(action1=13003000):
     return 0
 
 def t400131_x11():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t400131_x13(z1=2135, z2=390)
         assert not GetEventStatus(1021) or not GetEventStatus(74000171)
         """State 2"""
@@ -229,8 +231,9 @@ def t400131_x12():
     return 0
 
 def t400131_x13(z1=2135, z2=390):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert t400131_x7(z3=6132, flag1=6001, flag2=6000, flag3=6000, flag4=6000, flag5=6000)
         """State 3"""
         # weapon:6260000:Lorian's Greatsword, weapon:6280000:Lothric's Holy Sword

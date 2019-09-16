@@ -2,8 +2,8 @@
 def t341320_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t341320_x7()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -107,8 +107,9 @@ def t341320_x6():
     return 0
 
 def t341320_x7():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t341320_x9()
         assert not GetEventStatus(1400) or not GetEventStatus(13415830)
         """State 2"""
@@ -135,8 +136,8 @@ def t341320_x11():
     """State 0,2"""
     SetEventState(73410101, 0)
     SetEventState(73410102, 1)
-    """State 1"""
     while True:
+        """State 1"""
         SetEventState(73410100, 0)
         """State 4"""
         call = t341320_x3()

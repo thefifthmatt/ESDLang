@@ -2,8 +2,8 @@
 def t500760_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t500760_x11()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -11,8 +11,9 @@ def t500760_1():
         assert not IsClientPlayer()
 
 def t500760_x0(z3=6860, flag7=1875, flag8=6000, flag9=6000, flag10=6000, flag11=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -247,8 +248,9 @@ def t500760_x10():
     return 0
 
 def t500760_x11():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         # talk:86001100:" ", talk:86001110:" ", talk:86001120:" ", talk:86001130:" "
         call = t500760_x13(z1=-1, flag1=75000171, flag2=75000172, flag3=75000173, text1=86001100, text2=86001110,
                            text3=86001120, text4=86001130)
@@ -315,8 +317,9 @@ def t500760_x16():
 
 def t500760_x17(z1=-1, flag1=75000171, flag2=75000172, flag3=75000173, text1=86001100, text2=86001110,
                 text3=86001120, text4=86001130):
-    """State 0,5"""
+    """State 0"""
     while True:
+        """State 5"""
         call = t500760_x0(z3=6860, flag7=1875, flag8=6000, flag9=6000, flag10=6000, flag11=6000)
         if call.Done():
             """State 3"""
@@ -385,8 +388,8 @@ def t500760_x20():
 def t500760_x21():
     """State 0,1"""
     MainBonfireMenuFlag()
-    """State 2"""
     while True:
+        """State 2"""
         ClearTalkListData()
         assert (not CheckSpecificPersonGenericDialogIsOpen(2) and not (CheckSpecificPersonMenuIsOpen(-1,
                 2) == 1 and not CheckSpecificPersonGenericDialogIsOpen(2)))

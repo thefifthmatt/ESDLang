@@ -2,8 +2,8 @@
 def t120631_1():
     """State 0,31"""
     SetEventState(71200029, 0)
-    """State 6"""
     while True:
+        """State 6"""
         DebugEvent('unknow')
         if IsClientPlayer() == 1:
             """State 32"""

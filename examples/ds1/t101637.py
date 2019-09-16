@@ -2,9 +2,9 @@
 def t101637_1():
     """State 0,80"""
     SetEventState(71800067, 0)
-    """State 6"""
     Label('L0')
     while Loop('mainloop'):
+        """State 6"""
         DebugEvent('unknow')
         if CheckSelfDeath() == 1 and not GetEventStatus(1702) and GetDistanceToPlayer() <= 5:
             break
@@ -277,8 +277,8 @@ def t101637_1():
             """State 26"""
             ClearTalkActionState()
             if True:
-                """State 19"""
                 while True:
+                    """State 19"""
                     # action:15000010:"Purchase Item"
                     AddTalkListData(2, 15000010, -1)
                     # action:15000210:"Abandon Covenant"

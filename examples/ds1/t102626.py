@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def t102626_1():
-    """State 0,6"""
+    """State 0"""
     Label('L0')
     while Loop('mainloop'):
+        """State 6"""
         if CheckSelfDeath() == 1 and not GetEventStatus(1435) and GetDistanceToPlayer() <= 5:
             break
         elif (IsPlayerTalkingToMe() == 1 and GetRelativeAngleBetweenPlayerAndSelf() <= 45 and GetDistanceToPlayer()
@@ -155,8 +156,8 @@ def t102626_1():
                 Label('L6')
                 ClearTalkActionState()
                 if True:
-                    """State 16"""
                     while True:
+                        """State 16"""
                         # action:15000010:"Purchase Item"
                         AddTalkListData(1, 15000010, -1)
                         # action:15000350:"Learn gesture"

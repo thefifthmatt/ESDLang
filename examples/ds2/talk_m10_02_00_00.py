@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_02_7050():
     """Retired fire prevention woman 1 (Strohn)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m10_02_7050():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Retired fire prevention woman 1: Conversation_SubState"""
             while True:
+                """State 10: Retired fire prevention woman 1: Conversation_SubState"""
                 call = talk_m10_02_x21()
                 if call.Done():
                     Continue('mainloop')
@@ -85,8 +86,9 @@ def talk_m10_02_7050():
 
 def talk_m10_02_7051():
     """Retired Fire Guard 2 (Gliant)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -112,8 +114,8 @@ def talk_m10_02_7051():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 5: Retired Firemen 2 & 3: Conversation_SubState"""
             while True:
+                """State 5: Retired Firemen 2 & 3: Conversation_SubState"""
                 # talk:70511000:"Hah hah hah...", talk:70511100:"..."
                 call = talk_m10_02_x24(text4=70511000, text5=70511100, z2=202000)
                 if call.Done():
@@ -170,8 +172,9 @@ def talk_m10_02_7051():
 
 def talk_m10_02_7053():
     """Retired fire prevention woman 3 (mol)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -197,8 +200,8 @@ def talk_m10_02_7053():
             elif (HpValue() > 1) != 1:
                 pass
         elif call.Get() == 0:
-            """State 11: Retired Firemen 2 & 3: Conversation_SubState"""
             while True:
+                """State 11: Retired Firemen 2 & 3: Conversation_SubState"""
                 # talk:70521000:"Hah hah hah...", talk:70521100:"..."
                 call = talk_m10_02_x24(text4=70521000, text5=70521100, z2=202100)
                 if call.Done():
@@ -255,8 +258,9 @@ def talk_m10_02_7053():
 
 def talk_m10_02_7230():
     """Firefighter housekeeper"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -282,8 +286,8 @@ def talk_m10_02_7230():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 11: Firekeeper's Housekeeper: Conversation_SubState"""
             while True:
+                """State 11: Firekeeper's Housekeeper: Conversation_SubState"""
                 call = talk_m10_02_x25()
                 if call.Done():
                     Continue('mainloop')
@@ -340,8 +344,9 @@ def talk_m10_02_7230():
 
 def talk_m10_02_7900():
     """Glitter girl"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         elif (GetStateTime() >= 0) != 0 and (GetStateTime() > GetRandomValueForStateTime(0.1, 3)) != 0:
@@ -514,8 +519,8 @@ def talk_m10_02_x6(z22=_, text14=_, text15=_, z23=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z22) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -926,9 +931,8 @@ def talk_m10_02_x26():
     """Retired fire prevention woman 1: NPC menu"""
     """State 0,1: Menu: Start"""
     ClearNpcMenuResults()
-    """State 3: Menu: Branch"""
     while True:
-        """State 4: [Lib] Menu start: General purpose_SubState"""
+        """State 3,4: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_02_x10(z18=0, z19=220, z20=70500000, z21=0)
         if call.Get() == 11:
             """State 7: Retired Fire Guard 1: Status Reset_SubState"""
@@ -1046,8 +1050,9 @@ def talk_m10_02_x30(text2=_, text3=_):
     text2: First conversation
     text3: Next conversation
     """
-    """State 0,1: Play: First conversation: Wait"""
+    """State 0: Start state"""
     while True:
+        """State 1: Play: First conversation: Wait"""
         assert (GetStateTime() > GetRandomValueForStateTime(30, 60)) != 0
         """State 3: First conversation_SubState"""
         assert talk_m10_02_x1(text2=text2, z31=0, z33=3, z34=0)

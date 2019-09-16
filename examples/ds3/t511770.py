@@ -2,8 +2,8 @@
 def t511770_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t511770_x8()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -11,8 +11,9 @@ def t511770_1():
         assert not IsClientPlayer()
 
 def t511770_x0(z9=6000, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -137,8 +138,9 @@ def t511770_x9():
 
 def t511770_x10(z1=-1, z2=75110221, z3=75110222, z4=75110223, z5=87000700, z6=87000710, z7=87000720,
                 z8=87000730, val1=25, val2=35):
-    """State 0,2"""
+    """State 0"""
     while True:
+        """State 2"""
         call = t511770_x12(z1=z1, z2=z2, z3=z3, z4=z4, z5=z5, z6=z6, z7=z7, z8=z8, val1=val1, val2=val2)
         assert CheckSelfDeath() == 1
         """State 1"""
@@ -153,8 +155,9 @@ def t511770_x11():
 
 def t511770_x12(z1=-1, z2=75110221, z3=75110222, z4=75110223, z5=87000700, z6=87000710, z7=87000720,
                 z8=87000730, val1=25, val2=35):
-    """State 0,2"""
+    """State 0"""
     while True:
+        """State 2"""
         call = t511770_x0(z9=6000, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
         if call.Done():
             """State 4"""

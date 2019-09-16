@@ -29,8 +29,9 @@ def t410010_x0():
     return 0
 
 def t410010_x1(z1=_, flag1=6001, flag2=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 2"""
@@ -65,8 +66,9 @@ def t410010_x2(action1=10010713):
     return 0
 
 def t410010_x3():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t410010_x4()
         assert IsMultiplayerInProgress() == 1
         """State 2"""
@@ -144,8 +146,9 @@ def t410010_x6():
     return 0
 
 def t410010_x7():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t410010_x5()
         assert IsClientPlayer() == 1
         """State 2"""
@@ -157,8 +160,8 @@ def t410010_x8():
     assert GetCurrentStateElapsedTime() > 2
     """State 17"""
     MainBonfireMenuFlag()
-    """State 1"""
     while True:
+        """State 1"""
         ClearTalkListData()
         """State 2"""
         # action:15000150:"Travel"

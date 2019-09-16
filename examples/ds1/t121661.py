@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t121661_1():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         DebugEvent('最初')
         if (DoesPlayerHaveSpEffect() >= 0 and GetRelativeAngleBetweenPlayerAndSelf() <= 45 and GetDistanceToPlayer()
             <= 3.4 and CheckSpecificPersonGenericDialogIsOpen() == 1):

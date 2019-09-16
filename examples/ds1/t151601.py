@@ -3,9 +3,9 @@ def t151601_1():
     """State 0,47"""
     SetEventState(71510090, 0)
     SetEventState(71510091, 0)
-    """State 9"""
     Label('L0')
     while Loop('mainloop'):
+        """State 9"""
         DebugEvent('待機')
         SetUpdateDistance(25)
         if CheckSelfDeath() == 1 and not GetEventStatus(1034) and GetDistanceToPlayer() <= 5:
@@ -212,8 +212,8 @@ def t151601_1():
                 Label('L5')
                 ClearTalkActionState()
                 if True:
-                    """State 49"""
                     while True:
+                        """State 49"""
                         # action:15000230:"Reinforce <?gdsparam@200?>"
                         AddTalkListData(3, 15000230, 716)
                         # action:15000000:"Talk"

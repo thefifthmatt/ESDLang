@@ -2,8 +2,8 @@
 def t102606_1():
     """State 0,69"""
     ShuffleRNGSeed(100)
-    """State 21"""
     while Loop('mainloop'):
+        """State 21"""
         DebugEvent('待機')
         SetUpdateDistance(25)
         if CheckSelfDeath() == 1 and not GetEventStatus(1144) and GetDistanceToPlayer() <= 5:
@@ -98,8 +98,8 @@ def t102606_1():
                 ClearTalkActionState()
                 DisplayOneLineHelp(-1)
                 if True:
-                    """State 9"""
                     while True:
+                        """State 9"""
                         # action:15000230:"Reinforce <?gdsparam@200?>"
                         AddTalkListData(1, 15000230, 716)
                         ShowShopMessage(0, 0, 0)

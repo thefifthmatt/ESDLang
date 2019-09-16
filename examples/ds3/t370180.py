@@ -2,8 +2,8 @@
 def t370180_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t370180_x3()
         assert IsClientPlayer() == 1
         """State 3"""

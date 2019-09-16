@@ -2,9 +2,9 @@
 def t102632_1():
     """State 0,68"""
     SetEventState(71320074, 0)
-    """State 19"""
     Label('L0')
     while Loop('mainloop'):
+        """State 19"""
         DebugEvent('待機')
         SetUpdateDistance(25)
         if CheckSelfDeath() == 1 and not GetEventStatus(1628) and GetDistanceToPlayer() <= 5:
@@ -139,8 +139,8 @@ def t102632_1():
                 Label('L6')
                 ClearTalkActionState()
                 if True:
-                    """State 6"""
                     while True:
+                        """State 6"""
                         # action:15000010:"Purchase Item"
                         AddTalkListData(1, 15000010, -1)
                         # action:15000350:"Learn gesture"

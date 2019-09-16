@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t130608_1():
-    """State 0,6"""
+    """State 0"""
     while True:
+        """State 6"""
         DebugEvent('待機　更新距離を25に設定')
         SetUpdateDistance(25)
         if CheckSelfDeath() == 1 and not GetEventStatus(1198):

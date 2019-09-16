@@ -2,8 +2,8 @@
 def t410120_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t410120_x2()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -43,8 +43,9 @@ def t410120_x1():
     return 0
 
 def t410120_x2():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t410120_x4()
         assert not GetEventStatus(74100100)
         """State 2"""

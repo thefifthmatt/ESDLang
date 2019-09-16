@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_31_7690():
     """Miraculous person"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m10_31_7690():
             elif KilledPlayer() != 0:
                 pass
         elif call.Get() == 0:
-            """State 10: Miracle People: Conversation_SubState"""
             while True:
+                """State 10: Miracle People: Conversation_SubState"""
                 call = talk_m10_31_x39()
                 if call.Done():
                     Continue('mainloop')
@@ -69,8 +70,9 @@ def talk_m10_31_7690():
 
 def talk_m10_31_7850():
     """Guardian knight"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -96,8 +98,8 @@ def talk_m10_31_7850():
             elif KilledPlayer() != 0:
                 pass
         elif call.Get() == 0:
-            """State 9: Guardian Knight: Conversation_SubState"""
             while True:
+                """State 9: Guardian Knight: Conversation_SubState"""
                 call = talk_m10_31_x32()
                 if call.Done():
                     Continue('mainloop')
@@ -269,8 +271,8 @@ def talk_m10_31_x6(z38=_, text14=_, text15=_, z39=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z38) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -878,8 +880,9 @@ def talk_m10_31_x31(z17=1011, lot1=_):
 
 def talk_m10_31_x32():
     """Guardian Knight: Conversation"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         ClearNpcMenuResults()
         if (GetPlayerCovenant() == 2) != 0:
             """State 6: Guardian Knight: Pledge Conversation_SubState"""
@@ -1045,8 +1048,8 @@ def talk_m10_31_x37():
     """Guardian Knight: NPC Menu"""
     """State 0,2: Menu: Start"""
     ClearNpcMenuResults()
-    """State 3: Menu: Branch"""
     while True:
+        """State 3: Menu: Branch"""
         # goods:63005000:"Duel bow" Gesture
         if (ItemCount(63005000, 1, 1, 0) > 1) != 0:
             """State 8: [Lib] Menu start: No gesture _SubState"""
@@ -1150,8 +1153,8 @@ def talk_m10_31_x41():
     """Miracles: NPC menu"""
     """State 0,2: Menu: Start"""
     ClearNpcMenuResults()
-    """State 5: [Lib] Menu start: General purpose_SubState"""
     while True:
+        """State 5: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_31_x12(z34=0, z35=220, z36=76900001, z37=0)
         if call.Get() == 2:
             """State 6: Miracle: Menu conversation_SubState"""

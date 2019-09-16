@@ -2,8 +2,8 @@
 def t400261_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t400261_x10()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -11,8 +11,9 @@ def t400261_1():
         assert not IsClientPlayer()
 
 def t400261_x0(z2=6000, flag3=1295, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -184,8 +185,9 @@ def t400261_x9():
     return 0
 
 def t400261_x10():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t400261_x12()
         assert (not GetEventStatus(1284) and not GetEventStatus(1285)) or not GetEventStatus(1318)
         """State 2"""
@@ -272,8 +274,9 @@ def t400261_x16():
         return 1
 
 def t400261_x17():
-    """State 0,6"""
+    """State 0"""
     while True:
+        """State 6"""
         call = t400261_x0(z2=6000, flag3=1295, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
         if call.Done():
             """State 4"""

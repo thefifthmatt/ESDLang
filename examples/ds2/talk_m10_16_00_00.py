@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_16_7520():
     """Woman Knight (Forgetting Castle)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m10_16_7520():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 9: [Lib] Female knight: Before last: Conversation_SubState"""
             while True:
+                """State 9: [Lib] Female knight: Before last: Conversation_SubState"""
                 call = talk_m10_16_x25(z11=102480, z12=102485, z13=102500, z14=116020109)
                 if call.Done():
                     Continue('mainloop')
@@ -69,8 +70,9 @@ def talk_m10_16_7520():
 
 def talk_m10_16_7530():
     """Kanemori: Aken"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -96,8 +98,8 @@ def talk_m10_16_7530():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 9: [Lib] Kanemori: Conversation_SubState"""
             while True:
+                """State 9: [Lib] Kanemori: Conversation_SubState"""
                 # action:1335:"Join the Bell Keeper covenant?", action:1345:"Abandon your covenant and\njoin the Bell Keeper covenant?"
                 call = talk_m10_16_x30(z1=60, action1=1335, action2=1345, z2=116020127)
                 if call.Done():
@@ -139,8 +141,9 @@ def talk_m10_16_7530():
 
 def talk_m10_16_7643():
     """EX Blacksmith"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -166,8 +169,8 @@ def talk_m10_16_7643():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: EX Blacksmith: Conversation_SubState"""
             while True:
+                """State 10: EX Blacksmith: Conversation_SubState"""
                 call = talk_m10_16_x50()
                 if call.Done():
                     Continue('mainloop')
@@ -207,8 +210,9 @@ def talk_m10_16_7643():
 
 def talk_m10_16_7680():
     """Spell mania"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         elif GetEventFlag(116010150) != 0:
@@ -239,8 +243,8 @@ def talk_m10_16_7680():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 12: Spermia: Conversation_SubState"""
             while True:
+                """State 12: Spermia: Conversation_SubState"""
                 call = talk_m10_16_x45()
                 if call.Done():
                     Continue('mainloop')
@@ -411,8 +415,8 @@ def talk_m10_16_x6(z49=_, text17=_, text18=_, z50=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z49) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -1623,8 +1627,8 @@ def talk_m10_16_x48():
     """Spermania: NPC menu"""
     """State 0,1: Menu: Start"""
     ClearNpcMenuResults()
-    """State 3: Menu: Branch"""
     while True:
+        """State 3: Menu: Branch"""
         # goods:63019000:"Mock" Gesture
         if (ItemCount(63019000, 1, 1, 0) > 1) != 0:
             """State 9: [Lib] Menu start: No gesture _SubState"""
@@ -1795,8 +1799,8 @@ def talk_m10_16_x53():
     """EX Blacksmith: NPC Menu"""
     """State 0,1: Menu: Start"""
     ClearNpcMenuResults()
-    """State 3: [Lib] Menu start: General purpose_SubState"""
     while True:
+        """State 3: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_16_x12(z45=0, z46=220, z47=76430000, z48=0)
         if call.Get() == 2:
             """State 6: EX Blacksmith: Menu conversation_SubState"""
@@ -1873,8 +1877,9 @@ def talk_m10_16_x55():
 
 def talk_m10_16_4100000():
     """Andyel"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         elif GetEventFlag(100740) != 0:

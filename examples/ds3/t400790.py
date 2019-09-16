@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def t400790_1():
-    """State 0,1"""
+    """State 0"""
     Label('L0')
     while True:
+        """State 1"""
         DebugEvent('待機')
         if not GetEventStatus(1901) and CheckActionButtonArea(6000) and not CheckSelfDeath():
             """State 4"""
@@ -150,8 +151,8 @@ def t400790_x2():
         assert HasTalkEnded() == 1
     """State 13"""
     ClearTalkListData()
-    """State 7"""
     while True:
+        """State 7"""
         # action:15000100:"Level Up"
         AddTalkListData(1, 15000100, -1)
         # action:15000005:"Leave"

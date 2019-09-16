@@ -2,8 +2,8 @@
 def t510750_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t510750_x20()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -179,8 +179,9 @@ def t510750_x9(flag1=75000252, text8=85000700):
 def t510750_x10(flag1=75000252, flag2=75000253, flag3=75000254, flag4=75000255, text4=85001000, text5=85001010,
                 text6=85001020, text7=85001030, flag5=75000250, text1=85000000, flag6=75000251, text2=85000300,
                 text3=85000000, flag7=1840, flag8=1841, flag9=1842, flag10=1843, val1=4.9, val2=5):
-    """State 0,5"""
+    """State 0"""
     while True:
+        """State 5"""
         call = t510750_x14(z5=6000, flag7=flag7, flag14=6000, flag15=6000, flag16=6000, flag17=6000)
         if call.Done():
             """State 3"""
@@ -257,8 +258,9 @@ def t510750_x13():
     return 0
 
 def t510750_x14(z5=6000, flag7=1840, flag14=6000, flag15=6000, flag16=6000, flag17=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""

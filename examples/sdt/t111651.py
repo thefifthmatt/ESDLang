@@ -2,8 +2,8 @@
 def t111651_1():
     """State 0,1"""
     assert DoesSelfHaveSpEffect(30000) == 1
-    """State 2"""
     while True:
+        """State 2"""
         assert not (CheckSpecificPersonMenuIsOpen(63, 2) == 1 and not CheckSpecificPersonGenericDialogIsOpen(2))
         """State 3"""
         assert GetCurrentStateElapsedTime() > 0.1
@@ -86,8 +86,9 @@ def t111651_x2(text1=65000700, flag1=71118505, flag2=1, mode1=1):
     return 0
 
 def t111651_x3(flag1=71118505, text1=65000700, val1=40, val2=45):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t111651_x4(flag1=flag1, text1=text1, val1=val1, val2=val2)
         if call.Done():
             break
@@ -117,8 +118,9 @@ def t111651_x5():
     return 0
 
 def t111651_x6(val1=40, val2=45, flag1=71118505, text1=65000700):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         if GetEventStatus(flag1) == 1:
             """State 2"""
             assert not GetEventStatus(flag1)

@@ -2,8 +2,8 @@
 def t310021_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t310021_x8()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -23,8 +23,9 @@ def t310021_x0(action2=_):
         return 1
 
 def t310021_x1(z9=6030, flag2=6001, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -77,8 +78,8 @@ def t310021_x3(action1=_):
 def t310021_x4():
     """State 0,6"""
     MainBonfireMenuFlag()
-    """State 1"""
     while True:
+        """State 1"""
         ClearTalkListData()
         """State 2"""
         # action:15000500:"Request Absolution"
@@ -124,8 +125,9 @@ def t310021_x7():
     return 0
 
 def t310021_x8():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t310021_x10()
         assert not GetEventStatus(6001)
         """State 2"""
@@ -139,8 +141,9 @@ def t310021_x9():
     return 0
 
 def t310021_x10():
-    """State 0,4"""
+    """State 0"""
     while True:
+        """State 4"""
         assert t310021_x1(z9=6030, flag2=6001, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
         """State 2"""
         call = t310021_x5()

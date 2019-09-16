@@ -2,8 +2,8 @@
 def t450552_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t450552_x5()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -83,8 +83,9 @@ def t450552_x4():
     return 0
 
 def t450552_x5():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t450552_x7()
         assert not GetEventStatus(14505810) or not GetEventStatus(14505802)
         """State 2"""
@@ -111,8 +112,9 @@ def t450552_x8():
     return 0
 
 def t450552_x9(z1=-1):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         if IsPlayerDead() == 1:
             """State 2"""
             call = t450552_x4()

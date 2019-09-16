@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t100628_1():
-    """State 0,6"""
+    """State 0"""
     while True:
+        """State 6"""
         DebugEvent('unknow')
         if CheckSelfDeath() == 1 and not GetEventStatus(1513) and GetDistanceToPlayer() <= 5:
             """State 17"""

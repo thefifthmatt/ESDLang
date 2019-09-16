@@ -7,8 +7,9 @@ def t111111_1():
 
 def t111111_x0(val1=_, flag1=6001, flag2=6001, flag3=6001, flag4=6001, flag5=6001, mode1=0, flag6=6000,
                val2=-1, val3=-1, val4=-1, val5=-1, val6=-1):
-    """State 0,3"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 3"""
         call = t111111_x8(val1=val1, flag1=flag1, flag2=flag2, flag3=flag3, flag4=flag4, flag5=flag5,
                           mode1=mode1, flag6=flag6)
         if call.Done():
@@ -16,8 +17,8 @@ def t111111_x0(val1=_, flag1=6001, flag2=6001, flag3=6001, flag4=6001, flag5=600
         elif (not f116(-1) == val2 and not f116(-1) == val3 and not f116(-1) == val4 and not DoesSelfHaveSpEffect(4510)
               and not val2 == -1 and not f116(-1) == val5 and not f116(-1) == val6):
             pass
-        """State 1"""
         while True:
+            """State 1"""
             assert (f116(-1) == val2 or f116(-1) == val3 or f116(-1) == val4 or (DoesSelfHaveSpEffect(4510)
                     == 1 and f116(-1) == val5 and f116(-1) == val6))
             """State 2"""
@@ -147,14 +148,15 @@ def t111111_x7(z1=10000, z2=_, val7=_, mode2=1, val8=5):
         return 1
 
 def t111111_x8(val1=_, flag1=6001, flag2=6001, flag3=6001, flag4=6001, flag5=6001, mode1=0, flag6=6000):
-    """State 0,1"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 1"""
         assert not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not IsCharacterDisabled()
         """State 3"""
         assert (GetEventStatus(flag1) == 1 or GetEventStatus(flag2) == 1 or GetEventStatus(flag3) ==
                 1 or GetEventStatus(flag4) == 1 or GetEventStatus(flag5) == 1)
-        """State 4"""
         while True:
+            """State 4"""
             assert not GetEventStatus(flag6)
             """State 2"""
             if (not (not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not
@@ -206,8 +208,9 @@ def t111111_x10():
     return 0
 
 def t111111_x11():
-    """State 0,3"""
+    """State 0"""
     while True:
+        """State 3"""
         if GetEventStatus(71110072) == 1 and not GetEventStatus(8415):
             """State 2,6"""
             Label('L0')

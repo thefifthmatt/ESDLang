@@ -10,8 +10,9 @@ def t100100_1():
         pass
 
 def t100100_x0(z2=6910, flag2=6001, flag3=6001, flag4=6001, flag5=6001, flag6=6001):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -83,8 +84,9 @@ def t100100_x3(text1=90050000, z1=71000100, flag1=0, mode1=1):
     return 0
 
 def t100100_x4():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t100100_x0(z2=6910, flag2=6001, flag3=6001, flag4=6001, flag5=6001, flag6=6001)
         if call.Done():
             """State 2"""

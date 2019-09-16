@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_32_3070():
     """Durahan"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m10_32_3070():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 9: Durahan: Conversation_SubState"""
             while True:
+                """State 9: Durahan: Conversation_SubState"""
                 call = talk_m10_32_x51()
                 if call.Done():
                     Continue('mainloop')
@@ -69,8 +70,9 @@ def talk_m10_32_3070():
 
 def talk_m10_32_5020():
     """Manscorpion"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -128,8 +130,8 @@ def talk_m10_32_5020():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Manscorpion 会話: Conversation_SubState"""
             while True:
+                """State 10: Manscorpion 会話: Conversation_SubState"""
                 call = talk_m10_32_x55()
                 if call.Done():
                     Continue('mainloop')
@@ -206,8 +208,9 @@ def talk_m10_32_5020():
 
 def talk_m10_32_7250():
     """Shenzhen Pilgrim (Shadow Forest)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -233,8 +236,8 @@ def talk_m10_32_7250():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: [Lib] Pilgrim in Shenzhen: Conversation_SubState"""
             while True:
+                """State 10: [Lib] Pilgrim in Shenzhen: Conversation_SubState"""
                 call = talk_m10_32_x22(z1=132020104, z2=102327, z3=132020107, z4=10323000, z5=102333,
                                        z6=60, z7=102317, z8=132020109)
                 if call.Done():
@@ -277,8 +280,9 @@ def talk_m10_32_7250():
 
 def talk_m10_32_7420():
     """Wandering Warrior (Shadow Forest)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -304,8 +308,8 @@ def talk_m10_32_7420():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Wandering Warrior: Conversation_SubState"""
             while True:
+                """State 10: Wandering Warrior: Conversation_SubState"""
                 call = talk_m10_32_x58()
                 if call.Done():
                     Continue('mainloop')
@@ -345,8 +349,9 @@ def talk_m10_32_7420():
 
 def talk_m10_32_7760():
     """Upper weapon store (Shadow Forest)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -372,8 +377,8 @@ def talk_m10_32_7760():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Higher weapon shop: Conversation_SubState"""
             while True:
+                """State 10: Higher weapon shop: Conversation_SubState"""
                 call = talk_m10_32_x59()
                 if call.Done():
                     Continue('mainloop')
@@ -544,8 +549,8 @@ def talk_m10_32_x6(z49=_, text15=_, text16=_, z50=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z49) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -963,8 +968,8 @@ def talk_m10_32_x24(z2=102327, z3=132020107, z4=10323000, z6=60, z8=132020109):
     """
     """State 0,1: Menu: Start"""
     ClearNpcMenuResults()
-    """State 2: Menu: Branch"""
     while True:
+        """State 2: Menu: Branch"""
         if GetEventFlag(100979) != 0:
             """State 10: [Lib] Menu start: No passing _SubState"""
             call = talk_m10_32_x12(z46=0, z47=220, z27=72500001, z48=0)
@@ -1487,8 +1492,8 @@ def talk_m10_32_x43(goods3=_, z26=_, z27=_, z28=_):
     if GetEventFlag(z26) != 0:
         pass
     else:
-        """State 3: Menu: Branch"""
         while True:
+            """State 3: Menu: Branch"""
             if (ItemCount(goods3, 1, 1, 0) > 1) != 0:
                 break
             else:
@@ -1720,8 +1725,8 @@ def talk_m10_32_x53():
     """Durahan: NPC menu"""
     """State 0,1: Menu: Start"""
     ClearNpcMenuSelection()
-    """State 3: Menu: Branch"""
     while True:
+        """State 3: Menu: Branch"""
         # goods:63017000:"Decapitate" Gesture
         if (ItemCount(63017000, 1, 1, 0) > 1) != 0:
             """State 8: [Lib] Menu start: No gesture _SubState"""

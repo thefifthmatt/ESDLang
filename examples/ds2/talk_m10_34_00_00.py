@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_34_7560():
     """Mouse king (Saint Cemetery)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m10_34_7560():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 8: [Lib] The mouse king: Conversation_SubState"""
             while True:
+                """State 8: [Lib] The mouse king: Conversation_SubState"""
                 call = talk_m10_34_x18(z1=60, z2=102970, z3=10349000, z4=134020107)
                 if call.Done():
                     Continue('mainloop')
@@ -156,8 +157,8 @@ def talk_m10_34_x4(z39=134020102, text13=75609500, text14=75609500, z40=75609500
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z39) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -489,8 +490,9 @@ def talk_m10_34_x18(z1=60, z2=102970, z3=10349000, z4=134020107):
     z3: Key guide parameters
     z4: For trophies: Area and other flags
     """
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         ClearNpcMenuResults()
         if (GetPlayerCovenant() == 5) != 0:
             """State 4: Mouse king: pledge conversation_SubState"""
@@ -577,11 +579,12 @@ def talk_m10_34_x21(z1=60):
     """The Mouse King: NPC Menu
     z1: Current pledge rank: Area variable
     """
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     Label('L0')
     while Loop('mainloop'):
-        """State 3: [Lib] Menu start: General purpose_SubState"""
+        """State 1: Menu: Start"""
         while True:
+            """State 3: [Lib] Menu start: General purpose_SubState"""
             call = talk_m10_34_x9(z35=0, z36=220, z37=75600000, z38=0)
             if call.Get() == 2:
                 """State 6: The Mouse King: Menu Conversation_SubState"""

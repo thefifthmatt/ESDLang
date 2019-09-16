@@ -2,8 +2,8 @@
 def t330230_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t330230_x11()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -11,8 +11,9 @@ def t330230_1():
         assert not IsClientPlayer()
 
 def t330230_x0(z5=6000, flag4=1235, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -297,8 +298,9 @@ def t330230_x10():
     return 0
 
 def t330230_x11():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t330230_x13(z1=3)
         assert not GetEventStatus(1220)
         """State 2"""
@@ -358,8 +360,9 @@ def t330230_x17():
     return 0
 
 def t330230_x18():
-    """State 0,5"""
+    """State 0"""
     while True:
+        """State 5"""
         call = t330230_x0(z5=6000, flag4=1235, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""

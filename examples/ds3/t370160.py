@@ -2,8 +2,8 @@
 def t370160_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t370160_x15()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -24,8 +24,9 @@ def t370160_x0(action2=12006001):
         return 1
 
 def t370160_x1(z9=_, flag5=1095, flag6=6000, flag7=6000, flag8=6000, flag9=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -156,8 +157,8 @@ def t370160_x9(goods1=372, z6=12000005):
 def t370160_x10():
     """State 0,8"""
     MainBonfireMenuFlag()
-    """State 1"""
     while True:
+        """State 1"""
         ClearTalkListData()
         """State 2"""
         # action:15000415:"Offer <?gdsparam@372?>"
@@ -295,8 +296,9 @@ def t370160_x14():
     return 0
 
 def t370160_x15():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t370160_x17()
         assert not GetEventStatus(1095)
         """State 2"""
@@ -460,8 +462,9 @@ def t370160_x23():
     return 0
 
 def t370160_x24():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         if not GetEventStatus(73700130):
             """State 9"""
             # talk:16000700:"Long ago, our father Gwyn, lamenting the waning of the fire, became cinder of his own will."
@@ -618,8 +621,9 @@ def t370160_x27():
     return 0
 
 def t370160_x28():
-    """State 0,4"""
+    """State 0"""
     while True:
+        """State 4"""
         call = t370160_x29()
         if call.Done():
             """State 2"""

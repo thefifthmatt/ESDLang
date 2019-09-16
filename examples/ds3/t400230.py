@@ -2,8 +2,8 @@
 def t400230_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t400230_x14()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -11,8 +11,9 @@ def t400230_1():
         assert not IsClientPlayer()
 
 def t400230_x0(z5=6230, flag5=1235, flag6=6000, flag7=6000, flag8=6000, flag9=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -136,8 +137,9 @@ def t400230_x7(z1=34, z2=9035, flag1=6084):
     return 0
 
 def t400230_x8(goods1=2132, goods2=2133, goods3=2134, goods4=2140):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         ClearTalkListData()
         assert (not CheckSpecificPersonGenericDialogIsOpen(2) and not (CheckSpecificPersonMenuIsOpen(-1,
                 2) == 1 and not CheckSpecificPersonGenericDialogIsOpen(2)))
@@ -318,8 +320,9 @@ def t400230_x13():
     return 0
 
 def t400230_x14():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t400230_x18()
         assert not GetEventStatus(1221)
         """State 2"""
@@ -538,8 +541,9 @@ def t400230_x24():
     return 0
 
 def t400230_x25():
-    """State 0,5"""
+    """State 0"""
     while True:
+        """State 5"""
         call = t400230_x0(z5=6230, flag5=1235, flag6=6000, flag7=6000, flag8=6000, flag9=6000)
         if call.Done():
             """State 3"""

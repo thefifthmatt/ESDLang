@@ -2,8 +2,8 @@
 def t510020_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t510020_x10()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -24,8 +24,9 @@ def t510020_x0(action2=12000026):
         return 1
 
 def t510020_x1(z8=6018, flag4=6001, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -135,8 +136,9 @@ def t510020_x9(z6=27, lot2=4288, lot3=4287):
     return 0
 
 def t510020_x10():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t510020_x12()
         assert not GetEventStatus(6001)
         """State 2"""
@@ -166,8 +168,8 @@ def t510020_x14(lot1=4280, goods1=379, lot2=4288, lot3=4287, z1=15000406, action
                 z10=9000, flag4=6001, z11=75100956, z12=75100957):
     """State 0"""
     ClearPlayerDamageInfo()
-    """State 2"""
     while True:
+        """State 2"""
         assert t510020_x1(z8=z8, flag4=flag4, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         """State 3"""
         ClearPlayerDamageInfo()
@@ -205,8 +207,8 @@ def t510020_x15(lot1=4280, goods1=379, lot2=4288, lot3=4287, z1=15000406, action
     assert t510020_x9(z6=z6, lot2=lot2, lot3=lot3)
     """State 4"""
     MainBonfireMenuFlag()
-    """State 2"""
     while True:
+        """State 2"""
         ClearTalkListData()
         """State 3"""
         AddTalkListData(2, action1, -1)

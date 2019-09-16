@@ -56,8 +56,9 @@ def t112500_x2(text1=90000050, flag1=0, mode1=1):
     return 0
 
 def t112500_x3(text1=90000050, val1=10, z1=962050):
-    """State 0,2"""
+    """State 0"""
     while True:
+        """State 2"""
         call = t112500_x4(text1=text1, val1=val1, z1=z1)
         if CheckSelfDeath() == 1:
             break
@@ -70,12 +71,13 @@ def t112500_x3(text1=90000050, val1=10, z1=962050):
     return 0
 
 def t112500_x4(text1=90000050, val1=10, z1=962050):
-    """State 0,5"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 5"""
         if (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer() and
             not IsPlayerDead() and not IsCharacterDisabled()):
-            """State 1"""
             while True:
+                """State 1"""
                 if GetDistanceToPlayer() < val1 and not DoesSelfHaveSpEffect(4600):
                     """State 12"""
                     SetEventState(79625000, 1)

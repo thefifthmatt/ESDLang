@@ -2,8 +2,8 @@
 def t510780_1():
     """State 0,1"""
     assert not GetEventStatus(15105805) or IsClientPlayer() == 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t510780_x8()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -123,8 +123,9 @@ def t510780_x6():
     return 0
 
 def t510780_x7(text4=_, text5=_, text6=_):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         if GetEventStatus(75100131) == 1 and not GetEventStatus(15100801):
             """State 2,6"""
             call = t510780_x14(text4=text4, text5=text5)
@@ -152,8 +153,9 @@ def t510780_x7(text4=_, text5=_, text6=_):
             assert t510780_x0()
 
 def t510780_x8():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t510780_x10()
         assert not GetEventStatus(1900)
         """State 2"""
@@ -161,8 +163,9 @@ def t510780_x8():
         assert GetEventStatus(1900) == 1
 
 def t510780_x9():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t510780_x17()
         assert not GetEventStatus(1900)
         """State 2"""
@@ -170,8 +173,9 @@ def t510780_x9():
         assert GetEventStatus(1900) == 1
 
 def t510780_x10():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         # talk:88000000:"Unknowing visitor, return from whence thou camest.", talk:88000100:"Turn back, unknowing visitor.", talk:88000200:"Foolishness. The King's decree is no trifling matter.", talk:88000600:" ", talk:88000300:"Spear of the church, by the sacred decree, protect our Princess."
         call = t510780_x15(text4=88000000, text5=88000100, text6=88000200, text7=88000600, text8=88000300)
         assert GetEventStatus(15100723) == 1
@@ -217,8 +221,9 @@ def t510780_x14(text4=_, text5=_):
     return 0
 
 def t510780_x15(text4=_, text5=_, text6=_, text7=_, text8=_):
-    """State 0,2"""
+    """State 0"""
     while True:
+        """State 2"""
         call = t510780_x12(text4=text4, text5=text5, text6=text6)
         if CheckSelfDeath() == 1:
             """State 1"""
@@ -238,8 +243,9 @@ def t510780_x16():
     return 0
 
 def t510780_x17():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         # talk:88000200:"Foolishness. The King's decree is no trifling matter.", talk:88000600:" ", talk:88000300:"Spear of the church, by the sacred decree, protect our Princess."
         call = t510780_x18(text1=88000200, text2=88000600, text3=88000300)
         assert GetEventStatus(15100723) == 1
@@ -249,8 +255,9 @@ def t510780_x17():
         assert GetEventStatus(15100723) == 1
 
 def t510780_x18(text1=_, text2=_, text3=_):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t510780_x19(text1=text1)
         if CheckSelfDeath() == 1:
             """State 2"""

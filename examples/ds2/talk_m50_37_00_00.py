@@ -422,13 +422,14 @@ def talk_m50_37_110021():
 
 def talk_m50_37_110030():
     """White Miko: Conversation"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
-            """State 5: White shrine maiden_SubState"""
             while True:
+                """State 5: White shrine maiden_SubState"""
                 call = talk_m50_37_x7()
                 if call.Done():
                     Continue('mainloop')

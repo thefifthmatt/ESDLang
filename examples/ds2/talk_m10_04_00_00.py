@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_04_7000():
     """Dragon Lady (Madura)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m10_04_7000():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 9: Dragon Miko: Conversation_SubState"""
             while True:
+                """State 9: Dragon Miko: Conversation_SubState"""
                 call = talk_m10_04_x70()
                 if call.Done():
                     Continue('mainloop')
@@ -82,8 +83,9 @@ def talk_m10_04_7000():
 
 def talk_m10_04_7040():
     """Ladder shop (Madura)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -109,8 +111,8 @@ def talk_m10_04_7040():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 8: Ladder shop: Conversation_SubState"""
             while True:
+                """State 8: Ladder shop: Conversation_SubState"""
                 call = talk_m10_04_x52()
                 if call.Done():
                     Continue('mainloop')
@@ -150,8 +152,9 @@ def talk_m10_04_7040():
 
 def talk_m10_04_7410():
     """Blue religious warrior"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -177,8 +180,8 @@ def talk_m10_04_7410():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 9: Seisho Warrior: Conversation_SubState"""
             while True:
+                """State 9: Seisho Warrior: Conversation_SubState"""
                 call = talk_m10_04_x54()
                 if call.Done():
                     Continue('mainloop')
@@ -219,8 +222,9 @@ def talk_m10_04_7410():
 
 def talk_m10_04_7510():
     """Map writing (Madura)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -246,8 +250,8 @@ def talk_m10_04_7510():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Map writing: Conversation_SubState"""
             while True:
+                """State 10: Map writing: Conversation_SubState"""
                 call = talk_m10_04_x104()
                 if call.Done():
                     Continue('mainloop')
@@ -287,8 +291,9 @@ def talk_m10_04_7510():
 
 def talk_m10_04_7540():
     """Yorozu Baba (Madura)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -317,8 +322,8 @@ def talk_m10_04_7540():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 8: Yorozu Baba: Conversation_SubState"""
             while True:
+                """State 8: Yorozu Baba: Conversation_SubState"""
                 call = talk_m10_04_x59()
                 if call.Done():
                     Continue('mainloop')
@@ -361,8 +366,9 @@ def talk_m10_04_7540():
 
 def talk_m10_04_7610():
     """Armor shop"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -388,8 +394,8 @@ def talk_m10_04_7610():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Armor shop: Conversation_SubState"""
             while True:
+                """State 10: Armor shop: Conversation_SubState"""
                 call = talk_m10_04_x95()
                 if call.Done():
                     Continue('mainloop')
@@ -429,8 +435,9 @@ def talk_m10_04_7610():
 
 def talk_m10_04_7620():
     """Material store (Madura)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -456,8 +463,8 @@ def talk_m10_04_7620():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Material shop: Conversation_SubState"""
             while True:
+                """State 10: Material shop: Conversation_SubState"""
                 call = talk_m10_04_x66()
                 if call.Done():
                     Continue('mainloop')
@@ -497,8 +504,9 @@ def talk_m10_04_7620():
 
 def talk_m10_04_7630():
     """Sorcerer (Madura)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -527,8 +535,8 @@ def talk_m10_04_7630():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Magician: Conversation_SubState"""
             while True:
+                """State 10: Magician: Conversation_SubState"""
                 call = talk_m10_04_x110()
                 if call.Done():
                     Continue('mainloop')
@@ -571,8 +579,9 @@ def talk_m10_04_7630():
 
 def talk_m10_04_7640():
     """blacksmith"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -598,8 +607,8 @@ def talk_m10_04_7640():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Blacksmith: Conversation_SubState"""
             while True:
+                """State 10: Blacksmith: Conversation_SubState"""
                 call = talk_m10_04_x84()
                 if call.Done():
                     Continue('mainloop')
@@ -639,8 +648,9 @@ def talk_m10_04_7640():
 
 def talk_m10_04_7660():
     """Magician (Madura)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -666,8 +676,8 @@ def talk_m10_04_7660():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Magician: Conversation_SubState"""
             while True:
+                """State 10: Magician: Conversation_SubState"""
                 call = talk_m10_04_x75()
                 if call.Done():
                     Continue('mainloop')
@@ -707,8 +717,9 @@ def talk_m10_04_7660():
 
 def talk_m10_04_7690():
     """Miracle (Madura)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -734,8 +745,8 @@ def talk_m10_04_7690():
             elif KilledPlayer() != 0:
                 pass
         elif call.Get() == 0:
-            """State 10: Miracle People: Conversation_SubState"""
             while True:
+                """State 10: Miracle People: Conversation_SubState"""
                 call = talk_m10_04_x79()
                 if call.Done():
                     Continue('mainloop')
@@ -785,16 +796,17 @@ def talk_m10_04_7691():
 
 def talk_m10_04_7770():
     """Cat"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
             pass
         """State 3: [Lib] Event: Branch_SubState"""
         assert talk_m10_04_x9(z77=103870, z78=104370, z79=104020181) == 0
-        """State 10: Cat: Conversation_SubState"""
         while True:
+            """State 10: Cat: Conversation_SubState"""
             call = talk_m10_04_x106()
             if call.Done():
                 Continue('mainloop')
@@ -826,8 +838,9 @@ def talk_m10_04_7770():
 
 def talk_m10_04_7860():
     """Strong man's stele"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Menu: Start"""
         if IsGuest() != 0:
             break
         elif GetEventFlag(104020097) != 0:
@@ -847,8 +860,8 @@ def talk_m10_04_7860():
             Goto('L0')
         elif PlayerIsInEventAction(9) != 0:
             pass
-        """State 7: [Lib] Menu start: General purpose_SubState"""
         while True:
+            """State 7: [Lib] Menu start: General purpose_SubState"""
             call = talk_m10_04_x13(z70=0, z71=-1, z72=78601000, z73=0)
             if call.Get() == 0:
                 break
@@ -871,8 +884,8 @@ def talk_m10_04_7860():
                             z13=103110, z14=103111, z15=103112))
                 elif call.Get() == 0:
                     pass
-        """State 4: Menu: Event action: End"""
         while True:
+            """State 4: Menu: Event action: End"""
             EndPlayerActionRequest()
             if (GetStateTime() > GetRandomValueForStateTime(1, 1)) != 0:
                 """State 6: Menu: Event Action: Insurance"""
@@ -1021,8 +1034,8 @@ def talk_m10_04_x6(z75=_, text25=_, text26=_, z76=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z75) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -2346,8 +2359,9 @@ def talk_m10_04_x56():
 
 def talk_m10_04_x57():
     """Seishin Warrior: Menu"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Menu: Start"""
         # goods:63004000:"Welcome" Gesture
         if (ItemCount(63004000, 1, 1, 0) > 1) != 0:
             """State 7: [Lib] Menu start: No gesture _SubState"""
@@ -2405,8 +2419,9 @@ def talk_m10_04_x57():
 
 def talk_m10_04_x58():
     """Seisho Warrior: Menu conversation"""
-    """State 0,1,3: Menu conversation: Branch"""
+    """State 0,1: Menu conversation: Start"""
     while True:
+        """State 3: Menu conversation: Branch"""
         if (GetEventFlag(102380) != 1 and (GetPlayerDeathCountByPhantomType(0) > 100) != 0 and GetEventFlag(104140)
             != 1):
             break
@@ -2483,9 +2498,9 @@ def talk_m10_04_x60():
 
 def talk_m10_04_x61():
     """Yorozu Baba: NPC Menu"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while True:
-        """State 4: [Lib] Menu start: General purpose_SubState"""
+        """State 1,4: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_04_x13(z70=0, z71=220, z72=75400000, z73=0)
         if call.Get() == 2:
             """State 5: Yorozu Baba: Menu conversation_SubState"""
@@ -2539,8 +2554,8 @@ def talk_m10_04_x63():
     """Ladder shop: NPC menu"""
     """State 0,1: Menu: Start"""
     SetEventFlag(104020096, 0)
-    """State 2: Menu: Branch"""
     while True:
+        """State 2: Menu: Branch"""
         # goods:63016000:"Prostration" Gesture
         if GetEventFlag(104010080) != 0 and (ItemCount(63016000, 1, 1, 0) > 1) != 0:
             """State 10: Menu start: [Death] No gestures_SubState"""
@@ -2756,9 +2771,9 @@ def talk_m10_04_x67():
 
 def talk_m10_04_x68():
     """Material shop: NPC menu"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while True:
-        """State 5: [Lib] Menu start: General purpose_SubState"""
+        """State 1,5: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_04_x13(z70=0, z71=220, z72=76200000, z73=0)
         if call.Get() == 2:
             """State 3: Material shop: Menu conversation_SubState"""
@@ -2882,9 +2897,9 @@ def talk_m10_04_x72():
 
 def talk_m10_04_x73():
     """Dragon Miko: NPC Menu"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while True:
-        """State 2: [Lib] Menu start: General purpose_SubState"""
+        """State 1,2: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_04_x13(z70=0, z71=220, z72=70000000, z73=0)
         if call.Get() == 2:
             """State 3: Dragon Miko: Menu Conversation_SubState"""
@@ -2990,8 +3005,9 @@ def talk_m10_04_x76():
 
 def talk_m10_04_x77():
     """Magician: NPC Menu"""
-    """State 0,1,3: [Lib] Menu start: General purpose_SubState"""
+    """State 0,1: Menu: Start"""
     while True:
+        """State 3: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_04_x13(z70=0, z71=220, z72=76600000, z73=0)
         if call.Get() == 2:
             """State 5: Magician: Menu conversation_SubState"""
@@ -3075,8 +3091,8 @@ def talk_m10_04_x81():
     """State 0,2: Menu: Start"""
     ClearNpcMenuResults()
     SetEventFlag(104020098, 0)
-    """State 3: Menu: Branch"""
     while True:
+        """State 3: Menu: Branch"""
         if GetEventFlag(104320) != 0:
             """State 9: [Lib] Menu start: At death_SubState"""
             call = talk_m10_04_x13(z70=0, z71=220, z72=76900001, z73=0)
@@ -3264,9 +3280,9 @@ def talk_m10_04_x86():
 
 def talk_m10_04_x87():
     """Blacksmith: NPC menu"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while True:
-        """State 4: [Lib] Menu start: General purpose_SubState"""
+        """State 1,4: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_04_x13(z70=0, z71=220, z72=76400000, z73=0)
         if call.Get() == 2:
             """State 5: Blacksmith: Menu conversation_SubState"""
@@ -3614,9 +3630,9 @@ def talk_m10_04_x98():
 
 def talk_m10_04_x99():
     """Armor shop: NPC menu"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while True:
-        """State 4: [Lib] Menu start: General purpose_SubState"""
+        """State 1,4: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_04_x13(z70=0, z71=220, z72=76100000, z73=0)
         if call.Get() == 2:
             """State 9: Armor shop: Menu conversation_SubState"""
@@ -3836,8 +3852,9 @@ def talk_m10_04_x106():
 
 def talk_m10_04_x107():
     """Cat: NPC menu"""
-    """State 0,1,3: [Lib] Menu start: General purpose_SubState"""
+    """State 0,1: Menu: Start"""
     while True:
+        """State 3: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_04_x13(z70=0, z71=220, z72=77700000, z73=5)
         if call.Get() == 2:
             """State 5: Cat: Menu conversation_SubState"""
@@ -3963,8 +3980,9 @@ def talk_m10_04_x110():
 
 def talk_m10_04_x111():
     """Magician: NPC menu"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Menu: Start"""
         if GetEventFlag(104270) != 0:
             """State 7: [Lib] Menu start: Death_SubState"""
             call = talk_m10_04_x13(z70=0, z71=220, z72=76300001, z73=0)

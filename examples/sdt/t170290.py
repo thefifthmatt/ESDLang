@@ -342,8 +342,9 @@ def t170290_x8():
 
 def t170290_x9(val6=7002900, flag10=6001, flag14=6000, flag15=6000, flag16=6000, flag17=6000, mode7=0,
                flag9=6000, val7=1000000, val8=1000000, val9=1000000, val10=1000000, val11=1000000):
-    """State 0,3"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 3"""
         call = t170290_x38(val6=val6, flag10=flag10, flag14=flag14, flag15=flag15, flag16=flag16, flag17=flag17,
                            mode7=mode7, flag9=flag9)
         if call.Done():
@@ -351,8 +352,8 @@ def t170290_x9(val6=7002900, flag10=6001, flag14=6000, flag15=6000, flag16=6000,
         elif (not f116(-1) == val7 and not f116(-1) == val8 and not f116(-1) == val9 and not DoesSelfHaveSpEffect(4510)
               and not val7 == -1 and not f116(-1) == val10 and not f116(-1) == val11):
             pass
-        """State 1"""
         while True:
+            """State 1"""
             assert (f116(-1) == val7 or f116(-1) == val8 or f116(-1) == val9 or (DoesSelfHaveSpEffect(4510)
                     == 1 and f116(-1) == val10 and f116(-1) == val11))
             """State 2"""
@@ -484,8 +485,8 @@ def t170290_x14(text1=_, flag23=_, mode14=1):
 def t170290_x15(lot1=_):
     """State 0,1"""
     GetItemFromItemLot(lot1)
-    """State 2"""
     while True:
+        """State 2"""
         assert not IsMenuOpen(63) and GetCurrentStateElapsedTime() > 0.01
         """State 3"""
         assert GetCurrentStateElapsedTime() > 0.01
@@ -501,8 +502,9 @@ def t170290_x16(flag5=1379, flag6=1375, flag7=1376, val1=5, val2=10, val3=12, va
                 val6=7002900, flag9=6000, flag10=6001, flag11=71110119, flag12=6000, mode1=1, val7=1000000,
                 val8=1000000, val9=1000000, mode2=1, mode3=1, mode4=0, val10=1000000, val11=1000000,
                 mode5=0, flag13=6000, mode6=0):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         RemoveMyAggro()
         call = t170290_x17(val1=val1, val2=val2, val3=val3, val4=val4, val5=val5, flag8=flag8, val6=val6,
                            flag9=flag9, flag10=flag10, flag11=flag11, flag12=flag12, mode1=mode1, val7=val7,
@@ -526,8 +528,9 @@ def t170290_x16(flag5=1379, flag6=1375, flag7=1376, val1=5, val2=10, val3=12, va
 def t170290_x17(val1=5, val2=10, val3=12, val4=10, val5=12, flag8=6000, val6=7002900, flag9=6000, flag10=6001,
                 flag11=71110119, flag12=6000, mode1=1, val7=1000000, val8=1000000, val9=1000000, mode2=1,
                 mode3=1, mode4=0, val10=1000000, val11=1000000, mode5=0, mode6=0):
-    """State 0,4"""
+    """State 0"""
     while True:
+        """State 4"""
         call = t170290_x34(val6=val6, flag9=flag9, flag10=flag10, val7=val7, val8=val8, val9=val9, val10=val10,
                            val11=val11)
         if call.Done():
@@ -657,8 +660,9 @@ def t170290_x24():
     return 0
 
 def t170290_x25(val2=10, val3=12):
-    """State 0,2,1"""
+    """State 0,2"""
     while True:
+        """State 1"""
         assert GetDistanceToPlayer() < val2
         """State 3"""
         call = t170290_x30()
@@ -734,8 +738,9 @@ def t170290_x31():
     return 0
 
 def t170290_x32(val2=10, val3=12):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t170290_x25(val2=val2, val3=val3)
         if f122() == 1:
             break
@@ -808,14 +813,15 @@ def t170290_x37():
 
 def t170290_x38(val6=7002900, flag10=6001, flag14=6000, flag15=6000, flag16=6000, flag17=6000, mode7=0,
                 flag9=6000):
-    """State 0,1"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 1"""
         assert not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not IsCharacterDisabled()
         """State 3"""
         assert (GetEventStatus(flag10) == 1 or GetEventStatus(flag14) == 1 or GetEventStatus(flag15)
                 == 1 or GetEventStatus(flag16) == 1 or GetEventStatus(flag17) == 1)
-        """State 4"""
         while True:
+            """State 4"""
             assert not GetEventStatus(flag9)
             """State 2"""
             if (not (not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not

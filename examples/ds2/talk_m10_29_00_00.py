@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_29_7430():
     """Tsukimitsu (Connection between Madura and Kagenomori): first encounter)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m10_29_7430():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Tsukimitsu: Conversation_SubState"""
             while True:
+                """State 10: Tsukimitsu: Conversation_SubState"""
                 call = talk_m10_29_x23()
                 if call.Done():
                     Continue('mainloop')
@@ -69,8 +70,9 @@ def talk_m10_29_7430():
 
 def talk_m10_29_7630():
     """Sorcerer (Madura and Shadow Forest connection)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         elif GetEventFlag(129010110) != 0:
@@ -104,8 +106,8 @@ def talk_m10_29_7630():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 12: Magician: Conversation_SubState"""
             while True:
+                """State 12: Magician: Conversation_SubState"""
                 call = talk_m10_29_x26()
                 if call.Done():
                     Continue('mainloop')
@@ -279,8 +281,8 @@ def talk_m10_29_x6(z16=_, text6=_, text7=_, z17=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z16) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -546,8 +548,8 @@ def talk_m10_29_x20(goods1=63008000, z5=102435, z6=74300000, z7=74300001):
     if GetEventFlag(z5) != 0:
         pass
     else:
-        """State 3: Menu: Branch"""
         while True:
+            """State 3: Menu: Branch"""
             # goods:63008000:"Joy" Gesture
             if (ItemCount(goods1, 1, 1, 0) > 1) != 0:
                 break
@@ -613,8 +615,9 @@ def talk_m10_29_x22(z4=1011, lot1=_):
 
 def talk_m10_29_x23():
     """Moonlight Jun: Conversation"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         ClearNpcMenuResults()
         if (GetEventFlag(102420) != 1 and GetEventFlag(102436) != 0 and GetEventFlag(104160) != 1 and
             GetEventFlag(102640) != 0 and GetEventFlag(203301) != 0):
@@ -718,8 +721,9 @@ def talk_m10_29_x26():
 
 def talk_m10_29_x27():
     """Magician: NPC menu"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Menu: Start"""
         if GetEventFlag(104270) != 0:
             """State 9: [Lib] Menu start: At death_SubState"""
             call = talk_m10_29_x11(z13=0, z14=220, z6=76300001, z15=0)

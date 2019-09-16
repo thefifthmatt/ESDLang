@@ -2,8 +2,8 @@
 def t300020_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t300020_x3()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -50,8 +50,9 @@ def t300020_x1(z1=29, z2=9030, flag2=6079):
     return 0
 
 def t300020_x2(z1=29, z2=9030, flag1=13000900, flag2=6079):
-    """State 0,2"""
+    """State 0"""
     while True:
+        """State 2"""
         assert GetEventStatus(flag1) == 1
         """State 3"""
         assert t300020_x1(z1=z1, z2=z2, flag2=flag2)
@@ -59,8 +60,9 @@ def t300020_x2(z1=29, z2=9030, flag1=13000900, flag2=6079):
         SetEventState(flag1, 0)
 
 def t300020_x3():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t300020_x5()
         assert not GetEventStatus(6001)
         """State 2"""

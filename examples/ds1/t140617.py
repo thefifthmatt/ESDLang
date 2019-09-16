@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def t140617_1():
-    """State 0,15"""
+    """State 0"""
     Label('L0')
     while Loop('mainloop'):
+        """State 15"""
         DebugEvent('待機')
         SetUpdateDistance(25)
         if CheckSelfDeath() == 1 and not GetEventStatus(1295) and GetDistanceToPlayer() <= 5:
@@ -109,8 +110,8 @@ def t140617_1():
                     SetEventState(365, 1)
                     SetEventState(366, 1)
                     if True:
-                        """State 3"""
                         while True:
+                            """State 3"""
                             # action:15000010:"Purchase Item"
                             AddTalkListData(1, 15000010, -1)
                             # action:15000190:"Modify Equipment"

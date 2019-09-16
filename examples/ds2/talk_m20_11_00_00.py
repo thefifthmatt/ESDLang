@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m20_11_7600():
     """Bard Girl 1"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m20_11_7600():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Bard Girl 1: Conversation_SubState"""
             while True:
+                """State 10: Bard Girl 1: Conversation_SubState"""
                 call = talk_m20_11_x18()
                 if call.Done():
                     Continue('mainloop')
@@ -69,8 +70,9 @@ def talk_m20_11_7600():
 
 def talk_m20_11_7601():
     """Bard Girl 2"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -96,8 +98,8 @@ def talk_m20_11_7601():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Bard Girl 2: Conversation_SubState"""
             while True:
+                """State 10: Bard Girl 2: Conversation_SubState"""
                 call = talk_m20_11_x19()
                 if call.Done():
                     Continue('mainloop')
@@ -268,8 +270,8 @@ def talk_m20_11_x6(z19=_, text8=_, text9=_, z20=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z19) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""

@@ -2,8 +2,8 @@
 def t370190_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1 and GetEventStatus(13705684) == 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t370190_x10()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -11,8 +11,9 @@ def t370190_1():
         assert not IsClientPlayer()
 
 def t370190_x0(z2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -238,8 +239,9 @@ def t370190_x16():
     return 0
 
 def t370190_x17():
-    """State 0,5"""
+    """State 0"""
     while True:
+        """State 5"""
         call = t370190_x0(z2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
         if IsAttackedBySomeone() == 1:
             """State 1"""

@@ -2,8 +2,8 @@
 def t132629_1():
     """State 0,23"""
     SetEventState(71320054, 0)
-    """State 6"""
     while True:
+        """State 6"""
         DebugEvent('unknow')
         if CheckSelfDeath() == 1 and not GetEventStatus(1548) and GetDistanceToPlayer() <= 5:
             """State 14"""

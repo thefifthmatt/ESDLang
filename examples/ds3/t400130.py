@@ -2,8 +2,8 @@
 def t400130_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t400130_x17()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -23,8 +23,9 @@ def t400130_x0(action2=_):
         return 1
 
 def t400130_x1(z5=_, flag4=1035, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -152,8 +153,8 @@ def t400130_x9(z2=5):
 def t400130_x10(goods1=2135, z1=390, weapon1=6260000, weapon2=6280000):
     """State 0,9"""
     MainBonfireMenuFlag()
-    """State 1"""
     while True:
+        """State 1"""
         ClearTalkListData()
         assert (not CheckSpecificPersonGenericDialogIsOpen(2) and not (CheckSpecificPersonMenuIsOpen(-1,
                 2) == 1 and not CheckSpecificPersonGenericDialogIsOpen(2)))
@@ -338,8 +339,9 @@ def t400130_x16():
     return 0
 
 def t400130_x17():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         # goods:2135:Transposing Kiln, goods:2138:Eyes of a Fire Keeper
         call = t400130_x19(goods1=2135, z1=390, goods2=2138)
         assert not GetEventStatus(1020)
@@ -482,8 +484,9 @@ def t400130_x25(weapon1=6260000, weapon2=6280000):
     return 0
 
 def t400130_x26(goods1=2135, z1=390, goods2=2138):
-    """State 0,6"""
+    """State 0"""
     while True:
+        """State 6"""
         call = t400130_x23()
         if call.Done():
             """State 3"""

@@ -77,8 +77,9 @@ def t100650_x2(text1=65001300, flag1=71008500, flag2=1, mode1=1):
     return 0
 
 def t100650_x3(flag1=71008500, text1=65001300, val1=10, val2=15):
-    """State 0,3"""
+    """State 0"""
     while True:
+        """State 3"""
         assert t100650_x7() and (f116(-1) == 1000000 and f113() < 0.5)
         """State 1"""
         if GetCurrentStateElapsedTime() > 1:
@@ -96,8 +97,9 @@ def t100650_x3(flag1=71008500, text1=65001300, val1=10, val2=15):
     return 0
 
 def t100650_x4(flag1=71008500, text1=65001300, val1=10, val2=15):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t100650_x5(flag1=flag1, text1=text1, val1=val1, val2=val2)
         if call.Done():
             break
@@ -121,8 +123,9 @@ def t100650_x5(flag1=71008500, text1=65001300, val1=10, val2=15):
     return 0
 
 def t100650_x6(val1=10, val2=15, flag1=71008500, text1=65001300):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         if GetEventStatus(flag1) == 1:
             """State 2"""
             assert not GetEventStatus(flag1)

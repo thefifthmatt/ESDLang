@@ -4,8 +4,9 @@ def t511000_0():
     t511000_x0()
 
 def t511000_x0():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t511000_x1()
         assert IsMultiplayerInProgress() == 1
         """State 2"""
@@ -34,8 +35,8 @@ def t511000_x1():
             Goto('L0')
         elif CompareBonfireLevel(5, 0) == 1:
             pass
-    """State 15"""
     while True:
+        """State 15"""
         call = t511000_x9(z1=6101, flag1=6001, flag2=6000)
         if call.Done():
             break
@@ -91,8 +92,9 @@ def t511000_x3():
     return 0
 
 def t511000_x4():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t511000_x2()
         assert IsClientPlayer() == 1
         """State 2"""
@@ -106,8 +108,8 @@ def t511000_x5():
     assert t511000_x8(z2=17, z3=9019, flag3=6067)
     """State 17"""
     MainBonfireMenuFlag()
-    """State 1"""
     while True:
+        """State 1"""
         ClearTalkListData()
         """State 2"""
         # action:15000150:"Travel"
@@ -198,8 +200,9 @@ def t511000_x8(z2=17, z3=9019, flag3=6067):
     return 0
 
 def t511000_x9(z1=_, flag1=6001, flag2=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 2"""

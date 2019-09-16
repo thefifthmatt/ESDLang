@@ -55,8 +55,9 @@ def t400000_x2(z5=17, z6=9019, flag3=6067):
     return 0
 
 def t400000_x3(z4=_, flag1=6001, flag2=_):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 2"""
@@ -177,8 +178,8 @@ def t400000_x8():
             RequestUnlockTrophy(41)
             """State 14"""
             SetEventState(13000000, 1)
-    """State 19"""
     while True:
+        """State 19"""
         call = t400000_x3(z4=6102, flag1=6001, flag2=74000010)
         if call.Done():
             break
@@ -252,8 +253,9 @@ def t400000_x10():
     return 0
 
 def t400000_x11():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t400000_x9()
         assert IsClientPlayer() == 1
         """State 2"""
@@ -293,8 +295,8 @@ def t400000_x12():
         assert t400000_x19(goods1=150, z1=10, z2=11)
         """State 23"""
         MainBonfireMenuFlag()
-    """State 1"""
     while True:
+        """State 1"""
         ClearTalkListData()
         """State 2"""
         # action:15000150:"Travel"

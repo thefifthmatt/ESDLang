@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t151600_1():
-    """State 0,6"""
+    """State 0"""
     while True:
+        """State 6"""
         DebugEvent('待機')
         if CheckSelfDeath() == 1 and not GetEventStatus(1005) and GetDistanceToPlayer() <= 5:
             """State 16"""

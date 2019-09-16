@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t151612_1():
-    """State 0,14"""
+    """State 0"""
     while True:
+        """State 14"""
         DebugEvent('待機')
         SetUpdateDistance(25)
         if (not GetEventStatus(11510593) and not GetEventStatus(71510036) and not GetEventStatus(11516102)

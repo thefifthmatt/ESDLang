@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_17_7040():
     """Ladder Shop (Tank Valley)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m10_17_7040():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 4: Ladder shop: Conversation_SubState"""
             while True:
+                """State 4: Ladder shop: Conversation_SubState"""
                 call = talk_m10_17_x47()
                 if call.Done():
                     Continue('mainloop')
@@ -69,8 +70,9 @@ def talk_m10_17_7040():
 
 def talk_m10_17_7260():
     """Dwarf"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -96,8 +98,8 @@ def talk_m10_17_7260():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: [Lib] Dwarf: Conversation_SubState"""
             while True:
+                """State 10: [Lib] Dwarf: Conversation_SubState"""
                 call = talk_m10_17_x29(z26=117020164, z27=102343, z28=102346)
                 if call.Done():
                     Continue('mainloop')
@@ -137,8 +139,9 @@ def talk_m10_17_7260():
 
 def talk_m10_17_7440():
     """Patch (dwelling valley)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -164,8 +167,8 @@ def talk_m10_17_7440():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Patch: Conversation_SubState"""
             while True:
+                """State 10: Patch: Conversation_SubState"""
                 call = talk_m10_17_x56()
                 if call.Done():
                     Continue('mainloop')
@@ -205,8 +208,9 @@ def talk_m10_17_7440():
 
 def talk_m10_17_7520():
     """Woman Knight (Tank Valley)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -232,8 +236,8 @@ def talk_m10_17_7520():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 9: [Lib] Female knight: Before last: Conversation_SubState"""
             while True:
+                """State 9: [Lib] Female knight: Before last: Conversation_SubState"""
                 call = talk_m10_17_x23(z15=102481, z16=102486, z17=102501, z18=117020129)
                 if call.Done():
                     Continue('mainloop')
@@ -273,8 +277,9 @@ def talk_m10_17_7520():
 
 def talk_m10_17_7620():
     """Material shop (Tani no Valley)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -300,8 +305,8 @@ def talk_m10_17_7620():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Material shop: Conversation_SubState"""
             while True:
+                """State 10: Material shop: Conversation_SubState"""
                 call = talk_m10_17_x52()
                 if call.Done():
                     Continue('mainloop')
@@ -341,8 +346,9 @@ def talk_m10_17_7620():
 
 def talk_m10_17_7870():
     """Sun altar"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Menu: Start"""
         if IsGuest() != 0:
             break
         elif GetEventFlag(117020170) != 0:
@@ -361,8 +367,8 @@ def talk_m10_17_7870():
             assert talk_m10_17_x17(lot1=2007000, z4=103120)
         elif PlayerIsInEventAction(9) != 0:
             pass
-        """State 5: Menu: Branch"""
         while True:
+            """State 5: Menu: Branch"""
             # goods:63021000:"Praise the Sun" Gesture
             if PlayerIsInEventAction(9) != 0 and (ItemCount(63021000, 1, 1, 0) > 1) != 0:
                 """State 12: [Lib] Menu start: No gesture _SubState"""
@@ -404,8 +410,8 @@ def talk_m10_17_7870():
                     break
                 elif call.Get() == 1:
                     break
-        """State 4: Menu: Event action: End"""
         while True:
+            """State 4: Menu: Event action: End"""
             EndPlayerActionRequest()
             if (GetStateTime() > GetRandomValueForStateTime(1, 1)) != 0:
                 """State 7: Menu: Event Action: Insurance"""
@@ -554,8 +560,8 @@ def talk_m10_17_x6(z48=_, text18=_, text19=_, z49=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z48) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -1272,8 +1278,8 @@ def talk_m10_17_x32():
     """Dwarf: NPC menu"""
     """State 0,1: Menu: Start"""
     ClearNpcMenuResults()
-    """State 6: [Lib] Menu start: General purpose_SubState"""
     while True:
+        """State 6: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_17_x13(z43=0, z44=220, z45=72600000, z46=0)
         if call.Get() == 2:
             """State 5: Dwarf: Menu conversation_SubState"""
@@ -1764,8 +1770,9 @@ def talk_m10_17_x49():
 
 def talk_m10_17_x50():
     """Ladder shop: NPC menu"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Menu: Start"""
         ClearNpcMenuResults()
         """State 3: Menu: Branch"""
         # goods:63016000:"Prostration" Gesture
@@ -1868,9 +1875,9 @@ def talk_m10_17_x53():
 
 def talk_m10_17_x54():
     """Material shop: NPC menu"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while True:
-        """State 2: [Lib] Menu start: General purpose_SubState"""
+        """State 1,2: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_17_x13(z43=0, z44=220, z45=76200000, z46=0)
         if call.Get() == 2:
             """State 5: Material shop: Menu conversation_SubState"""

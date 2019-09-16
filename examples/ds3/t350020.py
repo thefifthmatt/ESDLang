@@ -2,8 +2,8 @@
 def t350020_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t350020_x12()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -23,8 +23,9 @@ def t350020_x0(action2=_):
         return 1
 
 def t350020_x1(z7=_, flag2=73500155, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -168,8 +169,8 @@ def t350020_x8(goods1=373, goods2=728, lot1=4268, lot2=4267):
     assert t350020_x7(z2=28, lot1=lot1, lot2=lot2)
     """State 7"""
     MainBonfireMenuFlag()
-    """State 1"""
     while True:
+        """State 1"""
         ClearTalkListData()
         """State 2"""
         # action:15000406:"Ask to Join Covenant"
@@ -329,8 +330,9 @@ def t350020_x11():
     return 0
 
 def t350020_x12():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t350020_x14(z1=3501851)
         assert not GetEventStatus(6001)
         """State 2"""

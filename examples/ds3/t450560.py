@@ -2,8 +2,8 @@
 def t450560_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t450560_x7()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -11,8 +11,9 @@ def t450560_1():
         assert not IsClientPlayer()
 
 def t450560_x0(z2=6000, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -126,8 +127,9 @@ def t450560_x6():
     return 0
 
 def t450560_x7():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t450560_x9()
         assert not GetEventStatus(1720) or GetEventStatus(14505802) == 1
         """State 2"""
@@ -154,8 +156,9 @@ def t450560_x10():
     return 0
 
 def t450560_x11(z1=-1):
-    """State 0,2"""
+    """State 0"""
     while True:
+        """State 2"""
         call = t450560_x0(z2=6000, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
         assert not GetEventStatus(74500300) and GetEventStatus(74500331) == 1
         """State 3"""

@@ -63,8 +63,9 @@ def t200220_x0(action9=_):
 
 def t200220_x1(val6=_, flag15=6001, flag19=6000, flag20=6000, flag21=6000, flag22=6000, mode20=0, flag14=6000,
                val7=1000000, val8=1730011, val9=1000000, val10=1000000, val11=1000000):
-    """State 0,3"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 3"""
         call = t200220_x30(val6=val6, flag15=flag15, flag19=flag19, flag20=flag20, flag21=flag21, flag22=flag22,
                            mode20=mode20, flag14=flag14)
         if call.Done():
@@ -72,8 +73,8 @@ def t200220_x1(val6=_, flag15=6001, flag19=6000, flag20=6000, flag21=6000, flag2
         elif (not f116(-1) == val7 and not f116(-1) == val8 and not f116(-1) == val9 and not DoesSelfHaveSpEffect(4510)
               and not val7 == -1 and not f116(-1) == val10 and not f116(-1) == val11):
             pass
-        """State 1"""
         while True:
+            """State 1"""
             assert (f116(-1) == val7 or f116(-1) == val8 or f116(-1) == val9 or (DoesSelfHaveSpEffect(4510)
                     == 1 and f116(-1) == val10 and f116(-1) == val11))
             """State 2"""
@@ -205,8 +206,8 @@ def t200220_x6(text1=_, flag23=0, mode25=1):
 def t200220_x7(lot3=_):
     """State 0,1"""
     GetItemFromItemLot(lot3)
-    """State 2"""
     while True:
+        """State 2"""
         assert not IsMenuOpen(63) and GetCurrentStateElapsedTime() > 0.01
         """State 3"""
         assert GetCurrentStateElapsedTime() > 0.01
@@ -229,8 +230,9 @@ def t200220_x9(flag10=1059, flag11=1055, flag12=1056, val1=5, val2=10, val3=12, 
                val6=7002200, flag14=6000, flag15=6001, flag16=72000043, flag17=6000, mode14=1, val7=1000000,
                val8=1730011, val9=1000000, mode15=0, mode16=1, mode17=0, val10=1000000, val11=1000000,
                mode18=0, flag18=6000, mode19=0):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         RemoveMyAggro()
         call = t200220_x10(val1=val1, val2=val2, val3=val3, val4=val4, val5=val5, flag13=flag13, val6=val6,
                            flag14=flag14, flag15=flag15, flag16=flag16, flag17=flag17, mode14=mode14,
@@ -254,8 +256,9 @@ def t200220_x9(flag10=1059, flag11=1055, flag12=1056, val1=5, val2=10, val3=12, 
 def t200220_x10(val1=5, val2=10, val3=12, val4=10, val5=12, flag13=72000356, val6=7002200, flag14=6000,
                 flag15=6001, flag16=72000043, flag17=6000, mode14=1, val7=1000000, val8=1730011, val9=1000000,
                 mode15=0, mode16=1, mode17=0, val10=1000000, val11=1000000, mode18=0, mode19=0):
-    """State 0,4"""
+    """State 0"""
     while True:
+        """State 4"""
         call = t200220_x27(val6=val6, flag14=flag14, flag15=flag15, val7=val7, val8=val8, val9=val9,
                            val10=val10, val11=val11)
         if call.Done():
@@ -386,8 +389,9 @@ def t200220_x17():
     return 0
 
 def t200220_x18(val2=10, val3=12):
-    """State 0,2,1"""
+    """State 0,2"""
     while True:
+        """State 1"""
         assert GetDistanceToPlayer() < val2
         """State 3"""
         call = t200220_x23()
@@ -463,8 +467,9 @@ def t200220_x24():
     return 0
 
 def t200220_x25(val2=10, val3=12):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t200220_x18(val2=val2, val3=val3)
         if f122() == 1:
             break
@@ -514,14 +519,15 @@ def t200220_x29():
     return 0
 
 def t200220_x30(val6=_, flag15=6001, flag19=6000, flag20=6000, flag21=6000, flag22=6000, mode20=0, flag14=6000):
-    """State 0,1"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 1"""
         assert not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not IsCharacterDisabled()
         """State 3"""
         assert (GetEventStatus(flag15) == 1 or GetEventStatus(flag19) == 1 or GetEventStatus(flag20)
                 == 1 or GetEventStatus(flag21) == 1 or GetEventStatus(flag22) == 1)
-        """State 4"""
         while True:
+            """State 4"""
             assert not GetEventStatus(flag14)
             """State 2"""
             if (not (not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not
@@ -567,8 +573,8 @@ def t200220_x31(z14=1044, z15=1042, flag9=72000351, text12=22004500, text13=2200
 def t200220_x32(goods1=9215, goods2=3070, goods3=9009, goods6=3071, goods7=9228):
     """State 0,8"""
     MainBonfireMenuFlag()
-    """State 4"""
     while True:
+        """State 4"""
         ClearTalkListData()
         """State 2"""
         # action:15022004:"Request Rice"

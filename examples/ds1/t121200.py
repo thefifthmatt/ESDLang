@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t121200_1():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         DebugEvent('unknow')
         if (not GetOneLineHelpStatus() and HasDisableTalkPeriodElapsed() == 1 and not IsTalkingToSomeoneElse()
             and not CheckSelfDeath() and not IsCharacterDisabled() and not IsClientPlayer() and GetRelativeAngleBetweenPlayerAndSelf()
@@ -58,8 +59,8 @@ def t121200_1():
             """State 14"""
             ClearTalkDisabledState()
             DebugEvent('会話タイマーをクリア　待機へ')
-    """State 4"""
     while True:
+        """State 4"""
         ShowShopMessage(0, 0, 0)
         # action:15000400:"Duel Legends"
         AddTalkListData(1, 15000400, -1)

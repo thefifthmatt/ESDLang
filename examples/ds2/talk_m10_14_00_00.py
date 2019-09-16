@@ -36,9 +36,9 @@ def talk_m10_14_7420():
         """State 6: Battle Event: Damaged by player"""
         SetEventFlag(114020117, 1)
         Goto('L1')
-    """State 7: [Lib] Event: Branch_SubState"""
     Label('L2')
     while True:
+        """State 7: [Lib] Event: Branch_SubState"""
         call = talk_m10_14_x9(z54=103653, z55=104150, z56=114020111)
         if call.Get() == 1:
             """State 8: [Lib] Reunion hostility_SubState"""
@@ -67,8 +67,8 @@ def talk_m10_14_7420():
             elif (HpValue() > 1) != 1:
                 Goto('L4')
         elif call.Get() == 0:
-            """State 13: Wandering Warrior: Conversation_SubState"""
             while True:
+                """State 13: Wandering Warrior: Conversation_SubState"""
                 call = talk_m10_14_x40()
                 if call.Done():
                     Goto('L0')
@@ -106,9 +106,10 @@ def talk_m10_14_7420():
 
 def talk_m10_14_7421():
     """Wandering Warrior: Patch Dead (Pyrox Street Gerdra)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     Label('L0')
     while True:
+        """State 1: Conversation: Start"""
         ResetDamageTakenCountIf(GetEventFlag(114000150) != 0 and GetEventFlag(103653) != 1)
         SetEventFlagIf(GetEventFlag(114000150) != 0 and GetEventFlag(103653) != 1, 114000152, 0)
         if IsGuest() != 0:
@@ -117,8 +118,8 @@ def talk_m10_14_7421():
             Quit()
         else:
             break
-    """State 4: [Lib] Event: Branch_SubState"""
     while True:
+        """State 4: [Lib] Event: Branch_SubState"""
         call = talk_m10_14_x9(z54=103653, z55=104150, z56=114020111)
         if call.Get() == 1:
             """State 5: [Lib] Reunion hostility_SubState"""
@@ -147,8 +148,8 @@ def talk_m10_14_7421():
             elif (HpValue() > 1) != 1:
                 Goto('L2')
         elif call.Get() == 0:
-            """State 10: Wandering Warrior: Conversation: Patch Death_SubState"""
             while True:
+                """State 10: Wandering Warrior: Conversation: Patch Death_SubState"""
                 call = talk_m10_14_x43()
                 if call.Get() == 1:
                     """State 11: [Lib] First adversification_ (No Mes) _SubState"""
@@ -230,9 +231,9 @@ def talk_m10_14_7440():
         """State 6: Conversation: Damaged by player"""
         SetEventFlag(114020127, 1)
         Goto('L1')
-    """State 7: [Lib] Event: Branch_SubState"""
     Label('L2')
     while True:
+        """State 7: [Lib] Event: Branch_SubState"""
         call = talk_m10_14_x9(z54=103673, z55=104170, z56=114020121)
         if call.Get() == 1:
             """State 8: [Lib] Reunion hostility_SubState"""
@@ -261,8 +262,8 @@ def talk_m10_14_7440():
             elif (HpValue() > 1) != 1:
                 Goto('L4')
         elif call.Get() == 0:
-            """State 13: Patch: Conversation_SubState"""
             while True:
+                """State 13: Patch: Conversation_SubState"""
                 call = talk_m10_14_x44()
                 if call.Done():
                     Goto('L0')
@@ -300,9 +301,10 @@ def talk_m10_14_7440():
 
 def talk_m10_14_7760():
     """Upper weapon shop (Pyrox Street)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     Label('L0')
     while True:
+        """State 1: Conversation: Start"""
         ResetDamageTakenCountIf(GetEventFlag(114000152) != 0 and GetEventFlag(103862) != 1)
         SetEventFlagIf(GetEventFlag(114000152) != 0 and GetEventFlag(103862) != 1, 114000152, 0)
         if IsGuest() != 0:
@@ -311,8 +313,8 @@ def talk_m10_14_7760():
             Quit()
         else:
             break
-    """State 4: [Lib] Event: Branch_SubState"""
     while True:
+        """State 4: [Lib] Event: Branch_SubState"""
         call = talk_m10_14_x9(z54=103862, z55=104360, z56=114020131)
         if call.Get() == 1:
             """State 5: [Lib] Reunion hostility_SubState"""
@@ -344,8 +346,8 @@ def talk_m10_14_7760():
             elif (HpValue() > 1) != 1:
                 Goto('L2')
         elif call.Get() == 0:
-            """State 10: Higher weapon shop: Conversation_SubState"""
             while True:
+                """State 10: Higher weapon shop: Conversation_SubState"""
                 call = talk_m10_14_x45()
                 if call.Done():
                     Goto('L0')
@@ -386,8 +388,9 @@ def talk_m10_14_7760():
 
 def talk_m10_14_7840():
     """Inexorable teacher"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -413,8 +416,8 @@ def talk_m10_14_7840():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 9: Immoral Teacher: Conversation_SubState"""
             while True:
+                """State 9: Immoral Teacher: Conversation_SubState"""
                 call = talk_m10_14_x33()
                 if call.Done():
                     Continue('mainloop')
@@ -605,8 +608,8 @@ def talk_m10_14_x6(z52=114020102, text24=78409500, text25=78409500, z53=78409500
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z52) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -1058,8 +1061,9 @@ def talk_m10_14_x27(z30=_, text11=_, text12=_, z31=_, z32=_):
     z31: Conversation ID: HP drop 3
     z32: Hostile formation: Area and other flags
     """
-    """State 0,1,2: Hostile state: standby"""
+    """State 0,1: Hostile state: Start"""
     while True:
+        """State 2: Hostile state: standby"""
         SetEventFlag(z32, 1)
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z30) != 1
@@ -1394,8 +1398,8 @@ def talk_m10_14_x39():
     """Immoral Teacher: NPC Menu"""
     """State 0,1: Menu: Start"""
     SetEventFlag(114020107, 0)
-    """State 2: [Lib] Menu start: General purpose_SubState"""
     while True:
+        """State 2: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_14_x13(z47=0, z48=220, z49=78400000, z50=0)
         if call.Get() == 2:
             """State 3: Immoral Teacher: Menu Conversation_SubState"""
@@ -1612,8 +1616,9 @@ def talk_m10_14_x46():
 
 def talk_m10_14_x47():
     """Higher weapon shop: NPC menu"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Menu: Start"""
         if (GetGlobalVariable(224) > 1) != 0:
             """State 3: [Lib] Menu start: Paid_SubState"""
             call = talk_m10_14_x13(z47=0, z48=220, z49=77600000, z50=0)
@@ -1792,8 +1797,9 @@ def talk_m10_14_x53():
 
 def talk_m10_14_4100000():
     """Andyel"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         elif GetEventFlag(100740) != 0:

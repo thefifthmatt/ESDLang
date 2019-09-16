@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m20_21_7000():
     """Dragon Miko (within the castle)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         SetEventFlag(221020167, 1)
         if IsGuest() != 0:
             break
@@ -29,8 +30,8 @@ def talk_m20_21_7000():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Dragon Miko: Conversation (within the Royal Castle) _SubState"""
             while True:
+                """State 10: Dragon Miko: Conversation (within the Royal Castle) _SubState"""
                 call = talk_m20_21_x52()
                 if call.Done():
                     Continue('mainloop')
@@ -83,8 +84,9 @@ def talk_m20_21_7000():
 
 def talk_m20_21_7001():
     """Dragon Miko (before clear)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         SetEventFlag(221020174, 1)
         if IsGuest() != 0:
             break
@@ -111,8 +113,8 @@ def talk_m20_21_7001():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Dragon Miko: Conversation (before clear) _SubState"""
             while True:
+                """State 10: Dragon Miko: Conversation (before clear) _SubState"""
                 call = talk_m20_21_x55()
                 if call.Done():
                     Continue('mainloop')
@@ -165,8 +167,9 @@ def talk_m20_21_7001():
 
 def talk_m20_21_7030():
     """Queen"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -178,8 +181,8 @@ def talk_m20_21_7030():
                 Quit()
             elif call.Get() == 0:
                 pass
-            """State 8: Queen: Conversation_SubState"""
             while True:
+                """State 8: Queen: Conversation_SubState"""
                 call = talk_m20_21_x61()
                 if call.Done():
                     Continue('mainloop')
@@ -207,8 +210,9 @@ def talk_m20_21_7030():
 
 def talk_m20_21_7211():
     """Prime Minister's Spirit"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -244,8 +248,9 @@ def talk_m20_21_7211():
 
 def talk_m20_21_7250():
     """Shenzhen Pilgrim (Dolan Greig)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -271,8 +276,8 @@ def talk_m20_21_7250():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: [Lib] Pilgrim in Shenzhen: Conversation_SubState"""
             while True:
+                """State 10: [Lib] Pilgrim in Shenzhen: Conversation_SubState"""
                 call = talk_m20_21_x22(z1=221020104, z2=102326, z3=221020107, z4=20213000, z5=102332,
                                        z6=60, z7=102316, z8=221020109)
                 if call.Done():
@@ -315,8 +320,9 @@ def talk_m20_21_7250():
 
 def talk_m20_21_7430():
     """Tsukimitsu (Doran Greig: second encounter)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -342,8 +348,8 @@ def talk_m20_21_7430():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Tsukimitsu: Conversation_SubState"""
             while True:
+                """State 10: Tsukimitsu: Conversation_SubState"""
                 call = talk_m20_21_x59()
                 if call.Done():
                     Continue('mainloop')
@@ -383,8 +389,9 @@ def talk_m20_21_7430():
 
 def talk_m20_21_7602():
     """Captive girl"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -414,8 +421,8 @@ def talk_m20_21_7602():
             assert talk_m20_21_x66()
             continue
         elif call.Get() == 0:
-            """State 10: Captive Girl: Conversation (Living) _SubState"""
             while True:
+                """State 10: Captive Girl: Conversation (Living) _SubState"""
                 call = talk_m20_21_x64()
                 if call.Done():
                     Continue('mainloop')
@@ -586,8 +593,8 @@ def talk_m20_21_x6(z52=_, text15=_, text16=_, z53=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z52) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -1005,8 +1012,8 @@ def talk_m20_21_x24(z2=102326, z3=221020107, z4=20213000, z6=60, z8=221020109):
     """
     """State 0,1: Menu: Start"""
     ClearNpcMenuResults()
-    """State 2: Menu: Branch"""
     while True:
+        """State 2: Menu: Branch"""
         if GetEventFlag(100979) != 0:
             """State 10: [Lib] Menu start: No passing _SubState"""
             call = talk_m20_21_x12(z49=0, z50=220, z26=72500001, z51=0)
@@ -1552,8 +1559,8 @@ def talk_m20_21_x44(goods3=63008000, z25=102435, z26=74300000, z27=74300001):
     if GetEventFlag(z25) != 0:
         pass
     else:
-        """State 3: Menu: Branch"""
         while True:
+            """State 3: Menu: Branch"""
             # goods:63008000:"Joy" Gesture
             if (ItemCount(goods3, 1, 1, 0) > 1) != 0:
                 break
@@ -1860,8 +1867,8 @@ def talk_m20_21_x58():
     """The Spirit of the Prime Minister: NPC Menu"""
     """State 0,1: Menu: Start"""
     ClearNpcMenuResults()
-    """State 3: Menu branch"""
     while True:
+        """State 3: Menu branch"""
         # goods:63014000:"This one's me" Gesture
         if (ItemCount(63014000, 1, 1, 0) > 1) != 0:
             """State 8: [Lib] Menu start: No gesture _SubState"""
@@ -2172,8 +2179,9 @@ def talk_m20_21_x69():
 
 def talk_m20_21_4100000():
     """Andyel"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         elif GetEventFlag(208030) != 0:

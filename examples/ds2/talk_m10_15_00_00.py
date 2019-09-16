@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_15_7520():
     """Woman Knight (Andiel's Hall)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m10_15_7520():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 9: Woman Knight: Final: Conversation_SubState"""
             while True:
+                """State 9: Woman Knight: Final: Conversation_SubState"""
                 call = talk_m10_15_x25()
                 if call.Done():
                     Continue('mainloop')
@@ -69,8 +70,9 @@ def talk_m10_15_7520():
 
 def talk_m10_15_7710():
     """Sealed person"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -103,9 +105,9 @@ def talk_m10_15_7710():
             elif GetEventFlag(102810) != 0 and ConversationEnded() != 0:
                 """State 2: Conversation: damage reset"""
                 ResetDamageTakenCount()
-                """State 12: Sealed Person: Unsealed: Conversation_SubState"""
                 Label('L2')
                 while True:
+                    """State 12: Sealed Person: Unsealed: Conversation_SubState"""
                     call = talk_m10_15_x26()
                     if call.Done():
                         Continue('mainloop')
@@ -298,8 +300,8 @@ def talk_m10_15_x6(z19=_, text11=_, text12=_, z20=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z19) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -732,8 +734,9 @@ def talk_m10_15_x26():
 
 def talk_m10_15_x27():
     """Sealed: Conversation"""
-    """State 0,1: Sealing: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Sealing: Conversation: Start"""
         DeleteKeyGuideArea()
         if (not GetPlayerHollowState()) != 0:
             """State 3: Sealing: Conversation: Living_SubState"""
@@ -756,8 +759,9 @@ def talk_m10_15_x27():
 
 def talk_m10_15_x28():
     """Unsealing: Conversation"""
-    """State 0,1: Release seal: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Release seal: Conversation: Start"""
         DeleteKeyGuideArea()
         if (not GetPlayerHollowState()) != 0:
             """State 4: Release seal: Raw person: Talk to 1 (loop) _SubState"""
@@ -1002,8 +1006,8 @@ def talk_m10_15_x35():
     """State 0,1,2: Menu: First conversation_SubState"""
     # talk:77102500:"What do you require?"
     assert talk_m10_15_x0(text20=77102500, z33=0, z34=0)
-    """State 3: [Lib] Menu start: General purpose_SubState"""
     while True:
+        """State 3: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_15_x13(z14=0, z15=220, z16=77100000, z17=0)
         if call.Get() == 2:
             """State 6: Enclosed person: Menu conversation_SubState"""

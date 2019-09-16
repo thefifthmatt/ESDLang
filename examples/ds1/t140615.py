@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def t140615_1():
-    """State 0,25"""
+    """State 0"""
     Label('L0')
     while Loop('mainloop'):
+        """State 25"""
         DebugEvent('待機')
         SetUpdateDistance(25)
         if (CheckSelfDeath() == 1 and not GetEventStatus(1272) and IsEquipmentIDEquipped(2, 137) == 1
@@ -111,8 +112,8 @@ def t140615_1():
                 Label('L6')
                 ClearTalkActionState()
                 if True:
-                    """State 13"""
                     while True:
+                        """State 13"""
                         # action:15000265:"Offer Humanity"
                         AddTalkListData(2, 15000265, 859)
                         # action:15000230:"Reinforce <?gdsparam@200?>"

@@ -2,8 +2,8 @@
 def t350301_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t350301_x13()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -11,8 +11,9 @@ def t350301_1():
         assert not IsClientPlayer()
 
 def t350301_x0(z5=6000, flag8=1375, flag9=6000, flag10=6000, flag11=6000, flag12=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -324,8 +325,9 @@ def t350301_x12():
     return 0
 
 def t350301_x13():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t350301_x15()
         assert not GetEventStatus(1362)
         """State 2"""
@@ -402,9 +404,9 @@ def t350301_x20():
     return 0
 
 def t350301_x21():
-    """State 0,1"""
+    """State 0"""
     while True:
-        """State 2"""
+        """State 1,2"""
         ClearTalkListData()
         """State 3"""
         # action:15010004:"Purchase Item"
@@ -442,8 +444,9 @@ def t350301_x22():
     return 0
 
 def t350301_x23():
-    """State 0,5"""
+    """State 0"""
     while True:
+        """State 5"""
         call = t350301_x0(z5=6000, flag8=1375, flag9=6000, flag10=6000, flag11=6000, flag12=6000)
         if call.Done():
             """State 3"""

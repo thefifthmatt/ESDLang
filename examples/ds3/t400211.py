@@ -2,8 +2,8 @@
 def t400211_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t400211_x11()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -11,8 +11,9 @@ def t400211_1():
         assert not IsClientPlayer()
 
 def t400211_x0(z3=6210, flag4=1615, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -195,8 +196,9 @@ def t400211_x10():
     return 0
 
 def t400211_x11():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t400211_x15()
         assert not GetEventStatus(1600)
         """State 2"""
@@ -219,8 +221,8 @@ def t400211_x13():
 def t400211_x14():
     """State 0,11"""
     MainBonfireMenuFlag()
-    """State 1"""
     while True:
+        """State 1"""
         ClearTalkListData()
         """State 10"""
         # action:15011020:"Purchase Item"
@@ -290,8 +292,9 @@ def t400211_x18():
     return 0
 
 def t400211_x19():
-    """State 0,5"""
+    """State 0"""
     while True:
+        """State 5"""
         call = t400211_x0(z3=6210, flag4=1615, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""

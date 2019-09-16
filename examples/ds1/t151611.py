@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def t151611_1():
-    """State 0,20"""
+    """State 0"""
     Label('L0')
     while Loop('mainloop'):
+        """State 20"""
         DebugEvent('待機')
         SetUpdateDistance(30)
         if CheckSelfDeath() == 1 and not GetEventStatus(1232) and GetDistanceToPlayer() <= 15:
@@ -118,12 +119,12 @@ def t151611_1():
                       == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() >
                       15 or IsPlayerDead() == 1):
                     break
-            """State 27"""
             while Loop('loop1'):
+                """State 27"""
                 ClearTalkActionState()
                 if True:
-                    """State 12"""
                     while True:
+                        """State 12"""
                         # action:15000200:"Enter Covenant"
                         AddTalkListData(2, 15000200, -1)
                         # action:15000000:"Talk"

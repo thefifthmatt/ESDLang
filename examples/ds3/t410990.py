@@ -2,8 +2,8 @@
 def t410990_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t410990_x2()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -48,8 +48,9 @@ def t410990_x1():
     return 0
 
 def t410990_x2():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert GetEventStatus(9900) == 1
         """State 6"""
         # action:99000100:"Begin journey <?nextLoopCount?> ?"

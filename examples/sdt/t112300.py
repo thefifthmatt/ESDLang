@@ -66,16 +66,17 @@ def t112300_1101():
         c1_119(0)
 
 def t112300_1102():
-    """State 0,2"""
+    """State 0"""
     while True:
+        """State 2"""
         if GetEventStatus(11500690) == 1:
             break
         elif not GetEventStatus(71500194):
             """State 3,5"""
             # talk:30030400:"I don't want to kill you..."
             assert t112300_x3(text1=30030400, flag1=71500194, flag24=1, mode14=1)
-    """State 4"""
     while True:
+        """State 4"""
         assert GetEventStatus(71500198) == 1 and not GetEventStatus(71500194)
         """State 6"""
         # talk:30000550:"The melody.... Give it back!!"
@@ -112,8 +113,9 @@ def t112300_2000():
 
 def t112300_x0(val1=_, flag14=6001, flag18=6000, flag19=6000, flag20=6000, flag21=6000, mode7=0, flag13=6000,
                val10=1000000, val11=1000000, val12=1000000, val13=_, val14=_):
-    """State 0,3"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 3"""
         call = t112300_x28(val1=val1, flag14=flag14, flag18=flag18, flag19=flag19, flag20=flag20, flag21=flag21,
                            mode7=mode7, flag13=flag13)
         if call.Done():
@@ -121,8 +123,8 @@ def t112300_x0(val1=_, flag14=6001, flag18=6000, flag19=6000, flag20=6000, flag2
         elif (not f116(-1) == val10 and not f116(-1) == val11 and not f116(-1) == val12 and not DoesSelfHaveSpEffect(4510)
               and not val10 == -1 and not f116(-1) == val13 and not f116(-1) == val14):
             pass
-        """State 1"""
         while True:
+            """State 1"""
             assert (f116(-1) == val10 or f116(-1) == val11 or f116(-1) == val12 or (DoesSelfHaveSpEffect(4510)
                     == 1 and f116(-1) == val13 and f116(-1) == val14))
             """State 2"""
@@ -252,8 +254,8 @@ def t112300_x5(text5=_, flag22=_, mode12=1):
 def t112300_x6(lot1=69900):
     """State 0,1"""
     GetItemFromItemLot(lot1)
-    """State 2"""
     while True:
+        """State 2"""
         assert not IsMenuOpen(63) and GetCurrentStateElapsedTime() > 0.01
         """State 3"""
         assert GetCurrentStateElapsedTime() > 0.01
@@ -269,8 +271,9 @@ def t112300_x7(flag9=1439, flag10=1435, flag11=1436, val4=25, val5=10, val6=12, 
                val9=7003000, flag13=6000, flag14=6001, flag15=6000, flag16=6000, mode1=1, val10=1000000,
                val11=1000000, val12=1000000, mode2=0, mode3=1, mode4=0, val13=1000000, val14=1000000,
                mode5=0, flag17=6000, mode6=0):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         RemoveMyAggro()
         call = t112300_x8(val4=val4, val5=val5, val6=val6, val7=val7, val8=val8, flag12=flag12, val9=val9,
                           flag13=flag13, flag14=flag14, flag15=flag15, flag16=flag16, mode1=mode1, val10=val10,
@@ -294,8 +297,9 @@ def t112300_x7(flag9=1439, flag10=1435, flag11=1436, val4=25, val5=10, val6=12, 
 def t112300_x8(val4=25, val5=10, val6=12, val7=20, val8=25, flag12=6001, val9=7003000, flag13=6000, flag14=6001,
                flag15=6000, flag16=6000, mode1=1, val10=1000000, val11=1000000, val12=1000000, mode2=0,
                mode3=1, mode4=0, val13=1000000, val14=1000000, mode5=0, mode6=0):
-    """State 0,4"""
+    """State 0"""
     while True:
+        """State 4"""
         call = t112300_x25(val9=val9, flag13=flag13, flag14=flag14, val10=val10, val11=val11, val12=val12,
                            val13=val13, val14=val14)
         if call.Done():
@@ -425,8 +429,9 @@ def t112300_x15():
     return 0
 
 def t112300_x16(val5=10, val6=12):
-    """State 0,2,1"""
+    """State 0,2"""
     while True:
+        """State 1"""
         assert GetDistanceToPlayer() < val5
         """State 3"""
         call = t112300_x21()
@@ -502,8 +507,9 @@ def t112300_x22():
     return 0
 
 def t112300_x23(val5=10, val6=12):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t112300_x16(val5=val5, val6=val6)
         if f122() == 1:
             break
@@ -553,14 +559,15 @@ def t112300_x27():
     return 0
 
 def t112300_x28(val1=_, flag14=6001, flag18=6000, flag19=6000, flag20=6000, flag21=6000, mode7=0, flag13=6000):
-    """State 0,1"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 1"""
         assert not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not IsCharacterDisabled()
         """State 3"""
         assert (GetEventStatus(flag14) == 1 or GetEventStatus(flag18) == 1 or GetEventStatus(flag19)
                 == 1 or GetEventStatus(flag20) == 1 or GetEventStatus(flag21) == 1)
-        """State 4"""
         while True:
+            """State 4"""
             assert not GetEventStatus(flag13)
             """State 2"""
             if (not (not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_33_7260():
     """Dwarf (Faros Doorway)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m10_33_7260():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: [Lib] Dwarf: Conversation_SubState"""
             while True:
+                """State 10: [Lib] Dwarf: Conversation_SubState"""
                 call = talk_m10_33_x22(z15=133020113, z16=0, z17=102349)
                 if call.Done():
                     Continue('mainloop')
@@ -69,8 +70,9 @@ def talk_m10_33_7260():
 
 def talk_m10_33_7560():
     """The mouse king (Faros doorway)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -96,8 +98,8 @@ def talk_m10_33_7560():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 8: [Lib] The mouse king: Conversation_SubState"""
             while True:
+                """State 8: [Lib] The mouse king: Conversation_SubState"""
                 call = talk_m10_33_x27(z1=60, z2=102971, z3=10349000, z4=133020107)
                 if call.Done():
                     Continue('mainloop')
@@ -269,8 +271,8 @@ def talk_m10_33_x6(z43=_, text14=_, text15=_, z44=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z43) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -722,8 +724,8 @@ def talk_m10_33_x25():
     """Dwarf: NPC menu"""
     """State 0,1: Menu: Start"""
     ClearNpcMenuResults()
-    """State 6: [Lib] Menu start: General purpose_SubState"""
     while True:
+        """State 6: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_33_x12(z39=0, z40=220, z41=72600000, z42=0)
         if call.Get() == 2:
             """State 5: Dwarf: Menu conversation_SubState"""
@@ -772,8 +774,9 @@ def talk_m10_33_x27(z1=60, z2=102971, z3=10349000, z4=133020107):
     z3: Key guide parameters
     z4: For trophies: Area and other flags
     """
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         ClearNpcMenuResults()
         if (GetPlayerCovenant() == 5) != 0:
             """State 4: Mouse king: pledge conversation_SubState"""
@@ -860,11 +863,12 @@ def talk_m10_33_x30(z1=60):
     """The Mouse King: NPC Menu
     z1: Current pledge rank: Area variable
     """
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     Label('L0')
     while Loop('mainloop'):
-        """State 3: [Lib] Menu start: General purpose_SubState"""
+        """State 1: Menu: Start"""
         while True:
+            """State 3: [Lib] Menu start: General purpose_SubState"""
             call = talk_m10_33_x12(z39=0, z40=220, z41=75600000, z42=0)
             if call.Get() == 2:
                 """State 6: The Mouse King: Menu Conversation_SubState"""

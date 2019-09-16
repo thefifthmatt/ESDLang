@@ -55,8 +55,9 @@ def t170001_x2(z3=17, z4=9019, flag3=6067):
     return 0
 
 def t170001_x3(z2=_, flag1=6001, flag2=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 2"""
@@ -98,8 +99,9 @@ def t170001_x5(action1=10010713):
     return 0
 
 def t170001_x6():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t170001_x7()
         assert IsMultiplayerInProgress() == 1
         """State 2"""
@@ -193,8 +195,9 @@ def t170001_x9():
     return 0
 
 def t170001_x10():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t170001_x8()
         assert IsClientPlayer() == 1
         """State 2"""
@@ -206,8 +209,8 @@ def t170001_x11():
     assert GetCurrentStateElapsedTime() > 1
     """State 17"""
     MainBonfireMenuFlag()
-    """State 1"""
     while True:
+        """State 1"""
         ClearTalkListData()
         """State 2"""
         # action:15000120:"Rest"

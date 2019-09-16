@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_10_7430():
     """Tsukimitsu (Giant Forest: 3rd encounter)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m10_10_7430():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Tsukimitsu: Conversation_SubState"""
             while True:
+                """State 10: Tsukimitsu: Conversation_SubState"""
                 call = talk_m10_10_x32()
                 if call.Done():
                     Continue('mainloop')
@@ -69,8 +70,9 @@ def talk_m10_10_7430():
 
 def talk_m10_10_7440():
     """Patch (Giant Forest)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -96,8 +98,8 @@ def talk_m10_10_7440():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Patch: Conversation_SubState"""
             while True:
+                """State 10: Patch: Conversation_SubState"""
                 call = talk_m10_10_x34()
                 if call.Done():
                     Continue('mainloop')
@@ -137,8 +139,9 @@ def talk_m10_10_7440():
 
 def talk_m10_10_7510():
     """Map writing (Giant Forest)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -164,8 +167,8 @@ def talk_m10_10_7510():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Map writing: Conversation_SubState"""
             while True:
+                """State 10: Map writing: Conversation_SubState"""
                 call = talk_m10_10_x33()
                 if call.Done():
                     Continue('mainloop')
@@ -205,8 +208,9 @@ def talk_m10_10_7510():
 
 def talk_m10_10_7540():
     """Yorozu Baba"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -235,8 +239,8 @@ def talk_m10_10_7540():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 9: Yorozu Baba: Conversation_SubState"""
             while True:
+                """State 9: Yorozu Baba: Conversation_SubState"""
                 call = talk_m10_10_x28()
                 if call.Done():
                     Continue('mainloop')
@@ -410,8 +414,8 @@ def talk_m10_10_x6(z31=_, text18=_, text19=_, z32=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z31) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -788,8 +792,8 @@ def talk_m10_10_x24(goods2=63008000, z21=102435, z22=74300000, z23=74300001):
     if GetEventFlag(z21) != 0:
         pass
     else:
-        """State 3: Menu: Branch"""
         while True:
+            """State 3: Menu: Branch"""
             # goods:63008000:"Joy" Gesture
             if (ItemCount(goods2, 1, 1, 0) > 1) != 0:
                 break
@@ -916,9 +920,9 @@ def talk_m10_10_x29():
 
 def talk_m10_10_x30():
     """Yorozu Baba: NPC Menu"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while True:
-        """State 4: [Lib] Menu start: General purpose_SubState"""
+        """State 1,4: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_10_x12(z27=0, z28=220, z22=75400000, z29=0)
         if call.Get() == 2:
             """State 5: Yorozu Baba: Menu conversation_SubState"""
@@ -1078,8 +1082,9 @@ def talk_m10_10_x33():
 
 def talk_m10_10_x34():
     """Patch: Conversation"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         ClearNpcMenuResults()
         if GetEventFlag(102441) != 1 and GetEventFlag(102452) != 0 and GetEventFlag(104170) != 1:
             """State 4: Equipment transfer (condition: white phantom summon achievement) _SubState"""

@@ -2,8 +2,8 @@
 def t400120_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t400120_x14()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -23,8 +23,9 @@ def t400120_x0(action2=_):
         return 1
 
 def t400120_x1(z4=6120, flag4=1015, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -137,8 +138,8 @@ def t400120_x7(action1=_):
 def t400120_x8(goods1=2138, goods2=390):
     """State 0,8"""
     MainBonfireMenuFlag()
-    """State 1"""
     while True:
+        """State 1"""
         ClearTalkListData()
         """State 2"""
         # action:15002000:"Level Up"
@@ -352,8 +353,9 @@ def t400120_x13():
     return 0
 
 def t400120_x14():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t400120_x16()
         assert not GetEventStatus(1000) and not GetEventStatus(1001) and not GetEventStatus(1002)
         """State 2"""
@@ -580,8 +582,8 @@ def t400120_x24(goods3=490, z1=0):
     """State 0,1"""
     # goods:490:Dark Sigil
     SetWorkValue(z1, GetItemHeldNumLimit(3, goods3))
-    """State 5"""
     while True:
+        """State 5"""
         # goods:490:Dark Sigil
         if ComparePlayerInventoryNumber(3, goods3, 0, GetWorkValue(z1), 0) or GetWorkValue(z1) <= 0:
             break
@@ -611,8 +613,9 @@ def t400120_x25():
     return 1
 
 def t400120_x26():
-    """State 0,5"""
+    """State 0"""
     while True:
+        """State 5"""
         call = t400120_x1(z4=6120, flag4=1015, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""

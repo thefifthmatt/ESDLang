@@ -43,8 +43,8 @@ def t000001_x1():
 def t000001_x2(lot1=_):
     """State 0,1"""
     GetItemFromItemLot(lot1)
-    """State 2"""
     while True:
+        """State 2"""
         assert not IsMenuOpen(63) and GetCurrentStateElapsedTime() > 0.01
         """State 3"""
         assert GetCurrentStateElapsedTime() > 0.01
@@ -57,8 +57,9 @@ def t000001_x2(lot1=_):
     return 0
 
 def t000001_x3(z28=_, flag4=6001, flag5=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not IsCharacterDisabled()
         """State 2"""
         assert CompareBonfireState(1)
@@ -184,8 +185,8 @@ def t000001_x6(goods1=2100, goods2=2110, goods3=2120):
         assert t000001_x10()
         """State 41"""
         assert t000001_x14()
-        """State 1"""
         while True:
+            """State 1"""
             ClearTalkListData()
             """State 2"""
             # action:15000120:"Rest"
@@ -728,8 +729,8 @@ def t000001_x22(goods34=5200, goods35=5201, goods36=5202, goods37=5203, goods38=
             Goto('L0')
         elif call.Done():
             pass
-        """State 1"""
         while True:
+            """State 1"""
             ClearTalkListData()
             """State 2"""
             # goods:5200:Memory: Gyoubu Oniwa, action:15000710:"Confront Memory: Gyoubu"

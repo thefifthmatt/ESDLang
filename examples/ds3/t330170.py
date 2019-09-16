@@ -2,8 +2,8 @@
 def t330170_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t330170_x9()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -11,8 +11,9 @@ def t330170_1():
         assert not IsClientPlayer()
 
 def t330170_x0(z2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -156,8 +157,9 @@ def t330170_x8():
     return 0
 
 def t330170_x9():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t330170_x11()
         assert not GetEventStatus(1104)
         """State 2"""
@@ -211,8 +213,9 @@ def t330170_x14():
     return 0
 
 def t330170_x15():
-    """State 0,3"""
+    """State 0"""
     while True:
+        """State 3"""
         call = t330170_x0(z2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
         if IsPlayerDead() == 1:
             break

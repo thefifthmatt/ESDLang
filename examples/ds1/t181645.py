@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t181645_1():
-    """State 0,2"""
+    """State 0"""
     while True:
+        """State 2"""
         DebugEvent('待機')
         if (not GetEventStatus(71810093) and GetDistanceToPlayer() <= 5 and GetEventStatus(11815102)
             == 1 and GetEventStatus(11815151) == 1):

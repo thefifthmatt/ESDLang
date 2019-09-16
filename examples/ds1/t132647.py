@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t132647_1():
-    """State 0,3"""
+    """State 0"""
     while True:
+        """State 3"""
         DebugEvent('unknow')
         if (not GetOneLineHelpStatus() and not GetEventStatus(1781) and HasDisableTalkPeriodElapsed()
             == 1 and not IsTalkingToSomeoneElse() and not CheckSelfDeath() and not IsCharacterDisabled()
@@ -35,8 +36,8 @@ def t132647_1():
             """State 39"""
             ClearTalkDisabledState()
             DebugEvent('会話タイマークリア　誓約同じ')
-    """State 4"""
     while True:
+        """State 4"""
         # action:15000262:"Offer <?gdsparam@1110?>"
         AddTalkListData(3, 15000262, 855)
         # action:15000200:"Enter Covenant"

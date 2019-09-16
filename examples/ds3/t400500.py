@@ -2,8 +2,8 @@
 def t400500_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t400500_x8()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -143,8 +143,9 @@ def t400500_x7():
     return 0
 
 def t400500_x8():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         if not GetEventStatus(74000990) and GetEventStatus(74000995) == 1:
             """State 3"""
             Label('L0')

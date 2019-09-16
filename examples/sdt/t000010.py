@@ -4,8 +4,9 @@ def t000010_1():
     t000010_x0()
 
 def t000010_x0():
-    """State 0,2"""
+    """State 0"""
     while True:
+        """State 2"""
         assert f113() < 0.5 and f116(-1) == 1000000
         """State 3"""
         if GetCurrentStateElapsedTime() > 1:

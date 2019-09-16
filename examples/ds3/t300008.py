@@ -41,8 +41,9 @@ def t300008_x1():
     return 0
 
 def t300008_x2(z2=6101, flag3=6001, flag4=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 2"""
@@ -70,8 +71,9 @@ def t300008_x3(action1=_):
     return 0
 
 def t300008_x4(z1=6100, flag1=6001, flag2=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -88,8 +90,9 @@ def t300008_x4(z1=6100, flag1=6001, flag2=6000):
     return 0
 
 def t300008_x5():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t300008_x6()
         assert IsMultiplayerInProgress() == 1
         """State 2"""
@@ -161,8 +164,9 @@ def t300008_x8():
     return 0
 
 def t300008_x9():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t300008_x7()
         assert IsClientPlayer() == 1
         """State 2"""
@@ -172,8 +176,8 @@ def t300008_x9():
 def t300008_x10():
     """State 0,12"""
     assert GetCurrentStateElapsedTime() > 2.5
-    """State 1"""
     while True:
+        """State 1"""
         ClearTalkListData()
         """State 2"""
         # action:15000005:"Leave"

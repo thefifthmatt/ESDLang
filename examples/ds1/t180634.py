@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def t180634_1():
-    """State 0,28"""
+    """State 0"""
     Label('L0')
     while Loop('mainloop'):
+        """State 28"""
         DebugEvent('待機')
         SetUpdateDistance(25)
         if (CheckSelfDeath() == 1 and not GetEventStatus(1676) and GetEventStatus(831) == 1 and GetDistanceToPlayer()
@@ -524,8 +525,8 @@ def t180634_1():
                 Label('L22')
                 ClearTalkActionState()
                 if True:
-                    """State 51"""
                     while True:
+                        """State 51"""
                         # action:15000251:"Ask for Covenant Item"
                         AddTalkListData(6, 15000251, 854)
                         # action:15000261:"Offer Humanity"

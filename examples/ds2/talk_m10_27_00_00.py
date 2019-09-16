@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_27_6000():
     """Ancient dragon"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             pass
         elif GetEventFlag(103970) != 0:
@@ -39,8 +40,9 @@ def talk_m10_27_6000():
 
 def talk_m10_27_7000():
     """Dragon Maiden (Andir's House)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -66,8 +68,8 @@ def talk_m10_27_7000():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 9: Dragon Miko: Conversation (Andyle Hall) _SubState"""
             while True:
+                """State 9: Dragon Miko: Conversation (Andyle Hall) _SubState"""
                 call = talk_m10_27_x19()
                 if call.Done():
                     Continue('mainloop')
@@ -218,8 +220,8 @@ def talk_m10_27_x5(z19=127020122, text9=70009500, text10=70009500, z20=70009500)
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z19) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -627,8 +629,9 @@ def talk_m10_27_x23():
 
 def talk_m10_27_4100000():
     """Andyel"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         elif GetEventFlag(100747) != 0:

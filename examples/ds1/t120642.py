@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t120642_1():
-    """State 0,6"""
+    """State 0"""
     while True:
+        """State 6"""
         DebugEvent('unknow')
         if (IsPlayerTalkingToMe() == 1 and GetRelativeAngleBetweenPlayerAndSelf() <= 45 and GetDistanceToPlayer()
             <= 2 and GetOneLineHelpStatus() == 1 and not GetEventStatus(1766)):

@@ -4,9 +4,9 @@ def t121673_1():
     SetEventState(71210005, 0)
     SetEventState(71210006, 0)
     SetEventState(71210007, 0)
-    """State 18"""
     Label('L0')
     while Loop('mainloop'):
+        """State 18"""
         DebugEvent('待機')
         SetUpdateDistance(25)
         if CheckSelfDeath() == 1 and not GetEventStatus(1842) and GetDistanceToPlayer() <= 5:
@@ -199,9 +199,9 @@ def t121673_1():
                 """State 16"""
                 Label('L8')
                 if True:
-                    """State 5"""
                     Label('L9')
                     while True:
+                        """State 5"""
                         # action:15000010:"Purchase Item"
                         AddTalkListData(1, 15000010, -1)
                         ShowShopMessage(0, 0, 0)

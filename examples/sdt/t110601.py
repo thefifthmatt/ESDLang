@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t110601_1():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         # talk:60001900:"Look... A smoke signal from the great castle gate."
         call = t110601_x7(val1=7009052, z1=71108005, text1=60001900)
         assert GetEventStatus(9301) == 1
@@ -10,8 +11,9 @@ def t110601_1():
 
 def t110601_x0(val1=7009052, flag1=6001, flag2=6001, flag3=6001, flag4=6001, flag5=6001, mode1=0, flag6=6000,
                val2=-1, val3=-1, val4=-1, val5=-1, val6=-1):
-    """State 0,3"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 3"""
         call = t110601_x10(val1=val1, flag1=flag1, flag2=flag2, flag3=flag3, flag4=flag4, flag5=flag5,
                            mode1=mode1, flag6=flag6)
         if call.Done():
@@ -19,8 +21,8 @@ def t110601_x0(val1=7009052, flag1=6001, flag2=6001, flag3=6001, flag4=6001, fla
         elif (not f116(-1) == val2 and not f116(-1) == val3 and not f116(-1) == val4 and not DoesSelfHaveSpEffect(4510)
               and not val2 == -1 and not f116(-1) == val5 and not f116(-1) == val6):
             pass
-        """State 1"""
         while True:
+            """State 1"""
             assert (f116(-1) == val2 or f116(-1) == val3 or f116(-1) == val4 or (DoesSelfHaveSpEffect(4510)
                     == 1 and f116(-1) == val5 and f116(-1) == val6))
             """State 2"""
@@ -106,17 +108,18 @@ def t110601_x4():
     return 0
 
 def t110601_x5(val1=7009052, z1=71108005, text1=60001900):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t110601_x6(val1=val1, z1=z1, text1=text1)
         assert not f114(2)
         """State 2"""
         assert t110601_x8() and f114(2) == 1
 
 def t110601_x6(val1=7009052, z1=71108005, text1=60001900):
-    """State 0,1"""
+    """State 0"""
     while True:
-        """State 3"""
+        """State 1,3"""
         assert (t110601_x0(val1=val1, flag1=6001, flag2=6001, flag3=6001, flag4=6001, flag5=6001, mode1=0,
                 flag6=6000, val2=-1, val3=-1, val4=-1, val5=-1, val6=-1))
         """State 2"""
@@ -133,8 +136,9 @@ def t110601_x6(val1=7009052, z1=71108005, text1=60001900):
             assert t110601_x4()
 
 def t110601_x7(val1=7009052, z1=71108005, text1=60001900):
-    """State 0,3"""
+    """State 0"""
     while True:
+        """State 3"""
         assert t110601_x8() and (f113() < 0.5 and f116(-1) == 1000000)
         """State 1"""
         if GetCurrentStateElapsedTime() > 1:
@@ -168,14 +172,15 @@ def t110601_x9(text1=60001900, z1=71108005):
     return 0
 
 def t110601_x10(val1=7009052, flag1=6001, flag2=6001, flag3=6001, flag4=6001, flag5=6001, mode1=0, flag6=6000):
-    """State 0,1"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 1"""
         assert not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not IsCharacterDisabled()
         """State 3"""
         assert (GetEventStatus(flag1) == 1 or GetEventStatus(flag2) == 1 or GetEventStatus(flag3) ==
                 1 or GetEventStatus(flag4) == 1 or GetEventStatus(flag5) == 1)
-        """State 4"""
         while True:
+            """State 4"""
             assert not GetEventStatus(flag6)
             """State 2"""
             if (not (not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def t300720_1():
-    """State 0,1"""
+    """State 0"""
     Label('L0')
     while True:
+        """State 1"""
         DebugEvent('待機')
         if not GetEventStatus(1901) and CheckActionButtonArea(6000) and not CheckSelfDeath():
             """State 4"""
@@ -149,8 +150,8 @@ def t300720_x2():
         """State 18"""
         Label('L0')
         assert not GetEventStatus(13000401)
-        """State 7"""
         while True:
+            """State 7"""
             AddTalkListData(1, 15000200, -1)
             # action:15000000:"Talk"
             AddTalkListData(2, 15000000, -1)

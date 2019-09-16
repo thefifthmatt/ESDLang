@@ -2,8 +2,8 @@
 def t400905_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t400905_x13()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -13,8 +13,9 @@ def t400905_1():
 def t400905_x0(z3=6000, flag4=1160, flag5=6000, flag6=6000, flag7=6000, flag8=6000, flag9=6000, flag10=6000,
                flag11=6000, flag12=6000, flag13=6000, flag14=6000, flag15=6000, flag16=6000, flag17=6000,
                flag18=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -115,8 +116,9 @@ def t400905_x5(text1=_, flag1=0):
     return 0
 
 def t400905_x6():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         ClearTalkListData()
         """State 2"""
         AddTalkListData(1, 15000233, -1)
@@ -269,8 +271,9 @@ def t400905_x12():
     return 0
 
 def t400905_x13():
-    """State 0,7"""
+    """State 0"""
     while True:
+        """State 7"""
         call = t400905_x0(z3=6000, flag4=1160, flag5=6000, flag6=6000, flag7=6000, flag8=6000, flag9=6000,
                           flag10=6000, flag11=6000, flag12=6000, flag13=6000, flag14=6000, flag15=6000,
                           flag16=6000, flag17=6000, flag18=6000)

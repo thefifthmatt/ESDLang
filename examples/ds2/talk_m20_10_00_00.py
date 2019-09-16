@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m20_10_7240():
     """Kingdom commander"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m20_10_7240():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Kingdom Captain: Conversation_SubState"""
             while True:
+                """State 10: Kingdom Captain: Conversation_SubState"""
                 call = talk_m20_10_x22()
                 if call.Done():
                     Continue('mainloop')
@@ -69,8 +70,9 @@ def talk_m20_10_7240():
 
 def talk_m20_10_7430():
     """Tsukimitsu (Shadow Forest: 4th encounter)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -96,8 +98,8 @@ def talk_m20_10_7430():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Tsukimitsu: Conversation_SubState"""
             while True:
+                """State 10: Tsukimitsu: Conversation_SubState"""
                 call = talk_m20_10_x23()
                 if call.Done():
                     Continue('mainloop')
@@ -268,8 +270,8 @@ def talk_m20_10_x6(z19=_, text5=_, text6=_, z20=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z19) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -546,8 +548,8 @@ def talk_m20_10_x19(goods1=_, z10=_, z11=_, z12=_):
     if GetEventFlag(z10) != 0:
         pass
     else:
-        """State 3: Menu: Branch"""
         while True:
+            """State 3: Menu: Branch"""
             if (ItemCount(goods1, 1, 1, 0) > 1) != 0:
                 break
             else:

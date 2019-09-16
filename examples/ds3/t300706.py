@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def t300706_1():
-    """State 0,13"""
+    """State 0"""
     Label('L0')
     while True:
+        """State 13"""
         DebugEvent('最初')
         if CompareBonfireLevel(1, 0) == 1 and CompareBonfireState(1) == 1:
             break
@@ -16,8 +17,8 @@ def t300706_1():
             """State 11"""
             ClearTalkDisabledState()
             DebugEvent('会話タイマークリア　最初')
-    """State 1"""
     while Loop('loop1'):
+        """State 1"""
         DebugEvent('待機')
         SetUpdateDistance(10)
         if CompareBonfireLevel(0, 0) == 1:
@@ -40,8 +41,8 @@ def t300706_1():
             elif GetDistanceToPlayer() >= 8 or GetPlayerYDistance() > 1:
                 Goto('L1')
             elif CompareBonfireState(1) == 1 and GetEventStatus(4084):
-                """State 4"""
                 while True:
+                    """State 4"""
                     ShowShopMessage(0, 0, 0)
                     DebugEvent('篝火リスト')
                     RequestSave(0)

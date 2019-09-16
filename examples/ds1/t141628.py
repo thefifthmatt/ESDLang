@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t141628_1():
-    """State 0,6"""
+    """State 0"""
     while True:
+        """State 6"""
         DebugEvent('unknow')
         SetUpdateDistance(25)
         if (CheckSelfDeath() == 1 and not GetEventStatus(1513) and not GetEventStatus(1506) and not GetEventStatus(1508)

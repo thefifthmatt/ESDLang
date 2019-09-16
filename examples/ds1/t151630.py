@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t151630_1():
-    """State 0,3"""
+    """State 0"""
     while True:
+        """State 3"""
         DebugEvent('unknow')
         if (GetEventStatus(8103) == 1 and GetDistanceToPlayer() <= 15 and not GetEventStatus(8104) and
             GetEventStatus(1578) == 1 and GetEventStatus(11510700) == 1):

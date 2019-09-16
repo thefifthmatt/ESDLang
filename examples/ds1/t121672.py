@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t121672_1():
-    """State 0,6"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 6"""
         DebugEvent('unknow')
         if CheckSelfDeath() == 1 and not GetEventStatus(1823) and GetDistanceToPlayer() <= 7:
             """State 16"""
@@ -249,9 +250,9 @@ def t121672_1():
                             """State 51"""
                             Label('L12')
                             if True:
-                                """State 47"""
                                 Label('L13')
                                 while True:
+                                    """State 47"""
                                     # action:15000010:"Purchase Item"
                                     AddTalkListData(1, 15000010, -1)
                                     # action:15000000:"Talk"

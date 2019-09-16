@@ -17,8 +17,9 @@ def t112111_1000():
         c1_119(0)
 
 def t112111_2000():
-    """State 0,4"""
+    """State 0"""
     while True:
+        """State 4"""
         call = t112111_x0(val6=9850, flag6=9432, flag10=6000, flag11=6000, flag12=6000, flag13=6000,
                           mode6=0, flag5=6000, val8=1000000, val9=1000000, val10=1000000, val11=1000000,
                           val12=1000000)
@@ -35,8 +36,9 @@ def t112111_2000():
 
 def t112111_x0(val6=9850, flag6=9432, flag10=6000, flag11=6000, flag12=6000, flag13=6000, mode6=0, flag5=6000,
                val8=1000000, val9=1000000, val10=1000000, val11=1000000, val12=1000000):
-    """State 0,3"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 3"""
         call = t112111_x25(val6=val6, flag6=flag6, flag10=flag10, flag11=flag11, flag12=flag12, flag13=flag13,
                            mode6=mode6, flag5=flag5)
         if call.Done():
@@ -44,8 +46,8 @@ def t112111_x0(val6=9850, flag6=9432, flag10=6000, flag11=6000, flag12=6000, fla
         elif (not f116(-1) == val8 and not f116(-1) == val9 and not f116(-1) == val10 and not DoesSelfHaveSpEffect(4510)
               and not val8 == -1 and not f116(-1) == val11 and not f116(-1) == val12):
             pass
-        """State 1"""
         while True:
+            """State 1"""
             assert (f116(-1) == val8 or f116(-1) == val9 or f116(-1) == val10 or (DoesSelfHaveSpEffect(4510)
                     == 1 and f116(-1) == val11 and f116(-1) == val12))
             """State 2"""
@@ -124,8 +126,9 @@ def t112111_x4(flag1=6000, flag2=6000, flag3=6000, val1=5, val2=10, val3=12, val
                val6=9850, flag5=6000, flag6=9432, flag7=6000, flag8=6000, val7=3, val8=1000000, val9=1000000,
                val10=1000000, mode1=1, mode2=1, mode3=0, val11=1000000, val12=1000000, mode4=1, flag9=6000,
                mode5=0):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         RemoveMyAggro()
         call = t112111_x5(val1=val1, val2=val2, val3=val3, val4=val4, val5=val5, flag4=flag4, val6=val6,
                           flag5=flag5, flag6=flag6, flag7=flag7, flag8=flag8, val7=val7, val8=val8, val9=val9,
@@ -149,8 +152,9 @@ def t112111_x4(flag1=6000, flag2=6000, flag3=6000, val1=5, val2=10, val3=12, val
 def t112111_x5(val1=5, val2=10, val3=12, val4=10, val5=12, flag4=-1, val6=9850, flag5=6000, flag6=9432,
                flag7=6000, flag8=6000, val7=3, val8=1000000, val9=1000000, val10=1000000, mode1=1, mode2=1,
                mode3=0, val11=1000000, val12=1000000, mode4=1, mode5=0):
-    """State 0,4"""
+    """State 0"""
     while True:
+        """State 4"""
         call = t112111_x22(val6=val6, flag5=flag5, flag6=flag6, val8=val8, val9=val9, val10=val10, val11=val11,
                            val12=val12)
         if call.Done():
@@ -280,8 +284,9 @@ def t112111_x12():
     return 0
 
 def t112111_x13(val2=10, val3=12):
-    """State 0,2,1"""
+    """State 0,2"""
     while True:
+        """State 1"""
         assert GetDistanceToPlayer() < val2
         """State 3"""
         call = t112111_x18()
@@ -357,8 +362,9 @@ def t112111_x19():
     return 0
 
 def t112111_x20(val2=10, val3=12):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t112111_x13(val2=val2, val3=val3)
         if f122() == 1:
             break
@@ -408,14 +414,15 @@ def t112111_x24():
     return 0
 
 def t112111_x25(val6=9850, flag6=9432, flag10=6000, flag11=6000, flag12=6000, flag13=6000, mode6=0, flag5=6000):
-    """State 0,1"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 1"""
         assert not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not IsCharacterDisabled()
         """State 3"""
         assert (GetEventStatus(flag6) == 1 or GetEventStatus(flag10) == 1 or GetEventStatus(flag11) ==
                 1 or GetEventStatus(flag12) == 1 or GetEventStatus(flag13) == 1)
-        """State 4"""
         while True:
+            """State 4"""
             assert not GetEventStatus(flag5)
             """State 2"""
             if (not (not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not

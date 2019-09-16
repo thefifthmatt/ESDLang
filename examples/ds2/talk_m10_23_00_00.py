@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_23_7420():
     """Wandering warrior (hunting forest)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -31,8 +32,8 @@ def talk_m10_23_7420():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Wandering Warrior: Conversation_SubState"""
             while True:
+                """State 10: Wandering Warrior: Conversation_SubState"""
                 call = talk_m10_23_x45()
                 if call.Done():
                     Continue('mainloop')
@@ -75,8 +76,9 @@ def talk_m10_23_7420():
 
 def talk_m10_23_7700():
     """Darkness"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -105,8 +107,8 @@ def talk_m10_23_7700():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Yakujuya: Conversation_SubState"""
             while True:
+                """State 10: Yakujuya: Conversation_SubState"""
                 call = talk_m10_23_x46()
                 if call.Done():
                     Continue('mainloop')
@@ -149,8 +151,9 @@ def talk_m10_23_7700():
 
 def talk_m10_23_7830():
     """Black phantom shop"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -176,8 +179,8 @@ def talk_m10_23_7830():
             elif KilledPlayer() != 0:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 8: Black Phantom Shop: Conversation_SubState"""
             while True:
+                """State 8: Black Phantom Shop: Conversation_SubState"""
                 call = talk_m10_23_x38()
                 if call.Done():
                     Continue('mainloop')
@@ -349,8 +352,8 @@ def talk_m10_23_x6(z41=_, text16=_, text17=_, z42=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z41) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -953,8 +956,8 @@ def talk_m10_23_x32(goods1=63018000, z21=102403, z22=74200000, z23=74200001):
     if GetEventFlag(z21) != 0:
         pass
     else:
-        """State 3: Menu: Branch"""
         while True:
+            """State 3: Menu: Branch"""
             # goods:63018000:"Fist pump" Gesture
             if (ItemCount(goods1, 1, 1, 0) > 1) != 0:
                 break
@@ -1084,8 +1087,9 @@ def talk_m10_23_x37(lot1=2003000, z1=102880):
 
 def talk_m10_23_x38():
     """Black Phantom Shop: Conversation"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         ClearNpcMenuResults()
         if (GetPlayerCovenant() == 3) != 0:
             """State 5: Black Phantom Shop: Pledge Conversation_SubState"""
@@ -1325,9 +1329,9 @@ def talk_m10_23_x43():
 
 def talk_m10_23_x44():
     """Black phantom shop: NPC menu"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while True:
-        """State 6: [Lib] Menu start: General purpose_SubState"""
+        """State 1,6: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_23_x12(z38=0, z39=220, z22=78300000, z40=0)
         if call.Get() == 2:
             """State 3: Black Phantom Shop: Menu conversation_SubState"""
@@ -1448,9 +1452,9 @@ def talk_m10_23_x47():
 
 def talk_m10_23_x48():
     """Dark Art Shop: NPC Menu"""
-    """State 0,1: Menu: Start"""
+    """State 0: Start state"""
     while True:
-        """State 3: [Lib] Menu start: General purpose_SubState"""
+        """State 1,3: [Lib] Menu start: General purpose_SubState"""
         call = talk_m10_23_x12(z38=0, z39=220, z22=77000000, z40=0)
         if call.Get() == 2:
             """State 6: Yakujuya: Menu conversation_SubState"""

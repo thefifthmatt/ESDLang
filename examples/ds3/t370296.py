@@ -3,8 +3,8 @@ def t370296_1():
     """State 0,1"""
     SetUpdateDistance(100)
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t370296_x13()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -99,8 +99,9 @@ def t370296_x6():
     return 0
 
 def t370296_x7():
-    """State 0,4"""
+    """State 0"""
     while True:
+        """State 4"""
         call = t370296_x8(z2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
         if IsPlayerDead() == 1:
             break
@@ -119,8 +120,9 @@ def t370296_x7():
     t370296_x1()
 
 def t370296_x8(z2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -211,8 +213,9 @@ def t370296_x13():
     t370296_x9()
 
 def t370296_x14():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t370296_x4()
         assert not GetEventStatus(8261) or not GetEventStatus(13700172)
         """State 2"""

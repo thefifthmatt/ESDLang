@@ -5,9 +5,9 @@ def t140631_1():
     SetEventState(71200077, 0)
     SetEventState(71200078, 0)
     SetEventState(71200079, 0)
-    """State 6"""
     Label('L0')
     while Loop('mainloop'):
+        """State 6"""
         DebugEvent('unknow')
         if IsClientPlayer() == 1:
             """State 57"""
@@ -211,8 +211,8 @@ def t140631_1():
             """State 25"""
             ClearTalkActionState()
             if True:
-                """State 19"""
                 while True:
+                    """State 19"""
                     # action:15000011:"Purchase Weapon"
                     AddTalkListData(1, 15000011, -1)
                     ShowShopMessage(0, 0, 0)

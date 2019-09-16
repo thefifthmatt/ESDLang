@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m10_25_7250():
     """Shenzhen Pilgrim (Kuz bottom)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m10_25_7250():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: [Lib] Pilgrim in Shenzhen: Conversation_SubState"""
             while True:
+                """State 10: [Lib] Pilgrim in Shenzhen: Conversation_SubState"""
                 call = talk_m10_25_x22(z1=125020104, z2=102325, z3=125020107, z4=10253000, z5=102331,
                                        z6=60, z7=102315, z8=125020110)
                 if call.Done():
@@ -72,8 +73,9 @@ def talk_m10_25_7250():
 
 def talk_m10_25_7520():
     """Woman Knight (Scrap bottom)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -99,8 +101,8 @@ def talk_m10_25_7520():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 9: [Lib] Female knight: Before last: Conversation_SubState"""
             while True:
+                """State 9: [Lib] Female knight: Before last: Conversation_SubState"""
                 call = talk_m10_25_x34(z12=102483, z13=102488, z14=102503, z15=125020129)
                 if call.Done():
                     Continue('mainloop')
@@ -271,8 +273,8 @@ def talk_m10_25_x6(z49=_, text15=_, text16=_, z50=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z49) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -690,8 +692,8 @@ def talk_m10_25_x24(z2=102325, z3=125020107, z4=10253000, z6=60, z8=125020110):
     """
     """State 0,1: Menu: Start"""
     ClearNpcMenuResults()
-    """State 2: Menu: Branch"""
     while True:
+        """State 2: Menu: Branch"""
         if GetEventFlag(100979) != 0:
             """State 10: [Lib] Menu start: No passing _SubState"""
             call = talk_m10_25_x12(z45=0, z46=220, z47=72500001, z48=0)
@@ -1562,8 +1564,9 @@ def talk_m10_25_x51():
 
 def talk_m10_25_4100000():
     """Andyel"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         elif GetEventFlag(100740) != 0:

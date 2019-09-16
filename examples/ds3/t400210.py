@@ -2,8 +2,8 @@
 def t400210_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t400210_x11()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -11,8 +11,9 @@ def t400210_1():
         assert not IsClientPlayer()
 
 def t400210_x0(z3=6210, flag4=1195, flag5=1196, flag6=6000, flag7=6000, flag8=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -254,8 +255,9 @@ def t400210_x10():
     return 0
 
 def t400210_x11():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t400210_x16()
         assert not GetEventStatus(1180)
         """State 2"""
@@ -531,8 +533,8 @@ def t400210_x15(goods1=2107, goods2=2108, goods3=2109, goods4=2110, goods5=2111,
                 goods15=2151, goods16=2116, goods17=2152, goods18=2154, goods19=2157):
     """State 0,12"""
     MainBonfireMenuFlag()
-    """State 1"""
     while True:
+        """State 1"""
         ClearTalkListData()
         assert (not CheckSpecificPersonGenericDialogIsOpen(2) and not (CheckSpecificPersonMenuIsOpen(-1,
                 2) == 1 and not CheckSpecificPersonGenericDialogIsOpen(2)))
@@ -644,8 +646,9 @@ def t400210_x19():
     return 0
 
 def t400210_x20():
-    """State 0,5"""
+    """State 0"""
     while True:
+        """State 5"""
         call = t400210_x0(z3=6210, flag4=1195, flag5=1196, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""

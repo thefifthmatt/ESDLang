@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m20_24_5060():
     """Tomb guard"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -28,8 +29,8 @@ def talk_m20_24_5060():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 10: Gravekeeper: Conversation_SubState"""
             while True:
+                """State 10: Gravekeeper: Conversation_SubState"""
                 call = talk_m20_24_x25()
                 if call.Done():
                     Continue('mainloop')
@@ -79,8 +80,9 @@ def talk_m20_24_5060():
 
 def talk_m20_24_7000():
     """Dragon Maiden"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while Loop('mainloop'):
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         else:
@@ -106,8 +108,8 @@ def talk_m20_24_7000():
             elif (HpValue() > 1) != 1:
                 Goto('L1')
         elif call.Get() == 0:
-            """State 9: Dragon Miko: Conversation (within the Royal Castle) _SubState"""
             while True:
+                """State 9: Dragon Miko: Conversation (within the Royal Castle) _SubState"""
                 call = talk_m20_24_x23()
                 if call.Done():
                     Continue('mainloop')
@@ -292,8 +294,8 @@ def talk_m20_24_x6(z27=_, text9=_, text10=_, z28=_):
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
-    """State 2: Hostile state: standby"""
     while True:
+        """State 2: Hostile state: standby"""
         BecomeHostile(1)
         assert (HpRatio() > 50) != 1 and GetEventFlag(z27) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
@@ -665,8 +667,9 @@ def talk_m20_24_x24():
 
 def talk_m20_24_x25():
     """Gravekeeper: Conversation"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         ClearNpcMenuResults()
         """State 4: Gravekeeper: First conversation_SubState"""
         call = talk_m20_24_x27()
@@ -762,8 +765,8 @@ def talk_m20_24_x28():
     """Gravekeeper: NPC menu"""
     """State 0,1: Menu: Start"""
     ClearNpcMenuResults()
-    """State 3: Menu: Branch"""
     while True:
+        """State 3: Menu: Branch"""
         # goods:63015000:"Have mercy!" Gesture
         if (ItemCount(63015000, 1, 1, 0) > 1) != 0:
             """State 7: [Lib] Menu start: No gesture _SubState"""
@@ -906,8 +909,9 @@ def talk_m20_24_x31():
 
 def talk_m20_24_4100000():
     """Andyel"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             break
         elif GetEventFlag(100745) != 0:

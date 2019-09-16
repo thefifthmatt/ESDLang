@@ -141,8 +141,9 @@ def t130600_1103():
         c1_119(0)
 
 def t130600_2000():
-    """State 0,5"""
+    """State 0"""
     while True:
+        """State 5"""
         call = t130600_x0(val1=7003100, flag18=6001, flag22=6000, flag23=6000, flag24=6000, flag25=6000,
                           mode7=0, flag17=6000, val8=-1, val9=-1, val10=-1, val11=-1, val12=-1)
         if call.Done():
@@ -172,8 +173,9 @@ def t130600_2000():
 
 def t130600_x0(val1=_, flag18=6001, flag22=_, flag23=_, flag24=_, flag25=_, mode7=0, flag17=6000, val8=_,
                val9=_, val10=_, val11=_, val12=_):
-    """State 0,3"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 3"""
         call = t130600_x30(val1=val1, flag18=flag18, flag22=flag22, flag23=flag23, flag24=flag24, flag25=flag25,
                            mode7=mode7, flag17=flag17)
         if call.Done():
@@ -181,8 +183,8 @@ def t130600_x0(val1=_, flag18=6001, flag22=_, flag23=_, flag24=_, flag25=_, mode
         elif (not f116(-1) == val8 and not f116(-1) == val9 and not f116(-1) == val10 and not DoesSelfHaveSpEffect(4510)
               and not val8 == -1 and not f116(-1) == val11 and not f116(-1) == val12):
             pass
-        """State 1"""
         while True:
+            """State 1"""
             assert (f116(-1) == val8 or f116(-1) == val9 or f116(-1) == val10 or (DoesSelfHaveSpEffect(4510)
                     == 1 and f116(-1) == val11 and f116(-1) == val12))
             """State 2"""
@@ -312,8 +314,8 @@ def t130600_x5(text1=_, flag26=_, mode12=1):
 def t130600_x6(lot1=_):
     """State 0,1"""
     GetItemFromItemLot(lot1)
-    """State 2"""
     while True:
+        """State 2"""
         assert not IsMenuOpen(63) and GetCurrentStateElapsedTime() > 0.01
         """State 3"""
         assert GetCurrentStateElapsedTime() > 0.01
@@ -329,8 +331,9 @@ def t130600_x7(flag13=1479, flag14=1475, flag15=1476, val2=5, val3=10, val4=12, 
                val7=7003100, flag17=6000, flag18=6001, flag19=6000, flag20=6000, mode1=1, val8=1000000,
                val9=1000000, val10=1000000, mode2=0, mode3=1, mode4=0, val11=1000000, val12=1000000,
                mode5=0, flag21=6000, mode6=0):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         RemoveMyAggro()
         call = t130600_x8(val2=val2, val3=val3, val4=val4, val5=val5, val6=val6, flag16=flag16, val7=val7,
                           flag17=flag17, flag18=flag18, flag19=flag19, flag20=flag20, mode1=mode1, val8=val8,
@@ -354,8 +357,9 @@ def t130600_x7(flag13=1479, flag14=1475, flag15=1476, val2=5, val3=10, val4=12, 
 def t130600_x8(val2=5, val3=10, val4=12, val5=10, val6=12, flag16=6001, val7=7003100, flag17=6000, flag18=6001,
                flag19=6000, flag20=6000, mode1=1, val8=1000000, val9=1000000, val10=1000000, mode2=0,
                mode3=1, mode4=0, val11=1000000, val12=1000000, mode5=0, mode6=0):
-    """State 0,4"""
+    """State 0"""
     while True:
+        """State 4"""
         call = t130600_x25(val7=val7, flag17=flag17, flag18=flag18, val8=val8, val9=val9, val10=val10,
                            val11=val11, val12=val12)
         if call.Done():
@@ -485,8 +489,9 @@ def t130600_x15():
     return 0
 
 def t130600_x16(val3=10, val4=12):
-    """State 0,2,1"""
+    """State 0,2"""
     while True:
+        """State 1"""
         assert GetDistanceToPlayer() < val3
         """State 3"""
         call = t130600_x21()
@@ -562,8 +567,9 @@ def t130600_x22():
     return 0
 
 def t130600_x23(val3=10, val4=12):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t130600_x16(val3=val3, val4=val4)
         if f122() == 1:
             break
@@ -594,9 +600,9 @@ def t130600_x25(val7=7003100, flag17=6000, flag18=6001, val8=1000000, val9=10000
     return 0
 
 def t130600_x26(val1=_, z9=_, text23=_):
-    """State 0,1"""
+    """State 0"""
     while True:
-        """State 3"""
+        """State 1,3"""
         assert (t130600_x0(val1=val1, flag18=6001, flag22=6001, flag23=6001, flag24=6001, flag25=6001,
                 mode7=0, flag17=6000, val8=-1, val9=-1, val10=-1, val11=-1, val12=-1))
         """State 2"""
@@ -647,14 +653,15 @@ def t130600_x29():
     return 0
 
 def t130600_x30(val1=_, flag18=6001, flag22=_, flag23=_, flag24=_, flag25=_, mode7=0, flag17=6000):
-    """State 0,1"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 1"""
         assert not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not IsCharacterDisabled()
         """State 3"""
         assert (GetEventStatus(flag18) == 1 or GetEventStatus(flag22) == 1 or GetEventStatus(flag23)
                 == 1 or GetEventStatus(flag24) == 1 or GetEventStatus(flag25) == 1)
-        """State 4"""
         while True:
+            """State 4"""
             assert not GetEventStatus(flag17)
             """State 2"""
             if (not (not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not

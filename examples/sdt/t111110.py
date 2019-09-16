@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t111110_1():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t111110_x8(flag14=1039, flag15=1035, flag16=1036, val2=5, val3=10, val4=12, val5=15, val6=17,
                           flag17=71120440, val7=7001100, flag18=6000, flag19=6001, flag20=6000, flag21=6000,
                           val8=3, val9=1000000, val10=1720001, val11=1720003, mode12=1, mode13=1, mode14=0,
@@ -492,9 +493,9 @@ def t111110_1000():
         c1_119(0)
 
 def t111110_2000():
-    """State 0,5"""
+    """State 0"""
     while True:
-        """State 8"""
+        """State 5,8"""
         SetEventStateIf(GetEventStatus(71120147) == 1, 71110068, 1)
         SetEventStateIf(GetEventStatus(61110705) == 1, 71110066, 1)
         """State 11"""
@@ -597,8 +598,9 @@ def t111110_2000():
 
 def t111110_x0(val1=_, flag19=6001, flag23=_, flag24=_, flag25=_, flag26=_, mode17=0, flag18=6000, val9=_,
                val10=_, val11=_, val12=_, val13=_):
-    """State 0,3"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 3"""
         call = t111110_x33(val1=val1, flag19=flag19, flag23=flag23, flag24=flag24, flag25=flag25, flag26=flag26,
                            mode17=mode17, flag18=flag18)
         if call.Done():
@@ -606,8 +608,8 @@ def t111110_x0(val1=_, flag19=6001, flag23=_, flag24=_, flag25=_, flag26=_, mode
         elif (not f116(-1) == val9 and not f116(-1) == val10 and not f116(-1) == val11 and not DoesSelfHaveSpEffect(4510)
               and not val9 == -1 and not f116(-1) == val12 and not f116(-1) == val13):
             pass
-        """State 1"""
         while True:
+            """State 1"""
             assert (f116(-1) == val9 or f116(-1) == val10 or f116(-1) == val11 or (DoesSelfHaveSpEffect(4510)
                     == 1 and f116(-1) == val12 and f116(-1) == val13))
             """State 2"""
@@ -737,8 +739,8 @@ def t111110_x5(text1=_, flag29=0, mode24=1):
 def t111110_x6(lot2=_):
     """State 0,1"""
     GetItemFromItemLot(lot2)
-    """State 2"""
     while True:
+        """State 2"""
         assert not IsMenuOpen(63) and GetCurrentStateElapsedTime() > 0.01
         """State 3"""
         assert GetCurrentStateElapsedTime() > 0.01
@@ -761,8 +763,9 @@ def t111110_x8(flag14=1039, flag15=1035, flag16=1036, val2=5, val3=10, val4=12, 
                val7=7001100, flag18=6000, flag19=6001, flag20=6000, flag21=6000, val8=3, val9=1000000,
                val10=1720001, val11=1720003, mode12=1, mode13=1, mode14=0, val12=1720004, val13=1000000,
                mode15=0, flag22=6000, mode16=0):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         RemoveMyAggro()
         call = t111110_x9(val2=val2, val3=val3, val4=val4, val5=val5, val6=val6, flag17=flag17, val7=val7,
                           flag18=flag18, flag19=flag19, flag20=flag20, flag21=flag21, val8=val8, val9=val9,
@@ -786,8 +789,9 @@ def t111110_x8(flag14=1039, flag15=1035, flag16=1036, val2=5, val3=10, val4=12, 
 def t111110_x9(val2=5, val3=10, val4=12, val5=15, val6=17, flag17=71120440, val7=7001100, flag18=6000,
                flag19=6001, flag20=6000, flag21=6000, val8=3, val9=1000000, val10=1720001, val11=1720003,
                mode12=1, mode13=1, mode14=0, val12=1720004, val13=1000000, mode15=0, mode16=0):
-    """State 0,4"""
+    """State 0"""
     while True:
+        """State 4"""
         call = t111110_x26(val7=val7, flag18=flag18, flag19=flag19, val9=val9, val10=val10, val11=val11,
                            val12=val12, val13=val13)
         if call.Done():
@@ -917,8 +921,9 @@ def t111110_x16():
     return 0
 
 def t111110_x17(val3=10, val4=12):
-    """State 0,2,1"""
+    """State 0,2"""
     while True:
+        """State 1"""
         assert GetDistanceToPlayer() < val3
         """State 3"""
         call = t111110_x22()
@@ -994,8 +999,9 @@ def t111110_x23():
     return 0
 
 def t111110_x24(val3=10, val4=12):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t111110_x17(val3=val3, val4=val4)
         if f122() == 1:
             break
@@ -1026,9 +1032,9 @@ def t111110_x26(val7=7001100, flag18=6000, flag19=6001, val9=1000000, val10=1720
     return 0
 
 def t111110_x27(val1=_, z10=_, text8=_):
-    """State 0,1"""
+    """State 0"""
     while True:
-        """State 3"""
+        """State 1,3"""
         assert (t111110_x0(val1=val1, flag19=6001, flag23=6001, flag24=6001, flag25=6001, flag26=6001,
                 mode17=0, flag18=6000, val9=-1, val10=-1, val11=-1, val12=-1, val13=-1))
         """State 2"""
@@ -1112,14 +1118,15 @@ def t111110_x32(text9=_, text10=_, lot4=_, flag27=_, flag28=_, mode18=_):
     return 0
 
 def t111110_x33(val1=_, flag19=6001, flag23=_, flag24=_, flag25=_, flag26=_, mode17=0, flag18=6000):
-    """State 0,1"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 1"""
         assert not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not IsCharacterDisabled()
         """State 3"""
         assert (GetEventStatus(flag19) == 1 or GetEventStatus(flag23) == 1 or GetEventStatus(flag24)
                 == 1 or GetEventStatus(flag25) == 1 or GetEventStatus(flag26) == 1)
-        """State 4"""
         while True:
+            """State 4"""
             assert not GetEventStatus(flag18)
             """State 2"""
             if (not (not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not
@@ -1162,8 +1169,8 @@ def t111110_x34():
 def t111110_x35(z3=0, goods1=9009, goods2=9010):
     """State 0,8"""
     MainBonfireMenuFlag()
-    """State 5"""
     while True:
+        """State 5"""
         ClearTalkListData()
         """State 20"""
         call = t111110_x50(goods1=goods1, goods2=goods2)

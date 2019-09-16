@@ -43,8 +43,9 @@ def t300000_x1(z2=17, z3=9019, flag3=6067):
     return 0
 
 def t300000_x2(z1=_, flag1=6001, flag2=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 2"""
@@ -73,8 +74,9 @@ def t300000_x3(action1=10010713):
     return 0
 
 def t300000_x4():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t300000_x5()
         assert IsMultiplayerInProgress() == 1
         """State 2"""
@@ -154,8 +156,9 @@ def t300000_x7():
     return 0
 
 def t300000_x8():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t300000_x6()
         assert IsClientPlayer() == 1
         """State 2"""
@@ -169,8 +172,8 @@ def t300000_x9():
     assert t300000_x1(z2=17, z3=9019, flag3=6067)
     """State 17"""
     MainBonfireMenuFlag()
-    """State 1"""
     while True:
+        """State 1"""
         ClearTalkListData()
         """State 2"""
         # action:15000150:"Travel"

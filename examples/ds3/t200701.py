@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def t200701_1():
-    """State 0,1"""
+    """State 0"""
     Label('L0')
     while True:
+        """State 1"""
         DebugEvent('待機')
         if not GetEventStatus(1901) and CheckActionButtonArea(6000) and not CheckSelfDeath():
             """State 4"""
@@ -193,8 +194,8 @@ def t200701_x2():
             assert HasTalkEnded() == 1
             """State 20"""
             SetEventState(72000003, 1)
-    """State 2"""
     while True:
+        """State 2"""
         # action:15000010:"Purchase Item"
         AddTalkListData(1, 15000010, -1)
         # action:15000000:"Talk"

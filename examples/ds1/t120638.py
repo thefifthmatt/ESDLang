@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t120638_1():
-    """State 0,7"""
+    """State 0"""
     while True:
+        """State 7"""
         DebugEvent('待機')
         SetUpdateDistance(25)
         SetEventState(11205050, 0)

@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def t101619_1():
-    """State 0,26"""
+    """State 0"""
     Label('L0')
     while Loop('mainloop'):
+        """State 26"""
         DebugEvent('unknow')
         if CheckSelfDeath() == 1 and not GetEventStatus(1322) and GetDistanceToPlayer() <= 5:
             break
@@ -109,8 +110,8 @@ def t101619_1():
                 ClearTalkActionState()
                 SetEventState(367, 1)
                 if True:
-                    """State 29"""
                     while True:
+                        """State 29"""
                         # action:15000190:"Modify Equipment"
                         AddTalkListData(1, 15000190, -1)
                         # action:15000111:"Reinforce Weapon"

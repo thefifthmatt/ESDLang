@@ -2,8 +2,8 @@
 def t500731_1():
     """State 0,1"""
     assert GetCurrentStateElapsedTime() > 1
-    """State 2"""
     while True:
+        """State 2"""
         call = t500731_x28()
         assert IsClientPlayer() == 1
         """State 3"""
@@ -163,8 +163,9 @@ def t500731_x8(flag1=75000120, text5=_):
     return 0
 
 def t500731_x9(flag1=75000120, flag2=75000121, z1=75000121, z2=75000121, flag3=1810):
-    """State 0,5"""
+    """State 0"""
     while True:
+        """State 5"""
         call = t500731_x20(z7=6830, flag9=1815, flag10=6000, flag11=6000, flag12=6000, flag13=6000)
         if call.Done():
             """State 3"""
@@ -473,8 +474,9 @@ def t500731_x19(text1=_, z5=_):
     return 0
 
 def t500731_x20(z7=6830, flag9=1815, flag10=6000, flag11=6000, flag12=6000, flag13=6000):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         assert (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
                 and not IsPlayerDead() and not IsCharacterDisabled())
         """State 3"""
@@ -598,8 +600,9 @@ def t500731_x27(z3=_, z4=_, flag4=_):
     return 0
 
 def t500731_x28():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t500731_x5(flag1=75000120, flag2=75000121, z1=75000121, z2=75000121)
         assert not GetEventStatus(1801) and not GetEventStatus(1805)
         """State 2"""

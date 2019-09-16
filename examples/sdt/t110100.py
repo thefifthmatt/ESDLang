@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t110100_1():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t110100_x9(flag4=1019, flag5=1015, flag6=1016, val2=5, val3=10, val4=12, val5=10, val6=12,
                           flag7=6001, val7=7001000, flag8=6000, flag9=6001, flag10=6000, flag11=6000,
                           val8=2, val9=1000000, val10=1701001, val11=1701002, mode12=1, mode13=1, mode14=0,
@@ -59,8 +60,9 @@ def t110100_x0(action2=_):
 
 def t110100_x1(val1=_, flag9=6001, flag13=_, flag14=_, flag15=_, flag16=_, mode17=0, flag8=6000, val9=_,
                val10=_, val11=_, val12=_, val13=_):
-    """State 0,3"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 3"""
         call = t110100_x38(val1=val1, flag9=flag9, flag13=flag13, flag14=flag14, flag15=flag15, flag16=flag16,
                            mode17=mode17, flag8=flag8)
         if call.Done():
@@ -68,8 +70,8 @@ def t110100_x1(val1=_, flag9=6001, flag13=_, flag14=_, flag15=_, flag16=_, mode1
         elif (not f116(-1) == val9 and not f116(-1) == val10 and not f116(-1) == val11 and not DoesSelfHaveSpEffect(4510)
               and not val9 == -1 and not f116(-1) == val12 and not f116(-1) == val13):
             pass
-        """State 1"""
         while True:
+            """State 1"""
             assert (f116(-1) == val9 or f116(-1) == val10 or f116(-1) == val11 or (DoesSelfHaveSpEffect(4510)
                     == 1 and f116(-1) == val12 and f116(-1) == val13))
             """State 2"""
@@ -172,8 +174,8 @@ def t110100_x5(text2=_, flag27=0, mode25=1):
 def t110100_x6(lot1=_):
     """State 0,1"""
     GetItemFromItemLot(lot1)
-    """State 2"""
     while True:
+        """State 2"""
         assert not IsMenuOpen(63) and GetCurrentStateElapsedTime() > 0.01
         """State 3"""
         assert GetCurrentStateElapsedTime() > 0.01
@@ -209,8 +211,9 @@ def t110100_x9(flag4=1019, flag5=1015, flag6=1016, val2=5, val3=10, val4=12, val
                val7=7001000, flag8=6000, flag9=6001, flag10=6000, flag11=6000, val8=2, val9=1000000,
                val10=1701001, val11=1701002, mode12=1, mode13=1, mode14=0, val12=1701003, val13=1000000,
                mode15=0, flag12=6000, mode16=0):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         RemoveMyAggro()
         call = t110100_x10(val2=val2, val3=val3, val4=val4, val5=val5, val6=val6, flag7=flag7, val7=val7,
                            flag8=flag8, flag9=flag9, flag10=flag10, flag11=flag11, val8=val8, val9=val9,
@@ -234,8 +237,9 @@ def t110100_x9(flag4=1019, flag5=1015, flag6=1016, val2=5, val3=10, val4=12, val
 def t110100_x10(val2=5, val3=10, val4=12, val5=10, val6=12, flag7=6001, val7=7001000, flag8=6000, flag9=6001,
                 flag10=6000, flag11=6000, val8=2, val9=1000000, val10=1701001, val11=1701002, mode12=1,
                 mode13=1, mode14=0, val12=1701003, val13=1000000, mode15=0, mode16=0):
-    """State 0,4"""
+    """State 0"""
     while True:
+        """State 4"""
         call = t110100_x27(val7=val7, flag8=flag8, flag9=flag9, val9=val9, val10=val10, val11=val11,
                            val12=val12, val13=val13)
         if call.Done():
@@ -365,8 +369,9 @@ def t110100_x17():
     return 0
 
 def t110100_x18(val3=10, val4=12):
-    """State 0,2,1"""
+    """State 0,2"""
     while True:
+        """State 1"""
         assert GetDistanceToPlayer() < val3
         """State 3"""
         call = t110100_x23()
@@ -442,8 +447,9 @@ def t110100_x24():
     return 0
 
 def t110100_x25(val3=10, val4=12):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t110100_x18(val3=val3, val4=val4)
         if f122() == 1:
             break
@@ -474,9 +480,9 @@ def t110100_x27(val7=7001000, flag8=6000, flag9=6001, val9=1000000, val10=170100
     return 0
 
 def t110100_x28(val1=_, z4=_, text1=_):
-    """State 0,1"""
+    """State 0"""
     while True:
-        """State 3"""
+        """State 1,3"""
         assert (t110100_x1(val1=val1, flag9=6001, flag13=6001, flag14=6001, flag15=6001, flag16=6001,
                 mode17=0, flag8=6000, val9=-1, val10=-1, val11=-1, val12=-1, val13=-1))
         """State 2"""
@@ -688,14 +694,15 @@ def t110100_x37(text2=10003100, text3=10003150, lot1=61000, flag17=71100590, fla
     return 0
 
 def t110100_x38(val1=_, flag9=6001, flag13=_, flag14=_, flag15=_, flag16=_, mode17=0, flag8=6000):
-    """State 0,1"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 1"""
         assert not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not IsCharacterDisabled()
         """State 3"""
         assert (GetEventStatus(flag9) == 1 or GetEventStatus(flag13) == 1 or GetEventStatus(flag14) ==
                 1 or GetEventStatus(flag15) == 1 or GetEventStatus(flag16) == 1)
-        """State 4"""
         while True:
+            """State 4"""
             assert not GetEventStatus(flag8)
             """State 2"""
             if (not (not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not
@@ -1115,8 +1122,9 @@ def t110100_x43(goods2=9550, goods3=9500, goods1=2910):
     return 0
 
 def t110100_x44(mode10=_):
-    """State 0,3"""
+    """State 0"""
     while True:
+        """State 3"""
         ClearTalkListData()
         """State 4"""
         # action:15010300:"Ask how you got here"
@@ -1225,8 +1233,8 @@ def t110100_x45():
 def t110100_x46(goods2=9550, goods3=9500, goods1=2910):
     """State 0,4"""
     MainBonfireMenuFlag()
-    """State 3"""
     while True:
+        """State 3"""
         ClearTalkListData()
         """State 21"""
         assert t110100_x60()
@@ -1278,8 +1286,8 @@ def t110100_x47(mode1=_, goods1=2910):
             pass
     """State 11"""
     MainBonfireMenuFlag()
-    """State 3"""
     while True:
+        """State 3"""
         ClearTalkListData()
         """State 4"""
         # action:15010000:"Fit New Prosthetic Tool"
@@ -1362,8 +1370,9 @@ def t110100_x49():
     return 0
 
 def t110100_x50():
-    """State 0,3"""
+    """State 0"""
     while True:
+        """State 3"""
         ClearTalkListData()
         assert GetCurrentStateElapsedFrames() > 1
         """State 9"""

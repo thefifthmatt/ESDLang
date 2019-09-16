@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 def talk_m50_38_6840():
     """Van Clad (birthday)"""
-    """State 0,1: Conversation: Start"""
+    """State 0: Start state"""
     while True:
+        """State 1: Conversation: Start"""
         if IsGuest() != 0:
             pass
         elif GetEventFlag(103980) != 0:

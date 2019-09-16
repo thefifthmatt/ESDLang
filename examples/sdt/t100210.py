@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 def t100210_1():
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t100210_x6(flag5=1519, flag6=1515, flag7=1501, val1=5, val2=30, val3=40, val4=10, val5=12,
                           flag8=6001, val6=7002100, flag9=6000, flag10=6001, flag11=6000, flag12=6000,
                           mode1=1, val7=1000000, val8=1000000, val9=1000000, mode2=1, mode3=1, mode4=0,
@@ -51,8 +52,8 @@ def t100210_1102():
     if GetEventStatus(1515) == 1:
         pass
     else:
-        """State 4"""
         while True:
+            """State 4"""
             if not GetEventStatus(71000351) and GetEventStatus(71000389) == 1:
                 """State 6"""
                 # talk:21000010:"   "
@@ -63,8 +64,8 @@ def t100210_1102():
                 def ExitPause():
                     SetEventState(71000352, 1)
                 assert t100210_x5(text5=21060100, flag18=1, mode12=1)
-    """State 2"""
     while True:
+        """State 2"""
         assert not GetEventStatus(71000391)
         """State 5"""
         # talk:21030100:"Nothing but a rogue after all!"
@@ -96,8 +97,9 @@ def t100210_2000():
 
 def t100210_x0(val6=7002100, flag10=6001, flag14=6000, flag15=6000, flag16=6000, flag17=6000, mode7=0,
                flag9=6000, val7=1000000, val8=1000000, val9=1000000, val10=1000000, val11=1000000):
-    """State 0,3"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 3"""
         call = t100210_x27(val6=val6, flag10=flag10, flag14=flag14, flag15=flag15, flag16=flag16, flag17=flag17,
                            mode7=mode7, flag9=flag9)
         if call.Done():
@@ -105,8 +107,8 @@ def t100210_x0(val6=7002100, flag10=6001, flag14=6000, flag15=6000, flag16=6000,
         elif (not f116(-1) == val7 and not f116(-1) == val8 and not f116(-1) == val9 and not DoesSelfHaveSpEffect(4510)
               and not val7 == -1 and not f116(-1) == val10 and not f116(-1) == val11):
             pass
-        """State 1"""
         while True:
+            """State 1"""
             assert (f116(-1) == val7 or f116(-1) == val8 or f116(-1) == val9 or (DoesSelfHaveSpEffect(4510)
                     == 1 and f116(-1) == val10 and f116(-1) == val11))
             """State 2"""
@@ -239,8 +241,9 @@ def t100210_x6(flag5=1519, flag6=1515, flag7=1501, val1=5, val2=30, val3=40, val
                val6=7002100, flag9=6000, flag10=6001, flag11=6000, flag12=6000, mode1=1, val7=1000000,
                val8=1000000, val9=1000000, mode2=1, mode3=1, mode4=0, val10=1000000, val11=1000000, mode5=0,
                flag13=6000, mode6=0):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         RemoveMyAggro()
         call = t100210_x7(val1=val1, val2=val2, val3=val3, val4=val4, val5=val5, flag8=flag8, val6=val6,
                           flag9=flag9, flag10=flag10, flag11=flag11, flag12=flag12, mode1=mode1, val7=val7,
@@ -264,8 +267,9 @@ def t100210_x6(flag5=1519, flag6=1515, flag7=1501, val1=5, val2=30, val3=40, val
 def t100210_x7(val1=5, val2=30, val3=40, val4=10, val5=12, flag8=6001, val6=7002100, flag9=6000, flag10=6001,
                flag11=6000, flag12=6000, mode1=1, val7=1000000, val8=1000000, val9=1000000, mode2=1,
                mode3=1, mode4=0, val10=1000000, val11=1000000, mode5=0, mode6=0):
-    """State 0,4"""
+    """State 0"""
     while True:
+        """State 4"""
         call = t100210_x24(val6=val6, flag9=flag9, flag10=flag10, val7=val7, val8=val8, val9=val9, val10=val10,
                            val11=val11)
         if call.Done():
@@ -395,8 +399,9 @@ def t100210_x14():
     return 0
 
 def t100210_x15(val2=30, val3=40):
-    """State 0,2,1"""
+    """State 0,2"""
     while True:
+        """State 1"""
         assert GetDistanceToPlayer() < val2
         """State 3"""
         call = t100210_x20()
@@ -472,8 +477,9 @@ def t100210_x21():
     return 0
 
 def t100210_x22(val2=30, val3=40):
-    """State 0,1"""
+    """State 0"""
     while True:
+        """State 1"""
         call = t100210_x15(val2=val2, val3=val3)
         if f122() == 1:
             break
@@ -524,14 +530,15 @@ def t100210_x26():
 
 def t100210_x27(val6=7002100, flag10=6001, flag14=6000, flag15=6000, flag16=6000, flag17=6000, mode7=0,
                 flag9=6000):
-    """State 0,1"""
+    """State 0"""
     while Loop('mainloop'):
+        """State 1"""
         assert not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not IsCharacterDisabled()
         """State 3"""
         assert (GetEventStatus(flag10) == 1 or GetEventStatus(flag14) == 1 or GetEventStatus(flag15)
                 == 1 or GetEventStatus(flag16) == 1 or GetEventStatus(flag17) == 1)
-        """State 4"""
         while True:
+            """State 4"""
             assert not GetEventStatus(flag9)
             """State 2"""
             if (not (not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not
