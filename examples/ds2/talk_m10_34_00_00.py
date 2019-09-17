@@ -580,9 +580,9 @@ def talk_m10_34_x21(z1=60):
     z1: Current pledge rank: Area variable
     """
     """State 0: Start state"""
-    Label('L0')
     while Loop('mainloop'):
         """State 1: Menu: Start"""
+        Label('L0')
         while True:
             """State 3: [Lib] Menu start: General purpose_SubState"""
             call = talk_m10_34_x9(z35=0, z36=220, z37=75600000, z38=0)

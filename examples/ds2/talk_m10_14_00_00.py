@@ -36,9 +36,9 @@ def talk_m10_14_7420():
         """State 6: Battle Event: Damaged by player"""
         SetEventFlag(114020117, 1)
         Goto('L1')
-    Label('L2')
     while True:
         """State 7: [Lib] Event: Branch_SubState"""
+        Label('L2')
         call = talk_m10_14_x9(z54=103653, z55=104150, z56=114020111)
         if call.Get() == 1:
             """State 8: [Lib] Reunion hostility_SubState"""
@@ -107,9 +107,9 @@ def talk_m10_14_7420():
 def talk_m10_14_7421():
     """Wandering Warrior: Patch Dead (Pyrox Street Gerdra)"""
     """State 0: Start state"""
-    Label('L0')
     while True:
         """State 1: Conversation: Start"""
+        Label('L0')
         ResetDamageTakenCountIf(GetEventFlag(114000150) != 0 and GetEventFlag(103653) != 1)
         SetEventFlagIf(GetEventFlag(114000150) != 0 and GetEventFlag(103653) != 1, 114000152, 0)
         if IsGuest() != 0:
@@ -231,9 +231,9 @@ def talk_m10_14_7440():
         """State 6: Conversation: Damaged by player"""
         SetEventFlag(114020127, 1)
         Goto('L1')
-    Label('L2')
     while True:
         """State 7: [Lib] Event: Branch_SubState"""
+        Label('L2')
         call = talk_m10_14_x9(z54=103673, z55=104170, z56=114020121)
         if call.Get() == 1:
             """State 8: [Lib] Reunion hostility_SubState"""
@@ -302,9 +302,9 @@ def talk_m10_14_7440():
 def talk_m10_14_7760():
     """Upper weapon shop (Pyrox Street)"""
     """State 0: Start state"""
-    Label('L0')
     while True:
         """State 1: Conversation: Start"""
+        Label('L0')
         ResetDamageTakenCountIf(GetEventFlag(114000152) != 0 and GetEventFlag(103862) != 1)
         SetEventFlagIf(GetEventFlag(114000152) != 0 and GetEventFlag(103862) != 1, 114000152, 0)
         if IsGuest() != 0:

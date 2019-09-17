@@ -14,7 +14,7 @@ These commands are used to generate it (from WSL, Windows Subsystem for Linux - 
 
 Also, to test recompilation:
 
-./esdtool.exe -ds1r -i examples/ds1/*.py -writebnd recompile/script/talk
-./esdtool.exe -ds2s -i examples/ds2/*.py -writebnd recompile/ezstate
-./esdtool.exe -ds3 -i examples/ds3/*.py -writebnd recompile/script/talk
-./esdtool.exe -sdt -i examples/sdt/*.py -writebnd recompile/script/talk
+./esdtool.exe -ds1r -i examples/ds1/*.py -nonewstates -writebnd recompile/script/talk
+./esdtool.exe -ds2s -i examples/ds2/*.py -nonewstates -writebnd recompile/ezstate
+./esdtool.exe -ds3 -i examples/ds3/*.py -nonewstates -writebnd recompile/script/talk
+./esdtool.exe -sdt -i examples/sdt/*.py -nonewstates -writebnd recompile/script/talk

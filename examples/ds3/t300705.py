@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 def t300705_1():
     """State 0"""
-    Label('L0')
     while True:
         """State 10"""
+        Label('L0')
         DebugEvent('最初')
         if CompareBonfireLevel(1, 0) == 1 and CompareBonfireState(1) == 1:
             break

@@ -3,9 +3,9 @@ def t130620_1():
     """State 0,43"""
     SetEventState(361, 1)
     SetEventState(367, 1)
-    Label('L0')
     while Loop('mainloop'):
         """State 21"""
+        Label('L0')
         DebugEvent('待機')
         if CheckSelfDeath() == 1 and not GetEventStatus(1342) and GetDistanceToPlayer() <= 5:
             break

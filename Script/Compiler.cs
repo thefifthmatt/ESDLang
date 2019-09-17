@@ -351,48 +351,48 @@ namespace ESDLang.Script
             Condition cond = null;
             int nextID = 0;
             ControlMode mode = ControlMode.START;
-            void newState(int hint = -1)
-            {
-                int ID;
-                if (hint == -1)
-                {
-                    while (usedStates.Contains(nextID))
-                    {
-                        nextID++;
-                    }
-                    ID = nextID++;
-                    // Not an error in general, but it is for state preservation
-                    if (!options.Flag("newstates"))
-                    {
-                        context.Error($"Have to create state {ID}");
-                    }
-                }
-                else
-                {
-                    ID = hint;
-                }
-                if (states.ContainsKey(ID))
-                {
-                    context.Error($"State {ID} used in more than one place");
-                }
-                else
-                {
-                    states[ID] = new State
-                    {
-                        Machine = machineID,
-                        ID = ID
-                    };
-                }
-                state = states[ID];
-                mode = ControlMode.START;
-            }
-            void endState()
-            {
-                state = null;
-                mode = ControlMode.START;
-            }
             void constructStates(ProgramNode node)
             {
+                void newState(int hint = -1)
+                {
+                    int ID;
+                    if (hint == -1)
+                    {
+                        while (usedStates.Contains(nextID))
+                        {
+                            nextID++;
+                        }
+                        ID = nextID++;
+                        // Not an error in general, but it is for state preservation
+                        if (!options.Flag("newstates"))
+                        {
+                            context.Error($"Have to create state {ID} for {node}");
+                        }
+                    }
+                    else
+                    {
+                        ID = hint;
+                    }
+                    if (states.ContainsKey(ID))
+                    {
+                        context.Error($"State {ID} used in more than one place");
+                    }
+                    else
+                    {
+                        states[ID] = new State
+                        {
+                            Machine = machineID,
+                            ID = ID
+                        };
+                    }
+                    state = states[ID];
+                    mode = ControlMode.START;
+                }
+                void endState()
+                {
+                    state = null;
+                    mode = ControlMode.START;
+                }
                 if (node is ProgSeq seq)
                 {
                     foreach (ProgramNode sub in seq.Nodes)

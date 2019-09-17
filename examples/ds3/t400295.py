@@ -188,9 +188,9 @@ def t400295_x10():
 
 def t400295_x11():
     """State 0"""
-    Label('L0')
     while True:
         """State 6"""
+        Label('L0')
         call = t400295_x12(z3=6000, flag4=1355, flag5=1357, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""

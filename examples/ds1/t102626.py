@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 def t102626_1():
     """State 0"""
-    Label('L0')
     while Loop('mainloop'):
         """State 6"""
+        Label('L0')
         if CheckSelfDeath() == 1 and not GetEventStatus(1435) and GetDistanceToPlayer() <= 5:
             break
         elif (IsPlayerTalkingToMe() == 1 and GetRelativeAngleBetweenPlayerAndSelf() <= 45 and GetDistanceToPlayer()

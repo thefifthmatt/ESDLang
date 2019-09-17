@@ -240,9 +240,9 @@ def t330291_x13():
 
 def t330291_x14():
     """State 0"""
-    Label('L0')
     while True:
         """State 7"""
+        Label('L0')
         call = t330291_x0(z3=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 4"""

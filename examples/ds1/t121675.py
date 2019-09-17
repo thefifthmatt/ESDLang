@@ -176,9 +176,9 @@ def t121675_1():
                     Label('L6')
                     ClearTalkActionState()
                     if True:
-                        Label('L7')
                         while True:
                             """State 6"""
+                            Label('L7')
                             # action:15000010:"Purchase Item"
                             AddTalkListData(1, 15000010, -1)
                             ShowShopMessage(0, 0, 0)

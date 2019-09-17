@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 def t101630_1():
     """State 0"""
-    Label('L0')
     while True:
         """State 6"""
+        Label('L0')
         DebugEvent('unknow')
         if CheckSelfDeath() == 1 and not GetEventStatus(1575) and GetDistanceToPlayer() <= 5:
             break

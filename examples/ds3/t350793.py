@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 def t350793_1():
     """State 0"""
-    Label('L0')
     while True:
         """State 1"""
+        Label('L0')
         DebugEvent('待機')
         if not GetEventStatus(1901) and CheckActionButtonArea(6000) and not CheckSelfDeath():
             """State 4"""

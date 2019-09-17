@@ -2,9 +2,9 @@
 def t101607_1():
     """State 0,70"""
     SetEventState(71020090, 0)
-    Label('L0')
     while Loop('mainloop'):
         """State 17"""
+        Label('L0')
         DebugEvent('待機')
         SetUpdateDistance(25)
         if (CheckSelfDeath() == 1 and not GetEventStatus(1177) and not GetEventStatus(1180) and GetDistanceToPlayer()

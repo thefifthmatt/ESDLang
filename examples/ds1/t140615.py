@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 def t140615_1():
     """State 0"""
-    Label('L0')
     while Loop('mainloop'):
         """State 25"""
+        Label('L0')
         DebugEvent('待機')
         SetUpdateDistance(25)
         if (CheckSelfDeath() == 1 and not GetEventStatus(1272) and IsEquipmentIDEquipped(2, 137) == 1

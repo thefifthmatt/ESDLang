@@ -771,9 +771,9 @@ def t200260_x32():
                     # talk:26000800:"Alright then. Okay."
                     assert t200260_x5(text5=26000800, flag22=0, mode12=1)
                     Goto('L14')
-                Label('L5')
                 while True:
                     """State 29"""
+                    Label('L5')
                     ClearTalkListData()
                     """State 30"""
                     # goods:9081:White Pinwheel, action:14026003:"Give White Pinwheel"

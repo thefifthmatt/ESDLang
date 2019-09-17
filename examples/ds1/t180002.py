@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 def t180002_1():
     """State 0"""
-    Label('L0')
     while True:
         """State 25"""
+        Label('L0')
         DebugEvent('最初')
         if (GetOneLineHelpStatus() == 1 and CompareBonfireState(0) == 1 and HasDisableTalkPeriodElapsed()
             == 1 and not IsTalkingToSomeoneElse() and not CheckSelfDeath() and not IsCharacterDisabled()

@@ -105,9 +105,9 @@ def talk_m10_15_7710():
             elif GetEventFlag(102810) != 0 and ConversationEnded() != 0:
                 """State 2: Conversation: damage reset"""
                 ResetDamageTakenCount()
-                Label('L2')
                 while True:
                     """State 12: Sealed Person: Unsealed: Conversation_SubState"""
+                    Label('L2')
                     call = talk_m10_15_x26()
                     if call.Done():
                         Continue('mainloop')

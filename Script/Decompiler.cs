@@ -230,7 +230,6 @@ namespace ESDLang.Script
         public void PrintProgram(string esdId, Machine machine, MachineArgs args, Dictionary<string, string> replace)
         {
             // Also add machine names and state args
-            // if (esdId == "t100100" && machine.ID == 1) PrintAst(machine.Node, 0);
             machine.Node = AnnotateStructure(machine.Node);
             string baseName = $"c6{machine.ID}";
             string machineName = FormatMachine(machine.ID);
@@ -331,7 +330,7 @@ namespace ESDLang.Script
             ProgramNode getLabel(ProgramNode node)
             {
                 int state = node.State;
-                if (gotoTargets.Contains(state) && !(node is ProgSeq))
+                if (gotoTargets.Contains(state) && !(node is ProgSeq || node is ProgLoop))
                 {
                     gotoTargets.Remove(state);
                     // Heuristic to add label at the start of a state, whether annotation is shown or not

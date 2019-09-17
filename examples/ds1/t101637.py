@@ -2,9 +2,9 @@
 def t101637_1():
     """State 0,80"""
     SetEventState(71800067, 0)
-    Label('L0')
     while Loop('mainloop'):
         """State 6"""
+        Label('L0')
         DebugEvent('unknow')
         if CheckSelfDeath() == 1 and not GetEventStatus(1702) and GetDistanceToPlayer() <= 5:
             break

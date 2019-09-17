@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 def t160634_1():
     """State 0"""
-    Label('L0')
     while Loop('mainloop'):
         """State 28"""
+        Label('L0')
         DebugEvent('待機')
         SetUpdateDistance(25)
         if (CheckSelfDeath() == 1 and not GetEventStatus(1676) and GetEventStatus(831) == 1 and GetDistanceToPlayer()

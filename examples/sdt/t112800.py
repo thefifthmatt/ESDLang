@@ -432,9 +432,9 @@ def t112800_x26(shop1=1120000, shop2=1120099, flag13=-1, flag14=-1, text1=-1, fl
     if GetEventStatus(flag15) == 1 and not GetEventStatus(flag18) and mode7 == 1:
         """State 18,26"""
         assert t112800_x29(text1=text1, text4=text4, lot1=69900, flag15=flag15, flag18=flag18, mode8=1)
-        Label('L0')
         while True:
             """State 1"""
+            Label('L0')
             ClearTalkListData()
             """State 3"""
             # action:15000010:"Purchase items"

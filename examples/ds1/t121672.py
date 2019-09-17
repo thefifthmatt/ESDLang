@@ -250,9 +250,9 @@ def t121672_1():
                             """State 51"""
                             Label('L12')
                             if True:
-                                Label('L13')
                                 while True:
                                     """State 47"""
+                                    Label('L13')
                                     # action:15000010:"Purchase Item"
                                     AddTalkListData(1, 15000010, -1)
                                     # action:15000000:"Talk"

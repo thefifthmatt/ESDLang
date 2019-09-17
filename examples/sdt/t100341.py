@@ -21,9 +21,9 @@ def t100341_1001():
 
 def t100341_1102():
     """State 0"""
-    Label('L0')
     while True:
         """State 2"""
+        Label('L0')
         assert not GetEventStatus(71000253) and DoesSelfHaveSpEffect(5038) == 1
         """State 9"""
         # talk:34061200:"In that case..."
