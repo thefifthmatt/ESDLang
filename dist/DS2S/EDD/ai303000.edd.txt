@@ -1,0 +1,49 @@
+10: Lower: First attack
+10_s0: Start state
+10_s1: Lower: Start
+10_s1_e0: [Attack] Damage lower logic reset setting
+10_s2: Lower: branch
+10_s3: Lower: End
+10_s3_e0: [General purpose] Sharing flag setting
+10_s3_e1: [Debug] Ticker output
+20: Lower: First step
+20_s0: Start state
+20_s1: Lower: Start
+20_s1_e0: [Attack] Damage lower logic reset setting
+20_s2: Lower: branch
+20_s3: [Short Distance] Front_SubState
+20_s4: [Short Distance] Back _SubState
+20_s5: [Long distance] front_SubState
+20_s6: [Long distance] back _SubState
+100: Verification: Back tracking
+100_s0: Start state
+100_s1: Verification: Start
+100_s1_e0: [Attack] Damage lower logic reset setting
+100_s2: Verification: branch
+100_s3: Verification: back _SubState
+x0: Verification: back
+x0_s0: Start state
+x0_s1: Verification: back
+x0_s1_w0: [Move] Horizontal move_Lock_Random_Direction designation
+x0_s2: Verification: Wait
+x0_s3: End state
+x1: [Short distance] front
+x1_s0: Start state
+x1_s0_e0: [Debug] Popcorn creation
+x1_s0_w0: [Move] Horizontal move_Lock_Random
+x1_s1: End state
+x2: [Short distance] back
+x2_s0: Start state
+x2_s0_e0: [Debug] Popcorn creation
+x2_s0_w0: [Move] Horizontal move_Lock_Random_Direction designation
+x2_s1: End state
+x3: [Far distance] front
+x3_s0: Start state
+x3_s0_e0: [Debug] Popcorn creation
+x3_s0_w0: [Move] Horizontal move_Lock_Random
+x3_s1: End state
+x4: [Far distance] back
+x4_s0: Start state
+x4_s0_e0: [Debug] Popcorn creation
+x4_s0_w0: [Move] Horizontal move_Lock_Random_Direction designation
+x4_s1: End state

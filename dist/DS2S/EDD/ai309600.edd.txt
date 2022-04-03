@@ -1,0 +1,228 @@
+10: Lower: Initial
+10_s0: Start state
+10_s1: Lower state: Initial setting
+10_s1_e0: [Attack] Damage lower logic reset setting
+10_s1_e1: [Attack] Resident damage type setting
+10_s2: Lower state: Initial termination
+10_s2_e0: [General purpose] Sharing flag setting
+10_s2_e1: [General purpose] Sharing flag setting
+10_s3: Substate: Start
+20: Lower: STEP1
+20_s0: Start state
+20_s1: Substate: Start
+20_s2: Lower state: STEP transition judgment
+20_s2_e0: [General purpose] Sharing flag setting
+20_s3: Lower state: end judgment
+20_s3_e0: [General purpose] Sharing flag setting
+20_s4: Search flag setting
+20_s4_e0: [General purpose] Sharing flag setting
+20_s5: Target action: STEP1: bare hands _SubState
+30: Lower: STEP2
+30_s0: Start state
+30_s1: Substate: Start
+30_s2: Lower state: STEP transition judgment
+30_s2_e0: [General purpose] Sharing flag setting
+30_s3: Lower state: end judgment
+30_s3_e0: [General purpose] Sharing flag setting
+30_s4: Search flag setting
+30_s4_e0: [General purpose] Sharing flag setting
+30_s5: Inherited behavior: wrist _SubState
+30_s6: Target action: STEP2: Left arm_SubState
+x1: Inherent behavior: arm tear
+x1_p0: Behavior timeout time
+x1_s0: Start state
+x1_s1: start
+x1_s1_e0: [Attack] Reset attack failure
+x1_s2: Run
+x1_s2_w0: [Attack] Melee attack
+x1_s3: Waiting
+x1_s4: Successful end processing
+x1_s5: Failure end processing
+x1_s6: Successful completion state
+x1_s7: Failure end state
+x2: Lower: Navigation approach behavior
+x2_p0: Dash approach distance
+x2_p1: Analog intensity minimum
+x2_p2: Analog intensity maximum
+x2_p3: Target distance
+x2_p4: Move timeout time
+x2_p5: Timeout time during walking
+x2_s0: Start state
+x2_s1: Move: Start
+x2_s1_e0: [Attack] Attack cancel
+x2_s1_e1: [Move] Reset move failure
+x2_s1_e2: [Timer] Start timer
+x2_s1_e3: [General purpose] Sharing flag setting
+x2_s1_e4: [General purpose] Sharing flag setting
+x2_s1_e5: [General purpose] Sharing flag setting
+x2_s1_e6: [General purpose] Sharing flag setting
+x2_s2: Movement: Approaching action (dash)
+x2_s2_e0: [General purpose] Sharing flag setting
+x2_s2_w0: [Move] Dash_Lock_Random
+x2_s2_w1: [General purpose] Sharing flag setting
+x2_s2_w2: [General purpose] Sharing flag setting
+x2_s2_w3: [General purpose] Sharing flag setting
+x2_s3: Jump: Navigation search
+x2_s3_e0: [Search] Navimesh
+x2_s4: Movement: Interpolation movement during search
+x2_s4_e0: [General purpose] Sharing flag setting
+x2_s4_w0: [Move] Lock move random
+x2_s4_w1: [Move] Lock move random
+x2_s4_w2: [General purpose] Sharing flag setting
+x2_s4_w3: [General purpose] Sharing flag setting
+x2_s5: Move: Navi move (dash)
+x2_s5_e0: [General purpose] Sharing flag setting
+x2_s5_w0: [Move] Dash_Lock_Navimesh
+x2_s5_w1: [General purpose] Sharing flag setting
+x2_s5_w2: [General purpose] Sharing flag setting
+x2_s5_w3: [General purpose] Sharing flag setting
+x2_s6: Movement: Obstacle avoidance
+x2_s6_e0: [General purpose] Sharing flag setting
+x2_s6_w0: [Move] Horizontal move_Lock_Random
+x2_s6_w1: [General purpose] Sharing flag setting
+x2_s6_w2: [General purpose] Sharing flag setting
+x2_s7: Movement: arrival confirmation
+x2_s7_e0: [Move] Reset move failure
+x2_s7_w0: [Move] Lock to target correction position
+x2_s8: Move: end processing
+x2_s8_e0: [Move] Reset move failure
+x2_s9: Movement: quick turn (target direction)
+x2_s9_e0: [General purpose] Sharing flag setting
+x2_s9_w0: [Turning] Quick turn_Lock
+x2_s10: Movement: Navigation not used Movement: Forward
+x2_s10_e0: [Move] Reset move failure
+x2_s10_e1: [General purpose] Sharing flag setting
+x2_s10_w0: [Move] Lock move random
+x2_s10_w1: [General purpose] Sharing flag setting
+x2_s10_w2: [General purpose] Sharing flag setting
+x2_s11: Movement: Navigation not used Movement: Left and right back
+x2_s11_e0: [Move] Reset move failure
+x2_s11_e1: [General purpose] Sharing flag setting
+x2_s11_w0: [Move] Horizontal move_Lock_Random
+x2_s11_w1: [General purpose] Sharing flag setting
+x2_s12: Movement: Navigation not used Movement: Random
+x2_s12_e0: [Move] Reset move failure
+x2_s12_e1: [General purpose] Sharing flag setting
+x2_s12_w0: [Move] Horizontal move_Lock_Random
+x2_s12_w1: [General purpose] Sharing flag setting
+x2_s13: Move: Navimesh return
+x2_s13_e0: [General purpose] Sharing flag setting
+x2_s13_w0: [Move] Move horizontally to the center of the navigation mesh
+x2_s13_w1: [General purpose] Sharing flag setting
+x2_s14: Movement: approaching action (normal)
+x2_s14_e0: [General purpose] Sharing flag setting
+x2_s14_w0: [Move] Lock move random
+x2_s14_w1: [General purpose] Sharing flag setting
+x2_s14_w2: [General purpose] Sharing flag setting
+x2_s15: Movement: approach action branch
+x2_s16: Movement: Navigation movement (normal)
+x2_s16_e0: [General purpose] Sharing flag setting
+x2_s16_w0: [Move] Lock move Navi mesh
+x2_s16_w1: [General purpose] Sharing flag setting
+x2_s16_w2: [General purpose] Sharing flag setting
+x2_s17: Move: Navigation move (horizontal)
+x2_s17_e0: [General purpose] Sharing flag setting
+x2_s17_w0: [Move] Horizontal move_Lock_Navimesh
+x2_s17_w1: [General purpose] Sharing flag setting
+x2_s18: Movement: Quick turn (navigation direction)
+x2_s18_w0: [Turning] Quick turn _ Navi mesh direction
+x2_s18_w1: [General purpose] Sharing flag setting
+x2_s19: End state
+x3: Target action: STEP1: bare hands
+x3_s0: Start state
+x3_s1: Target action: start
+x3_s2: Target action: Branch after attack
+x3_s2_e0: [Random number] Random number generation
+x3_s2_e1: [General purpose] Sharing flag setting
+x3_s3: Lower: Navigation approach behavior_SubState
+x3_s3_e0: [Random number] Random number generation
+x3_s4: Attack: Single: Backward check: Action 1: Back step _SubState
+x3_s5: [LIB] Attack: Single issue: General purpose: Action 17: Pay with right hand (front) _SubState
+x3_s6: [LIB] Attack: Single issue: General purpose: Action 12: Right Substep_SubState
+x3_s7: [LIB] Attack: Single issue: Generic: Action 13: Substate _SubState with left foot
+x3_s8: [LIB] Attack: Single issue: General purpose: Action 14: Substep three consecutive steps _SubState
+x3_s9: [LIB] Attack: Single issue: General purpose: Action 16: Pay with right hand (near left hand) _SubState
+x3_s10: [LIB] Attack: Single issue: General purpose: Action 18: Stand up and crush _SubState
+x3_s11: Attack action: Combo stage number distribution specification: Combo 1: Combo _SubState that pays near right foot
+x3_s12: Attack action: Combo stage number distribution specification: Combo 2: Combo_SubState that pays near left foot
+x3_s13: Attack action: Combo stage number distribution specification: Combo 3: Crush with right hand (front) _SubState
+x3_s14: End state
+x4: Target action: STEP2: left arm
+x4_s0: Start state
+x4_s1: Target action: start
+x4_s2: Target action: Branch after attack
+x4_s2_e0: [Random number] Random number generation
+x4_s2_e1: [General purpose] Sharing flag setting
+x4_s3: Lower: Navigation approach behavior_SubState
+x4_s3_e0: [Random number] Random number generation
+x4_s4: [LIB] Attack: Single issue: General purpose: Action 12: Right Substep_SubState
+x4_s5: [LIB] Attack: Single issue: Generic: Action 13: Substate _SubState with left foot
+x4_s6: [LIB] Attack: Single issue: General purpose: Action 14: Substep three consecutive steps _SubState
+x4_s7: [LIB] Attack: Single issue: General purpose: Action 17: Pay (front) _SubState
+x4_s8: Attack action: Combo stage number distribution specification: Combo 1: Combo _SubState that pays near right foot
+x4_s9: Attack action: Combo stage number distribution specification: Combo 2: Combo_SubState that pays near left foot
+x4_s10: Attack action: Combo stage number distribution designation: Combo 3: Crush (front) _SubState
+x4_s11: [LIB] Attack: Single issue: General purpose: Action 18: Stand up and crush _SubState
+x4_s12: Attack: Single: Backward check: Action 1: Back step _SubState
+x4_s13: [LIB] Attack: Single issue: General purpose: Action 19: Get up and down _SubState
+x4_s14: [LIB] Attack: Single issue: General purpose: Action 8: Pay (right foot) _SubState
+x4_s15: [LIB] Attack: Single issue: General purpose: Action 9: Pay (around left foot) _SubState
+x4_s16: End state
+x5: Attack: Single shot: Backward check
+x5_p0: Behavior type
+x5_p1: Forward confirmation distance
+x5_s0: Start state
+x5_s1: Begin attack
+x5_s1_e0: [Move] Reset move failure
+x5_s1_e1: [Attack] Reset attack failure
+x5_s2: Attack: Under attack
+x5_s2_e0: [Attack] Melee attack
+x5_s3: Attack: Successful end processing
+x5_s4: Attack: Failure end processing
+x5_s5: Attack: Backward check
+x5_s5_w0: [Move] Horizontal move_random
+x5_s6: Attack: target save
+x5_s6_w0: [Search] Save target
+x5_s7: Attack: Target clear
+x5_s7_w0: [Search] Clear the target
+x5_s8: Attack: target load (safe)
+x5_s8_w0: [Search] Load target
+x5_s9: Attack: target load (dangerous)
+x5_s9_w0: [Search] Load target
+x5_s10: Attack successful end state
+x5_s11: Back danger end state
+x6: Attack action: Combo stage number distribution designation
+x6_p0: Attack type
+x6_p1: Stop distance
+x6_p2: Stop angle
+x6_p3: Short navigation mesh check
+x6_p4: One stop probability
+x6_p5: Double stop probability
+x6_p6: Three-step stopping probability
+x6_p7: Blade dash grace time
+x6_s0: Start state
+x6_s1: Begin attack
+x6_s1_e0: [Attack] Reset attack failure
+x6_s2: Attack: Combo execution
+x6_s2_e0: [Attack] Melee attack
+x6_s3: Attack: Combo first stage waiting
+x6_s4: Attack: First stage cancellation judgment
+x6_s5: Attack: Second stage cancellation judgment
+x6_s6: Attack: 3rd stage cancellation judgment
+x6_s7: Attack: Combo end wait
+x6_s8: Attack: Cancel execution
+x6_s8_e0: [Attack] Combo attack cancel
+x6_s9: Attack: Successful end processing
+x6_s10: Attack: Failure end processing
+x6_s10_e0: [Attack] Combo attack cancel
+x6_s11: Successful completion state
+x6_s12: Failure end state
+x0: [LIB] Attack: Single issue: General purpose
+x0_p0: Attack type
+x0_p1: Short navigation mesh check
+x0_s0: Start state
+x0_s1: Attack: Under attack
+x0_s1_e0: [Attack] Melee attack
+x0_s2: Attack: Cancel wait
+x0_s3: Attack: Success: End state
+x0_s4: Attack: Failure: End state

@@ -1,0 +1,30 @@
+10: Top
+10_s0: Start state
+10_s1: Top: Start
+10_s1_e0: [Search enemy] Character _ target setting
+10_s1_e1: [General] lower-level state map switching
+10_s2: Higher rank: search enemy ON
+10_s2_e0: [Operation] Lock on
+10_s3: Top rank: search off
+10_s3_e0: [Operation] Lock off
+10_s4: Top: with target
+10_s5: Top: no target
+20: Lower rank
+20_s0: Start state
+20_s1: Part Damage: Standby
+20_s1_e0: [Attack] Damage information reset
+20_s2: Part damage: Part 1 damage
+20_s2_e0: [Debug] Log output
+20_s2_e1: [Debug] Log output
+20_s3: Part damage: body damage
+20_s3_e0: [Debug] Log output
+20_s3_e1: [Debug] Log output
+20_s4: Part damage: Part 2 damage
+20_s4_e0: [Debug] Log output
+20_s4_e1: [Debug] Log output
+20_s5: Part damage: Part 3 damage
+20_s5_e0: [Debug] Log output
+20_s5_e1: [Debug] Log output
+20_s6: Part damage: Part 4 damage
+20_s6_e0: [Debug] Log output
+20_s6_e1: [Debug] Log output

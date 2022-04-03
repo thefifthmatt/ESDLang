@@ -1,0 +1,24 @@
+100: First Contact: Event
+100_s0: Start state
+100_s1: Lower logic: start
+100_s2: Lower logic: setting
+100_s3: Lock-on
+100_s3_e0: [Operation] Lock on
+100_s4: Waiting for death
+100_s4_w0: [General purpose] Sharing flag setting
+100_s5: [LIB] Initial termination setting_SubState
+100_s6: [LIB] Attack: Single issue: General purpose _SubState
+x0: [LIB] Initial termination setting
+x0_s0: Start state
+x0_s1: Initial end setting: Start
+x0_s1_e0: [General purpose] Sharing flag setting
+x0_s2: End state
+x1: [LIB] Attack: Single issue: General purpose
+x1_p0: Attack type
+x1_p1: Short navigation mesh check
+x1_s0: Start state
+x1_s1: Attack: Under attack
+x1_s1_e0: [Attack] Melee attack
+x1_s2: Attack: Cancel wait
+x1_s3: Attack: Success: End state
+x1_s4: Attack: Failure: End state

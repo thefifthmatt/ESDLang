@@ -1,0 +1,224 @@
+10: Lower: STEP1
+10_s0: Start state
+10_s1: Lower: End of action
+10_s1_e0: [General purpose] Sharing flag setting
+10_s1_e1: [General purpose] Sharing flag setting
+10_s1_e2: [General purpose] Sharing flag setting
+10_s2: Lower: Action start_SubState
+10_s3: Lower: STEP1 action_SubState
+20: Lower: STEP2
+20_s0: Start state
+20_s1: Lower: End of action
+20_s1_e0: [General purpose] Sharing flag setting
+20_s1_e1: [General purpose] Sharing flag setting
+20_s2: Lower: STEP3 transition
+20_s2_e0: [General purpose] Sharing flag setting
+20_s2_e1: [General purpose] Sharing flag setting
+20_s2_e2: [General purpose] Sharing flag setting
+20_s3: Lower: STEP2 action_SubState
+20_s4: Lower: Action start_SubState
+30: Lower: STEP3
+30_s0: Start state
+30_s1: Lower: End of action
+30_s1_e0: [General purpose] Sharing flag setting
+30_s1_e1: [General purpose] Sharing flag setting
+30_s2: Lower: Action start_SubState
+30_s3: Lower: STEP3 action_SubState
+x1: Lower: STEP2 action
+x1_s0: Start state
+x1_s1: Action: Flag clear
+x1_s1_e0: [General purpose] Sharing flag setting
+x1_s2: Attack: Long-range action
+x1_s3: Action: Start
+x1_s3_e0: [Random number] Random number generation
+x1_s4: Attack behavior: short range
+x1_s5: Attack behavior
+x1_s5_e0: [Random number] Random number generation
+x1_s5_w0: [Move] Horizontal move_Lock_Navimesh
+x1_s6: Attack action: medium range
+x1_s7: ▼ Combo 1: Smash Combo 1_SubState
+x1_s8: ▼ Combo 2: Slamming Combo 2 (Derived) _SubState
+x1_s9: ▼ Combo 3: Right-handed Combo_SubState
+x1_s10: ▼ Combo 4: Left-handed Combo_SubState
+x1_s11: ▼ Action 13: Slam (strong) _SubState
+x1_s12: Movement: Underground Movement_SubState
+x1_s13: ▼ Action 20: Breath (front) _SubState
+x1_s14: ▼ Action 21: Breath (head swing) _SubState
+x1_s15: ▼ Action 22: Flapping hot air _SubState
+x1_s16: ▼ Action 14: Right hand stick out_SubState
+x1_s17: ▼ Action 23: Breath (short distance) _SubState
+x1_s18: ▼ Action 16: Swing down arm wearing flame (both hands) _SubState
+x1_s19: ▼ Action 15: Swing down arm wearing flame_SubState
+x1_s20: End state
+x2: Lower: Start action
+x2_s0: Start state
+x2_s1: Step action: start
+x2_s1_e0: [General purpose] Sharing flag setting
+x2_s1_e1: [Attack] Damage lower logic reset setting
+x2_s1_e2: [Move] Reset move failure
+x2_s2: End state
+x3: Attack: Melee
+x3_p0: Attack type
+x3_p1: Attack angle
+x3_p2: Stop distance
+x3_p3: Stop angle
+x3_p4: Shared flag
+x3_p5: Attack distance
+x3_p6: Cancellation rate
+x3_s0: Start state
+x3_s1: Begin attack
+x3_s1_e0: [Move] Reset move failure
+x3_s1_e1: [Platoon] Set the platoon flag
+x3_s2: Attack: Turning
+x3_s2_w0: [Turning] Turning in place_Lock
+x3_s3: Attack: Level judgment
+x3_s3_e0: [General purpose] Sharing flag setting
+x3_s4: Attack: Re-Draw
+x3_s4_e0: [General purpose] Sharing flag setting
+x3_s5: Attack: Move
+x3_s5_w0: [Move] Horizontal move_Lock_Random
+x3_s6: [LIB] Attack action: Combo probability cancel_SubState
+x3_s7: End state
+x4: Movement: Underground movement
+x4_p0: Moving area 1
+x4_p1: Moving area 2
+x4_s0: Start state
+x4_s1: Move: Start
+x4_s2: Move: dive
+x4_s2_e0: [Attack] Defense
+x4_s3: Move: levitate
+x4_s3_e0: [Timer] Start timer
+x4_s3_w0: [Attack] Defense
+x4_s4: Movement: dive
+x4_s5: Move: Point Warp_SubState
+x4_s6: End state
+x5: Move: Point Warp
+x5_s0: Start state
+x5_s1: Point Warp: Start
+x5_s1_e0: [Timer] Start timer
+x5_s1_e1: [Random number] Random number generation
+x5_s1_e2: [Platoon] Set the platoon flag
+x5_s1_w0: [Search] Save target
+x5_s2: Point warp: Navi point target
+x5_s2_w0: [Search for enemy] Navi point _ Target setting
+x5_s3: Point Warp: Warp Start
+x5_s3_e0: [Random number] Random number generation
+x5_s3_e1: [Move] Warp_Target
+x5_s4: Point Warp: Warp End
+x5_s4_w0: [Search] Load target
+x5_s5: Point Warp: Turning
+x5_s5_w0: [Turning] Turning in place_Lock
+x5_s6: Point warp: alignment (right)
+x5_s6_w0: [Move] Horizontal move_Lock_Random
+x5_s7: Point warp: alignment (left)
+x5_s7_w0: [Move] Horizontal move_Lock_Random
+x5_s8: Point Warp: Central Navi Point Target
+x5_s8_e0: [Timer] Start timer
+x5_s8_w0: [Search for enemy] Navi point _ Target setting
+x5_s9: End state
+x6: Attack: shooting
+x6_p0: Attack type
+x6_p1: Attack angle
+x6_p2: Shared flag
+x6_s0: Start state
+x6_s1: Begin attack
+x6_s1_e0: [Move] Reset move failure
+x6_s2: Attack: Turning
+x6_s2_w0: [Turning] Turning in place_Lock
+x6_s3: Attack: Level judgment
+x6_s3_e0: [General purpose] Sharing flag setting
+x6_s4: Attack: Re-Draw
+x6_s4_e0: [General purpose] Sharing flag setting
+x6_s5: Attack: shooting
+x6_s5_e0: [Attack] Melee attack
+x6_s6: Platoon flag count up_SubState
+x6_s7: End state
+x7: Lower: STEP1 action
+x7_s0: Start state
+x7_s1: STEP1: Start
+x7_s2: STEP1: Move
+x7_s2_e0: [Search] Load target
+x7_s2_w0: [Move] Lock move random
+x7_s3: STEP1: End
+x7_s4: Measure distance to target
+x7_s4_e0: [Search] Save target
+x7_s4_w0: [Search for enemy] Navi point _ Target setting
+x7_s5: End state
+x8: Platoon flag count up
+x8_p0: Flag ID
+x8_s0: Start state
+x8_s1: Count Up: Start
+x8_s2: Count up: 1
+x8_s2_e0: [Platoon] Set the platoon flag
+x8_s3: Count up: 2
+x8_s3_e0: [Platoon] Set the platoon flag
+x8_s4: Count up: 4
+x8_s4_e0: [Platoon] Set the platoon flag
+x8_s5: Count up: 5
+x8_s5_e0: [Platoon] Set the platoon flag
+x8_s6: Count up: 6
+x8_s6_e0: [Platoon] Set the platoon flag
+x8_s7: Count up: 7
+x8_s7_e0: [Platoon] Set the platoon flag
+x8_s8: Count up: 8
+x8_s8_e0: [Platoon] Set the platoon flag
+x8_s9: Count up: 9
+x8_s9_e0: [Platoon] Set the platoon flag
+x8_s10: Count up: 3
+x8_s10_e0: [Platoon] Set the platoon flag
+x8_s11: End state
+x9: Lower: STEP3 action
+x9_s0: Start state
+x9_s1: Action: Flag clear
+x9_s1_e0: [General purpose] Sharing flag setting
+x9_s2: Attack: Long-range action
+x9_s3: Action: Start
+x9_s3_e0: [Random number] Random number generation
+x9_s4: Attack behavior: short range
+x9_s5: Attack behavior
+x9_s5_e0: [Random number] Random number generation
+x9_s5_w0: [Move] Horizontal move_Lock_Navimesh
+x9_s6: Attack action: medium range
+x9_s7: ▼ Combo 1: Smash Combo 1_SubState
+x9_s8: ▼ Combo 2: Slamming Combo 2 (Derived) _SubState
+x9_s9: ▼ Combo 3: Right-handed Combo_SubState
+x9_s10: ▼ Combo 4: Left-handed Combo_SubState
+x9_s11: ▼ Action 13: Slam (strong) _SubState
+x9_s12: Movement: Underground Movement_SubState
+x9_s13: ▼ Action 20: Breath (front) _SubState
+x9_s14: ▼ Action 21: Breath (head swing) _SubState
+x9_s15: ▼ Action 22: Flapping hot air _SubState
+x9_s16: ▼ Action 14: Right hand stick out_SubState
+x9_s17: ▼ Action 23: Breath (short distance) _SubState
+x9_s18: ▼ Action 16: Swing down arm wearing flame (both hands) _SubState
+x9_s19: ▼ Action 15: Swing down arm wearing flame_SubState
+x9_s20: End state
+x0: [LIB] Attack action: Combo probability cancel
+x0_p0: Attack type
+x0_p1: Stop distance
+x0_p2: Stop angle
+x0_p3: Short navigation mesh check
+x0_p4: Second chance of suspension
+x0_p5: 3rd stop probability
+x0_p6: 4th stop probability
+x0_p7: Blade dash grace time
+x0_s0: Start state
+x0_s1: Begin attack
+x0_s1_e0: [Attack] Reset attack failure
+x0_s2: Attack: Combo execution
+x0_s2_e0: [Attack] Melee attack
+x0_s3: Attack: Combo first stage waiting
+x0_s4: Attack: First stage cancellation judgment
+x0_s4_e0: [Random number] Random number generation
+x0_s5: Attack: Second stage cancellation judgment
+x0_s5_e0: [Random number] Random number generation
+x0_s6: Attack: 3rd stage cancellation judgment
+x0_s6_e0: [Random number] Random number generation
+x0_s7: Attack: Combo end wait
+x0_s8: Attack: Cancel execution
+x0_s8_e0: [Attack] Combo attack cancel
+x0_s9: Attack: Successful end processing
+x0_s10: Attack: Failure end processing
+x0_s10_e0: [Attack] Combo attack cancel
+x0_s11: Successful completion state
+x0_s12: Failure end state

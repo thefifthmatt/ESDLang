@@ -1,0 +1,35 @@
+20: Subordinate Slave Beast: Escape
+20_s0: Start state
+20_s1: Subordinate Slave Beast: Start
+20_s2: Lower slave beast: approaching / waiting
+20_s3: Subordinate slave beast: Start judgment
+20_s4: Subordinate Slave Beast: Action_SubState
+20_s5: Subordinate Slave Beast: Escape Behavior_SubState
+20_s6: Subordinate Slave Beast: Long Standby_SubState
+x0: Lower Slave Beast: Action
+x0_s0: Start state
+x0_s1: Action: Start
+x0_s2: Action: Target discovery
+x0_s2_e0: [Search] Navimesh
+x0_s3: Action: Navimesh failed
+x0_s3_w0: [Move] Horizontal move_random
+x0_s3_w1: [Move] Horizontal move_Lock_Random
+x0_s4: Action: Move execution
+x0_s4_w0: [Move] Normal move Navi mesh
+x0_s5: Action: Cancel
+x0_s6: End state
+x1: Lower Slave Beast: Escape Behavior
+x1_s0: Start state
+x1_s1: Escape Action: Start
+x1_s1_w0: [Move] Dash_random
+x1_s2: Escape Behavior: During the acclaimed escape
+x1_s2_e0: [Operation] Lock on
+x1_s2_w0: [Move] Horizontal move_Lock_Random
+x1_s3: Escape Action: Termination Processing
+x1_s3_e0: [Operation] Lock off
+x1_s4: End state
+x2: Lower slave beast: long-distance standby
+x2_s0: Start state
+x2_s1: Long-distance standby: start
+x2_s2: Long-distance standby: End
+x2_s3: End state

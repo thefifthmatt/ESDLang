@@ -1,0 +1,259 @@
+10: Lower: STEP1
+10_s0: Start state
+10_s1: Lower: End of action
+10_s1_e0: [Timer] Start timer
+10_s1_e1: [General purpose] Sharing flag setting
+10_s1_e2: [General purpose] Sharing flag setting
+10_s1_e3: [General purpose] Sharing flag setting
+10_s2: Lower: STEP1 action_SubState
+10_s3: Lower: Action start_SubState
+20: Lower: STEP2
+20_s0: Start state
+20_s1: Lower: End of action
+20_s1_e0: [General purpose] Sharing flag setting
+20_s1_e1: [General purpose] Sharing flag setting
+20_s1_e2: [Random number] Random number generation
+20_s2: Lower: anger mode
+20_s2_e0: [General purpose] Sharing flag setting
+20_s3: Lower: Action start_SubState
+20_s4: Lower: STEP action_SubState
+30: Lower: STEP3
+30_s0: Start state
+30_s1: Lower: End of action
+30_s1_e0: [General purpose] Sharing flag setting
+30_s1_e1: [General purpose] Sharing flag setting
+30_s1_e2: [Random number] Random number generation
+30_s2: Lower: Flame Super Sword Mode
+30_s2_e0: [General purpose] Sharing flag setting
+30_s3: Lower: Action start_SubState
+30_s4: Lower: STEP action_SubState
+100: Lower: anger mode
+100_s0: Start state
+100_s1: Lower: End of action
+100_s1_e0: [Timer] Start timer
+100_s1_e1: [General purpose] Sharing flag setting
+100_s1_e2: [General purpose] Sharing flag setting
+100_s1_e3: [General purpose] Sharing flag setting
+100_s2: Lower: Action execution
+100_s2_e0: [Attack] Melee attack
+100_s3: Lower: in action
+100_s4: Lower: Action start_SubState
+100_s4_e0: [Debug] Popcorn creation
+110: Subordinate: Flame oversized sword
+110_s0: Start state
+110_s1: Lower: Action execution
+110_s1_e0: [Attack] Melee attack
+110_s2: Lower: End of action
+110_s2_e0: [Timer] Start timer
+110_s2_e1: [General purpose] Sharing flag setting
+110_s2_e2: [General purpose] Sharing flag setting
+110_s2_e3: [General purpose] Sharing flag setting
+110_s2_e4: [General purpose] Sharing flag setting
+110_s3: Lower: in action
+110_s4: Lower: Action start_SubState
+110_s4_e0: [Debug] Popcorn creation
+40: Lower: STEP4
+40_s0: Start state
+40_s1: Lower: End of action
+40_s1_e0: [General purpose] Sharing flag setting
+40_s1_e1: [General purpose] Sharing flag setting
+40_s2: Lower: Normal mode transition
+40_s2_e0: [General purpose] Sharing flag setting
+40_s2_e1: [Timer] Start timer
+40_s3: Lower: Action start_SubState
+40_s4: Lower: STEP action_SubState
+x4: Lower: Initial
+x4_s0: Start state
+x4_s1: Step action: start
+x4_s2: Step action: end
+x4_s3: Lower: Action start_SubState
+x4_s4: End state
+x5: Lower: Start action
+x5_s0: Start state
+x5_s1: Step action: start
+x5_s1_e0: [General purpose] Sharing flag setting
+x5_s1_e1: [Attack] Damage lower logic reset setting
+x5_s1_e2: [Move] Reset move failure
+x5_s2: End state
+x6: Lower: STEP action
+x6_s0: Start state
+x6_s1: Step action: start
+x6_s2: Step action: branch
+x6_s3: Step action: end
+x6_s4: Step action: wait and see
+x6_s4_w0: [Move] Horizontal move_Lock_Random
+x6_s5: Attack action: Extra large sword_SubState
+x6_s6: Attack: Flame Sword_SubState
+x6_s7: End state
+x7: Melee attack [improved]
+x7_p0: Attack type
+x7_p1: Attack distance
+x7_p2: Attack angle
+x7_p3: Walking distance
+x7_p4: Attack stop distance
+x7_p5: 2nd chance of suspension
+x7_p6: 3rd stop probability
+x7_p7: 4th stop probability
+x7_s0: Start state
+x7_s1: Begin attack
+x7_s1_e0: [Timer] Start timer
+x7_s1_e1: [Move] Reset move failure
+x7_s1_e2: [Movement] Movement prediction accuracy setting
+x7_s2: Attack: level branch
+x7_s3: Attack: End
+x7_s4: Attack: Angle adjustment
+x7_s5: Attack: attack turn
+x7_s5_w0: [Turning] Quick turn_Lock
+x7_s6: Attack: distance branch
+x7_s7: Attack: walking
+x7_s7_w0: [Move] Lock move random
+x7_s8: Attack: dash
+x7_s8_w0: [Move] Dash_Lock_Random
+x7_s9: Attack: Moving and turning
+x7_s9_w0: [Turning] Quick turn_Lock
+x7_s10: Attack: Waiting for stun
+x7_s10_w0: [Turning] Turning in place_Lock
+x7_s11: Attack: Return to fainting
+x7_s11_w0: [Turning] Quick turn_Lock
+x7_s12: [LIB] Attack action: Combo probability cancel_SubState
+x7_s13: Success: End state
+x7_s14: Failure: termination state
+x8: Attack action: oversized sword
+x8_s0: Start state
+x8_s1: Attack: Branch
+x8_s2: Begin attack
+x8_s2_e0: [Random number] Random number generation
+x8_s3: Attack: Action after attack
+x8_s3_e0: [Random number] Random number generation
+x8_s4: Attack: 3m or less
+x8_s5: Attack: 15m or less
+x8_s6: Attack: 8m or less
+x8_s7: Attack: 15m or more
+x8_s8: [LIB] Timed action (humanoid general purpose) _SubState
+x8_s9: [LIB] Avoidance action_SubState
+x8_s10: ▼ Attack: Combo 1: Stripping Combo (Explosion) _SubState
+x8_s11: ▼ Attack: Combo 2: Cleavage Combo_SubState
+x8_s12: ▼ Attack: Combo 3: Sanaginagi Combo_SubState
+x8_s13: ▼ Attack: Combo 4: Explosion_SubState
+x8_s14: ▼ Attack: Action 11: Slap both hands _SubState
+x8_s15: ▼ Attack: Action 14: Thrust_SubState
+x8_s16: ▼ Attack: Action 15: Depressed_SubState
+x8_s17: End state
+x9: Attack: Flame Sword
+x9_s0: Start state
+x9_s1: Attack: Branch
+x9_s2: Begin attack
+x9_s2_e0: [Random number] Random number generation
+x9_s3: Attack: Action after attack
+x9_s3_e0: [Random number] Random number generation
+x9_s4: Attack: 3m or less
+x9_s5: Attack: 15m or less
+x9_s6: Attack: 8m or less
+x9_s7: Attack: 15m or more
+x9_s8: Attack: Action 11
+x9_s8_e0: [Random number] Random number generation
+x9_s9: [LIB] Timed action (humanoid general purpose) _SubState
+x9_s10: [LIB] Avoidance action_SubState
+x9_s11: ▼ Attack: Combo 1: Stripping Combo (Explosion) _SubState
+x9_s12: ▼ Attack: Combo 3: Sanaginagi Combo_SubState
+x9_s13: ▼ Attack: Combo 4: Explosion_SubState
+x9_s14: ▼ Attack: Action 14: Thrust_SubState
+x9_s15: ▼ Attack: Combo 2: Negative combo (flame) _SubState
+x9_s16: ▼ Attack: Action 11: Slap both hands (flame) _SubState
+x9_s17: ▼ Attack: Action 15: Depressed_SubState
+x9_s18: ▼ Attack: Action 11: Slap both hands _SubState
+x9_s19: End state
+x0: [LIB] Interaction behavior (general humanoid)
+x0_p0: Minimum time
+x0_p1: Maximum time
+x0_p2: Distance
+x0_p3: ERA
+x0_p4: Evasion rate
+x0_p5: Avoid short navigation distance
+x0_p6: Analog strength
+x0_s0: Start state
+x0_s1: Interim action: branch
+x0_s2: Immediate action: Move backward
+x0_s2_e0: [Platoon] Set weight multiplier
+x0_s2_e1: [Random number] Random number generation
+x0_s2_w0: [Move] Horizontal move_Lock_Random
+x0_s3: Interim action: failure processing
+x0_s3_e0: [Move] Reset move failure
+x0_s4: Immediate action: step
+x0_s4_w0: [Attack] Random avoidance_Angle designation
+x0_s5: Interim Action: Defense
+x0_s5_e0: [Attack] Defense
+x0_s6: Immediate action: start
+x0_s6_e0: [Move] Reset move failure
+x0_s6_e1: [Random number] Random number generation
+x0_s6_e2: [Random number] Random number generation
+x0_s6_e3: [Random number] Random number generation
+x0_s6_e4: [Timer] Start timer
+x0_s7: Immediate action: rolling
+x0_s7_w0: [Attack] Random avoidance_Angle designation
+x0_s8: Interim action: move left and right
+x0_s8_e0: [Platoon] Set weight multiplier
+x0_s8_w0: [Move] Horizontal move_Lock_Random
+x0_s9: [LIB] Damage action: Terrain damage _SubState
+x0_s10: Success: End state
+x0_s11: Failure: termination state
+x0_s12: Avoidance: termination state
+x1: [LIB] Attack action: Combo probability cancel
+x1_p0: Attack type
+x1_p1: Stop distance
+x1_p2: Stop angle
+x1_p3: Short navigation mesh check
+x1_p4: Second chance of suspension
+x1_p5: 3rd stop probability
+x1_p6: 4th stop probability
+x1_p7: Blade dash grace time
+x1_s0: Start state
+x1_s1: Begin attack
+x1_s1_e0: [Attack] Reset attack failure
+x1_s2: Attack: Combo execution
+x1_s2_e0: [Attack] Melee attack
+x1_s3: Attack: Combo first stage waiting
+x1_s4: Attack: First stage cancellation judgment
+x1_s4_e0: [Random number] Random number generation
+x1_s5: Attack: Second stage cancellation judgment
+x1_s5_e0: [Random number] Random number generation
+x1_s6: Attack: 3rd stage cancellation judgment
+x1_s6_e0: [Random number] Random number generation
+x1_s7: Attack: Combo end wait
+x1_s8: Attack: Cancel execution
+x1_s8_e0: [Attack] Combo attack cancel
+x1_s9: Attack: Successful end processing
+x1_s10: Attack: Failure end processing
+x1_s10_e0: [Attack] Combo attack cancel
+x1_s11: Successful completion state
+x1_s12: Failure end state
+x2: [LIB] Avoidance behavior
+x2_p0: Avoid type
+x2_p1: Self center angle
+x2_p2: Avoidance angle 1
+x2_p3: Avoidance angle 2
+x2_p4: Avoidance angle 3
+x2_p5: S navigation distance
+x2_s0: Start state
+x2_s1: Immediate action: avoidance
+x2_s1_w0: [Attack] Random avoidance_Angle designation
+x2_s2: Avoidance action: successful end
+x2_s3: Avoidance action: Failed end
+x2_s4: Success: End state
+x2_s5: Failure: termination state
+x3: [LIB] Damage action: Terrain damage
+x3_s0: Start state
+x3_s1: OBJ Damage Avoidance: Start
+x3_s2: OBJ damage avoidance: route search
+x3_s2_e0: [Search] Navimesh
+x3_s3: OBJ Damage Avoidance: Avoidance Behavior
+x3_s3_w0: [Turning] Quick turn _ Navi mesh direction
+x3_s4: OBJ Damage Avoidance: Step
+x3_s4_w0: [Attack] Random avoidance_Angle designation
+x3_s5: Avoid OBJ damage: rolling
+x3_s5_w0: [Attack] Random avoidance_Angle designation
+x3_s6: OBJ Damage Avoidance: Dash
+x3_s6_w0: [Move] Dash_Navimesh
+x3_s7: Avoid OBJ damage: End
+x3_s7_e0: [Attack] Damage information reset
+x3_s8: End state

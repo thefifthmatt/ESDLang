@@ -1,0 +1,458 @@
+20: Lower logic
+20_s0: Start state
+20_s1: Avoidance cancellation
+20_s2: Choice
+20_s3: defense
+20_s3_e0: [Attack] Defense
+20_s3_e1: [Attack] Defense
+20_s3_e2: [Attack] Defense
+20_s3_e3: [Debug] Log output
+20_s3_e4: [Debug] Log output
+20_s3_e5: [Debug] Log output
+20_s4: Attack cancel
+20_s4_w0: [Attack] Attack cancel
+20_s5: Action 1_SubState
+20_s6: Move_SubState
+20_s7: Action 3_SubState
+20_s8: Action 2_SubState
+20_s9: Combo_SubState
+20_s10: Rolling_SubState
+20_s11: Step_SubState
+20_s12: Jump_SubState
+1: Upper logic_Original
+1_s0: Start state
+1_s1: Upper logic: start
+1_s1_e0: [General] lower-level state map switching
+1_s2: Search enemies: players
+1_s2_w0: [Search enemy] Character _ target setting
+1_s3: Target action
+1_s3_e0: [General purpose] Sharing flag setting
+1_s3_w0: [Operation] Lock on
+1_s3_w1: [General purpose] Sharing flag setting
+1_s3_w2: [General purpose] Sharing flag setting
+1_s4: Action without target
+2: Lower logic_Original
+2_s0: Start state
+2_s1: Start action
+2_s2: Search (Navimesh)
+2_s2_e0: [Search] Navimesh
+2_s3: Search (success)
+2_s4: Search (failed)
+2_s4_w0: [Attack] Melee attack
+2_s5: Start moving
+2_s6: Move (standby)
+2_s6_w0: [General purpose] Sharing flag setting
+2_s7: Movement (sailor movement)
+2_s7_w0: [Move] Horizontal move_Navimesh
+2_s7_w1: [General purpose] Sharing flag setting
+2_s8: Movement (lock sailor movement)
+2_s8_w0: [Move] Horizontal move_Lock_Navimesh
+2_s8_w1: [General purpose] Sharing flag setting
+2_s9: Moving (walking)
+2_s9_w0: [Move] Normal move Navi mesh
+2_s9_w1: [General purpose] Sharing flag setting
+2_s10: Move (lock move)
+2_s10_w0: [Move] Lock move Navi mesh
+2_s10_w1: [General purpose] Sharing flag setting
+2_s11: Move (dash)
+2_s11_w0: [Move] Dash_Navimesh
+2_s11_w1: [General purpose] Sharing flag setting
+2_s12: Move (rock dash)
+2_s12_w0: [Move] Dash_Lock_Navimesh
+2_s12_w1: [General purpose] Sharing flag setting
+2_s13: Move end (standby)
+2_s14: Search successful (move)
+2_s15: Move reset
+2_s15_w0: [General purpose] Sharing flag setting
+2_s16: Begin attack
+2_s16_e0: [Attack] Attack cancel
+2_s16_e1: [Attack] Reset attack failure
+2_s17: Attack (actions 00 to 09)
+2_s17_w0: [Attack] Melee attack
+2_s17_w1: [Attack] Melee attack
+2_s17_w2: [Attack] Melee attack
+2_s17_w3: [Attack] Melee attack
+2_s17_w4: [Attack] Melee attack
+2_s17_w5: [Attack] Melee attack
+2_s17_w6: [Attack] Melee attack
+2_s17_w7: [Attack] Melee attack
+2_s17_w8: [Attack] Melee attack
+2_s17_w9: [Attack] Melee attack
+2_s18: Stop the attack
+2_s18_e0: [Attack] Reset attack failure
+2_s18_e1: [General purpose] Sharing flag setting
+2_s18_w0: [Attack] Attack cancel
+2_s19: Attack (actions 10-19)
+2_s19_w0: [Attack] Melee attack
+2_s19_w1: [Attack] Melee attack
+2_s19_w2: [Attack] Melee attack
+2_s19_w3: [Attack] Melee attack
+2_s19_w4: [Attack] Melee attack
+2_s19_w5: [Attack] Melee attack
+2_s19_w6: [Attack] Melee attack
+2_s19_w7: [Attack] Melee attack
+2_s19_w8: [Attack] Melee attack
+2_s19_w9: [Attack] Melee attack
+2_s20: Attack set switching (0⇒10)
+2_s20_e0: [General purpose] Sharing flag setting
+2_s20_e1: [Attack] Melee attack
+2_s21: Attack set switching (10⇒20)
+2_s21_e0: [General purpose] Sharing flag setting
+2_s21_e1: [Attack] Melee attack
+2_s22: Switch attack set (20⇒Combo)
+2_s22_e0: [General purpose] Sharing flag setting
+2_s22_e1: [Attack] Melee attack
+2_s23: Attack set switching
+2_s24: Update action ID
+2_s24_e0: [General purpose] Sharing flag setting
+2_s24_e1: [General purpose] Sharing flag setting
+2_s24_e2: [General purpose] Sharing flag setting
+2_s24_e3: [General purpose] Sharing flag setting
+2_s24_e4: [General purpose] Sharing flag setting
+2_s24_e5: [General purpose] Sharing flag setting
+2_s24_e6: [General purpose] Sharing flag setting
+2_s24_e7: [General purpose] Sharing flag setting
+2_s24_e8: [General purpose] Sharing flag setting
+2_s24_e9: [General purpose] Sharing flag setting
+2_s24_e10: [General purpose] Sharing flag setting
+2_s24_e11: [General purpose] Sharing flag setting
+2_s25: Attack (actions 20-29)
+2_s25_w0: [Attack] Melee attack
+2_s25_w1: [Attack] Melee attack
+2_s25_w2: [Attack] Melee attack
+2_s25_w3: [Attack] Melee attack
+2_s25_w4: [Attack] Melee attack
+2_s25_w5: [Attack] Melee attack
+2_s25_w6: [Attack] Melee attack
+2_s25_w7: [Attack] Melee attack
+2_s25_w8: [Attack] Melee attack
+2_s25_w9: [Attack] Melee attack
+2_s26: Initialization
+2_s26_e0: [General purpose] Sharing flag setting
+2_s26_e1: [General purpose] Sharing flag setting
+2_s26_e2: [General purpose] Sharing flag setting
+2_s27: Attack (Combo)
+2_s27_e0: [General purpose] Sharing flag setting
+2_s27_w0: [Attack] Melee attack
+2_s27_w1: [Attack] Melee attack
+2_s27_w2: [Attack] Melee attack
+2_s28: Switch attack set (Combo ⇒ 0)
+2_s28_e0: [General purpose] Sharing flag setting
+2_s28_e1: [Attack] Melee attack
+10: logic
+10_s0: Start state
+10_s1: Upper logic: start
+10_s1_e0: [General] lower-level state map switching
+10_s1_e1: [General purpose] Sharing flag setting
+10_s1_e2: [General purpose] Sharing flag setting
+10_s2: Search enemies: players
+10_s2_w0: [Search enemy] Character _ target setting
+10_s2_w1: [Operation] Lock on
+10_s3: Action
+10_s4: Action without target
+10_s5: Action
+10_s5_e0: [General purpose] Sharing flag setting
+10_s6: CountUp
+10_s7: Reset
+10_s7_e0: [General purpose] Sharing flag setting
+10_s7_e1: [General purpose] Sharing flag setting
+10_s8: CountUp1
+10_s8_e0: [General purpose] Sharing flag setting
+10_s9: CountUp2
+10_s9_e0: [General purpose] Sharing flag setting
+10_s10: CountUp3
+10_s10_e0: [General purpose] Sharing flag setting
+10_s11: CountUp4
+10_s11_e0: [General purpose] Sharing flag setting
+10_s12: CountUp5
+10_s12_e0: [General purpose] Sharing flag setting
+10_s13: CountUp6
+10_s13_e0: [General purpose] Sharing flag setting
+10_s14: CountUp7
+10_s14_e0: [General purpose] Sharing flag setting
+10_s15: CountUp8
+10_s15_e0: [General purpose] Sharing flag setting
+10_s16: CountUp9
+10_s16_e0: [General purpose] Sharing flag setting
+10_s17: CountUp0
+10_s17_e0: [General purpose] Sharing flag setting
+10_s18: Action1
+10_s18_e0: [General purpose] Sharing flag setting
+10_s19: Action2
+10_s19_e0: [General purpose] Sharing flag setting
+10_s20: Action3
+10_s20_e0: [General purpose] Sharing flag setting
+10_s21: Action4
+10_s21_e0: [General purpose] Sharing flag setting
+10_s22: Action0
+10_s22_e0: [General purpose] Sharing flag setting
+10_s23: Action5
+10_s23_e0: [General purpose] Sharing flag setting
+10_s24: Action6
+10_s24_e0: [General purpose] Sharing flag setting
+10_s25: Action7
+10_s25_e0: [General purpose] Sharing flag setting
+10_s26: Action8
+10_s26_e0: [General purpose] Sharing flag setting
+10_s27: Action9
+10_s27_e0: [General purpose] Sharing flag setting
+10_s28: Search
+10_s28_e0: [Search] Navimesh
+10_s29: log
+10_s29_e0: [General purpose] Sharing flag setting
+10_s29_e1: [General purpose] Sharing flag setting
+10_s29_e2: [General purpose] Sharing flag setting
+10_s29_e3: [General purpose] Sharing flag setting
+10_s29_e4: [General purpose] Sharing flag setting
+10_s29_e5: [General purpose] Sharing flag setting
+10_s29_e6: [Debug] Log output
+10_s29_e7: [Debug] Log output
+10_s29_e8: [Debug] Log output
+10_s29_e9: [Debug] Log output
+10_s29_e10: [Debug] Log output
+10_s29_e11: [Debug] Log output
+10_s29_e12: [Debug] Log output
+10_s29_e13: [Debug] Log output
+10_s29_e14: [Debug] Log output
+10_s29_e15: [Debug] Log output
+10_s29_e16: [Debug] Log output
+10_s29_e17: [Debug] Log output
+10_s29_e18: [Debug] Log output
+10_s29_e19: [Debug] Log output
+10_s29_e20: [Debug] Log output
+10_s29_e21: [Debug] Log output
+10_s29_e22: [Debug] Log output
+10_s29_e23: [Debug] Log output
+10_s29_e24: [Debug] Log output
+10_s29_e25: [Debug] Log output
+10_s29_e26: [Debug] Log output
+10_s29_e27: [Debug] Log output
+10_s29_e28: [Debug] Log output
+10_s29_e29: [Debug] Log output
+10_s29_e30: [Debug] Log output
+10_s29_e31: [Debug] Log output
+10_s29_e32: [Debug] Log output
+10_s29_e33: [Debug] Log output
+10_s29_e34: [Debug] Log output
+10_s29_e35: [Debug] Log output
+10_s29_e36: [Debug] Log output
+10_s29_e37: [Debug] Log output
+10_s29_e38: [Debug] Log output
+10_s29_e39: [Debug] Log output
+10_s29_e40: [Debug] Log output
+10_s29_e41: [Debug] Log output
+10_s29_e42: [Debug] Log output
+10_s29_e43: [Debug] Log output
+10_s29_e44: [Debug] Log output
+10_s29_e45: [Debug] Log output
+10_s29_e46: [Debug] Log output
+10_s29_e47: [Debug] Log output
+10_s29_e48: [Debug] Log output
+10_s29_e49: [Debug] Log output
+10_s29_e50: [Debug] Log output
+10_s29_e51: [Debug] Log output
+10_s29_e52: [Debug] Log output
+10_s29_e53: [Debug] Log output
+10_s29_e54: [Debug] Log output
+10_s29_e55: [Debug] Log output
+10_s29_e56: [Debug] Log output
+10_s29_e57: [Debug] Log output
+10_s29_e58: [Debug] Log output
+10_s29_e59: [Debug] Log output
+10_s29_e60: [Debug] Log output
+10_s29_e61: [Debug] Log output
+10_s29_e62: [Debug] Log output
+10_s29_e63: [Debug] Log output
+10_s29_e64: [Debug] Log output
+10_s29_e65: [Debug] Log output
+10_s29_e66: [Debug] Log output
+10_s29_e67: [Debug] Log output
+x0: Move
+x0_s0: Start state
+x0_s1: Horizontal movement
+x0_s1_w0: [Move] Move horizontally to the target world correction position
+x0_s2: Lock horizontal movement
+x0_s2_w0: [Move] Lock horizontal movement to the target world correction position
+x0_s3: Normal movement
+x0_s3_w0: [Move] Normally move to the target world correction position
+x0_s4: Lock normal move
+x0_s4_w0: [Move] Lock to target correction position
+x0_s5: dash
+x0_s5_w0: [Move] Dash move to the target world correction position
+x0_s6: Rock dash
+x0_s6_w0: [Move] Lock dash move to the target correction position
+x0_s7: Branch
+x0_s8: End state
+x1: Action 1
+x1_s0: Start state
+x1_s1: Action 0
+x1_s1_e0: [Attack] Melee attack
+x1_s2: Action 1
+x1_s2_e0: [Attack] Melee attack
+x1_s3: Action 2
+x1_s3_e0: [Attack] Melee attack
+x1_s4: Action 3
+x1_s4_e0: [Attack] Melee attack
+x1_s5: Action 4
+x1_s5_e0: [Attack] Melee attack
+x1_s6: Action 5
+x1_s6_e0: [Attack] Melee attack
+x1_s7: Action 6
+x1_s7_e0: [Attack] Melee attack
+x1_s8: Action 7
+x1_s8_e0: [Attack] Melee attack
+x1_s9: Action 8
+x1_s9_e0: [Attack] Melee attack
+x1_s10: Action 9
+x1_s10_e0: [Attack] Melee attack
+x1_s11: End
+x1_s12: Branch
+x1_s13: Preparation
+x1_s13_e0: [Attack] Attack cancel
+x1_s14: End state
+x2: Action 3
+x2_s0: Start state
+x2_s1: Action 20
+x2_s1_e0: [Attack] Melee attack
+x2_s2: Action 21
+x2_s2_e0: [Attack] Melee attack
+x2_s3: Action 22
+x2_s3_e0: [Attack] Melee attack
+x2_s4: Action 23
+x2_s4_e0: [Attack] Melee attack
+x2_s5: Action 24
+x2_s5_e0: [Attack] Melee attack
+x2_s6: Action 25
+x2_s6_e0: [Attack] Melee attack
+x2_s7: Action 26
+x2_s7_e0: [Attack] Melee attack
+x2_s8: Action 27
+x2_s8_e0: [Attack] Melee attack
+x2_s9: Action 28
+x2_s9_e0: [Attack] Melee attack
+x2_s10: Action 29
+x2_s10_e0: [Attack] Melee attack
+x2_s11: Branch
+x2_s12: Preparation
+x2_s12_e0: [Attack] Attack cancel
+x2_s13: End state
+x3: Action 2
+x3_s0: Start state
+x3_s1: Action 10
+x3_s1_e0: [Attack] Melee attack
+x3_s2: Action 11
+x3_s2_e0: [Attack] Melee attack
+x3_s3: Action 12
+x3_s3_e0: [Attack] Melee attack
+x3_s4: Action 13
+x3_s4_e0: [Attack] Melee attack
+x3_s5: Action 14
+x3_s5_e0: [Attack] Melee attack
+x3_s6: Action 15
+x3_s6_e0: [Attack] Melee attack
+x3_s7: Action 16
+x3_s7_e0: [Attack] Melee attack
+x3_s8: Action 17
+x3_s8_e0: [Attack] Melee attack
+x3_s9: Action 18
+x3_s9_e0: [Attack] Melee attack
+x3_s10: Action 19
+x3_s10_e0: [Attack] Melee attack
+x3_s11: Branch
+x3_s12: Preparation
+x3_s12_e0: [Attack] Attack cancel
+x3_s13: End state
+x4: combo
+x4_s0: Start state
+x4_s1: Combo 1
+x4_s1_e0: [Attack] Melee attack
+x4_s2: Combo 2
+x4_s2_e0: [Attack] Melee attack
+x4_s3: Combo 3
+x4_s3_e0: [Attack] Melee attack
+x4_s4: Combo 4
+x4_s4_e0: [Attack] Melee attack
+x4_s5: Combo 5
+x4_s5_e0: [Attack] Melee attack
+x4_s6: Combo 6
+x4_s6_e0: [Attack] Melee attack
+x4_s7: Combo 7
+x4_s7_e0: [Attack] Melee attack
+x4_s8: Branch
+x4_s9: Preparation
+x4_s9_e0: [Attack] Attack cancel
+x4_s10: End state
+x5: rolling
+x5_s0: Start state
+x5_s1: Front rolling
+x5_s1_w0: [Attack] Random avoidance
+x5_s2: After rolling
+x5_s2_w0: [Attack] Random avoidance
+x5_s3: Left rolling
+x5_s3_w0: [Attack] Random avoidance
+x5_s4: Right rolling
+x5_s4_w0: [Attack] Random avoidance
+x5_s5: Left front rolling
+x5_s5_w0: [Attack] Random avoidance
+x5_s6: Right front rolling
+x5_s6_w0: [Attack] Random avoidance
+x5_s7: Rear left rolling
+x5_s7_w0: [Attack] Random avoidance
+x5_s8: Right rear rolling
+x5_s8_w0: [Attack] Random avoidance
+x5_s9: Failure
+x5_s9_e0: [Debug] Log output
+x5_s10: Branch
+x5_s11: End state
+x6: Steps
+x6_s0: Start state
+x6_s1: Previous step
+x6_s1_w0: [Attack] Random avoidance
+x6_s2: After step
+x6_s2_w0: [Attack] Random avoidance
+x6_s3: Left step
+x6_s3_w0: [Attack] Random avoidance
+x6_s4: Right step
+x6_s4_w0: [Attack] Random avoidance
+x6_s5: Left front step
+x6_s5_w0: [Attack] Random avoidance
+x6_s6: Right front step
+x6_s6_w0: [Attack] Random avoidance
+x6_s7: Rear left step
+x6_s7_w0: [Attack] Random avoidance
+x6_s8: Right rear step
+x6_s8_w0: [Attack] Random avoidance
+x6_s9: Failure
+x6_s9_e0: [Debug] Log output
+x6_s10: Branch
+x6_s11: End state
+x7: Jump
+x7_s0: Start state
+x7_s1: Stand jump
+x7_s1_w0: [Action] Stand jump
+x7_s2: Jump before
+x7_s2_w0: [Move] Dash_random
+x7_s2_w1: [Action] Stand jump
+x7_s3: Dash jump
+x7_s3_w0: [Move] Dash_random
+x7_s3_w1: [Action] Stand jump
+x7_s4: Jump left
+x7_s4_w0: [Move] Dash_random
+x7_s4_w1: [Action] Stand jump
+x7_s5: Jump right
+x7_s5_w0: [Move] Dash_random
+x7_s5_w1: [Action] Stand jump
+x7_s6: Jump left front
+x7_s6_w0: [Move] Dash_random
+x7_s6_w1: [Action] Stand jump
+x7_s7: Jump right front
+x7_s7_w0: [Move] Dash_random
+x7_s7_w1: [Action] Stand jump
+x7_s8: Jump left rear
+x7_s8_w0: [Move] Dash_random
+x7_s8_w1: [Action] Stand jump
+x7_s9: Jump right after
+x7_s9_w0: [Move] Dash_random
+x7_s9_w1: [Action] Stand jump
+x7_s10: Branch
+x7_s11: End state

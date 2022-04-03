@@ -1,0 +1,96 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s1_e0: [Search enemy] Character _ target setting
+10_s2: Higher rank: search enemy ON
+10_s2_e0: [Operation] Lock on
+10_s3: Top rank: search off
+10_s3_e0: [Operation] Lock off
+10_s4: Top: with target
+10_s5: Top: no target
+10_s6: Top: death
+10_s6_e0: [Operation] death request
+10_s7: Upper: Lower logic start
+10_s7_e0: [General] lower-level state map switching
+20: Lower logic
+20_s0: Start state
+20_s1: Lower logic: start
+20_s1_w0: [Turning] Turning in place_Lock
+20_s2: Action: Wait_SubState
+20_s3: Action: Attack_SubState
+20_s4: Action: Move test _SubState
+20_s4_e0: [Operation] Lock list
+20_s5: Behavior: Sub-State _SubState
+20_s6: Action: Weapon Switching Test_SubState
+20_s7: Action: Avoid_SubState
+20_s8: Action: Defense_SubState
+20_s9: Action: Turn in place _SubState
+20_s10: Action: Weapon switching test_2_SubState
+x0: Action: Attack
+x0_s0: Start state
+x0_s1: Attack action: start
+x0_s2: Attack action: End
+x0_s3: Begin attack
+x0_s3_w0: [Attack] Melee attack
+x0_s4: End state
+x1: Action: Standby
+x1_s0: Start state
+x1_s1: Waiting action: start
+x1_s1_w0: [Attack] Non-combat action ends
+x1_s2: Waiting action: End
+x1_s3: End state
+x2: Action: Move test
+x2_s0: Start state
+x2_s1: Move test: start
+x2_s2: Dash lock random
+x2_s2_w0: [Move] Dash_Lock_Random
+x2_s3: Move test end
+x2_s4: Horizontal movement lock random
+x2_s4_w0: [Move] Horizontal move_Lock_Random
+x2_s5: Normal lock random
+x2_s5_w0: [Move] Lock move random
+x2_s6: Dash random
+x2_s6_w0: [Move] Dash_random
+x2_s7: Horizontal movement random
+x2_s7_w0: [Move] Horizontal move_random
+x2_s8: Normal movement random
+x2_s8_w0: [Move] Normal move random
+x2_s9: Radio control
+x2_s9_w0: Scheduled to be deleted [Move] RC _ Turn right
+x2_s9_w1: Scheduled to be deleted [Move] RC _ Advance
+x2_s10: Status
+x2_s10_w0: Scheduled to be deleted [Move] RC _ Advance
+x2_s11: State_2
+x2_s12: End state
+x3: Action: Decline
+x3_s0: Start state
+x3_s1: Horizontal lock random behind
+x3_s1_w0: [Move] Horizontal move_Lock_Random
+x3_s2: End state
+x4: Action: Weapon switching test
+x4_s0: Start state
+x4_s1: Start switching
+x4_s1_e0: [Attack] Melee attack
+x4_s2: End of switching
+x4_s3: A-1
+x4_s3_e0: [Attack] Switch weapons
+x4_s4: A-2
+x4_s4_e0: [Attack] Switch weapons
+x4_s5: B-1
+x4_s5_e0: [Attack] Switch weapons
+x4_s6: End state
+x5: Action: Avoidance
+x5_s0: Start state
+x5_s1: Random avoidance
+x5_s1_w0: [Attack] Random avoidance
+x5_s2: End state
+x6: Action: Defense
+x6_s0: Start state
+x6_s1: Start defense
+x6_s2: End of defense
+x6_s3: End state
+x7: Action: Turn in place
+x7_s0: Start state
+x7_s1: Turn
+x7_s1_w0: [Turning] Turning in place_Lock
+x7_s2: End state

@@ -1,0 +1,47 @@
+20: Lower logic: multi-check: ally 1
+20_s0: Start state
+20_s1: Lower: Start
+20_s2: Friend side logic _P2_SubState
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s2: Top: Start TG host setting
+10_s2_w0: [Search enemy] Character _ target setting
+10_s3: Top: TG host waiting
+10_s4: Top: Standby during TG enemy
+10_s5: Higher rank: TG host ⇒ enemy change
+10_s5_w0: [Search enemy] Character _ target setting
+10_s6: Top: TG Enemy ⇒ Host change
+10_s6_w0: [Search enemy] Character _ target setting
+30: Lower logic: multi-check: ally 2
+30_s0: Start state
+30_s1: Lower: Start
+30_s2: Friend side logic_P3_SubState
+x0: Friend side logic_P2
+x0_s0: Start state
+x0_s1: Friend setting: Start
+x0_s2: Friendly setting: Branch
+x0_s3: Friend setting: Host set preparation
+x0_s4: Friendly setting: Host set
+x0_s4_e0: [Search] Navimesh
+x0_s5: Friend setting: Player 2 preparation
+x0_s6: Friend setting: Player 2GO
+x0_s6_e0: [Search] Navimesh
+x0_s7: Friend setting: Moving
+x0_s7_w0: [Move] Normal move Navi mesh
+x0_s8: Friend setting: Goal waiting
+x0_s9: End state
+x1: Friend side logic_P3
+x1_s0: Start state
+x1_s1: Friend setting: Start
+x1_s2: Friendly setting: Branch
+x1_s3: Friend setting: Host set preparation
+x1_s4: Friendly setting: Host set
+x1_s4_e0: [Search] Navimesh
+x1_s5: Friend setting: Player 3 preparation
+x1_s6: Friend setting: Player 3GO
+x1_s6_e0: [Search] Navimesh
+x1_s7: Friend setting: Moving
+x1_s7_w0: [Move] Normal move Navi mesh
+x1_s8: Friend setting: Goal waiting
+x1_s9: End state

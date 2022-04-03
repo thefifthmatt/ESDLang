@@ -1,0 +1,99 @@
+10: Higher state
+10_s0: Start state
+10_s1: Higher state: start
+10_s2: High rank: search enemy
+10_s2_w0: [Search enemy] Character _ target setting
+10_s3: [LIB] Lower state map switch_SubState
+10_s4: [LIB] Higher order: Initial judgment_SubState
+x0: [LIB] Search: FC
+x0_p0: Maximum search distance
+x0_p1: Search priority
+x0_s0: Start state
+x0_s1: Search enemy (general purpose): Start
+x0_s1_e0: [Operation] Lock off
+x0_s2: Search enemy (general purpose): Normal setting
+x0_s2_e0: [Attack] Damage type reset
+x0_s2_w0: [Search enemy] Character _ target setting
+x0_s3: Search enemy (general purpose): Discovery
+x0_s4: Search enemy (general purpose): not found
+x0_s5: End state_Target not found
+x0_s6: End state_Target found
+x1: [LIB] Lower state map switching
+x1_s0: Start state
+x1_s1: Lower switching: Equipment 1
+x1_s1_e0: [General] lower-level state map switching
+x1_s2: Lower switching: Equipment 2
+x1_s2_e0: [General] lower-level state map switching
+x1_s3: Lower order switching: Equipment 3
+x1_s3_e0: [General] lower-level state map switching
+x1_s4: Lower switching: Equipment 4
+x1_s4_e0: [General] lower-level state map switching
+x1_s5: Lower order switching: Equipment 5
+x1_s5_e0: [General] lower-level state map switching
+x1_s6: Lower order switching: Equipment 6
+x1_s6_e0: [General] lower-level state map switching
+x1_s7: Lower switch: start
+x1_s8: End state
+x2: [LIB] Top: Start condition
+x2_p0: Search distance
+x2_p1: Gravity disabled
+x2_p2: Swing angle
+x2_p3: Activation when the activation state is released
+x2_s0: Start state
+x2_s1: Start condition: Status judgment
+x2_s2: Start condition: Branch
+x2_s3: Start condition: Exception processing
+x2_s3_e0: [Debug] Log output
+x2_s3_w0: [Turning] Quick turn _ Direction designation
+x2_s4: Start condition: Initial termination
+x2_s4_e0: [General purpose] Sharing flag setting
+x2_s4_e1: [Search] Overwrite the generator position with the current position
+x2_s5: Start condition: Initial start
+x2_s5_e0: [General purpose] Sharing flag setting
+x2_s5_e1: [Operation] Lock on
+x2_s6: Start condition: Start condition (flag 1)
+x2_s7: Start condition: Start condition (area 1)
+x2_s8: Start condition: Start condition (area 1 and area 2)
+x2_s9: Start condition: Start condition (area 5and gaze & sound)
+x2_s10: Start condition: Start condition (line of sight & sound)
+x2_s11: Start condition: Start
+x2_s11_e0: [Platoon] Set weight multiplier
+x2_s11_e1: [General] Logic group flag setting
+x2_s12: Start condition: Conditional branch
+x2_s13: Start condition: Start animation cancel
+x2_s13_e0: [Action] Cancel activation state
+x2_s14: Start condition: Start condition (damage)
+x2_s15: Activation condition: Activation condition (flag 1 or damage)
+x2_s16: Start condition: Start condition (flag 1 and area 1)
+x2_s17: Start condition: Start
+x2_s17_e0: [Platoon] Set weight multiplier
+x2_s17_e1: [General purpose] Sharing flag setting
+x2_s18: Start condition: Start condition (flag 1 or line of sight)
+x2_s19: Start condition: Start condition (area 1 or damage)
+x2_s20: Start condition: Start condition (damage or sound start)
+x2_s21: [LIB] Search enemy: _SubState for FC
+x2_s22: [LIB] Top: Sound response_SubState
+x2_s23: [LIB] Search enemy: _SubState for initial movement
+x2_s24: With first contact
+x2_s25: No first contact
+x2_s26: First contacted
+x3: [LIB] Top: sound response
+x3_p0: Swing angle
+x3_s0: Start state
+x3_s1: Sound response: turning: start
+x3_s1_w0: [Swirl] Quick turn_Sound direction
+x3_s2: Sound response: turning: checking
+x3_s3: Sound response: Reflection: End
+x3_s3_w0: [Turning] Quick turn_Generator direction
+x3_s4: Sound response: start
+x3_s5: Sound Response: Search: Start
+x3_s5_e0: [Search] Navimesh to the sound you heard
+x3_s6: Sound response: search: moving
+x3_s6_w0: [Move] Normal move Navi mesh
+x3_s7: Sound Response: Search: Return
+x3_s7_e0: [Search] Navi mesh to generator
+x3_s8: Sound response: End
+x3_s9: Sound response: search: checking
+x3_s10: Sound Response: Search: Returning
+x3_s10_w0: [Move] Normal move Navi mesh
+x3_s11: End state

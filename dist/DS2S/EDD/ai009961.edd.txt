@@ -1,0 +1,8 @@
+10: Top: Movement confirmation logic
+10_s0: Start state
+10_s1: Start search
+10_s2: Search (targeting started)
+10_s2_e0: [Operation] Lock on
+10_s2_w0: [Search enemy] Character _ target setting
+10_s3: Search (Targeting)
+10_s4: Search (end targeting)

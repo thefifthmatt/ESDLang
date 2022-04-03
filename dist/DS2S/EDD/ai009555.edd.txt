@@ -1,0 +1,112 @@
+10: Top
+10_s0: Start state
+10_s1: Top: Start
+10_s1_w0: [Search] Player_Target setting
+10_s2: Top: Lock on
+10_s2_e0: [Operation] Lock on
+20: Lower: Avoid
+20_s0: Start state
+20_s1: Lower: Start
+20_s2: Lower: Successful avoidance
+20_s3: Lower: waiting to avoid
+20_s3_w0: [Attack] Random avoidance_Angle designation
+30: Lower: defense
+30_s0: Start state
+30_s1: Lower: Start
+30_s2: Lower: Successful defense
+30_s2_e0: [Attack] Defense
+30_s3: Lower: defense waiting
+30_s3_w0: [Attack] Defense
+40: Lower: Strong 1 → Strong 2 → Strong 1
+40_s0: Start state
+40_s1: Lower: Start
+40_s2: [PC] Attack _SubState
+50: Lower: weak 1 → weak 2 → weak 1
+50_s0: Start state
+50_s1: Lower: Start
+50_s2: [PC] Attack _SubState
+60: Lower: weak 1 → weak 2 → strong 1 → strong 2
+60_s0: Start state
+60_s1: Lower: Start
+60_s2: Lower: weak 1
+60_s2_e0: [Player Attack] Attack
+60_s3: Lower: weak 2
+60_s3_e0: [Player Attack] Attack
+60_s4: Lower: Strong 1
+60_s4_e0: [Player Attack] Attack
+60_s5: Lower: Strong 2
+60_s5_e0: [Player Attack] Attack
+60_s6: Lower: End
+60_s7: Lower: Attack start
+70: Lower: Item
+70_s0: Start state
+70_s1: Lower: Start
+70_s2: Lower: Item successful
+70_s3: Lower: Execute Item
+70_s3_e0: [Player Attack] Use Items
+80: Lower: spelling
+80_s0: Start state
+80_s1: Lower: Start
+80_s2: Lower: Spell execution
+80_s2_e0: [Player attack] Use spell
+80_s2_e1: [Player attack] Use spell
+80_s3: Lower: Spell success
+80_s4: Lower: waiting for spelling
+90: Lower: Gesture
+90_s0: Start state
+90_s1: Lower: Start
+90_s2: Lower: Gesture wait
+90_s2_e0: [Player attack] Use gesture
+90_s3: Lower: Gesture success
+100: Lower: Item → Attack
+100_s0: Start state
+100_s1: Lower: Start
+100_s2: Lower: Item successful
+100_s3: Lower: Execute Item
+100_s3_e0: [Player Attack] Use Items
+100_s4: Lower: weak 1
+100_s4_e0: [Player Attack] Attack
+100_s5: Lower: weak 2
+100_s5_e0: [Player Attack] Attack
+100_s6: Lower: Strong 1
+100_s6_e0: [Player Attack] Attack
+100_s7: Lower: Strong 2
+100_s7_e0: [Player Attack] Attack
+100_s8: Lower: End
+71: Lower: light attack → item (slo 3) → light attack
+71_s0: Start state
+71_s1: Lower: Start
+71_s2: Lower: Item successful
+71_s3: Lower: Execute Item
+71_s3_e0: [Player Attack] Use Items
+71_s4: Lower: Attack start
+71_s5: Lower: weak 1
+71_s5_e0: [Player Attack] Attack
+71_s6: Lower: First attack finished
+71_s7: Lower: Start of second attack
+71_s8: Lower: 1st less than 1
+71_s8_e0: [Player Attack] Attack
+71_s9: Lower: Attack finished
+x0: [PC] Attack
+x0_p0: Hand type 1
+x0_p1: Attack type 1
+x0_p2: Hand type 2
+x0_p3: Attack type 2
+x0_p4: Hand type 3
+x0_p5: Attack type 3
+x0_p6: Attack distance
+x0_p7: Attack times
+x0_s0: Start state
+x0_s1: Attack: 1st stage
+x0_s1_e0: [Player Attack] Attack
+x0_s2: Attack: 2nd stage
+x0_s2_e0: [Player Attack] Attack
+x0_s3: Attack: 3rd stage
+x0_s3_e0: [Player Attack] Attack
+x0_s4: Attack: End
+x0_s5: Begin attack
+x0_s5_e0: [Move] Reset move failure
+x0_s5_e1: [Attack] Reset attack failure
+x0_s5_e2: [Timer] Start timer
+x0_s6: Success: End state
+x0_s7: Failure: termination state

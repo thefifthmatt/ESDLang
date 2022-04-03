@@ -1,0 +1,469 @@
+1000: Masked mode
+1000_s0: Start state
+1000_s1: Substate: Start
+1000_s1_e0: [Attack] Damage lower logic reset setting
+1000_s2: Substate: Stop
+1000_s3: Lower state action_SubState
+1100: For logic operation test
+1100_s0: Start state
+1100_s1: Waiting
+1100_s2: angle
+1100_s3: Recession
+1100_s4: Movement: Slow turning_SubState
+1100_s5: Lower state: long distance: forward: action_SubState
+1100_s6: Attack: Short Range: Backward Jump_SubState
+10: Lower: STEP1
+10_s0: Start state
+10_s1: Lower: End of action
+10_s1_e0: [General purpose] Sharing flag setting
+10_s1_e1: [General purpose] Sharing flag setting
+10_s1_e2: [General purpose] Sharing flag setting
+10_s2: Lower: Action start_SubState
+10_s3: ■ Move: Jumping approaching_SubState
+20: Lower: STEP2
+20_s0: Start state
+20_s1: Lower: End of action
+20_s1_e0: [General purpose] Sharing flag setting
+20_s1_e1: [General purpose] Sharing flag setting
+20_s2: Lower: STEP3 transition
+20_s2_e0: [General purpose] Sharing flag setting
+20_s3: Lower: Action start_SubState
+20_s4: Lower: STEP2 action_SubState
+30: Lower: STEP3
+30_s0: Start state
+30_s1: Lower: End of action
+30_s1_e0: [General purpose] Sharing flag setting
+30_s1_e1: [General purpose] Sharing flag setting
+30_s2: Lower: STEP4 transition
+30_s2_e0: [General purpose] Sharing flag setting
+30_s3: Lower: Action start_SubState
+30_s4: Lower: STEP2 action_SubState
+90: Lower: STEP9
+90_s0: Start state
+90_s1: Lower: End of action
+90_s1_e0: [General purpose] Sharing flag setting
+90_s1_e1: [General purpose] Sharing flag setting
+90_s2: Lower: STEP3 transition
+90_s2_e0: [General purpose] Sharing flag setting
+90_s3: Lower: Action start_SubState
+90_s4: Lower: STEP2 action_SubState
+x4: Attack: Move: No H: Dash (ID1: 4)
+x4_p0: Tracking angle
+x4_s0: Start state
+x4_s1: H no dash: low speed movement
+x4_s1_w0: [Move] Dash_random
+x4_s2: H no dash: High-speed movement
+x4_s2_w0: [Move] Dash_random
+x4_s3: H no dash: target turning
+x4_s3_w0: [Move] Lock move random
+x4_s4: H no dash: branch
+x4_s4_e0: [Random number] Random number generation
+x4_s5: H no dash: Failure: End state
+x5: Attack: Move: H Exist: Dash (ID1: 5)
+x5_s0: Start state
+x5_s1: H dash: Low-speed movement
+x5_s1_w0: [Move] Dash_Lock_Random
+x5_s2: H dash: High-speed movement
+x5_s2_w0: [Move] Dash_Lock_Random
+x5_s3: H dash: Branch
+x5_s3_e0: [Random number] Random number generation
+x5_s4: H dash: Failure: End state
+x6: Attack: Movement: No H: Fast retreat (ID1: 6)
+x6_p0: Tracking angle
+x6_s0: Start state
+x6_s1: H No high speed retreat: Low speed movement
+x6_s1_w0: [Move] Horizontal move_random
+x6_s2: H No high-speed retreat: High-speed movement
+x6_s2_w0: [Move] Horizontal move_random
+x6_s3: H no high-speed retreat: branch
+x6_s3_e0: [Random number] Random number generation
+x6_s4: H no high speed retreat: start
+x6_s5: H No high-speed retreat: Failure: End state
+x7: Lower state behavior
+x7_s0: Start state
+x7_s1: Lower state: whole branch
+x7_s2: Lower state: target switching
+x7_s2_e0: [General purpose] Sharing flag setting
+x7_s3: Lower: head
+x7_s3_e0: [Debug] Popcorn creation
+x7_s4: Lower: tail
+x7_s4_e0: [Debug] Popcorn creation
+x7_s5: Lower: fuselage
+x7_s5_e0: [Debug] Popcorn creation
+x7_s6: Lower: backward
+x7_s6_e0: [Debug] Popcorn creation
+x7_s7: Lower: forward
+x7_s7_e0: [Debug] Popcorn creation
+x7_s8: Lower state: long distance: backward: action_SubState
+x7_s9: Lower state: long distance: forward: action_SubState
+x7_s10: Lower-level state: Short distance: Tail: Action_SubState
+x7_s11: Lower state: short distance: head: action_SubState
+x7_s12: Lower-level state: Short distance: Torso: Action_SubState
+x7_s13: End state
+x8: Sub-state: Long distance: Back: Action
+x8_s0: Start state
+x8_s1: Long Distance: Back: Start
+x8_s2: Long distance: Back: Branch
+x8_s3: Movement: Slow turning_SubState
+x8_s4: Attack: direct: hitting the tail _SubState
+x8_s5: Attack: direct: _SubState rampage on hind legs
+x8_s6: End state
+x9: Movement: Slow turning
+x9_s0: Start state
+x9_s1: Slow turning: branch
+x9_s1_e0: [Random number] Random number generation
+x9_s2: Slow turning: Turn left
+x9_s2_w0: [Move] Normal move random
+x9_s3: Slow turning: right turning
+x9_s3_w0: [Move] Normal move random
+x9_s4: Slow turning: target change
+x9_s4_e0: [General purpose] Sharing flag setting
+x9_s5: Slow turning: Direction adjustment
+x9_s5_w0: [Move] Lock move random
+x9_s6: End state
+x10: Attack: Sidearm
+x10_s0: Start state
+x10_s1: Side arm: branch
+x10_s2: Side arm: Left attack
+x10_s2_w0: [Attack] Melee attack
+x10_s3: Side arm: Right attack
+x10_s3_w0: [Attack] Melee attack
+x10_s4: Side arm: Attack waiting
+x10_s5: End state
+x11: Attack: Long Range: Sidearm
+x11_s0: Start state
+x11_s1: Begin attack
+x11_s1_e0: [Move] Reset move failure
+x11_s1_e1: [Attack] Reset attack failure
+x11_s1_e2: [Timer] Start timer
+x11_s1_e3: [Random number] Random number generation
+x11_s2: Attack: Move: No H: Dash (ID1: 4) _SubState
+x11_s3: Attack: Move: H Exist: Dash (ID1: 5) _SubState
+x11_s4: Attack: Sidearm _SubState
+x11_s5: End state
+x12: Substate: Long distance: Forward: Action
+x12_s0: Start state
+x12_s1: Far forward: start
+x12_s1_e0: [Random number] Random number generation
+x12_s2: Long distance forward: branch
+x12_s3: Attack: Long Range: Sidearm_SubState
+x12_s4: Attack: Direct: Water Gun _SubState
+x12_s5: Attack: Direct: Water gun (fire) _SubState
+x12_s6: End state
+x13: Lower state: Short distance: Head: Behavior
+x13_s0: Start state
+x13_s1: Short-distance head: branch
+x13_s1_e0: [Random number] Random number generation
+x13_s2: Attack: Direct: Stamp_SubState
+x13_s3: Attack: Direct: face arm combo _SubState
+x13_s4: Attack: direct: face arm combo (strong) _SubState
+x13_s5: Attack: Direct: Capture (throw) _SubState
+x13_s6: End state
+x14: Attack: Direct: General purpose
+x14_p0: Attack type
+x14_s0: Start state
+x14_s1: Direct: attacking
+x14_s1_w0: [Attack] Melee attack
+x14_s2: Direct: wait for attack
+x14_s3: Direct: Attack start
+x14_s4: End state
+x15: Substate: Short Distance: Tail: Action
+x15_s0: Start state
+x15_s1: Short-range tail: branch
+x15_s1_e0: [Random number] Random number generation
+x15_s2: Attack: direct: _SubState rampage on hind legs
+x15_s3: Attack: direct: hitting the tail _SubState
+x15_s4: End state
+x16: Lower-level state: Short distance: Torso: Behavior
+x16_s0: Start state
+x16_s1: Short-range fuselage: branch
+x16_s2: Attack: Short Range: Backward Jump_SubState
+x16_s3: End state
+x17: Attack: Short Range: Jump Backward
+x17_s0: Start state
+x17_s1: Jump back: start
+x17_s1_e0: [Random number] Random number generation
+x17_s1_e1: [Timer] Start timer
+x17_s2: Backward jump: wait
+x17_s3: Attack: Move: No H: High-speed retreat (ID1: 6) _SubState
+x17_s4: Attack: Direct: Jump_SubState
+x17_s5: Attack: Direct: Jump back _SubState
+x17_s6: End state
+x18: Lower: Start action
+x18_s0: Start state
+x18_s1: Step action: start
+x18_s1_e0: [General purpose] Sharing flag setting
+x18_s1_e1: [Attack] Damage lower logic reset setting
+x18_s1_e2: [Move] Reset move failure
+x18_s2: End state
+x19: Lower: STEP2 action
+x19_s0: Start state
+x19_s1: Attack: Within 9m ahead
+x19_s2: Begin attack
+x19_s2_e0: [Random number] Random number generation
+x19_s2_e1: [Random number] Random number generation
+x19_s3: End of attack: Clear flag
+x19_s3_e0: [General purpose] Sharing flag setting
+x19_s4: End of attack: Normal end
+x19_s4_e0: [Random number] Random number generation
+x19_s5: Attack: 9m side
+x19_s6: Attack: 25m ~
+x19_s7: Jump or stamp
+x19_s7_e0: [Random number] Random number generation
+x19_s8: Attack: 15-25m
+x19_s9: Attack: 9-15m
+x19_s10: Attack: 9m backward
+x19_s11: ■ Action 20: Water gun _SubState from mouth
+x19_s12: ■ Action 21: Water gun from the mouth (fire) _SubState
+x19_s13: ■ Combo 3: Face arm combo_SubState
+x19_s13_e0: [Timer] Start timer
+x19_s14: ■ Combo 4: Facial arm combo (strong) _SubState
+x19_s14_e0: [Timer] Start timer
+x19_s15: ■ Action 3: _SubState rampages on hind legs
+x19_s16: ■ Action 5: Sliding attack_SubState
+x19_s17: ■ Action 10: Stamp_SubState from growth
+x19_s17_e0: [Timer] Start timer
+x19_s18: ■ Action 11: Jump attack_SubState
+x19_s19: ■ Move: Slow turning_SubState
+x19_s19_e0: [Timer] Start timer
+x19_s20: ■ Action 14: Catch with the arm of the face (throw) _SubState
+x19_s20_e0: [Timer] Start timer
+x19_s21: ■ Action 6: Large jump retreat → Previous step approach_SubState
+x19_s22: ■ Move: previous step approach_SubState
+x19_s22_e0: [Timer] Start timer
+x19_s23: ■ Combo 1: Right arm combo_Combo probability specification_SubState
+x19_s24: ■ Combo 2: Left arm combo_Combo probability specification_SubState
+x19_s25: ■ Action 6: Large jump retreat → jump attack _SubState
+x19_s26: ■ Action 6: Large jump retreat_SubState
+x19_s27: ■ Action 4: Hit the tail _SubState
+x19_s28: Success: End state
+x19_s29: Failure: termination state
+x20: Direct attack
+x20_p0: Attack type
+x20_p1: Attack angle
+x20_p2: Maximum angle
+x20_p3: Shared flag value
+x20_p4: Attack distance
+x20_p5: Dash flag
+x20_s0: Start state
+x20_s1: Begin attack
+x20_s2: Direct attack: sharp turn
+x20_s2_w0: [Turning] Quick turn_Lock
+x20_s3: Direct attack: Attack judgment
+x20_s4: Attack: Move
+x20_s4_w0: [Move] Lock move random
+x20_s5: Attack: turn before moving
+x20_s5_w0: [Turning] Quick turn_Lock
+x20_s6: Attack: dash
+x20_s6_w0: [Move] Dash_Lock_Random
+x20_s7: Attack: Action 2: Previous Step
+x20_s7_e0: [Attack] Melee attack
+x20_s8: [LIB] Attack action: Combo probability cancel [Lv1] _SubState
+x20_s8_e0: [General purpose] Sharing flag setting
+x20_s9: [LIB] Attack action: Combo probability cancel [Lv2] _SubState
+x20_s9_e0: [General purpose] Sharing flag setting
+x20_s10: [LIB] Attack action: Combo probability cancel [Lv3] _SubState
+x20_s10_e0: [General purpose] Sharing flag setting
+x20_s11: [LIB] Attack action: Combo probability cancel [Lv4] _SubState
+x20_s11_e0: [General purpose] Sharing flag setting
+x20_s12: [LIB] Attack action: Combo probability cancel [Lv5] _SubState
+x20_s12_e0: [General purpose] Sharing flag setting
+x20_s13: Attack successful
+x20_s14: Attack failed
+x20_s15: End of big jump
+x21: Indirect attack
+x21_p0: Behavior type
+x21_p1: Shooting angle
+x21_p2: Timer management
+x21_p3: Timer ID
+x21_p4: Execution interval
+x21_p5: Shared flag value
+x21_p6: Minimum distance
+x21_p7: Maximum distance
+x21_s0: Start state
+x21_s1: Indirect attack: branch
+x21_s2: Indirect attack: Turning
+x21_s2_w0: [Turning] Quick turn_Lock
+x21_s3: Indirect Attack: Execute
+x21_s3_e0: [Attack] Melee attack
+x21_s3_e1: [General purpose] Sharing flag setting
+x21_s4: Indirect attack: Timer reset
+x21_s4_e0: [Timer] Start timer
+x21_s5: Indirect Attack: End
+x21_s6: Indirect attack: approach
+x21_s6_w0: [Move] Dash_Lock_Random
+x21_s7: Success: End state
+x21_s8: Failure: termination state
+x22: ■ Action: Large jump retreat
+x22_p0: Shared flag value
+x22_s0: Start state
+x22_s1: Avoidance: start
+x22_s1_e0: [General purpose] Sharing flag setting
+x22_s1_e1: [Move] Reset move failure
+x22_s2: Avoidance: Check
+x22_s2_w0: [Attack] Random avoidance_Angle designation
+x22_s3: Avoidance: action
+x22_s3_e0: [Attack] Melee attack
+x22_s4: Avoidance: failure
+x22_s4_e0: [Move] Reset move failure
+x22_s5: Avoidance: Wait after action
+x22_s6: [LIB] Attack: Navigation confirmation attack _SubState
+x22_s7: Success: End state
+x22_s8: Failure: termination state
+x23: ■ Move: Slow turning
+x23_s0: Start state
+x23_s1: Slow turning: branch
+x23_s1_e0: [Random number] Random number generation
+x23_s2: Slow turning: Turn left
+x23_s2_w0: [Move] Normal move random
+x23_s3: Slow turning: right turning
+x23_s3_w0: [Move] Normal move random
+x23_s4: Slow turning: target change
+x23_s5: Slow turning: Direction adjustment
+x23_s5_w0: [Move] Lock move random
+x23_s6: Turning: quick turn
+x23_s6_w0: [Turning] Quick turn_Lock
+x23_s7: End state
+x24: ■ Movement: approaching the previous step
+x24_p0: Approach distance
+x24_p1: Swing angle
+x24_s0: Start state
+x24_s1: Approach: start
+x24_s1_e0: [Timer] Start timer
+x24_s2: Approaching: in action
+x24_s2_e0: [Attack] Melee attack
+x24_s3: Approaching: waiting
+x24_s4: Approach: distance judgment
+x24_s5: Approach: sharp turn
+x24_s5_w0: [Turning] Quick turn_Lock
+x24_s6: End state
+x25: Direct attack_Combo probability specification
+x25_p0: Attack type
+x25_p1: Attack angle
+x25_p2: Maximum angle
+x25_p3: Shared flag value
+x25_p4: Attack distance
+x25_p5: Combo second stage cancellation rate
+x25_p6: Combo third stage cancellation rate
+x25_p7: Combo 4th Stage Cancellation Rate
+x25_s0: Start state
+x25_s1: Begin attack
+x25_s2: Direct attack: sharp turn
+x25_s2_w0: [Turning] Quick turn_Lock
+x25_s3: Direct attack: Attack judgment
+x25_s4: Attack: Move
+x25_s4_w0: [Move] Lock move random
+x25_s5: Attack: turn before moving
+x25_s5_w0: [Turning] Quick turn_Lock
+x25_s6: Attack: dash
+x25_s6_w0: [Move] Dash_Lock_Random
+x25_s7: Attack: Action 2: Previous Step
+x25_s7_e0: [Attack] Melee attack
+x25_s8: [LIB] Attack action: Combo probability cancel_SubState
+x25_s8_e0: [General purpose] Sharing flag setting
+x25_s9: Attack successful
+x25_s10: Attack failed
+x0: [LIB] Attack: Single issue: General purpose
+x0_p0: Attack type
+x0_p1: Short navigation mesh check
+x0_s0: Start state
+x0_s1: Attack: Under attack
+x0_s1_e0: [Attack] Melee attack
+x0_s2: Attack: Cancel wait
+x0_s3: Attack: Success: End state
+x0_s4: Attack: Failure: End state
+x1: [LIB] Attack: general-purpose mobile
+x1_p0: Range distance
+x1_p1: Maximum range
+x1_p2: Attack time
+x1_p3: Attack launch angle
+x1_p4: Movement type
+x1_p5: Orientation adjustment type
+x1_p6: Sharp turning angle
+x1_p7: Analog strength
+x1_s0: Start state
+x1_s1: Begin attack
+x1_s1_e0: [Movement] Movement prediction accuracy setting
+x1_s1_e1: [Move] Reset move failure
+x1_s1_e2: [Attack] Reset attack failure
+x1_s1_e3: [Timer] Start timer
+x1_s2: Attack: turn before moving
+x1_s2_w0: [Turning] Quick turn_Lock
+x1_s3: Attack: Normal movement
+x1_s3_w0: [Move] Lock move random
+x1_s4: Attack: dash
+x1_s4_w0: [Move] Dash_Lock_Random
+x1_s5: Attack: Search
+x1_s5_e0: [Search] Navimesh
+x1_s6: Attack: Navigating
+x1_s6_w0: [Move] Lock move Navi mesh
+x1_s7: Attack: Navi Dash
+x1_s7_w0: [Move] Dash_Lock_Navimesh
+x1_s8: Attack: turn before attack
+x1_s8_w0: [Turning] Quick turn_Lock
+x1_s9: Attack: Attackable
+x1_s10: Attackable: End state
+x1_s11: Move failed: End state
+x1_s12: Timeout: termination state
+x2: [LIB] Attack action: Combo probability cancel
+x2_p0: Attack type
+x2_p1: Stop distance
+x2_p2: Stop angle
+x2_p3: Short navigation mesh check
+x2_p4: Second chance of suspension
+x2_p5: 3rd stop probability
+x2_p6: 4th stop probability
+x2_p7: Blade dash grace time
+x2_s0: Start state
+x2_s1: Begin attack
+x2_s1_e0: [Attack] Reset attack failure
+x2_s2: Attack: Combo execution
+x2_s2_e0: [Attack] Melee attack
+x2_s3: Attack: Combo first stage waiting
+x2_s4: Attack: First stage cancellation judgment
+x2_s4_e0: [Random number] Random number generation
+x2_s5: Attack: Second stage cancellation judgment
+x2_s5_e0: [Random number] Random number generation
+x2_s6: Attack: 3rd stage cancellation judgment
+x2_s6_e0: [Random number] Random number generation
+x2_s7: Attack: Combo end wait
+x2_s8: Attack: Cancel execution
+x2_s8_e0: [Attack] Combo attack cancel
+x2_s9: Attack: Successful end processing
+x2_s10: Attack: Failure end processing
+x2_s10_e0: [Attack] Combo attack cancel
+x2_s11: Successful completion state
+x2_s12: Failure end state
+x3: [LIB] Attack: Navigation confirmation attack
+x3_p0: Attack type
+x3_p1: Movement type
+x3_p2: Attack distance
+x3_p3: Maximum distance
+x3_p4: Attack angle
+x3_p5: Maximum angle
+x3_p6: Confirmation direction
+x3_p7: Confirmation distance
+x3_s0: Start state
+x3_s1: Begin attack
+x3_s2: Attack: after confirmation
+x3_s2_w0: [Move] Horizontal move_Lock_Random
+x3_s3: Attack: in action
+x3_s3_e0: [Attack] Melee attack
+x3_s4: Attack: Confirm before
+x3_s4_w0: [Move] Horizontal move_Lock_Random
+x3_s5: Attack: Confirm left
+x3_s5_w0: [Move] Horizontal move_Lock_Random
+x3_s6: Attack: right check
+x3_s6_w0: [Move] Horizontal move_Lock_Random
+x3_s7: Attack: Left front confirmation
+x3_s7_w0: [Move] Horizontal move_Lock_Random
+x3_s8: Attack: check right front
+x3_s8_w0: [Move] Horizontal move_Lock_Random
+x3_s9: Attack: Confirm left rear
+x3_s9_w0: [Move] Horizontal move_Lock_Random
+x3_s10: Attack: right rear view
+x3_s10_w0: [Move] Horizontal move_Lock_Random
+x3_s11: [LIB] Attack: Moving general purpose _SubState
+x3_s12: Attack successful
+x3_s13: Attack failed
+x3_s14: time out

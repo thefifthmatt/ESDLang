@@ -1,0 +1,308 @@
+10: Higher state
+10_s0: Start state
+10_s1: Higher state: start
+10_s2: [LIB] General-purpose: Upper (normal) _SubState
+10_s3: [LIB] Top: Start condition_SubState
+x0: [LIB] General-purpose: upper (normal)
+x0_p0: Maximum search distance
+x0_p1: Search priority
+x0_p2: LS tracking time
+x0_s0: Start state
+x0_s1: Top: Start setting
+x0_s1_e0: [General purpose] Sharing flag setting
+x0_s1_e1: [Timer] Start timer
+x0_s1_e2: [Movement] Movement prediction accuracy setting
+x0_s1_w0: [Action] Clear activation state reset flag
+x0_s2: [LIB] Top: Target action: Visual recognition _SubState
+x0_s3: [LIB] Top: Target action: Disappearance_SubState
+x0_s4: [LIB] Top: Target action: Invisible_SubState
+x0_s5: [LIB] Top: Target action: Sound response _SubState
+x0_s6: [LIB] Upper: Target action: Lower stop _SubState
+x0_s7: [LIB] Search enemy: General purpose _SubState
+x0_s8: [LIB] Top: Targetless action_SubState
+x0_s9: [LIB] Upper: generator feedback_SubState
+x0_s10: [LIB] Top: Target action: Preparing to return _SubState
+x0_s11: [LIB] Top: Action start_SubState
+x0_s12: End state
+x1: [LIB] Search: FC
+x1_p0: Maximum search distance
+x1_p1: Search priority
+x1_s0: Start state
+x1_s1: Search enemy (general purpose): Start
+x1_s1_e0: [Operation] Lock off
+x1_s2: Search enemy (general purpose): Normal setting
+x1_s2_e0: [Attack] Damage type reset
+x1_s2_w0: [Search enemy] Character _ target setting
+x1_s3: Search enemy (general purpose): Discovery
+x1_s4: Search enemy (general purpose): not found
+x1_s5: End state_Target not found
+x1_s6: End state_Target found
+x2: [LIB] Top: generator feedback
+x2_s0: Start state
+x2_s1: During generator return
+x2_s1_e0: [Platoon] Set weight multiplier
+x2_s2: Generator return: return ⇒ no target
+x2_s2_e0: [General purpose] Sharing flag setting
+x2_s3: Generator return: return ⇒ visual
+x2_s3_e0: [General purpose] Sharing flag setting
+x2_s4: Generator return: timer start
+x2_s4_e0: [Timer] Start timer
+x2_s5: Generator return: return ⇒ invisibility
+x2_s5_e0: [General purpose] Sharing flag setting
+x2_s6: Generator feedback: successful return
+x2_s7: End state
+x3: [LIB] Search enemy: general purpose
+x3_s0: Start state
+x3_s1: Search enemy: Normal
+x3_s1_w0: [Search enemy] Character _ target setting
+x3_s2: Search enemy: Discovery
+x3_s2_e0: [General purpose] Sharing flag setting
+x3_s3: Search enemy: End
+x3_s3_e0: [General purpose] Sharing flag setting
+x3_s4: Search enemy: branch
+x3_s4_e0: [Operation] Lock off
+x3_s5: Search enemy: attacker
+x3_s5_w0: [Search enemy] Attacker_Target setting
+x3_s6: Search enemy: not found
+x3_s6_e0: [General purpose] Sharing flag setting
+x3_s6_e1: [General purpose] Sharing flag setting
+x3_s6_w0: [Search] Load target
+x3_s7: Search enemies: save target
+x3_s7_w0: [Search] Save target
+x3_s8: Search enemy: start
+x3_s8_w0: [Search] Clear the target
+x3_s9: End state
+x4: [LIB] Top: Target action: Visual recognition
+x4_s0: Start state
+x4_s1: Target action: Recognition During action
+x4_s1_e0: [General purpose] Sharing flag setting
+x4_s1_e1: [Search] Erasure of last sighting information
+x4_s1_e2: [Attack] Damage type reset
+x4_s1_e3: [Attack] Damage information reset
+x4_s1_e4: [Operation] Lock on
+x4_s1_e5: [Random number] Random number generation
+x4_s1_e6: [Search] Navimesh route search settings
+x4_s1_e7: [Operation] Invincible, damage invalid off
+x4_s1_e8: [Platoon] Set weight multiplier
+x4_s2: Target action: Visual recognition ⇒ disappearance
+x4_s2_e0: [General purpose] Sharing flag setting
+x4_s2_e1: [Timer] Start timer
+x4_s3: Target action: Visual recognition ⇒ return
+x4_s3_e0: [General purpose] Sharing flag setting
+x4_s4: Target action: Timer start
+x4_s4_e0: [Timer] Start timer
+x4_s5: Target action: Visual recognition ⇒ Return preparation
+x4_s5_e0: [General purpose] Sharing flag setting
+x4_s6: Target action: Visual recognition ⇒ Lower action stop
+x4_s6_e0: [General purpose] Sharing flag setting
+x4_s7: [LIB] Perspective switching _SubState
+x4_s7_x0: [General purpose] Sharing flag setting
+x4_s8: End state
+x5: [LIB] Top: Target action: disappearance
+x5_p0: LS tracking time
+x5_s0: Start state
+x5_s1: Target action: Disappearing During action
+x5_s1_e0: [Operation] Lock off
+x5_s1_e1: [Random number] Random number generation
+x5_s1_e2: [Search] Navimesh route search settings
+x5_s1_e3: [Platoon] Set weight multiplier
+x5_s2: Target action: disappearance ⇒ invisibility
+x5_s2_e0: [General purpose] Sharing flag setting
+x5_s3: Target action: disappearance ⇒ visual recognition
+x5_s3_e0: [General purpose] Sharing flag setting
+x5_s4: Target action: Timer start
+x5_s4_e0: [Timer] Start timer
+x5_s5: Target action: disappearance ⇒ return
+x5_s5_e0: [General purpose] Sharing flag setting
+x5_s6: Target action: disappearance ⇒ return preparation
+x5_s6_e0: [General purpose] Sharing flag setting
+x5_s7: [LIB] Perspective switching _SubState
+x5_s7_x0: [General purpose] Sharing flag setting
+x5_s8: End state
+x6: [LIB] Top: Target action: Invisibility
+x6_s0: Start state
+x6_s1: Target action: Invisibility During action
+x6_s1_e0: [Operation] Lock off
+x6_s1_e1: [Search] Erasure of last sighting information
+x6_s1_e2: [Search] Navimesh route search settings
+x6_s1_e3: [Platoon] Set weight multiplier
+x6_s2: Target action: invisibility ⇒ return
+x6_s2_e0: [General purpose] Sharing flag setting
+x6_s3: Target action: invisibility ⇒ sound response
+x6_s3_e0: [General purpose] Sharing flag setting
+x6_s4: Target action: invisible ⇒ visible
+x6_s4_e0: [General purpose] Sharing flag setting
+x6_s5: Target action: Timer start
+x6_s5_e0: [Timer] Start timer
+x6_s6: End state
+x7: [LIB] Top: Target action: Sound response
+x7_s0: Start state
+x7_s1: Target action: sound response
+x7_s1_e0: [Operation] Lock off
+x7_s1_e1: [Search] Navimesh route search settings
+x7_s1_e2: [Platoon] Set weight multiplier
+x7_s2: Target action: sound response ⇒ invisibility
+x7_s2_e0: [General purpose] Sharing flag setting
+x7_s3: Target action: sound response ⇒ visual recognition
+x7_s3_e0: [General purpose] Sharing flag setting
+x7_s4: Target action: Timer start
+x7_s4_e0: [Timer] Start timer
+x7_s5: Target action: sound response ⇒ return
+x7_s5_e0: [General purpose] Sharing flag setting
+x7_s6: Target action: sound response ⇒ return preparation
+x7_s6_e0: [General purpose] Sharing flag setting
+x7_s7: End state
+x8: [LIB] Upper: Target action: Lower stop
+x8_s0: Start state
+x8_s1: Target action: Lower stop
+x8_s2: End state
+x9: [LIB] Top: Targetless action
+x9_p0: Maximum search distance
+x9_s0: Start state
+x9_s1: No target in action
+x9_s1_e0: [Search] Navimesh route search settings
+x9_s1_e1: [Operation] Lock off
+x9_s1_e2: [Platoon] Set weight multiplier
+x9_s2: Target action: invisibility ⇒ sound response
+x9_s2_e0: [General purpose] Sharing flag setting
+x9_s3: Target action: Timer start
+x9_s3_e0: [Timer] Start timer
+x9_s4: End state
+x10: [LIB] Top: Target action: Preparing to return
+x10_s0: Start state
+x10_s1: Target action: preparing to return
+x10_s1_e0: [Random number] Random number generation
+x10_s1_e1: [Search] Navimesh route search settings
+x10_s2: Target action: Return preparation ⇒ Return
+x10_s2_e0: [General purpose] Sharing flag setting
+x10_s3: Target action: Timer start
+x10_s3_e0: [Timer] Start timer
+x10_s4: Generator return: Return preparation ⇒ Visual recognition
+x10_s4_e0: [General purpose] Sharing flag setting
+x10_s5: [LIB] Perspective switching _SubState
+x10_s5_x0: [General purpose] Sharing flag setting
+x10_s6: End state
+x11: [LIB] Perspective equipment switching
+x11_s0: Start state
+x11_s1: Switch equipment: start
+x11_s1_e0: [General purpose] Sharing flag setting
+x11_s1_e1: [Attack] Defense
+x11_s1_w0: [Action] Cancel activation state
+x11_s2: Equipment change: branch
+x11_s3: Equipment change: long distance ⇒ short distance
+x11_s3_e0: [General purpose] Sharing flag setting
+x11_s4: Equipment switching: short distance ⇒ long distance
+x11_s4_e0: [General purpose] Sharing flag setting
+x11_s5: Equipment change: long distance ⇒ short distance 1
+x11_s5_e0: [General] lower-level state map switching
+x11_s5_e1: [Attack] Switch weapons
+x11_s6: Equipment change: long distance ⇒ short distance 2
+x11_s6_e0: [General] lower-level state map switching
+x11_s6_e1: [Attack] Switch weapons
+x11_s7: Equipment change: long distance ⇒ short distance 3
+x11_s7_e0: [General] lower-level state map switching
+x11_s7_e1: [Attack] Switch weapons
+x11_s8: Equipment change: long distance ⇒ short distance 4
+x11_s8_e0: [General] lower-level state map switching
+x11_s8_e1: [Attack] Switch weapons
+x11_s9: Equipment change: long distance ⇒ short distance 5
+x11_s9_e0: [General] lower-level state map switching
+x11_s9_e1: [Attack] Switch weapons
+x11_s10: Equipment change: long distance ⇒ short distance 6
+x11_s10_e0: [General] lower-level state map switching
+x11_s10_e1: [Attack] Switch weapons
+x11_s11: Equipment change: short distance ⇒ long distance 1
+x11_s11_e0: [General] lower-level state map switching
+x11_s11_e1: [Attack] Switch weapons
+x11_s12: Equipment change: short distance ⇒ long distance 2
+x11_s12_e0: [General] lower-level state map switching
+x11_s12_e1: [Attack] Switch weapons
+x11_s13: Equipment change: short distance ⇒ long distance 3
+x11_s13_e0: [General] lower-level state map switching
+x11_s13_e1: [Attack] Switch weapons
+x11_s14: Equipment change: short distance ⇒ long distance 4
+x11_s14_e0: [General] lower-level state map switching
+x11_s14_e1: [Attack] Switch weapons
+x11_s15: Equipment change: short distance ⇒ long distance 5
+x11_s15_e0: [General] lower-level state map switching
+x11_s15_e1: [Attack] Switch weapons
+x11_s16: Equipment change: short distance ⇒ long distance 6
+x11_s16_e0: [General] lower-level state map switching
+x11_s16_e1: [Attack] Switch weapons
+x11_s17: Equipment change: Navigation route confirmation
+x11_s17_e0: [Search] Navimesh
+x11_s18: Switching equipment: Successful navigation route check
+x11_s18_e0: [General purpose] Sharing flag setting
+x11_s19: Equipment change: Navi route confirmation failure
+x11_s19_e0: [General purpose] Sharing flag setting
+x11_s20: Equipment change: End
+x11_s21: End state
+x12: [LIB] Top: Start condition
+x12_p0: Search distance
+x12_p1: Gravity disabled
+x12_p2: Swing angle
+x12_p3: Activation when the activation state is released
+x12_s0: Start state
+x12_s1: Start condition: Status judgment
+x12_s2: Start condition: Branch
+x12_s3: Start condition: Exception processing
+x12_s3_e0: [Debug] Log output
+x12_s3_w0: [Turning] Quick turn _ Direction designation
+x12_s4: Start condition: Initial termination
+x12_s4_e0: [General purpose] Sharing flag setting
+x12_s4_e1: [Search] Overwrite the generator position with the current position
+x12_s5: Start condition: Initial start
+x12_s5_e0: [General purpose] Sharing flag setting
+x12_s5_e1: [Operation] Lock on
+x12_s6: Start condition: Start condition (flag 1)
+x12_s7: Start condition: Start condition (area 1)
+x12_s8: Start condition: Start condition (area 1 and area 2)
+x12_s9: Start condition: Start condition (area 5and gaze & sound)
+x12_s10: Start condition: Start condition (line of sight & sound)
+x12_s11: Start condition: Start
+x12_s11_e0: [Platoon] Set weight multiplier
+x12_s11_e1: [General] Logic group flag setting
+x12_s12: Start condition: Conditional branch
+x12_s13: Start condition: Start animation cancel
+x12_s13_e0: [Action] Cancel activation state
+x12_s14: Start condition: Start condition (damage)
+x12_s15: Activation condition: Activation condition (flag 1 or damage)
+x12_s16: Start condition: Start condition (flag 1 and area 1)
+x12_s17: Start condition: Start
+x12_s17_e0: [Platoon] Set weight multiplier
+x12_s17_e1: [General purpose] Sharing flag setting
+x12_s18: Start condition: Start condition (flag 1 or line of sight)
+x12_s19: Start condition: Start condition (area 1 or damage)
+x12_s20: Start condition: Start condition (damage or sound start)
+x12_s21: [LIB] Search enemy: _SubState for FC
+x12_s22: [LIB] Top: Sound response_SubState
+x12_s23: [LIB] Search enemy: _SubState for initial movement
+x12_s24: With first contact
+x12_s25: No first contact
+x12_s26: First contacted
+x13: [LIB] Top: sound response
+x13_p0: Swing angle
+x13_s0: Start state
+x13_s1: Sound response: turning: start
+x13_s1_w0: [Swirl] Quick turn_Sound direction
+x13_s2: Sound response: turning: checking
+x13_s3: Sound response: Reflection: End
+x13_s3_w0: [Turning] Quick turn_Generator direction
+x13_s4: Sound response: start
+x13_s5: Sound Response: Search: Start
+x13_s5_e0: [Search] Navimesh to the sound you heard
+x13_s6: Sound response: search: moving
+x13_s6_w0: [Move] Normal move Navi mesh
+x13_s7: Sound Response: Search: Return
+x13_s7_e0: [Search] Navi mesh to generator
+x13_s8: Sound response: End
+x13_s9: Sound response: search: checking
+x13_s10: Sound Response: Search: Returning
+x13_s10_w0: [Move] Normal move Navi mesh
+x13_s11: End state
+x14: [LIB] Top: Start action
+x14_s0: Start state
+x14_s1: Higher rank: Platoon flag setting
+x14_s1_e0: [Platoon] Set the platoon flag
+x14_s1_e1: [Platoon] Set the platoon flag
+x14_s2: End state

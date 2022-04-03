@@ -1,0 +1,285 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s1_e0: [Operation] Lock on
+10_s1_e1: [General purpose] Sharing flag setting
+10_s1_e2: [Attack] Damage lower logic reset setting
+10_s1_w0: [Search enemy] Character _ target setting
+10_s2: Top: death
+10_s2_e0: [Operation] death request
+10_s3: Search enemy_SubState
+1: Search target test
+1_s0: Start state
+1_s1: Torch lighting judgment_SubState
+1_s2: Torch range judgment_SubState
+1_s3: Moving area judgment_SubState
+1_s4: Target judgment_SubState
+1_s5: Locked-on judgment_SubState
+1_s6: Gen moving area judgment_SubState
+1_s7: Player judgment within specified distance_SubState
+20: Lower logic
+20_s0: Start state
+20_s1: Lower: visibility judgment test
+20_s1_e0: [General] lower-level state map switching
+20_s2: Lower: branch
+x0: Torch lighting judgment
+x0_p0: Display switching time
+x0_s0: Start state
+x0_s1: Lower: Torch lighting judgment (all)
+x0_s1_e0: [Debug] Popcorn creation
+x0_s1_e1: [Debug] Popcorn creation
+x0_s2: Lower: Torch lighting judgment (host)
+x0_s2_e0: [Debug] Popcorn creation
+x0_s3: Lower: Torch lighting judgment (white)
+x0_s3_e0: [Debug] Popcorn creation
+x0_s4: Lower: Torch lighting judgment (black)
+x0_s4_e0: [Debug] Popcorn creation
+x0_s5: Lower: Torch lighting judgment (owner)
+x0_s5_e0: [Debug] Popcorn creation
+x0_s6: Lower: Torch lighting judgment (other than player)
+x0_s6_e0: [Debug] Popcorn creation
+x0_s7: End state
+x1: Judgment within the torch range
+x1_p0: Display switching time
+x1_s0: Start state
+x1_s1: Lower: judgment within torch range (other than player)
+x1_s1_e0: [Debug] Popcorn creation
+x1_s2: Lower: Judgment within the torch range (all)
+x1_s2_e0: [Debug] Popcorn creation
+x1_s2_e1: [Debug] Popcorn creation
+x1_s3: Lower: Judgment within the torch range (host)
+x1_s3_e0: [Debug] Popcorn creation
+x1_s4: Lower: judgment within the torch range (white)
+x1_s4_e0: [Debug] Popcorn creation
+x1_s5: Lower: judgment within the torch range (black)
+x1_s5_e0: [Debug] Popcorn creation
+x1_s6: Lower: judgment within the torch range (owner)
+x1_s6_e0: [Debug] Popcorn creation
+x1_s7: End state
+x2: Moving area judgment
+x2_p0: Display switching time
+x2_p1: Moving area
+x2_s0: Start state
+x2_s1: Lower: Moving area judgment: Branch (all)
+x2_s2: Lower: Moving area judgment: Display (all members, out of range)
+x2_s2_e0: [Debug] Popcorn creation
+x2_s3: Lower: Moving area judgment: Display (all members, within range)
+x2_s3_e0: [Debug] Popcorn creation
+x2_s4: Lower order: Moving area judgment: Display (all / not applicable)
+x2_s4_e0: [Debug] Popcorn creation
+x2_s5: Lower: Moving area judgment: Branch (host)
+x2_s6: Lower: Moving area judgment: Display (host / out of range)
+x2_s6_e0: [Debug] Popcorn creation
+x2_s7: Lower order: Moving area judgment: Display (host, within range)
+x2_s7_e0: [Debug] Popcorn creation
+x2_s8: Lower order: Moving area judgment: Display (host / not applicable)
+x2_s8_e0: [Debug] Popcorn creation
+x2_s9: Lower: Moving area judgment: Branch (white)
+x2_s10: Lower: Moving area judgment: Display (white, out of range)
+x2_s10_e0: [Debug] Popcorn creation
+x2_s11: Lower order: Moving area judgment: Display (white, within range)
+x2_s11_e0: [Debug] Popcorn creation
+x2_s12: Lower: Moving area judgment: Display (white, not applicable)
+x2_s12_e0: [Debug] Popcorn creation
+x2_s13: Lower: Moving area judgment: Branch (black)
+x2_s14: Lower: Moving area judgment: Display (black, out of range)
+x2_s14_e0: [Debug] Popcorn creation
+x2_s15: Lower order: Moving area judgment: Display (black, within range)
+x2_s15_e0: [Debug] Popcorn creation
+x2_s16: Lower: Moving area judgment: Display (black, not applicable)
+x2_s16_e0: [Debug] Popcorn creation
+x2_s17: Lower: Moving area judgment: Branch (owner)
+x2_s18: Lower: Moving area judgment: Display (owner / out of range)
+x2_s18_e0: [Debug] Popcorn creation
+x2_s19: Lower: Moving area judgment: Display (owner / within range)
+x2_s19_e0: [Debug] Popcorn creation
+x2_s20: Lower: Moving area judgment: Display (owner / not applicable)
+x2_s20_e0: [Debug] Popcorn creation
+x2_s21: Lower: Moving area judgment: Branch (excludes player)
+x2_s22: Lower: Moving area judgment: Display (player exclusion / out of range)
+x2_s22_e0: [Debug] Popcorn creation
+x2_s23: Lower: Judgment of moving area: Display (Player excluded / within range)
+x2_s23_e0: [Debug] Popcorn creation
+x2_s24: Lower: Moving area judgment: Display (Player excluded / not applicable)
+x2_s24_e0: [Debug] Popcorn creation
+x2_s25: Lower: Moving area judgment: Branch (target)
+x2_s26: Lower order: Moving area judgment: Display (target / out of range)
+x2_s26_e0: [Debug] Popcorn creation
+x2_s27: Lower order: Moving area judgment: Display (target / within range)
+x2_s27_e0: [Debug] Popcorn creation
+x2_s28: Lower: Moving area judgment: Display (Target / Not applicable)
+x2_s28_e0: [Debug] Popcorn creation
+x2_s29: End state
+x3: Target judgment
+x3_p0: Display switching time
+x3_s0: Start state
+x3_s1: Lower: target
+x3_s2: Lower: Player number judgment
+x3_s2_e0: [Debug] Popcorn creation
+x3_s2_e1: [Debug] Popcorn creation
+x3_s2_e2: [Debug] Popcorn creation
+x3_s2_e3: [Debug] Popcorn creation
+x3_s2_e4: [Debug] Popcorn creation
+x3_s2_e5: [Debug] Popcorn creation
+x3_s2_e6: [Debug] Popcorn creation
+x3_s3: Lower: Target existence
+x3_s3_e0: [Debug] Popcorn creation
+x3_s4: Lower: target type
+x3_s4_e0: [Debug] Popcorn creation
+x3_s4_e1: [Debug] Popcorn creation
+x3_s4_e2: [Debug] Popcorn creation
+x3_s4_e3: [Debug] Popcorn creation
+x3_s5: Lower: target type judgment
+x3_s5_e0: [Debug] Popcorn creation
+x3_s5_e1: [Debug] Popcorn creation
+x3_s5_e2: [Debug] Popcorn creation
+x3_s5_e3: [Debug] Popcorn creation
+x3_s5_e4: [Debug] Popcorn creation
+x3_s6: Lower: visibility judgment
+x3_s6_e0: [Debug] Popcorn creation
+x3_s6_e1: [Debug] Popcorn creation
+x3_s7: End state
+x4: Locked on judgment
+x4_p0: Display switching time
+x4_s0: Start state
+x4_s1: Locked-on judgment (someone)
+x4_s1_e0: [Debug] Popcorn creation
+x4_s1_e1: [Debug] Popcorn creation
+x4_s2: Locked-on judgment (target)
+x4_s2_e0: [Debug] Popcorn creation
+x4_s3: Locked-on judgment (player)
+x4_s3_e0: [Debug] Popcorn creation
+x4_s4: End state
+x5: Gen moving area judgment
+x5_p0: Display switching time
+x5_p1: Gen moving area
+x5_s0: Start state
+x5_s1: Lower: Moving area judgment: Branch (all)
+x5_s2: Lower: Moving area judgment: Display (all members, out of range)
+x5_s2_e0: [Debug] Popcorn creation
+x5_s3: Lower: Moving area judgment: Display (all members, within range)
+x5_s3_e0: [Debug] Popcorn creation
+x5_s4: Lower order: Moving area judgment: Display (all / not applicable)
+x5_s4_e0: [Debug] Popcorn creation
+x5_s5: Lower: Moving area judgment: Branch (host)
+x5_s6: Lower: Moving area judgment: Display (host / out of range)
+x5_s6_e0: [Debug] Popcorn creation
+x5_s7: Lower order: Moving area judgment: Display (host, within range)
+x5_s7_e0: [Debug] Popcorn creation
+x5_s8: Lower order: Moving area judgment: Display (host / not applicable)
+x5_s8_e0: [Debug] Popcorn creation
+x5_s9: Lower: Moving area judgment: Branch (white)
+x5_s10: Lower: Moving area judgment: Display (white, out of range)
+x5_s10_e0: [Debug] Popcorn creation
+x5_s11: Lower order: Moving area judgment: Display (white, within range)
+x5_s11_e0: [Debug] Popcorn creation
+x5_s12: Lower: Moving area judgment: Display (white, not applicable)
+x5_s12_e0: [Debug] Popcorn creation
+x5_s13: Lower: Moving area judgment: Branch (black)
+x5_s14: Lower: Moving area judgment: Display (black, out of range)
+x5_s14_e0: [Debug] Popcorn creation
+x5_s15: Lower order: Moving area judgment: Display (black, within range)
+x5_s15_e0: [Debug] Popcorn creation
+x5_s16: Lower: Moving area judgment: Display (black, not applicable)
+x5_s16_e0: [Debug] Popcorn creation
+x5_s17: Lower: Moving area judgment: Branch (owner)
+x5_s18: Lower: Moving area judgment: Display (owner / out of range)
+x5_s18_e0: [Debug] Popcorn creation
+x5_s19: Lower: Moving area judgment: Display (owner / within range)
+x5_s19_e0: [Debug] Popcorn creation
+x5_s20: Lower: Moving area judgment: Display (owner / not applicable)
+x5_s20_e0: [Debug] Popcorn creation
+x5_s21: Lower: Moving area judgment: Branch (excludes player)
+x5_s22: Lower: Moving area judgment: Display (player exclusion / out of range)
+x5_s22_e0: [Debug] Popcorn creation
+x5_s23: Lower: Judgment of moving area: Display (Player excluded / within range)
+x5_s23_e0: [Debug] Popcorn creation
+x5_s24: Lower: Moving area judgment: Display (Player excluded / not applicable)
+x5_s24_e0: [Debug] Popcorn creation
+x5_s25: Lower: Moving area judgment: Branch (target)
+x5_s26: Lower order: Moving area judgment: Display (target / out of range)
+x5_s26_e0: [Debug] Popcorn creation
+x5_s27: Lower order: Moving area judgment: Display (target / within range)
+x5_s27_e0: [Debug] Popcorn creation
+x5_s28: Lower: Moving area judgment: Display (Target / Not applicable)
+x5_s28_e0: [Debug] Popcorn creation
+x5_s29: End state
+x6: Player judgment within specified distance
+x6_p0: Display switching time
+x6_s0: Start state
+x6_s1: Distance judgment: Everyone: 0m to 5m
+x6_s1_e0: [Debug] Popcorn creation
+x6_s2: Distance judgment: Everyone: 5m to 10m
+x6_s2_e0: [Debug] Popcorn creation
+x6_s3: Distance judgment: Everyone: 10m to 15m
+x6_s3_e0: [Debug] Popcorn creation
+x6_s4: Distance judgment: Everyone: 15m to 999m
+x6_s4_e0: [Debug] Popcorn creation
+x6_s5: Distance judgment: Host: 0m to 5m
+x6_s5_e0: [Debug] Popcorn creation
+x6_s6: Distance judgment: Host: 5m to 10m
+x6_s6_e0: [Debug] Popcorn creation
+x6_s7: Distance judgment: Host: 10m to 15m
+x6_s7_e0: [Debug] Popcorn creation
+x6_s8: Distance judgment: Host: 15m to 999m
+x6_s8_e0: [Debug] Popcorn creation
+x6_s9: Distance judgment: white (blue): 0m to 5m
+x6_s9_e0: [Debug] Popcorn creation
+x6_s10: Distance judgment: White (blue): 5m to 10m
+x6_s10_e0: [Debug] Popcorn creation
+x6_s11: Distance judgment: White (blue): 10m to 15m
+x6_s11_e0: [Debug] Popcorn creation
+x6_s12: Distance judgment: White (blue): 15m to 999m
+x6_s12_e0: [Debug] Popcorn creation
+x6_s13: Distance judgment: Black (red): 0m to 5m
+x6_s13_e0: [Debug] Popcorn creation
+x6_s14: Distance judgment: Black (red): 5m to 10m
+x6_s14_e0: [Debug] Popcorn creation
+x6_s15: Distance judgment: Black (red): 10m to 15m
+x6_s15_e0: [Debug] Popcorn creation
+x6_s16: Distance judgment: Black (red): 15m to 999m
+x6_s16_e0: [Debug] Popcorn creation
+x6_s17: Distance judgment: Owner: 0m to 5m
+x6_s17_e0: [Debug] Popcorn creation
+x6_s18: Distance judgment: Owner: 5m to 10m
+x6_s18_e0: [Debug] Popcorn creation
+x6_s19: Distance judgment: Owner: 10m to 15m
+x6_s19_e0: [Debug] Popcorn creation
+x6_s20: Distance judgment: Owner: 15m to 999m
+x6_s20_e0: [Debug] Popcorn creation
+x6_s21: Distance judgment: Player exclusion: 0m to 5m
+x6_s21_e0: [Debug] Popcorn creation
+x6_s22: Distance judgment: Player exclusion: 5m to 10m
+x6_s22_e0: [Debug] Popcorn creation
+x6_s23: Distance judgment: Player exclusion: 10m to 15m
+x6_s23_e0: [Debug] Popcorn creation
+x6_s24: Distance judgment: Player exclusion: 15m to 999m
+x6_s24_e0: [Debug] Popcorn creation
+x6_s25: End state
+x7: Search enemy
+x7_s0: Start state
+x7_s1: Higher rank: Search type switching: Branch
+x7_s2: Higher rank: Search enemy type switching: Setting (Character 1 → Object 2)
+x7_s2_e0: [General purpose] Sharing flag setting
+x7_s3: Higher rank: Search enemy type switching: Setting (Object 2 → Moving area 3)
+x7_s3_e0: [General purpose] Sharing flag setting
+x7_s4: Higher rank: Search enemy type switching: Setting (moving area 3 → Gen moving area 4)
+x7_s4_e0: [General purpose] Sharing flag setting
+x7_s5: Higher rank: Search enemy type switching: Setting (Gen movement area 4 → generation generator 5)
+x7_s5_e0: [General purpose] Sharing flag setting
+x7_s6: Higher rank: Search type switching: Setting (Generation generator 5 → Target clear 6)
+x7_s6_e0: [General purpose] Sharing flag setting
+x7_s7: Higher rank: Search type switching: Setting (Target clear 6 → Character 1)
+x7_s7_e0: [General purpose] Sharing flag setting
+x7_s8: High rank: search enemy
+x7_s8_e0: [Attack] Damage information reset
+x7_s8_w0: [Search enemy] Character _ target setting
+x7_s8_w1: [Search] Object_Target setting
+x7_s8_w2: [Search for enemy] Moving area_Target setting
+x7_s8_w3: [Search enemy] Gen movement area_Target setting
+x7_s8_w4: [Search] Generation Generator_Target Setting
+x7_s8_w5: [Search] Clear the target
+x7_s9: Higher rank: search enemy ON
+x7_s9_e0: [Operation] Lock on
+x7_s10: Top: search waiting
+x7_s11: End state

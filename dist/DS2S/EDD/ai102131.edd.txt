@@ -1,0 +1,65 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s1_e0: [General] lower-level state map switching
+10_s2: Upper: Varistor switching
+10_s3: Higher: For switching players
+10_s3_e0: [General] lower-level state map switching
+10_s3_e1: [General purpose] Sharing flag setting
+10_s3_e2: [Action] Leave OBJ
+10_s4: Top: For switching to giants
+10_s4_e0: [General] lower-level state map switching
+10_s4_e1: [General purpose] Sharing flag setting
+10_s4_e2: [Action] Leave OBJ
+10_s5: Top: Behavior without target
+10_s5_e0: [General purpose] Sharing flag setting
+10_s5_w0: [Operation] Lock off
+10_s6: Top: Standby
+10_s6_e0: [General purpose] Sharing flag setting
+10_s7: Higher rank: search enemy (barista ⇒ player) _SubState
+10_s8: Top: Target action_SubState
+10_s9: Top: Varistor: General purpose _SubState
+x0: Higher rank: search enemy (barista ⇒ player)
+x0_s0: Start state
+x0_s1: Search enemy: start
+x0_s1_e0: [Operation] Lock off
+x0_s2: Search enemies: players
+x0_s2_w0: [Search enemy] Character _ target setting
+x0_s3: Search enemy: Enemy
+x0_s3_w0: [Search enemy] Character _ target setting
+x0_s4: Search enemy: End
+x0_s5: End state
+x1: Upper: Varistor: General purpose
+x1_s0: Start state
+x1_s1: Barista: Start
+x1_s1_e0: [General] lower-level state map switching
+x1_s2: Varistor: in operation
+x1_s2_e0: [General purpose] Sharing flag setting
+x1_s2_w0: [Operation] Lock off
+x1_s3: Varistor: Waiting for operation
+x1_s4: Barista: Targetless Action
+x1_s5: Barista: End
+x1_s6: Top: search enemy (enemy → barista) _SubState
+x1_s7: End state
+x2: Higher rank: search enemy (enemy → barista)
+x2_s0: Start state
+x2_s1: Search enemy: start
+x2_s2: Search enemy: Enemy
+x2_s2_w0: [Search enemy] Character _ target setting
+x2_s3: Search for: Barista
+x2_s3_w0: [Search] Object_Target setting
+x2_s4: Search enemy: End
+x2_s5: End state
+x3: Top: target behavior
+x3_s0: Start state
+x3_s1: Target action: start
+x3_s2: Target action: invisibility preliminary action
+x3_s3: Target action: invisibility
+x3_s3_e0: [General purpose] Sharing flag setting
+x3_s3_e1: [Operation] Lock off
+x3_s4: Target action: discovery
+x3_s5: Target action: Visual recognition
+x3_s5_e0: [Operation] Lock on
+x3_s5_e1: [General purpose] Sharing flag setting
+x3_s6: Target action: End
+x3_s7: End state

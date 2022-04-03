@@ -1,0 +1,94 @@
+10: Higher state
+10_s0: Start state
+10_s1: Higher state: start
+10_s2: Upper state: branch
+10_s2_e0: [Timer] Start timer
+10_s3: Upper: [Exception handling]
+10_s3_e0: [Debug] Log output
+10_s3_e1: [General] lower-level state map switching
+10_s4: Upper state: Start state release
+10_s4_e0: [Action] Cancel activation state
+10_s5: Top: Initial setting
+10_s5_e0: [Attack] Damage lower logic reset setting
+10_s6: Higher rank: STEP1_SubState
+10_s7: Top: Initial start_SubState
+10_s8: Higher rank: STEP2_SubState
+10_s9: Top: First Contact_SubState
+11: Substate: child fraction management
+11_s0: Start state
+11_s1: First summon standby
+11_s2: Child fraction judgment
+11_s3: Initialization
+11_s3_e0: [Timer] Start timer
+11_s3_e1: [Timer] Stop timer
+11_s3_e2: [General purpose] Sharing flag setting
+11_s4: Annihilation
+11_s4_e0: [General purpose] Sharing flag setting
+11_s4_e1: [Timer] Restart timer
+11_s5: The specified time has passed after the annihilation
+11_s5_e0: [General purpose] Sharing flag setting
+11_s5_e1: [Timer] Restart timer
+x1: Top: Step action
+x1_p0: Lower state ID
+x1_s0: Start state
+x1_s1: Step action: start
+x1_s1_e0: [General] lower-level state map switching
+x1_s1_e1: [General purpose] Sharing flag setting
+x1_s1_e2: [General purpose] Sharing flag setting
+x1_s2: Step action: target
+x1_s2_e0: [General purpose] Sharing flag setting
+x1_s2_e1: [General purpose] Sharing flag setting
+x1_s2_e2: [General purpose] Sharing flag setting
+x1_s2_e3: [General purpose] Sharing flag setting
+x1_s2_w0: [General] Become a group leader
+x1_s3: Step action: no target
+x1_s3_e0: [General purpose] Sharing flag setting
+x1_s4: [LIB] Search enemy (boss): Limited to view [DLC modified version] _SubState
+x1_s4_e0: [General purpose] Sharing flag setting
+x1_s5: End state
+x2: Top: First contact
+x2_s0: Start state
+x2_s1: FC: Gen specified startup error
+x2_s2: FC: Logic startup error
+x2_s3: FC: Cancel startup animation
+x2_s3_e0: [Action] Cancel activation state
+x2_s3_e1: [General purpose] Sharing flag setting
+x2_s4: FC: Start initialization setting
+x2_s4_e0: [Search] Overwrite the generator position with the current position
+x2_s4_e1: [General purpose] Sharing flag setting
+x2_s4_e2: [General purpose] Sharing flag setting
+x2_s4_w0: [Search] Player_Target setting
+x2_s5: FC: Start condition branch
+x2_s6: End state
+x0: [LIB] Search enemy (boss): Limited to view [DLC modified version]
+x0_p0: Search distance
+x0_p1: Red-eye magnification
+x0_p2: Search enemy priority 1
+x0_p3: Search enemy priority 2
+x0_p4: Priority 1 search rate
+x0_p5: Priority 2 search rate
+x0_p6: Attacker target
+x0_s0: Start state
+x0_s1: Search enemy: start
+x0_s1_e0: [Operation] Lock off
+x0_s1_e1: [Search] Override lock priority
+x0_s2: Search enemy: search priority 1
+x0_s2_w0: [Search enemy] Character _ target setting
+x0_s3: Search enemy: target save
+x0_s3_x0: [Search] Clear the target
+x0_s3_w0: [Search] Save target
+x0_s4: Search enemy: target load
+x0_s4_w0: [Search] Load target
+x0_s5: Search enemy: host target
+x0_s5_w0: [Search] Player_Target setting
+x0_s6: Search enemy: Discovery end
+x0_s6_e0: [Operation] Lock on
+x0_s7: Search enemy: undiscovered end
+x0_s8: Search enemy: Search enemy branch
+x0_s8_e0: [Random number] Random number generation
+x0_s9: Search enemy: attacker
+x0_s9_w0: [Search enemy] Attacker_Target setting
+x0_s10: Search enemy: search priority 2
+x0_s10_w0: [Search enemy] Character _ target setting
+x0_s11: Search for: Discovery: End State
+x0_s12: Search enemy: not found: end state

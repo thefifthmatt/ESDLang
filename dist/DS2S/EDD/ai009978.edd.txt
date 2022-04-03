@@ -1,0 +1,754 @@
+20: Lower states:
+20_s0: Start state
+20_s1: Lower: Start
+20_s2: Subordinate: Thinking state
+20_s3: Lower: wait state
+20_s4: Lower: Move processing_SubState
+20_s5: Lower: Attack processing_SubState
+20_s6: Lower: Backward processing_SubState
+20_s7: Lower: Action outside lock _SubState
+12: Top: Logic
+12_s0: Start state
+12_s1: Top: Start
+12_s2: Top: target search
+12_s2_w0: [Search enemy] Character _ target setting
+12_s3: High rank: search enemy
+12_s3_e0: [Operation] Lock on
+12_s4: Top: search waiting
+12_s5: Top: no search
+12_s5_e0: [Operation] Lock off
+12_s6: Top: Standby without search
+12_s7: Upper: Start lower logic
+12_s7_e0: [Movement] Movement prediction accuracy setting
+12_s8: Top: death
+12_s8_e0: [Operation] death request
+30: Substate: Navigation search test
+30_s0: Start state
+30_s1: Navigation search: Start
+30_s2: Navigation search: Scrutiny
+30_s2_e0: [Search] Navimesh
+30_s3: Navigation search: Success judgment (log output)
+30_s3_e0: [Debug] Log output
+30_s4: Navigation search: Failure judgment (log output)
+30_s4_e0: [Debug] Log output
+30_s5: Navi: Again from search in defense
+30_s6: Navigation search: End
+40: Sub-state: Navi TEST
+40_s0: Start state
+40_s1: Move Test: Start
+40_s2: Movement test: distance judgment
+40_s3: Movement Test: Short distance straight ahead
+40_s3_w0: [Move] Normally move to the target world correction position
+40_s4: Move Test: Navigation search
+40_s4_e0: [Search] Navimesh
+40_s5: Move Test: Navigation failure behavior
+40_s5_w0: [Move] Horizontal move_Lock_Random
+40_s6: Move Test: Navigation successful move
+40_s6_w0: [Move] Horizontal move_Lock_Navimesh
+40_s6_w1: [Move] Dash_Lock_Navimesh
+40_s7: Move Test: Reset
+40_s7_e0: [Move] Reset move failure
+50: Lower-level state: short navigation mesh check
+50_s0: Start state
+50_s1: Lower: Start
+50_s2: Lower: branch
+50_s3: Lower: random movement
+50_s3_w0: [Move] Normal move random
+50_s4: Lower: random move end
+50_s4_e0: [General purpose] Sharing flag setting
+50_s5: Lower: Avoid
+50_s5_w0: [Attack] Random avoidance
+50_s6: Lower: end of avoidance
+50_s6_e0: [General purpose] Sharing flag setting
+60: Substate: Invincibility check
+60_s0: Start state
+60_s1: Lower: Start
+60_s1_e0: [General purpose] Sharing flag setting
+60_s2: Lower: branch
+60_s3: Lower: Invincible ON
+60_s3_e0: [Operation] Invincible ON
+60_s4: Lower: Damage disabled ON
+60_s4_e0: [Operation] Damage disabled ON
+60_s5: Lower rank: Invincible & Damage invalid: Cancel
+60_s5_e0: [Operation] Invincible, damage invalid off
+60_s6: Lower: waiting
+60_s7: Lower: Invincible on defense
+60_s7_e0: [General purpose] Sharing flag setting
+60_s8: Lower: Damage disabled by avoidance ON
+60_s8_e0: [General purpose] Sharing flag setting
+60_s9: Lower: Invincible & Damage OFF with dash
+60_s9_e0: [General purpose] Sharing flag setting
+70: Lower state
+70_s0: Start state
+70_s1: Lower: Start
+70_s2: Lower: Setting
+70_s2_e0: [Search] Overwrite the generator position with the current position
+70_s3: Lower: horizontal movement
+70_s3_w0: [Move] Horizontal move_random
+70_s4: Lower: Lock horizontal movement
+70_s4_w0: [Move] Horizontal move_Lock_Random
+100: Lower state: Combo check
+100_s0: Start state
+100_s1: Combo Check: Start
+100_s2: Combo check: Standby
+100_s3: Combo Check: Combo
+100_s3_w0: [Attack] Melee attack
+100_s4: Combo Check: Combo Check
+100_s5: Combo Check: Interruption of attack (1st shot)
+100_s5_e0: [Attack] Attack cancel
+100_s6: Combo Check: Finish
+100_s7: Combo check: Attack interrupted (2nd shot)
+100_s7_e0: [Attack] Attack cancel
+100_s8: Combo check: Attack interrupted (3rd shot)
+100_s8_e0: [Attack] Attack cancel
+100_s9: [LIB] Step adjustment_SubState
+200: Substate: Move check
+200_s0: Start state
+200_s1: Substate: Start
+200_s2: Lower-level state: branch
+200_s3: Moving behavior: walking only _SubState
+300: Lower state: For sub-state test
+300_s0: Start state
+300_s1: Substate: Start
+400: Lower state: OBJ destruction check
+400_s0: Start state
+400_s1: Substate: Start
+400_s2: Lower-level state: Destruction check
+400_s3: Move: Navimesh_SubState
+500: Lower state: Partial destruction check
+500_s0: Start state
+500_s1: Substate: Start
+500_s2: Lower state: Tail check
+500_s3: Move: Navimesh_SubState
+600: Lower-level state: Magic count check
+600_s0: Start state
+600_s1: Substate: Start
+600_s2: Lower state: count check
+600_s3: Substate: Dark
+600_s4: Substate: Fired
+600_s5: Substate: Miracle received
+600_s6: Substate: Magic received
+600_s7: Lower state: reset
+1000: Sample: Target action (Mr. Shibuya TEST)
+1000_s0: Start state
+1000_s1: New target action: bare hands _SubState
+10: Upper state: only rock (Shibuya TEST)
+10_s0: Start state
+10_s1: FirstStep: Start
+10_s1_e0: [General purpose] Sharing flag setting
+10_s2: FirstStep: Lock on
+10_s2_e0: [General purpose] Sharing flag setting
+10_s2_w0: [Operation] Lock on
+10_s3: FirstStep: Lock off
+10_s4: Search enemy (boss): Player: _SubState in order of distance
+1100: Sample: Onujima-related (Shibuya TEST)
+1100_s0: Start state
+1100_s1: Branch
+1100_s2: Normal: Standby
+1100_s3: Normal: approaching
+1100_s3_w0: [Move] Horizontal move_Lock_Random
+1100_s4: Onijima: Standby
+1100_s5: Onijima: Leave
+1100_s5_w0: [Move] Horizontal move_Lock_Random
+1200: Sample: Lock movement test
+1200_s0: Start state
+1200_s1: Substate: Start
+1200_s2: Substate: Move
+1200_s2_w0: [Move] Lock move random
+1300: Sample: Onijima
+1300_s0: Start state
+1300_s1: [LIB] Field horse action: General purpose _SubState
+1301: Sample: Onijima (Shield)
+1301_s0: Start state
+1301_s1: [LIB] Field horse action: General purpose (shield) _SubState
+1400: Lower state: Compensation position test
+1400_s0: Start state
+1400_s1: Substate: Start
+1400_s2: Lower-level state: branch
+1400_s3: Lower state: correction position (front)
+1400_s3_w0: [Move] Normally move to the target world correction position
+1400_s4: Lower state: correction position (horizontal)
+1400_s4_w0: [Move] Normally move to the target world correction position
+1400_s5: Lower state: correction position (back)
+1400_s5_w0: [Move] Normally move to the target world correction position
+1500: Lower state: evacuation behavior test
+1500_s0: Start state
+1500_s1: Waiting
+1500_s1_w0: [Move] Lock move random
+1500_s2: Evacuation behavior_SubState
+1600: Lower state: Argument condition check
+1600_s0: Start state
+1600_s1: Substate: Start
+1600_s2: Lower state: Argument check setting
+1600_s3: Argument check (ON / OFF) _SubState
+1700: Lower logic
+1700_s0: Start state
+1700_s1: Begin attack
+1700_s2: Attack: Settings
+1700_s3: Attack: Under attack
+1700_s3_w0: [Attack] Melee attack
+1700_s4: Attack: Cancel
+1700_s4_w0: [Attack] Combo attack cancel
+1700_s5: Attack: Standby
+1700_s5_w0: [Move] Horizontal move_Lock_Random
+1800: Lower logic: Combo slip
+1800_s0: Start state
+1800_s1: Attack: BOSS (Combo) _SubState
+1900: Lower logic: Combo cancel connection TEST
+1900_s0: Start state
+1900_s1: Cancel connection: start
+1900_s2: Cancel connection: First attack
+1900_s2_w0: [Attack] Melee attack
+1900_s3: Cancel connection: Cancel
+1900_s3_w0: [Attack] Combo attack cancel
+1900_s4: Cancel connection: second stage of attack
+1900_s4_w0: [Attack] Melee attack
+1900_s5: Cancel connection: wait
+2000: Lower logic: short navigation mesh check
+2000_s0: Start state
+2000_s1: Check: Start
+2000_s2: Check: Settings
+2000_s2_e0: [Search] Overwrite the generator position with the current position
+2000_s3: Check: Tracking mode
+2000_s3_w0: [Move] Normally move to the target world correction position
+2000_s4: Check: Failure judgment
+2000_s5: Check: failed return
+2000_s5_w0: [Move] Normal move Navi mesh
+2000_s6: Check: Failed Navimesh
+2000_s6_e0: [Search] Navi mesh to generator
+x8: Lower: Move processing
+x8_s0: Start state
+x8_s1: Move: Start
+x8_s1_e0: [Movement] Movement prediction accuracy setting
+x8_s2: Move: distance search
+x8_s2_e0: [Random number] Random number generation
+x8_s2_e1: [Move] Reset move failure
+x8_s2_e2: [Attack] Reset attack failure
+x8_s3: Movement: short distance
+x8_s3_e0: [Random number] Random number generation
+x8_s4: Movement: long distance
+x8_s5: Move: End
+x8_s6: Moving behavior: walking only _SubState
+x8_s7: End state
+x9: Lower: Attack processing
+x9_s0: Start state
+x9_s1: End state
+x10: Lower: retreat processing
+x10_s0: Start state
+x10_s1: Retreat: start
+x10_s1_e0: [Movement] Movement prediction accuracy setting
+x10_s2: Retreat: distance search
+x10_s2_e0: [Random number] Random number generation
+x10_s2_e1: [Attack] Reset attack failure
+x10_s2_e2: [Move] Reset move failure
+x10_s3: Retreat: Move
+x10_s4: Retreat: Suspended
+x10_s5: Retreat: End
+x10_s6: Retreat behavior: Walking retreat_SubState
+x10_s7: End state
+x11: Lower: Action outside lock
+x11_s0: Start state
+x11_s1: Action outside lock: start
+x11_s2: Off-lock action: search for enemies
+x11_s3: Action outside the lock: wandering
+x11_s4: Action outside lock: interrupted
+x11_s5: Action outside lock: End
+x11_s6: End state
+x12: Movement behavior: walking only
+x12_s0: Start state
+x12_s1: Walking only: start
+x12_s1_e0: [Attack] Defense
+x12_s2: Walking only: mesh search
+x12_s2_e0: [Search] Navimesh
+x12_s2_e1: [Timer] Start timer
+x12_s3: Walking only: approaching
+x12_s3_w0: [Move] Normal move Navi mesh
+x12_s4: Walking only: approaching_2
+x12_s4_w0: [Move] Normal move Navi mesh
+x12_s5: Walking only: End
+x12_s5_e0: [Timer] Stop timer
+x12_s6: Walking only: approaching_3
+x12_s6_w0: [Move] Normal move Navi mesh
+x12_s7: End state
+x13: Retraction behavior: walking retraction
+x13_s0: Start state
+x13_s1: Walking retreat: start
+x13_s1_e0: [Attack] Defense
+x13_s2: Walking retreat: mesh search
+x13_s2_e0: [Search] Navimesh
+x13_s2_e1: [Timer] Start timer
+x13_s2_w0: [Move] Horizontal move_Lock_Random
+x13_s3: Walking retreat: Move 1
+x13_s3_w0: [Move] Horizontal move_Lock_Random
+x13_s4: Walking retreat: Move 2
+x13_s4_w0: [Move] Horizontal move_Lock_Random
+x13_s5: Walking retreat: end
+x13_s5_e0: [Timer] Stop timer
+x13_s6: End state
+x14: New target action: bare hands
+x14_s0: Start state
+x14_s1: Target action: start
+x14_s2: Target action: branch
+x14_s2_e0: [Random number] Random number generation
+x14_s3: Target action: short-distance branch
+x14_s3_e0: [Random number] Random number generation
+x14_s4: Target action: Branch after attack
+x14_s5: New long distance action_SubState
+x14_s6: New attack action_SubState
+x14_s7: New offset action_SubState
+x14_s8: New short distance action_SubState
+x14_s9: New time action_SubState
+x14_s10: End state
+x15: New long distance action
+x15_s0: Start state
+x15_s1: Long-distance action: start
+x15_s1_e0: [Move] Reset move failure
+x15_s1_e1: [Timer] Start timer
+x15_s1_e2: [Random number] Random number generation
+x15_s2: Long-distance action: branch
+x15_s3: New Long Distance Action: Dash_SubState
+x15_s4: New Long Distance Action: Navimesh Dash_SubState
+x15_s5: New Long-distance Action: Leader Follower_SubState
+x15_s6: Long-distance action: Normal: End state
+x15_s7: Long Range Action: Attack: End State
+x16: New Distance Action: Dash
+x16_s0: Start state
+x16_s1: Dash: Start
+x16_s1_e0: [Move] Reset move failure
+x16_s1_e1: [Random number] Random number generation
+x16_s1_e2: [General] Logic group flag setting
+x16_s2: Dash: starting error
+x16_s2_w0: [Move] Lock move random
+x16_s3: Dash: slow
+x16_s3_w0: [Move] Dash_Lock_Random
+x16_s4: Dash: fast
+x16_s4_w0: [Move] Dash_Lock_Random
+x16_s5: Dash: Success: End state
+x16_s6: Dash: Failure: End state
+x17: New Long Distance Action: Navimesh Dash
+x17_s0: Start state
+x17_s1: Navimesh: Start
+x17_s1_e0: [Move] Reset move failure
+x17_s1_e1: [Random number] Random number generation
+x17_s1_e2: [General] Logic group flag setting
+x17_s2: Navimesh: Search
+x17_s2_e0: [Search] Navimesh
+x17_s3: Navimesh: Alignment
+x17_s3_w0: [Move] Normal move Navi mesh
+x17_s4: Navimesh: Dash movement: Slow
+x17_s4_w0: [Move] Dash_Navimesh
+x17_s5: Navimesh: Dash movement: High speed
+x17_s5_w0: [Move] Dash_Navimesh
+x17_s6: Navimesh: Failure: End state
+x17_s7: Navimesh: Success: End state
+x18: New long-distance action: leader following
+x18_s0: Start state
+x18_s1: Follow the Leader: Start
+x18_s1_e0: [Move] Reset move failure
+x18_s2: Follow the leader: wait
+x18_s3: Leader Follow: Follow: High Speed
+x18_s3_w0: [Move] Follow the offset position from the group leader
+x18_s3_w1: [Move] Follow the offset position from the group leader
+x18_s4: Leader Follow: Follow: Slow
+x18_s4_w0: [Move] Follow the offset position from the group leader
+x18_s4_w1: [Move] Follow the offset position from the group leader
+x18_s5: Follow the leader: branch
+x18_s5_e0: [Random number] Random number generation
+x18_s6: End state
+x19: New attack behavior
+x19_s0: Start state
+x19_s1: Attack action: start
+x19_s1_e0: [General] Logic group flag setting
+x19_s1_e1: [Random number] Random number generation
+x19_s2: Attack action: End
+x19_s2_e0: [General] Logic group flag setting
+x19_s3: Attack action: branch
+x19_s4: New Attack: Unarmed_SubState
+x19_s5: New attack: bite (throw) _SubState
+x19_s6: End state
+x20: New attack: general purpose
+x20_p0: Attack type
+x20_p1: Range distance
+x20_s0: Start state
+x20_s1: Begin attack
+x20_s1_e0: [Move] Reset move failure
+x20_s1_e1: [Attack] Reset attack failure
+x20_s1_e2: [Timer] Start timer
+x20_s1_e3: [Random number] Random number generation
+x20_s2: Attack: Under attack
+x20_s2_w0: [Attack] Melee attack
+x20_s3: Attack: Standby
+x20_s4: Attack: Cancel
+x20_s4_e0: [Attack] Attack cancel
+x20_s5: Attack: Cancel wait
+x20_s6: Attack action: Direction adjustment
+x20_s6_w0: [Move] Lock move random
+x20_s7: Attack: Branch
+x20_s8: New attack action: Walking_SubState
+x20_s9: New Attack Behavior: Walking & Waiting_SubState
+x20_s10: New Attack: Dash_SubState
+x20_s11: Attack successful end state
+x20_s12: Attack failed end state
+x21: New attack behavior: walking
+x21_s0: Start state
+x21_s1: Walking: low speed
+x21_s1_w0: [Move] Lock move random
+x21_s2: Walk: Start
+x21_s2_e0: [Move] Reset move failure
+x21_s2_e1: [Random number] Random number generation
+x21_s3: Walking: branch
+x21_s4: Walking: high speed
+x21_s4_w0: [Move] Lock move random
+x21_s5: Walk: Failure: End state
+x22: New Attack Behavior: Walking & Standby
+x22_s0: Start state
+x22_s1: Walking & waiting: waiting
+x22_s1_e0: [Random number] Random number generation
+x22_s2: Walking & waiting: walking: low speed
+x22_s2_w0: [Move] Lock move random
+x22_s3: Walk & Wait: Start
+x22_s3_e0: [Move] Reset move failure
+x22_s3_e1: [Random number] Random number generation
+x22_s4: Walking & Waiting: Branch
+x22_s5: Walking & Waiting: Walking: High Speed
+x22_s5_w0: [Move] Lock move random
+x22_s6: Walking & Waiting: Failure: End State
+x23: New Attack Behavior: Dash
+x23_s0: Start state
+x23_s1: Dash: slow
+x23_s1_w0: [Move] Dash_Lock_Random
+x23_s2: Dash: Start
+x23_s2_e0: [Move] Reset move failure
+x23_s2_e1: [Random number] Random number generation
+x23_s3: Dash: branch
+x23_s4: Dash: fast
+x23_s4_w0: [Move] Dash_Lock_Random
+x23_s5: Dash: Failure: End state
+x24: New offset action
+x24_s0: Start state
+x24_s1: Offset action: start
+x24_s1_e0: [Move] Reset move failure
+x24_s1_e1: [Random number] Random number generation
+x24_s1_e2: [Random number] Random number generation
+x24_s2: Offset action: End
+x24_s2_e0: [General] Logic group flag setting
+x24_s2_e1: [General] Logic group flag setting
+x24_s2_e2: [General] Logic group flag setting
+x24_s2_e3: [General] Logic group flag setting
+x24_s2_e4: [General] Logic group flag setting
+x24_s2_e5: [General] Logic group flag setting
+x24_s2_e6: [General] Logic group flag setting
+x24_s2_e7: [General] Logic group flag setting
+x24_s3: Offset action: front (close)
+x24_s3_e0: [General] Logic group flag setting
+x24_s3_w0: [Move] Lock horizontally to the target correction position
+x24_s4: Offset action: branch
+x24_s5: Offset action: backward (close)
+x24_s5_e0: [General] Logic group flag setting
+x24_s5_w0: [Move] Lock horizontally to the target correction position
+x24_s6: Offset action: left (near)
+x24_s6_e0: [General] Logic group flag setting
+x24_s6_w0: [Move] Lock horizontally to the target correction position
+x24_s7: Offset action: Right (near)
+x24_s7_e0: [General] Logic group flag setting
+x24_s7_w0: [Move] Lock horizontally to the target correction position
+x24_s8: Offset action: front left (near)
+x24_s8_e0: [General] Logic group flag setting
+x24_s8_w0: [Move] Lock horizontally to the target correction position
+x24_s9: Offset action: right front (near)
+x24_s9_e0: [General] Logic group flag setting
+x24_s9_w0: [Move] Lock horizontally to the target correction position
+x24_s10: Offset action: rear left (close)
+x24_s10_e0: [General] Logic group flag setting
+x24_s10_w0: [Move] Lock horizontally to the target correction position
+x24_s11: Offset action: right rear (near)
+x24_s11_e0: [General] Logic group flag setting
+x24_s11_w0: [Move] Lock horizontally to the target correction position
+x24_s12: Offset action: Move in place
+x24_s12_w0: [Move] Horizontal move_Lock_Random
+x24_s13: End state
+x25: New short distance action
+x25_s0: Start state
+x25_s1: New short-range action: start
+x25_s1_e0: [Move] Reset move failure
+x25_s2: Intimate distance action: branch
+x25_s3: New short distance action: Offset walking_SubState
+x25_s4: New Short Distance Action: Navimesh Walking_SubState
+x25_s5: New Short Distance: Normal: End State
+x25_s6: New Short Range: Attack: End State
+x26: New short distance action: offset walking
+x26_s0: Start state
+x26_s1: Offset action: start
+x26_s1_e0: [Move] Reset move failure
+x26_s1_e1: [Timer] Start timer
+x26_s1_e2: [Random number] Random number generation
+x26_s2: Offset action: branch
+x26_s2_e0: [Random number] Random number generation
+x26_s3: Offset action: retreat
+x26_s3_w0: [Move] Horizontal move_Lock_Random
+x26_s4: Offset action: short distance
+x26_s4_w0: [Move] Lock horizontally to the target correction position
+x26_s5: Offset action: medium distance
+x26_s5_w0: [Move] Lock horizontally to the target correction position
+x26_s6: Offset action: long distance
+x26_s6_w0: [Move] Lock horizontally to the target correction position
+x26_s7: Offset action: Success: End state
+x26_s8: Offset action: Failure: End state
+x27: New short distance action: Navimesh walking
+x27_s0: Start state
+x27_s1: Navimesh: Start
+x27_s1_e0: [Move] Reset move failure
+x27_s1_e1: [Random number] Random number generation
+x27_s2: Navimesh: Search
+x27_s2_e0: [Search] Navimesh
+x27_s3: Navimesh: Alignment
+x27_s3_w0: [Move] Normal move Navi mesh
+x27_s4: Navimesh: Walking movement: Low speed
+x27_s4_w0: [Move] Lock move Navi mesh
+x27_s5: Navimesh: Walking movement: High speed
+x27_s5_w0: [Move] Lock move Navi mesh
+x27_s6: Navimesh: Failure: End state
+x27_s7: Navimesh: Success: End state
+x28: New time action
+x28_s0: Start state
+x28_s1: Close Action: Start
+x28_s1_e0: [Move] Reset move failure
+x28_s1_e1: [Random number] Random number generation
+x28_s2: Close action: branch
+x28_s3: New spacing action: Walking retreat_SubState
+x28_s4: New spacing action: walking left / right turning_SubState
+x28_s5: End state
+x29: New spacing action: walking retreat
+x29_s0: Start state
+x29_s1: Walking retreat: start
+x29_s1_e0: [Move] Reset move failure
+x29_s1_e1: [Random number] Random number generation
+x29_s2: Walking retreat: Retreat: Danger zone
+x29_s2_w0: [Move] Horizontal move_Lock_Random
+x29_s3: Walking retraction: Retraction: Safety area
+x29_s3_w0: [Move] Horizontal move_Lock_Random
+x29_s4: Walking retreat: Normal: End state
+x29_s5: Walking retreat: Failure: End state
+x30: New spacing action: walking left and right turning
+x30_s0: Start state
+x30_s1: Left and right turn: start
+x30_s1_e0: [Move] Reset move failure
+x30_s1_e1: [Timer] Start timer
+x30_s1_e2: [Random number] Random number generation
+x30_s1_e3: [Random number] Random number generation
+x30_s2: Walking retraction: left and right turning: left: short distance
+x30_s2_w0: [Move] Horizontal move_Lock_Random
+x30_s3: Walking retraction: left and right turning: right: short distance
+x30_s3_w0: [Move] Horizontal move_Lock_Random
+x30_s4: Walking retraction: left and right turning: left: far distance
+x30_s4_w0: [Move] Horizontal move_Lock_Random
+x30_s5: Left and right turn: branch
+x30_s6: Walking retreat: left and right turn: right: far distance
+x30_s6_w0: [Move] Horizontal move_Lock_Random
+x30_s7: Left / Right turn: Normal: End state
+x30_s8: Left / Right turn: Failure: End state
+x31: Search enemy (boss): Player
+x31_p0: Search priority
+x31_p1: Search distance
+x31_s0: Start state
+x31_s1: Search enemy: start
+x31_s1_e0: [Operation] Lock off
+x31_s2: Search enemies: players
+x31_s2_w0: [Search enemy] Character _ target setting
+x31_s3: Search for: Discovery: End State
+x31_s4: Search enemy: not found: end state
+x32: Evacuation behavior: turning
+x32_s0: Start state
+x32_s1: Evacuation behavior: start
+x32_s1_e0: [Timer] Start timer
+x32_s2: Evacuation behavior: branch
+x32_s2_e0: [Random number] Random number generation
+x32_s2_e1: [Random number] Random number generation
+x32_s3: Evacuation behavior: Before passing: High speed
+x32_s3_w0: [Move] Dash_random
+x32_s4: Evacuation behavior: Turn left (diagonally behind)
+x32_s4_w0: [Move] Dash_random
+x32_s5: Evacuation behavior: Turn left (diagonally forward)
+x32_s5_w0: [Move] Dash_random
+x32_s6: Evacuation behavior: Turn right (back diagonally)
+x32_s6_w0: [Move] Dash_random
+x32_s7: Evacuation behavior: Turn right (diagonally forward)
+x32_s7_w0: [Move] Dash_random
+x32_s8: End state
+x33: Argument check (ON / OFF)
+x33_p0: Switch ON / OFF
+x33_s0: Start state
+x33_s1: start
+x33_s2: Branch
+x33_s3: Argument ON
+x33_s4: Argument OFF
+x33_s5: End state
+x34: Attack: For BOSS (Combo)
+x34_p0: Behavior type
+x34_p1: Range distance
+x34_p2: Maximum range
+x34_p3: Attack time
+x34_p4: Attack launch angle
+x34_p5: Movement type
+x34_p6: Orientation adjustment type
+x34_p7: Combo break angle
+x34_s0: Start state
+x34_s1: Begin attack
+x34_s1_e0: [Move] Reset move failure
+x34_s1_e1: [Attack] Reset attack failure
+x34_s1_e2: [Timer] Start timer
+x34_s1_e3: [General] Logic group flag setting
+x34_s1_e4: [Attack] Defense
+x34_s1_e5: [Timer] Start timer
+x34_s2: Attack action: Direction adjustment
+x34_s2_w0: [Move] Lock move random
+x34_s2_w1: [Move] Horizontal move_Lock_Random
+x34_s3: Attack: Branch
+x34_s4: Attack: Under attack
+x34_s4_e0: [Attack] Melee attack
+x34_s5: Attack: Single attack wait
+x34_s6: Attack: Combo attack standby
+x34_s7: Attack: Cancel
+x34_s7_e0: [Attack] Attack cancel
+x34_s8: Attack: Successful end processing
+x34_s8_e0: [General] Logic group flag setting
+x34_s9: Attack: Failure end processing
+x34_s9_e0: [General] Logic group flag setting
+x34_s10: Attack: timeout end processing
+x34_s10_e0: [General] Logic group flag setting
+x34_s11: Attack: Combo Cancel
+x34_s11_e0: [Attack] Combo attack cancel
+x34_s12: [LIB] Attack action: Walking_SubState
+x34_s13: [LIB] Attack action: Horizontal walking: Lock_SubState
+x34_s14: [LIB] Attack action: Dash _SubState
+x34_s15: Attack successful end state
+x34_s16: Attack failed end state
+x34_s17: Attack timeout end state
+x0: [LIB] Step adjustment
+x0_p0: Stepping distance
+x0_s0: Start state
+x0_s1: Stepping approach: start
+x0_s1_e0: [Operation] Lock on
+x0_s2: Stepping approaching: turning (lock random horizontal movement)
+x0_s2_e0: [Movement] Movement prediction accuracy setting
+x0_s2_w0: [Move] Horizontal move_Lock_Random
+x0_s3: Stepping approach: dash
+x0_s3_e0: [Movement] Movement prediction accuracy setting
+x0_s3_w0: [Move] Dash_Lock_Random
+x0_s4: Stepping approach: Navimesh search due to short Navimesh failure
+x0_s4_e0: [Search] Navimesh
+x0_s5: Stepping approach: Successful navigation (normal movement)
+x0_s5_w0: [Move] Normal move Navi mesh
+x0_s5_w1: [Move] Lock move Navi mesh
+x0_s6: Stepping approach: End
+x0_s7: Stepping approach: Navi failed (random)
+x0_s7_e0: [Movement] Movement prediction accuracy setting
+x0_s7_w0: [Move] Horizontal move_Lock_Random
+x0_s8: [LIB] OBJ operation_SubState
+x0_s9: End state
+x1: [LIB] Move: Navimesh
+x1_s0: Start state
+x1_s1: Normal movement: start
+x1_s2: Normal movement: Navigation search
+x1_s2_e0: [Search] Navimesh
+x1_s3: Normal movement: alignment
+x1_s3_w0: [Move] Normal move Navi mesh
+x1_s3_w1: [Move] Normal move Navi mesh
+x1_s3_w2: [Move] Normal move Navi mesh
+x1_s3_w3: [Move] Normal move Navi mesh
+x1_s4: Normal movement: Navigation successful movement
+x1_s4_w0: [Move] Horizontal move_Navimesh
+x1_s4_w1: [Move] Dash_Navimesh
+x1_s5: Normal movement: Navigation failure movement
+x1_s5_w0: [Move] Horizontal move_random
+x1_s5_w1: [Move] Horizontal move_Lock_Random
+x1_s6: Normal movement: End
+x1_s7: Normal move: Cancel
+x1_s7_e0: [Move] Reset move failure
+x1_s8: [LIB] OBJ operation_SubState
+x1_s9: End state
+x2: [LIB] Attacking behavior: walking
+x2_s0: Start state
+x2_s1: Walking: low speed
+x2_s1_w0: [Move] Lock move random
+x2_s2: Walk: Start
+x2_s2_e0: [Move] Reset move failure
+x2_s2_e1: [Random number] Random number generation
+x2_s3: Walking: branch
+x2_s4: Walking: high speed
+x2_s4_w0: [Move] Lock move random
+x2_s5: Walk: Failure: End state
+x3: [LIB] Attack action: Dash
+x3_s0: Start state
+x3_s1: Dash: on the move
+x3_s1_w0: [Move] Dash_Lock_Random
+x3_s2: Dash: Start
+x3_s2_e0: [Move] Reset move failure
+x3_s3: Dash: branch
+x3_s4: Dash: Failure: End state
+x4: [LIB] field horse action: general purpose (shield)
+x4_s0: Start state
+x4_s1: Onijima: Start
+x4_s2: Onijima: Long-distance action
+x4_s2_w0: [Attack] Defense
+x4_s2_w1: [Attack] Defense
+x4_s2_w2: [Move] Lock move random
+x4_s2_w3: [Move] Horizontal move_Lock_Random
+x4_s3: Onijima: Moving
+x4_s3_w0: [Attack] Defense
+x4_s3_w1: [Attack] Defense
+x4_s3_w2: [Move] Horizontal move_Lock_Random
+x4_s3_w3: [Move] Horizontal move_Lock_Random
+x4_s3_w4: [Move] Horizontal move_Lock_Random
+x4_s4: Onujima: Finished
+x4_s5: Onijima: Standby movement
+x4_s5_w0: [Move] Horizontal move_Lock_Random
+x4_s6: End state
+x5: [LIB] Field horse action: General purpose
+x5_s0: Start state
+x5_s1: Onijima: Start
+x5_s2: Onijima: Long-distance action
+x5_s2_w0: [Move] Lock move random
+x5_s2_w1: [Move] Horizontal move_Lock_Random
+x5_s3: Onijima: Moving
+x5_s3_w0: [Move] Horizontal move_Lock_Random
+x5_s3_w1: [Move] Horizontal move_Lock_Random
+x5_s3_w2: [Move] Horizontal move_Lock_Random
+x5_s4: Onujima: Finished
+x5_s5: Onijima: Standby movement
+x5_s5_w0: [Move] Horizontal move_Lock_Random
+x5_s6: End state
+x6: [LIB] Attack action: Horizontal walking: Rock
+x6_s0: Start state
+x6_s1: Walking: low speed
+x6_s1_w0: [Move] Horizontal move_Lock_Random
+x6_s2: Walk: Start
+x6_s2_e0: [Move] Reset move failure
+x6_s2_e1: [Random number] Random number generation
+x6_s3: Walking: branch
+x6_s4: Walking: high speed
+x6_s4_w0: [Move] Horizontal move_Lock_Random
+x6_s5: Walk: Failure: End state
+x7: [LIB] OBJ operation
+x7_s0: Start state
+x7_s1: OBJ operation: start
+x7_s1_e0: [Action] Leave OBJ
+x7_s2: OBJ operation: Start using ladder
+x7_s2_e0: [Action] Use OBJ specified by Navimesh
+x7_s3: OBJ operation: climb the ladder
+x7_s3_w0: [Action] Climbing the ladder
+x7_s4: OBJ operation: go down the ladder
+x7_s4_w0: [Action] Go down the ladder
+x7_s5: OBJ operation: using door
+x7_s5_e0: [Action] Use OBJ specified by Navimesh
+x7_s6: OBJ operation: Using rope
+x7_s6_e0: [Action] Use OBJ specified by Navimesh
+x7_s7: OBJ operation: failed
+x7_s8: OBJ operation: upper attack
+x7_s8_e0: [Attack] Melee attack
+x7_s9: OBJ operation: lower attack
+x7_s9_e0: [Attack] Melee attack
+x7_s10: OBJ operation: End of use
+x7_s10_e0: [Action] Leave OBJ
+x7_s11: OBJ use success state
+x7_s12: OBJ use failure state

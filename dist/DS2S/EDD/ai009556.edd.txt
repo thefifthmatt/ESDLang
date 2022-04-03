@@ -1,0 +1,117 @@
+10: Top
+10_s0: Start state
+10_s1: Top: Start
+10_s1_e0: [Search enemy] Character _ target setting
+10_s2: Higher rank: search enemy ON
+10_s2_e0: [Operation] Lock on
+10_s3: Top rank: search off
+10_s3_e0: [Operation] Lock off
+10_s4: Top: with target
+10_s5: Top: no target
+10_s6: Top: Movement cancel
+10_s6_e0: [General] lower-level state map switching
+10_s7: Higher rank: Attack step serial number: Switching: ID_20
+10_s7_e0: [General] lower-level state map switching
+10_s8: Top: Approaching_Attack_Backstep: Switching: ID_30
+10_s8_e0: [General] lower-level state map switching
+10_s9: Top: Attack_Right Step_Attack_Left Step: Switching: ID_40
+10_s9_e0: [General] lower-level state map switching
+10_s10: Top: Attack_Right Step_Left Step: Switching: ID_50
+10_s10_e0: [General] lower-level state map switching
+200: Lower: Movement cancellation (former ID: 20)
+200_s0: Start state
+200_s1: Lower: Start
+200_s2: Lower: Attack start
+200_s2_e0: [Attack] Melee attack
+200_s3: Lower: Move
+200_s3_w0: [Move] Horizontal move_Lock_Random
+20: Lower: Attack step serial number
+20_s0: Start state
+20_s1: Lower: Start
+20_s1_w0: [Search] Clear the target
+20_s1_w1: [Search] Player_Target setting
+20_s2: Test operation: approach_attack_backstep (repeated) _SubState
+20_s3: Test operation: attack_right step_attack_left step_SubState
+20_s4: Test operation: attack_right step_left step_attack_SubState
+30: Lower: approach_attack_backstep
+30_s0: Start state
+30_s1: Lower: Start
+30_s1_w0: [Search] Clear the target
+30_s1_w1: [Search] Player_Target setting
+30_s2: Test operation: approach_attack_backstep_SubState
+40: Lower: attack_right step_attack_left step
+40_s0: Start state
+40_s1: Lower: Start
+40_s1_w0: [Search] Clear the target
+40_s1_w1: [Search] Player_Target setting
+40_s2: Test operation: attack_right step_attack_left step_SubState
+50: Lower: attack_right step_left step
+50_s0: Start state
+50_s1: Lower: Start
+50_s1_w0: [Search] Clear the target
+50_s1_w1: [Search] Player_Target setting
+50_s2: Test operation: attack_right step_left step_attack_SubState
+x0: Test operation: approach_attack_backstep
+x0_p0: Approach distance
+x0_p1: Avoid type
+x0_p2: Combo cancel
+x0_s0: Start state
+x0_s1: Lower: Start
+x0_s1_w0: [Search] Clear the target
+x0_s1_w1: [Search] Player_Target setting
+x0_s2: Distance: Search
+x0_s2_w0: [Turning] Turning in place_Lock
+x0_s3: Move: Start
+x0_s3_w0: [Move] Horizontal move_Lock_Random_Direction designation
+x0_s4: attack
+x0_s4_e0: [Attack] Melee attack
+x0_s4_e1: [Attack] Combo attack cancel
+x0_s5: Avoidance behavior
+x0_s5_w0: [Attack] Random avoidance
+x0_s6: End state
+x1: Test operation: attack_right step_attack_left step
+x1_p0: Left and right random
+x1_p1: Combo cancel
+x1_p2: Avoid type
+x1_s0: Start state
+x1_s1: attack
+x1_s1_e0: [Attack] Melee attack
+x1_s1_e1: [Attack] Combo attack cancel
+x1_s2: Avoidance action_right step
+x1_s2_e0: [General purpose] Sharing flag setting
+x1_s2_e1: [General purpose] Sharing flag setting
+x1_s2_e2: [General purpose] Sharing flag setting
+x1_s2_w0: [Attack] Random avoidance
+x1_s3: Avoidance action_left step
+x1_s3_e0: [General purpose] Sharing flag setting
+x1_s3_e1: [General purpose] Sharing flag setting
+x1_s3_e2: [General purpose] Sharing flag setting
+x1_s3_w0: [Attack] Random avoidance
+x1_s4: Start action
+x1_s4_e0: [General purpose] Sharing flag setting
+x1_s4_e1: [Random number] Random number generation
+x1_s5: After attack: Direction discrimination
+x1_s6: End state
+x2: Test operation: attack_right step_left step
+x2_p0: Left and right random
+x2_p1: Combo cancel
+x2_p2: Avoid type
+x2_s0: Start state
+x2_s1: attack
+x2_s1_e0: [Attack] Melee attack
+x2_s1_e1: [Attack] Combo attack cancel
+x2_s2: Avoidance action_right step
+x2_s2_e0: [General purpose] Sharing flag setting
+x2_s2_e1: [General purpose] Sharing flag setting
+x2_s2_e2: [General purpose] Sharing flag setting
+x2_s2_w0: [Attack] Random avoidance
+x2_s3: Avoidance action_left step
+x2_s3_e0: [General purpose] Sharing flag setting
+x2_s3_e1: [General purpose] Sharing flag setting
+x2_s3_e2: [General purpose] Sharing flag setting
+x2_s3_w0: [Attack] Random avoidance
+x2_s4: Start action
+x2_s4_e0: [General purpose] Sharing flag setting
+x2_s4_e1: [Random number] Random number generation
+x2_s5: After attack: Direction discrimination
+x2_s6: End state

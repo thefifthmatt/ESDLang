@@ -1,0 +1,261 @@
+10: Higher state
+10_s0: Start state
+10_s1: Higher state: start
+10_s2: Upper state: Initial setting
+10_s3: Forced generator feedback in region 5
+10_s3_e0: [General purpose] Sharing flag setting
+10_s3_e1: [General] Logic group flag setting
+10_s4: Upper state: 2nd start
+10_s4_e0: [General] Logic group flag setting
+10_s4_e1: [General] Logic group flag setting
+10_s5: [LIB] General-purpose: Upper (normal) _SubState
+10_s6: Area start judgment_SubState
+10_s7: [LIB] General-purpose: Lower-level switching after the end of initial operation_SubState
+10_s8: [LIB] First contact action_ID100 (torch activation) _SubState
+10_s9: [LIB] First Contact Behavior (Top) _Wandering Behavior_SubState
+x15: Area activation judgment
+x15_s0: Start state
+x15_s1: Area & FC judgment: start
+x15_s2: Area & FC judgment: Waiting for area
+x15_s3: Area & FC judgment: Start animation setting_Normal start
+x15_s3_e0: [Search] Overwrite the generator position with the current position
+x15_s3_w0: [Action] Cancel activation state
+x15_s4: Area & FC Judgment: Startup animation setting_Ambush start
+x15_s4_e0: [Search] Overwrite the generator position with the current position
+x15_s4_w0: [Action] Cancel activation state
+x15_s5: [LIB] Search enemies: general purpose_normal battle_SubState
+x15_s6: [LIB] Search enemy: general purpose_surprise_SubState
+x15_s7: End state_Normal start
+x15_s8: End state_Ambush activation
+x0: [LIB] Search: Generation Generator
+x0_s0: Start state
+x0_s1: Search enemy: start
+x0_s2: Search enemies: generator
+x0_s2_w0: [Search] Generation Generator_Target Setting
+x0_s3: Search enemy: End
+x0_s4: End state
+x1: [LIB] Targetless action (general purpose)
+x1_s0: Start state
+x1_s1: Action without target: start
+x1_s2: Behavior without target: Behavior
+x1_s2_e0: [General purpose] Sharing flag setting
+x1_s2_w0: [Operation] Lock off
+x1_s3: Action without target: End
+x1_s4: End state
+x2: [LIB] Search enemy: attacker
+x2_p0: Search distance
+x2_s0: Start state
+x2_s1: Search enemy: start
+x2_s1_w0: [Operation] Lock off
+x2_s2: Search enemy: attacker
+x2_s2_w0: [Search enemy] Attacker_Target setting
+x2_s3: Search enemy: Normal time (player)
+x2_s3_w0: [Search enemy] Character _ target setting
+x2_s4: Search enemy: End
+x2_s4_e0: [Attack] Damage information reset
+x2_s5: End state
+x3: [LIB] General-purpose: upper (normal)
+x3_p0: Sound tracking switch
+x3_p1: Maximum search distance
+x3_p2: Search priority
+x3_s0: Start state
+x3_s1: Upper general-purpose: Start
+x3_s1_e0: [General] Logic group flag setting
+x3_s2: Upper general-purpose: Search branch
+x3_s3: Upper general-purpose: Target action discrimination
+x3_s4: Upper general purpose: Character branch
+x3_s4_e0: [General purpose] Sharing flag setting
+x3_s5: [LIB] Target action (general enemy) _SubState
+x3_s6: [LIB] Search enemies: attacker_SubState
+x3_s7: [LIB] Targetless action (general purpose) _SubState
+x3_s8: [LIB] Generate return (upper) _SubState
+x3_s9: [LIB] Search enemy: General purpose _SubState
+x3_s10: [LIB] Eye gaze check_SubState
+x3_s11: End state
+x4: [LIB] Target action (general enemy)
+x4_p0: Arguments for upper-level delivery
+x4_s0: Start state
+x4_s1: Target action: start
+x4_s2: Target action: branch
+x4_s3: Higher rank: Recognition ⇒ Loss change processing
+x4_s4: [LIB] Top: Targeted: Visible _SubState
+x4_s5: [LIB] Top: target present: disappearance_SubState
+x4_s6: [LIB] Top: Targeted: Sound_SubState
+x4_s7: [LIB] Top: Targeted: Invisible_SubState
+x4_s8: End state
+x5: [LIB] Top: Targeted: visible
+x5_s0: Start state
+x5_s1: View: Start
+x5_s2: Visual recognition: Visual error
+x5_s2_e0: [General purpose] Sharing flag setting
+x5_s3: Visual recognition: Visual recognition
+x5_s3_e0: [Operation] Lock on
+x5_s3_e1: [General purpose] Sharing flag setting
+x5_s3_w0: [Search] Erasure of last sighting information
+x5_s4: Visual recognition: darkness release
+x5_s4_e0: [Operation] Lock list
+x5_s5: Recognition: Recognizing (switching over long distances)
+x5_s5_e0: [Timer] Start timer
+x5_s6: Visual recognition: Recognizing (short distance switching)
+x5_s7: Visual recognition: Preparation time for long-range equipment switching
+x5_s7_e0: [General purpose] Sharing flag setting
+x5_s8: Visual recognition: long-range equipment switching
+x5_s8_e0: [General] lower-level state map switching
+x5_s8_e1: [General] lower-level state map switching
+x5_s8_e2: [General] lower-level state map switching
+x5_s8_e3: [General] lower-level state map switching
+x5_s8_e4: [General] lower-level state map switching
+x5_s8_e5: [General] lower-level state map switching
+x5_s8_e6: [General purpose] Sharing flag setting
+x5_s8_e7: [Attack] Switch weapons
+x5_s8_e8: [Attack] Switch weapons
+x5_s8_e9: [Attack] Switch weapons
+x5_s8_e10: [Attack] Switch weapons
+x5_s8_e11: [Attack] Switch weapons
+x5_s8_e12: [Attack] Switch weapons
+x5_s9: Visual recognition: Preparation time for short range equipment switching
+x5_s9_e0: [General purpose] Sharing flag setting
+x5_s10: Visual recognition: short-range equipment switching
+x5_s10_e0: [General] lower-level state map switching
+x5_s10_e1: [General] lower-level state map switching
+x5_s10_e2: [General] lower-level state map switching
+x5_s10_e3: [General] lower-level state map switching
+x5_s10_e4: [General] lower-level state map switching
+x5_s10_e5: [General] lower-level state map switching
+x5_s10_e6: [General purpose] Sharing flag setting
+x5_s10_e7: [Attack] Switch weapons
+x5_s10_e8: [Attack] Switch weapons
+x5_s10_e9: [Attack] Switch weapons
+x5_s10_e10: [Attack] Switch weapons
+x5_s10_e11: [Attack] Switch weapons
+x5_s10_e12: [Attack] Switch weapons
+x5_s11: End state
+x6: [LIB] Top: Targeted: Lost
+x6_s0: Start state
+x6_s1: Lost (LS): Start
+x6_s1_e0: [Timer] Start timer
+x6_s1_e1: [Timer] Start timer
+x6_s2: Disappearance (LS): Preparation
+x6_s2_e0: [Movement] Movement prediction accuracy setting
+x6_s2_e1: [Operation] Lock off
+x6_s2_e2: [General purpose] Sharing flag setting
+x6_s2_w0: [Search] Last sighting information overwriting
+x6_s3: Loss (LS): Branch
+x6_s4: Disappearance (LS): During LS action
+x6_s5: Loss (LS): Lock release processing
+x6_s5_e0: [Timer] Start timer
+x6_s5_e1: [Timer] Stop timer
+x6_s5_e2: [Operation] Lock list
+x6_s5_e3: [Operation] Lock list
+x6_s6: LS movement: invisibility
+x6_s6_e0: [Timer] Start timer
+x6_s6_e1: [Timer] Stop timer
+x6_s7: Viewing end state
+x6_s8: Invisible end state
+x7: [LIB] Top: Targeted: Sound
+x7_p0: Sound tracking switch
+x7_s0: Start state
+x7_s1: Sound response: start
+x7_s2: Sound response: lower state preparation
+x7_s2_e0: [Movement] Movement prediction accuracy setting
+x7_s2_e1: [Operation] Lock off
+x7_s2_e2: [General purpose] Sharing flag setting
+x7_s2_e3: [General purpose] Sharing flag setting
+x7_s2_e4: [Timer] Start timer
+x7_s3: Sound response: During sound response
+x7_s4: Sound response: invisible state
+x7_s5: Discovery end state
+x7_s6: Undiscovered end state
+x8: [LIB] Top: Targeted: Invisible
+x8_s0: Start state
+x8_s1: Invisibility: start
+x8_s2: Invisible: Invisible
+x8_s2_e0: [Operation] Lock off
+x8_s2_e1: [Search] Erasure of last sighting information
+x8_s2_e2: [General purpose] Sharing flag setting
+x8_s3: Invisibility: Invisibility (PC lock on)
+x8_s4: Invisibility: PC lock-on release
+x8_s4_e0: [Operation] Lock list
+x8_s4_e1: [Operation] Lock list
+x8_s4_e2: [Timer] Start timer
+x8_s4_e3: [Timer] Stop timer
+x8_s5: Invisible: Invisible (with obstacles)
+x8_s6: End state
+x9: [LIB] Generate return (upper)
+x9_s0: Start state
+x9_s1: Generate Return: Start
+x9_s2: Generate return: setting
+x9_s2_e0: [Movement] Movement prediction accuracy setting
+x9_s2_e1: [General purpose] Sharing flag setting
+x9_s2_w0: [Operation] Lock off
+x9_s3: Generate Return: End
+x9_s4: Generate Return: Navigation Search
+x9_s4_e0: [Search] Navi mesh to generator
+x9_s5: Generate Return: Navigation Success Move
+x9_s5_w0: [Move] Dash_Navimesh
+x9_s6: [LIB] Search: generation generator _SubState
+x9_s7: [LIB] OBJ operation_SubState
+x9_s8: End state
+x10: [LIB] General-purpose: Lower order switching after completion of initial operation
+x10_s0: Start state
+x10_s1: Lower state switching: start
+x10_s2: Lower state switching: setting
+x10_s2_e0: [General purpose] Sharing flag setting
+x10_s2_e1: [General] lower-level state map switching
+x10_s2_e2: [General] lower-level state map switching
+x10_s2_e3: [General] lower-level state map switching
+x10_s2_e4: [General] lower-level state map switching
+x10_s2_e5: [General] lower-level state map switching
+x10_s2_e6: [General] lower-level state map switching
+x10_s3: End state
+x11: [LIB] First contact behavior (top)
+x11_p0: Argument for state map ID
+x11_s0: Start state
+x11_s1: Upper logic: FC start
+x11_s1_e0: [General] lower-level state map switching
+x11_s1_e1: [General purpose] Sharing flag setting
+x11_s2: Upper logic: waiting for FC
+x11_s3: End state
+x12: [LIB] Search enemy: general purpose
+x12_p0: Maximum search distance
+x12_p1: Search priority
+x12_s0: Start state
+x12_s1: Search enemy (general purpose): Start
+x12_s1_e0: [Operation] Lock off
+x12_s2: Search enemy (general purpose): Normal setting
+x12_s2_e0: [Attack] Damage type reset
+x12_s2_w0: [Search enemy] Character _ target setting
+x12_s3: End state_Target not found
+x12_s4: End state_Target found
+x13: [LIB] Eye gaze check
+x13_p0: Gaze maximum
+x13_p1: Gaze priority
+x13_s0: Start state
+x13_s1: Eye gaze check: Start
+x13_s2: Eye gaze check: View setting
+x13_s3: Eye gaze check: invisible setting
+x13_s3_e0: [General purpose] Sharing flag setting
+x13_s4: [LIB] Search enemy: General purpose _SubState
+x13_s5: End state_no target
+x13_s6: End state_Targeted: Recognition
+x13_s7: End state_Targeted: Invisible
+x14: [LIB] OBJ operation
+x14_s0: Start state
+x14_s1: OBJ operation: start
+x14_s2: OBJ operation: branch
+x14_s2_w0: [Action] Use OBJ
+x14_s3: OBJ operation: Other than ladder
+x14_s4: OBJ operation: ladder
+x14_s5: OBJ operation: climb the ladder
+x14_s5_w0: [Action] Climbing the ladder
+x14_s6: OBJ operation: Get off the ladder
+x14_s6_w0: [Action] Go down the ladder
+x14_s7: OBJ operation: Normal termination
+x14_s7_e0: [Action] Leave OBJ
+x14_s8: OBJ operation: Failed end
+x14_s9: OBJ operation: Get off the ladder (preparation)
+x14_s9_w0: [Action] Go down the ladder
+x14_s10: OBJ operation: climbing a ladder (preparation)
+x14_s10_w0: [Action] Climbing the ladder
+x14_s11: OBJ use success state
+x14_s12: OBJ use failure state

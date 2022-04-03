@@ -1,0 +1,468 @@
+10: Lower logic: Needle Maggot
+10_s0: Start state
+10_s1: Substate: Start
+10_s2: Lower state: Initial setting
+10_s2_e0: [Attack] Damage lower logic reset setting
+10_s2_e1: [General purpose] Sharing flag setting
+10_s3: Action without target: Standby
+10_s4: Invisibility behavior: waiting
+10_s5: Lower-level state: branch wait
+10_s6: Vanishing behavior: waiting
+10_s7: Generator action: wait
+10_s8: [LIB] Lower-level action: branch_SubState
+10_s9: [LIB] Lower-level action: Stop action_SubState
+10_s10: Target action: Needle Maggot _SubState
+10_s11: [LIB] Target action: feedback error_SubState
+10_s12: [LIB] Lower level: Sound reaction direction_SubState
+200: First contact: general round trip
+200_s0: Start state
+200_s1: Substate: Start
+200_s2: [LIB] Initial termination setting_SubState
+200_s3: [LIB] Route round trip: Normal movement _SubState
+210: First contact: general branch reciprocating
+210_s0: Start state
+210_s1: Substate: Start
+210_s2: [LIB] Initial termination setting_SubState
+210_s3: [LIB] Route branch round trip: Normal movement _SubState
+220: First contact: general wandering
+220_s0: Start state
+220_s1: Substate: Start
+220_s2: [LIB] Initial termination setting_SubState
+220_s3: [LIB] wandering route: normal movement _SubState
+230: First contact: general-purpose reciprocating (low speed)
+230_s0: Start state
+230_s1: Substate: Start
+230_s2: [LIB] Initial termination setting_SubState
+230_s3: [LIB] Round trip route: horizontal movement _SubState
+240: First contact: general branch reciprocating (low speed)
+240_s0: Start state
+240_s1: Substate: Start
+240_s2: [LIB] Initial termination setting_SubState
+240_s3: [LIB] Route branch round trip: Horizontal movement _SubState
+250: First contact: general wandering (low speed)
+250_s0: Start state
+250_s1: Substate: Start
+250_s2: [LIB] Initial termination setting_SubState
+250_s3: [LIB] Route wander: horizontal movement _SubState
+300: First Contact: Surprise: General Purpose: Normal
+300_s0: Start state
+300_s1: Substate: Start
+300_s2: Lower: First contact
+300_s3: Lower: turning
+300_s3_w0: [Turning] Quick turn_Lock
+300_s4: [LIB] Initial termination setting_SubState
+300_s5: [LIB] Attack: Single issue: General purpose (hand: jump out) _SubState
+x12: Target action: Needleworm
+x12_s0: Start state
+x12_s1: Target action: start
+x12_s2: Attack action: Needle Maggot _SubState
+x12_s3: End state
+x13: Attack action: needle maggot
+x13_s0: Start state
+x13_s1: Attack action: start
+x13_s1_e0: [Random number] Random number generation
+x13_s2: Attack action: branch
+x13_s3: [LIB] Attack: Single issue: General purpose: Jump out _SubState
+x13_s4: [LIB] Attack: Single issue: General purpose: Needle _SubState
+x13_s5: [LIB] Attack: Single issue: General purpose: tackle _SubState
+x13_s6: [LIB] Attack: Single issue action: Action 13: Left attack _SubState
+x13_s7: [LIB] Attack: Single issue: Action 14: Right attack _SubState
+x13_s8: [LIB] Attack: Single issue: General purpose: Needle (poison) _SubState
+x13_s9: Successful Attack: End State
+x0: [LIB] Lower action: branch
+x0_s0: Start state
+x0_s1: Action: Branch
+x0_s2: Action: Error
+x0_s2_e0: [Debug] Log output
+x0_s3: End state_Target action
+x0_s4: End state_Target inactivity
+x0_s5: End state_generator action
+x0_s6: End state_Lower stop action
+x0_s7: End state_Invisible action
+x0_s8: End state_vanishing action
+x0_s9: End state_Sound reaction action
+x0_s10: End state_return preparation
+x1: [LIB] Lower action: Stop action
+x1_s0: Start state
+x1_s1: Lower stop action: start
+x1_s1_e0: [Attack] Combo attack cancel
+x1_s2: Lower stopping action: Stopping
+x1_s3: End state
+x2: [LIB] Initial termination setting
+x2_s0: Start state
+x2_s1: Initial end setting: Start
+x2_s1_e0: [General purpose] Sharing flag setting
+x2_s2: End state
+x3: [LIB] Attack: Single issue: General purpose
+x3_p0: Attack type
+x3_p1: Short navigation mesh check
+x3_s0: Start state
+x3_s1: Attack: Under attack
+x3_s1_e0: [Attack] Melee attack
+x3_s2: Attack: Cancel wait
+x3_s3: Attack: Success: End state
+x3_s4: Attack: Failure: End state
+x4: [LIB] Target action: feedback error
+x4_s0: Start state
+x4_s1: Preparing to return: move left and right
+x4_s1_w0: [Move] Horizontal move_Lock_Random
+x4_s2: Preparing to return: Navimesh search
+x4_s2_e0: [Search] Navi mesh to generator
+x4_s3: Return preparation: moving branch
+x4_s3_e0: [Move] Reset move failure
+x4_s3_e1: [Random number] Random number generation
+x4_s3_e2: [General purpose] Sharing flag setting
+x4_s3_e3: [General purpose] Sharing flag setting
+x4_s4: Preparing to return: retreat
+x4_s4_w0: [Move] Horizontal move_Lock_Navimesh
+x4_s5: Return preparation: Move mesh center
+x4_s5_w0: [Move] Move horizontally to the center of the navigation mesh
+x4_s6: End state
+x5: [LIB] Lower: Sound reaction direction
+x5_p0: OBJ vandalism
+x5_p1: OBJ inspection distance
+x5_s0: Start state
+x5_s1: Sound response: start
+x5_s2: Sound response: Navigation search
+x5_s2_w0: [Swirl] Quick turn_Sound direction
+x5_s3: Sound response: enemy judgment
+x5_s4: Sound response: not found
+x5_s4_e0: [General purpose] Sharing flag setting
+x5_s5: End state
+x6: [LIB] Route round trip: normal movement
+x6_p0: Wait occurrence and execution time upper limit (when ON)
+x6_p1: Wait occurrence and execution time lower limit (when ON)
+x6_p2: Standby ON / OFF
+x6_p3: Loop ON / OFF
+x6_p4: Analog intensity maximum
+x6_p5: Analog intensity minimum
+x6_p6: Reach distance
+x6_s0: Start state
+x6_s1: FC: Start
+x6_s1_e0: [Timer] Start timer
+x6_s1_e1: [Random number] Random number generation
+x6_s2: FC: Search: Navi point 1 (up)
+x6_s2_e0: [Search] Navi mesh to Gen Navi point
+x6_s3: FC: Move: To generator
+x6_s3_w0: [Move] Normal move Navi mesh
+x6_s4: FC: Move: To Navi Point 1 (Up)
+x6_s4_w0: [Move] Normal move Navi mesh
+x6_s5: FC: Move: Navi point 2
+x6_s5_w0: [Move] Normal move Navi mesh
+x6_s6: FC: Standby: Navi 1 move (up)
+x6_s6_e0: [Timer] Start timer
+x6_s6_e1: [Random number] Random number generation
+x6_s6_x0: [Timer] Start timer
+x6_s6_x1: [Random number] Random number generation
+x6_s7: FC: Standby: Navi 2 move
+x6_s7_e0: [Timer] Start timer
+x6_s7_e1: [Random number] Random number generation
+x6_s7_x0: [Timer] Start timer
+x6_s7_x1: [Random number] Random number generation
+x6_s8: FC: Standby: Move Gene
+x6_s8_e0: [Timer] Start timer
+x6_s8_e1: [Random number] Random number generation
+x6_s8_x0: [Timer] Start timer
+x6_s8_x1: [Random number] Random number generation
+x6_s9: FC: Search: Navi point 2 or generator judgment
+x6_s9_e0: [Search] Navi mesh to Gen Navi point
+x6_s10: FC: Search: To generator
+x6_s10_e0: [Search] Navi mesh to generator
+x6_s11: FC: Search: Navi point 1 (down)
+x6_s11_e0: [Search] Navi mesh to Gen Navi point
+x6_s12: FC: Move: To Navi Point 1 (Down)
+x6_s12_w0: [Move] Normal move Navi mesh
+x6_s13: FC: Standby: Move Navi 1 (down)
+x6_s13_e0: [Timer] Start timer
+x6_s13_e1: [Random number] Random number generation
+x6_s13_x0: [Timer] Start timer
+x6_s13_x1: [Random number] Random number generation
+x6_s14: FC: Search: Navi point 2
+x6_s15: End state
+x7: [LIB] Route branch round trip: Normal movement
+x7_p0: Wait occurrence and execution time upper limit (when ON)
+x7_p1: Wait occurrence and execution time lower limit (when ON)
+x7_p2: Standby ON / OFF
+x7_p3: Analog intensity maximum
+x7_p4: Analog intensity minimum
+x7_p5: Reach distance
+x7_s0: Start state
+x7_s1: FC: Start
+x7_s1_e0: [Timer] Start timer
+x7_s1_e1: [Random number] Random number generation
+x7_s2: FC: Search: Navi point 1 (up)
+x7_s2_e0: [Search] Navi mesh to Gen Navi point
+x7_s3: FC: Move: To generator
+x7_s3_w0: [Move] Normal move Navi mesh
+x7_s4: FC: Move: To Navi Point 1 (Up)
+x7_s4_w0: [Move] Normal move Navi mesh
+x7_s5: FC: Move: Navi point 2
+x7_s5_w0: [Move] Normal move Navi mesh
+x7_s6: FC: Standby: Navi 1 move (up)
+x7_s6_e0: [Timer] Start timer
+x7_s6_e1: [Random number] Random number generation
+x7_s6_x0: [Timer] Start timer
+x7_s6_x1: [Random number] Random number generation
+x7_s7: FC: Standby: Navi 2 move
+x7_s7_e0: [Timer] Start timer
+x7_s7_e1: [Random number] Random number generation
+x7_s7_x0: [Timer] Start timer
+x7_s7_x1: [Random number] Random number generation
+x7_s8: FC: Standby: Move Gene
+x7_s8_e0: [Timer] Start timer
+x7_s8_e1: [Random number] Random number generation
+x7_s8_x0: [Timer] Start timer
+x7_s8_x1: [Random number] Random number generation
+x7_s9: FC: Branch: Navi point 2 or generator judgment
+x7_s9_e0: [Random number] Random number generation
+x7_s10: FC: Search: To generator
+x7_s10_e0: [Search] Navi mesh to generator
+x7_s11: FC: Search: Navi point 1 (down)
+x7_s11_e0: [Search] Navi mesh to Gen Navi point
+x7_s12: FC: Move: To Navi Point 1 (Down)
+x7_s12_w0: [Move] Normal move Navi mesh
+x7_s13: FC: Standby: Move Navi 1 (down)
+x7_s13_e0: [Timer] Start timer
+x7_s13_e1: [Random number] Random number generation
+x7_s13_x0: [Timer] Start timer
+x7_s13_x1: [Random number] Random number generation
+x7_s14: FC: Search: Navi point 2
+x7_s14_e0: [Search] Navi mesh to Gen Navi point
+x7_s15: End state
+x8: [LIB] wandering route: normal movement
+x8_p0: Wait occurrence and execution time upper limit (when ON)
+x8_p1: Wait occurrence and execution time lower limit (when ON)
+x8_p2: Standby ON / OFF
+x8_p3: Analog intensity maximum
+x8_p4: Analog intensity minimum
+x8_p5: Reach distance
+x8_s0: Start state
+x8_s1: FC: Start
+x8_s1_e0: [Timer] Start timer
+x8_s1_e1: [Random number] Random number generation
+x8_s2: FC: Search: Navi point 1
+x8_s2_e0: [Search] Navi mesh to Gen Navi point
+x8_s3: FC: Move: To generator
+x8_s3_w0: [Move] Normal move Navi mesh
+x8_s4: FC: Move: Navi point 1
+x8_s4_w0: [Move] Normal move Navi mesh
+x8_s5: FC: Move: Navi point 2
+x8_s5_w0: [Move] Normal move Navi mesh
+x8_s6: FC: Standby: Move 1 navigation
+x8_s6_e0: [Timer] Start timer
+x8_s6_e1: [Random number] Random number generation
+x8_s6_x0: [Timer] Start timer
+x8_s6_x1: [Random number] Random number generation
+x8_s7: FC: Standby: Navi 2 move
+x8_s7_e0: [Timer] Start timer
+x8_s7_e1: [Random number] Random number generation
+x8_s7_x0: [Timer] Start timer
+x8_s7_x1: [Random number] Random number generation
+x8_s8: FC: Standby: Move Gene
+x8_s8_e0: [Timer] Start timer
+x8_s8_e1: [Random number] Random number generation
+x8_s8_x0: [Timer] Start timer
+x8_s8_x1: [Random number] Random number generation
+x8_s9: FC: Branch: Navi 2or Gene
+x8_s9_e0: [Random number] Random number generation
+x8_s10: FC: Search: To generator
+x8_s10_e0: [Search] Navi mesh to generator
+x8_s11: FC: Search: Navi point 2
+x8_s11_e0: [Search] Navi mesh to Gen Navi point
+x8_s12: FC: Branch: Navi 1 or Gene
+x8_s12_e0: [Random number] Random number generation
+x8_s13: FC: Branch: Navi 1 or Navi 2
+x8_s13_e0: [Random number] Random number generation
+x8_s14: End state
+x9: [LIB] Round trip route: low-speed travel
+x9_p0: Wait occurrence and execution time upper limit (when ON)
+x9_p1: Wait occurrence and execution time lower limit (when ON)
+x9_p2: Standby ON / OFF
+x9_p3: Loop ON / OFF
+x9_p4: Analog intensity maximum
+x9_p5: Analog intensity minimum
+x9_p6: Reach distance
+x9_p7: Turn switching
+x9_s0: Start state
+x9_s1: FC: Start
+x9_s1_e0: [Timer] Start timer
+x9_s1_e1: [Random number] Random number generation
+x9_s2: FC: Search: Navi point 1 (up)
+x9_s2_e0: [Search] Navi mesh to Gen Navi point
+x9_s3: FC: Move: To generator
+x9_s3_w0: [Move] Normal move Navi mesh
+x9_s4: FC: Move: To Navi Point 1 (Up)
+x9_s4_w0: [Move] Normal move Navi mesh
+x9_s5: FC: Move: Navi point 2
+x9_s5_w0: [Move] Normal move Navi mesh
+x9_s6: FC: Standby: Navi 1 move (up)
+x9_s6_e0: [Timer] Start timer
+x9_s6_e1: [Random number] Random number generation
+x9_s6_x0: [Timer] Start timer
+x9_s6_x1: [Random number] Random number generation
+x9_s7: FC: Standby: Navi 2 move
+x9_s7_e0: [Timer] Start timer
+x9_s7_e1: [Random number] Random number generation
+x9_s7_x0: [Timer] Start timer
+x9_s7_x1: [Random number] Random number generation
+x9_s8: FC: Standby: Move Gene
+x9_s8_e0: [Timer] Start timer
+x9_s8_e1: [Random number] Random number generation
+x9_s8_x0: [Timer] Start timer
+x9_s8_x1: [Random number] Random number generation
+x9_s9: FC: Search: Navi point 2 or generator judgment
+x9_s9_e0: [Search] Navi mesh to Gen Navi point
+x9_s10: FC: Search: To generator
+x9_s10_e0: [Search] Navi mesh to generator
+x9_s11: FC: Search: Navi point 1 (down)
+x9_s11_e0: [Search] Navi mesh to Gen Navi point
+x9_s12: FC: Move: To Navi Point 1 (Down)
+x9_s12_w0: [Move] Normal move Navi mesh
+x9_s13: FC: Standby: Move Navi 1 (down)
+x9_s13_e0: [Timer] Start timer
+x9_s13_e1: [Random number] Random number generation
+x9_s13_x0: [Timer] Start timer
+x9_s13_x1: [Random number] Random number generation
+x9_s14: FC: Search: Navi point 2
+x9_s15: FC: Turning: Quick turn (to upper navigation 1)
+x9_s15_w0: [Turning] Quick turn _ Navi mesh direction
+x9_s16: FC: Turning: Quick turn (to Navi 2)
+x9_s16_w0: [Turning] Quick turn _ Navi mesh direction
+x9_s17: FC: Turning: Quick turn (to Gene)
+x9_s17_w0: [Turning] Quick turn _ Navi mesh direction
+x9_s18: FC: Turning: Quick turn (to lower navigation 1)
+x9_s18_w0: [Turning] Quick turn _ Navi mesh direction
+x9_s19: FC: Turning: Turning on the spot (go to upper navigation 1)
+x9_s19_w0: [Turning] Turning in place_Navimesh direction
+x9_s20: FC: Turning: Turning on the spot (to Navi 2)
+x9_s20_w0: [Turning] Turning in place_Navimesh direction
+x9_s21: FC: Turn: Turn in place (to Gene)
+x9_s21_w0: [Turning] Turning in place_Navimesh direction
+x9_s22: FC: Turning: Turning on the spot (to the lower navigation)
+x9_s22_w0: [Turning] Turning in place_Navimesh direction
+x9_s23: End state
+x10: [LIB] Route branch round trip: Low-speed movement
+x10_p0: Wait occurrence and execution time upper limit (when ON)
+x10_p1: Wait occurrence and execution time lower limit (when ON)
+x10_p2: Standby ON / OFF
+x10_p3: Analog intensity maximum
+x10_p4: Analog intensity minimum
+x10_p5: Reach distance
+x10_p6: Turn switching
+x10_s0: Start state
+x10_s1: FC: Start
+x10_s1_e0: [Timer] Start timer
+x10_s1_e1: [Random number] Random number generation
+x10_s2: FC: Search: Navi point 1 (up)
+x10_s2_e0: [Search] Navi mesh to Gen Navi point
+x10_s3: FC: Move: To generator
+x10_s3_w0: [Move] Normal move Navi mesh
+x10_s4: FC: Move: To Navi Point 1 (Up)
+x10_s4_w0: [Move] Normal move Navi mesh
+x10_s5: FC: Move: Navi point 2
+x10_s5_w0: [Move] Normal move Navi mesh
+x10_s6: FC: Standby: Navi 1 move (up)
+x10_s6_e0: [Timer] Start timer
+x10_s6_e1: [Random number] Random number generation
+x10_s6_x0: [Timer] Start timer
+x10_s6_x1: [Random number] Random number generation
+x10_s7: FC: Standby: Navi 2 move
+x10_s7_e0: [Timer] Start timer
+x10_s7_e1: [Random number] Random number generation
+x10_s7_x0: [Timer] Start timer
+x10_s7_x1: [Random number] Random number generation
+x10_s8: FC: Standby: Move Gene
+x10_s8_e0: [Timer] Start timer
+x10_s8_e1: [Random number] Random number generation
+x10_s8_x0: [Timer] Start timer
+x10_s8_x1: [Random number] Random number generation
+x10_s9: FC: Branch: Navi point 2 or generator judgment
+x10_s9_e0: [Random number] Random number generation
+x10_s10: FC: Search: To generator
+x10_s10_e0: [Search] Navi mesh to generator
+x10_s11: FC: Search: Navi point 1 (down)
+x10_s11_e0: [Search] Navi mesh to Gen Navi point
+x10_s12: FC: Move: To Navi Point 1 (Down)
+x10_s12_w0: [Move] Normal move Navi mesh
+x10_s13: FC: Standby: Move Navi 1 (down)
+x10_s13_e0: [Timer] Start timer
+x10_s13_e1: [Random number] Random number generation
+x10_s13_x0: [Timer] Start timer
+x10_s13_x1: [Random number] Random number generation
+x10_s14: FC: Search: Navi point 2
+x10_s14_e0: [Search] Navi mesh to Gen Navi point
+x10_s15: FC: Turning: Quick turn (to upper navigation 1)
+x10_s15_w0: [Turning] Quick turn _ Navi mesh direction
+x10_s16: FC: Turning: Quick turn (to Navi 2)
+x10_s16_w0: [Turning] Quick turn _ Navi mesh direction
+x10_s17: FC: Turning: Quick turn (to Gene)
+x10_s17_w0: [Turning] Quick turn _ Navi mesh direction
+x10_s18: FC: Turning: Quick turn (to lower navigation 1)
+x10_s18_w0: [Turning] Quick turn _ Navi mesh direction
+x10_s19: FC: Turning: Turning on the spot (go to upper navigation 1)
+x10_s19_w0: [Turning] Turning in place_Navimesh direction
+x10_s20: FC: Turning: Turning on the spot (to Navi 2)
+x10_s20_w0: [Turning] Turning in place_Navimesh direction
+x10_s21: FC: Turn: Turn in place (to Gene)
+x10_s21_w0: [Turning] Turning in place_Navimesh direction
+x10_s22: FC: Turning: Turning on the spot (to the lower navigation)
+x10_s22_w0: [Turning] Turning in place_Navimesh direction
+x10_s23: End state
+x11: [LIB] wandering around the route: moving at low speed
+x11_p0: Wait occurrence and execution time upper limit (when ON)
+x11_p1: Wait occurrence and execution time lower limit (when ON)
+x11_p2: Standby ON / OFF
+x11_p3: Analog intensity maximum
+x11_p4: Analog intensity minimum
+x11_p5: Reach distance
+x11_p6: Turn switching
+x11_s0: Start state
+x11_s1: FC: Start
+x11_s1_e0: [Timer] Start timer
+x11_s1_e1: [Random number] Random number generation
+x11_s2: FC: Search: Navi point 1
+x11_s2_e0: [Search] Navi mesh to Gen Navi point
+x11_s3: FC: Move: To generator
+x11_s3_w0: [Move] Normal move Navi mesh
+x11_s4: FC: Move: Navi point 1
+x11_s4_w0: [Move] Normal move Navi mesh
+x11_s5: FC: Move: Navi point 2
+x11_s5_w0: [Move] Normal move Navi mesh
+x11_s6: FC: Standby: Move 1 navigation
+x11_s6_e0: [Timer] Start timer
+x11_s6_e1: [Random number] Random number generation
+x11_s6_x0: [Timer] Start timer
+x11_s6_x1: [Random number] Random number generation
+x11_s7: FC: Standby: Navi 2 move
+x11_s7_e0: [Timer] Start timer
+x11_s7_e1: [Random number] Random number generation
+x11_s7_x0: [Timer] Start timer
+x11_s7_x1: [Random number] Random number generation
+x11_s8: FC: Standby: Move Gene
+x11_s8_e0: [Timer] Start timer
+x11_s8_e1: [Random number] Random number generation
+x11_s8_x0: [Timer] Start timer
+x11_s8_x1: [Random number] Random number generation
+x11_s9: FC: Branch: Navi 2or Gene
+x11_s9_e0: [Random number] Random number generation
+x11_s10: FC: Search: To generator
+x11_s10_e0: [Search] Navi mesh to generator
+x11_s11: FC: Search: Navi point 2
+x11_s11_e0: [Search] Navi mesh to Gen Navi point
+x11_s12: FC: Branch: Navi 1 or Gene
+x11_s12_e0: [Random number] Random number generation
+x11_s13: FC: Branch: Navi 1 or Navi 2
+x11_s13_e0: [Random number] Random number generation
+x11_s14: FC: Turning: Quick turn (to Navi 1)
+x11_s14_w0: [Turning] Quick turn _ Navi mesh direction
+x11_s15: FC: Turning: Quick turn (to Navi 2)
+x11_s15_w0: [Turning] Quick turn _ Navi mesh direction
+x11_s16: FC: Turning: Quick turn (to Gene)
+x11_s16_w0: [Turning] Quick turn _ Navi mesh direction
+x11_s17: FC: Turn: Turn in place (to Navi 1)
+x11_s17_w0: [Turning] Turning in place_Navimesh direction
+x11_s18: FC: Turning: Turning on the spot (to Navi 2)
+x11_s18_w0: [Turning] Turning in place_Navimesh direction
+x11_s19: FC: Turn: Turn in place (to Gene)
+x11_s19_w0: [Turning] Turning in place_Navimesh direction
+x11_s20: End state

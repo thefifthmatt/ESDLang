@@ -1,0 +1,364 @@
+10: Lower: for startup
+10_s0: Start state
+10_s1: Lower: Start
+10_s1_e0: [General] lower-level state map switching
+20: Lower: Proximity x bare hands
+20_s0: Start state
+20_s1: Lower: Start
+20_s2: Lower order: Initial end
+20_s2_e0: [General purpose] Sharing flag setting
+20_s3: [LIB] Lower-level action: branch_SubState
+20_s4: [PC] Return action_SubState
+20_s5: [PC] Tracking action _SubState
+20_s6: [PC] Combat action: melee x bare hands _SubState
+20_s7: [PC] Warning action _SubState
+20_s8: Ladder protect_SubState
+x18: Guard waiting
+x18_s0: Start state
+x18_s1: Move: Start
+x18_s1_e0: [Attack] Defense
+x18_s2: Move: Search
+x18_s2_e0: [Search] Navi mesh to generator
+x18_s3: Move: Move
+x18_s3_w0: [Move] Horizontal move_Lock_Navimesh
+x18_s4: Move: wait
+x18_s5: Movement: turning
+x18_s5_w0: [Turning] Quick turn_Lock
+x18_s6: Movement: turning
+x18_s7: End state
+x19: Attack behavior
+x19_s0: Start state
+x19_s1: Attack action: start
+x19_s1_e0: [Random number] Random number generation
+x19_s1_e1: [Random number] Random number generation
+x19_s1_e2: [Attack] Defense
+x19_s2: Attack action: branch
+x19_s3: [PC] Attack: weak ⇒ weak ⇒ weak _SubState
+x19_s4: [PC] Attack: Jump_SubState
+x19_s5: [PC] Step_SubState
+x19_s6: [PC] Attack: weak _SubState
+x19_s7: [PC] Attack: weak ⇒ strong _SubState
+x19_s8: [PC] Attack: Strong ⇒ Strong _SubState
+x19_s9: [PC] Back stub_SubState
+x19_s10: Success: End state
+x19_s11: Failure: termination state
+x20: Protect ladder
+x20_s0: Start state
+x20_s1: Combat action: start
+x20_s1_e0: [Random number] Random number generation
+x20_s2: Combat action: two-handed
+x20_s2_e0: [Player attack] Change weapon holding
+x20_s3: Guard wait_SubState
+x20_s4: [PC] Defense action _SubState
+x20_s5: Attack action_SubState
+x20_s6: [PC] Interaction: Proximity_SubState
+x20_s7: End state
+x0: [LIB] Lower action: branch
+x0_s0: Start state
+x0_s1: Action: Branch
+x0_s2: Action: Error
+x0_s2_e0: [Debug] Log output
+x0_s3: End state_Target action
+x0_s4: End state_Target inactivity
+x0_s5: End state_generator action
+x0_s6: End state_Lower stop action
+x0_s7: End state_Invisible action
+x0_s8: End state_vanishing action
+x0_s9: End state_Sound reaction action
+x0_s10: End state_return preparation
+x1: [PC] Attack
+x1_p0: Hand type 1
+x1_p1: Attack type 1
+x1_p2: Hand type 2
+x1_p3: Attack type 2
+x1_p4: Hand type 3
+x1_p5: Attack type 3
+x1_p6: Attack distance
+x1_p7: Attack times
+x1_s0: Start state
+x1_s1: Attack: 1st stage
+x1_s1_e0: [Player Attack] Attack
+x1_s2: Attack: 2nd stage
+x1_s2_e0: [Player Attack] Attack
+x1_s3: Attack: 3rd stage
+x1_s3_e0: [Player Attack] Attack
+x1_s4: Attack: End
+x1_s5: Begin attack
+x1_s5_e0: [Move] Reset move failure
+x1_s5_e1: [Attack] Reset attack failure
+x1_s5_e2: [Timer] Start timer
+x1_s5_e3: [Attack] Defense
+x1_s6: Attack: dash
+x1_s6_w0: [Move] Dash_Lock_Random
+x1_s7: Attack: walking
+x1_s7_w0: [Move] Lock move random
+x1_s8: Attack: Navigation search
+x1_s8_e0: [Search] Navimesh
+x1_s8_e1: [Attack] Reset attack failure
+x1_s9: Attack: Navigation walking
+x1_s9_w0: [Move] Lock move Navi mesh
+x1_s9_w1: [Move] Horizontal move_Lock_Navimesh
+x1_s10: Attack: Zero distance
+x1_s10_e0: [Player Attack] Attack
+x1_s11: Attack: Get off the wall
+x1_s11_w0: [Move] Normal move random
+x1_s12: Success: End state
+x1_s13: Failure: termination state
+x2: [PC] Step
+x2_s0: Start state
+x2_s1: Step: Start
+x2_s1_e0: [Move] Reset move failure
+x2_s1_w0: [Attack] Random avoidance_Angle designation
+x2_s2: Step: Success
+x2_s3: Step: Failure
+x2_s4: Success: End state
+x2_s5: Failure: termination state
+x3: [PC] Rolling
+x3_p0: Avoidance angle 1
+x3_p1: Avoidance angle 2
+x3_p2: Avoidance angle 3
+x3_p3: Avoidance angle 4
+x3_p4: Self center angle
+x3_s0: Start state
+x3_s1: Rolling: start
+x3_s1_e0: [Move] Reset move failure
+x3_s1_w0: [Attack] Random avoidance_Angle designation
+x3_s2: Rolling: Success
+x3_s3: Rolling: failed
+x3_s4: Success: End state
+x3_s5: Failure: termination state
+x4: [PC] Back stub
+x4_s0: Start state
+x4_s1: Back stub: start
+x4_s2: Back stub: approach
+x4_s2_w0: [Move] Lock move random
+x4_s3: Stub: Attack
+x4_s3_e0: [Player Attack] Attack
+x4_s4: Success: End state
+x4_s5: Failure: termination state
+x5: [PC] Approaching behavior
+x5_s0: Start state
+x5_s1: Movement: start error
+x5_s1_w0: [Move] Lock move random
+x5_s2: Movement: approaching behavior
+x5_s2_w0: [Move] Dash_Lock_Random
+x5_s3: Movement: Obstacle avoidance
+x5_s3_w0: [Move] Normal move random
+x5_s4: [PC] Move: Navi move_SubState
+x5_s5: End state
+x6: [PC] Navigation navigation
+x6_p0: Analog strength
+x6_p1: Reach distance
+x6_p2: OBJ inspection distance
+x6_p3: Dash switch
+x6_p4: Navigation search target
+x6_s0: Start state
+x6_s1: Navigating: Start
+x6_s1_e0: [Move] Reset move failure
+x6_s1_e1: [Timer] Start timer
+x6_s2: Navigation navigation: Navigation search
+x6_s2_e0: [Search] Navimesh
+x6_s2_e1: [Search] Navi mesh to generator
+x6_s2_e2: [Search] Navi mesh to a nearby gate
+x6_s2_e3: [Search] Navimesh to the sound you heard
+x6_s3: Navigation navigation: dash
+x6_s3_w0: [Move] Dash_Lock_Navimesh
+x6_s4: Navigating: walking
+x6_s4_e0: [Move] Reset move failure
+x6_s4_e1: [Timer] Start timer
+x6_s4_w0: [Move] Horizontal move_Lock_Navimesh
+x6_s4_w1: [Move] Lock move Navi mesh
+x6_s5: Navigating: avoiding danger [random moving]
+x6_s5_w0: [Move] Horizontal move_random
+x6_s6: Navigation navigation: End
+x6_s6_e0: [Move] Reset move failure
+x6_s7: Navigating: Periodic check
+x6_s7_e0: [Search] Navimesh to the sound you heard
+x6_s7_e1: [Search] Navi mesh to a nearby gate
+x6_s7_e2: [Search] Navi mesh to generator
+x6_s7_e3: [Search] Navimesh
+x6_s8: Navigation navigation: branch
+x6_s9: Navigating: center moving
+x6_s9_x0: [Timer] Start timer
+x6_s9_w0: [Move] Move horizontally to the center of the navigation mesh
+x6_s10: Navigating: avoiding danger [obstacles]
+x6_s11: Navigating: unreachable
+x6_s11_w0: [Move] Horizontal move_Lock_Random
+x6_s12: Navigating: Route search successful
+x6_s12_e0: [General purpose] Sharing flag setting
+x6_s13: Navigating: route search failed
+x6_s13_e0: [General purpose] Sharing flag setting
+x6_s14: Navigating: Get off the wall
+x6_s14_w0: [Move] Normal move random
+x6_s15: [PC] OBJ destruction_SubState
+x6_s15_w0: [Operation] Lock off
+x6_s16: [PC] OBJ operation_SubState
+x6_s17: End state
+x6_s18: Obstacle: End State
+x6_s19: Unreachable: end state
+x7: [PC] Interaction: Proximity
+x7_p0: Rolling percentage
+x7_p1: Step ratio
+x7_p2: Guard percentage
+x7_s0: Start state
+x7_s1: Immediate action: start
+x7_s1_e0: [Random number] Random number generation
+x7_s1_e1: [Timer] Start timer
+x7_s2: Immediate action: guard action
+x7_s2_e0: [Move] Reset move failure
+x7_s2_e1: [Attack] Defense
+x7_s2_w0: [Move] Horizontal move_Lock_Random
+x7_s3: Close action: horizontal movement
+x7_s3_w0: [Move] Horizontal move_Lock_Random
+x7_s4: Immediate action: Guard lottery
+x7_s4_e0: [Random number] Random number generation
+x7_s5: Interaction: rolling lottery
+x7_s5_e0: [Random number] Random number generation
+x7_s6: Interim action: step lottery
+x7_s6_e0: [Random number] Random number generation
+x7_s7: [PC] Step_SubState
+x7_s8: [PC] Rolling backward _SubState
+x7_s9: [PC] Rolling left and right _SubState
+x7_s10: [PC] Interaction: Recovery_SubState
+x7_s11: [PC] Rolling direction _SubState
+x7_s12: End state
+x8: [PC] Return action
+x8_s0: Start state
+x8_s1: Return: Start
+x8_s1_e0: [Search] Navi mesh to generator
+x8_s1_x0: [Timer] Start timer
+x8_s2: Return: retreat
+x8_s2_e0: [Attack] Defense
+x8_s2_w0: [Move] Horizontal move_Lock_Navimesh
+x8_s3: Return: waiting
+x8_s4: Return: branch
+x8_s4_e0: [Attack] Defense
+x8_s5: Return: sound response
+x8_s5_w0: [Swirl] Quick turn_Sound direction
+x8_s6: Return: sound alert
+x8_s7: Return: Enemy discovery
+x8_s7_w0: [General purpose] Sharing flag setting
+x8_s8: Return: No return home
+x8_s8_e0: [General purpose] Sharing flag setting
+x8_s9: [PC] PC general navigation movement: walking _SubState
+x8_s10: [PC] PC general-purpose navigation: dash _SubState
+x8_s11: End state
+x9: [PC] Tracking action
+x9_s0: Start state
+x9_s1: [PC] PC general navigation move_SubState
+x9_s2: End state
+x10: [PC] Warning action
+x10_s0: Start state
+x10_s1: Vigilance: start
+x10_s1_e0: [Attack] Defense
+x10_s1_w0: [Move] Normal move random
+x10_s2: Vigilance: waiting
+x10_s3: [PC] Navigation move_SubState
+x10_s4: End state
+x11: [PC] Defensive action
+x11_s0: Start state
+x11_s1: Combat action: defensive action
+x11_s1_e0: [Attack] Damage information reset
+x11_s1_e1: [Random number] Random number generation
+x11_s2: Combat action: guard
+x11_s2_e0: [Attack] Defense
+x11_s3: Success: End state
+x11_s4: Attack: end state
+x11_s5: Replacement: end state
+x12: [PC] OBJ destruction
+x12_s0: Start state
+x12_s1: OBJ destruction: start
+x12_s1_w0: [Operation] Lock off
+x12_s2: OBJ destruction: end
+x12_s2_e0: [Operation] Lock on
+x12_s3: OBJ destruction: heavy attack
+x12_s3_e0: [Player Attack] Attack
+x12_s3_w0: [Operation] Lock off
+x12_s4: End state
+x13: [PC] Attack action: melee x bare hands
+x13_s0: Start state
+x13_s1: Attack action: start
+x13_s1_e0: [Random number] Random number generation
+x13_s1_e1: [Random number] Random number generation
+x13_s1_e2: [Attack] Defense
+x13_s2: Attack action: branch
+x13_s3: [PC] Attack: weak ⇒ weak ⇒ weak _SubState
+x13_s4: [PC] Attack: Jump_SubState
+x13_s5: [PC] Step_SubState
+x13_s6: [PC] Attack: weak _SubState
+x13_s7: [PC] Attack: weak ⇒ strong _SubState
+x13_s8: [PC] Attack: guard break ⇒ weak ⇒ weak _SubState
+x13_s9: [PC] Rolling _SubState
+x13_s10: [PC] Attack: Strong ⇒ Strong _SubState
+x13_s11: [PC] Back stub_SubState
+x13_s12: [PC] Attack: Parry_SubState
+x13_s13: Success: End state
+x13_s14: Failure: termination state
+x14: [PC] Combat action: melee x bare hands
+x14_s0: Start state
+x14_s1: Combat action: start
+x14_s1_e0: [Random number] Random number generation
+x14_s2: Combat action: weapon holding
+x14_s2_e0: [Timer] Start timer
+x14_s3: Combat action: two-handed
+x14_s3_e0: [Player attack] Change weapon holding
+x14_s4: Combat action: one-handed
+x14_s4_e0: [Player attack] Change weapon holding
+x14_s5: [PC] Approaching action_SubState
+x14_s6: [PC] Interaction: Proximity_SubState
+x14_s7: [PC] Defense action _SubState
+x14_s8: [PC] Attack action: melee x bare hands _SubState
+x14_s9: [PC] Spell seal _SubState
+x14_s10: End state
+x15: [PC] OBJ operation
+x15_p0: Navigation search target
+x15_s0: Start state
+x15_s1: OBJ operation: start
+x15_s2: OBJ operation: Start ladder
+x15_s2_e0: [Action] Use OBJ specified by Navimesh
+x15_s3: OBJ operation: ladder up / down
+x15_s3_w0: [Action] Climbing the ladder
+x15_s3_w1: [Action] Go down the ladder
+x15_s4: OBJ operation: using door
+x15_s4_e0: [Action] Use OBJ specified by Navimesh
+x15_s5: OBJ operation: Using rope
+x15_s5_e0: [Action] Use OBJ specified by Navimesh
+x15_s6: OBJ operation: failed
+x15_s6_e0: [Action] Leave OBJ
+x15_s7: OBJ operation: upper attack
+x15_s7_e0: [Player Attack] Attack
+x15_s8: OBJ operation: lower attack
+x15_s8_e0: [Player Attack] Attack
+x15_s9: OBJ operation: End of use
+x15_s9_e0: [Action] Leave OBJ
+x15_s10: OBJ operation: Navigation search
+x15_s10_e0: [Search] Navimesh
+x15_s11: OBJ operation: ladder back
+x15_s11_w0: [Action] Climbing the ladder
+x15_s11_w1: [Action] Go down the ladder
+x15_s12: OBJ use success state
+x15_s13: OBJ use failure state
+x16: [PC] Seal spell
+x16_p0: Right hand slot number
+x16_p1: Left hand slot number
+x16_s0: Start state
+x16_s1: Spell Seal: Start
+x16_s2: Spell Seal: Seal
+x16_s2_e0: [Player Attack] Switch Equipment
+x16_s3: Spell Seal: Removed
+x16_s3_e0: [Player Attack] Switch Equipment
+x16_s4: Spell Seal: End
+x16_s4_w0: [Move] Horizontal move_Lock_Random
+x16_s5: End state
+x17: [PC] Interaction: Recovery
+x17_s0: Start state
+x17_s1: Recovery: Start
+x17_s1_e0: [Timer] Start timer
+x17_s1_e1: [Random number] Random number generation
+x17_s2: Recovery: Withdrawal
+x17_s2_e0: [Random number] Random number generation
+x17_s2_w0: [Move] Horizontal move_Lock_Random
+x17_s3: Recovery: Item Use
+x17_s3_e0: [Attack] Melee attack
+x17_s4: [PC] Rolling _SubState
+x17_s5: End state

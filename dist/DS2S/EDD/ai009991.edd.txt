@@ -1,0 +1,149 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Initialization
+10_s2: Upper: Supports lower 10
+10_s2_e0: [General] lower-level state map switching
+10_s3: Top: Start
+10_s3_e0: [Search enemy] Character _ target setting
+10_s4: Higher rank: search enemy ON
+10_s4_e0: [Operation] Lock on
+10_s5: Top: with target
+10_s6: Top: death
+10_s6_e0: [Operation] death request
+10_s7: Check if moving down
+10_s8: Upper: Lower 1000 start
+10_s8_e0: [General] lower-level state map switching
+20: Lower logic 20
+20_s0: Start state
+20_s1: Lower initialization
+20_s1_e0: [General purpose] Sharing flag setting
+20_s2: Lower logic: start
+20_s3: Action: Long Distance_SubState
+20_s4: Action: Attack_SubState
+999: Lower logic 10
+999_s0: Start state
+999_s1: Lower initialization
+999_s1_e0: [General purpose] Sharing flag setting
+999_s2: Lower logic: start
+999_s3: Action: Long Distance_SubState
+999_s4: Action: Attack_SubState
+19: Lower logic 19
+19_s0: Start state
+19_s1: Lower initialization
+19_s1_e0: [General purpose] Sharing flag setting
+19_s2: Lower logic: start
+19_s3: Action: Long Distance_SubState
+19_s4: Action: Attack_SubState
+11: Lower logic 11
+11_s0: Start state
+11_s1: Lower initialization
+11_s1_e0: [General purpose] Sharing flag setting
+11_s2: Lower logic: start
+11_s3: Action: Long Distance_SubState
+11_s4: Action: Attack_SubState
+12: Lower logic 12
+12_s0: Start state
+12_s1: Lower initialization
+12_s1_e0: [General purpose] Sharing flag setting
+12_s2: Lower logic: start
+12_s3: Action: Long Distance_SubState
+12_s4: Action: Attack_SubState
+13: Lower logic 13
+13_s0: Start state
+13_s1: Lower initialization
+13_s1_e0: [General purpose] Sharing flag setting
+13_s2: Lower logic: start
+13_s3: Action: Long Distance_SubState
+13_s4: Action: Attack_SubState
+14: Lower logic 14
+14_s0: Start state
+14_s1: Lower initialization
+14_s1_e0: [General purpose] Sharing flag setting
+14_s2: Lower logic: start
+14_s3: Action: Long Distance_SubState
+14_s4: Action: Attack_SubState
+15: Lower logic 15
+15_s0: Start state
+15_s1: Lower initialization
+15_s1_e0: [General purpose] Sharing flag setting
+15_s2: Lower logic: start
+15_s3: Action: Long Distance_SubState
+15_s4: Action: Attack_SubState
+16: Lower logic 16
+16_s0: Start state
+16_s1: Lower initialization
+16_s1_e0: [General purpose] Sharing flag setting
+16_s2: Lower logic: start
+16_s3: Action: Long Distance_SubState
+16_s4: Action: Attack_SubState
+17: Lower logic 17
+17_s0: Start state
+17_s1: Lower initialization
+17_s1_e0: [General purpose] Sharing flag setting
+17_s2: Lower logic: start
+17_s3: Action: Long Distance_SubState
+17_s4: Action: Attack_SubState
+18: Lower logic 18
+18_s0: Start state
+18_s1: Lower initialization
+18_s1_e0: [General purpose] Sharing flag setting
+18_s2: Lower logic: start
+18_s3: Action: Long Distance_SubState
+18_s4: Action: Attack_SubState
+1000: Various lower logic
+1000_s0: Start state
+1000_s1: Lower initialization
+1000_s1_e0: [General purpose] Sharing flag setting
+1000_s2: Lower logic: start
+1000_s3: Branch
+1000_s3_e0: [Random number] Random number generation
+1000_s4: Action 10
+1000_s4_e0: [General purpose] Sharing flag setting
+1000_s5: Action 11
+1000_s5_e0: [General purpose] Sharing flag setting
+1000_s6: Action 12
+1000_s6_e0: [General purpose] Sharing flag setting
+1000_s7: Action: Long Distance_SubState
+1000_s8: Action: Attack_SubState
+x0: Behavior: long distance
+x0_s0: Start state
+x0_s1: Long-distance action: start
+x0_s2: Long-range action: dash in the direction of the player
+x0_s2_w0: [Move] Dash_Lock_Random
+x0_s3: Long-distance action: End
+x0_s4: End state
+x1: Action: Attack
+x1_s0: Start state
+x1_s1: Action branch
+x1_s2: Action 10
+x1_s2_e0: [Attack] Melee attack
+x1_s3: Action 11
+x1_s3_e0: [Attack] Melee attack
+x1_s4: Action 12
+x1_s4_e0: [Attack] Melee attack
+x1_s5: Action 13
+x1_s5_e0: [Attack] Melee attack
+x1_s6: Action 14
+x1_s6_e0: [Attack] Melee attack
+x1_s7: Action 15
+x1_s7_e0: [Attack] Melee attack
+x1_s8: Action 16
+x1_s8_e0: [Attack] Melee attack
+x1_s9: Action 17
+x1_s9_e0: [Attack] Melee attack
+x1_s10: Action 18
+x1_s10_e0: [Attack] Melee attack
+x1_s11: Action 19
+x1_s11_e0: [Attack] Melee attack
+x1_s12: Action 20
+x1_s12_e0: [Attack] Melee attack
+x1_s13: Waiting for the end of the attack
+x1_s14: Danger
+x1_s14_p0_0: [Debug] Log output
+x1_s14_p0_1: [Attack] Attack cancel
+x1_s15: Cancel
+x1_s15_p0_0: [Debug] Ticker output
+x1_s15_p0_1: [Attack] Attack cancel
+x1_s16: End of attack
+x1_s16_e0: [Attack] Reset attack failure
+x1_s17: End state

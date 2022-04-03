@@ -1,0 +1,109 @@
+10: Higher state
+10_s0: Start state
+10_s1: Higher state: start
+10_s2: Upper state: branch
+10_s3: Upper: [Exception handling]
+10_s3_e0: [Debug] Log output
+10_s3_e1: [General] lower-level state map switching
+10_s4: Upper state: Start state release
+10_s4_e0: [Action] Cancel activation state
+10_s5: Higher rank: STEP1_SubState
+10_s6: Top: Initial start_SubState
+10_s7: Higher rank: STEP2_SubState
+10_s8: Top: First Contact_SubState
+11: Monitoring the number of short-range players
+11_s0: Start state
+11_s1: Player Watch: Start
+11_s2: Player Watch: Standby
+11_s3: Player Monitoring: Target Save
+11_s3_e0: [Search] Save target
+11_s3_x0: [Search] Clear the target
+11_s4: Player Surveillance: Player 1 Search
+11_s4_w0: [Search] Player_Target setting
+11_s5: Player monitoring: Player 1: Addition (0 → 1)
+11_s5_e0: [General purpose] Sharing flag setting
+11_s6: Player monitoring: Initialization
+11_s6_e0: [General purpose] Sharing flag setting
+11_s6_e1: [General purpose] Sharing flag setting
+11_s7: Player monitoring: Player 2: Addition (0 → 1)
+11_s7_e0: [General purpose] Sharing flag setting
+11_s8: Player Surveillance: Player 2 Search
+11_s8_w0: [Search] Player_Target setting
+11_s9: Player monitoring: Player 2: Addition (1 → 2)
+11_s9_e0: [General purpose] Sharing flag setting
+11_s10: Player Surveillance: Player 3 search enemies
+11_s10_w0: [Search] Player_Target setting
+11_s11: Player monitoring: Player 3: Addition (0 → 1)
+11_s11_e0: [General purpose] Sharing flag setting
+11_s12: Player monitoring: Player 3: Addition (1 → 2)
+11_s12_e0: [General purpose] Sharing flag setting
+11_s13: Player monitoring: Player 3: Addition (2 → 3)
+11_s13_e0: [General purpose] Sharing flag setting
+11_s14: Player monitoring: waiting for re-monitoring
+11_s14_e0: [General purpose] Sharing flag setting
+11_s15: Player monitoring: target load
+11_s15_e0: [Search] Load target
+12: Attack monitoring
+12_s0: Start state
+12_s1: Wait for attack
+12_s1_e0: [General purpose] Sharing flag setting
+12_s2: Proximity lottery
+12_s2_e0: [Random number] Random number generation
+12_s3: Flag setting (super reaction)
+12_s3_e0: [General purpose] Sharing flag setting
+12_s4: Waiting for termination
+12_s5: Flag setting (fire interrupt: avoidable)
+12_s5_e0: [General purpose] Sharing flag setting
+12_s6: Shooting lottery
+12_s6_e0: [Random number] Random number generation
+12_s7: Flag setting (fire interrupt: evasion impossible)
+12_s7_e0: [General purpose] Sharing flag setting
+x1: Top: Step action
+x1_p0: Lower state ID
+x1_s0: Start state
+x1_s1: Step action: start
+x1_s1_e0: [General] lower-level state map switching
+x1_s1_e1: [General purpose] Sharing flag setting
+x1_s2: Step action: target
+x1_s2_e0: [General purpose] Sharing flag setting
+x1_s2_e1: [General purpose] Sharing flag setting
+x1_s3: Step action: no target
+x1_s3_e0: [General purpose] Sharing flag setting
+x1_s4: [LIB] Search enemy (boss): Limited in view (HP low) _SubState
+x1_s5: [LIB] Searching enemy (boss): Limited in view (short distance) _SubState
+x1_s6: End state
+x2: Top: First contact
+x2_s0: Start state
+x2_s1: FC: Event flag activation
+x2_s2: FC: Gen specified startup error
+x2_s3: FC: Logic startup error
+x2_s4: FC: Cancel startup animation
+x2_s4_e0: [Action] Cancel activation state
+x2_s5: FC: Start initialization setting
+x2_s5_e0: [Search] Overwrite the generator position with the current position
+x2_s5_e1: [General purpose] Sharing flag setting
+x2_s5_e2: [General] Logic group flag setting
+x2_s5_w0: [Search] Player_Target setting
+x2_s6: FC: Start condition branch
+x2_s7: FC: distance / damage activation
+x2_s8: End state
+x0: [LIB] Searching enemy (boss): limited in view
+x0_p0: Search priority
+x0_p1: Search distance
+x0_s0: Start state
+x0_s1: Search enemy: start
+x0_s1_e0: [Operation] Lock off
+x0_s2: Search enemies: players
+x0_s2_w0: [Search enemy] Character _ target setting
+x0_s3: Search enemy: target save
+x0_s3_x0: [Search] Clear the target
+x0_s3_w0: [Search] Save target
+x0_s4: Search enemy: target load
+x0_s4_w0: [Search] Load target
+x0_s5: Search enemy: host target
+x0_s5_w0: [Search] Player_Target setting
+x0_s6: Search enemy: Discovery end
+x0_s6_e0: [Operation] Lock on
+x0_s7: Search enemy: undiscovered end
+x0_s8: Search for: Discovery: End State
+x0_s9: Search enemy: not found: end state

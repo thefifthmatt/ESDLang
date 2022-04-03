@@ -1,0 +1,101 @@
+10: [Test] Moving approach
+10_s0: Start state
+10_s1: Status
+10_s2: Search (Navimesh)
+10_s2_e0: [Search] Navimesh
+10_s3: Search (success)
+10_s4: Search (failed)
+10_s5: Start moving
+10_s6: Move (standby)
+10_s6_w0: [General purpose] Sharing flag setting
+10_s7: Movement (sailor movement)
+10_s7_w0: [Move] Horizontal move_Navimesh
+10_s7_w1: [General purpose] Sharing flag setting
+10_s8: Movement (lock sailor movement)
+10_s8_w0: [Move] Horizontal move_Lock_Navimesh
+10_s8_w1: [General purpose] Sharing flag setting
+10_s9: Moving (walking)
+10_s9_w0: [Move] Normal move Navi mesh
+10_s9_w1: [General purpose] Sharing flag setting
+10_s10: Move (lock move)
+10_s10_w0: [Move] Lock move Navi mesh
+10_s10_w1: [General purpose] Sharing flag setting
+10_s11: Move (dash)
+10_s11_w0: [Move] Dash_Navimesh
+10_s11_w1: [General purpose] Sharing flag setting
+10_s12: Move (rock dash)
+10_s12_w0: [Move] Dash_Lock_Navimesh
+10_s12_w1: [General purpose] Sharing flag setting
+10_s13: Move end (standby)
+20: [Test] Moving approach (normal)
+20_s0: Start state
+20_s1: start
+20_s1_w0: [Search] Player_Target setting
+20_s2: Navigation search
+20_s2_e0: [Search] Navimesh
+20_s3: Search successful
+20_s3_e0: [Move] Reset move failure
+20_s4: Search failed
+20_s4_e0: [Debug] Log output
+20_s5: During the move
+20_s5_w0: [Move] Normal move Navi mesh
+21: [Test] Moving approach (normal lock)
+21_s0: Start state
+21_s1: start
+21_s1_w0: [Search] Player_Target setting
+21_s2: Navigation search
+21_s2_e0: [Search] Navimesh
+21_s3: Search successful
+21_s3_e0: [Move] Reset move failure
+21_s4: Search failed
+21_s4_e0: [Debug] Log output
+21_s5: During the move
+21_s5_w0: [Move] Lock move Navi mesh
+22: [Test] Moving approach (dash)
+22_s0: Start state
+22_s1: start
+22_s1_w0: [Search] Player_Target setting
+22_s2: Navigation search
+22_s2_e0: [Search] Navimesh
+22_s3: Search successful
+22_s3_e0: [Move] Reset move failure
+22_s4: Search failed
+22_s4_e0: [Debug] Log output
+22_s5: During the move
+22_s5_w0: [Move] Dash_Navimesh
+23: [Test] Moving approach (dash lock)
+23_s0: Start state
+23_s1: start
+23_s1_w0: [Search] Player_Target setting
+23_s2: Navigation search
+23_s2_e0: [Search] Navimesh
+23_s3: Search successful
+23_s3_e0: [Move] Reset move failure
+23_s4: Search failed
+23_s4_e0: [Debug] Log output
+23_s5: During the move
+23_s5_w0: [Move] Dash_Lock_Navimesh
+24: [Test] Moving approach (horizontal)
+24_s0: Start state
+24_s1: start
+24_s1_w0: [Search] Player_Target setting
+24_s2: Navigation search
+24_s2_e0: [Search] Navimesh
+24_s3: Search successful
+24_s3_e0: [Move] Reset move failure
+24_s4: Search failed
+24_s4_e0: [Debug] Log output
+24_s5: During the move
+24_s5_w0: [Move] Horizontal move_Navimesh
+25: [Test] Moving approach (horizontal lock)
+25_s0: Start state
+25_s1: start
+25_s1_w0: [Search] Player_Target setting
+25_s2: Navigation search
+25_s2_e0: [Search] Navimesh
+25_s3: Search successful
+25_s3_e0: [Move] Reset move failure
+25_s4: Search failed
+25_s4_e0: [Debug] Log output
+25_s5: During the move
+25_s5_w0: [Move] Horizontal move_Lock_Navimesh

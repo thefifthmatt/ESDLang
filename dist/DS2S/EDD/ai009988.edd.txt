@@ -1,0 +1,136 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s1_e0: [General] lower-level state map switching
+10_s2: Top: with target
+20: Lower logic
+20_s0: Start state
+20_s1: Start action
+20_s1_e0: [General purpose] Sharing flag setting
+20_s2: Waiting
+20_s3: Status
+20_s4: Long distance action 2_SubState
+20_s5: Short distance action_SubState
+20_s6: Form change_SubState
+20_s7: Attack: Standing form _SubState
+20_s8: Attack: Sitting Form_SubState
+21: Lower logic: Behavior test
+21_s0: Start state
+21_s1: Action: Start
+21_s1_e0: [General purpose] Sharing flag setting
+21_s2: Waiting
+21_s2_w0: [Move] Lock move random
+21_s3: Short distance action_SubState
+21_s4: Attack: _SubState for test
+x0: Long-distance action 2
+x0_s0: Start state
+x0_s1: Long-distance action: start
+x0_s2: Long distance action: dash
+x0_s2_w0: [Move] Dash_random
+x0_s3: Long-distance action: End
+x0_s4: End state
+x1: Short range action
+x1_s0: Start state
+x1_s1: Short range action: start
+x1_s2: Short distance action: walking
+x1_s2_w0: [Move] Lock move random
+x1_s3: Short range action: End
+x1_s4: End state
+x2: Form change
+x2_s0: Start state
+x2_s1: Form change: start
+x2_s2: Form change: standing ⇒ sitting
+x2_s2_e0: [General purpose] Sharing flag setting
+x2_s2_w0: [Attack] Melee attack
+x2_s3: Form change: sitting ⇒ standing
+x2_s3_e0: [General purpose] Sharing flag setting
+x2_s3_w0: [Attack] Melee attack
+x2_s4: Form change: finished
+x2_s5: End state
+x3: Attack: standing form
+x3_s0: Start state
+x3_s1: Begin attack
+x3_s1_e0: [General purpose] Sharing flag setting
+x3_s2: Attack: Combo 1
+x3_s2_w0: [Attack] Melee attack
+x3_s3: Attack: Combo 1 standby
+x3_s3_e0: [General purpose] Sharing flag setting
+x3_s4: Attack: Combo 2
+x3_s4_w0: [Attack] Melee attack
+x3_s5: Attack: Combo 2 standby
+x3_s5_e0: [General purpose] Sharing flag setting
+x3_s6: Attack: Combo 3
+x3_s6_w0: [Attack] Melee attack
+x3_s7: Attack: Combo 3 standby
+x3_s7_e0: [General purpose] Sharing flag setting
+x3_s8: Attack: Action 13
+x3_s8_w0: [Attack] Melee attack
+x3_s9: Attack: Wait for action 13
+x3_s9_e0: [General purpose] Sharing flag setting
+x3_s10: Attack: Action 19
+x3_s10_w0: [Attack] Melee attack
+x3_s11: Attack: action 19 wait
+x3_s11_e0: [General purpose] Sharing flag setting
+x3_s12: Attack: Action 20
+x3_s12_w0: [Attack] Melee attack
+x3_s13: Attack: action 20 wait
+x3_s13_e0: [General purpose] Sharing flag setting
+x3_s14: Attack: Action 21
+x3_s14_w0: [Attack] Melee attack
+x3_s15: Attack: action 21 wait
+x3_s16: Attack: End
+x3_s17: Form change_SubState
+x3_s18: End state
+x4: Attack: sitting form
+x4_s0: Start state
+x4_s1: Begin attack
+x4_s1_e0: [General purpose] Sharing flag setting
+x4_s2: Attack: Action 14
+x4_s2_w0: [Attack] Melee attack
+x4_s3: Attack: action 14 wait
+x4_s3_e0: [General purpose] Sharing flag setting
+x4_s4: Attack: Action 15
+x4_s4_w0: [Attack] Melee attack
+x4_s5: Attack: action 15 wait
+x4_s5_e0: [General purpose] Sharing flag setting
+x4_s6: Attack: Action Combo 17
+x4_s6_w0: [Attack] Melee attack
+x4_s7: Attack: Action Combo 17 Standby
+x4_s7_e0: [General purpose] Sharing flag setting
+x4_s8: Attack: Action 18
+x4_s8_w0: [Attack] Melee attack
+x4_s9: Attack: Wait for action 18
+x4_s9_e0: [General purpose] Sharing flag setting
+x4_s10: Attack: Action 22
+x4_s10_w0: [Attack] Melee attack
+x4_s11: Attack: Wait for action 22
+x4_s11_e0: [General purpose] Sharing flag setting
+x4_s12: Attack: Action 23
+x4_s12_w0: [Attack] Melee attack
+x4_s13: Attack: Wait for action 23
+x4_s14: Attack: End
+x4_s15: Status
+x4_s16: Form change_SubState
+x4_s17: End state
+x5: Attack: For testing
+x5_s0: Start state
+x5_s1: Begin attack
+x5_s2: Attack: Action 25
+x5_s2_w0: [Attack] Melee attack
+x5_s3: Attack: Action 26
+x5_s3_w0: [Attack] Melee attack
+x5_s4: Attack: Action 27
+x5_s4_w0: [Attack] Melee attack
+x5_s5: Attack: Action 28
+x5_s5_w0: [Attack] Melee attack
+x5_s6: Attack: Standby
+x5_s7: Attack: End
+x5_s8: Flag 25⇒26
+x5_s8_e0: [General purpose] Sharing flag setting
+x5_s9: Flag 26⇒27
+x5_s9_e0: [General purpose] Sharing flag setting
+x5_s10: Flag 27⇒28
+x5_s10_e0: [General purpose] Sharing flag setting
+x5_s11: Flag 28⇒25
+x5_s11_e0: [General purpose] Sharing flag setting
+x5_s12: End state

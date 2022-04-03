@@ -1,0 +1,275 @@
+11: Lower: STEP1
+11_s0: Start state
+11_s1: Lower: End of action
+11_s2: Lower: STEP2 transition
+11_s2_e0: [General purpose] Sharing flag setting
+11_s2_e1: [General purpose] Sharing flag setting
+11_s2_e2: [General purpose] Sharing flag setting
+11_s3: Lower: no action
+11_s4: Lower: Action start_SubState
+20: Lower: STEP2
+20_s0: Start state
+20_s1: Lower: End of action
+20_s1_e0: [General purpose] Sharing flag setting
+20_s1_e1: [General purpose] Sharing flag setting
+20_s2: Lower: STEP3 transition
+20_s2_e0: [General purpose] Sharing flag setting
+20_s2_e1: [General purpose] Sharing flag setting
+20_s2_e2: [General purpose] Sharing flag setting
+20_s3: Lower: STEP2 action_SubState
+20_s4: Lower: Action start_SubState
+90: Lower: STEP9 breath attack
+90_s0: Start state
+90_s1: Lower: Start action
+90_s1_e0: [General purpose] Sharing flag setting
+90_s2: Lower: Action 23: Flapping breath (retreat)
+90_s2_e0: [Attack] Melee attack
+90_s3: Lower: End special action
+90_s3_e0: [Timer] Start timer
+90_s3_e1: [General purpose] Sharing flag setting
+90_s3_e2: [General purpose] Sharing flag setting
+90_s4: Lower: Prepare for shooting
+90_s5: Lower: Action 24: Flapping breath (right)
+90_s5_e0: [Attack] Melee attack
+90_s6: Lower: Action 25: Flapping breath (left)
+90_s6_e0: [Attack] Melee attack
+30: Lower: STEP3
+30_s0: Start state
+30_s1: Lower: End of action
+30_s1_e0: [General purpose] Sharing flag setting
+30_s1_e1: [General purpose] Sharing flag setting
+30_s2: Lower: STEP2 action_SubState
+30_s3: Lower: Action start_SubState
+10: Lower state: conversation state
+10_s0: Start state
+10_s1: [Lib] Conversation state _SubState
+x5: Attack (STEP2)
+x5_s0: Start state
+x5_s0_e0: [Random number] Random number generation
+x5_s0_e1: [Random number] Random number generation
+x5_s0_e2: [Random number] Random number generation
+x5_s0_e3: [Random number] Random number generation
+x5_s1: ▼ Action 11: Step on the right front leg
+x5_s1_e0: [Attack] Melee attack
+x5_s1_e1: [General purpose] Sharing flag setting
+x5_s2: ▼ Action 12: Step on the left front leg
+x5_s2_e0: [Attack] Melee attack
+x5_s2_e1: [General purpose] Sharing flag setting
+x5_s3: ▼ Action 13: Step on the right hind leg
+x5_s3_e0: [Attack] Melee attack
+x5_s3_e1: [General purpose] Sharing flag setting
+x5_s4: ▼ Action 14: Step on the left hind leg
+x5_s4_e0: [Attack] Melee attack
+x5_s4_e1: [General purpose] Sharing flag setting
+x5_s5: ▼ Action 10: Biting
+x5_s5_e0: [Attack] Melee attack
+x5_s5_e1: [General purpose] Sharing flag setting
+x5_s6: ▼ Action 21: Right forward breath
+x5_s6_e0: [Attack] Melee attack
+x5_s6_e1: [General purpose] Sharing flag setting
+x5_s7: ▼ Action 20: Breath forward
+x5_s7_e0: [Attack] Melee attack
+x5_s7_e1: [General purpose] Sharing flag setting
+x5_s8: Attack: Branch
+x5_s9: ▼ Action 22: Left front breath
+x5_s9_e0: [Attack] Melee attack
+x5_s9_e1: [General purpose] Sharing flag setting
+x5_s10: ▼ Combo 1: Slap the tail
+x5_s10_e0: [General purpose] Sharing flag setting
+x5_s10_e1: [Attack] Melee attack
+x5_s11: Clear flag
+x5_s11_e0: [General purpose] Sharing flag setting
+x5_s12: ▼ Action 28: Breath under the stomach
+x5_s12_e0: [General purpose] Sharing flag setting
+x5_s12_e1: [Attack] Melee attack
+x5_s13: ▼ Action 27: Breathing breath (directly above)
+x5_s13_e0: [General purpose] Sharing flag setting
+x5_s13_e1: [Attack] Melee attack
+x5_s14: Attack: in action
+x5_s15: Action lottery 1
+x5_s15_e0: [Random number] Random number generation
+x5_s15_e1: [Random number] Random number generation
+x5_s15_e2: [Random number] Random number generation
+x5_s16: Action lottery 2
+x5_s16_e0: [Random number] Random number generation
+x5_s16_e1: [Random number] Random number generation
+x5_s16_e2: [Random number] Random number generation
+x5_s17: Action lottery 3
+x5_s17_e0: [Random number] Random number generation
+x5_s17_e1: [Random number] Random number generation
+x5_s17_e2: [Random number] Random number generation
+x5_s18: Action lottery 4
+x5_s18_e0: [Random number] Random number generation
+x5_s18_e1: [Random number] Random number generation
+x5_s18_e2: [Random number] Random number generation
+x5_s19: Action lottery 5
+x5_s19_e0: [Random number] Random number generation
+x5_s19_e1: [Random number] Random number generation
+x5_s19_e2: [Random number] Random number generation
+x5_s19_e3: [Random number] Random number generation
+x5_s20: Action lottery 6
+x5_s20_e0: [Random number] Random number generation
+x5_s20_e1: [Random number] Random number generation
+x5_s20_e2: [Random number] Random number generation
+x5_s21: Action lottery 7
+x5_s21_e0: [Random number] Random number generation
+x5_s21_e1: [Random number] Random number generation
+x5_s21_e2: [Random number] Random number generation
+x5_s21_e3: [Random number] Random number generation
+x5_s22: Action lottery 8
+x5_s22_e0: [Random number] Random number generation
+x5_s22_e1: [Random number] Random number generation
+x5_s23: ▼ Action 23: Flapping breath (retreat) _SubState
+x5_s23_e0: [General purpose] Sharing flag setting
+x5_s24: ▼ Action 24: Flapping breath (right) _SubState
+x5_s24_e0: [General purpose] Sharing flag setting
+x5_s25: ▼ Action 25: Flapping breath (left) _SubState
+x5_s25_e0: [General purpose] Sharing flag setting
+x5_s26: ▼ Action 26: Flapping breath (forward) _SubState
+x5_s26_e0: [General purpose] Sharing flag setting
+x5_s27: ▼ Action 1: Flap and move right_SubState
+x5_s27_e0: [General purpose] Sharing flag setting
+x5_s27_e1: [Operation] Lock off
+x5_s27_w0: [Search] Generation Generator_Target Setting
+x5_s28: ▼ Action 2: Flap and move left_SubState
+x5_s28_e0: [General purpose] Sharing flag setting
+x5_s28_e1: [Operation] Lock off
+x5_s28_w0: [Search] Generation Generator_Target Setting
+x5_s29: End state
+x6: Lower: STEP2 action
+x6_s0: Start state
+x6_s1: Step action: start
+x6_s1_e0: [Attack] Damage lower logic reset setting
+x6_s2: Step action: branch
+x6_s3: Step action: end
+x6_s4: Attack (STEP2) _SubState
+x6_s5: End state
+x7: Lower: Start action
+x7_s0: Start state
+x7_s0_e0: [Attack] Damage lower logic reset setting
+x7_s1: Step action: start
+x7_s1_e0: [General purpose] Sharing flag setting
+x7_s1_e1: [Move] Reset move failure
+x7_s2: End state
+x8: Attack: Navigation confirmation attack
+x8_p0: Attack type
+x8_p1: Confirmation direction
+x8_p2: Confirmation distance
+x8_p3: Confirmation angle
+x8_s0: Start state
+x8_s1: Begin attack
+x8_s2: Attack: after confirmation
+x8_s2_w0: [Attack] Random avoidance
+x8_s3: Attack: Execute
+x8_s3_e0: [Attack] Melee attack
+x8_s4: Attack: Confirm before
+x8_s4_w0: [Attack] Random avoidance
+x8_s5: Attack: Confirm left
+x8_s5_w0: [Attack] Random avoidance
+x8_s6: Attack: Check direction
+x8_s6_w0: [Attack] Random avoidance_Angle designation
+x8_s7: Attack: Left front confirmation
+x8_s7_w0: [Attack] Random avoidance
+x8_s8: Attack: check right front
+x8_s8_w0: [Attack] Random avoidance
+x8_s9: Attack: Confirm left rear
+x8_s9_w0: [Attack] Random avoidance
+x8_s10: Attack: right rear view
+x8_s10_w0: [Attack] Random avoidance
+x8_s11: Attack: Running
+x8_s12: Attack successful
+x8_s13: Attack failed
+x8_s14: time out
+x0: [Lib] Conversation state
+x0_p0: Activation state 2 damage action
+x0_p1: Activation state 3 damage action
+x0_p2: Activation State 4 Damage Action
+x0_p3: Activation State 5 Damage Action
+x0_p4: Activation State 6 Damage Action
+x0_p5: Activation State 7 Damage Action
+x0_p6: Activation State 8 Damage Action
+x0_s0: Start state
+x0_s1: Conversation state: start
+x0_s1_e0: [Attack] Damage lower logic reset setting
+x0_s2: [Lib] Conversation state (live) _SubState
+x0_s3: [Lib] Conversation state: dedicated damage _SubState
+x0_s4: End state
+x1: [Lib] Conversation state (live)
+x1_s0: Start state
+x1_s1: Conversation state: waiting
+x1_s1_e0: [Attack] Combo attack cancel
+x1_s1_e1: [Attack] Blade dash cancellation
+x1_s1_w0: [Attack] Attack cancel
+x1_s2: Conversation state: start
+x1_s3: Conversation behavior: Behavior 0_SubState
+x1_s4: Conversation behavior: Behavior 1_SubState
+x1_s5: Conversation behavior: Behavior 2_SubState
+x1_s6: Conversation behavior: Behavior 3_SubState
+x1_s7: Conversation behavior: Behavior 4_SubState
+x1_s8: Conversation behavior: Behavior 5_SubState
+x1_s9: Conversation behavior: Behavior 6_SubState
+x1_s10: Conversation behavior: Behavior 7_SubState
+x1_s11: Conversation behavior: Behavior 8_SubState
+x1_s12: Conversation behavior: Behavior 9_SubState
+x1_s13: Conversation behavior: Behavior 10_SubState
+x1_s14: Conversation behavior: Behavior 11_SubState
+x1_s15: Conversation behavior: Behavior 12_SubState
+x1_s16: Conversation behavior: Behavior 13_SubState
+x1_s17: Conversation behavior: Behavior 14_SubState
+x1_s18: Conversation behavior: Behavior 15_SubState
+x1_s19: Conversation behavior: Behavior 16_SubState
+x1_s20: Conversation behavior: Behavior 17_SubState
+x1_s21: Conversation behavior: Behavior 18_SubState
+x1_s22: Conversation behavior: Behavior 19_SubState
+x1_s23: Conversation behavior: Behavior 20_SubState
+x1_s24: End state
+x2: [Lib] Conversation behavior
+x2_p0: Attack type
+x2_s0: Start state
+x2_s1: Conversation behavior: start
+x2_s1_e0: [Attack] Reset attack failure
+x2_s2: Conversation behavior: behavior setting
+x2_s2_w0: [Attack] Melee attack
+x2_s3: Conversation behavior: action waiting
+x2_s4: Conversation behavior: end of behavior
+x2_s5: Conversation behavior: behavior cancellation
+x2_s5_w0: [Attack] Attack cancel
+x2_s5_w1: [Attack] Blade dash cancellation
+x2_s5_w2: [Attack] Non-combat action ends
+x2_s6: Conversation action: action cancellation wait
+x2_s7: Conversation behavior: cancel
+x2_s7_e0: [Attack] Attack cancel
+x2_s8: End state
+x3: [Lib] Conversation state: dedicated damage
+x3_p0: Activation state 2 damage action
+x3_p1: Activation state 3 damage action
+x3_p2: Activation State 4 Damage Action
+x3_p3: Activation State 5 Damage Action
+x3_p4: Activation State 6 Damage Action
+x3_p5: Activation State 7 Damage Action
+x3_p6: Activation State 8 Damage Action
+x3_s0: Start state
+x3_s1: Dedicated use: start
+x3_s1_e0: [Attack] Damage information reset
+x3_s1_e1: [Attack] Reset attack failure
+x3_s2: Exclusive use: action cancellation
+x3_s2_e0: [Attack] Attack cancel
+x3_s3: Dedicated use: Cancel action: Wait
+x3_s4: Dedicated use: damage branch
+x3_s5: Exclusive use: end
+x3_s6: Activation State 3 Damage Action_SubState
+x3_s7: Activation State 4 Damage Action_SubState
+x3_s8: Activation State 5 Damage Action_SubState
+x3_s9: Activation State 2 Damage Action_SubState
+x3_s10: Activation State 6 Damage Action_SubState
+x3_s11: Activation State 7 Damage Action_SubState
+x3_s12: Activation State 8 Damage Action_SubState
+x3_s13: NPC (player) damage action_SubState
+x3_s14: End state
+x4: Damage regeneration
+x4_p0: Damage: Attack type
+x4_s0: Start state
+x4_s1: Damage regeneration: Attack regeneration
+x4_s1_e0: [Attack] Melee attack
+x4_s2: Damage Play: Attack Play: Standby
+x4_s3: End state

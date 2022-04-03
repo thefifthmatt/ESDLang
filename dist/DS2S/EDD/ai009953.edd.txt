@@ -1,0 +1,69 @@
+10: Lower logic
+10_s0: Start state
+10_s1: Lower: Start
+10_s2: Lower: branch
+10_s3: Lower: action waiting
+10_s3_w0: [Turning] Turning in place_Lock
+10_s4: Short distance action_SubState
+10_s5: Long distance action_SubState
+x0: Short range action
+x0_s0: Start state
+x0_s1: Short range action: start
+x0_s2: Short-distance action: branch
+x0_s3: Near: Attack _SubState
+x0_s4: Near: Retreat_SubState
+x0_s5: Before Attack: Pause _SubState
+x0_s6: End state
+x1: Long distance action
+x1_s0: Start state
+x1_s1: Long distance: start
+x1_s2: Long distance: Navigation search
+x1_s2_e0: [Search] Navimesh
+x1_s3: Long distance: navigation failure movement
+x1_s3_w0: [Move] Normally move to the target world correction position
+x1_s4: Long Distance: Successful Navigation
+x1_s4_w0: [Move] Lock move Navi mesh
+x1_s5: Long distance: end
+x1_s6: End state
+x2: Nearby: attack
+x2_s0: Start state
+x2_s1: Begin attack
+x2_s2: Attack: Attack waiting
+x2_s3: Attack action 10
+x2_s3_w0: [Attack] Melee attack
+x2_s4: End state
+x3: Near: retreat
+x3_s0: Start state
+x3_s1: Retreat: start
+x3_s2: Retreat: Retreating
+x3_s2_w0: [Move] Horizontal move_Lock_Random
+x3_s3: Retreat: End
+x3_s4: Timer 2 start_SubState
+x3_s5: Timer 2 stop_SubState
+x3_s6: End state
+x4: Before the attack: Pause
+x4_s0: Start state
+x4_s1: Pause: Start
+x4_s2: Padding: distance discrimination
+x4_s3: Close packing: near
+x4_s3_w0: [Move] Lock horizontally to the target correction position
+x4_s4: Pause: Navigation search
+x4_s4_e0: [Search] Navimesh
+x4_s5: Pause: Navi failed
+x4_s5_w0: [Move] Lock to target correction position
+x4_s6: Closed: Navi successful
+x4_s6_w0: [Move] Horizontal move_Navimesh
+x4_s7: Close-up: finished
+x4_s8: End state
+x5: Start timer 2
+x5_s0: Start state
+x5_s1: Timer 2: Start
+x5_s1_e0: [Timer] Start timer
+x5_s2: Timer 2: End
+x5_s3: End state
+x6: Timer 2 stop
+x6_s0: Start state
+x6_s1: Timer 2: Stop
+x6_s1_e0: [Timer] Stop timer
+x6_s2: Timer 2: End
+x6_s3: End state

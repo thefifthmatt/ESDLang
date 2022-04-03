@@ -1,0 +1,62 @@
+10: Higher state
+10_s0: Start state
+10_s1: Higher state: start
+10_s2: Upper state: branch
+10_s3: Upper: [Exception handling]
+10_s3_e0: [Debug] Log output
+10_s3_e1: [General] lower-level state map switching
+10_s4: Higher level: Activation state release
+10_s4_w0: [Action] Cancel activation state
+10_s5: Higher rank: STEP1_SubState
+10_s6: Top: Initial start_SubState
+10_s7: Top: First Contact_SubState
+10_s8: Higher rank: STEP2_SubState
+x1: Top: Step action
+x1_p0: Lower state ID
+x1_s0: Start state
+x1_s1: Step action: start
+x1_s1_e0: [General] lower-level state map switching
+x1_s1_e1: [General purpose] Sharing flag setting
+x1_s2: Step action: target
+x1_s2_e0: [Operation] Lock on
+x1_s2_e1: [General purpose] Sharing flag setting
+x1_s3: Step action: no target
+x1_s3_e0: [Operation] Lock off
+x1_s4: Step action: search enemy branch
+x1_s4_e0: [General purpose] Sharing flag setting
+x1_s5: [LIB] Search enemy (boss): Limited _SubState in view
+x1_s6: End state
+x2: Top: First contact
+x2_s0: Start state
+x2_s1: FC: Start condition
+x2_s2: FC: Gen specified startup error
+x2_s3: FC: Cancel startup animation
+x2_s3_w0: [Action] Cancel activation state
+x2_s4: FC: Start initialization setting
+x2_s4_e0: [Search] Overwrite the generator position with the current position
+x2_s4_e1: [General purpose] Sharing flag setting
+x2_s4_e2: [General purpose] Sharing flag setting
+x2_s4_e3: [General purpose] Sharing flag setting
+x2_s4_w0: [Search] Player_Target setting
+x2_s5: FC: Logic startup error
+x2_s6: End state
+x0: [LIB] Searching enemy (boss): limited in view
+x0_p0: Search priority
+x0_p1: Search distance
+x0_s0: Start state
+x0_s1: Search enemy: start
+x0_s1_e0: [Operation] Lock off
+x0_s2: Search enemies: players
+x0_s2_w0: [Search enemy] Character _ target setting
+x0_s3: Search enemy: target save
+x0_s3_x0: [Search] Clear the target
+x0_s3_w0: [Search] Save target
+x0_s4: Search enemy: target load
+x0_s4_w0: [Search] Load target
+x0_s5: Search enemy: host target
+x0_s5_w0: [Search] Player_Target setting
+x0_s6: Search enemy: Discovery end
+x0_s6_e0: [Operation] Lock on
+x0_s7: Search enemy: undiscovered end
+x0_s8: Search for: Discovery: End State
+x0_s9: Search enemy: not found: end state

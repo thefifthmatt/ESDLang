@@ -1,0 +1,82 @@
+10: Higher state
+10_s0: Start state
+10_s1: Higher state: start
+10_s2: Upper state: branch
+10_s3: Upper: [Exception handling]
+10_s3_e0: [Debug] Log output
+10_s3_e1: [General] lower-level state map switching
+10_s4: Higher level: Activation state release
+10_s4_e0: [Action] Cancel activation state
+10_s5: Top: Initial start_SubState
+10_s6: Higher rank: STEP1_SubState
+10_s7: Higher rank: STEP2_SubState
+10_s8: Top: First Contact_SubState
+11: Attack monitoring
+11_s0: Start state
+11_s1: Wait for attack
+11_s1_e0: [General purpose] Sharing flag setting
+11_s2: Proximity lottery
+11_s2_e0: [Random number] Random number generation
+11_s3: Flag setting (super reaction)
+11_s3_e0: [General purpose] Sharing flag setting
+11_s4: Waiting for termination
+11_s5: Flag setting (fire interrupt: avoidable)
+11_s5_e0: [General purpose] Sharing flag setting
+11_s6: Shooting lottery
+11_s6_e0: [Random number] Random number generation
+11_s7: Flag setting (fire interrupt: evasion impossible)
+11_s7_e0: [General purpose] Sharing flag setting
+x1: Top: First contact
+x1_s0: Start state
+x1_s1: FC: Group activation
+x1_s1_e0: [General] Logic group flag setting
+x1_s2: FC: Start condition
+x1_s3: FC: Gen specified startup error
+x1_s4: FC: Cancel startup animation
+x1_s4_e0: [Action] Cancel activation state
+x1_s5: FC: Start initialization setting
+x1_s5_e0: [Search] Overwrite the generator position with the current position
+x1_s5_e1: [General purpose] Sharing flag setting
+x1_s5_e2: [General purpose] Sharing flag setting
+x1_s5_e3: [General purpose] Sharing flag setting
+x1_s5_w0: [Search] Player_Target setting
+x1_s6: FC: Logic startup error
+x1_s7: End state
+x2: Top: Step action
+x2_p0: Lower state ID
+x2_s0: Start state
+x2_s1: Step action: start
+x2_s1_e0: [General] lower-level state map switching
+x2_s1_e1: [General purpose] Sharing flag setting
+x2_s1_e2: [Timer] Start timer
+x2_s1_e3: [Timer] Stop timer
+x2_s2: Step action: target
+x2_s2_e0: [Operation] Lock on
+x2_s2_e1: [General purpose] Sharing flag setting
+x2_s2_e2: [General purpose] Sharing flag setting
+x2_s3: Step action: no target
+x2_s3_e0: [Operation] Lock off
+x2_s4: Step action: search enemy branch
+x2_s4_e0: [General purpose] Sharing flag setting
+x2_s5: [LIB] Search enemy (boss): Limited _SubState in view
+x2_s6: End state
+x0: [LIB] Searching enemy (boss): limited in view
+x0_p0: Search priority
+x0_p1: Search distance
+x0_s0: Start state
+x0_s1: Search enemy: start
+x0_s1_e0: [Operation] Lock off
+x0_s2: Search enemies: players
+x0_s2_w0: [Search enemy] Character _ target setting
+x0_s3: Search enemy: target save
+x0_s3_x0: [Search] Clear the target
+x0_s3_w0: [Search] Save target
+x0_s4: Search enemy: target load
+x0_s4_w0: [Search] Load target
+x0_s5: Search enemy: host target
+x0_s5_w0: [Search] Player_Target setting
+x0_s6: Search enemy: Discovery end
+x0_s6_e0: [Operation] Lock on
+x0_s7: Search enemy: undiscovered end
+x0_s8: Search for: Discovery: End State
+x0_s9: Search enemy: not found: end state

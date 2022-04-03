@@ -1,0 +1,51 @@
+20: Lower logic
+20_s0: Start state
+20_s1: Start action
+20_s2: Short distance action_SubState
+20_s3: Long distance action_SubState
+20_s4: Attack_SubState
+20_s5: Super High Rush Test_SubState
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s1_e0: [General] lower-level state map switching
+10_s2: Higher rank: search enemy ON
+10_s2_e0: [Search enemy] Character _ target setting
+10_s3: Top rank: search off
+10_s4: Top: with target
+10_s5: Top: no target
+10_s6: Top: death
+10_s6_e0: [Operation] death request
+x0: Long distance action
+x0_s0: Start state
+x0_s1: Long-distance action: start
+x0_s2: Long distance action: dash
+x0_s2_w0: [Move] Dash_random
+x0_s3: Long-distance action: End
+x0_s4: End state
+x1: Short range action
+x1_s0: Start state
+x1_s1: Short range action: start
+x1_s2: Short distance action: walking
+x1_s2_w0: [Move] Normal move random
+x1_s3: Short range action: End
+x1_s4: End state
+x2: attack
+x2_s0: Start state
+x2_s1: Begin attack
+x2_s2: Attack: End
+x2_s3: Attack: Combo attack
+x2_s3_w0: [Attack] Melee attack
+x2_s4: Attack: Attack waiting
+x2_s5: End state
+x3: High-rush test
+x3_s0: Start state
+x3_s1: Switch equipment → 2
+x3_s1_e0: [Attack] Switch weapons
+x3_s2: Action 20
+x3_s2_w0: [Attack] Melee attack
+x3_s3: Waiting to fall
+x3_s4: Get up
+x3_s4_e0: [Action] End boss special action
+x3_s5: End
+x3_s6: End state

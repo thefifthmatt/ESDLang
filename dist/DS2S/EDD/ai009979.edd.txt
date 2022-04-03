@@ -1,0 +1,55 @@
+10: Lower logic
+10_s0: Start state
+10_s1: Search enemy (front) _SubState
+10_s1_e0: [Operation] Lock on
+10_s1_w0: [Search enemy] Character _ target setting
+10_s2: Movement (target) _SubState
+10_s3: Search for (losing) _SubState
+10_s4: Attack (Attack target) _SubState
+x0: Search enemy (attack target)
+x0_s0: Start state
+x0_s1: Search start
+x0_s1_e0: [Operation] Lock off
+x0_s2: Search enemy (front)
+x0_s2_e0: [Operation] Lock on
+x0_s2_w0: [Search enemy] Character _ target setting
+x0_s3: Search enemy (back)
+x0_s3_e0: [Operation] Lock on
+x0_s3_w0: [Search enemy] Character _ target setting
+x0_s4: Search enemies (damage)
+x0_s4_e0: [Operation] Lock on
+x0_s4_w0: [Search enemy] Character _ target setting
+x0_s5: End state
+x1: Move (attack target)
+x1_s0: Start state
+x1_s1: Search (Navimesh)
+x1_s1_e0: [Search] Navimesh
+x1_s2: Start moving
+x1_s3: Turning (the target is on the back)
+x1_s3_w0: [Turning] Turning in place_Lock
+x1_s4: Moving (far distance)
+x1_s4_w0: [Move] Normal move Navi mesh
+x1_s5: End state
+x2: Search for (lost)
+x2_s0: Start state
+x2_s1: Move (stop)
+x2_s2: Movement (generator)
+x2_s2_e0: [Search] Navi mesh to generator
+x2_s2_w0: [Move] Normal move Navi mesh
+x2_s3: End state
+x3: Attack (Attack target)
+x3_s0: Start state
+x3_s1: Attack (close range)
+x3_s2: Melee Attack 1 (Combo 1)
+x3_s2_w0: [Attack] Melee attack
+x3_s3: Melee Attack 1 (action 18)
+x3_s3_w0: [Attack] Melee attack
+x3_s4: Melee Attack 1 (Action 11)
+x3_s4_w0: [Attack] Melee attack
+x3_s5: Turning (Adjusting attack direction)
+x3_s5_w0: [Turning] Turning in place_Lock
+x3_s6: Get up attack (action 19)
+x3_s6_w0: [Attack] Melee attack
+x3_s7: Melee Attack 5 (throw)
+x3_s7_w0: [Attack] Melee attack
+x3_s8: End state

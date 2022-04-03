@@ -1,0 +1,318 @@
+10: Lower logic: human nature (large)
+10_s0: Start state
+10_s1: Substate: Start
+10_s2: Lower state: Initial setting
+10_s2_e0: [Attack] Damage lower logic reset setting
+10_s2_e1: [General purpose] Sharing flag setting
+10_s2_e2: [General purpose] Sharing flag setting
+10_s3: Lower-level state: branch wait
+10_s4: [LIB] Lower-level action: branch_SubState
+10_s5: [LIB] Lower-level action: Stop action_SubState
+10_s6: [LIB] Target existence: invisible (random walking) _SubState
+10_s7: [LIB] Targetless action (random walking) _SubState
+10_s8: [LIB] Generator action (sub) _SubState
+10_s9: Target action: Human nature (large) _SubState
+10_s10: [LIB] OBJ destruction behavior _SubState
+10_s11: [LIB] Lower: sound response_SubState
+10_s12: [LIB] Lower: vanishing behavior (tracking) _SubState
+x11: Target action: human nature (large)
+x11_s0: Start state
+x11_s1: Target action: start
+x11_s2: Target action: action branch
+x11_s2_e0: [Random number] Random number generation
+x11_s3: Attack behavior: human nature (large) _SubState
+x11_s4: [LIB] Move: Humanoid general-purpose navigation move_SubState
+x11_s5: End state
+x12: Attack behavior: human nature (large)
+x12_s0: Start state
+x12_s1: Attack action: start
+x12_s1_e0: [Random number] Random number generation
+x12_s2: Attack action: action branch
+x12_s3: Attack action: Normal approach
+x12_s4: Attack action: jump approach
+x12_s4_w0: [Attack] Melee attack
+x12_s5: Attack action: Landing
+x12_s6: Navimesh movement acceleration formula_SubState
+x12_s7: Attack end state
+x13: Navimesh movement acceleration type
+x13_s0: Start state
+x13_s1: Navimesh: Start
+x13_s1_e0: [Move] Reset move failure
+x13_s1_e1: [Timer] Start timer
+x13_s2: Navimesh: Search
+x13_s2_e0: [Search] Navimesh
+x13_s3: Navimesh: Walking movement: Low speed
+x13_s3_w0: [Move] Lock move Navi mesh
+x13_s4: Navimesh: Walking movement: High speed
+x13_s4_w0: [Move] Lock move Navi mesh
+x13_s5: Navimesh: Direction adjustment
+x13_s5_w0: [Turning] Turning in place_Navimesh direction
+x13_s6: Navimesh: Dash
+x13_s6_w0: [Move] Dash_Lock_Navimesh
+x13_s7: End state
+x0: [LIB] Generator action (lower)
+x0_p0: OBJ vandalism
+x0_p1: OBJ inspection distance
+x0_p2: Return start movement type
+x0_p3: Returning movement type
+x0_p4: Sharp turning angle
+x0_s0: Start state
+x0_s1: Generator action: start
+x0_s1_e0: [Search] Navimesh route search settings
+x0_s2: Generator action: Start return
+x0_s2_e0: [Move] Reset move failure
+x0_s2_e1: [Search] Navimesh route search settings
+x0_s3: Generator Behavior: Search
+x0_s3_e0: [Search] Navi mesh to generator
+x0_s4: Generator Behavior: Danger Avoidance
+x0_s4_w0: [Move] Normal move random
+x0_s5: Generator action: inversion
+x0_s5_w0: [Turning] Quick turn _ Navi mesh direction
+x0_s6: Generator action: no return allowed
+x0_s6_e0: [Search] Navimesh route search settings
+x0_s6_e1: [General purpose] Sharing flag setting
+x0_s7: Generator action: invisibility setting
+x0_s7_e0: [Search] Navimesh route search settings
+x0_s7_e1: [General purpose] Sharing flag setting
+x0_s8: Generator: center move
+x0_s8_w0: [Move] Move horizontally to the center of the navigation mesh
+x0_s9: [LIB] OBJ destruction behavior _SubState
+x0_s10: [LIB] Move: General-purpose navigation move_SubState
+x0_s11: End state
+x1: [LIB] Target existence: invisibility (random walking)
+x1_p0: Non-combat action: Combat type
+x1_p1: Random movement type
+x1_s0: Start state
+x1_s1: Invisibility (with baldness): start
+x1_s2: Invisible (with baldness): Standby
+x1_s2_e0: [Move] Reset move failure
+x1_s3: Invisibility (with spine): Move
+x1_s3_w0: [Move] Normal move random
+x1_s3_w1: [Move] Horizontal move_random
+x1_s4: Invisibility (with target): Non-combat action
+x1_s4_w0: [Attack] Melee attack
+x1_s5: Invisibility (with target): Waiting for non-combat action
+x1_s6: Invisibility (with tage): Danger avoidance
+x1_s6_w0: [Move] Move horizontally to the center of the navigation mesh
+x1_s7: Invisibility (with spine): Direction specified (45 degrees)
+x1_s7_w0: [Turning] Quick turn _ Direction designation
+x1_s8: Invisible (with spine): Direction specified (90 degrees)
+x1_s8_w0: [Turning] Quick turn _ Direction designation
+x1_s9: Invisibility (with spine): Direction specified (135 degrees)
+x1_s9_w0: [Turning] Quick turn _ Direction designation
+x1_s10: Invisibility (with spine): Direction specified (180 degrees)
+x1_s10_w0: [Turning] Quick turn _ Direction designation
+x1_s11: Invisibility (with spine): Direction specified (225 degrees)
+x1_s11_w0: [Turning] Quick turn _ Direction designation
+x1_s12: Invisibility (with spine): Direction specified (270 degrees)
+x1_s12_w0: [Turning] Quick turn _ Direction designation
+x1_s13: Invisibility (with spine): Direction specified (315 degrees)
+x1_s13_w0: [Turning] Quick turn _ Direction designation
+x1_s14: Invisibility (with spine): Direction designation branch
+x1_s14_e0: [Random number] Random number generation
+x1_s15: End state
+x2: [LIB] Targetless action (random walking)
+x2_p0: Non-combat action: Combat type
+x2_p1: Random movement type
+x2_s0: Start state
+x2_s1: Action without target: start
+x2_s2: Action without target: Standby
+x2_s2_e0: [Move] Reset move failure
+x2_s3: Targetless action: return
+x2_s3_e0: [General purpose] Sharing flag setting
+x2_s4: Action without target: Move
+x2_s4_w0: [Move] Normal move random
+x2_s4_w1: [Move] Horizontal move_random
+x2_s5: Targetless action: Non-combat action
+x2_s5_w0: [Attack] Melee attack
+x2_s6: Targetless action: Waiting for non-combat action
+x2_s7: Targetless action: Danger avoidance
+x2_s7_w0: [Move] Move horizontally to the center of the navigation mesh
+x2_s8: Targetless action: Direction designation branch
+x2_s8_e0: [Random number] Random number generation
+x2_s9: Targetless action: Direction designation (45 degrees)
+x2_s9_w0: [Turning] Quick turn _ Direction designation
+x2_s10: Targetless action: Direction designation (90 degrees)
+x2_s10_w0: [Turning] Quick turn _ Direction designation
+x2_s11: Targetless action: Direction designation (135 degrees)
+x2_s11_w0: [Turning] Quick turn _ Direction designation
+x2_s12: Targetless action: Direction designation (180 degrees)
+x2_s12_w0: [Turning] Quick turn _ Direction designation
+x2_s13: Targetless action: Direction designation (225 degrees)
+x2_s13_w0: [Turning] Quick turn _ Direction designation
+x2_s14: Targetless action: Direction designation (270 degrees)
+x2_s14_w0: [Turning] Quick turn _ Direction designation
+x2_s15: Targetless action: Direction designation (315 degrees)
+x2_s15_w0: [Turning] Quick turn _ Direction designation
+x2_s16: End state
+x3: [LIB] Lower action: branch
+x3_s0: Start state
+x3_s1: Action: Branch
+x3_s2: Action: Error
+x3_s2_e0: [Debug] Log output
+x3_s3: End state_Target action
+x3_s4: End state_Target inactivity
+x3_s5: End state_generator action
+x3_s6: End state_Lower stop action
+x3_s7: End state_Invisible action
+x3_s8: End state_vanishing action
+x3_s9: End state_Sound reaction action
+x3_s10: End state_return preparation
+x4: [LIB] Lower action: Stop action
+x4_s0: Start state
+x4_s1: Lower stop action: start
+x4_s2: Lower stopping action: Stopping
+x4_s3: End state
+x5: [LIB] OBJ destruction behavior
+x5_p0: OBJ vandalism
+x5_p1: OBJ inspection distance
+x5_s0: Start state
+x5_s1: OBJ destruction: start
+x5_s2: OBJ destruction: inspection
+x5_s3: OBJ destruction: lock off
+x5_s3_e0: [Operation] Lock off
+x5_s4: OBJ Destruction: Execution
+x5_s4_e0: [Attack] Melee attack
+x5_s5: OBJ destruction: end setting
+x5_s5_e0: [Operation] Lock on
+x5_s6: Success: End state
+x5_s7: Failure: termination state
+x6: [LIB] Lower: Sound response tracking
+x6_p0: OBJ vandalism
+x6_p1: OBJ inspection distance
+x6_s0: Start state
+x6_s1: Sound response: start
+x6_s2: Sound response: Navigation search
+x6_s2_e0: [Search] Navimesh to the sound you heard
+x6_s3: Sound response: enemy judgment
+x6_s3_e0: [Operation] Lock off
+x6_s4: Sound response: not found
+x6_s4_e0: [General purpose] Sharing flag setting
+x6_s5: Sound response: danger avoidance
+x6_s5_w0: [Move] Normal move random
+x6_s6: [LIB] Move: General-purpose navigation move_SubState
+x6_s7: [LIB] OBJ destruction behavior _SubState
+x6_s8: End state
+x7: [LIB] OBJ operation
+x7_s0: Start state
+x7_s1: OBJ operation: start
+x7_s1_e0: [Action] Leave OBJ
+x7_s2: OBJ operation: Start using ladder
+x7_s2_e0: [Action] Use OBJ specified by Navimesh
+x7_s3: OBJ operation: climb the ladder
+x7_s3_w0: [Action] Climbing the ladder
+x7_s4: OBJ operation: go down the ladder
+x7_s4_w0: [Action] Go down the ladder
+x7_s5: OBJ operation: using door
+x7_s5_e0: [Action] Use OBJ specified by Navimesh
+x7_s6: OBJ operation: Using rope
+x7_s6_e0: [Action] Use OBJ specified by Navimesh
+x7_s7: OBJ operation: failed
+x7_s8: OBJ operation: upper attack
+x7_s8_e0: [Attack] Melee attack
+x7_s9: OBJ operation: lower attack
+x7_s9_e0: [Attack] Melee attack
+x7_s10: OBJ operation: End of use
+x7_s10_e0: [Action] Leave OBJ
+x7_s11: OBJ use success state
+x7_s12: OBJ use failure state
+x8: [LIB] Lower rank: vanishing behavior (tracking)
+x8_p0: OBJ vandalism
+x8_p1: OBJ inspection distance
+x8_p2: High-speed moving type
+x8_p3: Low-speed movement type
+x8_p4: Analog strength
+x8_p5: Sharp turning angle
+x8_s0: Start state
+x8_s1: Lost (LS): Start
+x8_s2: Lost (LS): Navigation search
+x8_s2_e0: [Search] Navimesh
+x8_s3: Lost (LS): not found
+x8_s3_e0: [General purpose] Sharing flag setting
+x8_s4: Loss (LS): Danger avoidance
+x8_s4_w0: [Move] Normal move random
+x8_s5: [LIB] OBJ destruction behavior _SubState
+x8_s6: [LIB] Move: General-purpose navigation move_SubState
+x8_s7: End state
+x9: [LIB] Move: Humanoid general-purpose navigation move
+x9_p0: Analog strength
+x9_p1: Reach distance
+x9_p2: Sharp turning angle
+x9_p3: OBJ inspection distance
+x9_p4: Dash switch
+x9_s0: Start state
+x9_s1: Navigating: Start
+x9_s1_e0: [Move] Reset move failure
+x9_s1_e1: [Timer] Start timer
+x9_s1_e2: [Timer] Start timer
+x9_s2: Navigation navigation: Navigation search
+x9_s2_e0: [Search] Navimesh
+x9_s2_x0: [Timer] Start timer
+x9_s3: Navigating: Quick Turn
+x9_s3_w0: [Turning] Quick turn _ Navi mesh direction
+x9_s4: Navigation navigation: dash
+x9_s4_w0: [Move] Dash_Lock_Navimesh
+x9_s5: Navigating: walking [high speed]
+x9_s5_w0: [Move] Lock move Navi mesh
+x9_s6: Navigating: walking [low speed]
+x9_s6_e0: [Move] Reset move failure
+x9_s6_e1: [Timer] Start timer
+x9_s6_w0: [Move] Lock move Navi mesh
+x9_s7: Navigating: avoiding danger [random moving]
+x9_s7_w0: [Move] Normal move random
+x9_s8: Navigation navigation: End
+x9_s8_e0: [Move] Reset move failure
+x9_s9: Navigating: Periodic check
+x9_s10: Navigation navigation: branch
+x9_s11: Navigating: center moving
+x9_s11_w0: [Move] Move horizontally to the center of the navigation mesh
+x9_s12: Navigating: avoiding danger [obstacles]
+x9_s13: Navigating: unreachable
+x9_s13_w0: [Move] Horizontal move_Lock_Random
+x9_s14: Navigating: Avoiding danger [Get off the wall]
+x9_s14_w0: [Turning] Turning in place_Navimesh direction
+x9_s15: Navigating: Avoiding danger [Get off the wall]
+x9_s15_x0: [Timer] Start timer
+x9_s15_w0: [Move] Horizontal move_random
+x9_s16: Navigating: Avoiding danger [Get off the wall ③]
+x9_s16_e0: [Move] Reset move failure
+x9_s16_w0: [Move] Disable move
+x9_s17: [LIB] OBJ operation_SubState
+x9_s18: End state
+x9_s19: Obstacle: End State
+x10: [LIB] Move: General-purpose navigation move
+x10_p0: Analog strength
+x10_p1: Reach distance
+x10_p2: Sharp turning angle
+x10_p3: Dash switch
+x10_p4: Short navigation check
+x10_s0: Start state
+x10_s1: Navigation navigation: branch
+x10_s2: Navigating: end of arrival
+x10_s2_e0: [Move] Reset move failure
+x10_s3: Navigating: Periodic check
+x10_s4: Navigating: walking [high speed]
+x10_s4_w0: [Move] Lock move Navi mesh
+x10_s5: Navigation navigation: dash
+x10_s5_w0: [Move] Dash_Lock_Navimesh
+x10_s6: Navigating: Quick Turn
+x10_s6_w0: [Turning] Quick turn _ Navi mesh direction
+x10_s7: Navigating: walking [low speed]
+x10_s7_e0: [Move] Reset move failure
+x10_s7_e1: [Timer] Start timer
+x10_s7_e2: [Random number] Random number generation
+x10_s7_w0: [Move] Lock move Navi mesh
+x10_s8: Navigating: Start
+x10_s8_e0: [Move] Reset move failure
+x10_s9: Navigating: center moving
+x10_s9_w0: [Move] Move horizontally to the center of the navigation mesh
+x10_s10: Navigating: Avoiding danger [Get off the wall]
+x10_s10_w0: [Turning] Turning in place_Navimesh direction
+x10_s11: Navigating: Avoiding danger [Get off the wall]
+x10_s11_w0: [Move] Horizontal move_random
+x10_s12: Navigating: Avoiding danger [Get off the wall ③]
+x10_s12_e0: [Move] Reset move failure
+x10_s12_w0: [Move] Disable move
+x10_s13: [LIB] OBJ operation_SubState
+x10_s14: Move Success: End State
+x10_s15: Slowdown: end state

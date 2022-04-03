@@ -1,0 +1,101 @@
+10: Higher state
+10_s0: Start state
+10_s1: Higher state: start
+10_s1_w0: [Search] Player_Target setting
+10_s2: Upper state: branch
+10_s3: Upper: [Exception handling]
+10_s3_e0: [Debug] Log output
+10_s3_e1: [General] lower-level state map switching
+10_s4: Upper state: Start state release
+10_s4_e0: [Action] Cancel activation state
+10_s5: Higher rank: STEP1_SubState
+10_s6: Top: Initial start_SubState
+10_s7: Higher rank: STEP2_SubState
+10_s8: Top: First Contact_SubState
+x1: Top: Step action
+x1_p0: Lower state ID
+x1_s0: Start state
+x1_s1: Step action: start
+x1_s1_e0: [General] lower-level state map switching
+x1_s1_e1: [General purpose] Sharing flag setting
+x1_s2: Step action: target
+x1_s2_e0: [General purpose] Sharing flag setting
+x1_s2_e1: [General purpose] Sharing flag setting
+x1_s3: Step action: no target
+x1_s3_e0: [General purpose] Sharing flag setting
+x1_s4: [LIB] Searching enemy (boss): Limited in view (short distance) _SubState
+x1_s5: Search enemy (boss): Target type setting_SubState
+x1_s6: End state
+x2: Top: First contact
+x2_s0: Start state
+x2_s1: FC: Event flag activation
+x2_s2: FC: Gen specified startup error
+x2_s3: FC: Logic startup error
+x2_s4: FC: Cancel startup animation
+x2_s4_e0: [Action] Cancel activation state
+x2_s5: FC: Start initialization setting
+x2_s5_e0: [Search] Overwrite the generator position with the current position
+x2_s5_e1: [General purpose] Sharing flag setting
+x2_s5_e2: [General] Logic group flag setting
+x2_s5_e3: [General purpose] Sharing flag setting
+x2_s5_w0: [Search] Player_Target setting
+x2_s6: FC: Start condition branch
+x2_s7: FC: distance / damage activation
+x2_s8: End state
+x3: Search enemy (boss): Target type setting
+x3_p0: Search priority
+x3_p1: Search distance
+x3_s0: Start state
+x3_s1: Search enemy: start
+x3_s1_e0: [Operation] Lock off
+x3_s2: Search enemy: NPC
+x3_s2_w0: [Search enemy] Character _ target setting
+x3_s3: Search enemy: target save
+x3_s3_x0: [Search] Clear the target
+x3_s3_w0: [Search] Save target
+x3_s4: Search enemy: target load
+x3_s4_w0: [Search] Load target
+x3_s5: Search enemy: host target
+x3_s5_w0: [Search] Player_Target setting
+x3_s6: Search enemy: NPC discovery end
+x3_s6_e0: [Operation] Lock on
+x3_s6_e1: [General purpose] Sharing flag setting
+x3_s7: Search enemy: undiscovered end
+x3_s8: Search enemy: Enemy 1
+x3_s8_w0: [Search] Player_Target setting
+x3_s9: Search enemy: Enemy 2
+x3_s9_w0: [Search] Player_Target setting
+x3_s10: Search enemy: Enemy 3
+x3_s10_w0: [Search] Player_Target setting
+x3_s11: Search enemy: Search enemy lottery (player)
+x3_s11_e0: [Random number] Random number generation
+x3_s12: Search enemy: Player discovery end
+x3_s12_e0: [Operation] Lock on
+x3_s12_e1: [General purpose] Sharing flag setting
+x3_s13: Search for enemies: check visibility and obstacles
+x3_s14: Search enemy: End of target throw
+x3_s14_e0: [Operation] Lock on
+x3_s15: Search enemies: target lottery
+x3_s15_e0: [Random number] Random number generation
+x3_s16: Search for: Discovery: End State
+x3_s17: Search enemy: not found: end state
+x0: [LIB] Searching enemy (boss): limited in view
+x0_p0: Search priority
+x0_p1: Search distance
+x0_s0: Start state
+x0_s1: Search enemy: start
+x0_s1_e0: [Operation] Lock off
+x0_s2: Search enemies: players
+x0_s2_w0: [Search enemy] Character _ target setting
+x0_s3: Search enemy: target save
+x0_s3_x0: [Search] Clear the target
+x0_s3_w0: [Search] Save target
+x0_s4: Search enemy: target load
+x0_s4_w0: [Search] Load target
+x0_s5: Search enemy: host target
+x0_s5_w0: [Search] Player_Target setting
+x0_s6: Search enemy: Discovery end
+x0_s6_e0: [Operation] Lock on
+x0_s7: Search enemy: undiscovered end
+x0_s8: Search for: Discovery: End State
+x0_s9: Search enemy: not found: end state

@@ -1,0 +1,57 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s2: Top: Setting
+10_s2_e0: [Search] Overwrite the generator position with the current position
+10_s3: Upper rank: Start adjustment wait
+10_s4: Higher: For switching players
+10_s4_e0: [General] lower-level state map switching
+10_s4_e1: [General purpose] Sharing flag setting
+10_s5: Upper: For switching to enemy
+10_s5_e0: [General] lower-level state map switching
+10_s5_e1: [General purpose] Sharing flag setting
+10_s6: Top: Behavior without target
+10_s6_e0: [General purpose] Sharing flag setting
+10_s6_w0: [Operation] Lock off
+10_s7: Top: Behavior during target
+10_s7_e0: [General] lower-level state map switching
+10_s7_e1: [Operation] Lock on
+10_s8: Top: Waiting for target destruction
+10_s9: Higher rank: search enemy (player or enemy) _SubState
+10_s10: Top: Target action (flame bottle) _SubState
+10_s11: Higher rank: Search OBJ_SubState
+x0: Higher rank: Search OBJ
+x0_s0: Start state
+x0_s1: OBJ Search: Start
+x0_s1_e0: [Operation] Lock off
+x0_s2: OBJ search: Searching
+x0_s2_e0: [Search] Object_Target setting
+x0_s3: OBJ Search: Success
+x0_s3_e0: [Operation] Lock on
+x0_s4: OBJ search: failed
+x0_s5: End state: search successful
+x0_s6: End state: search failed
+x1: Top: Target action (flame bottle)
+x1_s0: Start state
+x1_s1: Target (flame bottle): start
+x1_s2: Target (flame bottle): Invisibility preliminary action
+x1_s3: Target (flame bottle): invisible
+x1_s3_e0: [General purpose] Sharing flag setting
+x1_s3_e1: [Operation] Lock off
+x1_s4: Target (flame bottle): found
+x1_s5: Target (flame bottle): visible
+x1_s6: Target (flame bottle): End
+x1_s7: End state
+x2: Higher rank: search enemy (player or enemy)
+x2_s0: Start state
+x2_s1: Search enemy: start
+x2_s1_e0: [Operation] Lock off
+x2_s2: Search enemies: players
+x2_s2_w0: [Search enemy] Character _ target setting
+x2_s3: Search enemy: Enemy
+x2_s3_w0: [Search enemy] Character _ target setting
+x2_s4: Target enabled
+x2_s4_e0: [General purpose] Sharing flag setting
+x2_s4_e1: [Operation] Lock on
+x2_s5: Search enemy: End
+x2_s6: End state

@@ -1,0 +1,453 @@
+10: Lower state
+10_s0: Start state
+10_s1: Horizontal movement
+10_s1_w0: [Attack] Random avoidance
+10_s2: Offset position action_SubState
+10_s3: Waiting action: Medium distance_SubState
+20: Substate: Fixed fire (bow)
+20_s0: Start state
+20_s1: Action: Start
+20_s2: Attack: bow fixed shooting _SubState
+20_s3: Attack: Fixed bow shooting (no H: move back and forth) _SubState
+20_s4: Attack: Bow forward / backward shooting (with H) _SubState
+20_s5: Attack: Bow forward / backward shooting (no H) _SubState
+20_s6: Attack: bow left / right moving shooting (no H) _SubState
+20_s7: Attack: Bow left / right movement shooting (H available) _SubState
+20_s8: Attack: Bow random movement shooting (no H) _SubState
+20_s9: Attack: Bow random movement shooting (H existence) _SubState
+30: Demon armor (captain)
+30_s0: Start state
+30_s1: Waiting
+30_s1_w0: [Attack] Random avoidance
+30_s2: Attack: H: Horizontal _SubState
+30_s3: Attack: H: Back Attack _SubState
+30_s4: Demon armor: Target action _SubState
+x0: Offset position action_
+x0_s0: Start state
+x0_s1: Position Action: Start
+x0_s2: Position action: branch
+x0_s2_e0: [Random number] Random number generation
+x0_s3: Position action: Corrected position reaching action
+x0_s3_w0: [Move] Horizontal move_Lock_Random
+x0_s4: Offset position action: whole back_SubState
+x0_s5: Offset position action: right rear whole_SubState
+x0_s6: Offset position action: Right front whole_SubState
+x0_s7: Offset position action: Right whole_SubState
+x0_s8: Offset position action: Left rear whole_SubState
+x0_s9: Offset position action: Left front whole_SubState
+x0_s10: Offset position action: Left whole_SubState
+x0_s11: Offset position action: Forward whole_SubState
+x0_s12: End state
+x1: Offset position action: backward_
+x1_p0: Target distance
+x1_s0: Start state
+x1_s1: Position action: Backward: Move
+x1_s1_w0: [Move] Lock horizontal movement to the target world correction position
+x1_s2: Position action: backward: waiting for switching
+x1_s3: End state
+x2: Offset position action: whole rear_
+x2_s0: Start state
+x2_s1: Position action: backward: branch
+x2_s1_e0: [Random number] Random number generation
+x2_s2: Offset position action: backward (close distance) _SubState
+x2_s3: Offset position action: backward (medium distance) _SubState
+x2_s4: Offset position action: backward (far distance) _SubState
+x2_s5: End state
+x3: Offset position action: Left _
+x3_p0: Target distance
+x3_s0: Start state
+x3_s1: Position action: Left: Move
+x3_s1_w0: [Move] Lock horizontal movement to the target world correction position
+x3_s2: Position action: Left: Switching waiting
+x3_s3: End state
+x4: Offset position action: Right_
+x4_p0: Target distance
+x4_s0: Start state
+x4_s1: Position action: Right: Move
+x4_s1_w0: [Move] Lock horizontal movement to the target world correction position
+x4_s2: Position action: Right: Switching waiting
+x4_s3: End state
+x5: Offset position action: Forward_
+x5_p0: Target distance
+x5_s0: Start state
+x5_s1: Position action: Forward: Move
+x5_s1_w0: [Move] Lock horizontal movement to the target world correction position
+x5_s2: Position action: Forward: Waiting for switching
+x5_s3: End state
+x6: Offset position action: Left front_
+x6_p0: Target distance
+x6_s0: Start state
+x6_s1: Position action: Left front: Move
+x6_s1_w0: [Move] Lock horizontal movement to the target world correction position
+x6_s2: Position action: Front left: Waiting for switching
+x6_s3: End state
+x7: Offset position action: right front_
+x7_p0: Target distance
+x7_s0: Start state
+x7_s1: Position action: Right forward: Move
+x7_s1_w0: [Move] Lock horizontal movement to the target world correction position
+x7_s2: Position action: Right front: Waiting for switching
+x7_s3: End state
+x8: Offset position action: Left rear_
+x8_p0: Target distance
+x8_s0: Start state
+x8_s1: Position action: Left rear: Move
+x8_s1_w0: [Move] Lock horizontal movement to the target world correction position
+x8_s2: Positioning action: Left rear: Waiting for switching
+x8_s3: End state
+x9: Offset position action: right rear_
+x9_p0: Target distance
+x9_s0: Start state
+x9_s1: Position action: right rear: move
+x9_s1_w0: [Move] Lock horizontal movement to the target world correction position
+x9_s2: Position action: right rear: waiting for switching
+x9_s3: End state
+x10: Offset position action: Forward whole_
+x10_s0: Start state
+x10_s1: Position action: Forward: branch
+x10_s1_e0: [Random number] Random number generation
+x10_s2: Offset position action: Forward (short distance) _SubState
+x10_s3: Offset position action: Forward (medium distance) _SubState
+x10_s4: Offset position action: Forward (far distance) _SubState
+x10_s5: End state
+x11: Offset position action: left whole_
+x11_s0: Start state
+x11_s1: Positioning action: Left: branch
+x11_s1_e0: [Random number] Random number generation
+x11_s2: Offset position action: Left (short distance) _SubState
+x11_s3: Offset position action: Left (medium distance) _SubState
+x11_s4: Offset position action: Left (far distance) _SubState
+x11_s5: End state
+x12: Offset position action: Right overall_
+x12_s0: Start state
+x12_s1: Position action: Right: branch
+x12_s1_e0: [Random number] Random number generation
+x12_s2: Offset position action: Right (short distance) _SubState
+x12_s3: Offset position action: Right (medium distance) _SubState
+x12_s4: Offset position action: Right (far distance) _SubState
+x12_s5: End state
+x13: Offset position action: left front whole_
+x13_s0: Start state
+x13_s1: Position action: Front left: Branch
+x13_s1_e0: [Random number] Random number generation
+x13_s2: Offset position action: Left front (short distance) _SubState
+x13_s3: Offset position action: Front left (middle distance) _SubState
+x13_s4: Offset position action: Left front (far distance) _SubState
+x13_s5: End state
+x14: Offset position action: right front whole_
+x14_s0: Start state
+x14_s1: Position action: right front: branch
+x14_s1_e0: [Random number] Random number generation
+x14_s2: Offset position action: Right front (short distance) _SubState
+x14_s3: Offset position action: Right forward (medium distance) _SubState
+x14_s4: Offset position action: right front (far distance) _SubState
+x14_s5: End state
+x15: Offset position action: left rear whole_
+x15_s0: Start state
+x15_s1: Position action: Left rear: branch
+x15_s1_e0: [Random number] Random number generation
+x15_s2: Offset position action: Left rear (short distance) _SubState
+x15_s3: Offset position action: left rear (middle distance) _SubState
+x15_s4: Offset position action: Left rear (far distance) _SubState
+x15_s5: End state
+x16: Offset position action: whole right rear_
+x16_s0: Start state
+x16_s1: Position action: right rear: branch
+x16_s1_e0: [Random number] Random number generation
+x16_s2: Offset position action: right rear (short distance) _SubState
+x16_s3: Offset position action: right rear (middle distance) _SubState
+x16_s4: Offset position action: right rear (rear distance) _SubState
+x16_s5: End state
+x17: Attack: Fixed bow shooting (H available)
+x17_p0: Shooting vertical angle limit
+x17_p1: Attack type
+x17_s0: Start state
+x17_s1: Begin attack
+x17_s1_e0: [Movement] Movement prediction accuracy setting
+x17_s1_e1: [Move] Reset move failure
+x17_s1_e2: [Attack] Reset attack failure
+x17_s2: Attack: Direction adjustment
+x17_s2_w0: [Move] Lock move random
+x17_s3: Attack: Shooting Attack
+x17_s3_w0: [Attack] Melee attack
+x17_s4: Attack: Standby for shooting
+x17_s5: Attack: Shooting Cancel
+x17_s5_e0: [Attack] Attack cancel
+x17_s6: Successful Attack: End State
+x17_s7: Attack failed: end state
+x18: Attack: Move forward and backward with bow (without H)
+x18_p0: Shooting vertical angle limit
+x18_p1: Attack type
+x18_s0: Start state
+x18_s1: Begin attack
+x18_s1_e0: [Movement] Movement prediction accuracy setting
+x18_s1_e1: [Move] Reset move failure
+x18_s1_e2: [Attack] Reset attack failure
+x18_s2: Attack: Direction adjustment
+x18_s2_w0: [Move] Lock move random
+x18_s3: Attack: Shooting Attack
+x18_s3_w0: [Attack] Melee attack
+x18_s4: Attack: Standby for shooting
+x18_s5: Attack: Shooting Cancel
+x18_s5_e0: [Attack] Attack cancel
+x18_s6: Attack: H nothing: move back and forth
+x18_s6_w0: [Move] Normal move random
+x18_s6_w1: [Move] Horizontal move_random
+x18_s7: Successful Attack: End State
+x18_s8: Attack failed: end state
+x19: Attack: Move forward and backward with bow (H)
+x19_p0: Shooting vertical angle limit
+x19_p1: Attack type
+x19_s0: Start state
+x19_s1: Begin attack
+x19_s1_e0: [Movement] Movement prediction accuracy setting
+x19_s1_e1: [Move] Reset move failure
+x19_s1_e2: [Attack] Reset attack failure
+x19_s2: Attack: Direction adjustment
+x19_s2_w0: [Move] Lock move random
+x19_s3: Attack: Shooting Attack
+x19_s3_w0: [Attack] Melee attack
+x19_s4: Attack: Standby for shooting
+x19_s5: Attack: Shooting Cancel
+x19_s5_e0: [Attack] Attack cancel
+x19_s6: Attack: H Exist: Move back and forth
+x19_s6_w0: [Move] Lock move random
+x19_s6_w1: [Move] Horizontal move_Lock_Random
+x19_s7: Successful Attack: End State
+x19_s8: Attack failed: end state
+x20: Attack: bow left and right movement shooting (H nothing)
+x20_p0: Shooting vertical angle limit
+x20_p1: Attack type
+x20_s0: Start state
+x20_s1: Begin attack
+x20_s1_e0: [Movement] Movement prediction accuracy setting
+x20_s1_e1: [Move] Reset move failure
+x20_s1_e2: [Attack] Reset attack failure
+x20_s2: Attack: Direction adjustment
+x20_s2_w0: [Move] Lock move random
+x20_s3: Attack: Shooting Attack
+x20_s3_w0: [Attack] Melee attack
+x20_s4: Attack: Standby for shooting
+x20_s5: Attack: Shooting Cancel
+x20_s5_e0: [Attack] Attack cancel
+x20_s6: Attack: No H: Move left and right
+x20_s6_w0: [Move] Horizontal move_random
+x20_s7: Attack: No H: Move backward
+x20_s7_w0: [Move] Horizontal move_random
+x20_s8: Successful Attack: End State
+x20_s9: Attack failed: end state
+x21: Attack: bow left and right moving shooting (H available)
+x21_p0: Shooting vertical angle limit
+x21_p1: Attack type
+x21_s0: Start state
+x21_s1: Begin attack
+x21_s1_e0: [Movement] Movement prediction accuracy setting
+x21_s1_e1: [Move] Reset move failure
+x21_s1_e2: [Attack] Reset attack failure
+x21_s2: Attack: Direction adjustment
+x21_s2_w0: [Move] Lock move random
+x21_s3: Attack: Shooting Attack
+x21_s3_w0: [Attack] Melee attack
+x21_s4: Attack: Standby for shooting
+x21_s5: Attack: Shooting Cancel
+x21_s5_e0: [Attack] Attack cancel
+x21_s6: Attack: H Exist: Move left and right
+x21_s6_w0: [Move] Horizontal move_Lock_Random
+x21_s7: Attack: H Exist: Move backward
+x21_s7_w0: [Move] Horizontal move_Lock_Random
+x21_s8: Successful Attack: End State
+x21_s9: Attack failed: end state
+x22: Attack: Bow random movement shooting (without H)
+x22_p0: Shooting vertical angle limit
+x22_p1: Attack type
+x22_s0: Start state
+x22_s1: Begin attack
+x22_s1_e0: [Movement] Movement prediction accuracy setting
+x22_s1_e1: [Move] Reset move failure
+x22_s1_e2: [Attack] Reset attack failure
+x22_s2: Attack: Direction adjustment
+x22_s2_w0: [Move] Lock move random
+x22_s3: Attack: Shooting Attack
+x22_s3_w0: [Attack] Melee attack
+x22_s4: Attack: Standby for shooting
+x22_s5: Attack: Shooting Cancel
+x22_s5_e0: [Attack] Attack cancel
+x22_s6: Attack: No H: Random forward movement
+x22_s6_w0: [Move] Horizontal move_random
+x22_s7: Attack: No H: Random retreat
+x22_s7_w0: [Move] Horizontal move_random
+x22_s8: Successful Attack: End State
+x22_s9: Attack failed: end state
+x23: Attack: Bow random movement shooting (with H)
+x23_p0: Shooting vertical angle limit
+x23_p1: Attack type
+x23_s0: Start state
+x23_s1: Begin attack
+x23_s1_e0: [Movement] Movement prediction accuracy setting
+x23_s1_e1: [Move] Reset move failure
+x23_s1_e2: [Attack] Reset attack failure
+x23_s2: Attack: Direction adjustment
+x23_s2_w0: [Move] Lock move random
+x23_s3: Attack: Shooting Attack
+x23_s3_w0: [Attack] Melee attack
+x23_s4: Attack: Standby for shooting
+x23_s5: Attack: Shooting Cancel
+x23_s5_e0: [Attack] Attack cancel
+x23_s6: Attack: H Exist: Random forward movement
+x23_s6_w0: [Move] Horizontal move_Lock_Random
+x23_s7: Attack: H Exist: Random retreat
+x23_s7_w0: [Move] Horizontal move_Lock_Random
+x23_s8: Successful Attack: End State
+x23_s9: Attack failed: end state
+x24: Waiting action: medium distance
+x24_s0: Start state
+x24_s1: Waiting distance: Start
+x24_s1_e0: [Movement] Movement prediction accuracy setting
+x24_s1_e1: [Timer] Start timer
+x24_s1_e2: [Random number] Random number generation
+x24_s1_e3: [Random number] Random number generation
+x24_s2: Standby distance: Left movement: Horizontal movement
+x24_s2_w0: [Move] Horizontal move_Lock_Random
+x24_s3: Waiting distance: Move left: Move
+x24_s3_w0: [Move] Lock move random
+x24_s4: Waiting distance: Move right: Move horizontally
+x24_s4_w0: [Move] Horizontal move_Lock_Random
+x24_s5: Waiting distance: Move right: Move
+x24_s5_w0: [Move] Lock move random
+x24_s6: Waiting distance: Left movement: Front movement
+x24_s6_w0: [Move] Horizontal move_Lock_Random
+x24_s7: Waiting distance: rightward movement: frontal movement
+x24_s7_w0: [Move] Horizontal move_Lock_Random
+x24_s8: End state
+x25: Attack: H: left and right horizontal
+x25_s0: Start state
+x25_s1: Begin attack
+x25_s1_e0: [Move] Reset move failure
+x25_s1_e1: [Attack] Reset attack failure
+x25_s1_e2: [Random number] Random number generation
+x25_s1_e3: [Random number] Random number generation
+x25_s2: Attack: Branch
+x25_s3: Attack: Under attack
+x25_s3_w0: [Attack] Melee attack
+x25_s4: Attack: Standby
+x25_s5: Attack: Cancel
+x25_s5_e0: [Attack] Attack cancel
+x25_s6: Attack: Cancel wait
+x25_s7: Attack action: horizontal left_SubState
+x25_s8: Attack action: horizontal right_SubState
+x25_s9: Attack: Success: End state
+x25_s10: Attack: Failure: End state
+x26: Attack action: horizontal left
+x26_s0: Start state
+x26_s1: Horizontal left: Start
+x26_s1_e0: [Move] Reset move failure
+x26_s1_e1: [Timer] Start timer
+x26_s1_e2: [Random number] Random number generation
+x26_s1_e3: [Random number] Random number generation
+x26_s2: Horizontal left: Branch
+x26_s3: Horizontal left: Moving at low speed
+x26_s3_w0: [Move] Horizontal move_Lock_Random
+x26_s4: Horizontal left: High-speed movement
+x26_s4_w0: [Move] Horizontal move_Lock_Random
+x26_s5: Horizontal left: Moving forward at low speed
+x26_s5_w0: [Move] Horizontal move_Lock_Random
+x26_s6: Horizontal left: Moving forward at high speed
+x26_s6_w0: [Move] Horizontal move_Lock_Random
+x26_s7: Horizontal left: Success: End state
+x26_s8: Horizontal left: Failure: End state
+x27: Attack action: horizontal right
+x27_s0: Start state
+x27_s1: Horizontal right: Start
+x27_s1_e0: [Move] Reset move failure
+x27_s1_e1: [Timer] Start timer
+x27_s1_e2: [Random number] Random number generation
+x27_s1_e3: [Random number] Random number generation
+x27_s2: Horizontal right: Branch
+x27_s3: Horizontal right: Moving at low speed
+x27_s3_w0: [Move] Horizontal move_Lock_Random
+x27_s4: Horizontal right: High-speed movement
+x27_s4_w0: [Move] Horizontal move_Lock_Random
+x27_s5: Horizontal right: Moving forward at low speed
+x27_s5_w0: [Move] Horizontal move_Lock_Random
+x27_s6: Horizontal right: Moving forward at high speed
+x27_s6_w0: [Move] Horizontal move_Lock_Random
+x27_s7: Horizontal right: Success: End state
+x27_s8: Horizontal right: Failure: End state
+x28: Attack: H: Back attack
+x28_s0: Start state
+x28_s1: Begin attack
+x28_s1_e0: [Move] Reset move failure
+x28_s1_e1: [Attack] Reset attack failure
+x28_s2: Attack: Waiting action
+x28_s3: Attack: Under attack
+x28_s3_w0: [Attack] Melee attack
+x28_s4: Attack: Standby
+x28_s5: Attack: Cancel
+x28_s5_e0: [Attack] Attack cancel
+x28_s6: Attack: Cancel wait
+x28_s7: Attack: Failure: End state
+x28_s8: Attack: Success: End state
+x29: Demon Armor: Target Action
+x29_s0: Start state
+x29_s1: Target action: start
+x29_s2: Target action: branch
+x29_s3: Long distance
+x29_s4: Short distance: front
+x29_s5: Short distance: side
+x29_s6: Short distance: back
+x29_s7: Middle distance
+x29_s8: Long distance action_SubState
+x29_s9: End state
+x30: Long distance action
+x30_s0: Start state
+x30_s1: Long-distance action: start
+x30_s1_e0: [Move] Reset move failure
+x30_s1_e1: [Attack] Reset attack failure
+x30_s2: Long-distance action: branch
+x30_s2_e0: [Random number] Random number generation
+x30_s3: Long-distance action: waiting
+x30_s4: Attack: 13 upper slashes_SubState
+x30_s5: Attack: 14 Kesagiri_SubState
+x30_s6: Long Distance: Dash_SubState
+x30_s7: Long distance: Navimesh_SubState
+x30_s8: End state
+x31: Attack: general purpose
+x31_p0: Attack type
+x31_s0: Start state
+x31_s1: Attack: Under attack
+x31_s1_w0: [Attack] Melee attack
+x31_s2: Attack: Standby
+x31_s3: Attack: Cancel
+x31_s3_e0: [Attack] Attack cancel
+x31_s4: Attack: Cancel wait
+x31_s5: Attack: Success: End state
+x31_s6: Attack: Failure: End state
+x32: Long distance: dash
+x32_s0: Start state
+x32_s1: Dash: Start
+x32_s1_e0: [Move] Reset move failure
+x32_s1_e1: [Random number] Random number generation
+x32_s2: Dash: starting error
+x32_s2_w0: [Move] Lock move random
+x32_s3: Dash: slow
+x32_s3_w0: [Move] Dash_Lock_Random
+x32_s4: Dash: fast
+x32_s4_w0: [Move] Dash_Lock_Random
+x32_s5: Dash: Failure: End state
+x33: Long distance: Navi mesh
+x33_s0: Start state
+x33_s1: Navimesh: Start
+x33_s1_e0: [Move] Reset move failure
+x33_s1_e1: [Timer] Start timer
+x33_s1_e2: [Random number] Random number generation
+x33_s2: Navimesh: Search
+x33_s2_e0: [Search] Navimesh
+x33_s3: Navimesh: Dash movement: Slow
+x33_s3_w0: [Move] Dash_Navimesh
+x33_s4: Navimesh: Dash movement: High speed
+x33_s4_w0: [Move] Dash_Navimesh
+x33_s5: Navimesh: Alignment
+x33_s5_w0: [Move] Normal move Navi mesh
+x33_s6: Navimesh: Success: End state
+x33_s7: Navimesh: Failure: End state
+x33_s8: Navimesh: Suspended: End state

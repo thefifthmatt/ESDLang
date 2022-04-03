@@ -1,0 +1,71 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Upper: Lower logic start
+10_s1_e0: [General] lower-level state map switching
+10_s1_e1: [Movement] Movement prediction accuracy setting
+10_s1_e2: [Operation] Invincible ON
+10_s1_w0: [Search enemy] Character _ target setting
+10_s2: Top start
+10_s3: Navi mesh creation
+10_s3_e0: [Search] Navimesh
+10_s4: Waiting to move
+20: Lower logic
+20_s0: Start state
+20_s1: Lower logic: start
+20_s1_e0: [Random number] Random number generation
+20_s2: Action: Move_SubState
+11: Top logic_2
+11_s0: Start state
+11_s1: Top: Start
+11_s2: reaction
+11_s2_e0: [Debug] Popcorn creation
+11_s3: Waiting
+12: Upper logic_3
+12_s0: Start state
+12_s1: Top: Start
+12_s2: reaction
+12_s2_e0: [Debug] Popcorn creation
+12_s3: Waiting
+13: Upper logic_4
+13_s0: Start state
+13_s1: Top: Start
+13_s2: reaction
+13_s2_e0: [Debug] Popcorn creation
+13_s3: Waiting
+14: Upper logic_5
+14_s0: Start state
+14_s1: Top: Start
+14_s2: reaction
+14_s2_e0: [Debug] Popcorn creation
+14_s3: Waiting
+15: Upper logic_6
+15_s0: Start state
+15_s1: Top: Start
+15_s2: reaction
+15_s2_e0: [Debug] Popcorn creation
+15_s3: Waiting
+16: Upper logic_7
+16_s0: Start state
+16_s1: Top: Start
+16_s2: reaction
+16_s2_e0: [Debug] Popcorn creation
+16_s3: Waiting
+17: Upper logic_8
+17_s0: Start state
+17_s1: Top: Start
+17_s2: reaction
+17_s2_e0: [Debug] Popcorn creation
+17_s3: Waiting
+18: Upper logic_9
+18_s0: Start state
+18_s1: Top: Start
+18_s2: reaction
+18_s2_e0: [Debug] Popcorn creation
+18_s3: Waiting
+x0: Action: Move
+x0_s0: Start state
+x0_s1: Start moving
+x0_s2: Move mesh
+x0_s2_w0: [Move] Normal move Navi mesh
+x0_s3: End of move
+x0_s4: End state

@@ -1,0 +1,48 @@
+20: Lower logic
+20_s0: Start state
+20_s1: Substate: Start
+20_s2: Lower-level state: branch
+20_s3: Jump attack (action 15) _SubState
+20_s4: Before Attack: Pause _SubState
+10: Top: Logic
+10_s0: Start state
+10_s1: Top: Start
+10_s2: Top: target search
+10_s2_w0: [Search enemy] Character _ target setting
+10_s3: High rank: search enemy
+10_s3_e0: [Operation] Lock on
+10_s4: Top: search waiting
+10_s5: Top: no search
+10_s5_e0: [Operation] Lock off
+10_s6: Top: Standby without search
+10_s7: Upper: Start lower logic
+10_s7_e0: [Movement] Movement prediction accuracy setting
+10_s7_e1: [General] lower-level state map switching
+10_s8: Top: death
+10_s8_e0: [Operation] death request
+x0: Jump attack (action 15)
+x0_s0: Start state
+x0_s1: Jump Attack: Start
+x0_s2: Jump Attack: Branch
+x0_s3: Jump Attack: Turning
+x0_s3_w0: [Turning] Turning in place_Lock
+x0_s4: Jump Attack: Action
+x0_s4_w0: [Attack] Melee attack
+x0_s5: Jump Attack: Standby
+x0_s6: Jump Attack: Cancel
+x0_s7: End state
+x0_s8: End state_attack cancellation
+x1: Before the attack: Pause
+x1_s0: Start state
+x1_s1: Pause: Start
+x1_s2: Padding: distance discrimination
+x1_s3: Close packing: near
+x1_s3_w0: [Move] Lock horizontally to the target correction position
+x1_s4: Pause: Navigation search
+x1_s4_e0: [Search] Navimesh
+x1_s5: Pause: Navi failed
+x1_s5_w0: [Move] Lock to target correction position
+x1_s6: Closed: Navi successful
+x1_s6_w0: [Move] Horizontal move_Navimesh
+x1_s7: Close-up: finished
+x1_s8: End state

@@ -1,0 +1,44 @@
+20: Lower logic
+20_s0: Start state
+20_s1: Lower: Start
+20_s2: Lower: branch
+20_s3: Lower: Move
+20_s4: Lower: Attack
+20_s5: Lower: Movement action_SubState
+20_s6: Lower: Attack action_SubState
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s2: Top: target search
+10_s2_w0: [Search enemy] Character _ target setting
+10_s3: High rank: search enemy
+10_s3_e0: [Operation] Lock on
+10_s4: Top: search waiting
+10_s5: Top: no search
+10_s5_e0: [Operation] Lock off
+10_s6: Top: Standby without search
+10_s7: Upper: Start lower logic
+10_s7_e0: [General] lower-level state map switching
+10_s8: Top: death
+10_s8_e0: [Operation] death request
+10_s9: Higher level: rewrite to lock disabled
+10_s9_w0: [Operation] Lock list
+10_s10: Upper: Rewrite to lockable
+10_s10_e0: [Operation] Lock list
+x0: Lower: Moving behavior
+x0_s0: Start state
+x0_s1: Move processing: start
+x0_s2: Move processing: moving
+x0_s2_w0: [Move] Normally move to the target world correction position
+x0_s3: Move processing: End
+x0_s4: End state
+x1: Lower: attack behavior
+x1_s0: Start state
+x1_s1: Attack action: start
+x1_s2: Attack behavior: Attack
+x1_s2_w0: [Attack] Melee attack
+x1_s3: Attack action: Attack waiting
+x1_s4: Offensive behavior: interrupted
+x1_s4_e0: [Attack] Reset attack failure
+x1_s5: Attack action: End
+x1_s6: End state

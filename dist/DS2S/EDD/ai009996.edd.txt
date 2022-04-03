@@ -1,0 +1,27 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s1_e0: [General] lower-level state map switching
+10_s2: Targeting
+10_s2_w0: [Search enemy] Character _ target setting
+10_s3: Navimesh route rebuild
+10_s3_e0: [Search] Navimesh
+10_s4: Waiting for route completion
+10_s5: Top: with target
+10_s6: Top: death
+10_s6_e0: [Operation] death request
+20: Lower logic
+20_s0: Start state
+20_s1: Lower logic: start
+20_s2: Action: Move_SubState
+20_s3: Action: Wait_SubState
+x0: Action: Standby
+x0_s0: Start state
+x0_s1: Waiting
+x0_s2: End state
+x1: Action: Move
+x1_s0: Start state
+x1_s1: Start moving
+x1_s2: walk
+x1_s2_w0: [Move] Lock move Navi mesh
+x1_s3: End state

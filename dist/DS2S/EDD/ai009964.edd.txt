@@ -1,0 +1,50 @@
+1000: By the fairy: NPC: Ginyu Shoujo
+1000_s0: Start state
+1000_s1: Ground check
+1000_s2: Turn around
+1000_s2_w0: [Turning] Turning in place_Lock
+1000_s3: Turn around ends
+1001: Fairy Bank: Guard
+1001_s0: Start state
+1001_s1: Ground judgment
+1001_s2: Switch defense
+1001_s2_e0: [Attack] Defense
+2000: Fairy Bank: Slave Beast
+2000_s0: Start state
+2000_s1: Ground check
+2000_s2: Alarm judgment
+2000_s3: Sleeping state (actually managed at the top)
+2000_s4: Awake state (actually managed at the top)
+2000_s5: Start moving
+2000_s6: Move (horizontal move)
+2000_s6_w0: [Move] Lock horizontally to the target correction position
+2000_s7: Move (dash)
+2000_s7_w0: [Move] Lock dash move to the target correction position
+2000_s8: End of move
+2000_s9: Escaped
+2000_s10: attack
+2000_s10_w0: [Attack] Melee attack
+2000_s11: Under attack
+2000_s12: End of attack
+3000: Fairy Bank: Mitsumushi
+3000_s0: Start state
+3000_s1: Ground check
+3000_s2: Random move
+3000_s3: Start moving
+3000_s4: Move (horizontal move)
+3000_s4_w0: [Move] Horizontal move_Lock_Random
+4000: Fairy Bank: Fairy Priestess
+4000_s0: Start state
+4000_s1: Ground check
+4000_s2: Range judgment
+4000_s3: Start moving
+4000_s4: Move (horizontal move)
+4000_s4_w0: [Move] Lock horizontally to the target correction position
+4000_s5: Ranged attack
+4000_s5_w0: [Move] Lock horizontally to the target correction position
+4000_s6: Ranged Attack (Spell)
+4000_s6_w0: [Attack] Melee attack
+4000_s7: End of move
+4000_s8: End of ranged attack
+4000_s9: Switch equipment
+4000_s9_e0: [Attack] Switch weapons

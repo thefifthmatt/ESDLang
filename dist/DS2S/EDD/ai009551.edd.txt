@@ -1,0 +1,58 @@
+10: Top
+10_s0: Start state
+10_s1: Top: Start
+10_s1_e0: [Search enemy] Character _ target setting
+10_s2: Higher rank: search enemy ON
+10_s2_e0: [Operation] Lock on
+10_s3: Top rank: search off
+10_s3_e0: [Operation] Lock off
+10_s4: Top: with target
+10_s5: Top: no target
+10_s6: Top: Walking (for large)
+10_s6_e0: [General] lower-level state map switching
+10_s7: Top: dashing (large)
+10_s7_e0: [General] lower-level state map switching
+10_s8: Higher: Moving horizontally
+10_s8_e0: [General] lower-level state map switching
+20: Lower: walking (for large)
+20_s0: Start state
+20_s1: Quick turn
+20_s1_w0: [Turning] Quick turn_Lock
+20_s2: Waiting
+20_s3: Walking_SubState
+30: Lower: dash (for large)
+30_s0: Start state
+30_s1: Quick turn
+30_s1_w0: [Turning] Quick turn_Lock
+30_s2: Waiting
+30_s3: Dash_SubState
+40: Lower: horizontal movement
+40_s0: Start state
+40_s1: Waiting
+40_s2: Horizontal movement_SubState
+x0: walking
+x0_p0: Analog strength
+x0_p1: Stop distance
+x0_p2: Sharp turning angle
+x0_s0: Start state
+x0_s1: While walking
+x0_s1_w0: [Move] Lock move random
+x0_s2: End state
+x1: dash
+x1_p0: Analog strength
+x1_p1: Stop distance
+x1_p2: Sharp turning angle
+x1_s0: Start state
+x1_s1: Dashing
+x1_s1_w0: [Move] Dash_Lock_Random
+x1_s2: End state
+x2: Horizontal movement
+x2_p0: Analog strength
+x2_p1: Stop distance
+x2_p2: Sharp turning angle
+x2_s0: Start state
+x2_s1: Moving horizontally (left)
+x2_s1_w0: [Move] Horizontal move_Lock_Random
+x2_s2: Moving horizontally (right)
+x2_s2_w0: [Move] Horizontal move_Lock_Random
+x2_s3: End state

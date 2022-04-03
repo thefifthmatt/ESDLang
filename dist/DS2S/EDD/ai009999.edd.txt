@@ -1,0 +1,186 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s1_e0: [Search enemy] Character _ target setting
+10_s1_e1: [Search] Navi mesh to a nearby gate
+10_s2: Higher rank: search enemy ON
+10_s2_e0: [Operation] Lock on
+10_s3: Top rank: search off
+10_s3_e0: [Operation] Lock off
+10_s4: Top: with target
+10_s5: Top: no target
+10_s6: Top: death
+10_s6_e0: [Operation] death request
+10_s7: Upper: Lower logic start
+10_s7_e0: [General] lower-level state map switching
+10_s7_e1: [Movement] Movement prediction accuracy setting
+20: Lower logic
+20_s0: Start state
+20_s1: For initialization
+20_s2: Lower logic: start
+20_s3: Random action
+20_s3_e0: [Random number] Random number generation
+20_s4: Status
+20_s4_w0: [Search enemy] Character _ target setting
+20_s5: Action: Jump_SubState
+20_s6: Action: _SubState being thrown
+20_s7: Action: Damaged _SubState
+20_s8: Action: Wait_SubState
+20_s9: Action: Attack_SubState
+20_s10: Action: Move_SubState
+20_s11: Behavior: Sub-State _SubState
+20_s12: Action: Switch weapon_SubState
+20_s13: Action: Avoid_SubState
+20_s14: Action: Defense_SubState
+20_s15: Action: Turn in place _SubState
+20_s16: Action: Use Object_SubState
+20_s17: Action: Navipoint_SubState
+x0: Action: Attack
+x0_p0: Behavior type 1
+x0_s0: Start state
+x0_s1: Attack action: start
+x0_s1_e0: [Random number] Random number generation
+x0_s2: Combo 1
+x0_s2_e0: [Attack] Melee attack
+x0_s3: Combo 2
+x0_s3_e0: [Attack] Melee attack
+x0_s4: Combo 3
+x0_s4_e0: [Attack] Melee attack
+x0_s5: Action No. 10
+x0_s5_e0: [Attack] Melee attack
+x0_s6: Cancel
+x0_s6_w0: [Attack] Attack cancel
+x0_s7: Attack action: End
+x0_s8: End state
+x1: Action: Standby
+x1_s0: Start state
+x1_s1: Waiting action: start
+x1_s1_w0: [Attack] Non-combat action ends
+x1_s2: Waiting action: End
+x1_s3: End state
+x2: Action: Move
+x2_s0: Start state
+x2_s1: Move: Start
+x2_s1_e0: [Move] Reset move failure
+x2_s2: Random move
+x2_s2_w0: [Move] Dash_Lock_Random
+x2_s3: Move mesh
+x2_s3_w0: [Move] Normal move Navi mesh
+x2_s4: Orientation adjustment
+x2_s4_w0: [Turning] Turning in place_Navimesh direction
+x2_s5: Waiting
+x2_s6: End of move
+x2_s7: Escape lightly horizontally randomly
+x2_s7_e0: [Move] Reset move failure
+x2_s7_w0: [Move] Horizontal move_random
+x2_s8: Action: Use Object_SubState
+x2_s9: Action: Correction movement execution_SubState
+x2_s10: End state
+x3: Action: Decline
+x3_s0: Start state
+x3_s1: Horizontal lock random behind
+x3_s1_w0: [Move] Horizontal move_Lock_Random
+x3_s2: Error condition
+x3_s2_e0: [Search] Navimesh
+x3_s3: Navigating failure return navigation
+x3_s3_w0: [Move] Normal move Navi mesh
+x3_s4: End state
+x4: Action: Weapon switch
+x4_s0: Start state
+x4_s1: Start switching
+x4_s2: Equipment 1
+x4_s2_e0: [Attack] Switch weapons
+x4_s3: Equipment 2
+x4_s3_e0: [Attack] Switch weapons
+x4_s4: Equipment 3
+x4_s4_e0: [Attack] Switch weapons
+x4_s5: Equipment 4
+x4_s5_e0: [Attack] Switch weapons
+x4_s6: Equipment 5
+x4_s6_e0: [Attack] Switch weapons
+x4_s7: Equipment 6
+x4_s7_e0: [Attack] Switch weapons
+x4_s8: End of switching
+x4_s9: Equipment 1 check
+x4_s10: Equipment 2 Check
+x4_s11: Equipment 3 Check
+x4_s12: Equipment 4 Check
+x4_s13: Equipment 5 check
+x4_s14: Equipment 6 check
+x4_s15: End state
+x5: Action: Avoidance
+x5_s0: Start state
+x5_s1: Random avoidance
+x5_s1_w0: [Attack] Random avoidance_Angle designation
+x5_s2: End state
+x6: Action: Defense
+x6_s0: Start state
+x6_s1: Start defense
+x6_s1_e0: [Attack] Defense
+x6_s2: End of defense
+x6_s2_e0: [Attack] Defense
+x6_s3: End state
+x7: Action: Turn in place
+x7_s0: Start state
+x7_s1: Turn
+x7_s1_w0: [Turning] Turning in place_Lock
+x7_s2: End state
+x8: Behavior: Object Use
+x8_s0: Start state
+x8_s1: Object use
+x8_s1_w0: [Action] Use OBJ
+x8_s2: Other than the ladder
+x8_s3: Ladder
+x8_s4: Climb ladder
+x8_s4_w0: [Action] Climbing the ladder
+x8_s5: Go down the ladder
+x8_s5_w0: [Action] Go down the ladder
+x8_s6: Successful completion
+x8_s6_e0: [Action] Leave OBJ
+x8_s7: failed
+x8_s8: End state
+x9: Action: Jump
+x9_s0: Start state
+x9_s1: Jump start
+x9_s2: Issue jump
+x9_s2_w0: [Action] Stand jump
+x9_s3: Jump acceptance
+x9_s4: End state
+x10: Action: Throwing
+x10_s0: Start state
+x10_s1: Waiting for damage to end
+x10_s2: Damage information reset
+x10_s2_e0: [Attack] Damage information reset
+x10_s3: Return to standby
+x10_s3_e0: [Attack] Damage information reset
+x10_s3_w0: [Action] Cancel activation state
+x10_s4: End state
+x11: Action: Damaged
+x11_s0: Start state
+x11_s1: Waiting for damage
+x11_s1_p0_0: [Search enemy] Attacker_Target setting
+x11_s2: Damage information reset
+x11_s2_e0: [Attack] Damage information reset
+x11_s3: End state
+x12: Action: Navi point
+x12_s0: Start state
+x12_s1: Start navigation point movement
+x12_s1_e0: [Search] Navi mesh to Gen Navi point
+x12_s2: Navi point move
+x12_s2_w0: [Move] Normal move Navi mesh
+x12_s3: End of navigation point movement
+x12_s4: End state
+x13: Action: Correction movement execution
+x13_s0: Start state
+x13_s1: Determine the correction movement direction
+x13_s2: Forward
+x13_s2_w0: [Move] Lock horizontal movement to the target world correction position
+x13_s3: Backward
+x13_s3_w0: [Move] Lock horizontal movement to the target world correction position
+x13_s4: left
+x13_s4_w0: [Move] Lock horizontal movement to the target world correction position
+x13_s5: right
+x13_s5_w0: [Move] Lock horizontal movement to the target world correction position
+x13_s6: random
+x13_s6_w0: [Move] Lock horizontal movement to the target world correction position
+x13_s7: End state

@@ -1,0 +1,150 @@
+19: Generator related
+19_s0: Start state
+19_s1: start
+19_s2: Get closer to players
+19_s2_w0: [Move] Lock move random
+19_s2_w1: [Operation] Lock on
+19_s3: Generator action _SubState
+30: Field horse related
+30_s0: Start state
+30_s1: Branch
+30_s2: Normal: Standby
+30_s3: Normal: approaching
+30_s3_w0: [Move] Horizontal move_Lock_Random
+30_s4: Onijima: Standby
+30_s5: Onijima: Leave
+30_s5_w0: [Move] Horizontal move_Lock_Random
+40: Equipment switching related
+40_s0: Start state
+40_s1: Waiting
+40_s2: Switch Equipment: Sword to Bow
+40_s2_e0: [Attack] Switch weapons
+40_s3: Switch Equipment: Bow to Sword
+40_s3_e0: [Attack] Switch weapons
+11: For eventflag switching
+11_s0: Start state
+11_s1: Event flag OFF
+11_s2: Event flag ON
+16: Non-combat action test
+16_s0: Start state
+16_s1: Status
+16_s2: Non-combat action test
+16_s2_w0: [Attack] Melee attack
+16_s3: Non-combat action test standby
+16_s4: Non-combat action: Action 0_SubState
+13: Route point-jump
+13_s0: Start state
+13_s1: Route point move
+13_s1_e0: [Search] Navi mesh to Navi point
+13_s2: Go to route point
+13_s2_w0: [Move] Normal move Navi mesh
+13_s3: Go to route point_2
+13_s3_w0: [Move] Normal move Navi mesh
+13_s4: Jump from route point
+13_s4_w0: [Action] Stand jump
+13_s5: Jump waiting
+13_s6: End
+14: Obstacle test
+14_s0: Start state
+14_s1: Status
+14_s2: There is obstacle
+14_s3: No obstacles
+15: Action 15 test
+15_s0: Start state
+15_s1: Status
+15_s1_w0: [Attack] Melee attack
+12: For throw test
+12_s0: Start state
+12_s1: Throwing action: start
+12_s2: Throwing action: attack
+12_s2_w0: [Attack] Melee attack
+12_s3: Throwing action: waiting
+12_s4: Throwing action: End
+17: Angle test
+17_s0: Start state
+17_s1: Waiting
+17_s2: More than angle
+17_s3: Within angle
+18: Search for enemy
+18_s0: Start state
+18_s1: start
+18_s2: player
+18_s3: Neutral
+18_s4: Search enemy: neutral ⇒ player _SubState
+20: Navimesh
+20_s0: Start state
+20_s1: start
+20_s2: Branch
+20_s3: Navimesh move_SubState
+10: Lock only
+10_s0: Start state
+10_s1: FirstStep: Start
+10_s1_e0: [General purpose] Sharing flag setting
+10_s2: FirstStep: Lock on
+10_s2_w0: [Operation] Lock on
+10_s3: FirstStep: Lock off
+10_s4: Search enemy (boss): Player: _SubState in order of distance
+x3: Navi mesh move
+x3_s0: Start state
+x3_s1: Normal movement: start
+x3_s2: Normal movement: Navigation search
+x3_s2_e0: [Search] Navimesh
+x3_s3: Normal movement: Navigation successful movement
+x3_s3_w0: [Move] Horizontal move_Navimesh
+x3_s3_w1: [Move] Dash_Navimesh
+x3_s4: Normal movement: Navigation failure movement
+x3_s4_w0: [Move] Horizontal move_random
+x3_s4_w1: [Move] Horizontal move_Lock_Random
+x3_s5: Normal movement: End
+x3_s6: Normal move: Cancel
+x3_s6_e0: [Move] Reset move failure
+x3_s7: Normal movement: alignment
+x3_s7_w0: [Move] Normal move Navi mesh
+x3_s8: End state
+x4: Search enemy (boss): Player
+x4_p0: Search priority
+x4_p1: Search distance
+x4_s0: Start state
+x4_s1: Search enemy: start
+x4_s1_e0: [Operation] Lock off
+x4_s2: Search enemies: players
+x4_s2_w0: [Search enemy] Character _ target setting
+x4_s3: Search for: Discovery: End State
+x4_s4: Search enemy: not found: end state
+x0: [LIB] Generator action (lower)
+x0_s0: Start state
+x0_s1: Generator action: start
+x0_s2: Generator action: branch
+x0_s3: Generator Behavior: Generator Navimesh
+x0_s3_e0: [Search] Navi mesh to generator
+x0_s4: Generator Behavior: Player Behavior
+x0_s4_w0: [Move] Horizontal move_Lock_Navimesh
+x0_s5: Generator behavior: normal behavior
+x0_s5_w0: [Move] Normal move Navi mesh
+x0_s6: Generator action: end
+x0_s7: Come here if you can't make a return route
+x0_s8: End state
+x1: Non-combat action: Action 0
+x1_s0: Start state
+x1_s1: Begin attack
+x1_s2: Attack: Action 0
+x1_s2_w0: [Attack] Melee attack
+x1_s3: Attack: action 0 wait
+x1_s4: Attack: End
+x1_s5: End state
+x2: Search enemy: neutral ⇒ player
+x2_s0: Start state
+x2_s1: Search enemy: start
+x2_s1_e0: [General purpose] Sharing flag setting
+x2_s1_e1: [Attack] Damage information reset
+x2_s1_w0: [Operation] Lock off
+x2_s2: Search enemies: hostile time (player)
+x2_s2_w0: [Search enemy] Character _ target setting
+x2_s3: Search enemy: attacker
+x2_s3_w0: [Search enemy] Attacker_Target setting
+x2_s4: Search enemy: Normal (neutral)
+x2_s4_w0: [Search enemy] Character _ target setting
+x2_s5: Search enemy: Normal time (player)
+x2_s5_w0: [Search enemy] Character _ target setting
+x2_s6: Search enemy: End
+x2_s7: End state

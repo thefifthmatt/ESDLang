@@ -1,0 +1,132 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s1_e0: [Movement] Movement prediction accuracy setting
+10_s1_e1: [Attack] Damage lower logic reset setting
+10_s1_e2: [General purpose] Sharing flag setting
+10_s1_w0: [Action] Clear activation state reset flag
+10_s2: [PC] Battle_SubState
+10_s3: [PC] Tracking_SubState
+10_s4: [PC] Alert_SubState
+10_s5: [PC] Return_SubState
+10_s6: [PC] Wait_SubState
+10_s7: [PC] Lower order switch_SubState
+10_s8: [LIB] Search enemy: White Spirit _SubState
+x0: [PC] Combat
+x0_s0: Start state
+x0_s1: Combat: in action
+x0_s1_e0: [General purpose] Sharing flag setting
+x0_s1_e1: [General purpose] Sharing flag setting
+x0_s1_e2: [Search] Erasure of last sighting information
+x0_s1_e3: [Attack] Damage type reset
+x0_s1_e4: [Attack] Damage information reset
+x0_s1_e5: [Operation] Lock on
+x0_s1_e6: [Platoon] Set weight multiplier
+x0_s1_e7: [Random number] Random number generation
+x0_s2: Battle: ⇒ chase
+x0_s2_e0: [Timer] Start timer
+x0_s2_e1: [General purpose] Sharing flag setting
+x0_s3: Battle: ⇒ Return
+x0_s3_e0: [General purpose] Sharing flag setting
+x0_s4: Battle: timer start
+x0_s4_e0: [Timer] Start timer
+x0_s5: End state
+x1: [PC] Tracking
+x1_p0: Tracking time
+x1_s0: Start state
+x1_s1: Tracking: in action
+x1_s1_e0: [Attack] Damage type reset
+x1_s1_e1: [Attack] Damage information reset
+x1_s1_e2: [Operation] Lock off
+x1_s1_e3: [Search] Erasure of last sighting information
+x1_s1_e4: [Platoon] Set weight multiplier
+x1_s2: Tracking: ⇒ Combat
+x1_s2_e0: [General purpose] Sharing flag setting
+x1_s3: Tracking: ⇒ Return
+x1_s3_e0: [General purpose] Sharing flag setting
+x1_s4: Tracking: timer start
+x1_s4_e0: [Timer] Start timer
+x1_s5: End state
+x2: [PC] vigilance
+x2_s0: Start state
+x2_s1: Vigilance: in action
+x2_s1_e0: [Search] Erasure of last sighting information
+x2_s1_e1: [Platoon] Set weight multiplier
+x2_s2: Alert: ⇒ Combat
+x2_s2_e0: [General purpose] Sharing flag setting
+x2_s3: Warning: ⇒ Return
+x2_s3_e0: [General purpose] Sharing flag setting
+x2_s4: Target action: Timer start
+x2_s4_e0: [Timer] Start timer
+x2_s5: End state
+x3: [PC] Follow
+x3_s0: Start state
+x3_s1: Follow: In action
+x3_s2: Follow: ⇒ Return
+x3_s2_e0: [General purpose] Sharing flag setting
+x3_s3: Tracking: timer start
+x3_s3_e0: [Timer] Start timer
+x3_s4: End state
+x4: [PC] Return
+x4_p0: White spirit flag
+x4_s0: Start state
+x4_s1: Return: in action
+x4_s1_e0: [Attack] Damage information reset
+x4_s1_e1: [Attack] Damage type reset
+x4_s1_e2: [Platoon] Set weight multiplier
+x4_s2: Return: ⇒ battle
+x4_s2_e0: [General purpose] Sharing flag setting
+x4_s3: Generator return: timer start
+x4_s3_e0: [Timer] Start timer
+x4_s4: Return: ⇒ vigilance
+x4_s4_e0: [General purpose] Sharing flag setting
+x4_s5: End state
+x5: [PC] Lower switching
+x5_s0: Start state
+x5_s1: Lower switch: start
+x5_s2: Lower order switching: bare hands x bare hands
+x5_s2_e0: [General] lower-level state map switching
+x5_s3: Lower order switching: proximity x shield
+x5_s3_e0: [General] lower-level state map switching
+x5_s4: Lower switch: shooting × bare hands
+x5_s4_e0: [General] lower-level state map switching
+x5_s5: Lower order switching: magic × bare hands
+x5_s5_e0: [General] lower-level state map switching
+x5_s6: Lower order switch: shooting × shield
+x5_s6_e0: [General] lower-level state map switching
+x5_s7: Lower order switch: magic x shield
+x5_s7_e0: [General] lower-level state map switching
+x5_s8: Lower order switching: proximity × proximity
+x5_s8_e0: [General] lower-level state map switching
+x5_s9: Lower switch: shooting × shooting
+x5_s9_e0: [General] lower-level state map switching
+x5_s10: Lower order switching: proximity × bare hands
+x5_s10_e0: [General] lower-level state map switching
+x5_s11: Lower switch: melee x fire
+x5_s11_e0: [General] lower-level state map switching
+x5_s12: End state
+x6: [LIB] Search enemy: White Spirit
+x6_p0: Tracking distance
+x6_p1: Search distance
+x6_s0: Start state
+x6_s1: Search enemy: Normal
+x6_s1_w0: [Search enemy] Character _ target setting
+x6_s2: Search enemy: Discovery
+x6_s2_e0: [General purpose] Sharing flag setting
+x6_s2_e1: [Operation] Lock on
+x6_s3: Search enemy: End
+x6_s4: Search enemy: not found
+x6_s4_e0: [Operation] Lock on
+x6_s4_e1: [General purpose] Sharing flag setting
+x6_s4_w0: [Search] Player_Target setting
+x6_s5: Search enemy: start
+x6_s5_e0: [Operation] Lock off
+x6_s5_w0: [Search] Clear the target
+x6_s6: Search enemy: host player
+x6_s6_w0: [Search] Player_Target setting
+x6_s7: Search enemy: white door
+x6_s7_e0: [General purpose] Sharing flag setting
+x6_s7_w0: [Enemy] White door_Target setting
+x6_s8: Search enemy: Boss
+x6_s8_w0: [Search enemy] Character _ target setting
+x6_s9: End state

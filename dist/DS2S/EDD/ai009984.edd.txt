@@ -1,0 +1,16 @@
+15: Attack only
+15_s0: Start state
+15_s1: Waiting
+15_s2: Attack: change the event to your liking
+15_s2_w0: [Attack] Melee attack
+100: [Test] Acquisition during attack
+100_s0: Start state
+100_s1: Ground judgment
+100_s2: Behavior judgment
+100_s3: First Attack * Please change melee attack here
+100_s3_w0: [Attack] Melee attack
+100_s4: Attack 1st attack
+100_s5: Attack 2nd * Change melee attack here
+100_s5_w0: [Attack] Melee attack
+100_s6: 2nd attack attacking
+100_s7: End of attack

@@ -1,0 +1,49 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s2: Higher: For switching players
+10_s2_e0: [General] lower-level state map switching
+10_s2_e1: [General purpose] Sharing flag setting
+10_s3: Upper: For switching to enemy
+10_s3_e0: [General] lower-level state map switching
+10_s3_e1: [General purpose] Sharing flag setting
+10_s4: Top: Behavior without target
+10_s4_e0: [General purpose] Sharing flag setting
+10_s4_w0: [Operation] Lock off
+10_s5: Higher rank: search enemy (player or enemy) _SubState
+10_s6: Top: Target action_SubState
+10_s7: Top: Marathon Man_SubState
+x0: Higher rank: search enemy (player or enemy)
+x0_s0: Start state
+x0_s1: Search enemy: start
+x0_s1_e0: [Operation] Lock off
+x0_s2: Search enemies: players
+x0_s2_w0: [Search enemy] Character _ target setting
+x0_s3: Search enemy: Enemy
+x0_s3_w0: [Search enemy] Character _ target setting
+x0_s4: Target enabled
+x0_s5: Search enemy: End
+x0_s6: End state
+x1: Top: target behavior
+x1_s0: Start state
+x1_s1: Target action: start
+x1_s2: Target action: invisibility preliminary action
+x1_s3: Target action: invisibility
+x1_s3_e0: [General purpose] Sharing flag setting
+x1_s3_e1: [Operation] Lock off
+x1_s4: Target action: discovery
+x1_s5: Target action: Visual recognition
+x1_s5_e0: [Operation] Lock on
+x1_s5_e1: [General purpose] Sharing flag setting
+x1_s6: Target action: End
+x1_s7: End state
+x2: Top: Marathon Man
+x2_s0: Start state
+x2_s1: Marathon Man: Start
+x2_s1_e0: [General] lower-level state map switching
+x2_s1_e1: [General purpose] Sharing flag setting
+x2_s2: Marathon man: no target
+x2_s3: Marathon Man: Under enemy target
+x2_s4: Marathon Man: End
+x2_s5: Higher rank: search enemy (player or enemy) _SubState
+x2_s6: End state

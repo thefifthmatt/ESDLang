@@ -1,0 +1,80 @@
+10: Higher state
+10_s0: Start state
+10_s1: Higher state: start
+10_s2: Upper state: branch
+10_s3: Upper: [Exception handling]
+10_s3_e0: [Debug] Log output
+10_s3_e1: [General] lower-level state map switching
+10_s4: Higher level: Activation state release
+10_s4_e0: [Action] Cancel activation state
+10_s5: Higher rank: STEP1_SubState
+10_s6: Top: Initial start_SubState
+10_s7: Higher rank: STEP2_SubState
+10_s8: Top: First Contact_SubState
+x0: Top: Step action
+x0_p0: Lower state ID
+x0_s0: Start state
+x0_s1: Step action: start
+x0_s1_e0: [General] lower-level state map switching
+x0_s1_e1: [General purpose] Sharing flag setting
+x0_s2: Step action: combat in the area
+x0_s2_e0: [Operation] Lock on
+x0_s2_e1: [General purpose] Sharing flag setting
+x0_s2_e2: [Timer] Start timer
+x0_s2_e3: [Timer] Stop timer
+x0_s2_e4: [Timer] Start timer
+x0_s2_e5: [Timer] Stop timer
+x0_s3: Step action: no target
+x0_s3_e0: [Operation] Lock off
+x0_s4: Step action: search enemy branch
+x0_s4_e0: [General purpose] Sharing flag setting
+x0_s5: Step Action: Out-of-Area Combat
+x0_s5_e0: [Operation] Lock on
+x0_s5_e1: [General purpose] Sharing flag setting
+x0_s5_e2: [Timer] Start timer
+x0_s5_e3: [Timer] Stop timer
+x0_s5_e4: [Random number] Random number generation
+x0_s5_e5: [Timer] Start timer
+x0_s6: Step action: return
+x0_s6_e0: [Attack] Damage information reset
+x0_s6_e1: [Operation] Lock off
+x0_s6_e2: [Timer] Start timer
+x0_s6_e3: [Timer] Stop timer
+x0_s6_e4: [Random number] Random number generation
+x0_s6_e5: [Timer] Start timer
+x0_s6_w0: [General purpose] Sharing flag setting
+x0_s6_w1: [General purpose] Sharing flag setting
+x0_s7: Search enemy: General purpose (no change of shared flag) _SubState
+x0_s8: End state
+x1: Top: First contact
+x1_s0: Start state
+x1_s1: FC: Gen specified startup error
+x1_s2: FC: Logic startup error
+x1_s3: FC: Cancel startup animation
+x1_s3_e0: [Action] Cancel activation state
+x1_s4: FC: Start initialization setting
+x1_s4_e0: [Search] Overwrite the generator position with the current position
+x1_s4_e1: [General purpose] Sharing flag setting
+x1_s4_w0: [Search] Player_Target setting
+x1_s5: FC: Start condition branch
+x1_s6: End state
+x2: Search enemy: general purpose (no change of shared flag)
+x2_s0: Start state
+x2_s1: Search enemy: Normal
+x2_s1_w0: [Search enemy] Character _ target setting
+x2_s2: Search enemy: Discovery
+x2_s2_e0: [Operation] Lock on
+x2_s3: Search enemy: branch
+x2_s3_e0: [Operation] Lock off
+x2_s4: Search enemy: attacker
+x2_s4_w0: [Search enemy] Attacker_Target setting
+x2_s5: Search enemy: not found
+x2_s5_w0: [Search] Clear the target
+x2_s6: Search enemies: save target
+x2_s6_w0: [Search] Save target
+x2_s7: Search enemy: start
+x2_s7_w0: [Search] Clear the target
+x2_s8: Search enemy: target load
+x2_s8_w0: [Search] Load target
+x2_s9: Discovery end state
+x2_s10: Undiscovered end state

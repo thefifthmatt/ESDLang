@@ -1,0 +1,105 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s1_e0: [Search enemy] Character _ target setting
+10_s2: Higher rank: search enemy ON
+10_s2_e0: [Operation] Lock on
+10_s3: Top: with target
+10_s4: Top: death
+10_s4_e0: [Operation] death request
+10_s5: Upper: State start
+10_s5_e0: [General] lower-level state map switching
+20: Lower logic
+20_s0: Start state
+20_s1: Lower logic: start
+20_s2: Nothing
+20_s3: Action: Target attack _SubState
+20_s4: Action: Target defense _SubState
+20_s5: Action: Target avoiding_SubState
+20_s6: Action: _SubState during target damage
+20_s7: Action: Target dash during _SubState
+20_s8: Action: Target Other Medium _SubState
+20_s9: Action: Target shooting _SubState
+20_s10: Action: In target precision shooting mode_SubState
+20_s11: Action: Target walking _SubState
+20_s12: Action: Target moving horizontally_SubState
+20_s13: Action: Target down _SubState
+20_s14: Action: Target blood smearing _SubState
+20_s15: Action: Target throwing _SubState
+20_s16: Action: Target being thrown_SubState
+20_s17: Action: Target item in use _SubState
+x0: Action: Target avoiding
+x0_s0: Start state
+x0_s1: Avoidance
+x0_s2: Evasion end
+x0_s3: End state
+x1: Action: Target defending
+x1_s0: Start state
+x1_s1: defense
+x1_s2: End of defense
+x1_s3: End state
+x2: Action: Target dash
+x2_s0: Start state
+x2_s1: Dashing
+x2_s2: End of dash
+x2_s3: End state
+x3: Action: During target attack
+x3_s0: Start state
+x3_s1: Under attack
+x3_s2: End of attack
+x3_s3: End state
+x4: Action: During target damage
+x4_s0: Start state
+x4_s1: During damage
+x4_s2: End of damage
+x4_s3: End state
+x5: Action: Target other
+x5_s0: Start state
+x5_s1: Other medium
+x5_s2: Other end
+x5_s3: End state
+x6: Action: Target firing
+x6_s0: Start state
+x6_s1: During shooting
+x6_s2: End of shooting
+x6_s3: End state
+x7: Behavior: Target precision shooting mode
+x7_s0: Start state
+x7_s1: During precision shooting mode
+x7_s2: Exit precision shooting mode
+x7_s3: End state
+x8: Behavior: Target walking
+x8_s0: Start state
+x8_s1: While walking
+x8_s2: End of walking
+x8_s3: End state
+x9: Action: Target moving horizontally
+x9_s0: Start state
+x9_s1: During horizontal movement
+x9_s2: End of horizontal movement
+x9_s3: End state
+x10: Action: Target down
+x10_s0: Start state
+x10_s1: Down
+x10_s2: Down end
+x10_s3: End state
+x11: Action: Target bloody
+x11_s0: Start state
+x11_s1: Bloody
+x11_s2: End of blood
+x11_s3: End state
+x12: Behavior: Target item in use
+x12_s0: Start state
+x12_s1: Item in use
+x12_s2: End of use
+x12_s3: End state
+x13: Action: Target throwing
+x13_s0: Start state
+x13_s1: Throwing
+x13_s2: Finished throwing
+x13_s3: End state
+x14: Action: Target being thrown
+x14_s0: Start state
+x14_s1: Being thrown ...
+x14_s2: Finished throwing
+x14_s3: End state

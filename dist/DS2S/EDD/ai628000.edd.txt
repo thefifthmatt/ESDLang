@@ -1,0 +1,164 @@
+10: Lower: STEP1
+10_s0: Start state
+10_s1: Lower: First attack
+10_s2: Lower: STEP2 transition
+10_s2_e0: [General purpose] Sharing flag setting
+10_s2_e1: [General purpose] Sharing flag setting
+10_s2_e2: [General purpose] Sharing flag setting
+10_s3: Lower: Action start_SubState
+20: Lower: STEP2
+20_s0: Start state
+20_s1: Lower: End of action
+20_s1_e0: [General purpose] Sharing flag setting
+20_s1_e1: [General purpose] Sharing flag setting
+20_s2: Lower: STEP3 transition
+20_s2_e0: [General purpose] Sharing flag setting
+20_s3: Lower: Action start_SubState
+20_s4: Lower: STEP2 action_SubState
+30: Lower: STEP3
+30_s0: Start state
+30_s1: Lower: STEP4 transition
+30_s1_e0: [General purpose] Sharing flag setting
+30_s1_e1: [General purpose] Sharing flag setting
+30_s1_e2: [General purpose] Sharing flag setting
+30_s2: Lower: Action start_SubState
+30_s3: Lower: debilitating state_SubState
+40: Lower: STEP4
+40_s0: Start state
+40_s1: Lower: End of action
+40_s1_e0: [General purpose] Sharing flag setting
+40_s1_e1: [General purpose] Sharing flag setting
+40_s2: Lower: Action start_SubState
+40_s3: Lower: STEP4 action_SubState
+x0: Lower: STEP2 action
+x0_s0: Start state
+x0_s1: Step action: start
+x0_s1_e0: [Random number] Random number generation
+x0_s1_e1: [Random number] Random number generation
+x0_s2: Step action: plan
+x0_s3: Step action: end
+x0_s4: ▼ Combo 1: Scratch Combo_SubState
+x0_s5: ▼ Action 11: Biting _SubState
+x0_s6: ▼ Action 12: Jumping_SubState
+x0_s7: ▼ Action 13: Scratch right & turn 90 degrees_SubState
+x0_s8: ▼ Action 14: Left side scratch & 90 degree turn_SubState
+x0_s9: ▼ Action 15: Right front leg_Smashing_SubState
+x0_s10: ▼ Action 16: Left front leg_Smashing_SubState
+x0_s11: ▼ Action 17: Jump on BD_SubState
+x0_s12: ★ Step 360_SubState
+x0_s12_e0: [Random number] Random number generation
+x0_s13: Quick Turn_SubState
+x0_s14: End state
+x1: Steps
+x1_p0: Avoidance angle 1
+x1_p1: Avoidance angle 2
+x1_p2: Avoidance angle 3
+x1_p3: S navigation distance
+x1_s0: Start state
+x1_s1: Step: Start
+x1_s1_e0: [Move] Reset move failure
+x1_s2: Step: Avoid
+x1_s2_w0: [Attack] Random avoidance_Angle designation
+x1_s3: Step: Finish
+x1_s4: Success: End state
+x1_s5: Failure: termination state
+x2: Quick turn
+x2_s0: Start state
+x2_s1: Quick Turn: Start
+x2_s2: Quick Turn: Execute
+x2_s2_w0: [Turning] Quick turn_Lock
+x2_s3: Step: Finish
+x2_s4: End state
+x3: Debilitating state
+x3_s0: Start state
+x3_s1: Action: Start
+x3_s2: Action: Running
+x3_s2_e0: [Attack] Switch weapons
+x3_s3: Action: End
+x3_s4: End state
+x4: Lower: Start action
+x4_s0: Start state
+x4_s1: Step action: start
+x4_s1_e0: [General purpose] Sharing flag setting
+x4_s1_e1: [Attack] Damage lower logic reset setting
+x4_s1_e2: [Move] Reset move failure
+x4_s2: End state
+x5: attack
+x5_p0: Behavior type
+x5_p1: Attack distance
+x5_p2: Walking distance
+x5_p3: Attack angle
+x5_p4: time out
+x5_p5: Step rate
+x5_p6: Stop distance
+x5_p7: Action ID
+x5_s0: Start state
+x5_s1: Attack action: start
+x5_s1_e0: [Timer] Start timer
+x5_s1_e1: [Move] Reset move failure
+x5_s2: Attack behavior: walking
+x5_s2_w0: [Move] Lock move random
+x5_s3: Attack action: dash
+x5_s3_w0: [Move] Dash_Lock_Random
+x5_s4: Attack action: Attack start
+x5_s4_e0: [Attack] Melee attack
+x5_s5: Attack action: approach turn
+x5_s5_w0: [Turning] Quick turn_Lock
+x5_s6: Attack action: attack turn
+x5_s6_w0: [Turning] Quick turn_Lock
+x5_s7: Attack action: Under attack
+x5_s7_e0: [Platoon] Set the platoon flag
+x5_s8: Attack action: End of attack
+x5_s8_e0: [Random number] Random number generation
+x5_s9: Attack action: Action after attack
+x5_s10: Attack: Successful
+x5_s11: Attack action: Combo cancel
+x5_s11_e0: [Attack] Combo attack cancel
+x5_s12: Attack action: Replan
+x5_s12_e0: [Platoon] Set the platoon flag
+x5_s13: Attack action: Failed end
+x5_s14: Attack action: After approach turn
+x5_s15: Backstep_SubState
+x5_s16: Side step_SubState
+x5_s17: Success: End state
+x5_s18: Failure: termination state
+x5_s19: Replan: End state
+x5_s20: Obstacle failure: end state
+x6: Step 360
+x6_p0: S navigation distance
+x6_s0: Start state
+x6_s1: Step: Start
+x6_s2: Backstep_SubState
+x6_s3: Side step_SubState
+x6_s4: Front step_SubState
+x6_s5: Success: End state
+x6_s6: Failure: termination state
+x7: Lower: STEP4 action
+x7_s0: Start state
+x7_s1: Step action: start
+x7_s1_e0: [Random number] Random number generation
+x7_s1_e1: [Random number] Random number generation
+x7_s2: Step action: plan
+x7_s3: Step action: end
+x7_s4: ▼ Action 11: Biting (Weak) _SubState
+x7_s5: ▼ Action 15: Right front leg_Smashing_SubState
+x7_s6: ▼ Action 16: Left front leg_Smashing_SubState
+x7_s7: ▼ Action 20: Vomiting_SubState
+x7_s7_e0: [Timer] Start timer
+x7_s8: Quick Turn_SubState
+x7_s9: ▼ Action 10: Scratch (weak) _SubState
+x7_s10: Movement: Uro_SubState
+x7_s11: End state
+x8: Move: Uro
+x8_s0: Start state
+x8_s1: Watching: start
+x8_s1_e0: [Random number] Random number generation
+x8_s1_e1: [Timer] Start timer
+x8_s2: Watching: Walking
+x8_s2_w0: [Move] Horizontal move_Lock_Random
+x8_s3: Watching: Adjusting the angle: Turning right
+x8_s3_w0: [Turning] Quick turn _ Direction designation
+x8_s4: Watching: Adjusting the angle: Turning left
+x8_s4_w0: [Turning] Quick turn _ Direction designation
+x8_s5: Waiting: waiting
+x8_s6: End state

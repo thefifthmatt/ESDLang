@@ -1,0 +1,33 @@
+10: Lower state
+10_s0: Start state
+10_s1: Substate: Start
+10_s1_e0: [Attack] Damage lower logic reset setting
+10_s2: Waiting
+10_s3: Standby: Damage reset
+10_s3_e0: [Attack] Damage information reset
+10_s4: Horizontal movement
+10_s4_w0: [Move] Horizontal move_random
+10_s5: Horizontal movement: Damage reset
+10_s5_e0: [Attack] Damage information reset
+10_s6: Lock_horizontal movement
+10_s6_w0: [Move] Horizontal move_Lock_Random
+10_s7: Lock_Horizontal movement: Damage reset
+10_s7_e0: [Attack] Damage information reset
+10_s8: Normal movement
+10_s8_w0: [Move] Normal move random
+10_s9: Normal movement: Damage reset
+10_s9_e0: [Attack] Damage information reset
+10_s10: Lock_Normal movement
+10_s10_w0: [Move] Lock move random
+10_s11: Lock_Normal Movement: Damage Reset
+10_s11_e0: [Attack] Damage information reset
+10_s12: dash
+10_s12_w0: [Move] Dash_random
+10_s13: Dash: Damage reset
+10_s13_e0: [Attack] Damage information reset
+10_s14: Lock_dash
+10_s14_w0: [Move] Dash_Lock_Random
+10_s15: Lock_Dash: Damage reset
+10_s15_e0: [Attack] Damage information reset
+10_s16: Status
+10_s16_w0: [Attack] Random avoidance

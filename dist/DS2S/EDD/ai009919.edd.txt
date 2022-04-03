@@ -1,0 +1,33 @@
+20: Lower Fangs: Rush
+20_s0: Start state
+20_s1: Lower fangs: start
+20_s2: Lower fangs: approaching waiting
+20_s3: Lower fangs: Start judgment
+20_s4: Lower Fangs: Cool Time
+20_s4_w0: [Attack] Melee attack
+20_s5: Lower fangs: Action_SubState
+20_s6: Inferior Fang Beast: Action_Torch Action_SubState
+x0: Lower Fangs: Behavior
+x0_s0: Start state
+x0_s1: Action: Start
+x0_s2: Action: Target discovery
+x0_s2_e0: [Search] Navimesh
+x0_s3: Action: Navimesh failed
+x0_s3_w0: [Move] Horizontal move_random
+x0_s3_w1: [Move] Horizontal move_Lock_Random
+x0_s4: Action: Move execution
+x0_s4_w0: [Move] Normal move Navi mesh
+x0_s5: Action: Cancel
+x0_s6: End state
+x1: Lower fangs: Action_torch
+x1_s0: Start state
+x1_s1: Action: Start
+x1_s2: Action: Target discovery
+x1_s2_e0: [Search] Navimesh
+x1_s3: Action: Navimesh failed
+x1_s3_w0: [Move] Horizontal move_random
+x1_s3_w1: [Move] Horizontal move_Lock_Random
+x1_s4: Action: Move execution
+x1_s4_w0: [Move] Dash_Lock_Navimesh
+x1_s5: Action: Cancel
+x1_s6: End state

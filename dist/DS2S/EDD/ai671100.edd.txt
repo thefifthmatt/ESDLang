@@ -1,0 +1,351 @@
+900: Kokeshi attack verification
+900_s0: Start state
+900_s1: Activate special effects + move in lock direction
+900_s1_w0: [Operation] Lock on
+900_s1_w1: [Move] Horizontal move_Lock_Random
+900_s2: Activate special effects + move straight
+900_s2_w0: [Operation] Lock off
+900_s2_w1: [Move] Horizontal move_random
+900_s3: Go straight → lock
+900_s4: Lock → go straight
+10: dummy
+10_s0: Start state
+10_s1: Lower state switching
+10_s1_e0: [General] lower-level state map switching
+10_s2: Wait for initial start
+10_s3: [LIB] Initial termination setting_SubState
+100: 3-point patrol
+100_s0: Start state
+100_s1: Patrol: break action branch
+100_s1_e0: [Random number] Random number generation
+100_s2: Resting action 1
+100_s2_e0: [Timer] Stop timer
+100_s2_e1: [Attack] Melee attack
+100_s2_x0: [Timer] Restart timer
+100_s2_x1: [Timer] Start timer
+100_s3: Resting action 2
+100_s3_e0: [Timer] Stop timer
+100_s3_e1: [Attack] Melee attack
+100_s3_x0: [Timer] Restart timer
+100_s3_x1: [Timer] Start timer
+100_s4: start
+100_s4_e0: [General purpose] Sharing flag setting
+100_s5: Travel speed branch
+100_s6: End of dash
+100_s6_e0: [Timer] Start timer
+100_s6_e1: [Timer] Stop timer
+100_s6_e2: [General purpose] Sharing flag setting
+100_s7: Dash timer initialization
+100_s7_e0: [Random number] Random number generation
+100_s7_e1: [Timer] Start timer
+100_s7_e2: [Attack] Damage information reset
+100_s8: do nothing
+100_s8_x0: [Timer] Start timer
+100_s9: Initialization
+100_s9_e0: [Timer] Restart timer
+100_s9_e1: [General purpose] Sharing flag setting
+100_s9_e2: [General purpose] Sharing flag setting
+100_s10: Route patrol (walking) _SubState
+100_s10_e0: [General purpose] Sharing flag setting
+100_s10_w0: [Operation] Lock off
+100_s11: Route patrol (dash) _SubState
+100_s11_e0: [General purpose] Sharing flag setting
+100_s11_w0: [Operation] Lock off
+100_s12: [LIB] Move: Unreachable [DLC modified version] _SubState
+110: Round trip between three points
+110_s0: Start state
+110_s1: Patrol: break action branch
+110_s1_e0: [Random number] Random number generation
+110_s2: Resting action 1
+110_s2_e0: [Timer] Stop timer
+110_s2_e1: [Attack] Melee attack
+110_s2_x0: [Timer] Restart timer
+110_s2_x1: [Timer] Start timer
+110_s3: Resting action 2
+110_s3_e0: [Timer] Stop timer
+110_s3_e1: [Attack] Melee attack
+110_s3_x0: [Timer] Restart timer
+110_s3_x1: [Timer] Start timer
+110_s4: start
+110_s4_e0: [General purpose] Sharing flag setting
+110_s5: Travel speed branch
+110_s6: End of dash
+110_s6_e0: [Timer] Start timer
+110_s6_e1: [Timer] Stop timer
+110_s6_e2: [General purpose] Sharing flag setting
+110_s7: Dash timer initialization
+110_s7_e0: [Random number] Random number generation
+110_s7_e1: [Timer] Start timer
+110_s7_e2: [Attack] Damage information reset
+110_s8: do nothing
+110_s8_x0: [Timer] Start timer
+110_s9: Initialization
+110_s9_e0: [Timer] Restart timer
+110_s9_e1: [General purpose] Sharing flag setting
+110_s9_e2: [General purpose] Sharing flag setting
+110_s10: Route patrol (walking) _SubState
+110_s10_e0: [General purpose] Sharing flag setting
+110_s10_w0: [Operation] Lock off
+110_s11: Route patrol (dash) _SubState
+110_s11_e0: [General purpose] Sharing flag setting
+110_s11_w0: [Operation] Lock off
+110_s12: [LIB] Move: Unreachable [DLC modified version] _SubState
+101: Tour between three points (waiting for start condition)
+101_s0: Start state
+101_s1: Patrol: break action branch
+101_s1_e0: [Random number] Random number generation
+101_s2: Resting action 1
+101_s2_e0: [Timer] Stop timer
+101_s2_e1: [Attack] Melee attack
+101_s2_x0: [Timer] Restart timer
+101_s2_x1: [Timer] Start timer
+101_s3: Resting action 2
+101_s3_e0: [Timer] Stop timer
+101_s3_e1: [Attack] Melee attack
+101_s3_x0: [Timer] Restart timer
+101_s3_x1: [Timer] Start timer
+101_s4: start
+101_s5: Travel speed branch
+101_s6: End of dash
+101_s6_e0: [Timer] Start timer
+101_s6_e1: [Timer] Stop timer
+101_s6_e2: [General purpose] Sharing flag setting
+101_s7: Dash timer initialization
+101_s7_e0: [Random number] Random number generation
+101_s7_e1: [Timer] Start timer
+101_s7_e2: [Attack] Damage information reset
+101_s8: do nothing
+101_s8_x0: [Timer] Start timer
+101_s9: Initialization
+101_s9_e0: [Timer] Restart timer
+101_s9_e1: [General purpose] Sharing flag setting
+101_s9_e2: [General purpose] Sharing flag setting
+101_s10: Route patrol (walking) _SubState
+101_s10_e0: [General purpose] Sharing flag setting
+101_s10_w0: [Operation] Lock off
+101_s11: Route patrol (dash) _SubState
+101_s11_e0: [General purpose] Sharing flag setting
+101_s11_w0: [Operation] Lock off
+101_s12: [LIB] Move: Unreachable [DLC modified version] _SubState
+111: Round trip between three points (waiting for start condition)
+111_s0: Start state
+111_s1: Patrol: break action branch
+111_s1_e0: [Random number] Random number generation
+111_s2: Resting action 1
+111_s2_e0: [Timer] Stop timer
+111_s2_e1: [Attack] Melee attack
+111_s2_x0: [Timer] Restart timer
+111_s2_x1: [Timer] Start timer
+111_s3: Resting action 2
+111_s3_e0: [Timer] Stop timer
+111_s3_e1: [Attack] Melee attack
+111_s3_x0: [Timer] Restart timer
+111_s3_x1: [Timer] Start timer
+111_s4: start
+111_s5: Travel speed branch
+111_s6: End of dash
+111_s6_e0: [Timer] Start timer
+111_s6_e1: [Timer] Stop timer
+111_s6_e2: [General purpose] Sharing flag setting
+111_s7: Dash timer initialization
+111_s7_e0: [Random number] Random number generation
+111_s7_e1: [Timer] Start timer
+111_s7_e2: [Attack] Damage information reset
+111_s8: do nothing
+111_s8_x0: [Timer] Start timer
+111_s9: Initialization
+111_s9_e0: [Timer] Restart timer
+111_s9_e1: [General purpose] Sharing flag setting
+111_s9_e2: [General purpose] Sharing flag setting
+111_s10: Route patrol (walking) _SubState
+111_s10_e0: [General purpose] Sharing flag setting
+111_s10_w0: [Operation] Lock off
+111_s11: Route patrol (dash) _SubState
+111_s11_e0: [General purpose] Sharing flag setting
+111_s11_w0: [Operation] Lock off
+111_s12: [LIB] Move: Unreachable [DLC modified version] _SubState
+102: Patrol between three points (attack + area waiting)
+102_s0: Start state
+102_s1: Patrol: break action branch
+102_s1_e0: [Random number] Random number generation
+102_s2: Resting action 1
+102_s2_e0: [Timer] Stop timer
+102_s2_e1: [Attack] Melee attack
+102_s2_x0: [Timer] Restart timer
+102_s2_x1: [Timer] Start timer
+102_s3: Resting action 2
+102_s3_e0: [Timer] Stop timer
+102_s3_e1: [Attack] Melee attack
+102_s3_x0: [Timer] Restart timer
+102_s3_x1: [Timer] Start timer
+102_s4: start
+102_s4_e0: [General purpose] Sharing flag setting
+102_s5: Travel speed branch
+102_s6: End of dash
+102_s6_e0: [Timer] Start timer
+102_s6_e1: [Timer] Stop timer
+102_s6_e2: [General purpose] Sharing flag setting
+102_s7: Dash timer initialization
+102_s7_e0: [Random number] Random number generation
+102_s7_e1: [Timer] Start timer
+102_s7_e2: [Attack] Damage information reset
+102_s8: do nothing
+102_s8_x0: [Timer] Start timer
+102_s9: Initialization
+102_s9_e0: [Timer] Restart timer
+102_s9_e1: [General purpose] Sharing flag setting
+102_s9_e2: [General purpose] Sharing flag setting
+102_s10: Route patrol (walking) _SubState
+102_s10_e0: [General purpose] Sharing flag setting
+102_s10_w0: [Operation] Lock off
+102_s11: Route patrol (dash) _SubState
+102_s11_e0: [General purpose] Sharing flag setting
+102_s11_w0: [Operation] Lock off
+102_s12: [LIB] Move: Unreachable [DLC modified version] _SubState
+112: Round trip between three points (attack + waiting area)
+112_s0: Start state
+112_s1: Patrol: break action branch
+112_s1_e0: [Random number] Random number generation
+112_s2: Resting action 1
+112_s2_e0: [Timer] Stop timer
+112_s2_e1: [Attack] Melee attack
+112_s2_x0: [Timer] Restart timer
+112_s2_x1: [Timer] Start timer
+112_s3: Resting action 2
+112_s3_e0: [Timer] Stop timer
+112_s3_e1: [Attack] Melee attack
+112_s3_x0: [Timer] Restart timer
+112_s3_x1: [Timer] Start timer
+112_s4: start
+112_s4_e0: [General purpose] Sharing flag setting
+112_s5: Travel speed branch
+112_s6: End of dash
+112_s6_e0: [Timer] Start timer
+112_s6_e1: [Timer] Stop timer
+112_s6_e2: [General purpose] Sharing flag setting
+112_s7: Dash timer initialization
+112_s7_e0: [Random number] Random number generation
+112_s7_e1: [Timer] Start timer
+112_s7_e2: [Attack] Damage information reset
+112_s8: do nothing
+112_s8_x0: [Timer] Start timer
+112_s9: Initialization
+112_s9_e0: [Timer] Restart timer
+112_s9_e1: [General purpose] Sharing flag setting
+112_s9_e2: [General purpose] Sharing flag setting
+112_s10: Route patrol (walking) _SubState
+112_s10_e0: [General purpose] Sharing flag setting
+112_s10_w0: [Operation] Lock off
+112_s11: Route patrol (dash) _SubState
+112_s11_e0: [General purpose] Sharing flag setting
+112_s11_w0: [Operation] Lock off
+112_s12: [LIB] Move: Unreachable [DLC modified version] _SubState
+x3: Route patrol
+x3_p0: Patrol type
+x3_p1: Movement type
+x3_s0: Start state
+x3_s1: Patrol: Start
+x3_s2: Tour: Route search: Navipoint 1
+x3_s2_e0: [General purpose] Sharing flag setting
+x3_s2_e1: [General purpose] Sharing flag setting
+x3_s2_e2: [General purpose] Sharing flag setting
+x3_s2_e3: [Search] Navi mesh to Gen Navi point
+x3_s3: Tour: Route search: Navi point 2
+x3_s3_e0: [General purpose] Sharing flag setting
+x3_s3_e1: [Search] Navi mesh to Gen Navi point
+x3_s4: Tour: Route Search: Generator
+x3_s4_e0: [General purpose] Sharing flag setting
+x3_s4_e1: [Search] Navi mesh to generator
+x3_s5: Patrol: Route movement
+x3_s5_w0: [Move] Horizontal move_Navimesh
+x3_s5_w1: [Move] Normal move Navi mesh
+x3_s5_w2: [Move] Dash_Navimesh
+x3_s5_w3: [Move] Horizontal move_Lock_Navimesh
+x3_s5_w4: [Move] Lock move Navi mesh
+x3_s5_w5: [Move] Dash_Lock_Navimesh
+x3_s6: Patrol: circuit branch
+x3_s7: Patrol: Error termination
+x3_s7_e0: [General purpose] Sharing flag setting
+x3_s8: Patrol: Patrol type branch
+x3_s9: Patrol: round trip branch
+x3_s10: Patrol: random patrol branch
+x3_s10_e0: [Random number] Random number generation
+x3_s11: Patrol: Route selection branch
+x3_s11_e0: [Random number] Random number generation
+x3_s12: Patrol: Initialization
+x3_s12_e0: [General purpose] Sharing flag setting
+x3_s13: Patrol: Resume branch
+x3_s14: Patrol: Obstacle avoidance
+x3_s14_w0: [Move] Normal move random
+x3_s15: Patrol: End
+x3_s16: Tour: Navipoint 1 check
+x3_s16_e0: [Search] Navi mesh to Gen Navi point
+x3_s17: Tour: Navi point 2 check
+x3_s17_e0: [Search] Navi mesh to Gen Navi point
+x3_s18: End state
+x0: [LIB] Initial termination setting
+x0_s0: Start state
+x0_s1: Initial end setting: Start
+x0_s1_e0: [General purpose] Sharing flag setting
+x0_s2: End state
+x1: [LIB] Move: Get off the wall [DLC modified version]
+x1_p0: Analog strength
+x1_p1: Wall down time
+x1_s0: Start state
+x1_s1: Get off the wall: angle adjustment
+x1_s1_w0: [Turning] Quick turn _ Navi mesh direction
+x1_s2: Get off the wall: Start moving
+x1_s2_w0: [Move] Normal move random
+x1_s2_w1: [Move] Horizontal move_random
+x1_s3: Get off the wall: End judgment
+x1_s3_e0: [Move] Reset move failure
+x1_s3_w0: [Move] Disable move
+x1_s4: Get off the wall: start
+x1_s4_w0: [Move] Disable move
+x1_s5: Get off the wall: position adjustment
+x1_s5_w0: [Move] Move horizontally to the nearest side of the navigation mesh
+x1_s5_w1: [Move] Move horizontally to the center of the navigation mesh
+x1_s6: End state
+x2: [LIB] Movement: unreachable [DLC modified version]
+x2_s0: Start state
+x2_s1: Unreachable: generator search
+x2_s1_e0: [Search] Navi mesh to generator
+x2_s2: Unreachable: Search successful
+x2_s2_e0: [Move] Reset move failure
+x2_s3: Unreachable: Gate search
+x2_s3_e0: [Search] Navi mesh to a nearby gate
+x2_s4: Unreachable: Search failed
+x2_s4_w0: [Move] Lock move random
+x2_s5: Unreachable: End
+x2_s5_e0: [Move] Reset move failure
+x2_s6: Unreachable: horizontal movement
+x2_s6_w0: [Move] Horizontal move_Lock_Navimesh
+x2_s6_w1: [Move] Horizontal move_Navimesh
+x2_s7: Unreachable: Normal movement
+x2_s7_w0: [Move] Normal move Navi mesh
+x2_s8: Unreachable: sudden turn
+x2_s8_w0: [Turning] Quick turn _ Navi mesh direction
+x2_s9: Unreachable: Stop before sudden turn
+x2_s9_w0: [Move] Disable move
+x2_s10: Unreachable: Stop before returning to navigation
+x2_s10_w0: [Move] Disable move
+x2_s11: Unreachable: horizontal movement (near the next point)
+x2_s11_w0: [Move] Horizontally move to the center position of the navigation mesh next to the navigation route
+x2_s12: Unreachable: Forced movement
+x2_s12_w0: [Move] Normal move Navi mesh
+x2_s13: Unreachable: Navigation return
+x2_s13_w0: [Move] Move horizontally to the nearest side of the navigation mesh
+x2_s14: Unreachable: center move
+x2_s14_x0: [Timer] Start timer
+x2_s14_w0: [Move] Horizontally move to the center position of the navigation mesh next to the navigation route
+x2_s14_w1: [Move] Move horizontally to the center of the navigation mesh
+x2_s15: Unreachable: Stop after moving center
+x2_s15_x0: [Timer] Start timer
+x2_s15_w0: [Move] Disable move
+x2_s16: Unreachable: Start
+x2_s16_e0: [Timer] Start timer
+x2_s16_e1: [Timer] Start timer
+x2_s16_e2: [Timer] Stop timer
+x2_s16_e3: [Random number] Random number generation
+x2_s17: [LIB] Move: Get off the wall [DLC modified version] _SubState
+x2_s18: End state

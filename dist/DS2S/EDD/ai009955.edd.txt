@@ -1,0 +1,67 @@
+10: Top: Logic
+10_s0: Start state
+10_s1: Top: Start
+10_s2: Top: target search
+10_s2_w0: [Search enemy] Character _ target setting
+10_s3: High rank: search enemy
+10_s3_e0: [Operation] Lock on
+10_s4: Top: search waiting
+10_s5: Top: no search
+10_s5_e0: [Operation] Lock off
+10_s6: Top: Standby without search
+10_s7: Upper: Start lower logic
+10_s7_e0: [Movement] Movement prediction accuracy setting
+10_s8: Top: death
+10_s8_e0: [Operation] death request
+20: Lower: logic
+20_s0: Start state
+20_s1: Lower: Start
+20_s1_e0: [Attack] Damage lower logic reset setting
+20_s2: Lower: Waiting for target decision
+20_s2_e0: [Debug] Log output
+20_s2_e1: [Debug] Log output
+20_s2_e2: [Debug] Log output
+20_s2_w0: [Search] [Debug] Navigation mesh to the point clicked
+20_s3: Normal movement
+20_s3_e0: [General purpose] Sharing flag setting
+20_s3_e1: [Debug] Log output
+20_s4: Horizontal movement
+20_s4_e0: [General purpose] Sharing flag setting
+20_s4_e1: [Debug] Log output
+20_s5: Dash dash dash
+20_s5_e0: [General purpose] Sharing flag setting
+20_s5_e1: [Debug] Log output
+20_s6: Status
+20_s7: Movement process_SubState
+21: Lower: Logic_2
+21_s0: Start state
+21_s1: Lower: Start
+21_s2: Lower: Waiting for target decision (waiting for click)
+21_s2_w0: [Search] [Debug] Navigation mesh to the point clicked
+21_s3: Lower: Acquisition of target point
+21_s4: Lower: Move
+21_s4_w0: [Move] Normal move Navi mesh
+21_s5: Lower: Reached
+21_s6: Lower: Standby (resume by defensive action)
+x0: Move processing
+x0_s0: Start state
+x0_s1: Lower: Standby (resume by defensive action)
+x0_s2: Lower: Reached
+x0_s3: Lower: Move
+x0_s3_e0: [Move] Reset move failure
+x0_s3_w0: [Move] Normal move Navi mesh
+x0_s3_w1: [Move] Horizontal move_Navimesh
+x0_s3_w2: [Move] Dash_Navimesh
+x0_s3_w3: [Search] [Debug] Navigation mesh to the point clicked
+x0_s4: Lower: Acquisition of target point
+x0_s5: Lower: Start
+x0_s6: Normal movement
+x0_s6_e0: [General purpose] Sharing flag setting
+x0_s6_e1: [Debug] Log output
+x0_s7: Horizontal movement
+x0_s7_e0: [General purpose] Sharing flag setting
+x0_s7_e1: [Debug] Log output
+x0_s8: Dash dash dash
+x0_s8_e0: [General purpose] Sharing flag setting
+x0_s8_e1: [Debug] Log output
+x0_s9: End state

@@ -1,0 +1,76 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s1_w0: [Search enemy] Character _ target setting
+10_s2: Higher rank: Search enemy ON
+10_s2_e0: [Operation] Lock on
+10_s3: Top rank: Search off
+10_s3_e0: [Operation] Lock off
+10_s4: Higher rank: search enemy ON: with target
+10_s5: Top: Search OFF: Target OFF
+10_s6: Top: death
+10_s6_e0: [Operation] death request
+10_s7: Upper: Start lower logic
+10_s7_e0: [Movement] Movement prediction accuracy setting
+10_s7_e1: [General] lower-level state map switching
+20: Lower logic
+20_s0: Start state
+20_s1: Substate: Start
+20_s2: Lower state: Initial setting
+20_s2_e0: [Attack] Damage lower logic reset setting
+20_s3: Lower-level state: branch wait
+20_s4: Subordinate action: Branch
+20_s5: Damage action_SubState
+20_s6: Mode change_SubState
+x1: Damage behavior
+x1_s0: Start state
+x1_s1: Damage action: start
+x1_s1_e0: [Timer] Start timer
+x1_s2: Damage action: Initial wait
+x1_s2_e0: [Timer] Start timer
+x1_s2_e1: [Random number] Random number generation
+x1_s3: Damage behavior: thrown and waiting
+x1_s4: Damage behavior: no priority pattern
+x1_s5: Damage Action: Avoid
+x1_s5_w0: [Attack] Random avoidance
+x1_s6: Damage action: Retreating, turning and avoiding ends
+x1_s6_e0: [Attack] Damage information reset
+x1_s6_e1: [General] Logic group flag setting
+x1_s7: Random move_SubState
+x1_s8: [LIB] Attack: Single issue: General purpose _SubState
+x1_s9: End state
+x2: Random move
+x2_s0: Start state
+x2_s1: Move: Start
+x2_s2: Move: branch
+x2_s2_e0: [Random number] Random number generation
+x2_s3: Movement: Lock horizontal movement random
+x2_s3_w0: [Move] Horizontal move_Lock_Random_Direction designation
+x2_s4: Movement: Normal movement random
+x2_s4_w0: [Move] Lock move random
+x2_s5: Move: End
+x2_s6: End state
+x3: Mode change
+x3_s0: Start state
+x3_s1: Mode change: start
+x3_s2: Mode change: branch
+x3_s3: Mode change: Avoid
+x3_s3_e0: [General purpose] Sharing flag setting
+x3_s4: Mode change: Move
+x3_s4_e0: [General purpose] Sharing flag setting
+x3_s5: Mode Change: Attack
+x3_s5_e0: [General purpose] Sharing flag setting
+x3_s6: Mode change: Standby
+x3_s7: End state
+x0: [LIB] Attack: Single issue: General purpose
+x0_p0: Attack type
+x0_p1: Short navigation mesh check
+x0_s0: Start state
+x0_s1: Attack: Under attack
+x0_s1_w0: [Attack] Melee attack
+x0_s2: Attack: Standby
+x0_s3: Attack: Cancel
+x0_s3_e0: [Attack] Attack cancel
+x0_s4: Attack: Cancel wait
+x0_s5: Attack: Success: End state
+x0_s6: Attack: Failure: End state

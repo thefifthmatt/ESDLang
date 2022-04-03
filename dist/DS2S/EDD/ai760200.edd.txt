@@ -1,0 +1,110 @@
+10: Lower state: conversation state
+10_s0: Start state
+10_s1: Ascension: Start
+10_s1_e0: [Attack] Combo attack cancel
+10_s1_e1: [Attack] Blade dash cancellation
+10_s1_e2: [Attack] Attack cancel
+10_s2: Ascension: In action
+10_s2_w0: [Attack] Melee attack
+10_s3: Ascension: End
+10_s4: [Lib] Conversation state _SubState
+20: Lower state: hostile state
+20_s0: Start state
+20_s1: Substate: Start
+20_s2: Lower state: disappeared
+20_s2_e0: [Attack] Melee attack
+20_s3: Substate: Wait
+20_s3_e0: [General purpose] Sharing flag setting
+x0: [Lib] Conversation state
+x0_p0: Activation state 2 damage action
+x0_p1: Activation state 3 damage action
+x0_p2: Activation State 4 Damage Action
+x0_p3: Activation State 5 Damage Action
+x0_p4: Activation State 6 Damage Action
+x0_p5: Activation State 7 Damage Action
+x0_p6: Activation State 8 Damage Action
+x0_s0: Start state
+x0_s1: Conversation state: start
+x0_s1_e0: [Attack] Damage lower logic reset setting
+x0_s2: [Lib] Conversation state (live) _SubState
+x0_s3: [Lib] Conversation state: dedicated damage _SubState
+x0_s4: End state
+x1: [Lib] Conversation state (live)
+x1_s0: Start state
+x1_s1: Conversation state: waiting
+x1_s1_e0: [Attack] Combo attack cancel
+x1_s1_e1: [Attack] Blade dash cancellation
+x1_s1_w0: [Attack] Attack cancel
+x1_s2: Conversation state: start
+x1_s3: Conversation behavior: Behavior 0_SubState
+x1_s4: Conversation behavior: Behavior 1_SubState
+x1_s5: Conversation behavior: Behavior 2_SubState
+x1_s6: Conversation behavior: Behavior 3_SubState
+x1_s7: Conversation behavior: Behavior 4_SubState
+x1_s8: Conversation behavior: Behavior 5_SubState
+x1_s9: Conversation behavior: Behavior 6_SubState
+x1_s10: Conversation behavior: Behavior 7_SubState
+x1_s11: Conversation behavior: Behavior 8_SubState
+x1_s12: Conversation behavior: Behavior 9_SubState
+x1_s13: Conversation behavior: Behavior 10_SubState
+x1_s14: Conversation behavior: Behavior 11_SubState
+x1_s15: Conversation behavior: Behavior 12_SubState
+x1_s16: Conversation behavior: Behavior 13_SubState
+x1_s17: Conversation behavior: Behavior 14_SubState
+x1_s18: Conversation behavior: Behavior 15_SubState
+x1_s19: Conversation behavior: Behavior 16_SubState
+x1_s20: Conversation behavior: Behavior 17_SubState
+x1_s21: Conversation behavior: Behavior 18_SubState
+x1_s22: Conversation behavior: Behavior 19_SubState
+x1_s23: Conversation behavior: Behavior 20_SubState
+x1_s24: End state
+x2: [Lib] Conversation behavior
+x2_p0: Attack type
+x2_s0: Start state
+x2_s1: Conversation behavior: start
+x2_s1_e0: [Attack] Reset attack failure
+x2_s2: Conversation behavior: behavior setting
+x2_s2_w0: [Attack] Melee attack
+x2_s3: Conversation behavior: action waiting
+x2_s4: Conversation behavior: end of behavior
+x2_s5: Conversation behavior: behavior cancellation
+x2_s5_w0: [Attack] Attack cancel
+x2_s5_w1: [Attack] Blade dash cancellation
+x2_s5_w2: [Attack] Non-combat action ends
+x2_s6: Conversation action: action cancellation wait
+x2_s7: Conversation behavior: cancel
+x2_s7_e0: [Attack] Attack cancel
+x2_s8: End state
+x3: [Lib] Conversation state: dedicated damage
+x3_p0: Activation state 2 damage action
+x3_p1: Activation state 3 damage action
+x3_p2: Activation State 4 Damage Action
+x3_p3: Activation State 5 Damage Action
+x3_p4: Activation State 6 Damage Action
+x3_p5: Activation State 7 Damage Action
+x3_p6: Activation State 8 Damage Action
+x3_s0: Start state
+x3_s1: Dedicated use: start
+x3_s1_e0: [Attack] Damage information reset
+x3_s1_e1: [Attack] Reset attack failure
+x3_s2: Exclusive use: action cancellation
+x3_s2_e0: [Attack] Attack cancel
+x3_s3: Dedicated use: Cancel action: Wait
+x3_s4: Dedicated use: damage branch
+x3_s5: Exclusive use: end
+x3_s6: Activation State 3 Damage Action_SubState
+x3_s7: Activation State 4 Damage Action_SubState
+x3_s8: Activation State 5 Damage Action_SubState
+x3_s9: Activation State 2 Damage Action_SubState
+x3_s10: Activation State 6 Damage Action_SubState
+x3_s11: Activation State 7 Damage Action_SubState
+x3_s12: Activation State 8 Damage Action_SubState
+x3_s13: NPC (player) damage action_SubState
+x3_s14: End state
+x4: Damage regeneration
+x4_p0: Damage: Attack type
+x4_s0: Start state
+x4_s1: Damage regeneration: Attack regeneration
+x4_s1_e0: [Attack] Melee attack
+x4_s2: Damage Play: Attack Play: Standby
+x4_s3: End state

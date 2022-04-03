@@ -1,0 +1,83 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s2: Higher: For switching players
+10_s2_e0: [General] lower-level state map switching
+10_s2_e1: [General purpose] Sharing flag setting
+10_s3: Upper: For equipment switching
+10_s3_e0: [General] lower-level state map switching
+10_s4: Upper: For switching to enemy
+10_s4_e0: [General] lower-level state map switching
+10_s4_e1: [General purpose] Sharing flag setting
+10_s5: Top: Behavior without target
+10_s5_e0: [General purpose] Sharing flag setting
+10_s5_w0: [Operation] Lock off
+10_s6: Top: Player damage hostility
+10_s6_e0: [General purpose] Sharing flag setting
+10_s7: Higher rank: search enemy (enemy ⇒ player) _SubState
+10_s8: Top: Target action_SubState
+10_s9: Top: Generate return_SubState
+10_s10: Top: Chambara bow_SubState
+x0: Top: target behavior
+x0_s0: Start state
+x0_s1: Target action: start
+x0_s2: Target action: invisibility preliminary action
+x0_s3: Target action: invisibility
+x0_s3_e0: [General purpose] Sharing flag setting
+x0_s3_e1: [Operation] Lock off
+x0_s4: Target action: discovery
+x0_s5: Target action: Visual recognition
+x0_s5_e0: [Operation] Lock on
+x0_s5_e1: [General purpose] Sharing flag setting
+x0_s5_e2: [General purpose] Sharing flag setting
+x0_s6: Target action: End
+x0_s7: Top: Behavior switching_SubState
+x0_s8: End state
+x1: High rank: Generate return
+x1_s0: Start state
+x1_s1: Generate Return: Start
+x1_s1_e0: [General purpose] Sharing flag setting
+x1_s2: Generate Return: Action
+x1_s2_w0: [Operation] Lock off
+x1_s3: Generate Return: End
+x1_s4: Top: search enemy (generation generator) _SubState
+x1_s5: End state
+x2: Higher rank: Enemy search (enemy ⇒ player)
+x2_s0: Start state
+x2_s1: Search enemy: start
+x2_s1_e0: [General purpose] Sharing flag setting
+x2_s2: Search enemies: players
+x2_s2_w0: [Search enemy] Character _ target setting
+x2_s3: Search enemy: Enemy
+x2_s3_w0: [Search enemy] Character _ target setting
+x2_s4: Search enemy: End
+x2_s5: End state
+x3: Higher rank: search enemy (generation generator)
+x3_s0: Start state
+x3_s1: Search enemy: start
+x3_s2: Search enemies: generator
+x3_s2_w0: [Search] Generation Generator_Target Setting
+x3_s3: Search enemy: End
+x3_s4: End state
+x4: Top: Behavior switching
+x4_s0: Start state
+x4_s1: Behavior switching: start
+x4_s1_e0: [Random number] Random number generation
+x4_s1_e1: [Attack] Damage information reset
+x4_s2: Action switching: Fixed turret release
+x4_s2_e0: [General purpose] Sharing flag setting
+x4_s3: Action switching: Sword equipment switching
+x4_s3_e0: [General] lower-level state map switching
+x4_s3_e1: [General purpose] Sharing flag setting
+x4_s4: Behavior switching: end
+x4_s5: End state
+x5: Top: Chambara bow
+x5_s0: Start state
+x5_s1: Chambara Bow: Start
+x5_s1_e0: [General] lower-level state map switching
+x5_s2: Chambara bow: search enemy
+x5_s2_w0: [Search enemy] Character _ target setting
+x5_s3: Chambara bow: In the middle of Chambara
+x5_s3_e0: [Operation] Lock on
+x5_s4: Chambara bow: waiting
+x5_s5: End state

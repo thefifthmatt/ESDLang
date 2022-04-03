@@ -1,0 +1,26 @@
+10: Lower logic: escape straight
+10_s0: Start state
+10_s1: Substate: Start
+10_s1_e0: [Attack] Damage lower logic reset setting
+10_s1_e1: [General purpose] Sharing flag setting
+10_s2: Lower state: Start waiting
+10_s3: Escape action_SubState
+x0: Straight runaway behavior
+x0_s0: Start state
+x0_s1: Escape Action: Start
+x0_s1_e0: [Timer] Start timer
+x0_s1_e1: [Timer] Start timer
+x0_s2: Escape behavior: disappearance
+x0_s2_e0: [General purpose] Sharing flag setting
+x0_s2_e1: [Ishimori] Escape request
+x0_s3: Escape action: Escape started
+x0_s3_e0: [General purpose] Sharing flag setting
+x0_s3_w0: [Timer] Start timer
+x0_s3_w1: [Move] Dash_random
+x0_s4: Escape Behavior: Turning
+x0_s4_w0: [Turning] Quick turn _ Direction designation
+x0_s5: Escape behavior: disappearing while running
+x0_s5_e0: [General purpose] Sharing flag setting
+x0_s5_e1: [Ishimori] Escape request
+x0_s5_w0: [Move] Dash_random
+x0_s6: End state

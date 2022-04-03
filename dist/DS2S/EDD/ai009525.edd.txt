@@ -1,0 +1,515 @@
+10: Higher state
+10_s0: Start state
+10_s1: Higher state: start
+10_s2: Upper state: Initial setting
+10_s3: Flag setting 40
+10_s3_e0: [General] lower-level state map switching
+10_s4: Flag setting_30
+10_s4_e0: [General] lower-level state map switching
+10_s5: [LIB] General-purpose: Upper (normal) _SubState
+10_s6: Top: First contact (no initial response) _SubState
+20: Moving speed decrease
+20_s0: Start state
+20_s1: Moving speed drop: Start moving
+20_s1_w0: [Move] Lock move Navi mesh
+20_s2: Moving speed drop: detected
+20_s2_e0: [Debug] Popcorn creation
+20_s3: Moving speed decrease: search
+20_s3_e0: [Movement] Movement prediction accuracy setting
+20_s3_e1: [Search] Navimesh
+30: Movement verification (click)
+30_s0: Start state
+30_s1: Lower logic: start
+30_s1_e0: [Search] [Debug] Navigation mesh to the point clicked
+30_s2: Lower: waiting
+30_s3: Lower logic: error
+30_s3_e0: [Debug] Log output
+30_s4: [Verification] OBJ destruction behavior_SubState
+30_s5: [Verification] Use of mobile OBJ_SubState
+30_s6: [LIB] Move: General-purpose navigation move_SubState
+40: Movement verification (tracking)
+40_s0: Start state
+40_s1: Lower: waiting
+40_s2: [Verification] OBJ damage avoidance_SubState
+40_s3: [LIB] Move: Humanoid general-purpose navigation move_SubState
+40_s4: [LIB] OBJ destruction behavior _SubState
+50: Navigation search verification
+50_s0: Start state
+50_s1: Waiting
+50_s2: Search
+50_s2_e0: [Search] Navimesh
+x19: Higher rank: First contact (no initial movement)
+x19_s0: Start state
+x19_s1: FC: Start
+x19_s2: FC: Initial startup setting
+x19_s3: FC: Start condition (flag)
+x19_s4: FC: Gen specified startup error
+x19_s4_e0: [General] Logic group flag setting
+x19_s5: FC: Cancel startup animation
+x19_s5_e0: [Action] Cancel activation state
+x19_s6: FC: Start initialization setting
+x19_s6_e0: [General purpose] Sharing flag setting
+x19_s6_e1: [General purpose] Sharing flag setting
+x19_s6_e2: [Search] Overwrite the generator position with the current position
+x19_s7: FC: Start condition (Area 1)
+x19_s8: FC: Start condition (Area 1 & 2)
+x19_s9: FC: Start condition (line of sight)
+x19_s10: FC: Start condition (Area 5 & line of sight)
+x19_s11: [LIB] Search enemy: General purpose _SubState
+x19_s12: End state
+x20: [Verification] OBJ destruction behavior
+x20_p0: OBJ vandalism
+x20_p1: OBJ inspection distance
+x20_s0: Start state
+x20_s1: OBJ destruction: start
+x20_s2: OBJ destruction: lock off
+x20_s2_e0: [Operation] Lock off
+x20_s3: OBJ Destruction: Execution
+x20_s3_e0: [Attack] Melee attack
+x20_s4: OBJ destruction: end setting
+x20_s4_e0: [Operation] Lock on
+x20_s5: OBJ destruction: inspection
+x20_s6: OBJ destruction: random movement
+x20_s6_w0: [Move] Normal move random
+x20_s7: End state
+x21: [Verification] Using mobile OBJ
+x21_s0: Start state
+x21_s1: Use Mobile OBJ: Start
+x21_s1_e0: [Action] Leave OBJ
+x21_s2: Use mobile OBJ: Start using ladder
+x21_s2_e0: [Action] Use OBJ specified by Navimesh
+x21_s3: Use mobile OBJ: use door
+x21_s3_e0: [Action] Use OBJ specified by Navimesh
+x21_s4: Use mobile OBJ: use rope
+x21_s4_e0: [Action] Use OBJ specified by Navimesh
+x21_s5: Mobile OBJ usage: OBJ usage failure
+x21_s6: Use mobile OBJ: climb ladder
+x21_s6_w0: [Action] Climbing the ladder
+x21_s7: Use mobile OBJ: go down the ladder
+x21_s7_w0: [Action] Go down the ladder
+x21_s8: End of use
+x21_s8_e0: [Action] Leave OBJ
+x21_s9: Use mobile OBJ: upper attack
+x21_s9_e0: [Attack] Melee attack
+x21_s10: Use mobile OBJ: lower attack
+x21_s10_e0: [Attack] Melee attack
+x21_s11: End state
+x22: [Verification] OBJ damage avoidance
+x22_s0: Start state
+x22_s1: OBJ Damage Avoidance: Start
+x22_s2: OBJ damage avoidance: route search
+x22_s2_e0: [Search] Navimesh
+x22_s3: OBJ Damage Avoidance: Avoidance Behavior
+x22_s3_w0: [Turning] Quick turn _ Navi mesh direction
+x22_s4: OBJ Damage Avoidance: Step
+x22_s4_w0: [Attack] Random avoidance_Angle designation
+x22_s5: Avoid OBJ damage: rolling
+x22_s5_w0: [Attack] Random avoidance_Angle designation
+x22_s6: OBJ Damage Avoidance: Dash
+x22_s6_w0: [Move] Dash_Navimesh
+x22_s7: Avoid OBJ damage: End
+x22_s7_e0: [Attack] Damage information reset
+x22_s8: End state
+x0: [LIB] General-purpose: upper (normal)
+x0_p0: Maximum search distance
+x0_p1: Search priority
+x0_p2: LS tracking time
+x0_s0: Start state
+x0_s1: Top: Start setting
+x0_s1_e0: [General purpose] Sharing flag setting
+x0_s1_e1: [Timer] Start timer
+x0_s1_e2: [Movement] Movement prediction accuracy setting
+x0_s1_w0: [Action] Clear activation state reset flag
+x0_s2: [LIB] Top: Target action: Visual recognition _SubState
+x0_s3: [LIB] Top: Target action: Disappearance_SubState
+x0_s4: [LIB] Top: Target action: Invisible_SubState
+x0_s5: [LIB] Top: Target action: Sound response _SubState
+x0_s6: [LIB] Upper: Target action: Lower stop _SubState
+x0_s7: [LIB] Search enemy: General purpose _SubState
+x0_s8: [LIB] Top: Targetless action_SubState
+x0_s9: [LIB] Upper: generator feedback_SubState
+x0_s10: [LIB] Top: Target action: Preparing to return _SubState
+x0_s11: [LIB] Top: Action start_SubState
+x0_s12: End state
+x1: [LIB] Search: FC
+x1_p0: Maximum search distance
+x1_p1: Search priority
+x1_s0: Start state
+x1_s1: Search enemy (general purpose): Start
+x1_s1_e0: [Operation] Lock off
+x1_s2: Search enemy (general purpose): Normal setting
+x1_s2_e0: [Attack] Damage type reset
+x1_s2_w0: [Search enemy] Character _ target setting
+x1_s3: Search enemy (general purpose): Discovery
+x1_s4: Search enemy (general purpose): not found
+x1_s5: End state_Target not found
+x1_s6: End state_Target found
+x2: [LIB] OBJ destruction behavior
+x2_p0: OBJ vandalism
+x2_p1: OBJ inspection distance
+x2_s0: Start state
+x2_s1: OBJ destruction: start
+x2_s2: OBJ destruction: inspection
+x2_s3: OBJ destruction: lock off
+x2_s3_e0: [Operation] Lock off
+x2_s4: OBJ Destruction: Execution
+x2_s4_e0: [Attack] Melee attack
+x2_s5: OBJ destruction: end setting
+x2_s5_e0: [Operation] Lock on
+x2_s6: Success: End state
+x2_s7: Failure: termination state
+x3: [LIB] OBJ operation
+x3_s0: Start state
+x3_s1: OBJ operation: start
+x3_s2: OBJ operation: Start using ladder
+x3_s2_e0: [Action] Use OBJ specified by Navimesh
+x3_s3: OBJ operation: climb the ladder
+x3_s3_w0: [Action] Climbing the ladder
+x3_s4: OBJ operation: go down the ladder
+x3_s4_w0: [Action] Go down the ladder
+x3_s5: OBJ operation: using door
+x3_s5_e0: [Action] Use OBJ specified by Navimesh
+x3_s6: OBJ operation: Using rope
+x3_s6_e0: [Action] Use OBJ specified by Navimesh
+x3_s7: OBJ operation: failed
+x3_s7_e0: [Action] Leave OBJ
+x3_s8: OBJ operation: upper attack
+x3_s8_e0: [Attack] Melee attack
+x3_s9: OBJ operation: lower attack
+x3_s9_e0: [Attack] Melee attack
+x3_s10: OBJ operation: End of use
+x3_s10_e0: [Action] Leave OBJ
+x3_s11: OBJ operation: Yield
+x3_s11_w0: [Move] Horizontal move_Lock_Random
+x3_s12: [LIB] Ladder movement_SubState
+x3_s13: OBJ use success state
+x3_s14: OBJ use failure state
+x4: [LIB] Move: Humanoid general-purpose navigation move
+x4_p0: Analog strength
+x4_p1: Reach distance
+x4_p2: Sharp turning angle
+x4_p3: OBJ inspection distance
+x4_p4: Dash switch
+x4_p5: Navigation search target
+x4_s0: Start state
+x4_s1: Navigating: Start
+x4_s1_e0: [Move] Reset move failure
+x4_s1_e1: [Timer] Start timer
+x4_s2: Navigation navigation: Navigation search
+x4_s2_e0: [Search] Navimesh
+x4_s2_e1: [Search] Navi mesh to generator
+x4_s2_e2: [Search] Navi mesh to a nearby gate
+x4_s2_e3: [Search] Navimesh to the sound you heard
+x4_s3: Navigation movement: sudden turn
+x4_s3_w0: [Turning] Quick turn _ Navi mesh direction
+x4_s4: Navigation navigation: dash
+x4_s4_w0: [Move] Dash_Lock_Navimesh
+x4_s5: Navigating: walking
+x4_s5_e0: [Move] Reset move failure
+x4_s5_w0: [Move] Lock move Navi mesh
+x4_s6: Navigating: avoiding danger [random moving]
+x4_s6_w0: [Move] Normal move random
+x4_s7: Navigation navigation: End
+x4_s7_e0: [Move] Reset move failure
+x4_s8: Navigating: Periodic check
+x4_s8_e0: [Search] Navimesh
+x4_s8_e1: [Search] Navi mesh to generator
+x4_s8_e2: [Search] Navi mesh to a nearby gate
+x4_s8_e3: [Search] Navimesh to the sound you heard
+x4_s9: Navigation navigation: branch
+x4_s10: Navigating: center moving
+x4_s10_w0: [Move] Move horizontally to the center of the navigation mesh
+x4_s11: Navigating: avoiding danger [obstacles]
+x4_s12: Navigating: unreachable
+x4_s13: Navigating: Route search successful
+x4_s13_e0: [General purpose] Sharing flag setting
+x4_s14: Navigating: route search failed
+x4_s14_e0: [General purpose] Sharing flag setting
+x4_s15: Navigating: next center
+x4_s15_w0: [Move] Horizontally move to the center position of the navigation mesh next to the navigation route
+x4_s16: [LIB] OBJ operation_SubState
+x4_s17: [LIB] Move: Get off the wall _SubState
+x4_s17_x0: [Timer] Start timer
+x4_s18: End state
+x4_s19: Obstacle: End State
+x4_s20: Unreachable: end state
+x5: [LIB] Top: generator feedback
+x5_s0: Start state
+x5_s1: During generator return
+x5_s1_e0: [Platoon] Set weight multiplier
+x5_s2: Generator return: return ⇒ no target
+x5_s2_e0: [General purpose] Sharing flag setting
+x5_s3: Generator return: return ⇒ visual
+x5_s3_e0: [General purpose] Sharing flag setting
+x5_s4: Generator return: timer start
+x5_s4_e0: [Timer] Start timer
+x5_s5: Generator return: return ⇒ invisibility
+x5_s5_e0: [General purpose] Sharing flag setting
+x5_s6: Generator feedback: successful return
+x5_s7: End state
+x6: [LIB] Search enemy: general purpose
+x6_s0: Start state
+x6_s1: Search enemy: Normal
+x6_s1_w0: [Search enemy] Character _ target setting
+x6_s2: Search enemy: Discovery
+x6_s2_e0: [General purpose] Sharing flag setting
+x6_s3: Search enemy: End
+x6_s3_e0: [General purpose] Sharing flag setting
+x6_s4: Search enemy: branch
+x6_s4_e0: [Operation] Lock off
+x6_s5: Search enemy: attacker
+x6_s5_w0: [Search enemy] Attacker_Target setting
+x6_s6: Search enemy: not found
+x6_s6_e0: [General purpose] Sharing flag setting
+x6_s6_e1: [General purpose] Sharing flag setting
+x6_s6_w0: [Search] Load target
+x6_s7: Search enemies: save target
+x6_s7_w0: [Search] Save target
+x6_s8: Search enemy: start
+x6_s8_w0: [Search] Clear the target
+x6_s9: End state
+x7: [LIB] Top: Target action: Visual recognition
+x7_s0: Start state
+x7_s1: Target action: Recognition During action
+x7_s1_e0: [General purpose] Sharing flag setting
+x7_s1_e1: [Search] Erasure of last sighting information
+x7_s1_e2: [Attack] Damage type reset
+x7_s1_e3: [Attack] Damage information reset
+x7_s1_e4: [Operation] Lock on
+x7_s1_e5: [Random number] Random number generation
+x7_s1_e6: [Search] Navimesh route search settings
+x7_s1_e7: [Operation] Invincible, damage invalid off
+x7_s1_e8: [Platoon] Set weight multiplier
+x7_s2: Target action: Visual recognition ⇒ disappearance
+x7_s2_e0: [General purpose] Sharing flag setting
+x7_s2_e1: [Timer] Start timer
+x7_s3: Target action: Visual recognition ⇒ return
+x7_s3_e0: [General purpose] Sharing flag setting
+x7_s4: Target action: Timer start
+x7_s4_e0: [Timer] Start timer
+x7_s5: Target action: Visual recognition ⇒ Return preparation
+x7_s5_e0: [General purpose] Sharing flag setting
+x7_s6: Target action: Visual recognition ⇒ Lower action stop
+x7_s6_e0: [General purpose] Sharing flag setting
+x7_s7: [LIB] Perspective switching _SubState
+x7_s7_x0: [General purpose] Sharing flag setting
+x7_s8: End state
+x8: [LIB] Top: Target action: disappearance
+x8_p0: LS tracking time
+x8_s0: Start state
+x8_s1: Target action: Disappearing During action
+x8_s1_e0: [Operation] Lock off
+x8_s1_e1: [Random number] Random number generation
+x8_s1_e2: [Search] Navimesh route search settings
+x8_s1_e3: [Platoon] Set weight multiplier
+x8_s2: Target action: disappearance ⇒ invisibility
+x8_s2_e0: [General purpose] Sharing flag setting
+x8_s3: Target action: disappearance ⇒ visual recognition
+x8_s3_e0: [General purpose] Sharing flag setting
+x8_s4: Target action: Timer start
+x8_s4_e0: [Timer] Start timer
+x8_s5: Target action: disappearance ⇒ return
+x8_s5_e0: [General purpose] Sharing flag setting
+x8_s6: Target action: disappearance ⇒ return preparation
+x8_s6_e0: [General purpose] Sharing flag setting
+x8_s7: [LIB] Perspective switching _SubState
+x8_s7_x0: [General purpose] Sharing flag setting
+x8_s8: End state
+x9: [LIB] Top: Target action: Invisibility
+x9_s0: Start state
+x9_s1: Target action: Invisibility During action
+x9_s1_e0: [Operation] Lock off
+x9_s1_e1: [Search] Erasure of last sighting information
+x9_s1_e2: [Search] Navimesh route search settings
+x9_s1_e3: [Platoon] Set weight multiplier
+x9_s2: Target action: invisibility ⇒ return
+x9_s2_e0: [General purpose] Sharing flag setting
+x9_s3: Target action: invisibility ⇒ sound response
+x9_s3_e0: [General purpose] Sharing flag setting
+x9_s4: Target action: invisible ⇒ visible
+x9_s4_e0: [General purpose] Sharing flag setting
+x9_s5: Target action: Timer start
+x9_s5_e0: [Timer] Start timer
+x9_s6: End state
+x10: [LIB] Top: Target action: Sound response
+x10_s0: Start state
+x10_s1: Target action: sound response
+x10_s1_e0: [Operation] Lock off
+x10_s1_e1: [Search] Navimesh route search settings
+x10_s1_e2: [Platoon] Set weight multiplier
+x10_s2: Target action: sound response ⇒ invisibility
+x10_s2_e0: [General purpose] Sharing flag setting
+x10_s3: Target action: sound response ⇒ visual recognition
+x10_s3_e0: [General purpose] Sharing flag setting
+x10_s4: Target action: Timer start
+x10_s4_e0: [Timer] Start timer
+x10_s5: Target action: sound response ⇒ return
+x10_s5_e0: [General purpose] Sharing flag setting
+x10_s6: Target action: sound response ⇒ return preparation
+x10_s6_e0: [General purpose] Sharing flag setting
+x10_s7: End state
+x11: [LIB] Upper: Target action: Lower stop
+x11_s0: Start state
+x11_s1: Target action: Lower stop
+x11_s2: End state
+x12: [LIB] Top: Targetless action
+x12_p0: Maximum search distance
+x12_s0: Start state
+x12_s1: No target in action
+x12_s1_e0: [Search] Navimesh route search settings
+x12_s1_e1: [Operation] Lock off
+x12_s1_e2: [Platoon] Set weight multiplier
+x12_s2: Target action: invisibility ⇒ sound response
+x12_s2_e0: [General purpose] Sharing flag setting
+x12_s3: Target action: Timer start
+x12_s3_e0: [Timer] Start timer
+x12_s4: End state
+x13: [LIB] Move: General-purpose navigation move
+x13_p0: Analog strength
+x13_p1: Reach distance
+x13_p2: Sharp turning angle
+x13_p3: Dash switch
+x13_p4: Short navigation check
+x13_p5: time out
+x13_p6: Automatic brake
+x13_s0: Start state
+x13_s1: Navigation navigation: branch
+x13_s2: Navigating: end of arrival
+x13_s2_e0: [Move] Reset move failure
+x13_s3: Navigating: Periodic check
+x13_s4: Navigation navigation: dash
+x13_s4_w0: [Move] Dash_Lock_Navimesh
+x13_s5: Navigation movement: sudden turn
+x13_s5_w0: [Turning] Quick turn _ Navi mesh direction
+x13_s6: Navigating: walking
+x13_s6_e0: [Move] Reset move failure
+x13_s6_w0: [Move] Lock move Navi mesh
+x13_s7: Navigating: Start
+x13_s7_e0: [Move] Reset move failure
+x13_s7_e1: [Timer] Start timer
+x13_s7_e2: [Timer] Start timer
+x13_s8: Navigating: center moving
+x13_s8_w0: [Move] Move horizontally to the center of the navigation mesh
+x13_s9: Navigating: next center
+x13_s9_w0: [Move] Horizontally move to the center position of the navigation mesh next to the navigation route
+x13_s10: [LIB] OBJ operation_SubState
+x13_s11: [LIB] Move: Get off the wall _SubState
+x13_s12: Move Success: End State
+x13_s13: Slowdown: end state
+x13_s14: Search again: End state
+x14: [LIB] Top: Target action: Preparing to return
+x14_s0: Start state
+x14_s1: Target action: preparing to return
+x14_s1_e0: [Random number] Random number generation
+x14_s1_e1: [Search] Navimesh route search settings
+x14_s2: Target action: Return preparation ⇒ Return
+x14_s2_e0: [General purpose] Sharing flag setting
+x14_s3: Target action: Timer start
+x14_s3_e0: [Timer] Start timer
+x14_s4: Generator return: Return preparation ⇒ Visual recognition
+x14_s4_e0: [General purpose] Sharing flag setting
+x14_s5: [LIB] Perspective switching _SubState
+x14_s5_x0: [General purpose] Sharing flag setting
+x14_s6: End state
+x15: [LIB] Perspective equipment switching
+x15_s0: Start state
+x15_s1: Switch equipment: start
+x15_s1_e0: [General purpose] Sharing flag setting
+x15_s1_e1: [Attack] Defense
+x15_s1_w0: [Action] Cancel activation state
+x15_s2: Equipment change: branch
+x15_s3: Equipment change: long distance ⇒ short distance
+x15_s3_e0: [General purpose] Sharing flag setting
+x15_s4: Equipment switching: short distance ⇒ long distance
+x15_s4_e0: [General purpose] Sharing flag setting
+x15_s5: Equipment change: long distance ⇒ short distance 1
+x15_s5_e0: [General] lower-level state map switching
+x15_s5_e1: [Attack] Switch weapons
+x15_s6: Equipment change: long distance ⇒ short distance 2
+x15_s6_e0: [General] lower-level state map switching
+x15_s6_e1: [Attack] Switch weapons
+x15_s7: Equipment change: long distance ⇒ short distance 3
+x15_s7_e0: [General] lower-level state map switching
+x15_s7_e1: [Attack] Switch weapons
+x15_s8: Equipment change: long distance ⇒ short distance 4
+x15_s8_e0: [General] lower-level state map switching
+x15_s8_e1: [Attack] Switch weapons
+x15_s9: Equipment change: long distance ⇒ short distance 5
+x15_s9_e0: [General] lower-level state map switching
+x15_s9_e1: [Attack] Switch weapons
+x15_s10: Equipment change: long distance ⇒ short distance 6
+x15_s10_e0: [General] lower-level state map switching
+x15_s10_e1: [Attack] Switch weapons
+x15_s11: Equipment change: short distance ⇒ long distance 1
+x15_s11_e0: [General] lower-level state map switching
+x15_s11_e1: [Attack] Switch weapons
+x15_s12: Equipment change: short distance ⇒ long distance 2
+x15_s12_e0: [General] lower-level state map switching
+x15_s12_e1: [Attack] Switch weapons
+x15_s13: Equipment change: short distance ⇒ long distance 3
+x15_s13_e0: [General] lower-level state map switching
+x15_s13_e1: [Attack] Switch weapons
+x15_s14: Equipment change: short distance ⇒ long distance 4
+x15_s14_e0: [General] lower-level state map switching
+x15_s14_e1: [Attack] Switch weapons
+x15_s15: Equipment change: short distance ⇒ long distance 5
+x15_s15_e0: [General] lower-level state map switching
+x15_s15_e1: [Attack] Switch weapons
+x15_s16: Equipment change: short distance ⇒ long distance 6
+x15_s16_e0: [General] lower-level state map switching
+x15_s16_e1: [Attack] Switch weapons
+x15_s17: Equipment change: Navigation route confirmation
+x15_s17_e0: [Search] Navimesh
+x15_s18: Switching equipment: Successful navigation route check
+x15_s18_e0: [General purpose] Sharing flag setting
+x15_s19: Equipment change: Navi route confirmation failure
+x15_s19_e0: [General purpose] Sharing flag setting
+x15_s20: Equipment change: End
+x15_s21: End state
+x16: [LIB] Move: Get off the wall
+x16_p0: Analog strength
+x16_p1: Wall down time
+x16_s0: Start state
+x16_s1: Get off the wall: angle adjustment
+x16_s1_w0: [Turning] Quick turn _ Navi mesh direction
+x16_s2: Get off the wall: Start moving
+x16_s2_w0: [Move] Normal move random
+x16_s3: Get off the wall: End judgment
+x16_s3_e0: [Move] Reset move failure
+x16_s3_w0: [Move] Disable move
+x16_s4: Get off the wall: start
+x16_s5: Get off the wall: approach the wall
+x16_s5_w0: [Move] Normal move random
+x16_s6: End state
+x17: [LIB] Top: Start action
+x17_s0: Start state
+x17_s1: Higher rank: Platoon flag setting
+x17_s1_e0: [Platoon] Set the platoon flag
+x17_s1_e1: [Platoon] Set the platoon flag
+x17_s2: End state
+x18: [LIB] Ladder movement
+x18_s0: Start state
+x18_s1: Ladder movement: start
+x18_s2: Ladder movement: Start using
+x18_s2_e0: [Action] Use OBJ specified by Navimesh
+x18_s3: Ladder movement: ladder up / down
+x18_s3_w0: [Action] Climbing the ladder
+x18_s3_w1: [Action] Go down the ladder
+x18_s4: Ladder movement: upper attack
+x18_s4_e0: [Attack] Melee attack
+x18_s5: Ladder movement: lower attack
+x18_s5_e0: [Attack] Melee attack
+x18_s6: Ladder movement: end of use
+x18_s6_e0: [Action] Leave OBJ
+x18_s6_e1: [Search] Navimesh
+x18_s7: Ladder movement: use failure
+x18_s7_e0: [Action] Leave OBJ
+x18_s7_e1: [Search] Navimesh
+x18_s8: Ladder move: yield
+x18_s8_w0: [Move] Horizontal move_Lock_Random
+x18_s9: Ladder movement: Navigation search
+x18_s9_e0: [Search] Navimesh
+x18_s10: Ladder Move: Back Ladder
+x18_s10_w0: [Action] Climbing the ladder
+x18_s10_w1: [Action] Go down the ladder
+x18_s11: End state

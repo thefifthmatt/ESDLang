@@ -1,0 +1,3 @@
+10: Lower logic: Stroan
+10_s0: Start state
+10_s1: Lower logic: start

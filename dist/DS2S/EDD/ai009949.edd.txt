@@ -1,0 +1,56 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s2: Upper: Start lower
+10_s2_e0: [General] lower-level state map switching
+10_s2_e1: [Movement] Movement prediction accuracy setting
+10_s2_e2: [General purpose] Sharing flag setting
+10_s3: High rank: search enemy
+10_s3_w0: [Search enemy] Character _ target setting
+10_s4: Top: Targeted
+10_s5: Top: no target
+10_s6: Higher rank: battle mode switching
+10_s6_e0: [General] lower-level state map switching
+10_s6_e1: [Operation] Lock on
+10_s7: Higher rank: Group return
+10_s7_e0: [General] lower-level state map switching
+10_s7_e1: [Operation] Lock off
+10_s8: Top: Leader action_SubState
+10_s9: Top: Member Behavior_SubState
+x0: Top: leader behavior
+x0_s0: Start state
+x0_s1: Leader action: start
+x0_s1_e0: [Timer] Start timer
+x0_s2: Leader action: Target_Navimesh
+x0_s2_e0: [Search] Navimesh
+x0_s3: Leader action: wait
+x0_s4: Upper: Common flag 2 operation_SubState
+x0_s5: Higher rank: formation_SubState
+x0_s6: End state
+x1: Top: Member behavior
+x1_s0: Start state
+x1_s1: Member action start
+x1_s2: Navi mesh to offset position
+x1_s2_e0: [Search] Navimesh at offset from group leader
+x1_s3: Member action end
+x1_s4: End state
+x2: Upper: common flag 2 operation
+x2_s0: Start state
+x2_s1: Common flag 2 setting: Start
+x2_s2: Common flag 2 setting: End
+x2_s3: Common flag 2 setting: branch
+x2_s4: Common flag 2 setting: value 0
+x2_s4_e0: [General purpose] Sharing flag setting
+x2_s5: Common flag 2 setting: value 10
+x2_s5_e0: [General purpose] Sharing flag setting
+x2_s6: Common flag 2 setting: value 20
+x2_s6_e0: [General purpose] Sharing flag setting
+x2_s7: End state
+x3: Higher rank: formation setting
+x3_s0: Start state
+x3_s1: Formation formation: Start
+x3_s1_e0: [Move] Group member offset position setting
+x3_s1_e1: [Move] Group member offset position setting
+x3_s1_e2: [Move] Group member offset position setting
+x3_s2: Formation setting: End
+x3_s3: End state

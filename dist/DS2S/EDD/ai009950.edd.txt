@@ -1,0 +1,103 @@
+10: Lower: Group
+10_s0: Start state
+10_s1: Lower: Start
+10_s2: Lower: Action selection
+10_s3: Lower: Member move_SubState
+10_s4: Lower: Leader move_SubState
+10_s5: Lower: Wait_SubState
+20: Lower: Combat
+20_s0: Start state
+20_s1: Lower: Start
+20_s2: Lower: branch
+20_s3: Lower: action waiting
+20_s3_w0: [Turning] Turning in place_Lock
+20_s4: Short distance action_SubState
+20_s5: Long distance action_SubState
+x0: Lower: waiting
+x0_s0: Start state
+x0_s1: Waiting action: start
+x0_s1_w0: [Attack] Non-combat action ends
+x0_s2: Waiting action: End
+x0_s3: End state
+x1: Lower: Leader move
+x1_s0: Start state
+x1_s1: Move: Start
+x1_s2: Navigation
+x1_s2_w0: [Move] Normal move Navi mesh
+x1_s3: Move: End
+x1_s4: dash
+x1_s4_w0: [Move] Dash_Lock_Navimesh
+x1_s5: End state
+x2: Lower: Move member
+x2_s0: Start state
+x2_s1: Move: Start
+x2_s2: Follow movement
+x2_s2_w0: [Move] Follow the offset position from the group leader
+x2_s3: Navigation
+x2_s3_w0: [Move] Normal move Navi mesh
+x2_s4: Navigation navigation horizontal
+x2_s4_w0: [Move] Horizontal move_Lock_Navimesh
+x2_s5: Move: End
+x2_s5_e0: [Move] Reset move failure
+x2_s6: End state
+x3: Short range action
+x3_s0: Start state
+x3_s1: Short range action: start
+x3_s2: Short-distance action: branch
+x3_s3: Near: Attack _SubState
+x3_s4: Near: Retreat_SubState
+x3_s5: Before Attack: Pause _SubState
+x3_s6: End state
+x4: Nearby: attack
+x4_s0: Start state
+x4_s1: Begin attack
+x4_s2: Attack: Attack waiting
+x4_s3: Attack: Action 10
+x4_s3_w0: [Attack] Melee attack
+x4_s4: End state
+x5: Near: retreat
+x5_s0: Start state
+x5_s1: Retreat: start
+x5_s2: Retreat: Retreating
+x5_s2_w0: [Move] Horizontal move_Lock_Random
+x5_s3: Retreat: End
+x5_s4: Timer 2 start_SubState
+x5_s5: Timer 2 stop_SubState
+x5_s6: End state
+x6: Start timer 2
+x6_s0: Start state
+x6_s1: Timer 2: Start
+x6_s1_e0: [Timer] Start timer
+x6_s2: Timer 2: End
+x6_s3: End state
+x7: Timer 2 stop
+x7_s0: Start state
+x7_s1: Timer 2: Stop
+x7_s1_e0: [Timer] Stop timer
+x7_s2: Timer 2: End
+x7_s3: End state
+x8: Before the attack: Pause
+x8_s0: Start state
+x8_s1: Pause: Start
+x8_s2: Padding: distance discrimination
+x8_s3: Close packing: near
+x8_s3_w0: [Move] Lock horizontally to the target correction position
+x8_s4: Pause: Navigation search
+x8_s4_e0: [Search] Navimesh
+x8_s5: Pause: Navi failed
+x8_s5_w0: [Move] Lock to target correction position
+x8_s6: Closed: Navi successful
+x8_s6_w0: [Move] Horizontal move_Navimesh
+x8_s7: Close-up: finished
+x8_s8: End state
+x9: Long distance action
+x9_s0: Start state
+x9_s1: Long distance: start
+x9_s2: Long distance: Navigation search
+x9_s2_e0: [Search] Navimesh
+x9_s3: Long distance: navigation failure movement
+x9_s3_w0: [Move] Normally move to the target world correction position
+x9_s4: Long Distance: Successful Navigation
+x9_s4_w0: [Move] Lock move Navi mesh
+x9_s5: Long distance: end
+x9_s6: End state

@@ -1,0 +1,123 @@
+110: Lower: Action 10
+110_s0: Start state
+110_s1: Attack_SubState
+10: Upper logic
+10_s0: Start state
+10_s1: Upper: Lower logic start
+10_s1_e0: [Movement] Movement prediction accuracy setting
+10_s1_e1: [Search] Overwrite the generator position with the current position
+10_s2: High rank: search enemy
+10_s2_w0: [Search enemy] Character _ target setting
+10_s3: Top: with target
+111: Lower: Action 11
+111_s0: Start state
+111_s1: Attack_SubState
+112: Lower: Action 12
+112_s0: Start state
+112_s1: Attack_SubState
+113: Lower: Action 13
+113_s0: Start state
+113_s1: Attack_SubState
+114: Lower: Action 14
+114_s0: Start state
+114_s1: Attack_SubState
+115: Lower: Action 15
+115_s0: Start state
+115_s1: Attack_SubState
+116: Lower: Action 16
+116_s0: Start state
+116_s1: Attack_SubState
+117: Lower: Action 17
+117_s0: Start state
+117_s1: Attack_SubState
+118: Lower: Action 18
+118_s0: Start state
+118_s1: Attack_SubState
+119: Lower: Action 19
+119_s0: Start state
+119_s1: Attack_SubState
+120: Lower: Action 20
+120_s0: Start state
+120_s1: Attack_SubState
+121: Lower: Action 21
+121_s0: Start state
+121_s1: Attack_SubState
+122: Lower: Action 22
+122_s0: Start state
+122_s1: Attack_SubState
+123: Lower: Action 23
+123_s0: Start state
+123_s1: Attack_SubState
+124: Lower: Action 24
+124_s0: Start state
+124_s1: Attack_SubState
+125: Lower: Action 25
+125_s0: Start state
+125_s1: Attack_SubState
+126: Lower: Action 26
+126_s0: Start state
+126_s1: Attack_SubState
+127: Lower: Action 27
+127_s0: Start state
+127_s1: Attack_SubState
+128: Lower: Action 28
+128_s0: Start state
+128_s1: Attack_SubState
+129: Lower: Action 29
+129_s0: Start state
+129_s1: Attack_SubState
+130: Lower: Action 30
+130_s0: Start state
+130_s1: Attack_SubState
+101: Lower: Action 1
+101_s0: Start state
+101_s1: Attack_SubState
+102: Lower: Action 2
+102_s0: Start state
+102_s1: Attack_SubState
+103: Lower: Action 3
+103_s0: Start state
+103_s1: Attack_SubState
+104: Lower: Action 4
+104_s0: Start state
+104_s1: Attack_SubState
+105: Lower: Action 5
+105_s0: Start state
+105_s1: Attack_SubState
+106: Lower: Action 6
+106_s0: Start state
+106_s1: Attack_SubState
+107: Lower: Action 7
+107_s0: Start state
+107_s1: Attack_SubState
+108: Lower: Action 8
+108_s0: Start state
+108_s1: Attack_SubState
+109: Lower: Action 9
+109_s0: Start state
+109_s1: Attack_SubState
+100: Lower: Action 0
+100_s0: Start state
+100_s1: Attack_SubState
+11: Lower: Combo 1
+11_s0: Start state
+11_s1: Attack_SubState
+12: Lower: Combo 2
+12_s0: Start state
+12_s1: Attack_SubState
+13: Lower: Combo 3
+13_s0: Start state
+13_s1: Attack_SubState
+x0: attack
+x0_p0: Attack type
+x0_p1: Wait time
+x0_s0: Start state
+x0_s1: attack
+x0_s1_w0: [Attack] Melee attack
+x0_s2: Under attack
+x0_s3: Waiting
+x0_s4: Generator search
+x0_s4_e0: [Search] Navi mesh to generator
+x0_s5: Return
+x0_s5_w0: [Move] Normal move Navi mesh
+x0_s6: End state

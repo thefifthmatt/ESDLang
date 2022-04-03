@@ -1,0 +1,144 @@
+10: Top
+10_s0: Start state
+10_s1: Top: Start
+10_s1_e0: [Search enemy] Character _ target setting
+10_s2: Higher rank: search enemy ON
+10_s2_e0: [Operation] Lock on
+10_s3: Top rank: search off
+10_s3_e0: [Operation] Lock off
+10_s4: Top: with target
+10_s5: Top: no target
+10_s6: Top: walking
+10_s6_e0: [General] lower-level state map switching
+10_s7: Top: dashing
+10_s7_e0: [General] lower-level state map switching
+10_s8: Top: Walking (for large)
+10_s8_e0: [General] lower-level state map switching
+10_s9: Top: dashing (large)
+10_s9_e0: [General] lower-level state map switching
+10_s10: Top: Cancel attack
+10_s10_e0: [General] lower-level state map switching
+10_s11: Top rank: Avoidance cancellation
+10_s11_e0: [General] lower-level state map switching
+10_s12: Top: Movement cancel
+10_s12_e0: [General] lower-level state map switching
+10_s13: Top: Navimesh update
+10_s13_e0: [Search] Navimesh
+10_s14: Higher rank: Navimesh update waiting
+20: Lower: walking
+20_s0: Start state
+20_s1: Quick turn
+20_s1_w0: [Turning] Quick turn_Lock
+20_s2: Waiting
+20_s3: Walking_SubState
+30: Lower: dash
+30_s0: Start state
+30_s1: Quick turn
+30_s1_w0: [Turning] Quick turn_Lock
+30_s2: Waiting
+30_s3: Dash_SubState
+21: Lower: walking (for large)
+21_s0: Start state
+21_s1: Quick turn
+21_s1_w0: [Turning] Quick turn_Lock
+21_s2: Waiting
+21_s3: Walking_SubState
+31: Lower: dash (for large)
+31_s0: Start state
+31_s1: Quick turn
+31_s1_w0: [Turning] Quick turn_Lock
+31_s2: Waiting
+31_s3: Dash_SubState
+40: Lower: Attack cancel
+40_s0: Start state
+40_s1: Lower: Start
+40_s2: Lower: Attack start
+40_s2_e0: [Attack] Melee attack
+40_s3: Lower: Attack cancel
+40_s3_e0: [Attack] Melee attack
+40_s4: Lower: Attack waiting
+41: Lower: Avoidance cancellation
+41_s0: Start state
+41_s1: Lower: Start
+41_s2: Lower: Attack start
+41_s2_e0: [Attack] Melee attack
+41_s3: Lower: Attack cancel
+41_s3_w0: [Attack] Random avoidance
+41_s4: Lower: Attack waiting
+42: Lower: Movement cancel
+42_s0: Start state
+42_s1: Lower: Start
+42_s2: Lower: Attack start
+42_s2_e0: [Attack] Melee attack
+42_s3: Lower: Attack cancel
+42_s3_e0: [Attack] Attack cancel
+42_s4: Lower: Attack waiting
+42_s5: Lower: Move
+42_s5_w0: [Move] Horizontal move_Lock_Random
+1: random
+1_s0: Start state
+1_s1: Move 01
+1_s1_e0: [General purpose] Sharing flag setting
+1_s1_w0: [Move] Horizontal move_Lock_Random
+1_s2: Move 02
+1_s2_w0: [Move] Horizontal move_Lock_Random
+1_s3: Move 03
+1_s3_w0: [Move] Horizontal move_Lock_Random
+1_s4: Move 04
+1_s4_w0: [Move] Horizontal move_Lock_Random
+1_s5: Move 05
+1_s5_w0: [Move] Horizontal move_Lock_Random
+1_s6: Move 06
+1_s6_w0: [Move] Horizontal move_Lock_Random
+1_s7: Move 07
+1_s7_w0: [Move] Horizontal move_Lock_Random
+1_s8: Move 08
+1_s8_w0: [Move] Horizontal move_Lock_Random
+1_s9: Move 09
+1_s9_w0: [Move] Horizontal move_Lock_Random
+1_s10: Move 10
+1_s10_e0: [General purpose] Sharing flag setting
+1_s10_w0: [Move] Horizontal move_Lock_Random
+50: Lower: Quick turn mixing test
+50_s0: Start state
+50_s1: start
+50_s2: Branch
+50_s3: Quick turn
+50_s3_w0: [Turning] Quick turn _ Navi mesh direction
+50_s3_w1: [Move] Normal move Navi mesh
+50_s4: Moving branch
+50_s4_e0: [Random number] Random number generation
+50_s5: walk
+50_s5_w0: [Move] Normal move Navi mesh
+50_s6: Run
+50_s6_w0: [Move] Dash_Navimesh
+50_s7: Stop
+51: Lower: Quick turn mixing test_2
+51_s0: Start state
+51_s1: start
+51_s2: Branch
+51_s3: Quick turn
+51_s3_w0: [Turning] Quick turn _ Navi mesh direction
+51_s4: Moving branch
+51_s4_e0: [Random number] Random number generation
+51_s5: walk
+51_s5_w0: [Move] Normal move Navi mesh
+51_s6: Run
+51_s6_w0: [Move] Dash_Navimesh
+51_s7: Stop
+x0: walking
+x0_p0: Analog strength
+x0_p1: Stop distance
+x0_p2: Sharp turning angle
+x0_s0: Start state
+x0_s1: While walking
+x0_s1_w0: [Move] Lock move random
+x0_s2: End state
+x1: dash
+x1_p0: Analog strength
+x1_p1: Stop distance
+x1_p2: Sharp turning angle
+x1_s0: Start state
+x1_s1: Dashing
+x1_s1_w0: [Move] Dash_Lock_Random
+x1_s2: End state

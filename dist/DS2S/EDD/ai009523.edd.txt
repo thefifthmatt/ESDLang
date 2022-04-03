@@ -1,0 +1,307 @@
+20: Navi point test (normal movement)
+20_s0: Start state
+20_s1: Movement logic_SubState
+40: Navi point test (horizontal movement)
+40_s0: Start state
+40_s1: Movement logic_SubState
+30: Navi point test (dash)
+30_s0: Start state
+30_s1: Movement logic_SubState
+10: Higher state
+10_s0: Start state
+10_s1: Higher state: start
+10_s1_e0: [Search] Overwrite the generator position with the current position
+10_s2: Upper state: Initial setting
+10_s2_e0: [General purpose] Sharing flag setting
+10_s2_e1: [Operation] Lock on
+10_s3: Top: Setting
+50: Navi point test (normal tracking action)
+50_s0: Start state
+50_s1: Lower: Start
+50_s1_e0: [Search] Navimesh
+50_s2: Lower: Acquisition of target point
+50_s3: Lower: Move
+50_s3_e0: [Move] Reset move failure
+50_s3_w0: [Move] Dash_Lock_Navimesh
+50_s3_w1: [Move] Lock move Navi mesh
+50_s3_w2: [Move] Horizontal move_Navimesh
+50_s3_w3: [Search] Navimesh
+50_s4: Lower: Reached
+50_s4_x0: [Search] Navi mesh to generator
+50_s5: Reset point move
+50_s5_w0: [Move] Dash_Navimesh
+50_s6: Reaching reset point
+50_s7: Status
+50_s7_w0: [Search] Navimesh
+50_s8: [LIB] Generator action (sub) _SubState
+21: Movement test (normal movement)
+21_s0: Start state
+21_s1: Lower logic: start
+21_s1_w0: [Search] [Debug] Navigation mesh to the point clicked
+21_s2: Lower: waiting
+21_s3: Lower logic: error
+21_s3_e0: [Debug] Log output
+21_s4: Action: Navimesh Movement_SubState
+21_s5: Action: Forward OBJ destruction_SubState
+21_s6: Action: Use of moving object_SubState
+21_s7: [LIB] Move: Navimesh return_SubState
+31: Move test (dash)
+31_s0: Start state
+31_s1: Lower logic: start
+31_s1_w0: [Search] [Debug] Navigation mesh to the point clicked
+31_s2: Lower: waiting
+31_s3: Lower logic: error
+31_s3_e0: [Debug] Log output
+31_s4: Action: Navimesh Movement_SubState
+31_s5: Action: Forward OBJ destruction_SubState
+31_s6: Action: Use of moving object_SubState
+31_s7: [LIB] Move: Navimesh return_SubState
+41: Movement test (horizontal movement)
+41_s0: Start state
+41_s1: Lower logic: start
+41_s1_w0: [Search] [Debug] Navigation mesh to the point clicked
+41_s2: Lower: waiting
+41_s3: Lower logic: error
+41_s3_e0: [Debug] Log output
+41_s4: Action: Navimesh Movement_SubState
+41_s5: Action: Forward OBJ destruction_SubState
+41_s6: Action: Use of moving object_SubState
+41_s7: [LIB] Move: Navimesh return_SubState
+22: Tracking test (normal movement)
+22_s0: Start state
+22_s1: Tracking logic_SubState
+32: Tracking test (dash)
+32_s0: Start state
+32_s1: Tracking logic_SubState
+42: Tracking test (horizontal movement)
+42_s0: Start state
+42_s1: Tracking logic_SubState
+51: Movement test (variable speed)
+51_s0: Start state
+51_s1: Lower logic: start
+51_s1_w0: [Search] [Debug] Navigation mesh to the point clicked
+51_s2: Lower: waiting
+51_s3: Lower logic: error
+51_s3_e0: [Debug] Log output
+51_s4: Action: Forward OBJ destruction_SubState
+51_s5: Action: Use of moving object_SubState
+51_s6: [LIB] Move: Navimesh return_SubState
+51_s7: Action: Navigation (Danger Avoidance) _SubState
+x4: Movement logic
+x4_p0: Movement type
+x4_p1: Analog strength
+x4_p2: Reach distance
+x4_s0: Start state
+x4_s1: Move: Goal setting
+x4_s1_e0: [Search] [Debug] Navigation mesh to the point clicked
+x4_s2: Lower: Behavior branch
+x4_s3: Move: Moving
+x4_s3_e0: [Move] Reset move failure
+x4_s3_w0: [Move] Horizontal move_Navimesh
+x4_s3_w1: [Move] Normal move Navi mesh
+x4_s3_w2: [Move] Dash_Navimesh
+x4_s3_w3: [Move] Horizontal move_Lock_Navimesh
+x4_s3_w4: [Move] Lock move Navi mesh
+x4_s3_w5: [Move] Dash_Lock_Navimesh
+x4_s4: Move: reach
+x4_s5: Move: danger avoidance
+x4_s5_w0: [Move] Move horizontally to the center of the navigation mesh
+x4_s6: Movement: turning
+x4_s6_e0: [Debug] Popcorn creation
+x4_s6_w0: [Turning] Quick turn _ Navi mesh direction
+x4_s7: Move: error
+x4_s7_e0: [Debug] Log output
+x4_s8: Move: reset target
+x4_s8_w0: [Search] [Debug] Navigation mesh to the point clicked
+x4_s9: End state
+x5: Action: Move Navimesh
+x5_p0: Analog strength
+x5_p1: Movement type
+x5_p2: Reach distance
+x5_s0: Start state
+x5_s1: Move: Start
+x5_s2: Move: End
+x5_s2_e0: [Move] Reset move failure
+x5_s3: Move check
+x5_s3_e0: [Timer] Start timer
+x5_s4: Horizontal movement in danger
+x5_s4_e0: [Debug] Popcorn creation
+x5_s4_w0: [Move] Move horizontally to the center of the navigation mesh
+x5_s5: Danger horizontal movement 2
+x5_s5_e0: [Debug] Popcorn creation
+x5_s5_w0: [Move] Horizontally move to the center position of the navigation mesh next to the navigation route
+x5_s6: Move
+x5_s6_w0: [Move] Horizontal move_Lock_Navimesh
+x5_s6_w1: [Move] Lock move Navi mesh
+x5_s6_w2: [Move] Dash_Lock_Navimesh
+x5_s7: Turning
+x5_s7_e0: [Debug] Popcorn creation
+x5_s7_w0: [Turning] Quick turn _ Navi mesh direction
+x5_s8: End state
+x5_s9: Touch something
+x5_s10: Outside Navimesh
+x6: Action: Forward OBJ destroyed
+x6_s0: Start state
+x6_s1: OBJ destruction started
+x6_s2: OBJ check
+x6_s3: Action 10
+x6_s3_e0: [Attack] Melee attack
+x6_s3_e1: [Debug] Popcorn creation
+x6_s4: OBJ not found
+x6_s5: Action 13
+x6_s5_e0: [Attack] Melee attack
+x6_s5_e1: [Debug] Popcorn creation
+x6_s6: Lock-on
+x6_s6_e0: [Operation] Lock on
+x6_s7: Lock off
+x6_s7_e0: [Operation] Lock off
+x6_s8: End state
+x6_s9: Destruction failure
+x7: Behavior: using moving objects
+x7_s0: Start state
+x7_s1: Determine what to use
+x7_s1_e0: [Action] Leave OBJ
+x7_s2: Start using ladder
+x7_s2_e0: [Action] Use OBJ specified by Navimesh
+x7_s3: Door use
+x7_s3_e0: [Action] Use OBJ specified by Navimesh
+x7_s3_e1: [Debug] Popcorn creation
+x7_s4: Use rope
+x7_s4_e0: [Action] Use OBJ specified by Navimesh
+x7_s4_e1: [Debug] Popcorn creation
+x7_s5: No sign of use
+x7_s5_e0: [Debug] Popcorn creation
+x7_s6: Climb ladder
+x7_s6_e0: [Debug] Popcorn creation
+x7_s6_w0: [Action] Climbing the ladder
+x7_s7: Go down the ladder
+x7_s7_e0: [Debug] Popcorn creation
+x7_s7_w0: [Action] Go down the ladder
+x7_s8: End of use
+x7_s8_e0: [Action] Leave OBJ
+x7_s9: End state
+x8: Tracking logic
+x8_p0: Movement type
+x8_p1: Analog strength
+x8_p2: Reach distance
+x8_s0: Start state
+x8_s1: Move: Goal setting
+x8_s1_e0: [Search] Navimesh
+x8_s2: Lower: Behavior branch
+x8_s3: Move: Moving
+x8_s3_e0: [Move] Reset move failure
+x8_s3_w0: [Move] Horizontal move_Navimesh
+x8_s3_w1: [Move] Normal move Navi mesh
+x8_s3_w2: [Move] Dash_Navimesh
+x8_s3_w3: [Move] Horizontal move_Lock_Navimesh
+x8_s3_w4: [Move] Lock move Navi mesh
+x8_s3_w5: [Move] Dash_Lock_Navimesh
+x8_s4: Move: reach
+x8_s5: Move: danger avoidance
+x8_s5_w0: [Move] Move horizontally to the center of the navigation mesh
+x8_s6: Movement: turning
+x8_s6_e0: [Debug] Popcorn creation
+x8_s6_w0: [Turning] Quick turn _ Navi mesh direction
+x8_s7: Move: error
+x8_s7_e0: [Debug] Log output
+x8_s8: Move: reset target
+x8_s8_e0: [Search] Navimesh
+x8_s9: End state
+x9: Action: Navigation (danger avoidance)
+x9_p0: Analog strength
+x9_p1: Movement type
+x9_p2: Reach distance
+x9_s0: Start state
+x9_s1: Move: Start
+x9_s2: Move: End
+x9_s2_e0: [Move] Reset move failure
+x9_s3: Move check
+x9_s3_e0: [Debug] Popcorn creation
+x9_s3_e1: [Timer] Start timer
+x9_s4: Danger avoidance
+x9_s4_e0: [Debug] Popcorn creation
+x9_s4_w0: [Move] Disable move
+x9_s5: Moving low speed
+x9_s5_e0: [Move] Reset move failure
+x9_s5_e1: [Debug] Popcorn creation
+x9_s5_w0: [Move] Lock move Navi mesh
+x9_s6: Moving high speed
+x9_s6_e0: [Debug] Popcorn creation
+x9_s6_w0: [Move] Dash_Lock_Navimesh
+x9_s7: Turning
+x9_s7_e0: [Debug] Popcorn creation
+x9_s7_w0: [Turning] Quick turn _ Navi mesh direction
+x9_s8: End state
+x9_s9: Touch something
+x9_s10: Outside Navimesh
+x0: [LIB] Generator action (lower)
+x0_p0: OBJ vandalism
+x0_p1: OBJ inspection distance
+x0_p2: Return start movement type
+x0_p3: Returning movement type
+x0_s0: Start state
+x0_s1: Generator action: start
+x0_s1_w0: [Move] Move horizontally to the center of the navigation mesh
+x0_s2: Generator action: Start return
+x0_s2_e0: [Move] Reset move failure
+x0_s2_w0: [Move] Horizontal move_Lock_Navimesh
+x0_s2_w1: [Move] Lock move Navi mesh
+x0_s2_w2: [Move] Dash_Lock_Navimesh
+x0_s3: Generator action: Returning
+x0_s3_w0: [Move] Horizontal move_Navimesh
+x0_s3_w1: [Move] Normal move Navi mesh
+x0_s3_w2: [Move] Dash_Navimesh
+x0_s4: Generator Action: Move Failed
+x0_s4_w0: [Move] Move horizontally to the center of the navigation mesh
+x0_s5: Generator Behavior: Search Again
+x0_s5_e0: [Search] Navi mesh to generator
+x0_s6: Generator action: flip direction adjustment
+x0_s6_w0: [Turning] Turning in place_Navimesh direction
+x0_s7: Generator behavior: orientation adjustment
+x0_s7_w0: [Turning] Turning in place_Navimesh direction
+x0_s8: [LIB] OBJ operation_SubState
+x0_s9: [LIB] OBJ destruction behavior _SubState
+x0_s10: End state
+x1: [LIB] OBJ destruction behavior
+x1_p0: Action type_attack action
+x1_s0: Start state
+x1_s1: OBJ Destruction Action: Start
+x1_s2: OBJ destruction behavior: attack behavior
+x1_s2_w0: [Attack] Melee attack
+x1_s3: OBJ destruction behavior: waiting
+x1_s4: OBJ destruction behavior: end setting
+x1_s4_e0: [General] Logic group flag setting
+x1_s5: OBJ destruction behavior: check after waiting
+x1_s6: End state
+x2: [LIB] OBJ operation
+x2_s0: Start state
+x2_s1: OBJ operation: start
+x2_s2: OBJ operation: branch
+x2_s2_w0: [Action] Use OBJ specified by Navimesh
+x2_s3: OBJ operation: Other than ladder
+x2_s4: OBJ operation: ladder
+x2_s5: OBJ operation: climb the ladder
+x2_s5_w0: [Action] Climbing the ladder
+x2_s6: OBJ operation: Get off the ladder
+x2_s6_w0: [Action] Go down the ladder
+x2_s7: OBJ operation: Normal termination
+x2_s7_e0: [Action] Leave OBJ
+x2_s8: OBJ operation: Failed end
+x2_s9: OBJ operation: Get off the ladder (preparation)
+x2_s9_w0: [Action] Go down the ladder
+x2_s10: OBJ operation: climbing a ladder (preparation)
+x2_s10_w0: [Action] Climbing the ladder
+x2_s11: OBJ use success state
+x2_s12: OBJ use failure state
+x3: [LIB] Move: Navimesh return
+x3_p0: Movement type
+x3_s0: Start state
+x3_s1: Navimesh Return: Search
+x3_s1_e0: [Search] Navimesh
+x3_s1_w0: [Move] Move horizontally to the center of the navigation mesh
+x3_s2: Navimesh Return: Start
+x3_s3: Navimesh return: Start moving
+x3_s3_w0: [Move] Horizontal move_Navimesh
+x3_s3_w1: [Move] Normal move Navi mesh
+x3_s4: Navimesh Return: Search standby
+x3_s5: End state

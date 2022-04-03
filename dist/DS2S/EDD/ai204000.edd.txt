@@ -1,0 +1,21 @@
+10: Lower logic: Great Moss
+10_s0: Start state
+10_s1: Substate: Start
+10_s2: Lower state: Initial setting
+10_s2_e0: [Attack] Damage lower logic reset setting
+10_s2_e1: [General purpose] Sharing flag setting
+10_s3: Target action: Great Moss_SubState
+x0: Target action: Great Moss
+x0_s0: Start state
+x0_s1: Target action: start
+x0_s2: Target action: waiting
+x0_s2_e0: [Random number] Random number generation
+x0_s3: Target action: Action 10: Scatter scales A
+x0_s3_e0: [Attack] Melee attack
+x0_s4: Target action: Action 12: Scatter the scales violently
+x0_s4_e0: [Attack] Melee attack
+x0_s5: Target action: interval adjustment
+x0_s6: Target action: Action 11: Scatter scales B
+x0_s6_e0: [Attack] Melee attack
+x0_s7: Target action: attack branch
+x0_s8: End state

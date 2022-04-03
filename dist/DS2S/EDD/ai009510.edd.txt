@@ -1,0 +1,36 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Upper: Lower logic start
+10_s1_e0: [General] lower-level state map switching
+10_s1_w0: [Search enemy] Character _ target setting
+10_s2: Waiting
+10_s3: Navi mesh creation
+10_s3_e0: [Search] Navimesh
+10_s4: Waiting to move
+20: Lower logic
+20_s0: Start state
+20_s1: Lower logic: start
+20_s1_e0: [Random number] Random number generation
+20_s2: Action: Move_SubState
+20_s3: Action: Ammunition avoidance _SubState
+x0: Action: Move
+x0_s0: Start state
+x0_s1: Start moving
+x0_s2: Move mesh
+x0_s2_w0: [Move] Normal move Navi mesh
+x0_s3: End of move
+x0_s4: End state
+x1: Action: Ammunition avoidance
+x1_s0: Start state
+x1_s1: Start checking bullets
+x1_s2: High-speed long-distance check
+x1_s3: Medium speed medium distance check
+x1_s4: Low-speed short-distance check
+x1_s5: guard!
+x1_s5_e0: [Attack] Defense
+x1_s6: rolling!
+x1_s6_w0: [Attack] Random avoidance
+x1_s7: Jump!
+x1_s7_w0: [Action] Stand jump
+x1_s8: End of bullet check
+x1_s9: End state

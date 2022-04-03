@@ -1,0 +1,29 @@
+20: Brake test (normal brake)
+20_s0: Start state
+20_s1: Lower: Start
+20_s2: Lower: Move
+20_s2_w0: [Move] Dash move to the target world correction position
+20_s3: Lower: Reached
+30: Brake test (horizontal movement brake)
+30_s0: Start state
+30_s1: Lower: Start
+30_s2: Lower: Move
+30_s2_w0: [Move] Dash move to the target world correction position
+30_s3: Lower: Reached
+30_s4: Horizontal movement (regular)
+30_s4_w0: [Move] Horizontal move_Lock_Random
+10: Higher state
+10_s0: Start state
+10_s1: Higher state: start
+10_s2: Upper state: Initial setting
+10_s2_e0: [General purpose] Sharing flag setting
+10_s2_w0: [Search enemy] Character _ target setting
+10_s3: Upper: Switch lower
+10_s3_e0: [Operation] Lock on
+40: Brake test (sudden stop)
+40_s0: Start state
+40_s1: Lower: Start
+40_s2: Lower: Move
+40_s2_w0: [Move] Dash move to the target world correction position
+40_s3: Lower: Reached
+40_s3_w0: [Move] Disable move

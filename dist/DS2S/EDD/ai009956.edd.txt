@@ -1,0 +1,29 @@
+20: Lower logic
+20_s0: Start state
+20_s1: Lower: Start
+20_s2: Lower: Start point search
+20_s2_e0: [Search] [Debug] Navigraph to the start point of Navigraph test route
+20_s3: Lower: Start point move
+20_s3_w0: [Move] Normal move Navi mesh
+20_s4: Lower: target point search
+20_s4_e0: [Search] [Debug] Navigraph Mesh to end point of Navigraph test route
+20_s5: Lower: Move to target point
+20_s5_w0: [Move] Normal move Navi mesh
+20_s6: Lower: Waiting for arrival at target point (Start again: guard)
+20_s7: Lower: Wait for setting failure
+10: Top: Logic
+10_s0: Start state
+10_s1: Top: Start
+10_s2: Top: target search
+10_s2_w0: [Search enemy] Character _ target setting
+10_s3: High rank: search enemy
+10_s3_e0: [Operation] Lock on
+10_s4: Top: search waiting
+10_s5: Top: no search
+10_s5_e0: [Operation] Lock off
+10_s6: Top: Standby without search
+10_s7: Upper: Start lower logic
+10_s7_e0: [General] lower-level state map switching
+10_s7_e1: [Movement] Movement prediction accuracy setting
+10_s8: Top: death
+10_s8_e0: [Operation] death request

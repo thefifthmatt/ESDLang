@@ -1,0 +1,172 @@
+10: Higher state
+10_s0: Start state
+10_s1: Higher state: start
+10_s2: Upper state: Initial setting
+10_s3: Top: First contact (no initial response) _SubState
+10_s4: [LIB] Lower state map switch_SubState
+10_s4_e0: [General] Logic group flag setting
+10_s4_e1: [General] Logic group flag setting
+10_s5: [Verification] General-purpose: Upper _SubState
+x2: Higher rank: First contact (no initial movement)
+x2_s0: Start state
+x2_s1: FC: Start
+x2_s2: FC: Initial startup setting
+x2_s3: FC: Start condition (flag)
+x2_s4: FC: Gen specified startup error
+x2_s4_e0: [General] Logic group flag setting
+x2_s5: FC: Cancel startup animation
+x2_s5_e0: [Action] Cancel activation state
+x2_s6: FC: Start initialization setting
+x2_s6_e0: [General purpose] Sharing flag setting
+x2_s6_e1: [General purpose] Sharing flag setting
+x2_s6_e2: [Search] Overwrite the generator position with the current position
+x2_s7: FC: Start condition (Area 1)
+x2_s8: FC: Start condition (Area 1 & 2)
+x2_s9: FC: Start condition (line of sight)
+x2_s10: FC: Start condition (Area 5 & line of sight)
+x2_s11: FC: Logic designation error
+x2_s12: [LIB] Search enemy: General purpose _SubState
+x2_s13: End state
+x3: [Verification] General-purpose: Top
+x3_p0: Sound tracking switch
+x3_s0: Start state
+x3_s1: Top: Start setting
+x3_s1_e0: [General purpose] Sharing flag setting
+x3_s1_e1: [Movement] Movement prediction accuracy setting
+x3_s1_w0: [Action] Clear activation state reset flag
+x3_s2: Top: Behavior branch
+x3_s3: [Verification] Target action: Recognition_SubState
+x3_s4: [Verification] Target action: Disappearance_SubState
+x3_s5: [Verification] Target action: Invisible_SubState
+x3_s6: [Verification] Target action: Sound response tracking _SubState
+x3_s7: [Verification] No target_SubState
+x3_s8: [Verification] Generator feedback_SubState
+x3_s8_e0: [Search] Navi mesh to generator
+x3_s9: [Verification] Search _SubState
+x3_s10: [Verification] Target action: Sound response turning _SubState
+x3_s11: End state
+x4: [Verification] Target action: Visual recognition
+x4_s0: Start state
+x4_s1: Target action: Visual recognition
+x4_s1_e0: [General purpose] Sharing flag setting
+x4_s1_e1: [Search] Erasure of last sighting information
+x4_s1_e2: [Attack] Damage type reset
+x4_s1_e3: [Attack] Damage information reset
+x4_s1_e4: [Operation] Lock on
+x4_s2: Target action: Visual recognition ⇒ disappearance
+x4_s2_e0: [General purpose] Sharing flag setting
+x4_s2_w0: [Search] Last sighting information overwriting
+x4_s3: Target action: Visual recognition ⇒ return
+x4_s3_e0: [General purpose] Sharing flag setting
+x4_s4: Target action: Timer start
+x4_s4_e0: [Timer] Start timer
+x4_s5: End state
+x5: [Verification] No target
+x5_s0: Start state
+x5_s1: Action without target
+x5_s1_e0: [Operation] Lock off
+x5_s2: End state
+x6: [Verification] Generator feedback
+x6_s0: Start state
+x6_s1: Generator feedback
+x6_s2: Generator return: return ⇒ no target
+x6_s2_e0: [General purpose] Sharing flag setting
+x6_s3: Generator return: return ⇒ visual
+x6_s3_e0: [General purpose] Sharing flag setting
+x6_s4: Generator return: timer start
+x6_s4_e0: [Timer] Start timer
+x6_s5: End state
+x7: [Verification] Search for enemies
+x7_s0: Start state
+x7_s1: Search enemy: Normal
+x7_s1_w0: [Search enemy] Character _ target setting
+x7_s2: Search enemy: Discovery
+x7_s2_e0: [General purpose] Sharing flag setting
+x7_s2_e1: [Operation] Lock on
+x7_s3: Search enemy: End
+x7_s4: Search enemy: branch
+x7_s4_e0: [Operation] Lock off
+x7_s5: Search enemy: attacker
+x7_s5_w0: [Search enemy] Attacker_Target setting
+x7_s6: Search enemy: not found
+x7_s6_e0: [Operation] Lock on
+x7_s6_w0: [Search] Load target
+x7_s7: Search enemy: start
+x7_s7_w0: [Search] Save target
+x7_s8: End state
+x8: [Verification] Target action: disappearance
+x8_s0: Start state
+x8_s1: Target action: disappearance
+x8_s1_e0: [Operation] Lock off
+x8_s2: Target action: disappearance ⇒ invisibility
+x8_s2_e0: [General purpose] Sharing flag setting
+x8_s3: Target action: disappearance ⇒ visual recognition
+x8_s3_e0: [General purpose] Sharing flag setting
+x8_s4: Target action: Timer start
+x8_s4_e0: [Timer] Start timer
+x8_s5: End state
+x9: [Verification] Target action: invisibility
+x9_p0: Sound tracking switch
+x9_s0: Start state
+x9_s1: Target action: invisibility
+x9_s1_e0: [Operation] Lock off
+x9_s1_e1: [Search] Erasure of last sighting information
+x9_s2: Target action: invisibility ⇒ return
+x9_s2_e0: [General purpose] Sharing flag setting
+x9_s3: Target action: invisibility ⇒ sound response tracking
+x9_s3_e0: [General purpose] Sharing flag setting
+x9_s4: Target action: invisibility ⇒ sound reaction turning
+x9_s4_e0: [General purpose] Sharing flag setting
+x9_s5: Target action: invisible ⇒ visible
+x9_s5_e0: [General purpose] Sharing flag setting
+x9_s6: Target action: Timer start
+x9_s6_e0: [Timer] Start timer
+x9_s7: End state
+x10: [Verification] Target action: Sound response tracking
+x10_s0: Start state
+x10_s1: Target action: sound response tracking
+x10_s1_e0: [Operation] Lock off
+x10_s2: Target action: sound response ⇒ invisibility
+x10_s2_e0: [General purpose] Sharing flag setting
+x10_s3: Target action: Sound reaction tracking ⇒ Visual recognition
+x10_s3_e0: [General purpose] Sharing flag setting
+x10_s4: Target action: Timer start
+x10_s4_e0: [Timer] Start timer
+x10_s5: End state
+x11: [Verification] Target action: Sound response turning
+x11_s0: Start state
+x11_s1: Target action: sound response turning
+x11_s1_e0: [Operation] Lock off
+x11_s2: Target action: Sound reaction turning ⇒ invisibility
+x11_s2_e0: [General purpose] Sharing flag setting
+x11_s3: Target action: Timer start
+x11_s3_e0: [Timer] Start timer
+x11_s4: Target action: Sound reaction turning ⇒ Visual recognition
+x11_s4_e0: [General purpose] Sharing flag setting
+x11_s5: End state
+x0: [LIB] Search: FC
+x0_p0: Maximum search distance
+x0_p1: Search priority
+x0_s0: Start state
+x0_s1: Search enemy (general purpose): Start
+x0_s1_e0: [Operation] Lock off
+x0_s2: Search enemy (general purpose): Normal setting
+x0_s2_e0: [Attack] Damage type reset
+x0_s2_w0: [Search enemy] Character _ target setting
+x0_s3: End state_Target not found
+x0_s4: End state_Target found
+x1: [LIB] Lower state map switching
+x1_s0: Start state
+x1_s1: Equipment 1
+x1_s1_e0: [General] lower-level state map switching
+x1_s2: Equipment 2
+x1_s2_e0: [General] lower-level state map switching
+x1_s3: Equipment 3
+x1_s3_e0: [General] lower-level state map switching
+x1_s4: Equipment 4
+x1_s4_e0: [General] lower-level state map switching
+x1_s5: Equipment 5
+x1_s5_e0: [General] lower-level state map switching
+x1_s6: Equipment 6
+x1_s6_e0: [General] lower-level state map switching
+x1_s7: End state

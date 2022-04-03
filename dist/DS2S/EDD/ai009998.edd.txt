@@ -1,0 +1,275 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s2: Waiting for startup
+10_s2_e0: [Movement] Movement prediction accuracy setting
+10_s3: Chasing players
+10_s3_e0: [Player Attack] Switch Equipment
+10_s3_e1: [Player Attack] Switch Equipment
+10_s3_w0: [Search] Player_Target setting
+10_s4: Fight against nearby enemies
+10_s4_e0: [Search enemy] Character _ target setting
+10_s5: Player chase_2
+10_s5_e0: [General] lower-level state map switching
+10_s5_e1: [Operation] Lock on
+10_s6: Waiting
+10_s6_e0: [Operation] Lock off
+10_s7: Fight against nearby enemies_2
+10_s7_e0: [General] lower-level state map switching
+10_s7_e1: [Operation] Lock on
+10_s8: White door
+10_s8_e0: [Operation] Lock off
+10_s8_e1: [Player Attack] Switch Equipment
+10_s8_e2: [Player Attack] Switch Equipment
+10_s8_w0: [Enemy] White door_Target setting
+10_s9: White door 2
+10_s9_e0: [General] lower-level state map switching
+10_s10: Equipment selection
+10_s10_e0: [Random number] Random number generation
+10_s10_e1: [Player Attack] Switch Equipment
+10_s10_e2: [Player Attack] Switch Equipment
+10_s10_e3: [Player Attack] Switch Equipment
+10_s10_e4: [Player Attack] Switch Equipment
+20: Lower logic
+20_s0: Start state
+20_s1: Lower logic: start
+20_s2: Action: Dash tracking_SubState
+20_s3: Action: Wait_SubState
+20_s4: Action: Horizontal movement tracking_SubState
+20_s5: Action: Walking tracking_SubState
+20_s6: [LIB] Startup state: General purpose _SubState
+21: Lower logic: tracking target navigation
+21_s0: Start state
+21_s1: Lower logic: start
+21_s2: Action: Wait_SubState
+21_s3: [LIB] Move: Humanoid general-purpose navigation move_SubState
+22: Lower logic: target navigation tracking & attack
+22_s0: Start state
+22_s1: Lower logic: start
+22_s2: Action: Player Control Attack_Right + Left Shield_SubState
+22_s3: [LIB] Move: Humanoid general-purpose navigation move_SubState
+22_s4: Action: Use player spell _SubState
+23: Lower logic: Enter the white door
+23_s0: Start state
+23_s1: Lower logic: start
+23_s2: Use white door
+23_s2_e0: [Action] Use OBJ
+23_s3: Action: Wait_SubState
+23_s4: [LIB] Move: Humanoid general-purpose navigation move_SubState
+x4: Action: Dash to target
+x4_s0: Start state
+x4_s1: Movement behavior: start
+x4_s1_w0: [Move] Dash_Lock_Random
+x4_s2: Movement behavior: finished
+x4_s3: End state
+x5: Action: Standby
+x5_s0: Start state
+x5_s1: Waiting action: start
+x5_s2: Waiting action: End
+x5_s3: End state
+x6: Action: Move horizontally to target
+x6_s0: Start state
+x6_s1: Movement behavior: start
+x6_s1_w0: [Move] Horizontal move_Lock_Random
+x6_s2: Movement behavior: finished
+x6_s3: End state
+x7: Action: walk to target
+x7_s0: Start state
+x7_s1: Movement behavior: start
+x7_s1_w0: [Move] Lock move random
+x7_s2: Movement behavior: finished
+x7_s3: End state
+x8: Action: Player controlled attack_right + left shield
+x8_s0: Start state
+x8_s1: Wait until attack possible Low right
+x8_s2: Check if you can attack
+x8_s2_e0: [Random number] Random number generation
+x8_s3: Waiting for the end of the attack
+x8_s3_e0: [Attack] Defense
+x8_s4: Attack method branch
+x8_s4_e0: [Random number] Random number generation
+x8_s5: Manual combo branch
+x8_s5_e0: [Random number] Random number generation
+x8_s6: Attack Right weak
+x8_s6_e0: [Player Attack] Attack
+x8_s7: Attack Right strong
+x8_s7_e0: [Player Attack] Attack
+x8_s8: Wait until you can attack 攻 撃 Strong right
+x8_s9: guard
+x8_s9_e0: [Attack] Defense
+x8_s10: Wait until attack is possible Right guard flick
+x8_s11: Attack Right guard flick
+x8_s11_e0: [Player Attack] Attack
+x8_s12: Wait until you can attack Jump right
+x8_s13: Activate attack Right jump attack
+x8_s13_e0: [Player Attack] Attack
+x8_s14: Two-handed
+x8_s14_e0: [Player attack] Change weapon holding
+x8_s15: End state
+x9: Action: Use player spell
+x9_s0: Start state
+x9_s1: Hand choice
+x9_s2: Use with right hand
+x9_s3: Use with left hand
+x9_s4: Spelling failure
+x9_s5: Left hand spell selection
+x9_s5_e0: [Random number] Random number generation
+x9_s6: Right hand spell selection
+x9_s6_e0: [Random number] Random number generation
+x9_s7: Activate left hand spell 1
+x9_s7_e0: [Player attack] Use spell
+x9_s8: Waiting for spell use to end
+x9_s9: Activate left hand spell 2
+x9_s9_e0: [Player attack] Use spell
+x9_s10: Activate left hand spell 3
+x9_s10_e0: [Player attack] Use spell
+x9_s11: Activate left hand spell 4
+x9_s11_e0: [Player attack] Use spell
+x9_s12: Activate left hand spell 5
+x9_s12_e0: [Player attack] Use spell
+x9_s13: Activate left hand spell 6
+x9_s13_e0: [Player attack] Use spell
+x9_s14: Activate left hand spell 7
+x9_s14_e0: [Player attack] Use spell
+x9_s15: Activate left hand spell 8
+x9_s15_e0: [Player attack] Use spell
+x9_s16: Activate left hand spell 9
+x9_s16_e0: [Player attack] Use spell
+x9_s17: Activate left hand spell 10
+x9_s17_e0: [Player attack] Use spell
+x9_s18: Activate right hand spell 1
+x9_s18_e0: [Player attack] Use spell
+x9_s19: Activate right hand spell 2
+x9_s19_e0: [Player attack] Use spell
+x9_s20: Activate right hand spell 3
+x9_s20_e0: [Player attack] Use spell
+x9_s21: Activate right hand spell 4
+x9_s21_e0: [Player attack] Use spell
+x9_s22: Activate right hand spell 5
+x9_s22_e0: [Player attack] Use spell
+x9_s23: Activate right hand spell 6
+x9_s23_e0: [Player attack] Use spell
+x9_s24: Activate right hand spell 7
+x9_s24_e0: [Player attack] Use spell
+x9_s25: Activate right hand spell 8
+x9_s25_e0: [Player attack] Use spell
+x9_s26: Activate right hand spell 9
+x9_s26_e0: [Player attack] Use spell
+x9_s27: Activate right hand spell 10
+x9_s27_e0: [Player attack] Use spell
+x9_s28: End state
+x0: [LIB] Startup state: general purpose
+x0_s0: Start state
+x0_s1: Startup check: start
+x0_s2: Startup check: Area check
+x0_s2_p0_0: [Debug] Log output
+x0_s2_p1_0: [Debug] Log output
+x0_s2_p2_0: [Debug] Log output
+x0_s3: Startup check: Waiting for area
+x0_s4: Startup check: Startup animation judgment
+x0_s4_e0: [Action] Cancel activation state
+x0_s5: Startup check: Startup state setting
+x0_s5_e0: [Search] Overwrite the generator position with the current position
+x0_s5_e1: [General] lower-level state map switching
+x0_s5_e2: [General] lower-level state map switching
+x0_s5_e3: [General] lower-level state map switching
+x0_s5_e4: [General] lower-level state map switching
+x0_s5_e5: [General] lower-level state map switching
+x0_s5_e6: [General] lower-level state map switching
+x0_s5_e7: [General] lower-level state map switching
+x0_s5_e8: [General] lower-level state map switching
+x0_s5_e9: [General] lower-level state map switching
+x0_s5_e10: [General] lower-level state map switching
+x0_s6: Startup check: finished
+x0_s7: Startup check: Lag due to group startup
+x0_s8: End state
+x1: [LIB] OBJ operation
+x1_s0: Start state
+x1_s1: OBJ operation: start
+x1_s1_e0: [Action] Leave OBJ
+x1_s2: OBJ operation: Start using ladder
+x1_s2_e0: [Action] Use OBJ specified by Navimesh
+x1_s3: OBJ operation: climb the ladder
+x1_s3_w0: [Action] Climbing the ladder
+x1_s4: OBJ operation: go down the ladder
+x1_s4_w0: [Action] Go down the ladder
+x1_s5: OBJ operation: using door
+x1_s5_e0: [Action] Use OBJ specified by Navimesh
+x1_s6: OBJ operation: Using rope
+x1_s6_e0: [Action] Use OBJ specified by Navimesh
+x1_s7: OBJ operation: failed
+x1_s7_e0: [Action] Leave OBJ
+x1_s8: OBJ operation: upper attack
+x1_s8_e0: [Attack] Melee attack
+x1_s9: OBJ operation: lower attack
+x1_s9_e0: [Attack] Melee attack
+x1_s10: OBJ operation: End of use
+x1_s10_e0: [Action] Leave OBJ
+x1_s11: OBJ operation: Yield
+x1_s11_w0: [Move] Horizontal move_Lock_Random
+x1_s12: OBJ use success state
+x1_s13: OBJ use failure state
+x2: [LIB] Move: Humanoid general-purpose navigation move
+x2_p0: Analog strength
+x2_p1: Reach distance
+x2_p2: Sharp turning angle
+x2_p3: OBJ inspection distance
+x2_p4: Dash switch
+x2_p5: Navigation search target
+x2_s0: Start state
+x2_s1: Navigating: Start
+x2_s1_e0: [Move] Reset move failure
+x2_s1_e1: [Timer] Start timer
+x2_s2: Navigation navigation: Navigation search
+x2_s2_e0: [Search] Navimesh
+x2_s2_e1: [Search] Navi mesh to generator
+x2_s2_e2: [Search] Navi mesh to a nearby gate
+x2_s2_e3: [Search] Navimesh to the sound you heard
+x2_s3: Navigation movement: sudden turn
+x2_s3_w0: [Turning] Quick turn _ Navi mesh direction
+x2_s4: Navigation navigation: dash
+x2_s4_w0: [Move] Dash_Lock_Navimesh
+x2_s5: Navigating: walking
+x2_s5_e0: [Move] Reset move failure
+x2_s5_w0: [Move] Lock move Navi mesh
+x2_s6: Navigating: avoiding danger [random moving]
+x2_s6_w0: [Move] Normal move random
+x2_s7: Navigation navigation: End
+x2_s7_e0: [Move] Reset move failure
+x2_s8: Navigating: Periodic check
+x2_s8_e0: [Search] Navimesh
+x2_s8_e1: [Search] Navi mesh to generator
+x2_s8_e2: [Search] Navi mesh to a nearby gate
+x2_s8_e3: [Search] Navimesh to the sound you heard
+x2_s9: Navigation navigation: branch
+x2_s10: Navigating: center moving
+x2_s10_w0: [Move] Move horizontally to the center of the navigation mesh
+x2_s11: Navigating: avoiding danger [obstacles]
+x2_s12: Navigating: unreachable
+x2_s13: Navigating: Route search successful
+x2_s13_e0: [General purpose] Sharing flag setting
+x2_s14: Navigating: route search failed
+x2_s14_e0: [General purpose] Sharing flag setting
+x2_s15: Navigating: next center
+x2_s15_w0: [Move] Horizontally move to the center position of the navigation mesh next to the navigation route
+x2_s16: [LIB] OBJ operation_SubState
+x2_s17: [LIB] Move: Get off the wall _SubState
+x2_s17_x0: [Timer] Start timer
+x2_s18: End state
+x2_s19: Obstacle: End State
+x2_s20: Unreachable: end state
+x3: [LIB] Move: Get off the wall
+x3_p0: Analog strength
+x3_p1: Wall down time
+x3_s0: Start state
+x3_s1: Get off the wall: angle adjustment
+x3_s1_w0: [Turning] Quick turn _ Navi mesh direction
+x3_s2: Get off the wall: Start moving
+x3_s2_w0: [Move] Normal move random
+x3_s3: Get off the wall: End judgment
+x3_s3_e0: [Move] Reset move failure
+x3_s3_w0: [Move] Disable move
+x3_s4: Get off the wall: start
+x3_s5: Get off the wall: approach the wall
+x3_s5_w0: [Move] Normal move random
+x3_s6: End state

@@ -1,0 +1,34 @@
+10: Higher state: Phantom
+10_s0: Start state
+10_s1: Top: Start
+10_s2: Top: Lock on
+10_s2_e0: [General purpose] Sharing flag setting
+10_s2_e1: [Operation] Lock on
+10_s3: Top: Lock off
+10_s3_e0: [Operation] Lock off
+10_s4: Top: branch
+10_s5: Top: gaze
+10_s6: Start animation cancellation
+10_s6_e0: [Action] Cancel activation state
+10_s7: Combat start
+10_s8: [LIB] Search enemy (boss): Limited _SubState in view
+x0: [LIB] Searching enemy (boss): limited in view
+x0_p0: Search priority
+x0_p1: Search distance
+x0_s0: Start state
+x0_s1: Search enemy: start
+x0_s1_e0: [Operation] Lock off
+x0_s2: Search enemies: players
+x0_s2_w0: [Search enemy] Character _ target setting
+x0_s3: Search enemy: target save
+x0_s3_x0: [Search] Clear the target
+x0_s3_w0: [Search] Save target
+x0_s4: Search enemy: target load
+x0_s4_w0: [Search] Load target
+x0_s5: Search enemy: host target
+x0_s5_w0: [Search] Player_Target setting
+x0_s6: Search enemy: Discovery end
+x0_s6_e0: [Operation] Lock on
+x0_s7: Search enemy: undiscovered end
+x0_s8: Search for: Discovery: End State
+x0_s9: Search enemy: not found: end state

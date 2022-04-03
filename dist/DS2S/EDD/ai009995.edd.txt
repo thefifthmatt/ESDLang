@@ -1,0 +1,80 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Immediately after
+10_s1_e0: [General] lower-level state map switching
+10_s1_e1: [Search] Overwrite the generator position with the current position
+10_s2: Top: Start
+10_s2_w0: [Search enemy] Character _ target setting
+10_s3: Higher rank: Creating a navigation mesh for the generator
+10_s3_e0: [Search] Navi mesh to generator
+10_s4: Top: Creating a navigation mesh for the target
+10_s4_e0: [Search] Navimesh
+10_s5: Upper rank: waiting for movement
+20: Lower logic
+20_s0: Start state
+20_s1: Lower logic: start
+20_s2: Action: Navimesh Movement_SubState
+20_s3: Action: Wait_SubState
+20_s4: Action: Use of moving object_SubState
+20_s5: Action: Forward OBJ destruction_SubState
+x0: Action: Standby
+x0_s0: Start state
+x0_s1: Waiting action: start
+x0_s2: Waiting action: End
+x0_s3: End state
+x1: Action: Move Navimesh
+x1_s0: Start state
+x1_s1: Move: Start
+x1_s1_e0: [Timer] Start timer
+x1_s1_w0: [Turning] Turning in place_Navimesh direction
+x1_s2: walking
+x1_s2_w0: [Move] Normal move Navi mesh
+x1_s3: Move: End
+x1_s3_e0: [Move] Reset move failure
+x1_s4: dash
+x1_s4_w0: [Move] Dash_Navimesh
+x1_s5: Contact check
+x1_s5_e0: [Timer] Start timer
+x1_s6: Contact check 2
+x1_s6_e0: [Timer] Start timer
+x1_s7: Horizontal movement in danger
+x1_s7_w0: [Move] Move horizontally to the center of the navigation mesh
+x1_s8: Danger horizontal movement 2
+x1_s8_w0: [Move] Horizontally move to the center position of the navigation mesh next to the navigation route
+x1_s9: Danger stop
+x1_s9_w0: [Move] Disable move
+x1_s10: End state
+x1_s11: Touch something
+x2: Action: Forward OBJ destroyed
+x2_s0: Start state
+x2_s1: OBJ destruction started
+x2_s2: OBJ check
+x2_s3: Action 10
+x2_s3_e0: [Attack] Melee attack
+x2_s3_e1: [Debug] Popcorn creation
+x2_s4: OBJ not found
+x2_s5: End state
+x2_s6: Destruction failure
+x3: Behavior: using moving objects
+x3_s0: Start state
+x3_s1: Determine what to use
+x3_s1_e0: [Action] Leave OBJ
+x3_s2: Start using ladder
+x3_s2_e0: [Action] Use OBJ specified by Navimesh
+x3_s3: Door use
+x3_s3_e0: [Action] Use OBJ specified by Navimesh
+x3_s3_e1: [Debug] Popcorn creation
+x3_s4: Use rope
+x3_s4_e0: [Action] Use OBJ specified by Navimesh
+x3_s4_e1: [Debug] Popcorn creation
+x3_s5: No sign of use
+x3_s5_e0: [Debug] Popcorn creation
+x3_s6: Climb ladder
+x3_s6_e0: [Debug] Popcorn creation
+x3_s6_w0: [Action] Climbing the ladder
+x3_s7: Go down the ladder
+x3_s7_e0: [Debug] Popcorn creation
+x3_s7_w0: [Action] Go down the ladder
+x3_s8: End of use
+x3_s8_e0: [Action] Leave OBJ
+x3_s9: End state

@@ -1,0 +1,75 @@
+10: Higher state
+10_s0: Start state
+10_s1: Upper logic: start
+10_s1_e0: [General purpose] Sharing flag setting
+10_s2: Upper logic: Lock on
+10_s2_e0: [Operation] Lock on
+10_s3: Upper logic: Lock off
+10_s3_e0: [Operation] Lock off
+10_s4: Upper logic: branch
+10_s5: Upper logic: FirstAttack monitoring
+10_s6: Top logic: FirstStep battle monitoring
+10_s6_e0: [General] lower-level state map switching
+10_s6_w0: [General purpose] Sharing flag setting
+10_s6_w1: [General purpose] Sharing flag setting
+10_s6_w2: [Debug] Popcorn creation
+10_s6_w3: [Debug] Popcorn creation
+10_s7: Top Logic: SecondStep Battle Monitoring
+10_s7_e0: [General] lower-level state map switching
+10_s7_w0: [General purpose] Sharing flag setting
+10_s7_w1: [General purpose] Sharing flag setting
+10_s7_w2: [General purpose] Sharing flag setting
+10_s8: Top Logic: ThirdStep Battle Monitoring
+10_s8_e0: [General] lower-level state map switching
+10_s8_w0: [General purpose] Sharing flag setting
+10_s8_w1: [General purpose] Sharing flag setting
+10_s9: Upper logic: enemy generation monitoring
+10_s9_e0: [General] lower-level state map switching
+10_s9_e1: [General] Logic group flag setting
+10_s10: High-level logic: Monitoring when using items
+10_s10_e0: [Random number] Random number generation
+10_s10_e1: [General] lower-level state map switching
+10_s10_e2: [General purpose] Sharing flag setting
+10_s11: Top Logic: End of Battle
+10_s11_e0: [Attack] Combo attack cancel
+10_s11_e1: [General] lower-level state map switching
+10_s12: Upper logic: Enemy generation (online) monitoring
+10_s12_e0: [General] lower-level state map switching
+10_s13: [LIB] Search enemy (boss): Limited _SubState in view
+11: Upper state: for mirroring
+11_s0: Start state
+11_s1: Mirroring monitoring: Start
+11_s2: Mirroring monitoring: Generate
+11_s2_e0: [General purpose] Sharing flag setting
+11_s2_e1: [General purpose] Sharing flag setting
+11_s3: Mirroring monitoring: cool time
+11_s4: Mirroring monitoring: Standby
+11_s5: Mirroring monitoring: Stopped
+11_s6: Mirroring surveillance: Summon lottery started
+11_s6_e0: [Mirror Night] Summon lottery operation
+11_s7: Mirroring surveillance: Mirror knight spirit generation
+11_s7_e0: [General purpose] Sharing flag setting
+11_s7_e1: [General purpose] Sharing flag setting
+11_s7_e2: [Mirror Night] Summon lottery operation
+11_s8: Mirroring surveillance: Summon lottery end
+11_s8_e0: [Mirror Night] Summon lottery operation
+x0: [LIB] Searching enemy (boss): limited in view
+x0_p0: Search priority
+x0_p1: Search distance
+x0_s0: Start state
+x0_s1: Search enemy: start
+x0_s1_e0: [Operation] Lock off
+x0_s2: Search enemies: players
+x0_s2_w0: [Search enemy] Character _ target setting
+x0_s3: Search enemy: target save
+x0_s3_x0: [Search] Clear the target
+x0_s3_w0: [Search] Save target
+x0_s4: Search enemy: target load
+x0_s4_w0: [Search] Load target
+x0_s5: Search enemy: host target
+x0_s5_w0: [Search] Player_Target setting
+x0_s6: Search enemy: Discovery end
+x0_s6_e0: [Operation] Lock on
+x0_s7: Search enemy: undiscovered end
+x0_s8: Search for: Discovery: End State
+x0_s9: Search enemy: not found: end state

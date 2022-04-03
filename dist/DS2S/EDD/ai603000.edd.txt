@@ -1,0 +1,547 @@
+10: Lower state: Initial start
+10_s0: Start state
+10_s1: Lower state: Initial termination
+10_s1_e0: [General purpose] Sharing flag setting
+10_s1_e1: [General purpose] Sharing flag setting
+10_s2: Lower state: Initial wait
+10_s3: Substate: Start
+10_s4: Lower state: Initial setting
+10_s4_e0: [Attack] Damage lower logic reset setting
+10_s4_e1: [Attack] Resident damage type setting
+20: Substate: Boss room: STEP1
+20_s0: Start state
+20_s1: Lower: Start
+20_s2: Lower state: STEP transition judgment
+20_s3: Lower state: end judgment
+20_s3_e0: [General purpose] Sharing flag setting
+20_s4: Search flag setting
+20_s4_e0: [General purpose] Sharing flag setting
+20_s5: Substate: Opening action
+20_s5_e0: [Attack] Melee attack
+20_s6: Target action: Boss room: STEP1: Branch _SubState
+120: Substate: Cliff: STEP1
+120_s0: Start state
+120_s1: Substate: Start
+120_s2: Lower state: STEP transition judgment
+120_s3: Lower state: end judgment
+120_s3_e0: [General purpose] Sharing flag setting
+120_s4: Search flag setting
+120_s4_e0: [General purpose] Sharing flag setting
+120_s5: Lower state: withdrawal judgment
+120_s6: Lower state: Withdrawal action: Wait
+120_s7: Lower state: Fall action: Wait
+120_s8: Lower state: Withdrawal action: Execute
+120_s8_w0: [Attack] Melee attack
+120_s9: Lower-level state: Fall action: Execute
+120_s9_w0: [Attack] Melee attack
+120_s10: Target action: Cliff _SubState
+30: Substate: Boss room: STEP2
+30_s0: Start state
+30_s1: Lower: Start
+30_s2: Lower state: STEP transition judgment
+30_s3: Lower state: end judgment
+30_s3_e0: [General purpose] Sharing flag setting
+30_s4: Search flag setting
+30_s4_e0: [General purpose] Sharing flag setting
+30_s5: Target action: Boss room: STEP2: Branch _SubState
+x3: Target action: Boss room: STEP1: Branch
+x3_s0: Start state
+x3_s1: Step action: start
+x3_s2: Step action: branch
+x3_s3: Step action: end
+x3_s4: Avoid entering the fuselage
+x3_s4_w0: [Attack] Random avoidance
+x3_s5: Target action: Boss room: Front _SubState
+x3_s6: Target action: Boss room: Rear _SubState
+x3_s7: End state
+x4: Target action: cliff
+x4_s0: Start state
+x4_s1: Target action: Front: Standby
+x4_s2: Target action: Front: Start
+x4_s3: Attack action: Cliff _SubState
+x4_s4: End state
+x5: Attack action: Boss room: STEP1: Front
+x5_s0: Start state
+x5_s1: Attack action: waiting
+x5_s2: Attack action: start
+x5_s3: Attack action: Combo cancel processing when destroying the part
+x5_s3_e0: [Attack] Combo attack cancel
+x5_s4: Attack action: Stab attack judgment
+x5_s5: Attack action: distance branch
+x5_s6: Attack action: HP 50% or more: 0-8mL0-45R0-45
+x5_s6_e0: [Random number] Random number generation
+x5_s7: Attack action: HP over 50%: 8-16m
+x5_s7_e0: [Random number] Random number generation
+x5_s8: Attack action: HP over 50%: 16m-
+x5_s8_e0: [Random number] Random number generation
+x5_s9: Attack action: 0-8m: Headless
+x5_s9_e0: [Random number] Random number generation
+x5_s10: Target action: Waiting for return
+x5_s11: Target action: waiting for return to down
+x5_s12: Attack action: 8m-: No head
+x5_s12_e0: [Random number] Random number generation
+x5_s13: Attack action: Continuous remote standby: Threading → sheath breath
+x5_s14: Attack action: continuous remote standby: sea breath → threading
+x5_s15: Attack behavior: HP 50% or more: 0-8mL45-90R45-90
+x5_s15_e0: [Random number] Random number generation
+x5_s16: Attack action: Jump attack judgment
+x5_s17: Attack behavior: HP 50% or less: 0-8mL0-45R0-45
+x5_s17_e0: [Random number] Random number generation
+x5_s18: Attack action: HP 50% or less: 0-8mL45-90R45-90
+x5_s18_e0: [Random number] Random number generation
+x5_s19: Attack action: HP 50% or less: 8-16m
+x5_s19_e0: [Random number] Random number generation
+x5_s20: Attack action: HP 50% or less: 16m-
+x5_s20_e0: [Random number] Random number generation
+x5_s21: [LIB] Attack action: Combo probability cancel: Combo 1: Short-range stab _SubState
+x5_s21_e0: [General purpose] Sharing flag setting
+x5_s22: [LIB] Attack action: Combo probability cancel: Combo 2: Long distance stab _SubState
+x5_s22_e0: [General purpose] Sharing flag setting
+x5_s23: Attack: Hammer Swing: Front_SubState
+x5_s23_e0: [General purpose] Sharing flag setting
+x5_s24: [LIB] Attack: General purpose: Action 6: Pay with small legs (weak) _SubState
+x5_s24_e0: [General purpose] Sharing flag setting
+x5_s25: [LIB] Attack: General purpose: Action 7: Pay with small leg (strong) _SubState
+x5_s25_e0: [General purpose] Sharing flag setting
+x5_s26: [LIB] Attack: Single issue: General purpose: Action 20: Sea breath_SubState
+x5_s26_e0: [General purpose] Sharing flag setting
+x5_s27: [LIB] Attack: Single issue: General purpose: Action 15: Rampage 2_SubState
+x5_s27_e0: [General purpose] Sharing flag setting
+x5_s28: Movement: Front-facing adjustment: Stab judgment_SubState
+x5_s29: Move: Front adjustment: Hammer swing_SubState
+x5_s30: Move: Front adjustment: Action 6: Pay with small leg (weak) _SubState
+x5_s31: Movement: Front-facing adjustment: Action 7: Pay with small legs (strong) _SubState
+x5_s32: Move: Front adjustment: Action 20: Sea breath_SubState
+x5_s33: Movement: Direction adjustment: Action 22: Threading forward _SubState
+x5_s34: [LIB] Attack: Single issue: General purpose: Action 14: Rampage 1_SubState
+x5_s34_e0: [General purpose] Sharing flag setting
+x5_s35: [LIB] Attack: Single issue: General purpose: Action 22: Threading _SubState to the front
+x5_s35_e0: [General purpose] Sharing flag setting
+x5_s36: Movement: Direction adjustment: Target direction (turning only) _SubState
+x5_s37: Movement: Orientation adjustment: Back flip _SubState
+x5_s38: Movement: Front facing adjustment: Jump attack judgment_SubState
+x5_s39: [LIB] Attack: Single issue: General purpose: Action 3: Jump attack (forward / short) _SubState
+x5_s40: [LIB] Attack: Single issue: General purpose: Action 4: Jump attack (forward / long) _SubState
+x5_s41: Attack execution end state
+x5_s42: Attack not executed end state
+x6: Attack action: cliff
+x6_s0: Start state
+x6_s1: Attack action: waiting
+x6_s2: Attack action: start
+x6_s2_e0: [Random number] Random number generation
+x6_s3: Attack action: distance branch
+x6_s4: Attack action: Close range
+x6_s5: Attack behavior: short range
+x6_s6: Attack action: medium range
+x6_s7: Attack behavior: long distance
+x6_s8: [LIB] Attack action: Combo probability cancel: Right claw combo: Right front _SubState
+x6_s9: [LIB] Attack action: Combo probability cancel: Left claw combo: Left front _SubState
+x6_s10: [LIB] Attack: Single issue: General purpose: Threading _SubState
+x6_s11: [LIB] Attack: Single issue: Skip wide range digestive juice (left) _SubState
+x6_s12: [LIB] Attack: Single issue: Broad digestive juice skipping (right) _SubState
+x6_s13: [LIB] Attack: Single issue: Skip wide range of digestive juices (back left) _SubState
+x6_s14: [LIB] Attack: Single issue: General purpose: Biting _SubState
+x6_s15: [LIB] Attack: Single issue: General purpose: Body shaking _SubState
+x6_s16: End state
+x7: Target action: Boss room: STEP1: Front
+x7_s0: Start state
+x7_s1: Target action: start
+x7_s2: Target action: Branch after attack
+x7_s2_e0: [Random number] Random number generation
+x7_s3: Target action: Flanking attack: Action 14: Rampage (far distance)
+x7_s3_e0: [Attack] Melee attack
+x7_s4: Target action: Side attack: Action 15: Rampage (close range)
+x7_s4_e0: [Attack] Melee attack
+x7_s5: Attack action: Boss room: STEP1: Front _SubState
+x7_s6: End state
+x8: Target action: Boss room: STEP1: Back
+x8_s0: Start state
+x8_s1: Target action: start
+x8_s2: Target action: Branch after attack
+x8_s2_e0: [Random number] Random number generation
+x8_s3: Target action: Flanking attack: Action 14: Rampage (far distance)
+x8_s3_e0: [Attack] Melee attack
+x8_s4: Target action: Side attack: Action 15: Rampage (close range)
+x8_s4_e0: [Attack] Melee attack
+x8_s5: Attack action: Boss room: STEP1: Back _SubState
+x8_s6: End state
+x9: Attack action: boss room: STEP1: back
+x9_s0: Start state
+x9_s1: Attack action: waiting
+x9_s2: Attack action: start
+x9_s3: Target action: Waiting for return
+x9_s4: Target action: waiting for return to down
+x9_s5: Attack action: distance branch
+x9_s6: Attack action: HP over 50%: 0-8mL90-135R90-135
+x9_s6_e0: [Random number] Random number generation
+x9_s7: Attack action: HP 50% or more: 0-8 mL 135-180R 135-180
+x9_s7_e0: [Random number] Random number generation
+x9_s8: Attack action: HP over 50%: 8-16m
+x9_s8_e0: [Random number] Random number generation
+x9_s9: Attack action: HP over 50%: 16m-
+x9_s9_e0: [Random number] Random number generation
+x9_s10: Attack action: 0-8m: Headless
+x9_s10_e0: [Random number] Random number generation
+x9_s11: Attack action: 8m-: No head
+x9_s11_e0: [Random number] Random number generation
+x9_s12: Attack action: Stab attack judgment
+x9_s13: Attack action: Combo cancel processing
+x9_s13_e0: [Attack] Combo attack cancel
+x9_s14: Attack action: Continuous remote standby: Threading → sheath breath
+x9_s15: Attack action: continuous remote standby: sea breath → threading
+x9_s16: Attack action: Jump attack judgment
+x9_s17: Attack behavior: HP 50% or less: 0-8mL90-135R90-135
+x9_s17_e0: [Random number] Random number generation
+x9_s18: Attack behavior: HP 50% or less: 0-8mL 135-180R135-180
+x9_s18_e0: [Random number] Random number generation
+x9_s19: Attack action: HP 50% or less: 8-16m
+x9_s19_e0: [Random number] Random number generation
+x9_s20: Attack action: HP 50% or less: 16m-
+x9_s20_e0: [Random number] Random number generation
+x9_s21: Movement: Direction adjustment: Stab judgment_SubState
+x9_s22: Movement: Orientation adjustment: Action 9: Pay with small legs for back (weak) _SubState
+x9_s23: Movement: Orientation adjustment: Action 10: Pay with small legs for back (strong) _SubState
+x9_s24: Movement: Orientation adjustment: Action 21: Back sheath breath_SubState
+x9_s25: [LIB] Attack: Single issue: General purpose: Action 21: Back sheath breath _SubState
+x9_s25_e0: [General purpose] Sharing flag setting
+x9_s26: Movement: Direction adjustment: Action 23: Threading to the back _SubState
+x9_s27: [LIB] Attack: Single issue: General purpose: Action 23: Threading _SubState to back
+x9_s27_e0: [General purpose] Sharing flag setting
+x9_s28: [LIB] Attack: Single issue: General purpose: Action 14: Rampage 1_SubState
+x9_s28_e0: [General purpose] Sharing flag setting
+x9_s29: [LIB] Attack: Single issue: General purpose: Action 15: Rampage 2_SubState
+x9_s29_e0: [General purpose] Sharing flag setting
+x9_s30: Attack: Back general purpose: Action 9: Pay with small back legs (weak) _SubState
+x9_s30_e0: [General purpose] Sharing flag setting
+x9_s31: Attack: Back general purpose: Action 10: Pay with small legs for back (strong) _SubState
+x9_s31_e0: [General purpose] Sharing flag setting
+x9_s32: Attack: Back combo General purpose: Combo 3: Short range stab _SubState
+x9_s32_e0: [General purpose] Sharing flag setting
+x9_s33: Attack: Back combo General purpose: Combo 4: Long distance stab _SubState
+x9_s33_e0: [General purpose] Sharing flag setting
+x9_s34: Movement: Direction adjustment: Target direction (turning only) _SubState
+x9_s35: Movement: Orientation Adjustment: Front Reverse_SubState
+x9_s36: Movement: Direction adjustment: Jump attack judgment_SubState
+x9_s37: [LIB] Attack: Single issue: General purpose: Action 1: Jump attack (forward / short) _SubState
+x9_s38: [LIB] Attack: Single issue: General purpose: Action 2: Jump attack (forward / long) _SubState
+x9_s39: Attack execution end state
+x9_s40: Attack not executed end state
+x10: Attack: rear general
+x10_p0: Timeout time
+x10_p1: Attack type
+x10_p2: Target angle
+x10_p3: Target distance
+x10_s0: Start state
+x10_s1: Begin attack
+x10_s1_e0: [Timer] Start timer
+x10_s1_e1: [Move] Reset move failure
+x10_s1_e2: [Attack] Reset attack failure
+x10_s2: Attack: Execute
+x10_s2_w0: [Attack] Melee attack
+x10_s3: Attack: Standby
+x10_s4: Attack: Successful end processing
+x10_s5: Attack: Failure end processing
+x10_s6: Attack: timeout processing
+x10_s7: Attack: approach
+x10_s7_e0: [Attack] Attack cancel
+x10_s7_w0: [Move] Horizontal move_Lock_Random_Direction designation
+x10_s8: Successful completion state
+x10_s9: Failure end state
+x10_s10: Timeout end state
+x11: Attack: Hammer Swing: Front
+x11_p0: Safety confirmation distance
+x11_s0: Start state
+x11_s1: Attack: Standby
+x11_s2: Begin attack
+x11_s2_e0: [Attack] Reset attack failure
+x11_s2_e1: [Move] Reset move failure
+x11_s3: Attack: Safety confirmation
+x11_s3_w0: [Move] Lock horizontal movement to the target world correction position
+x11_s4: Attack: Execute
+x11_s4_w0: [Attack] Melee attack
+x11_s5: Attack: waiting for termination
+x11_s6: Attack: Successful end processing
+x11_s7: Attack: Failure end processing
+x11_s8: In-situ small jump success end state
+x11_s9: In-situ small jump failure end state
+x12: Attack: Rear combo general
+x12_p0: Attack type
+x12_p1: Stop distance
+x12_p2: Stop angle
+x12_p3: Short navigation mesh check
+x12_p4: Second chance of suspension
+x12_p5: 3rd stop probability
+x12_p6: 4th stop probability
+x12_p7: Blade dash grace time
+x12_s0: Start state
+x12_s1: Begin attack
+x12_s2: Attack: Combo execution
+x12_s2_w0: [Attack] Melee attack
+x12_s3: Attack: Combo first stage waiting
+x12_s4: Attack: First stage cancellation judgment
+x12_s4_e0: [Random number] Random number generation
+x12_s5: Attack: Second stage cancellation judgment
+x12_s5_e0: [Random number] Random number generation
+x12_s6: Attack: 3rd stage cancellation judgment
+x12_s6_e0: [Random number] Random number generation
+x12_s7: Attack: Combo end wait
+x12_s8: Attack: Cancel execution
+x12_s8_e0: [Attack] Combo attack cancel
+x12_s9: Attack: Successful end processing
+x12_s10: Attack: Failure end processing
+x12_s10_e0: [Attack] Combo attack cancel
+x12_s11: Attack: Initialization
+x12_s11_e0: [Attack] Reset attack failure
+x12_s12: Attack: timeout end processing
+x12_s13: Successful completion state
+x12_s14: Failure end state
+x12_s15: Timeout end state
+x13: Target action: Boss room: STEP2: Back
+x13_s0: Start state
+x13_s1: Target action: start
+x13_s2: Target action: Flanking attack: Action 14: Rampage (far distance)
+x13_s2_e0: [Attack] Melee attack
+x13_s3: Target action: Side attack: Action 15: Rampage (close range)
+x13_s3_e0: [Attack] Melee attack
+x13_s4: Target action: Branch after attack
+x13_s4_e0: [Random number] Random number generation
+x13_s5: Attack action: Boss room: STEP2: Back _SubState
+x13_s6: End state
+x14: Target action: Boss room: STEP2: Branch
+x14_s0: Start state
+x14_s1: Step action: start
+x14_s2: Step action: branch
+x14_s3: Step action: end
+x14_s4: Avoid entering the fuselage
+x14_s4_w0: [Attack] Random avoidance
+x14_s5: Target action: Boss room: STEP2: Back _SubState
+x14_s6: Target action: Boss room: STEP2: Front_SubState
+x14_s7: End state
+x15: Movement: orientation adjustment
+x15_p0: Offset Z
+x15_p1: Turning timeout
+x15_p2: Minimum angle
+x15_p3: Maximum angle
+x15_p4: dummy1
+x15_p5: dummy2
+x15_p6: Rear switch
+x15_s0: Start state
+x15_s1: Move: Start
+x15_s1_e0: [Move] Reset move failure
+x15_s1_e1: [Random number] Random number generation
+x15_s2: Movement: Angle judgment
+x15_s2_e0: [Timer] Start timer
+x15_s2_e1: [Move] Reset move failure
+x15_s3: Movement: quick turn (front)
+x15_s3_w0: [Turning] Quick turn_Lock
+x15_s4: Move: end processing
+x15_s4_e0: [Move] Reset move failure
+x15_s4_e1: [Attack] Reset attack failure
+x15_s5: Movement: Target position judgment
+x15_s6: Move: left step
+x15_s6_w0: [Attack] Random avoidance_Angle designation
+x15_s7: Move: right step
+x15_s7_w0: [Attack] Random avoidance_Angle designation
+x15_s8: Movement: Safety confirmation on the left
+x15_s8_w0: [Move] Horizontal move_random
+x15_s9: Move: unlock
+x15_s9_e0: [Operation] Lock off
+x15_s10: Movement: right safety confirmation
+x15_s10_w0: [Move] Horizontal move_random
+x15_s11: Move: Lock On
+x15_s11_e0: [Operation] Lock on
+x15_s12: Movement: quick turn (back and right rotation)
+x15_s12_e0: [Attack] Melee attack
+x15_s13: Movement: Judgment of back turn direction
+x15_s14: Movement: quick turn (back / left rotation)
+x15_s14_e0: [Attack] Melee attack
+x15_s15: Movement: Step judgment
+x15_s16: Move: timeout processing
+x15_s16_e0: [Move] Reset move failure
+x15_s16_e1: [Attack] Reset attack failure
+x15_s17: Movement: Judgment of front turn method
+x15_s18: Movement: Judgment from back to front turn direction
+x15_s19: Movement: back ⇒ front turn (rear / right rotation)
+x15_s19_e0: [Attack] Melee attack
+x15_s20: Movement: back ⇒ front turn (back / left rotation)
+x15_s20_e0: [Attack] Melee attack
+x15_s21: Turning success
+x15_s22: Timeout end
+x16: Attack action: Boss room: STEP2: Front
+x16_s0: Start state
+x16_s1: Attack action: waiting
+x16_s2: Attack action: start
+x16_s3: Attack action: Combo cancel processing when destroying the part
+x16_s3_e0: [Attack] Combo attack cancel
+x16_s4: Attack action: Stab attack judgment
+x16_s5: Attack action: distance branch
+x16_s6: Attack action: short-distance branch
+x16_s6_e0: [Random number] Random number generation
+x16_s7: Attack action: medium distance branch
+x16_s7_e0: [Random number] Random number generation
+x16_s8: Attack action: long-distance branch
+x16_s9: Attack action: headless short-distance branch
+x16_s9_e0: [Random number] Random number generation
+x16_s10: Target action: Waiting for return
+x16_s10_w0: [Move] Horizontal move_Lock_Random
+x16_s11: Target action: waiting for return to down
+x16_s11_w0: [Move] Horizontal move_Lock_Random
+x16_s12: Attack action: Headless mid-long range branch
+x16_s12_e0: [Random number] Random number generation
+x16_s13: Attack action: Jump attack judgment
+x16_s14: Attack action: Continuous remote standby: Threading → sheath breath
+x16_s15: Attack action: continuous remote standby: sea breath → threading
+x16_s16: [LIB] Attack action: Combo probability cancel: Front: Short distance stab _SubState
+x16_s17: [LIB] Attack action: Combo probability cancel: Front: Long distance stab _SubState
+x16_s18: Attack: Hammer Swing: Front_SubState
+x16_s19: [LIB] Attack: General purpose: Action 6: Pay with small legs (weak) _SubState
+x16_s20: [LIB] Attack: General purpose: Action 7: Pay with small leg (strong) _SubState
+x16_s21: [LIB] Attack: Single issue: General purpose: Action 20: Sea breath_SubState
+x16_s22: [LIB] Attack: Single issue: General purpose: Action 15: Rampage 2_SubState
+x16_s23: Movement: Front-facing adjustment: Stab judgment_SubState
+x16_s24: Move: Front adjustment: Hammer swing_SubState
+x16_s25: Move: Front adjustment: Action 6: Pay with small leg (weak) _SubState
+x16_s26: Movement: Front-facing adjustment: Action 7: Pay with small legs (strong) _SubState
+x16_s27: Move: Front adjustment: Action 20: Sea breath_SubState
+x16_s28: Move: Front-facing adjustment: Action 22: Threading forward _SubState
+x16_s29: [LIB] Attack: Single issue: General purpose: Action 14: Rampage 1_SubState
+x16_s30: [LIB] Attack: Single issue: General purpose: Action 22: Threading _SubState to the front
+x16_s31: [LIB] Attack: Single issue: General purpose: Action 3: Jump attack (forward / short) _SubState
+x16_s32: [LIB] Attack: Single issue: General purpose: Action 4: Jump attack (forward / long) _SubState
+x16_s33: Movement: Front facing adjustment: Jump attack judgment_SubState
+x16_s34: Movement: Direction adjustment: Turning single_SubState
+x16_s35: Movement: Orientation adjustment: Back flip _SubState
+x16_s36: Attack execution end state
+x16_s37: Attack not executed end state
+x17: Target action: Boss room: STEP2: Front
+x17_s0: Start state
+x17_s1: Target action: start
+x17_s2: Target action: Branch after attack
+x17_s2_e0: [Random number] Random number generation
+x17_s3: Target action: Flanking attack: Action 14: Rampage (far distance)
+x17_s3_e0: [Attack] Melee attack
+x17_s4: Target action: Side attack: Action 15: Rampage (close range)
+x17_s4_e0: [Attack] Melee attack
+x17_s5: Attack action: Boss room: STEP2: Front _SubState
+x17_s6: End state
+x18: Attack action: boss room: STEP2: back
+x18_s0: Start state
+x18_s1: Attack action: waiting
+x18_s2: Attack action: start
+x18_s3: Target action: Waiting for return
+x18_s4: Target action: waiting for return to down
+x18_s5: Attack action: distance branch
+x18_s6: Attack action: short-distance front branch
+x18_s6_e0: [Random number] Random number generation
+x18_s7: Attack action: short distance side branch
+x18_s7_e0: [Random number] Random number generation
+x18_s8: Attack action: medium distance branch
+x18_s8_e0: [Random number] Random number generation
+x18_s9: Attack action: long-distance branch
+x18_s10: Attack action: headless short-distance branch
+x18_s10_e0: [Random number] Random number generation
+x18_s11: Attack action: Headless mid-long range branch
+x18_s11_e0: [Random number] Random number generation
+x18_s12: Attack action: Stab attack judgment
+x18_s13: Attack action: Combo cancel processing
+x18_s13_e0: [Attack] Combo attack cancel
+x18_s14: Attack action: Continuous remote standby: Threading → sheath breath
+x18_s15: Attack action: continuous remote standby: sea breath → threading
+x18_s16: Attack action: Jump attack judgment
+x18_s16_e0: [Random number] Random number generation
+x18_s17: Movement: Direction adjustment: Stab judgment_SubState
+x18_s18: Movement: Orientation adjustment: Action 9: Pay with small legs for back (weak) _SubState
+x18_s19: Movement: Orientation adjustment: Action 10: Pay with small legs for back (strong) _SubState
+x18_s20: Movement: Orientation adjustment: Action 21: Back sheath breath_SubState
+x18_s21: [LIB] Attack: Single issue: General purpose: Action 21: Back sheath breath _SubState
+x18_s21_e0: [General purpose] Sharing flag setting
+x18_s22: Movement: Direction adjustment: Action 23: Threading to the back _SubState
+x18_s23: [LIB] Attack: Single issue: General purpose: Action 23: Threading _SubState to back
+x18_s23_e0: [General purpose] Sharing flag setting
+x18_s24: [LIB] Attack: Single issue: General purpose: Action 14: Rampage 1_SubState
+x18_s24_e0: [General purpose] Sharing flag setting
+x18_s25: [LIB] Attack: Single issue: General purpose: Action 15: Rampage 2_SubState
+x18_s25_e0: [General purpose] Sharing flag setting
+x18_s26: Attack: Back general purpose: Action 9: Pay with small back legs (weak) _SubState
+x18_s26_e0: [General purpose] Sharing flag setting
+x18_s27: Attack: Back general purpose: Action 10: Pay with small legs for back (strong) _SubState
+x18_s27_e0: [General purpose] Sharing flag setting
+x18_s28: Movement: Direction adjustment: Jump attack judgment_SubState
+x18_s29: [LIB] Attack: Single issue: General purpose: Action 1: Jump attack (forward / short) _SubState
+x18_s30: [LIB] Attack: Single issue: General purpose: Action 2: Jump attack (forward / long) _SubState
+x18_s31: Attack: Back combo General purpose: Combo 3: Short range stab _SubState
+x18_s31_e0: [General purpose] Sharing flag setting
+x18_s32: Attack: Back combo General purpose: Combo 4: Long distance stab _SubState
+x18_s32_e0: [General purpose] Sharing flag setting
+x18_s33: Attack execution end state
+x18_s34: Attack not executed end state
+x0: [LIB] Attack: Single issue: General purpose
+x0_p0: Attack type
+x0_p1: Short navigation mesh check
+x0_s0: Start state
+x0_s1: Attack: Under attack
+x0_s1_e0: [Attack] Melee attack
+x0_s2: Attack: Cancel wait
+x0_s3: Attack: Success: End state
+x0_s4: Attack: Failure: End state
+x1: [LIB] Attack: General purpose
+x1_p0: Behavior type
+x1_p1: Attack distance
+x1_p2: Attack angle
+x1_s0: Start state
+x1_s1: Begin attack
+x1_s1_e0: [Movement] Movement prediction accuracy setting
+x1_s1_e1: [Move] Reset move failure
+x1_s1_e2: [Attack] Reset attack failure
+x1_s1_e3: [Timer] Start timer
+x1_s2: Attack: turn before attack
+x1_s2_w0: [Turning] Quick turn_Lock
+x1_s3: Attack: turn before moving
+x1_s3_w0: [Turning] Quick turn_Lock
+x1_s4: Attack: Normal movement
+x1_s4_w0: [Move] Lock move random
+x1_s5: Attack: dash
+x1_s5_w0: [Move] Dash_Lock_Random
+x1_s6: Attack: Search
+x1_s6_e0: [Search] Navimesh
+x1_s7: Attack: Navigating
+x1_s7_w0: [Move] Lock move Navi mesh
+x1_s8: Attack: Navi Dash
+x1_s8_w0: [Move] Dash_Lock_Navimesh
+x1_s9: Attack: Execute
+x1_s9_e0: [Attack] Melee attack
+x1_s10: Attack: Attack failed
+x1_s10_e0: [Platoon] Set the platoon flag
+x1_s11: Attack: Waiting for stun
+x1_s12: Attack successful end state
+x1_s13: Attack failed end state
+x1_s14: Attack timeout end state
+x2: [LIB] Attack action: Combo probability cancel
+x2_p0: Attack type
+x2_p1: Stop distance
+x2_p2: Stop angle
+x2_p3: Short navigation mesh check
+x2_p4: Second chance of suspension
+x2_p5: 3rd stop probability
+x2_p6: 4th stop probability
+x2_p7: Blade dash grace time
+x2_s0: Start state
+x2_s1: Begin attack
+x2_s1_e0: [Attack] Reset attack failure
+x2_s2: Attack: Combo execution
+x2_s2_e0: [Attack] Melee attack
+x2_s3: Attack: Combo first stage waiting
+x2_s4: Attack: First stage cancellation judgment
+x2_s4_e0: [Random number] Random number generation
+x2_s5: Attack: Second stage cancellation judgment
+x2_s5_e0: [Random number] Random number generation
+x2_s6: Attack: 3rd stage cancellation judgment
+x2_s6_e0: [Random number] Random number generation
+x2_s7: Attack: Combo end wait
+x2_s8: Attack: Cancel execution
+x2_s8_e0: [Attack] Combo attack cancel
+x2_s9: Attack: Successful end processing
+x2_s10: Attack: Failure end processing
+x2_s10_e0: [Attack] Combo attack cancel
+x2_s11: Successful completion state
+x2_s12: Failure end state

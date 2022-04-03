@@ -1,0 +1,52 @@
+10: Upper state: sound response
+10_s0: Start state
+10_s1: Top: Start
+10_s2: Top: Setting
+10_s2_e0: [Search] Overwrite the generator position with the current position
+10_s3: Top: sound standby
+10_s3_p0_0: [General purpose] Sharing flag setting
+10_s3_p1_0: [General purpose] Sharing flag setting
+10_s4: Search enemy: sound priority _SubState
+10_s5: Search enemies: Damage response_SubState
+10_s6: Target action (sound) _SubState
+10_s7: Action without target (sound) _SubState
+x0: Search enemy: sound priority
+x0_s0: Start state
+x0_s1: Sound search enemy: start
+x0_s1_e0: [Operation] Lock off
+x0_s2: Sound search enemy: Enemy
+x0_s2_w0: [Search enemy] Character _ target setting
+x0_s3: End state
+x0_s4: End state_no target
+x1: Search enemies: Damage reaction
+x1_s0: Start state
+x1_s1: Damage response: start
+x1_s1_e0: [General purpose] Sharing flag setting
+x1_s2: Damage Response: Player
+x1_s2_w0: [Search enemy] Attacker_Target setting
+x1_s3: Damage Response: End
+x1_s3_e0: [Attack] Damage information reset
+x1_s4: End state
+x2: Target action (sound)
+x2_s0: Start state
+x2_s1: Targeted (sound): start
+x2_s1_e0: [General purpose] Sharing flag setting
+x2_s2: Target existence (sound): visual recognition judgment
+x2_s3: Targeted (sound): Visual recognition error
+x2_s4: Targeted (sound): visible
+x2_s4_e0: [Operation] Lock on
+x2_s4_w0: [Search] Erasure of last sighting information
+x2_s5: Targeted (sound): disappeared
+x2_s5_e0: [Operation] Lock off
+x2_s5_w0: [Search] Last sighting information overwriting
+x2_s6: Targeted (sound): invisible
+x2_s6_e0: [Operation] Lock off
+x2_s7: End state
+x3: Targetless action (sound)
+x3_s0: Start state
+x3_s1: No target (sound): start
+x3_s2: No target (sound): action
+x3_s2_e0: [Operation] Lock off
+x3_s2_e1: [General purpose] Sharing flag setting
+x3_s3: No target (sound): End
+x3_s4: End state

@@ -1,0 +1,1172 @@
+10: Lower state: bare hands
+10_s0: Start state
+10_s1: Substate: Start
+10_s2: Lower state: Initial setting
+10_s2_e0: [Attack] Damage lower logic reset setting
+10_s2_e1: [General purpose] Sharing flag setting
+10_s2_e2: [General purpose] Sharing flag setting
+10_s3: Lower-level state: branch wait
+10_s4: [LIB] Lower-level action: branch_SubState
+10_s5: [LIB] Lower-level action: Stop action_SubState
+10_s6: [LIB] Target existence: invisible (random walking) _SubState
+10_s7: [LIB] Targetless action (random walking) _SubState
+10_s8: Target action: bare hands _SubState
+10_s9: [LIB] Target action: feedback error_SubState
+10_s10: [LIB] Lower: vanishing behavior (tracking) [DLC modified version] _SubState
+10_s11: [LIB] Subordinate: Sound response tracking [DLC modified version] _SubState
+10_s12: [LIB] Return action (lower) [DLC modified version] _SubState
+x33: Target action: bare hands
+x33_s0: Start state
+x33_s1: Target action: start
+x33_s2: Target action: action branch
+x33_s3: Target action: Lottery after attack
+x33_s3_e0: [Random number] Random number generation
+x33_s4: [LIB] Damage action: Com para priority _SubState
+x33_s5: [LIB] Ranged attack response_SubState
+x33_s6: [LIB] Pursuit action_SubState
+x33_s7: Attack lottery: Bare_SubState
+x33_s8: Attack action: bare hand _SubState
+x33_s9: [LIB] Surrounding behavior [DLC modified version] _SubState
+x33_s10: Close action_SubState
+x33_s11: [LIB] Avoidance behavior [DLC modified version] _SubState
+x33_s12: [LIB] Movement: Approaching action [DLC modified version] _SubState
+x33_s13: [LIB] Move: approaching behavior [DLC modified version] (when navigation search fails) _SubState
+x33_s14: End state
+x34: Attack lottery: bare hands
+x34_s0: Start state
+x34_s1: Attack lottery: start
+x34_s2: Attack lottery: medium distance branch
+x34_s3: Attack lottery: short-distance branch
+x34_s4: Attack lottery: close range branch
+x34_s5: Attack lottery: Combo 1: Scratch combo
+x34_s5_e0: [General purpose] Sharing flag setting
+x34_s6: Attack lottery: Action 11: Scratch (strong)
+x34_s6_e0: [General purpose] Sharing flag setting
+x34_s7: Attack lottery: Action 12: Jumping and scratching
+x34_s7_e0: [General purpose] Sharing flag setting
+x34_s8: Attack lottery: Action 13: Jump approach and scratch using wings
+x34_s8_e0: [General purpose] Sharing flag setting
+x34_s9: Attack lottery: Action 0: Wear acid fog
+x34_s9_e0: [General purpose] Sharing flag setting
+x34_s10: Attack lottery: Priority branch
+x34_s10_e0: [Random number] Random number generation
+x34_s11: Attack lottery: distance branch
+x34_s11_e0: [Random number] Random number generation
+x34_s12: Attack lottery: long-distance branch
+x34_s13: [LIB] Back Attack _SubState
+x34_s14: Lottery: End State
+x34_s15: Other: End state
+x35: Attack action: bare hands
+x35_s0: Start state
+x35_s1: Attack action: start
+x35_s2: [LIB] Attack: Single issue: General purpose: Action 0: _SubState wearing acid fog
+x35_s3: Attack: General purpose: Combo 1: Scratch combo _SubState
+x35_s4: Attack: General purpose: Action 11: Scratch (strong) _SubState
+x35_s5: Attack: General purpose: Action 12: Jumping and scratching _SubState
+x35_s6: Attack: General purpose: Action 13: Jump approach and scratch using wings_SubState
+x35_s7: Attack failed end state
+x35_s8: Attack successful end state
+x36: Timely action
+x36_p0: Retreat distance
+x36_p1: Retreat timeout
+x36_p2: Horizontal movement minimum time
+x36_p3: Maximum lateral movement time
+x36_p4: Defense probability
+x36_p5: Release defense after moving
+x36_p6: Interaction distance
+x36_s0: Start state
+x36_s1: Close Action: Start
+x36_s1_e0: [Move] Reset move failure
+x36_s1_e1: [Random number] Random number generation
+x36_s2: Close Action: Retreat
+x36_s2_w0: [Move] Horizontal move_Lock_Random
+x36_s3: Close Action: Defense
+x36_s3_e0: [Attack] Defense
+x36_s4: Close action: distance divergence
+x36_s4_e0: [Platoon] Set weight multiplier
+x36_s4_e1: [Timer] Start timer
+x36_s4_e2: [Random number] Random number generation
+x36_s5: Close action: Move right
+x36_s5_w0: [Move] Horizontal move_Lock_Random
+x36_s6: Close action: Move left
+x36_s6_w0: [Move] Horizontal move_Lock_Random
+x36_s7: Close action: lateral movement branch
+x36_s7_e0: [Move] Reset move failure
+x36_s7_e1: [Timer] Start timer
+x36_s7_e2: [Random number] Random number generation
+x36_s7_e3: [Random number] Random number generation
+x36_s8: Close action: Move right (re)
+x36_s8_w0: [Move] Horizontal move_Lock_Random
+x36_s9: Close action: Move left (re)
+x36_s9_w0: [Move] Horizontal move_Lock_Random
+x36_s10: Close Action: Success
+x36_s10_e0: [Attack] Defense
+x36_s11: Close Action: Failure
+x36_s11_e0: [Attack] Defense
+x36_s12: [LIB] Damage action: Terrain damage _SubState
+x36_s13: Success: End state
+x36_s14: Failure: termination state
+x37: Attack: General purpose: Combo 1: Scratch combo
+x37_p0: Attack type
+x37_p1: Number of combo stages
+x37_p2: Attack distance
+x37_p3: Attack angle
+x37_p4: Interruption distance
+x37_p5: Interruption angle
+x37_p6: Attack short navigation
+x37_p7: First navigation check
+x37_s0: Start state
+x37_s1: Attack: General: Start
+x37_s2: Attack: General purpose: First-stage navigation check branch
+x37_s3: [LIB] Attack: First stage [DLC modified version] _SubState
+x37_s4: [LIB] Attack: Multi-stage (combo) [DLC modified version]: Second stage cancellation judgment_SubState
+x37_s5: [LIB] Attack: Multi-stage (Combo) [Modified DLC]: Third-stage cancellation judgment_SubState
+x37_s6: [LIB] Attack: First stage [DLC modified version] (Navicheck) _SubState
+x37_s7: [LIB] Attack: Multi-stage (combo) [DLC modified version]: 4th stage cancellation judgment_SubState
+x37_s8: [LIB] Attack: Security confirmation at the end of the attack [DLC modified version] _SubState
+x37_s9: [LIB] Attack: General-purpose mobile [DLC modified version] _SubState
+x37_s10: Attack failed: end state
+x37_s11: Attack Canceled: End State
+x37_s12: Successful Attack: End State
+x38: Attack: General purpose: Action 13: Jump approach and scratch using wings
+x38_p0: Attack type
+x38_p1: Number of combo stages
+x38_p2: Attack distance
+x38_p3: Attack angle
+x38_p4: Interruption distance
+x38_p5: Interruption angle
+x38_p6: Attack short navigation
+x38_p7: First navigation check
+x38_s0: Start state
+x38_s1: Attack: General: Start
+x38_s2: Attack: General purpose: First-stage navigation check branch
+x38_s3: [LIB] Attack: General-purpose mobile [DLC modified version] _SubState
+x38_s4: [LIB] Attack: First stage [DLC modified version] _SubState
+x38_s5: [LIB] Attack: Multi-stage (combo) [DLC modified version]: Second stage cancellation judgment_SubState
+x38_s6: [LIB] Attack: Multi-stage (Combo) [Modified DLC]: Third-stage cancellation judgment_SubState
+x38_s7: [LIB] Attack: First stage [DLC modified version] (Navicheck) _SubState
+x38_s8: [LIB] Attack: Multi-stage (combo) [DLC modified version]: 4th stage cancellation judgment_SubState
+x38_s9: [LIB] Attack: Security confirmation at the end of the attack [DLC modified version] _SubState
+x38_s10: Attack failed: end state
+x38_s11: Attack Canceled: End State
+x38_s12: Successful Attack: End State
+x39: Attack: General purpose: Action 11: Scratch (strong)
+x39_p0: Attack type
+x39_p1: Number of combo stages
+x39_p2: Attack distance
+x39_p3: Attack angle
+x39_p4: Interruption distance
+x39_p5: Interruption angle
+x39_p6: Attack short navigation
+x39_p7: First navigation check
+x39_s0: Start state
+x39_s1: Attack: General: Start
+x39_s2: Attack: General purpose: First-stage navigation check branch
+x39_s3: [LIB] Attack: First stage [DLC modified version] _SubState
+x39_s4: [LIB] Attack: Multi-stage (combo) [DLC modified version]: Second stage cancellation judgment_SubState
+x39_s5: [LIB] Attack: Multi-stage (Combo) [Modified DLC]: Third-stage cancellation judgment_SubState
+x39_s6: [LIB] Attack: First stage [DLC modified version] (Navicheck) _SubState
+x39_s7: [LIB] Attack: Multi-stage (combo) [DLC modified version]: 4th stage cancellation judgment_SubState
+x39_s8: [LIB] Attack: Security confirmation at the end of the attack [DLC modified version] _SubState
+x39_s9: [LIB] Attack: General-purpose mobile [DLC modified version] _SubState
+x39_s10: Attack failed: end state
+x39_s11: Attack Canceled: End State
+x39_s12: Successful Attack: End State
+x40: Attack: General purpose: Action 12: Jumping and scratching
+x40_p0: Attack type
+x40_p1: Number of combo stages
+x40_p2: Attack distance
+x40_p3: Attack angle
+x40_p4: Interruption distance
+x40_p5: Interruption angle
+x40_p6: Attack short navigation
+x40_p7: First navigation check
+x40_s0: Start state
+x40_s1: Attack: General: Start
+x40_s2: Attack: General purpose: First-stage navigation check branch
+x40_s3: [LIB] Attack: General-purpose mobile [DLC modified version] _SubState
+x40_s4: [LIB] Attack: First stage [DLC modified version] _SubState
+x40_s5: [LIB] Attack: Multi-stage (combo) [DLC modified version]: Second stage cancellation judgment_SubState
+x40_s6: [LIB] Attack: Multi-stage (Combo) [Modified DLC]: Third-stage cancellation judgment_SubState
+x40_s7: [LIB] Attack: First stage [DLC modified version] (Navicheck) _SubState
+x40_s8: [LIB] Attack: Multi-stage (combo) [DLC modified version]: 4th stage cancellation judgment_SubState
+x40_s9: [LIB] Attack: Security confirmation at the end of the attack [DLC modified version] _SubState
+x40_s10: Attack failed: end state
+x40_s11: Attack Canceled: End State
+x40_s12: Successful Attack: End State
+x0: [LIB] Target existence: invisibility (random walking)
+x0_p0: Non-combat action: Combat type
+x0_p1: Movement type
+x0_s0: Start state
+x0_s1: Invisibility (with baldness): start
+x0_s2: Invisible (with baldness): Standby
+x0_s2_e0: [Move] Reset move failure
+x0_s2_e1: [Attack] Defense
+x0_s3: Invisibility (with spine): Move
+x0_s3_w0: [Move] Normal move random
+x0_s4: Invisibility (with target): Non-combat action
+x0_s4_w0: [Attack] Melee attack
+x0_s5: Invisibility (with target): Waiting for non-combat action
+x0_s6: Invisibility (with tage): Danger avoidance
+x0_s6_w0: [Move] Move horizontally to the center of the navigation mesh
+x0_s7: Invisibility (with spine): Direction specified (45 degrees)
+x0_s7_w0: [Turning] Quick turn _ Direction designation
+x0_s8: Invisible (with spine): Direction specified (90 degrees)
+x0_s8_w0: [Turning] Quick turn _ Direction designation
+x0_s9: Invisibility (with spine): Direction specified (135 degrees)
+x0_s9_w0: [Turning] Quick turn _ Direction designation
+x0_s10: Invisibility (with spine): Direction specified (180 degrees)
+x0_s10_w0: [Turning] Quick turn _ Direction designation
+x0_s11: Invisibility (with spine): Direction specified (225 degrees)
+x0_s11_w0: [Turning] Quick turn _ Direction designation
+x0_s12: Invisibility (with spine): Direction specified (270 degrees)
+x0_s12_w0: [Turning] Quick turn _ Direction designation
+x0_s13: Invisibility (with spine): Direction specified (315 degrees)
+x0_s13_w0: [Turning] Quick turn _ Direction designation
+x0_s14: Invisibility (with spine): Direction designation branch
+x0_s14_e0: [Random number] Random number generation
+x0_s15: End state
+x1: [LIB] Targetless action (random walking)
+x1_p0: Non-combat action: Combat type
+x1_p1: Movement type
+x1_s0: Start state
+x1_s1: Action without target: start
+x1_s2: Action without target: Standby
+x1_s2_e0: [Move] Reset move failure
+x1_s3: Targetless action: return
+x1_s3_e0: [General purpose] Sharing flag setting
+x1_s4: Action without target: Move
+x1_s4_w0: [Move] Normal move random
+x1_s5: Targetless action: Non-combat action
+x1_s5_w0: [Attack] Melee attack
+x1_s6: Targetless action: Waiting for non-combat action
+x1_s7: Targetless action: Danger avoidance
+x1_s7_w0: [Move] Move horizontally to the center of the navigation mesh
+x1_s8: Targetless action: Direction designation branch
+x1_s8_e0: [Random number] Random number generation
+x1_s9: Targetless action: Direction designation (45 degrees)
+x1_s9_w0: [Turning] Quick turn _ Direction designation
+x1_s10: Targetless action: Direction designation (90 degrees)
+x1_s10_w0: [Turning] Quick turn _ Direction designation
+x1_s11: Targetless action: Direction designation (135 degrees)
+x1_s11_w0: [Turning] Quick turn _ Direction designation
+x1_s12: Targetless action: Direction designation (180 degrees)
+x1_s12_w0: [Turning] Quick turn _ Direction designation
+x1_s13: Targetless action: Direction designation (225 degrees)
+x1_s13_w0: [Turning] Quick turn _ Direction designation
+x1_s14: Targetless action: Direction designation (270 degrees)
+x1_s14_w0: [Turning] Quick turn _ Direction designation
+x1_s15: Targetless action: Direction designation (315 degrees)
+x1_s15_w0: [Turning] Quick turn _ Direction designation
+x1_s16: End state
+x2: [LIB] Lower action: branch
+x2_s0: Start state
+x2_s1: Action: Branch
+x2_s2: Action: Error
+x2_s2_e0: [Debug] Log output
+x2_s3: End state_Target action
+x2_s4: End state_Target inactivity
+x2_s5: End state_generator action
+x2_s6: End state_Lower stop action
+x2_s7: End state_Invisible action
+x2_s8: End state_vanishing action
+x2_s9: End state_Sound reaction action
+x2_s10: End state_return preparation
+x3: [LIB] Lower action: Stop action
+x3_s0: Start state
+x3_s1: Lower stop action: start
+x3_s1_e0: [Attack] Combo attack cancel
+x3_s2: Lower stopping action: Stopping
+x3_s3: End state
+x4: [LIB] Short distance action: left and right turn
+x4_s0: Start state
+x4_s1: Left and right turn: start
+x4_s1_e0: [Timer] Start timer
+x4_s1_e1: [Random number] Random number generation
+x4_s1_e2: [Random number] Random number generation
+x4_s1_e3: [Move] Reset move failure
+x4_s2: Left and right turn: branch
+x4_s3: Left and right turn: short distance left turn
+x4_s3_w0: [Move] Horizontal move_Lock_Random
+x4_s4: Left and right turn: short distance right turn
+x4_s4_w0: [Move] Horizontal move_Lock_Random
+x4_s5: Left and right turn: long distance left turn
+x4_s5_w0: [Move] Horizontal move_Lock_Random
+x4_s6: Left and right turning: far right turning
+x4_s6_w0: [Move] Horizontal move_Lock_Random
+x4_s7: Left and right turn: End
+x4_s8: End state
+x5: [LIB] OBJ destruction behavior
+x5_p0: OBJ vandalism
+x5_p1: OBJ inspection distance
+x5_s0: Start state
+x5_s1: OBJ destruction: start
+x5_s2: OBJ destruction: inspection
+x5_s3: OBJ destruction: lock off
+x5_s3_e0: [Operation] Lock off
+x5_s4: OBJ Destruction: Execution
+x5_s4_e0: [Attack] Melee attack
+x5_s5: OBJ destruction: end setting
+x5_s5_e0: [Operation] Lock on
+x5_s6: Success: End state
+x5_s7: Failure: termination state
+x6: [LIB] Attack: Single issue: General purpose
+x6_p0: Attack type
+x6_p1: Short navigation mesh check
+x6_s0: Start state
+x6_s1: Attack: Under attack
+x6_s1_e0: [Attack] Melee attack
+x6_s2: Attack: Cancel wait
+x6_s3: Attack: Success: End state
+x6_s4: Attack: Failure: End state
+x7: [LIB] Damage action: Com para priority
+x7_p0: Defense ON switch
+x7_s0: Start state
+x7_s1: Damage action: start
+x7_s1_e0: [Timer] Start timer
+x7_s2: Damage action: Avoidance priority pattern
+x7_s3: Damage action: Retreating, turning and avoiding ends
+x7_s3_e0: [Attack] Damage information reset
+x7_s3_e1: [General] Logic group flag setting
+x7_s4: Damage action: avoidance (step)
+x7_s4_w0: [Attack] Random avoidance_Angle designation
+x7_s5: Damage behavior: thrown and waiting
+x7_s6: Damage behavior: attack priority pattern
+x7_s7: Damage action: movement priority pattern
+x7_s8: Damage behavior: defense priority pattern
+x7_s9: Damage behavior: no priority pattern
+x7_s9_e0: [Attack] Damage information reset
+x7_s10: Damage action: Defense ON
+x7_s10_e0: [Attack] Defense
+x7_s10_e1: [Random number] Random number generation
+x7_s11: Damage action: Initial wait
+x7_s11_e0: [Timer] Start timer
+x7_s11_e1: [Random number] Random number generation
+x7_s12: Damage action: Avoidance (rolling)
+x7_s12_w0: [Attack] Random avoidance_Angle designation
+x7_s13: [LIB] Short-distance action: Left-right turn _SubState
+x7_s14: [LIB] Defense retreat action: Probability designation _SubState
+x7_s15: End state
+x8: [LIB] Attack: General purpose
+x8_p0: Behavior type
+x8_p1: Attack distance
+x8_p2: Attack angle
+x8_s0: Start state
+x8_s1: Begin attack
+x8_s1_e0: [Movement] Movement prediction accuracy setting
+x8_s1_e1: [Move] Reset move failure
+x8_s1_e2: [Attack] Reset attack failure
+x8_s1_e3: [Timer] Start timer
+x8_s2: Attack: turn before attack
+x8_s2_w0: [Turning] Quick turn_Lock
+x8_s3: Attack: turn before moving
+x8_s3_w0: [Turning] Quick turn_Lock
+x8_s4: Attack: Normal movement
+x8_s4_w0: [Move] Lock move random
+x8_s5: Attack: dash
+x8_s5_w0: [Move] Dash_Lock_Random
+x8_s6: Attack: Search
+x8_s6_e0: [Search] Navimesh
+x8_s7: Attack: Navigating
+x8_s7_w0: [Move] Lock move Navi mesh
+x8_s8: Attack: Navi Dash
+x8_s8_w0: [Move] Dash_Lock_Navimesh
+x8_s9: Attack: Execute
+x8_s9_e0: [Attack] Melee attack
+x8_s10: Attack: Attack failed
+x8_s10_e0: [Platoon] Set the platoon flag
+x8_s11: Attack: Waiting for stun
+x8_s12: Attack successful end state
+x8_s13: Attack failed end state
+x8_s14: Attack timeout end state
+x9: [LIB] OBJ operation
+x9_s0: Start state
+x9_s1: OBJ operation: start
+x9_s2: OBJ operation: Start using ladder
+x9_s2_e0: [Action] Use OBJ specified by Navimesh
+x9_s3: OBJ operation: climb the ladder
+x9_s3_w0: [Action] Climbing the ladder
+x9_s4: OBJ operation: go down the ladder
+x9_s4_w0: [Action] Go down the ladder
+x9_s5: OBJ operation: using door
+x9_s5_e0: [Action] Use OBJ specified by Navimesh
+x9_s6: OBJ operation: Using rope
+x9_s6_e0: [Action] Use OBJ specified by Navimesh
+x9_s7: OBJ operation: failed
+x9_s7_e0: [Action] Leave OBJ
+x9_s8: OBJ operation: upper attack
+x9_s8_e0: [Attack] Melee attack
+x9_s9: OBJ operation: lower attack
+x9_s9_e0: [Attack] Melee attack
+x9_s10: OBJ operation: End of use
+x9_s10_e0: [Action] Leave OBJ
+x9_s11: OBJ operation: Yield
+x9_s11_w0: [Move] Horizontal move_Lock_Random
+x9_s12: [LIB] Ladder movement_SubState
+x9_s13: OBJ use success state
+x9_s14: OBJ use failure state
+x10: [LIB] Defense retreat action: Probability designation
+x10_p0: Retreat probability
+x10_s0: Start state
+x10_s1: Defense Retreat: Start
+x10_s1_e0: [Random number] Random number generation
+x10_s1_e1: [Move] Reset move failure
+x10_s2: Defense retreat: Retreat action
+x10_s2_w0: [Move] Horizontal move_Lock_Random
+x10_s3: Defense Retreat: Turning
+x10_s3_w0: [Move] Horizontal move_Lock_Random
+x10_s4: Defense Retreat: Branch
+x10_s5: End state
+x11: [LIB] Target action: feedback error
+x11_s0: Start state
+x11_s1: Preparing to return: move left and right
+x11_s1_w0: [Move] Horizontal move_Lock_Random
+x11_s2: Preparing to return: Navimesh search
+x11_s2_e0: [Search] Navi mesh to generator
+x11_s3: Return preparation: moving branch
+x11_s3_e0: [Move] Reset move failure
+x11_s3_e1: [Random number] Random number generation
+x11_s3_e2: [General purpose] Sharing flag setting
+x11_s3_e3: [General purpose] Sharing flag setting
+x11_s4: Preparing to return: retreat
+x11_s4_w0: [Move] Horizontal move_Lock_Navimesh
+x11_s5: Return preparation: Move mesh center
+x11_s5_w0: [Move] Move horizontally to the center of the navigation mesh
+x11_s6: End state
+x12: [LIB] Ranged attack response
+x12_p0: Guardability
+x12_p1: Moving method
+x12_p2: Remote support end distance
+x12_p3: Remote support end time
+x12_p4: Dash short navigation mesh
+x12_p5: Analog intensity minimum
+x12_p6: Analog intensity maximum
+x12_p7: Do you sway right and left
+x12_s0: Start state
+x12_s1: Ranged attack response: Start
+x12_s1_e0: [Timer] Start timer
+x12_s1_e1: [Move] Reset move failure
+x12_s1_e2: [Attack] Reset attack failure
+x12_s1_e3: [Attack] Damage type reset
+x12_s1_e4: [Attack] Damage information reset
+x12_s1_e5: [Operation] Lock on
+x12_s2: Ranged attack response: Standby
+x12_s3: Ranged attack response: guard execution
+x12_s3_e0: [Attack] Defense
+x12_s4: Ranged attack response: Target path search
+x12_s4_e0: [Search] Navimesh
+x12_s5: Ranged attack response: Generator path search
+x12_s5_e0: [Search] Navi mesh to generator
+x12_s6: Remote attack response: Short navigation check (5m or less)
+x12_s6_w0: [Move] Lock horizontally to the target correction position
+x12_s7: Ranged attack response: Lock movement (dash)
+x12_s7_w0: [Move] Dash_Lock_Random
+x12_s8: Ranged attack response: Navigating (dash)
+x12_s8_w0: [Move] Dash_Lock_Navimesh
+x12_s9: Ranged attack response: Lock movement (normal)
+x12_s9_w0: [Move] Lock move random
+x12_s10: Remote attack response: Navigating (normal)
+x12_s10_w0: [Move] Normal move Navi mesh
+x12_s11: Ranged attack response: Random movement
+x12_s11_w0: [Move] Horizontal move_Lock_Random
+x12_s12: Ranged attack response: Successful completion
+x12_s12_e0: [Attack] Defense
+x12_s13: Ranged attack response: Failed end
+x12_s13_e0: [Attack] Defense
+x12_s14: Ranged attack response: Lock movement (horizontal)
+x12_s14_w0: [Move] Horizontal move_Lock_Random
+x12_s15: Ranged attack response: Navigation movement (horizontal)
+x12_s15_w0: [Move] Horizontal move_Lock_Navimesh
+x12_s16: Ranged attack response: Direction adjustment
+x12_s16_w0: [Move] Horizontal move_Lock_Random
+x12_s17: Ranged attack response: Quick turn
+x12_s17_w0: [Turning] Quick turn_Lock
+x12_s18: Ranged attack response: Quick turn standby
+x12_s19: Remote attack response: short navigation check (10m or less)
+x12_s19_w0: [Move] Lock horizontally to the target correction position
+x12_s20: Remote attack response: Short navigation check (15m or less)
+x12_s20_w0: [Move] Lock horizontally to the target correction position
+x12_s21: Ranged attack response: avoid danger of navigation movement (stop)
+x12_s21_w0: [Move] Disable move
+x12_s22: Ranged attack response: Navigation danger avoidance (point return)
+x12_s22_w0: [Move] Move horizontally to the center of the navigation mesh
+x12_s23: Ranged attack response: avoid danger of navigation movement (adjust direction)
+x12_s23_w0: [Turning] Turning in place_Navimesh direction
+x12_s24: Ranged attack response: timeout expired
+x12_s24_e0: [Attack] Defense
+x12_s25: Ranged attack response: Short navigation check branch
+x12_s25_e0: [Move] Reset move failure
+x12_s26: Ranged attack response: arrival judgment
+x12_s26_e0: [Move] Reset move failure
+x12_s26_w0: [Move] Lock horizontally to the target correction position
+x12_s27: Ranged attack response: Navigation return for generator return (horizontal)
+x12_s27_w0: [Move] Horizontal move_Lock_Navimesh
+x12_s28: Ranged Attack Response: Route Search Interpolation Action (Generator)
+x12_s28_w0: [Move] Horizontal move_Lock_Random
+x12_s29: Ranged Attack Response: Route Search Interpolation Action (Target)
+x12_s29_w0: [Move] Horizontal move_Lock_Random
+x12_s30: Ranged attack response: Bypass
+x12_s30_e0: [Attack] Damage type reset
+x12_s30_e1: [Attack] Damage information reset
+x12_s31: Successful completion state
+x12_s32: Failure end state
+x12_s33: Timeout end state
+x13: [LIB] Move: Get off the wall
+x13_p0: Analog strength
+x13_p1: Wall down time
+x13_s0: Start state
+x13_s1: Get off the wall: angle adjustment
+x13_s1_w0: [Turning] Quick turn _ Navi mesh direction
+x13_s2: Get off the wall: Start moving
+x13_s2_w0: [Move] Normal move random
+x13_s3: Get off the wall: End judgment
+x13_s3_e0: [Move] Reset move failure
+x13_s3_w0: [Move] Disable move
+x13_s4: Get off the wall: start
+x13_s5: Get off the wall: approach the wall
+x13_s5_w0: [Move] Normal move random
+x13_s6: End state
+x14: [LIB] Back attack
+x14_p0: Attack type
+x14_s0: Start state
+x14_s1: Begin attack
+x14_s1_e0: [Timer] Start timer
+x14_s1_e1: [Debug] Popcorn creation
+x14_s2: Attack: Execute
+x14_s2_e0: [Attack] Melee attack
+x14_s3: Attack: End
+x14_s4: Attack: Under attack
+x14_s5: Attack: Dash cancellation
+x14_s5_w0: [Attack] Blade dash cancellation
+x14_s6: End state
+x15: [LIB] Pursuit action
+x15_p0: Pursuit action
+x15_p1: Pursuit distance
+x15_s0: Start state
+x15_s1: Pursuit: Com para use judgment
+x15_s2: Pursuit: End
+x15_s3: Pursuit: Start
+x15_s3_e0: [Attack] Combo attack cancel
+x15_s3_e1: [Attack] Attack cancel
+x15_s3_e2: [Debug] Popcorn creation
+x15_s4: [LIB] Attack: General purpose: Parameter use _SubState
+x15_s5: [LIB] Attack: General purpose: Action specification _SubState
+x15_s6: End state
+x16: [LIB] partner down
+x16_s0: Start state
+x16_s1: Immediate action: start
+x16_s1_e0: [Move] Reset move failure
+x16_s2: Interaction: Retreat
+x16_s2_w0: [Move] Horizontal move_Lock_Random
+x16_s3: Interaction: left and right
+x16_s3_w0: [Move] Horizontal move_Lock_Random
+x16_s4: Interim action: End
+x16_s5: Interaction: Central
+x16_s5_w0: [Move] Move horizontally to the center of the navigation mesh
+x16_s6: Beating between: Initialization
+x16_s6_e0: [Timer] Start timer
+x16_s7: Immediate action: emergency stop
+x16_s7_w0: [Move] Disable move
+x16_s8: End state
+x17: [LIB] Damage action: Terrain damage
+x17_s0: Start state
+x17_s1: OBJ Damage Avoidance: Start
+x17_s2: OBJ damage avoidance: route search
+x17_s2_e0: [Search] Navimesh
+x17_s3: OBJ Damage Avoidance: Avoidance Behavior
+x17_s3_w0: [Turning] Quick turn _ Navi mesh direction
+x17_s4: OBJ Damage Avoidance: Step
+x17_s4_w0: [Attack] Random avoidance_Angle designation
+x17_s5: Avoid OBJ damage: rolling
+x17_s5_w0: [Attack] Random avoidance_Angle designation
+x17_s6: OBJ Damage Avoidance: Dash
+x17_s6_w0: [Move] Dash_Navimesh
+x17_s7: Avoid OBJ damage: End
+x17_s7_e0: [Attack] Damage information reset
+x17_s8: End state
+x18: [LIB] Ladder movement
+x18_s0: Start state
+x18_s1: Ladder movement: start
+x18_s2: Ladder movement: Start using
+x18_s2_e0: [Action] Use OBJ specified by Navimesh
+x18_s3: Ladder movement: ladder up / down
+x18_s3_w0: [Action] Climbing the ladder
+x18_s3_w1: [Action] Go down the ladder
+x18_s4: Ladder movement: upper attack
+x18_s4_e0: [Attack] Melee attack
+x18_s5: Ladder movement: lower attack
+x18_s5_e0: [Attack] Melee attack
+x18_s6: Ladder movement: end of use
+x18_s6_e0: [Action] Leave OBJ
+x18_s6_e1: [Search] Navimesh
+x18_s7: Ladder movement: use failure
+x18_s7_e0: [Action] Leave OBJ
+x18_s7_e1: [Search] Navimesh
+x18_s8: Ladder move: yield
+x18_s8_w0: [Move] Horizontal move_Lock_Random
+x18_s9: Ladder movement: Navigation search
+x18_s9_e0: [Search] Navimesh
+x18_s10: Ladder Move: Back Ladder
+x18_s10_w0: [Action] Climbing the ladder
+x18_s10_w1: [Action] Go down the ladder
+x18_s11: End state
+x19: [LIB] Moving: approaching behavior [DLC modified version]
+x19_p0: Analog intensity minimum
+x19_p1: Analog intensity maximum
+x19_p2: OBJ inspection distance
+x19_p3: OBJ vandalism
+x19_p4: Short navi mesh distance
+x19_p5: Limit approach distance
+x19_p6: Sharp turning angle
+x19_p7: End of sharp turn
+x19_s0: Start state
+x19_s1: Movement: start error
+x19_s1_w0: [Move] Lock move random
+x19_s1_w1: [Move] Disable move
+x19_s1_w2: [Turning] Quick turn_Lock
+x19_s2: Movement: approaching behavior
+x19_s2_w0: [Move] Dash_Lock_Random
+x19_s3: Movement: obstacle avoidance
+x19_s4: Movement: safety confirmation
+x19_s4_e0: [General] Short Navi Mesh Check
+x19_s5: Move: Initialize
+x19_s5_e0: [Move] Reset move failure
+x19_s5_e1: [General] Reset short navigation mesh check result
+x19_s6: Movement: Obstacle avoidance [Timer start]
+x19_s6_e0: [Timer] Start timer
+x19_s7: Movement: obstacle avoidance [movement direction lottery]
+x19_s7_e0: [Random number] Random number generation
+x19_s8: Movement: Obstacle avoidance [random movement]
+x19_s8_w0: [Move] Normal move random
+x19_s8_w1: [Move] Normal move random
+x19_s9: Movement: Obstacle avoidance [straight ahead]
+x19_s9_w0: [Move] Normal move random
+x19_s10: [LIB] OBJ destruction behavior _SubState
+x19_s11: [LIB] partner down _SubState
+x19_s12: [LIB] Damage action: Terrain damage _SubState
+x19_s13: [LIB] Move: Humanoid general-purpose navigation move [DLC under renovation] _SubState
+x19_s14: [LIB] Move: Unreachable [DLC modified version] _SubState
+x19_s15: End state
+x20: [LIB] Moving: Humanoid general-purpose navigation moving [DLC modified version]
+x20_p0: Analog strength
+x20_p1: Reach distance
+x20_p2: Sharp turning angle
+x20_p3: OBJ inspection distance
+x20_p4: Dash switch
+x20_p5: Navigation search target
+x20_p6: End of sharp turn
+x20_s0: Start state
+x20_s1: Navigating: Start
+x20_s1_e0: [Move] Reset move failure
+x20_s1_e1: [Timer] Start timer
+x20_s1_e2: [Timer] Stop timer
+x20_s2: Navigation navigation: Navigation search
+x20_s2_e0: [Search] Navimesh
+x20_s2_e1: [Search] Navi mesh to generator
+x20_s2_e2: [Search] Navi mesh to a nearby gate
+x20_s2_e3: [Search] Navimesh to the sound you heard
+x20_s2_e4: [General purpose] Sharing flag setting
+x20_s3: Navigation movement: sudden turn
+x20_s3_w0: [Turning] Quick turn _ Navi mesh direction
+x20_s4: Navigation navigation: dash
+x20_s4_w0: [Move] Dash_Lock_Navimesh
+x20_s5: Navigating: walking
+x20_s5_e0: [Move] Reset move failure
+x20_s5_w0: [Move] Lock move Navi mesh
+x20_s6: Navigating: avoiding danger [random moving]
+x20_s6_w0: [Move] Normal move random
+x20_s6_w1: [Move] Normal move random
+x20_s6_w2: [Move] Normal move random
+x20_s6_w3: [Move] Normal move random
+x20_s6_w4: [Move] Normal move random
+x20_s7: Navigation navigation: End
+x20_s7_e0: [Move] Reset move failure
+x20_s7_w0: [Move] Disable move
+x20_s8: Navigating: Periodic check
+x20_s8_e0: [Search] Navimesh
+x20_s8_e1: [Search] Navi mesh to generator
+x20_s8_e2: [Search] Navi mesh to a nearby gate
+x20_s8_e3: [Search] Navimesh to the sound you heard
+x20_s8_e4: [General] Short Navi Mesh Check
+x20_s9: Navigation navigation: branch
+x20_s10: Navigating: center moving
+x20_s10_w0: [Move] Horizontally move to the center position of the navigation mesh next to the navigation route
+x20_s10_w1: [Move] Move horizontally to the center of the navigation mesh
+x20_s11: Navigating: avoiding danger [obstacles]
+x20_s12: Navigating: unreachable
+x20_s13: Navigating: Route search successful
+x20_s13_e0: [General purpose] Sharing flag setting
+x20_s14: Navigating: route search failed
+x20_s14_e0: [General purpose] Sharing flag setting
+x20_s15: Navigating: Stop before sudden turn
+x20_s15_w0: [Move] Disable move
+x20_s16: Navigating: Stop before returning to navigation
+x20_s16_e0: [Search] Navimesh
+x20_s16_e1: [Search] Navi mesh to generator
+x20_s16_e2: [Search] Navi mesh to a nearby gate
+x20_s16_e3: [Search] Navimesh to the sound you heard
+x20_s16_w0: [Move] Disable move
+x20_s17: Navigating: straight ahead
+x20_s17_e0: [Move] Reset move failure
+x20_s18: Navigating: avoiding danger [moving direction lottery]
+x20_s18_e0: [Random number] Random number generation
+x20_s19: Navigation navigation: avoid danger [start timer]
+x20_s19_e0: [Timer] Start timer
+x20_s20: Navigating: Return to navigation
+x20_s20_w0: [Move] Move horizontally to the nearest side of the navigation mesh
+x20_s21: Navigating: Stop after moving to center
+x20_s21_x0: [Timer] Start timer
+x20_s21_w0: [Move] Disable move
+x20_s22: Navigating: avoiding danger [go straight]
+x20_s22_w0: [Move] Normal move random
+x20_s23: [LIB] OBJ operation_SubState
+x20_s24: [LIB] Move: Get off the wall [during DLC ​​repair] _SubState
+x20_s25: End state
+x20_s26: Obstacle: End State
+x20_s27: Unreachable: end state
+x20_s28: Straight ahead: end state
+x21: [LIB] Move: Get off the wall [DLC modified version]
+x21_p0: Analog strength
+x21_p1: Wall down time
+x21_s0: Start state
+x21_s1: Get off the wall: angle adjustment
+x21_s1_w0: [Turning] Quick turn _ Navi mesh direction
+x21_s2: Get off the wall: Start moving
+x21_s2_w0: [Move] Horizontal move_random
+x21_s2_w1: [Move] Normal move random
+x21_s3: Get off the wall: End judgment
+x21_s3_e0: [Move] Reset move failure
+x21_s3_w0: [Move] Disable move
+x21_s4: Get off the wall: start
+x21_s4_w0: [Move] Disable move
+x21_s5: Get off the wall: position adjustment
+x21_s5_w0: [Move] Move horizontally to the nearest side of the navigation mesh
+x21_s5_w1: [Move] Move horizontally to the center of the navigation mesh
+x21_s6: End state
+x22: [LIB] Movement: unreachable [DLC modified version]
+x22_s0: Start state
+x22_s1: Unreachable: generator search
+x22_s1_e0: [Search] Navi mesh to generator
+x22_s2: Unreachable: Search successful
+x22_s2_e0: [Move] Reset move failure
+x22_s3: Unreachable: Gate search
+x22_s3_e0: [Search] Navi mesh to a nearby gate
+x22_s4: Unreachable: Random move
+x22_s4_w0: [Move] Lock move random
+x22_s4_w1: [Move] Horizontal move_Lock_Random
+x22_s5: Unreachable: End
+x22_s5_e0: [Move] Reset move failure
+x22_s6: Unreachable: horizontal movement
+x22_s6_w0: [Move] Horizontal move_Lock_Navimesh
+x22_s6_w1: [Move] Horizontal move_Navimesh
+x22_s7: Unreachable: Normal movement
+x22_s7_w0: [Move] Normal move Navi mesh
+x22_s8: Unreachable: sudden turn
+x22_s8_w0: [Turning] Quick turn _ Navi mesh direction
+x22_s9: Unreachable: Stop before sudden turn
+x22_s9_w0: [Move] Disable move
+x22_s10: Unreachable: Stop before returning to navigation
+x22_s10_w0: [Move] Disable move
+x22_s11: Unreachable: horizontal movement (near the next point)
+x22_s11_w0: [Move] Horizontally move to the center position of the navigation mesh next to the navigation route
+x22_s12: Unreachable: Forced movement
+x22_s12_w0: [Move] Lock move random
+x22_s13: Unreachable: Navigation return
+x22_s13_w0: [Move] Move horizontally to the nearest side of the navigation mesh
+x22_s14: Unreachable: center move
+x22_s14_x0: [Timer] Start timer
+x22_s14_w0: [Move] Horizontally move to the center position of the navigation mesh next to the navigation route
+x22_s14_w1: [Move] Move horizontally to the center of the navigation mesh
+x22_s15: Unreachable: Stop after moving center
+x22_s15_x0: [Timer] Start timer
+x22_s15_w0: [Move] Disable move
+x22_s16: Unreachable: Start
+x22_s16_e0: [Timer] Start timer
+x22_s16_e1: [Timer] Start timer
+x22_s16_e2: [Timer] Stop timer
+x22_s16_e3: [Random number] Random number generation
+x22_s17: [LIB] Move: Get off the wall [DLC modified version] _SubState
+x22_s18: End state
+x23: [LIB] Attack: General-purpose mobile [DLC modified version]
+x23_p0: Attack distance
+x23_p1: Attack angle
+x23_p2: Analog strength
+x23_p3: Sharp turning angle
+x23_p4: Attack short navigation
+x23_p5: End of sharp turn
+x23_p6: Turning Attack Switch
+x23_p7: Contact judgment distance
+x23_s0: Start state
+x23_s1: Move Before Attack: Start
+x23_s1_x0: [Timer] Start timer
+x23_s2: Movement before attack: Confirmation of safety
+x23_s2_e0: [General] Reset short navigation mesh check result
+x23_s2_e1: [General] Short Navi Mesh Check
+x23_s2_e2: [General] Short Navi Mesh Check
+x23_s2_x0: [General purpose] Sharing flag setting
+x23_s3: Pre-attack movement: Move and turn
+x23_s3_w0: [Turning] Quick turn_Lock
+x23_s3_w1: [Turning] Quick turn _ Navi mesh direction
+x23_s4: Pre-attack movement: Dash movement speed branch
+x23_s5: Movement before attack: Dash movement (high speed)
+x23_s5_w0: [Move] Dash_Lock_Random
+x23_s6: Movement before attack: Dash movement (medium speed)
+x23_s6_w0: [Move] Dash_Lock_Random
+x23_s7: Movement before attack: Dash movement (slow)
+x23_s7_w0: [Move] Dash_Lock_Random
+x23_s8: Movement before attack: Dash movement (very low speed)
+x23_s8_w0: [Move] Dash_Lock_Random
+x23_s9: Move Before Attack: Collision Avoidance (Dash)
+x23_s9_w0: [Move] Horizontal move_random
+x23_s10: Move Before Attack: Collision Avoidance (Dash): End Evasion
+x23_s10_w0: [Move] Disable move
+x23_s11: Pre-attack movement: Walking speed branch
+x23_s12: Pre-attack movement: walking movement (normal)
+x23_s12_w0: [Move] Lock move random
+x23_s13: Movement before attack: Walking movement (low speed)
+x23_s13_w0: [Move] Lock move random
+x23_s14: Movement before attack: Collision avoidance (walking)
+x23_s14_w0: [Move] Horizontal move_random
+x23_s15: Movement before attack: Collision avoidance (walking): Evasion end
+x23_s15_w0: [Move] Disable move
+x23_s16: Move before attack: Navigation search
+x23_s16_e0: [Search] Navimesh
+x23_s16_w0: [Move] Dash_Lock_Navimesh
+x23_s17: Movement before attack: Navigating movement first (horizontal movement)
+x23_s17_e0: [General purpose] Sharing flag setting
+x23_s17_w0: [Move] Horizontal move_Lock_Navimesh
+x23_s18: Movement before attack: Navigation speed branch
+x23_s19: Movement before attack: Navigation movement (high speed)
+x23_s19_w0: [Move] Dash_Lock_Navimesh
+x23_s19_w1: [Debug] Popcorn creation
+x23_s20: Movement before attack: Navigation movement (medium speed)
+x23_s20_w0: [Move] Dash_Lock_Navimesh
+x23_s20_w1: [Debug] Popcorn creation
+x23_s21: Movement before attack: Navigation movement (low speed)
+x23_s21_w0: [Move] Dash_Lock_Navimesh
+x23_s21_w1: [Debug] Popcorn creation
+x23_s22: Movement before attack: Navigation movement (very low speed)
+x23_s22_w0: [Move] Dash_Lock_Navimesh
+x23_s22_w1: [Debug] Popcorn creation
+x23_s23: Move Before Attack: Collision Avoidance (Navi Move)
+x23_s23_w0: [Move] Horizontal move_random
+x23_s24: Move Before Attack: Collision Avoidance (Navi Movement): End Evasion
+x23_s24_w0: [Move] Disable move
+x23_s25: Move Before Attack: Adjust Distance After Goal
+x23_s25_w0: [Move] Lock move random
+x23_s26: Move Before Attack: Attack Turning
+x23_s26_w0: [Turning] Quick turn_Lock
+x23_s27: Move Before Attack: Attackable Processing
+x23_s27_e0: [General purpose] Sharing flag setting
+x23_s28: Get the number of possessed items
+x23_s28_e0: [General purpose] Sharing flag setting
+x23_s29: Move Before Attack: Attack Disabled Processing
+x23_s30: Move Before Attack: Turn Before Falling Wall
+x23_s30_w0: [Turning] Quick turn _ Navi mesh direction
+x23_s31: Pre-attack movement: Wall falling movement
+x23_s31_w0: [Move] Dash_Lock_Navimesh
+x23_s32: Movement before attack: First navigation branch of navigation
+x23_s33: End state: Attackable
+x23_s34: End state: timeout
+x23_s35: End state: No attack possible
+x24: [LIB] Attack: First stage [DLC modified version]
+x24_p0: Attack type
+x24_p1: Short navigation check distance
+x24_p2: Check target position
+x24_p3: BD presence
+x24_p4: BD attack range
+x24_p5: Check during BD
+x24_p6: BD delay error
+x24_p7: Contact judgment distance
+x24_s0: Start state
+x24_s1: Attack: First stage: Start
+x24_s1_e0: [Attack] Defense
+x24_s1_e1: [Attack] Reset attack failure
+x24_s2: Attack: First stage: Check target position
+x24_s2_e0: [General] Reset short navigation mesh check result
+x24_s2_e1: [General] Short Navi Mesh Check
+x24_s3: Attack: First stage: Attack distance check
+x24_s3_e0: [General] Reset short navigation mesh check result
+x24_s3_e1: [General] Short Navi Mesh Check
+x24_s4: Attack: First step: Attack execution
+x24_s4_e0: [Attack] Melee attack
+x24_s4_e1: [Timer] Start timer
+x24_s5: Attack: First stage: Wait for attack
+x24_s6: Attack: First stage: BD standby
+x24_s6_w0: [Timer] Stop timer
+x24_s7: Attack: First stage: BD periodic check (target position)
+x24_s7_e0: [General] Reset short navigation mesh check result
+x24_s7_e1: [General] Short Navi Mesh Check
+x24_s8: Attack: First stage: BD cancel
+x24_s8_e0: [Attack] Attack cancel
+x24_s9: Attack: First stage: BD start error
+x24_s10: Attack: First stage: BD regular check (attack distance)
+x24_s10_e0: [General] Reset short navigation mesh check result
+x24_s10_e1: [General] Short Navi Mesh Check
+x24_s11: Attack: Success processing
+x24_s11_x0: [Timer] Restart timer
+x24_s12: Successful Attack: End State
+x24_s13: Attack failed: end state
+x25: [LIB] Attack: Multi-stage (combo) [DLC modified version]
+x25_p0: Number of running combo stages
+x25_p1: Cancel distance
+x25_p2: Cancel angle
+x25_p3: Cancellation probability
+x25_p4: Short navigation check distance
+x25_p5: Check delay
+x25_p6: Suspension switch outside Navimesh
+x25_p7: Contact judgment distance
+x25_s0: Start state
+x25_s1: Attack: Multi-stage (Combo): Start
+x25_s1_e0: [Random number] Random number generation
+x25_s2: Attack: Multi-stage (combo): Cancel check (safety check)
+x25_s2_e0: [General] Reset short navigation mesh check result
+x25_s2_e1: [General] Short Navi Mesh Check
+x25_s3: Attack: Multi-stage (Combo): Attack state transition
+x25_s3_x0: [Timer] Start timer
+x25_s4: Attack: Multi-stage (Combo): Combo Cancel
+x25_s4_e0: [Attack] Combo attack cancel
+x25_s5: Attack: Multi-stage (Combo): Danger Avoidance Lock Off + Combo Cancel
+x25_s5_e0: [Attack] Combo attack cancel
+x25_s5_w0: [Operation] Lock off
+x25_s6: Attack: Multi-stage (combo): Cancel check (danger check)
+x25_s6_e0: [General] Reset short navigation mesh check result
+x25_s6_e1: [General] Short Navi Mesh Check
+x25_s7: Attack: Multi-stage (combo): Lock return
+x25_s7_x0: [Operation] Lock on
+x25_s8: Successful Attack: End State
+x25_s9: Attack Canceled: End State
+x25_s10: Attack Suspension: End State
+x26: [LIB] Move: General-purpose navigation move [DLC modified version]
+x26_p0: Analog strength
+x26_p1: Reach distance
+x26_p2: Sharp turning angle
+x26_p3: Dash switch
+x26_p4: Short navigation check
+x26_p5: time out
+x26_p6: Automatic brake
+x26_p7: End of sharp turn
+x26_s0: Start state
+x26_s1: Navigation navigation: branch
+x26_s2: Navigating: end of arrival
+x26_s2_e0: [Move] Reset move failure
+x26_s3: Navigating: Periodic check
+x26_s4: Navigation navigation: dash
+x26_s4_w0: [Move] Dash_Lock_Navimesh
+x26_s5: Navigation movement: sudden turn
+x26_s5_w0: [Turning] Quick turn _ Navi mesh direction
+x26_s6: Navigating: walking
+x26_s6_e0: [Move] Reset move failure
+x26_s6_w0: [Move] Lock move Navi mesh
+x26_s7: Navigating: Start
+x26_s7_e0: [Move] Reset move failure
+x26_s7_e1: [Timer] Start timer
+x26_s7_e2: [Timer] Start timer
+x26_s7_e3: [Timer] Stop timer
+x26_s8: Navigating: Stop before returning to navigation
+x26_s8_w0: [Move] Disable move
+x26_s9: Navigating: Return to navigation
+x26_s9_w0: [Move] Move horizontally to the nearest side of the navigation mesh
+x26_s10: Navigating: center moving
+x26_s10_w0: [Move] Horizontally move to the center position of the navigation mesh next to the navigation route
+x26_s10_w1: [Move] Move horizontally to the center of the navigation mesh
+x26_s11: Navigating: Stop after moving to center
+x26_s11_x0: [Timer] Start timer
+x26_s11_w0: [Move] Disable move
+x26_s12: Navigating: Stop before sudden turn
+x26_s12_w0: [Move] Disable move
+x26_s13: Navigating: Dash transition preparation
+x26_s13_w0: [Move] Disable move
+x26_s13_w1: [Move] Disable move
+x26_s14: [LIB] OBJ operation_SubState
+x26_s15: [LIB] Move: Get off the wall _SubState
+x26_s16: Move Success: End State
+x26_s17: Slowdown: end state
+x26_s18: Search again: End state
+x27: [LIB] Return action (lower rank) [DLC modified version]
+x27_p0: OBJ vandalism
+x27_p1: OBJ inspection distance
+x27_p2: Return start movement type
+x27_p3: Returning movement type
+x27_p4: Sharp turning angle
+x27_p5: Or defend
+x27_s0: Start state
+x27_s1: Return action: start
+x27_s2: Return action: Start return
+x27_s2_e0: [Move] Reset move failure
+x27_s3: Return Behavior: Generator Search
+x27_s3_e0: [Search] Navi mesh to generator
+x27_s4: Return behavior: retreat behavior
+x27_s4_w0: [Move] Horizontal move_Lock_Navimesh
+x27_s5: Return action: Navimesh center movement
+x27_s5_w0: [Move] Move horizontally to the center of the navigation mesh
+x27_s6: Return action: retreat start
+x27_s6_e0: [Search] Navimesh route search settings
+x27_s6_e1: [Timer] Start timer
+x27_s6_e2: [Attack] Defense
+x27_s7: Return action: Returnable point search
+x27_s7_e0: [Search] Navi mesh to generator
+x27_s7_x0: [Search] Navimesh route search settings
+x27_s8: Return action: Non-return setting
+x27_s8_e0: [Search] Navimesh route search settings
+x27_s8_e1: [General purpose] Sharing flag setting
+x27_s9: Return action: Self-return starts
+x27_s9_w0: [Search] Generation Generator_Target Setting
+x27_s9_w1: [Move] Lock move random
+x27_s10: Return action: Successful return
+x27_s10_e0: [General purpose] Sharing flag setting
+x27_s11: Return action: Danger avoidance
+x27_s11_w0: [Move] Move horizontally to the center of the navigation mesh
+x27_s12: Return action: self-return
+x27_s12_e0: [Timer] Start timer
+x27_s12_w0: [Move] Horizontal move_Lock_Random
+x27_s13: Return action: Navi point 1 search
+x27_s13_e0: [Search] Navi mesh to Gen Navi point
+x27_s14: Return action: Navi point 2 search
+x27_s14_e0: [Search] Navi mesh to Gen Navi point
+x27_s15: Return action: emergency stop
+x27_s15_e0: [Move] Reset move failure
+x27_s15_w0: [Move] Disable move
+x27_s16: Return action: turn towards generator
+x27_s16_w0: [Turning] Quick turn_Generator direction
+x27_s17: Return action: waiting
+x27_s17_e0: [Attack] Defense
+x27_s18: Return action: sound response
+x27_s18_w0: [Swirl] Quick turn_Sound direction
+x27_s19: Return action: sound alert
+x27_s20: Return action: enemy discovery
+x27_s20_w0: [General purpose] Sharing flag setting
+x27_s21: Return action: invisibility
+x27_s21_e0: [General purpose] Sharing flag setting
+x27_s22: Return action: random movement
+x27_s22_w0: [Move] Normal move random
+x27_s23: [LIB] OBJ destruction behavior _SubState
+x27_s24: [LIB] Move: General-purpose navigation move [DLC modified version]: Dash_SubState
+x27_s24_w0: [Operation] Lock off
+x27_s25: [LIB] Move: General-purpose navigation move [DLC modified version]: Walk_SubState
+x27_s25_w0: [Operation] Lock off
+x27_s26: End state
+x28: [LIB] Subordinate: Sound reaction tracking [DLC modified version]
+x28_p0: OBJ vandalism
+x28_p1: OBJ inspection distance
+x28_s0: Start state
+x28_s1: Sound response: start
+x28_s2: Sound response: Navigation search
+x28_s2_e0: [Search] Navimesh to the sound you heard
+x28_s3: Sound response: enemy judgment
+x28_s3_e0: [Operation] Lock off
+x28_s4: Sound response: not found
+x28_s4_e0: [General purpose] Sharing flag setting
+x28_s5: Sound response: danger avoidance
+x28_s5_w0: [Move] Normal move random
+x28_s6: [LIB] OBJ destruction behavior _SubState
+x28_s7: [LIB] Move: General-purpose navigation move [DLC modified version] _SubState
+x28_s8: End state
+x29: [LIB] Lower: vanishing behavior (tracking) [DLC modified version]
+x29_p0: OBJ vandalism
+x29_p1: OBJ inspection distance
+x29_p2: High-speed moving type
+x29_p3: Low-speed movement type
+x29_p4: Analog strength
+x29_p5: Sharp turning angle
+x29_p6: Automatic brake
+x29_s0: Start state
+x29_s1: Lost (LS): Start
+x29_s2: Lost (LS): Navigation search
+x29_s2_e0: [Search] Navimesh
+x29_s3: Lost (LS): not found
+x29_s3_e0: [General purpose] Sharing flag setting
+x29_s4: Loss (LS): Danger avoidance
+x29_s4_w0: [Move] Normal move random
+x29_s5: [LIB] OBJ destruction behavior _SubState
+x29_s6: [LIB] Move: General-purpose navigation move [DLC modified version] _SubState
+x29_s7: End state
+x30: [LIB] Surrounding behavior [DLC modified version]
+x30_p0: Minimum time
+x30_p1: Maximum time
+x30_p2: Distance Lv1
+x30_p3: Distance Lv2
+x30_p4: Distance Lv3
+x30_p5: Distance Lv4
+x30_p6: Attack type
+x30_p7: Attack probability
+x30_s0: Start state
+x30_s1: Surrounding action: Initial setting
+x30_s1_e0: [Timer] Start timer
+x30_s1_e1: [Random number] Random number generation
+x30_s2: Surrounding action: branch
+x30_s3: Surrounding action: retreat
+x30_s3_w0: [Move] Horizontal move_Lock_Random
+x30_s4: Surrounding action: Moving forward
+x30_s4_w0: [Move] Horizontal move_Lock_Random
+x30_s5: Surrounding action: end processing
+x30_s5_e0: [Random number] Random number generation
+x30_s6: Involvement action: start
+x30_s6_e0: [Move] Reset move failure
+x30_s7: Surrounding action: center movement
+x30_s7_w0: [Move] Move horizontally to the center of the navigation mesh
+x30_s8: Surrounding action: attack
+x30_s8_e0: [Attack] Melee attack
+x30_s9: [LIB] Damage action: Terrain damage _SubState
+x30_s10: [LIB] Move: Humanoid general-purpose navigation move [DLC modified version] _SubState
+x30_s11: End state
+x31: [LIB] Avoidance behavior [DLC modified version]
+x31_p0: Backstep rate
+x31_p1: Side step rate
+x31_p2: Short navigation check distance
+x31_p3: Avoid type
+x31_p4: Step execution distance
+x31_p5: Step execution maximum angle
+x31_s0: Start state
+x31_s1: Step: Direction branch
+x31_s1_e0: [Random number] Random number generation
+x31_s2: Step: Successful completion
+x31_s3: Step: Failed end
+x31_s3_e0: [Move] Reset move failure
+x31_s4: Step: Start
+x31_s4_e0: [Move] Reset move failure
+x31_s5: Step: Backstep branch
+x31_s6: Step: Side step branch
+x31_s7: Step: left front / right
+x31_s7_w0: [Attack] Random avoidance_Angle designation
+x31_s8: Step: right
+x31_s8_w0: [Attack] Random avoidance_Angle designation
+x31_s9: Step: left
+x31_s9_w0: [Attack] Random avoidance_Angle designation
+x31_s10: Step: Target position determination
+x31_s11: Step: Unexecuted end
+x31_s12: Step: left and right
+x31_s12_w0: [Attack] Random avoidance_Angle designation
+x31_s13: Step: Left and right front
+x31_s13_w0: [Attack] Random avoidance_Angle designation
+x31_s14: Step: left front / right front
+x31_s14_w0: [Attack] Random avoidance_Angle designation
+x31_s15: Step: Back, left and right back
+x31_s15_w0: [Attack] Random avoidance_Angle designation
+x31_s16: Steps: back and right back
+x31_s16_w0: [Attack] Random avoidance_Angle designation
+x31_s17: Step: Back / Left
+x31_s17_w0: [Attack] Random avoidance_Angle designation
+x31_s18: Successful completion state
+x31_s19: Failure end state
+x31_s20: Unexecuted end state
+x32: [LIB] Attack: Security confirmation at the end of the attack [DLC modified version]
+x32_p0: Wait for end only
+x32_p1: Attack short navigation distance
+x32_p2: Timeout time
+x32_s0: Start state
+x32_s1: Attack: Final stage attack distance check (safety confirmation)
+x32_s1_e0: [General] Reset short navigation mesh check result
+x32_s1_e1: [General] Short Navi Mesh Check
+x32_s2: Attack: Last attack distance check (danger confirmation)
+x32_s2_e0: [General] Reset short navigation mesh check result
+x32_s2_e1: [General] Short Navi Mesh Check
+x32_s3: Attack: Danger avoidance lock-off
+x32_s3_w0: [Operation] Lock off
+x32_s4: Attack: Lock return
+x32_s4_x0: [Operation] Lock on
+x32_s5: Attack: waiting for termination
+x32_s6: Begin attack
+x32_s7: Critical end state
+x32_s8: Safe end state
+x32_s9: End state

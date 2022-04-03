@@ -1,0 +1,24 @@
+100: First Contact: Fixed Battery (DLC)
+100_s0: Start state
+100_s1: Lower logic: start
+100_s2: [LIB] Initial termination setting_SubState
+100_s3: Fixed turret_SubState
+x1: Fixed turret
+x1_s0: Start state
+x1_s1: Fixed turret: start
+x1_s2: Fixed battery: Blaze Cannon standby
+x1_s3: Fixed battery: Blaze Cannon run
+x1_s3_e0: [Operation] Lock on
+x1_s3_e1: [Attack] Melee attack
+x1_s4: Fixed turret: wait after attack
+x1_s4_e0: [Random number] Random number generation
+x1_s4_e1: [Timer] Start timer
+x1_s5: Fixed turret: Lock-on release
+x1_s5_w0: [Operation] Lock off
+x1_s6: Fixed turret: Lock on
+x1_s7: End state
+x0: [LIB] Initial termination setting
+x0_s0: Start state
+x0_s1: Initial end setting: Start
+x0_s1_e0: [General purpose] Sharing flag setting
+x0_s2: End state

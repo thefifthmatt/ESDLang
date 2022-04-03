@@ -1,0 +1,324 @@
+10: Lower: Ann Deal
+10_s0: Start state
+10_s1: Lower: Start
+10_s2: Lower: STEP transition judgment
+10_s3: Lower: End judgment
+10_s3_e0: [General purpose] Sharing flag setting
+10_s4: Search flag setting
+10_s4_e0: [General purpose] Sharing flag setting
+10_s5: Target action: STEP1_SubState
+x0: Target action: STEP1
+x0_s0: Start state
+x0_s1: Target action: start
+x0_s2: Target action: action branch
+x0_s3: Attack lottery: STEP1_SubState
+x0_s4: Attack action: STEP1_SubState
+x0_s5: Close action_SubState
+x0_s6: End state
+x1: Attack lottery: STEP1
+x1_s0: Start state
+x1_s1: Attack lottery: start
+x1_s2: Attack lottery: Priority lottery (strengthen the flames that were worn)
+x1_s2_e0: [Random number] Random number generation
+x1_s3: Attack lottery: Action 13: Tentacle thrust: Left
+x1_s3_e0: [General purpose] Sharing flag setting
+x1_s4: Attack lottery: Action 14: Tentacle thrust: Back
+x1_s4_e0: [General purpose] Sharing flag setting
+x1_s5: Attack lottery: distance lottery
+x1_s5_e0: [Random number] Random number generation
+x1_s6: Attack lottery: 0-8m <LR0-45>
+x1_s7: Attack lottery: 12-16m <LR0-45>
+x1_s8: Attack lottery: 16m-
+x1_s9: Attack lottery: Action 10: All-around attack
+x1_s9_e0: [General purpose] Sharing flag setting
+x1_s10: Attack lottery: 8-12m <LR0-45>
+x1_s11: Attack lottery: 0-8m <LR135-180>
+x1_s12: Attack lottery: Action 20: Long distance: Tracking high speed bullet
+x1_s12_e0: [General purpose] Sharing flag setting
+x1_s13: Attack Draw: Action 2: Enhance the Flame
+x1_s13_e0: [General purpose] Sharing flag setting
+x1_s14: Attack lottery: Action 21: Long range: High power bullet (Genki ball)
+x1_s14_e0: [General purpose] Sharing flag setting
+x1_s15: Attack lottery: 0-8m <L45-135>
+x1_s16: Attack lottery: 0-8m <R45-135>
+x1_s17: Attack lottery: 8-12m <LR135-180>
+x1_s18: Attack lottery: 8-12m <L45-135>
+x1_s19: Attack lottery: 8-12m <R45-135>
+x1_s20: Attack lottery: 12-16m <LR135-180>
+x1_s21: Attack lottery: 12-16m <L45-135>
+x1_s22: Attack lottery: 12-16m <R45-135>
+x1_s23: Attack lottery: Action 11: Tentacle thrust: Forward
+x1_s23_e0: [General purpose] Sharing flag setting
+x1_s24: Attack lottery: Action 12: Tentacle thrust: Right
+x1_s24_e0: [General purpose] Sharing flag setting
+x1_s25: Attack lottery: Action 0: Warp move (disappear)
+x1_s25_e0: [General purpose] Sharing flag setting
+x1_s26: Attack lottery: Action 1: Warp move (wormhole)
+x1_s26_e0: [General purpose] Sharing flag setting
+x1_s27: Attack lottery: 0-8m
+x1_s28: Attack lottery: 8-12m
+x1_s29: Attack lottery: 12-16m
+x1_s30: Attack Lottery: Count Branch
+x1_s30_e0: [Random number] Random number generation
+x1_s31: Attack lottery: count 1
+x1_s32: Attack lottery: count 2
+x1_s33: Attack lottery: count 0
+x1_s34: Attack lottery: count 3
+x1_s35: Attack lottery: count 4
+x1_s36: Attack lottery: count 5
+x1_s37: Attack lottery: 16m- <LR0-45>
+x1_s38: Attack lottery: 16m- <R45-135>
+x1_s39: Attack lottery: 16m- <L45-135>
+x1_s40: Attack lottery: 16m- <LR135-180>
+x1_s41: Close action_SubState
+x1_s42: Lottery: End State
+x2: Timely action
+x2_p0: Execution abandon distance
+x2_s0: Start state
+x2_s1: Close Action: Start
+x2_s2: Close action: distance divergence
+x2_s3: Close Action: Success
+x2_s4: Close Action: Failure
+x2_s5: Close action: short-distance standby
+x2_s5_e0: [Random number] Random number generation
+x2_s6: Close action: waiting at medium distance
+x2_s6_e0: [Random number] Random number generation
+x2_s7: Close action: long-distance standby
+x2_s7_e0: [Random number] Random number generation
+x2_s8: Close action: action branch
+x2_s8_e0: [Platoon] Set weight multiplier
+x2_s8_e1: [Timer] Start timer
+x2_s9: Timed action: Action 20: Tracking high-speed bullet
+x2_s9_e0: [Random number] Random number generation
+x2_s10: Close Action: Action 21: High Power Bullet (Genki Ball)
+x2_s10_e0: [Random number] Random number generation
+x2_s11: Close action: Action 10: All-around attack
+x2_s11_e0: [Random number] Random number generation
+x2_s12: Close action: Action 0: Warp (disappear)
+x2_s12_e0: [Random number] Random number generation
+x2_s13: Close action: Other
+x2_s13_e0: [Random number] Random number generation
+x2_s14: Close action: Actions 11 to 14: Tentacle thrust
+x2_s15: Action count_SubState
+x2_s16: Success: End state
+x2_s17: Failure: termination state
+x3: Attack action: STEP1
+x3_s0: Start state
+x3_s1: Attack action: start
+x3_s2: Attack: Single issue: Action 11: Tentacle thrust: Forward_SubState
+x3_s3: Attack: Single issue: Action 12: Tentacle thrust: Right_SubState
+x3_s4: Attack: Single issue: Action 13: Tentacle thrust: Left_SubState
+x3_s5: Attack: single issue: action 14: tentacle thrust: backward_SubState
+x3_s6: Attack: Single issue: Action 20: Long distance: Tracking high speed bullet _SubState
+x3_s7: Attack: Single issue: Action 21: Long range: High power bullet (Genki ball) _SubState
+x3_s8: Attack: Special action: Action 0: Warp (disappear) _SubState
+x3_s9: Attack: Special action: Action 1: Warp (wormhole) _SubState
+x3_s10: Attack: Single issue: Action 2: Enhance the flaming _SubState
+x3_s11: Attack: Single issue: Action 10: All around attack_SubState
+x3_s12: End state: Attack failed
+x3_s13: End state: Successful attack
+x4: Attack: Single issue: Action 11: Tentacle thrust: Forward
+x4_p0: Attack type
+x4_p1: Short navigation mesh check
+x4_s0: Start state
+x4_s1: Attack: Under attack
+x4_s1_e0: [Attack] Melee attack
+x4_s2: Attack: Success: End state
+x4_s3: Attack: Failure: End state
+x5: Attack: Single issue: Action 12: Tentacle thrust: Right
+x5_p0: Attack type
+x5_p1: Short navigation mesh check
+x5_s0: Start state
+x5_s1: Attack: Under attack
+x5_s1_e0: [Attack] Melee attack
+x5_s2: Attack: Success: End state
+x5_s3: Attack: Failure: End state
+x6: Attack: Single issue: Action 13: Tentacle thrust: Left
+x6_p0: Attack type
+x6_p1: Short navigation mesh check
+x6_s0: Start state
+x6_s1: Attack: Under attack
+x6_s1_e0: [Attack] Melee attack
+x6_s2: Attack: Success: End state
+x6_s3: Attack: Failure: End state
+x7: Attack: Single issue: Action 14: Tentacle thrust: Back
+x7_p0: Attack type
+x7_p1: Short navigation mesh check
+x7_s0: Start state
+x7_s1: Attack: Under attack
+x7_s1_e0: [Attack] Melee attack
+x7_s2: Attack: Success: End state
+x7_s3: Attack: Failure: End state
+x8: Attack: Single issue: Action 20: Long range: High-speed tracking bullet
+x8_p0: Attack type
+x8_p1: Short navigation mesh check
+x8_s0: Start state
+x8_s1: Attack: Under attack
+x8_s1_e0: [Attack] Melee attack
+x8_s2: Attack: Success: End state
+x8_s3: Attack: Failure: End state
+x9: Attack: Single issue: Action 21: Long range: High power bullet (Genki ball)
+x9_p0: Attack type
+x9_p1: Short navigation mesh check
+x9_s0: Start state
+x9_s1: Attack: Execute
+x9_s1_e0: [Attack] Melee attack
+x9_s2: Attack: fire suppression
+x9_s2_e0: [Attack] Switch weapons
+x9_s2_x0: [Action] Clear special effects
+x9_s2_x1: [Action] Clear special effects
+x9_s3: Attack: Fire
+x9_s3_e0: [Attack] Switch weapons
+x9_s3_e1: [Attack] Switch weapons
+x9_s3_x0: [Action] Clear special effects
+x9_s3_x1: [Action] Clear special effects
+x9_s4: Attack: fire extinguishing
+x9_s5: Attack: Standby on fire
+x9_s6: Attack: Success: End state
+x9_s7: Attack: Failure: End state
+x10: Attack: Special action: Action 0: Warp (disappear)
+x10_p0: Start ID
+x10_p1: End ID
+x10_p2: Wait time after warp
+x10_s0: Start state
+x10_s1: Warp: Start
+x10_s2: Warp: Start action
+x10_s2_e0: [General purpose] Sharing flag setting
+x10_s2_e1: [Attack] Melee attack
+x10_s3: Warp: End of action
+x10_s3_e0: [Attack] Attack cancel
+x10_s3_e1: [General purpose] Sharing flag setting
+x10_s4: Warp: Wait
+x10_s4_e0: [Operation] Lock on
+x10_s4_w0: [Search] Load target
+x10_s5: Warp: Point selection (near target)
+x10_s5_w0: [Search for enemy] Navi point _ Target setting
+x10_s6: Warp: Save
+x10_s6_e0: [Operation] Lock off
+x10_s6_w0: [Search] Save target
+x10_s7: Warp: Execute
+x10_s7_e0: [Move] Warp_Target
+x10_s7_e1: [Operation] Lock list
+x10_s7_e2: [Operation] Lock list
+x10_s8: Warp: Selection branch
+x10_s8_e0: [Random number] Random number generation
+x10_s9: Warp: Point selection (target far away)
+x10_s9_w0: [Search for enemy] Navi point _ Target setting
+x10_s10: Warp: Point selection (random)
+x10_s10_w0: [Search for enemy] Navi point _ Target setting
+x10_s11: Warp: No special effects
+x10_s11_e0: [Attack] Switch weapons
+x10_s11_x0: [Action] Clear special effects
+x10_s11_x1: [Action] Clear special effects
+x10_s12: Warp: Flame Standby
+x10_s13: Warp: Flame
+x10_s13_e0: [Attack] Switch weapons
+x10_s13_e1: [Attack] Switch weapons
+x10_s13_x0: [Action] Clear special effects
+x10_s13_x1: [Action] Clear special effects
+x10_s14: Warp: Wait before warp
+x10_s14_w0: [Action] Clear special effects
+x10_s14_w1: [Action] Clear special effects
+x10_s15: Warp: No special effects waiting
+x10_s16: Warp: Waiting for termination
+x10_s17: Warp: fire extinguishing
+x10_s18: Warp: fire suppression
+x10_s18_e0: [Attack] Switch weapons
+x10_s18_x0: [Action] Clear special effects
+x10_s19: Warp: selective branch (high heat)
+x10_s19_e0: [Random number] Random number generation
+x10_s20: Warp: Gap
+x10_s21: End state
+x11: Attack: Single issue: Action 2: Strengthen the flame
+x11_p0: Attack type
+x11_p1: Short navigation mesh check
+x11_s0: Start state
+x11_s1: Attack: Execute
+x11_s1_e0: [Attack] Melee attack
+x11_s2: Attack: Fire
+x11_s2_e0: [Attack] Switch weapons
+x11_s2_x0: [General purpose] Sharing flag setting
+x11_s2_x1: [Action] Clear special effects
+x11_s3: Attack: Attack end wait
+x11_s4: Attack: Standby on fire
+x11_s5: Attack: Success: End state
+x11_s6: Attack: Failure: End state
+x12: Attack: Special action: Action 1: Warp (wormhole)
+x12_p0: Start ID
+x12_p1: End ID
+x12_p2: Wait time after warp
+x12_s0: Start state
+x12_s1: Warp: Start
+x12_s2: Warp: Start action
+x12_s2_e0: [General purpose] Sharing flag setting
+x12_s2_e1: [Attack] Melee attack
+x12_s3: Warp: End of action
+x12_s3_e0: [Attack] Attack cancel
+x12_s3_e1: [Operation] Lock on
+x12_s3_e2: [General purpose] Sharing flag setting
+x12_s4: Warp: Wait
+x12_s4_w0: [Search] Load target
+x12_s5: Warp: Point selection (near target)
+x12_s5_w0: [Search for enemy] Navi point _ Target setting
+x12_s6: Warp: Save
+x12_s6_e0: [Operation] Lock off
+x12_s6_w0: [Search] Save target
+x12_s7: Warp: Execute
+x12_s7_e0: [Move] Warp_Target
+x12_s7_e1: [Operation] Lock list
+x12_s7_e2: [Operation] Lock list
+x12_s8: Warp: Selection branch
+x12_s8_e0: [Random number] Random number generation
+x12_s9: Warp: Point selection (target far away)
+x12_s9_w0: [Search for enemy] Navi point _ Target setting
+x12_s10: Warp: Point selection (random)
+x12_s10_w0: [Search for enemy] Navi point _ Target setting
+x12_s11: Warp: Appearance Preparation
+x12_s11_e0: [Attack] Switch weapons
+x12_s11_x0: [Action] Clear special effects
+x12_s11_x1: [Action] Clear special effects
+x12_s11_x2: [Action] Activate special effects
+x12_s12: Warp: Post-processing
+x12_s13: Warp: Equipment check
+x12_s13_e0: [Attack] Switch weapons
+x12_s13_e1: [Attack] Switch weapons
+x12_s13_x0: [Action] Clear special effects
+x12_s13_x1: [Action] Clear special effects
+x12_s14: Warp: Wait before warp
+x12_s15: End state
+x13: Action count
+x13_s0: Start state
+x13_s1: Count: Start
+x13_s2: Count: Number branch
+x13_s3: Count: reset
+x13_s3_e0: [General purpose] Sharing flag setting
+x13_s4: Count: 1st
+x13_s4_e0: [General purpose] Sharing flag setting
+x13_s5: Count: 2nd
+x13_s5_e0: [General purpose] Sharing flag setting
+x13_s6: Count: 3rd
+x13_s6_e0: [General purpose] Sharing flag setting
+x13_s7: Count: 4th
+x13_s7_e0: [General purpose] Sharing flag setting
+x13_s8: Count: 5th
+x13_s8_e0: [General purpose] Sharing flag setting
+x13_s9: End state
+x14: Attack: Single issue: Action 10: All-around attack
+x14_p0: Attack type
+x14_p1: Short navigation mesh check
+x14_s0: Start state
+x14_s1: Attack: Execute
+x14_s1_e0: [Attack] Melee attack
+x14_s2: Attack: fire suppression
+x14_s2_e0: [Attack] Switch weapons
+x14_s2_x0: [Action] Clear special effects
+x14_s2_x1: [Action] Clear special effects
+x14_s3: Attack: Fire
+x14_s3_e0: [Attack] Switch weapons
+x14_s3_e1: [Attack] Switch weapons
+x14_s3_x0: [Action] Clear special effects
+x14_s3_x1: [Action] Clear special effects
+x14_s4: Attack: fire extinguishing
+x14_s5: Attack: Standby on fire
+x14_s6: Attack: Success: End state
+x14_s7: Attack: Failure: End state

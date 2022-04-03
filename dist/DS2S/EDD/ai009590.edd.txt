@@ -1,0 +1,37 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Upper: Lower logic start
+10_s1_e0: [General] lower-level state map switching
+10_s2: Top: Start
+10_s2_w0: [Search enemy] Character _ target setting
+10_s3: Higher rank: search enemy ON
+10_s3_e0: [Operation] Lock on
+10_s4: Top: with target
+20: Lower logic
+20_s0: Start state
+20_s1: Lower logic: start
+20_s2: Mode switching branch
+20_s3: Normal: Mode setting
+20_s3_e0: [Attack] Switch weapons
+20_s4: Normal: Combo
+20_s4_e0: [Attack] Melee attack
+20_s5: Sumo: Mode setting
+20_s5_e0: [Attack] Switch weapons
+20_s6: Sumo: Combo
+20_s6_e0: [Attack] Melee attack
+20_s7: Action: Approaching action_SubState
+20_s8: Action: Wait_SubState
+x0: Action: Standby
+x0_s0: Start state
+x0_s1: Waiting action: start
+x0_s1_e0: [Search] Override lock priority
+x0_s1_w0: [Attack] Non-combat action ends
+x0_s2: Waiting action: End
+x0_s3: End state
+x1: Behavior: Approaching behavior
+x1_s0: Start state
+x1_s1: walking
+x1_s1_w0: [Move] Normal move random
+x1_s2: Running
+x1_s2_w0: [Move] Dash_random
+x1_s3: End state

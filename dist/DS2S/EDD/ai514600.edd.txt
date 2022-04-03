@@ -1,0 +1,323 @@
+10: Lower: Initial start
+10_s0: Start state
+10_s1: Substate: Start
+10_s2: Lower state: Initial setting
+10_s2_e0: [Attack] Damage lower logic reset setting
+10_s2_e1: [Attack] Resident damage type setting
+10_s3: Target action: First action branch
+10_s4: Lower state: Initial wait
+10_s5: Lower state: Initial termination
+10_s5_e0: [General purpose] Sharing flag setting
+10_s5_e1: [General purpose] Sharing flag setting
+20: Lower state: STEP1
+20_s0: Start state
+20_s1: Lower: Start
+20_s2: Lower state: STEP transition judgment
+20_s2_e0: [General purpose] Sharing flag setting
+20_s3: Lower state: end judgment
+20_s3_e0: [General purpose] Sharing flag setting
+20_s4: Search flag setting
+20_s4_e0: [General purpose] Sharing flag setting
+20_s5: Target action: STEP1_SubState
+30: Lower state: STEP2
+30_s0: Start state
+30_s1: Substate: Start
+30_s2: Lower state: STEP transition judgment
+30_s3: Lower state: end judgment
+30_s3_e0: [General purpose] Sharing flag setting
+30_s4: Lower state: search flag setting
+30_s4_e0: [General purpose] Sharing flag setting
+30_s5: Target action: STEP2_SubState
+30_s6: Stair attack_SubState
+30_s7: Movement: Exit from stairs_SubState
+30_s8: Alert action_SubState
+30_s8_e0: [Attack] Damage information reset
+30_s8_e1: [General purpose] Sharing flag setting
+30_s8_x0: [General purpose] Sharing flag setting
+x3: Target action: STEP1
+x3_s0: Start state
+x3_s1: Target action: start
+x3_s2: Target action: waiting
+x3_s3: Target action: Attack mode transition
+x3_s3_e0: [General purpose] Sharing flag setting
+x3_s4: Lower: wandering movement_SubState
+x3_s5: Movement: Exit from stairs_SubState
+x3_s6: End state
+x4: Movement: wandering movement
+x4_s0: Start state
+x4_s1: Movement behavior: start
+x4_s1_e0: [Operation] Lock off
+x4_s1_e1: [Random number] Random number generation
+x4_s1_e2: [Timer] Start timer
+x4_s2: Movement behavior: Normal movement (clockwise)
+x4_s2_w0: [Move] Normal move random
+x4_s2_w1: [Move] Normal move random
+x4_s3: Movement behavior: stop (clockwise)
+x4_s3_e0: [Random number] Random number generation
+x4_s3_e1: [Timer] Start timer
+x4_s4: Movement behavior: turn around for a wall (clockwise)
+x4_s4_w0: [Move] Normal move random
+x4_s5: Movement behavior: reverse (clockwise → counterclockwise)
+x4_s5_w0: [Turning] Quick turn _ Direction designation
+x4_s6: Movement behavior: Normal movement (counterclockwise)
+x4_s6_w0: [Move] Normal move random
+x4_s6_w1: [Move] Normal move random
+x4_s7: Movement behavior: turning around the wall (counterclockwise)
+x4_s7_w0: [Move] Normal move random
+x4_s8: Movement behavior: stop (counterclockwise)
+x4_s8_e0: [Random number] Random number generation
+x4_s8_e1: [Timer] Start timer
+x4_s9: Movement behavior: reverse (counterclockwise → clockwise)
+x4_s9_w0: [Turning] Quick turn _ Direction designation
+x4_s10: End state
+x5: Target action: STEP2
+x5_s0: Start state
+x5_s1: Target action: start
+x5_s1_e0: [Operation] Lock on
+x5_s2: Target action: Branch after attack
+x5_s2_e0: [Random number] Random number generation
+x5_s3: Target action: avoidance
+x5_s3_w0: [Attack] Random avoidance_Angle designation
+x5_s4: Attack action_SubState
+x5_s5: End state
+x6: Attack behavior
+x6_s0: Start state
+x6_s1: Attack action: start
+x6_s2: Attack action: distance branch
+x6_s3: Attack action: Attack waiting
+x6_s3_w0: [Move] Horizontal move_Lock_Random
+x6_s4: Attack action: 0-5mL0-60R0-60
+x6_s4_e0: [Random number] Random number generation
+x6_s5: Attack action: 0-5mL60-180R60-180
+x6_s5_e0: [Random number] Random number generation
+x6_s6: Attack action: 5-12m
+x6_s6_e0: [Random number] Random number generation
+x6_s7: Attack action: 12-18m
+x6_s7_e0: [Random number] Random number generation
+x6_s8: Attack action: 18m-
+x6_s8_e0: [Random number] Random number generation
+x6_s9: [LIB] Attack action: Combo probability cancel: Combo 1: One-handed combo _SubState
+x6_s10: [LIB] Attack action: Combo probability cancel: Combo 2: One-handed (strong) Combo_SubState
+x6_s11: [LIB] Attack action: Combo probability cancel: Combo 3: One-handed down combo _SubState
+x6_s12: [LIB] Attack action: Combo probability cancellation: Combo 4: Both hands down combo _SubState
+x6_s13: [LIB] Attack: Move General: Combo 1_SubState
+x6_s14: [LIB] Attack: Move General: Combo 2_SubState
+x6_s15: [LIB] Attack: Move General: Combo 3_SubState
+x6_s16: [LIB] Attack: Move General: Combo 4_SubState
+x6_s17: [LIB] Attack: General purpose: Action 14: Jumping (no run-around) _SubState
+x6_s18: [LIB] Attack: General purpose: Action 15: Jump (with run) _SubState
+x6_s19: [LIB] Attack: General purpose: Action 20: Curse bullet _SubState from left hand
+x6_s20: Attack execution end state
+x6_s21: Attack not executed end state
+x7: Attacks on the fly: general purpose
+x7_p0: Attack timeout time
+x7_p1: Attack type
+x7_s0: Start state
+x7_s1: In-Place Attack: General: Start
+x7_s1_e0: [Timer] Start timer
+x7_s1_e1: [Move] Reset move failure
+x7_s1_e2: [Attack] Reset attack failure
+x7_s2: In-Place Attack: Generic: Execute
+x7_s2_w0: [Attack] Melee attack
+x7_s3: In-Place Attack: General Purpose: Standby
+x7_s4: In-situ attack: General purpose: Successful completion processing
+x7_s5: On-the-spot attack: General purpose: Failure end processing
+x7_s6: Attacks on the fly: Generic: Timeout processing
+x7_s7: Successful completion state
+x7_s8: Failure end state
+x7_s9: Timeout end state
+x8: Stair attack
+x8_p0: Minimum distance between ranged attacks
+x8_p1: Ranged maximum attack interval
+x8_p2: Timeout time
+x8_s0: Start state
+x8_s1: Stair attack: start
+x8_s1_e0: [Attack] Damage information reset
+x8_s1_e1: [Move] Reset move failure
+x8_s1_e2: [Attack] Reset attack failure
+x8_s1_e3: [Timer] Start timer
+x8_s1_e4: [Timer] Stop timer
+x8_s1_e5: [Timer] Start timer
+x8_s1_e6: [Random number] Random number generation
+x8_s2: Stair Attack: Movement Lottery
+x8_s2_e0: [Random number] Random number generation
+x8_s3: Stair attack: Leftward movement: with rays
+x8_s3_w0: [Move] Horizontal move_Lock_Random
+x8_s3_w1: [Move] Horizontal move_Lock_Random
+x8_s4: Stair attack: rightward movement: with ray
+x8_s4_w0: [Move] Horizontal move_Lock_Random
+x8_s4_w1: [Move] Horizontal move_Lock_Random
+x8_s5: Stair attack: Leftward movement: no ray
+x8_s5_w0: [Move] Horizontal move_Lock_Random
+x8_s6: Check generator direction
+x8_s6_w0: [Search] Generation Generator_Target Setting
+x8_s7: Target save
+x8_s7_e0: [Operation] Lock off
+x8_s7_w0: [Search] Save target
+x8_s8: Target load (left transition)
+x8_s8_x0: [Operation] Lock on
+x8_s8_w0: [Search] Load target
+x8_s9: Target load (right transition)
+x8_s9_x0: [Operation] Lock on
+x8_s9_w0: [Search] Load target
+x8_s10: Start disappearance time counting
+x8_s10_e0: [Timer] Start timer
+x8_s11: Elapsed time reset
+x8_s11_e0: [Timer] Start timer
+x8_s11_e1: [Timer] Stop timer
+x8_s12: Stair Attack: Line-of-sight / position determination
+x8_s13: Stair attack: rightward movement: no ray
+x8_s13_w0: [Move] Horizontal move_Lock_Random
+x8_s14: Search enemy: nearest player
+x8_s14_w0: [Search enemy] Character _ target setting
+x8_s15: Search enemy: host
+x8_s15_w0: [Search] Player_Target setting
+x8_s16: In-Place Attack: General Purpose (Navi Check): Action 20: Curse Bullet _SubState from Left Hand
+x8_s16_e0: [Random number] Random number generation
+x8_s16_x0: [Timer] Start timer
+x8_s17: [LIB] Attack action: Combo probability cancel: Both hands down combo _SubState
+x8_s18: On-the-spot attack: General purpose (navi check): Jumping (no run-around) _SubState
+x8_s19: [LIB] Attack action: Combo probability cancel: One hand swing down combo _SubState
+x8_s20: End state
+x9: Vigilance
+x9_s0: Start state
+x9_s1: Movement behavior: start
+x9_s1_e0: [Operation] Lock off
+x9_s1_e1: [Random number] Random number generation
+x9_s1_e2: [Timer] Start timer
+x9_s1_w0: [Search enemy] Character _ target setting
+x9_s2: Movement behavior: Normal movement (clockwise)
+x9_s2_w0: [Move] Normal move random
+x9_s3: Movement behavior: stop (clockwise)
+x9_s3_e0: [Random number] Random number generation
+x9_s3_e1: [Timer] Start timer
+x9_s3_w0: [Search enemy] Character _ target setting
+x9_s4: Movement behavior: turn around for a wall (clockwise)
+x9_s4_w0: [Move] Normal move random
+x9_s5: Movement behavior: reverse (clockwise → counterclockwise)
+x9_s5_w0: [Turning] Quick turn _ Direction designation
+x9_s6: Movement behavior: Normal movement (counterclockwise)
+x9_s6_w0: [Move] Normal move random
+x9_s7: Movement behavior: turning around the wall (counterclockwise)
+x9_s7_w0: [Move] Normal move random
+x9_s8: Movement behavior: stop (counterclockwise)
+x9_s8_e0: [Random number] Random number generation
+x9_s8_e1: [Timer] Start timer
+x9_s9: Movement behavior: reverse (counterclockwise → clockwise)
+x9_s9_w0: [Turning] Quick turn _ Direction designation
+x9_s10: Search enemy: closest order
+x9_s10_e0: [Timer] Start timer
+x9_s10_w0: [Search enemy] Character _ target setting
+x9_s11: End state
+x10: Movement: Exit from stairs
+x10_p0: Stair area ID
+x10_s0: Start state
+x10_s1: Exit from stairs: start
+x10_s1_e0: [Move] Reset move failure
+x10_s1_e1: [Attack] Combo attack cancel
+x10_s2: Departure from stairs: Navigation search: Generator
+x10_s2_e0: [Search] Navi mesh to generator
+x10_s3: Departure from stairs: Navigation search failure branch
+x10_s4: Exit from stairs: return to navigation
+x10_s4_w0: [Move] Move horizontally to the center of the navigation mesh
+x10_s5: Departure from stairs: Navigation (horizontal)
+x10_s5_w0: [Move] Horizontal move_Lock_Navimesh
+x10_s6: Departure from stairs: Random movement (horizontal)
+x10_s6_w0: [Move] Horizontal move_Lock_Random
+x10_s7: Exit from stairs: end processing
+x10_s7_e0: [Move] Reset move failure
+x10_s7_e1: [Attack] Reset attack failure
+x10_s8: End state
+x0: [LIB] Attack: General purpose
+x0_p0: Behavior type
+x0_p1: Attack distance
+x0_p2: Attack angle
+x0_s0: Start state
+x0_s1: Begin attack
+x0_s1_e0: [Movement] Movement prediction accuracy setting
+x0_s1_e1: [Move] Reset move failure
+x0_s1_e2: [Attack] Reset attack failure
+x0_s1_e3: [Timer] Start timer
+x0_s2: Attack: turn before attack
+x0_s2_w0: [Turning] Quick turn_Lock
+x0_s3: Attack: turn before moving
+x0_s3_w0: [Turning] Quick turn_Lock
+x0_s4: Attack: Normal movement
+x0_s4_w0: [Move] Lock move random
+x0_s5: Attack: dash
+x0_s5_w0: [Move] Dash_Lock_Random
+x0_s6: Attack: Search
+x0_s6_e0: [Search] Navimesh
+x0_s7: Attack: Navigating
+x0_s7_w0: [Move] Lock move Navi mesh
+x0_s8: Attack: Navi Dash
+x0_s8_w0: [Move] Dash_Lock_Navimesh
+x0_s9: Attack: Execute
+x0_s9_e0: [Attack] Melee attack
+x0_s10: Attack: Attack failed
+x0_s10_e0: [Platoon] Set the platoon flag
+x0_s11: Attack successful end state
+x0_s12: Attack failed end state
+x0_s13: Attack timeout end state
+x1: [LIB] Attack: general-purpose mobile
+x1_p0: Range distance
+x1_p1: Maximum range
+x1_p2: Attack time
+x1_p3: Attack launch angle
+x1_p4: Movement type
+x1_p5: Orientation adjustment type
+x1_p6: Sharp turning angle
+x1_p7: Analog strength
+x1_s0: Start state
+x1_s1: Begin attack
+x1_s1_e0: [Movement] Movement prediction accuracy setting
+x1_s1_e1: [Move] Reset move failure
+x1_s1_e2: [Attack] Reset attack failure
+x1_s1_e3: [Timer] Start timer
+x1_s2: Attack: turn before moving
+x1_s2_w0: [Turning] Quick turn_Lock
+x1_s3: Attack: Normal movement
+x1_s3_w0: [Move] Lock move random
+x1_s4: Attack: dash
+x1_s4_w0: [Move] Dash_Lock_Random
+x1_s5: Attack: Search
+x1_s5_e0: [Search] Navimesh
+x1_s6: Attack: Navigating
+x1_s6_w0: [Move] Lock move Navi mesh
+x1_s7: Attack: Navi Dash
+x1_s7_w0: [Move] Dash_Lock_Navimesh
+x1_s8: Attack: turn before attack
+x1_s8_w0: [Turning] Quick turn_Lock
+x1_s9: Attack: Attackable
+x1_s10: Attackable: End state
+x1_s11: Move failed: End state
+x1_s12: Timeout: termination state
+x2: [LIB] Attack action: Combo probability cancel
+x2_p0: Attack type
+x2_p1: Stop distance
+x2_p2: Stop angle
+x2_p3: Short navigation mesh check
+x2_p4: Second chance of suspension
+x2_p5: 3rd stop probability
+x2_p6: 4th stop probability
+x2_p7: Blade dash grace time
+x2_s0: Start state
+x2_s1: Begin attack
+x2_s1_e0: [Attack] Reset attack failure
+x2_s2: Attack: Combo execution
+x2_s2_e0: [Attack] Melee attack
+x2_s3: Attack: Combo first stage waiting
+x2_s4: Attack: First stage cancellation judgment
+x2_s4_e0: [Random number] Random number generation
+x2_s5: Attack: Second stage cancellation judgment
+x2_s5_e0: [Random number] Random number generation
+x2_s6: Attack: 3rd stage cancellation judgment
+x2_s6_e0: [Random number] Random number generation
+x2_s7: Attack: Combo end wait
+x2_s8: Attack: Cancel execution
+x2_s8_e0: [Attack] Combo attack cancel
+x2_s9: Attack: Successful end processing
+x2_s10: Attack: Failure end processing
+x2_s10_e0: [Attack] Combo attack cancel
+x2_s11: Successful completion state
+x2_s12: Failure end state

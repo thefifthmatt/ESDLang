@@ -1,0 +1,108 @@
+10: Top: Logic
+10_s0: Start state
+10_s1: Upper: Lower logic start
+10_s1_e0: [Movement] Movement prediction accuracy setting
+10_s2: High rank: search enemy
+10_s2_w0: [Search enemy] Character _ target setting
+10_s3: Top: with target
+10_s3_e0: [Operation] Lock on
+10_s4: Upper: Switch lower
+10_s4_e0: [General] lower-level state map switching
+20: Lower: Parry Break
+20_s0: Start state
+20_s1: [Verification] Parry system_SubState
+30: Lower: Parry Breakstab
+30_s0: Start state
+30_s1: [Verification] Parry system_SubState
+40: Lower: Parry Breakstab (for forgotten sinners)
+40_s0: Start state
+40_s1: [Verification] Parry system_SubState
+16: Lower: Parry action 16
+16_s0: Start state
+16_s1: [LIB] Attack: Parry_SubState
+60: Lower: counter
+60_s0: Start state
+60_s1: [LIB] Attack: Counter_SubState
+15: Lower: Parry action 15
+15_s0: Start state
+15_s1: [LIB] Attack: Parry_SubState
+17: Lower: Parry Action 17
+17_s0: Start state
+17_s1: [LIB] Attack: Parry_SubState
+18: Lower: Parry action 18
+18_s0: Start state
+18_s1: [LIB] Attack: Parry_SubState
+19: Lower: Parry Action 19
+19_s0: Start state
+19_s1: [LIB] Attack: Parry_SubState
+11: Lower: Parry action 11
+11_s0: Start state
+11_s1: [LIB] Attack: Parry_SubState
+12: Lower: Parry Action 12
+12_s0: Start state
+12_s1: [LIB] Attack: Parry_SubState
+13: Lower: Parry action 13
+13_s0: Start state
+13_s1: [LIB] Attack: Parry_SubState
+14: Lower: Parry Action 14
+14_s0: Start state
+14_s1: [LIB] Attack: Parry_SubState
+9: Lower: Parry Action 10
+9_s0: Start state
+9_s1: [LIB] Attack: Parry_SubState
+x0: [Verification] Parry system
+x0_p0: Action ID
+x0_p1: Parry activation distance
+x0_s0: Start state
+x0_s1: Parry: ready
+x0_s1_e0: [Attack] Defense
+x0_s2: Parry action
+x0_s2_e0: [Attack] Melee attack
+x0_s3: Parry: finished
+x0_s3_e0: [Attack] Defense
+x0_s4: End state
+x1: [Verification] Attack: Counter
+x1_p0: Action ID
+x1_p1: Distance
+x1_p2: End distance
+x1_p3: Minimum time
+x1_p4: Maximum time
+x1_s0: Start state
+x1_s1: Counter: ready
+x1_s1_e0: [Attack] Defense
+x1_s1_e1: [Random number] Random number generation
+x1_s1_e2: [Timer] Start timer
+x1_s1_e3: [Attack] Damage lower logic reset setting
+x1_s2: Counter: Attack
+x1_s3: Counter: End
+x1_s3_e0: [Attack] Defense
+x1_s3_e1: [Attack] Damage lower logic reset setting
+x1_s3_e2: [Attack] Damage information reset
+x1_s4: Counter: Move
+x1_s4_e0: [Move] Reset move failure
+x1_s4_w0: [Move] Horizontal move_Lock_Random
+x1_s4_w1: [Move] Horizontal move_Lock_Random
+x1_s5: Counter: Waiting for attack
+x1_s5_w0: [Attack] Melee attack
+x1_s6: End state
+x2: [LIB] Attack: Parry
+x2_p0: Action ID
+x2_p1: Parry activation distance
+x2_p2: Parry distance
+x2_p3: Parry end distance
+x2_p4: Minimum time
+x2_p5: Maximum time
+x2_p6: Timer ID
+x2_s0: Start state
+x2_s1: Parry: ready
+x2_s1_e0: [Attack] Defense
+x2_s1_e1: [Timer] Start timer
+x2_s2: Parry: Attack
+x2_s2_e0: [Attack] Melee attack
+x2_s3: Parry: finished
+x2_s3_e0: [Attack] Defense
+x2_s4: Parry: Move
+x2_s4_e0: [Move] Reset move failure
+x2_s4_w0: [Move] Horizontal move_Lock_Random
+x2_s4_w1: [Move] Horizontal move_Lock_Random
+x2_s5: End state

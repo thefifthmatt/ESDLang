@@ -1,0 +1,297 @@
+100: For confirmation
+100_s0: Start state
+100_s1: Waiting
+100_s2: Status
+100_s3: Standby 2
+100_s4: Action 13: Unguardable attack_SubState
+100_s5: Action 22: Dead vomit tar_SubState
+100_s6: Action 11: Roofing_SubState
+100_s7: Action 16: Pay with a kitchen knife_SubState
+20: Lower state: STEP1
+20_s0: Start state
+20_s1: Lower state: action start
+20_s2: Lower state: search flag setting
+20_s2_e0: [General purpose] Sharing flag setting
+20_s3: Lower state: STEP transition judgment
+20_s4: Lower state: end judgment
+20_s4_e0: [General purpose] Sharing flag setting
+20_s5: Lower state: HP judgment
+20_s5_e0: [General purpose] Sharing flag setting
+20_s6: Lower state: End of battle
+20_s7: Target action: STEP1 action_SubState
+20_s7_e0: [General purpose] Sharing flag setting
+10: Lower state: Initial start
+10_s0: Start state
+10_s1: Substate: Start
+10_s2: Lower state: Initial setting
+10_s2_e0: [Attack] Damage lower logic reset setting
+10_s2_e1: [Attack] Resident damage type setting
+10_s2_e2: [General] Become a group leader
+10_s2_e3: [Platoon] Set the platoon flag
+10_s2_e4: [Platoon] Set the platoon flag
+10_s3: Target action: First action branch
+10_s4: Lower state: Initial wait
+10_s5: Lower state: Initial termination
+10_s5_e0: [General purpose] Sharing flag setting
+10_s5_e1: [General purpose] Sharing flag setting
+10_s5_e2: [General purpose] Sharing flag setting
+10_s5_e3: [General purpose] Sharing flag setting
+x2: Action 11: Roof splitting
+x2_s0: Start state
+x2_s1: Arm branch
+x2_s2: Melee Attack [Improved]: Action 11: Roofing _SubState
+x2_s3: Successful Attack: End State
+x2_s4: Attack failed: end state
+x3: Action 12: All directions
+x3_s0: Start state
+x3_s1: Arm branch
+x3_s2: Melee Attack [Improved]: Action 12: Omnidirectional Nipple_SubState
+x3_s3: Melee Attack [Improved]: Action 12: Stripping in all directions: Right arm destruction _SubState
+x3_s4: Successful Attack: End State
+x3_s5: Attack failed: end state
+x4: Action 13: Unguardable attack
+x4_s0: Start state
+x4_s1: Arm branch
+x4_s2: Melee Attack [Improved]: Action 13: Unguardable Attack _SubState
+x4_s3: Melee Attack [Improved]: Action 13: Impossible Guard Attack: Right Arm Destruction_SubState
+x4_s4: Successful Attack: End State
+x4_s5: Attack failed: end state
+x5: Action 14: Sudden approach attack
+x5_s0: Start state
+x5_s1: Arm branch
+x5_s2: Melee Attack [Improved]: Action 14: Sudden Attack _SubState
+x5_s3: Melee Attack [Improved]: Action 14: Rapid Attack: Right Arm Destruction_SubState
+x5_s4: Successful Attack: End State
+x5_s5: Attack failed: end state
+x6: Action 15: Grasp immediately
+x6_s0: Start state
+x6_s1: Arm branch
+x6_s2: Melee Attack [Improved]: Action 15: Grab Immediate Death_SubState
+x6_s3: Successful Attack: End State
+x6_s4: Attack failed: end state
+x7: Action 16: Pay with a kitchen knife
+x7_s0: Start state
+x7_s1: Arm branch
+x7_s2: Melee attack [improved]: Action 16: Pay with kitchen knife_SubState
+x7_s3: Melee Attack [Improved]: Action 16: Pay with kitchen knife: Right arm destroyed _SubState
+x7_s4: Successful Attack: End State
+x7_s5: Attack failed: end state
+x8: Action 22: Dead vomit tar
+x8_s0: Start state
+x8_s1: Arm branch
+x8_s2: [LIB] Attack: Turning Attack: Action 22: Dead vomits tar_SubState
+x8_s3: Successful Attack: End State
+x8_s4: Attack failed: end state
+x9: Combo 3: Three-stage stamp
+x9_s0: Start state
+x9_s1: Arm branch
+x9_s2: Melee Attack [Improved]: Combo 3: 3-stage stamp_SubState
+x9_s3: Melee Attack [Improved]: Combo 3: 3-stage Stamp: Right Arm Destruction_SubState
+x9_s4: Successful Attack: End State
+x9_s5: Attack failed: end state
+x10: Combo 1: Hit left and right continuously
+x10_s0: Start state
+x10_s1: Arm branch
+x10_s2: Melee Attack [Improved]: Combo 1: Hit left and right continuously_SubState
+x10_s3: Successful Attack: End State
+x10_s4: Attack failed: end state
+x11: Combo 2: Three-stage stamp (pawl)
+x11_s0: Start state
+x11_s1: Arm branch
+x11_s2: Melee Attack [Improved]: Combo 2: Three-stage stamp (pawl) _SubState
+x11_s3: Melee Attack [Improved]: Combo 2: 3-stage stamp (leave): Right arm destruction _SubState
+x11_s4: Successful Attack: End State
+x11_s5: Attack failed: end state
+x12: Target action: STEP1 action
+x12_s0: Start state
+x12_s1: Step action: start
+x12_s1_e0: [Attack] Damage lower logic reset setting
+x12_s2: Step action: Normal branch
+x12_s3: Step action: end
+x12_s4: Step action: part destruction / regeneration
+x12_s4_e0: [Random number] Random number generation
+x12_s5: Step action: right arm destruction
+x12_s5_e0: [Platoon] Set the platoon flag
+x12_s5_e1: [Timer] Start timer
+x12_s6: Step action: left arm destruction
+x12_s6_e0: [Platoon] Set the platoon flag
+x12_s6_e1: [Timer] Start timer
+x12_s7: Step action: left arm regeneration
+x12_s7_e0: [Attack] Melee attack
+x12_s8: Step action: right arm regeneration
+x12_s8_e0: [Attack] Melee attack
+x12_s9: Step action: both arms play
+x12_s9_e0: [Attack] Melee attack
+x12_s10: Step action: right arm regeneration standby
+x12_s10_e0: [Platoon] Set the platoon flag
+x12_s11: Step action: left arm regeneration standby
+x12_s11_e0: [Platoon] Set the platoon flag
+x12_s12: Step action: Both arms play standby
+x12_s12_e0: [Platoon] Set the platoon flag
+x12_s12_e1: [Platoon] Set the platoon flag
+x12_s13: Step action: branch after attack
+x12_s13_e0: [Random number] Random number generation
+x12_s14: Step action: retreat after attack
+x12_s14_e0: [Random number] Random number generation
+x12_s14_w0: [Move] Horizontal move_Lock_Random
+x12_s15: Step action: Priority branch ①
+x12_s15_e0: [Random number] Random number generation
+x12_s16: Step action: Priority branch ②
+x12_s16_e0: [Random number] Random number generation
+x12_s17: Close range attack_SubState
+x12_s18: Short range attack_SubState
+x12_s19: Medium Range Attack_SubState
+x12_s20: Ranged Attack_SubState
+x12_s21: Combo 1: Hit the left and right continuously_SubState
+x12_s22: Action 23: Release the Miasma_SubState
+x12_s23: End state
+x13: Action 23: Release the miasma
+x13_s0: Start state
+x13_s1: Arm branch
+x13_s2: Melee Attack [Improved]: Action 23: Release the Miasma_SubState
+x13_s3: Successful Attack: End State
+x13_s4: Attack failed: end state
+x14: Melee attack [improved]
+x14_p0: Attack type
+x14_p1: Attack distance
+x14_p2: Attack angle
+x14_p3: Shield chic switch
+x14_p4: Walking distance
+x14_p5: Attack stop distance
+x14_s0: Start state
+x14_s1: Begin attack
+x14_s1_e0: [Attack] Defense
+x14_s1_e1: [Timer] Start timer
+x14_s1_e2: [Move] Reset move failure
+x14_s2: Attack: level branch
+x14_s3: Attack: End
+x14_s3_e0: [Attack] Defense
+x14_s4: Attack: Search
+x14_s4_e0: [Search] Navimesh
+x14_s5: Attack: Navigation walking
+x14_s5_w0: [Move] Lock move Navi mesh
+x14_s6: Attack: Navi Dash
+x14_s6_w0: [Move] Dash_Lock_Navimesh
+x14_s7: Attack: Standby
+x14_s8: Attack: Angle adjustment
+x14_s9: Attack: attack turn
+x14_s9_w0: [Turning] Quick turn_Lock
+x14_s10: Attack: distance branch
+x14_s11: Attack: walking
+x14_s11_w0: [Move] Lock move random
+x14_s12: Attack: dash
+x14_s12_w0: [Move] Dash_Lock_Random
+x14_s13: Attack: Moving and turning
+x14_s13_w0: [Turning] Quick turn_Lock
+x14_s14: [LIB] Attack action: Combo probability cancel [Lv1] _SubState
+x14_s15: Success: End state
+x14_s16: Failure: termination state
+x15: Close range attack
+x15_s0: Start state
+x15_s1: Close draw: branch
+x15_s1_e0: [Random number] Random number generation
+x15_s2: Combo 2: Three-stage stamp (pawl) _SubState
+x15_s3: Combo 3: Three-stage stamp_SubState
+x15_s4: Action 11: Roofing_SubState
+x15_s5: Action 12: Omni-directional elimination_SubState
+x15_s6: Action 13: Unguardable attack_SubState
+x15_s7: Action 15: Immediate death grab_SubState
+x15_s8: Action 16: Pay with a kitchen knife_SubState
+x15_s9: Action 22: Dead vomit tar_SubState
+x15_s10: Action 23: Release the Miasma_SubState
+x15_s11: Successful Attack: End State
+x15_s12: Lottery Failure: End State
+x15_s13: Attack failed: end state
+x16: Short range attack
+x16_s0: Start state
+x16_s1: Near lottery: branch
+x16_s1_e0: [Random number] Random number generation
+x16_s2: Combo 2: Three-stage stamp (pawl) _SubState
+x16_s3: Combo 3: Three-stage stamp_SubState
+x16_s4: Action 11: Roofing_SubState
+x16_s5: Action 12: Omni-directional elimination_SubState
+x16_s6: Action 13: Unguardable attack_SubState
+x16_s7: Action 15: Immediate death grab_SubState
+x16_s8: Action 16: Pay with a kitchen knife_SubState
+x16_s9: Action 22: Dead vomit tar_SubState
+x16_s10: Action 14: Rapid approach attack_SubState
+x16_s11: Successful Attack: End State
+x16_s12: Attack failed: end state
+x16_s13: Lottery Failure: End State
+x17: Medium range attack
+x17_s0: Start state
+x17_s1: Middle lottery: Branch
+x17_s1_e0: [Random number] Random number generation
+x17_s2: Combo 2: Three-stage stamp (pawl) _SubState
+x17_s3: Combo 3: Three-stage stamp_SubState
+x17_s4: Action 11: Roofing_SubState
+x17_s5: Action 12: Omni-directional elimination_SubState
+x17_s6: Action 13: Unguardable attack_SubState
+x17_s7: Action 15: Immediate death grab_SubState
+x17_s8: Action 16: Pay with a kitchen knife_SubState
+x17_s9: Action 14: Rapid approach attack_SubState
+x17_s10: Successful Attack: End State
+x17_s11: Attack failed: end state
+x17_s12: Lottery Failure: End State
+x18: Ranged attack
+x18_s0: Start state
+x18_s1: Long lottery: branch
+x18_s1_e0: [Random number] Random number generation
+x18_s2: Combo 2: Three-stage stamp (pawl) _SubState
+x18_s3: Combo 3: Three-stage stamp_SubState
+x18_s4: Action 11: Roofing_SubState
+x18_s5: Action 12: Omni-directional elimination_SubState
+x18_s6: Action 13: Unguardable attack_SubState
+x18_s7: Action 15: Immediate death grab_SubState
+x18_s8: Action 16: Pay with a kitchen knife_SubState
+x18_s9: Action 14: Rapid approach attack_SubState
+x18_s10: Successful Attack: End State
+x18_s11: Attack failed: end state
+x18_s12: Lottery Failure: End State
+x0: [LIB] Attack action: Combo probability cancel
+x0_p0: Attack type
+x0_p1: Stop distance
+x0_p2: Stop angle
+x0_p3: Short navigation mesh check
+x0_p4: Second chance of suspension
+x0_p5: 3rd stop probability
+x0_p6: 4th stop probability
+x0_p7: Blade dash grace time
+x0_s0: Start state
+x0_s1: Begin attack
+x0_s1_e0: [Attack] Reset attack failure
+x0_s2: Attack: Combo execution
+x0_s2_e0: [Attack] Melee attack
+x0_s3: Attack: Combo first stage waiting
+x0_s4: Attack: First stage cancellation judgment
+x0_s4_e0: [Random number] Random number generation
+x0_s5: Attack: Second stage cancellation judgment
+x0_s5_e0: [Random number] Random number generation
+x0_s6: Attack: 3rd stage cancellation judgment
+x0_s6_e0: [Random number] Random number generation
+x0_s7: Attack: Combo end wait
+x0_s8: Attack: Cancel execution
+x0_s8_e0: [Attack] Combo attack cancel
+x0_s9: Attack: Successful end processing
+x0_s10: Attack: Failure end processing
+x0_s10_e0: [Attack] Combo attack cancel
+x0_s11: Successful completion state
+x0_s12: Failure end state
+x1: [LIB] Attack: Turning attack
+x1_p0: Attack type
+x1_p1: Shooting angle
+x1_p2: Sharp turning angle
+x1_p3: time out
+x1_p4: Position prediction accuracy
+x1_p5: Walking fire
+x1_s0: Start state
+x1_s1: Begin attack
+x1_s1_e0: [Timer] Start timer
+x1_s2: Attack: sharp turn
+x1_s2_w0: [Turning] Quick turn_Lock
+x1_s3: Attack: Turning
+x1_s3_w0: [Turning] Turning in place_Lock
+x1_s4: Attack: Under attack
+x1_s4_e0: [Attack] Melee attack
+x1_s5: Attack: End
+x1_s6: End state

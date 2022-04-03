@@ -1,0 +1,39 @@
+10: Higher state
+10_s0: Start state
+10_s1: Upper state: target judgment
+10_s2: Higher state: start
+10_s3: Upper state: setting
+10_s3_e0: [General] lower-level state map switching
+10_s4: [LIB] Search enemy: General purpose _SubState
+20: Lower state
+20_s0: Start state
+20_s1: Substate: Start
+20_s2: Damipoli Check (salamander head) _SubState
+20_s3: Damipoli Check (Salamander Tail) _SubState
+x1: Damipoli Check (salamander head)
+x1_s0: Start state
+x1_s1: Damipoli Check (Salamander: Head): Start
+x1_s2: Damipoli Check (salamander: head): Judgment
+x1_s3: Damipoli check (salamander: head): Angle judgment
+x1_s4: Damipoli check (salamander: head): distance judgment
+x1_s5: Damipoli check (salamander: head): waiting
+x1_s6: End state
+x2: Damipoli check (salamander tail)
+x2_s0: Start state
+x2_s1: Damipoli Check (salamander: tail): Start
+x2_s2: Damipoli Check (salamander: tail): Judgment
+x2_s3: Damipoli Check (salamander: tail): Angle judgment
+x2_s4: Damipoli Check (Salamander: Tail): Distance judgment
+x2_s5: Damipoli Check (salamander: tail): Standby
+x2_s6: End state
+x0: [LIB] Search: FC
+x0_p0: Maximum search distance
+x0_p1: Search priority
+x0_s0: Start state
+x0_s1: Search enemy (general purpose): Start
+x0_s1_e0: [Operation] Lock off
+x0_s2: Search enemy (general purpose): Normal setting
+x0_s2_e0: [Attack] Damage type reset
+x0_s2_w0: [Search enemy] Character _ target setting
+x0_s3: End state_Target not found
+x0_s4: End state_Target found

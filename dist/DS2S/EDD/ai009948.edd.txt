@@ -1,0 +1,88 @@
+20: Lower: enemy attack
+20_s0: Start state
+20_s1: Lower: Start
+20_s1_e0: [Movement] Movement prediction accuracy setting
+20_s2: Lower: branch
+20_s3: Lower: action waiting
+20_s3_w0: [Turning] Turning in place_Lock
+20_s4: Short distance action_SubState
+20_s5: Long distance action_SubState
+10: Lower: PC attendant
+10_s0: Start state
+10_s1: Lower: Start
+10_s1_e0: [Movement] Movement prediction accuracy setting
+10_s2: Lower: branch
+10_s3: PC follower move_SubState
+x0: Short range action
+x0_s0: Start state
+x0_s1: Short range action: start
+x0_s2: Short-distance action: branch
+x0_s3: Near: Attack _SubState
+x0_s4: Near: Retreat_SubState
+x0_s5: Before Attack: Pause _SubState
+x0_s6: End state
+x1: Nearby: attack
+x1_s0: Start state
+x1_s1: Begin attack
+x1_s2: Attack: Attack waiting
+x1_s3: Combo 1
+x1_s3_w0: [Attack] Melee attack
+x1_s4: End state
+x2: Near: retreat
+x2_s0: Start state
+x2_s1: Retreat: start
+x2_s2: Retreat: Retreating
+x2_s2_e0: [Random number] Random number generation
+x2_s2_w0: [Move] Horizontal move_Lock_Random
+x2_s3: Retreat: End
+x2_s4: Timer 2 start_SubState
+x2_s5: Timer 2 stop_SubState
+x2_s6: End state
+x3: Start timer 2
+x3_s0: Start state
+x3_s1: Timer 2: Start
+x3_s1_e0: [Timer] Start timer
+x3_s2: Timer 2: End
+x3_s3: End state
+x4: Timer 2 stop
+x4_s0: Start state
+x4_s1: Timer 2: Stop
+x4_s1_e0: [Timer] Stop timer
+x4_s2: Timer 2: End
+x4_s3: End state
+x5: Before the attack: Pause
+x5_s0: Start state
+x5_s1: Pause: Start
+x5_s2: Padding: distance discrimination
+x5_s3: Close packing: near
+x5_s3_w0: [Move] Lock horizontally to the target correction position
+x5_s4: Pause: Navigation search
+x5_s4_e0: [Search] Navimesh
+x5_s5: Pause: Navi failed
+x5_s5_w0: [Move] Lock to target correction position
+x5_s6: Closed: Navi successful
+x5_s6_w0: [Move] Horizontal move_Navimesh
+x5_s7: Close-up: finished
+x5_s8: End state
+x6: Long distance action
+x6_s0: Start state
+x6_s1: Long distance: start
+x6_s2: Long distance: Navigation search
+x6_s2_e0: [Search] Navimesh
+x6_s3: Long distance: navigation failure movement
+x6_s3_w0: [Move] Normally move to the target world correction position
+x6_s4: Long Distance: Successful Navigation
+x6_s4_w0: [Move] Lock move Navi mesh
+x6_s5: Long distance: end
+x6_s6: End state
+x7: PC valet move
+x7_s0: Start state
+x7_s1: PC attendant: start
+x7_s2: PC attendant: Navimesh
+x7_s2_e0: [Search] Navimesh
+x7_s3: PC attendant: Navigation successful move
+x7_s3_w0: [Move] Normal move Navi mesh
+x7_s4: PC attendant: Navi failed
+x7_s4_w0: [Move] Normally move to the target world correction position
+x7_s5: PC attendant: Standby
+x7_s6: End state

@@ -1,0 +1,73 @@
+10: Lower logic: two-handed sword
+10_s0: Start state
+10_s1: Substate: Start
+10_s1_e0: [Operation] Lock on
+10_s2: Lower state: Initial setting
+10_s2_e0: [Attack] Damage lower logic reset setting
+10_s2_e1: [General purpose] Sharing flag setting
+10_s2_e2: [General purpose] Sharing flag setting
+10_s3: Substate: Wait
+10_s4: Attack action: door possession _SubState
+1000: Lower logic: door (BK)
+1000_s0: Start state
+1000_s1: Substate: Start
+1000_s2: Lower state: Initial setting
+1000_s2_e0: [Attack] Damage lower logic reset setting
+1000_s2_e1: [General purpose] Sharing flag setting
+1000_s2_e2: [General purpose] Sharing flag setting
+1000_s2_w0: [Attack] Melee attack
+1000_s3: Attack action: door possession _SubState
+1000_s4: [Move] Warp_SubState
+300: First Contact: Surprise: General Purpose: Normal
+300_s0: Start state
+300_s1: Substate: Start
+300_s2: Lower: First contact
+300_s3: Lower: turning
+300_s3_w0: [Turning] Quick turn_Lock
+300_s4: [LIB] Initial termination setting_SubState
+300_s5: [LIB] Attack: Single issue: General purpose (two-handed sword: thrust) _SubState
+x2: Attack action: Two-handed sword
+x2_s0: Start state
+x2_s1: Attack action: start
+x2_s1_e0: [Random number] Random number generation
+x2_s2: Attack action: short-distance branch
+x2_s3: [LIB] Attack: Action 10: Thrust_SubState
+x2_s4: [LIB] Attack: Action 11: Nagi_SubState
+x2_s5: [LIB] Attack: Action 12: Defeat _SubState
+x2_s6: Attack failed end state
+x2_s7: Attack successful end state
+x3: [Move] Warp
+x3_p0: Moving area start ID
+x3_p1: Moving area end ID
+x3_p2: Behavior type
+x3_p3: Warp limit distance
+x3_p4: Warp wait time
+x3_s0: Start state
+x3_s1: Warp: Preparation
+x3_s1_w0: [Attack] Melee attack
+x3_s2: Warp: Execute
+x3_s2_e0: [Operation] Lock list
+x3_s2_e1: [Move] Warp
+x3_s3: Warp: Wait
+x3_s3_e0: [Attack] Attack cancel
+x3_s3_e1: [Operation] Lock list
+x3_s3_e2: [General purpose] Sharing flag setting
+x3_s4: Warp: Branch
+x3_s4_e0: [General purpose] Sharing flag setting
+x3_s4_w0: [Search Enemies] Make your target the player who is updating you
+x3_s5: Warp: Cancel
+x3_s6: End state
+x0: [LIB] Initial termination setting
+x0_s0: Start state
+x0_s1: Initial end setting: Start
+x0_s1_e0: [General purpose] Sharing flag setting
+x0_s2: End state
+x1: [LIB] Attack: Single issue: General purpose
+x1_p0: Attack type
+x1_p1: Short navigation mesh check
+x1_s0: Start state
+x1_s1: Attack: Under attack
+x1_s1_e0: [Attack] Melee attack
+x1_s2: Attack: Cancel wait
+x1_s3: Attack: Success: End state
+x1_s4: Attack: Failure: End state

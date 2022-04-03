@@ -1,0 +1,93 @@
+10: Upper logic
+10_s0: Start state
+10_s1: Top: Start
+10_s1_e0: [Search enemy] Character _ target setting
+10_s2: Higher rank: search enemy ON
+10_s2_e0: [Operation] Lock on
+10_s3: Top rank: search off
+10_s3_e0: [Operation] Lock off
+10_s4: Top: with target
+10_s5: Top: no target
+10_s6: Top: death
+10_s6_e0: [Operation] death request
+10_s7: Upper: State start
+10_s7_e0: [General] lower-level state map switching
+20: Lower logic
+20_s0: Start state
+20_s1: Lower logic: start
+20_s2: Action: Move test _SubState
+20_s3: Action: Avoid_SubState
+20_s4: Action: Bullet avoidance _SubState
+20_s5: Action: Omnidirectional rolling _SubState
+20_s6: Action: Omnidirectional Step_SubState
+x0: Action: Move test
+x0_s0: Start state
+x0_s1: Dash lock random
+x0_s1_w0: [Move] Dash_Lock_Random
+x0_s2: End state
+x1: Action: Avoidance
+x1_s0: Start state
+x1_s1: Start evasion
+x1_s1_e0: [Random number] Random number generation
+x1_s2: rolling
+x1_s2_w0: [Attack] Random avoidance_Angle designation
+x1_s2_p1_0: [General purpose] Sharing flag setting
+x1_s2_p1_1: [Debug] Log output
+x1_s3: Steps
+x1_s3_w0: [Attack] Random avoidance_Angle designation
+x1_s4: Waiting
+x1_s5: End of step
+x1_s6: Status
+x1_s7: End state
+x2: Action: Barret avoidance
+x2_s0: Start state
+x2_s1: Start evasion
+x2_s1_e0: [Random number] Random number generation
+x2_s2: rolling
+x2_s2_w0: [Attack] Random avoidance
+x2_s2_p1_0: [General purpose] Sharing flag setting
+x2_s2_p1_1: [Debug] Log output
+x2_s3: Steps
+x2_s3_w0: [Attack] Random avoidance
+x2_s3_p1_0: [General purpose] Sharing flag setting
+x2_s3_p1_1: [Debug] Log output
+x2_s4: Waiting
+x2_s5: End state
+x3: Action: Omnidirectional avoidance test
+x3_p0: Avoid type
+x3_s0: Start state
+x3_s1: Omnidirectional avoidance: start
+x3_s2: Omnidirectional avoidance: front
+x3_s2_e0: [Debug] Log output
+x3_s2_w0: [Attack] Random avoidance
+x3_s3: Omnidirectional avoidance: waiting in front
+x3_s4: Omnidirectional avoidance: left
+x3_s4_e0: [Debug] Log output
+x3_s4_w0: [Attack] Random avoidance
+x3_s5: Omnidirectional avoidance: left standby
+x3_s6: Omnidirectional avoidance: after
+x3_s6_e0: [Debug] Log output
+x3_s6_w0: [Attack] Random avoidance
+x3_s7: Avoid all directions: wait after
+x3_s8: Omnidirectional avoidance: right
+x3_s8_e0: [Debug] Log output
+x3_s8_w0: [Attack] Random avoidance
+x3_s9: Omnidirectional avoidance: Standby right
+x3_s10: Omnidirectional avoidance: Standby
+x3_s11: Omnidirectional avoidance: front left
+x3_s11_e0: [Debug] Log output
+x3_s11_w0: [Attack] Random avoidance
+x3_s12: Omnidirectional avoidance: Left front standby
+x3_s13: Omnidirectional avoidance: rear left
+x3_s13_e0: [Debug] Log output
+x3_s13_w0: [Attack] Random avoidance
+x3_s14: Omnidirectional avoidance: Left rear standby
+x3_s15: Omnidirectional avoidance: right rear
+x3_s15_e0: [Debug] Log output
+x3_s15_w0: [Attack] Random avoidance
+x3_s16: Avoiding all directions: Waiting right behind
+x3_s17: Omnidirectional avoidance: right front
+x3_s17_e0: [Debug] Log output
+x3_s17_w0: [Attack] Random avoidance
+x3_s18: Omnidirectional avoidance: waiting in front of right
+x3_s19: End state
