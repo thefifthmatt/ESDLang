@@ -188,9 +188,10 @@ Finally, here are some recommended workflows:
 
 ### Decompiling the entire game
 
-1. Copy all game talkesdbnds into a different directory where you can safely browse and modify files
-2. Select all of the talkesdbnds and drag them into esdtool.exe together
-3. When prompted, enter a directory name like `py` or `all` or `esds` to place all decompiled files
+1. Copy oo2core_6_win64.dll from your game directory into the esdtool directory for Sekiro or Elden Ring
+2. Copy all game talkesdbnds into a different directory where you can safely browse and modify files
+3. Select all of the talkesdbnds and drag them into esdtool.exe together
+4. When prompted, enter a directory name like `py` or `all` or `esds` to place all decompiled files
 
 ### Recompiling the entire game
 
