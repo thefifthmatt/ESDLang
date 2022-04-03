@@ -18,7 +18,7 @@ There are two officially supported ways to run esdtool.exe:
 
 2. Open a command line console, navigate to the esdtool directory, and run esdtool.exe as a command line program.
 
-   See [Command Line Arguments](#command-line-arguments).
+   See [Command Line Flags](#command-line-flags).
 
 Double-clicking on esdtool.exe won't do anything. It needs arguments.
 
