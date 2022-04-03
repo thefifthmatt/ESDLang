@@ -337,6 +337,12 @@
         <Command Bank="1" ID="4" Name="StopTimer" Description=""/>
     </CommandList>
     <FunctionList>
+        <Function ID="1" Name="GetRandomValue" Description=""/>
+        <Function ID="2" Name="GetTimerValue" Description="Unused"/>
+        <Function ID="3" Name="GetStateTime" Description=""/>
+        <Function ID="4" Name="GetRandomValueForStateTime" Description=""/>
+        <Function ID="5" Name="GetCommonParameters" Description="Unused"/>
+        <Function ID="6" Name="GetEventFlag" Description=""/>
         <Function ID="130001" Name="ClampInt" Description=""/>
         <Function ID="130002" Name="ClampDecimal" Description=""/>
         <Function ID="130031" Name="EventEnded" Description=""/>
@@ -462,12 +468,6 @@
         <Function ID="132271" Name="JumpButtonL3Enabled" Description=""/>
         <Function ID="140001" Name="ConditionGroup" Description=""/>
         <Function ID="140002" Name="HostConditionGroup" Description=""/>
-        <Function ID="1" Name="GetRandomValue" Description=""/>
-        <Function ID="2" Name="GetTimerValue" Description="Unused"/>
-        <Function ID="3" Name="GetStateTime" Description=""/>
-        <Function ID="4" Name="GetRandomValueForStateTime" Description=""/>
-        <Function ID="5" Name="GetCommonParameters" Description="Unused"/>
-        <Function ID="6" Name="GetEventFlag" Description=""/>
     </FunctionList>
     <EnumList>
     </EnumList>

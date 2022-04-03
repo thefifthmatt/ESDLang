@@ -37,6 +37,10 @@ namespace ESDLang.Script
                     {
                         cond.Expr = cond.Expr.Visit(visitor);
                     }
+                    if (cond.Pass != null)
+                    {
+                        cond.Pass.Visit(visitor);
+                    }
                     VisitConds(visitor, cond.Sub);
                 }
             }
@@ -166,11 +170,22 @@ namespace ESDLang.Script
         {
             public override bool IsEmpty() => true;
         }
+        public enum ProgAnnotationType
+        {
+            // State marker: assign state ids
+            States,
+            // Pass block marker: use a pass block instead of creating a new state
+            Pass,
+            // Unused content marker: does nothing
+            Unused,
+        }
         public class ProgAnnotation : ProgramNode
         {
+            public ProgAnnotationType Type { get; set; }
             // Should this be its own node? Or attached to another node?
             // It's a bit hacky now to either show or not show it
             public List<int> States = new List<int>();
+            // EDD docs for the states here
             public List<string> StateDoc = new List<string>();
             public override bool IsEmpty() => true;
         }
@@ -265,7 +280,9 @@ namespace ESDLang.Script
         {
             string col = "  ";
             string sp = string.Concat(Enumerable.Repeat(col, d));
-            Console.WriteLine($"{sp}{(node.State == -1 ? "" : $"{node.State}: ")}{node}");
+            string extraInfo = "";
+            if (node is ProgBlock block) extraInfo = $" ({block.Statements.Count} statements)";
+            Console.WriteLine($"{sp}{(node.State == -1 ? "" : $"{node.State}: ")}{node}{extraInfo}");
             if (node is ProgSeq seq)
             {
                 foreach (ProgramNode sub in seq.Nodes)
@@ -289,6 +306,7 @@ namespace ESDLang.Script
             {
                 DebugProgramNode(loop.Node, d + 1);
             }
+            if (d == 0) Console.WriteLine();
         }
 
         public static void PrintProgramNode(ProgramNode node, int indent, Dictionary<string, string> replace, Universe u = null)
@@ -310,9 +328,20 @@ namespace ESDLang.Script
             }
             if (node is ProgAnnotation label)
             {
-                string stateDoc = label.StateDoc.Count == 0 ? null : label.StateDoc.Last();
-                if (stateDoc != null && stateDoc.EndsWith("\"")) stateDoc += " ";
-                Console.WriteLine($"{sp}\"\"\"State {string.Join(",", label.States)}{(stateDoc == null ? "" : $": {stateDoc}")}\"\"\"");
+                if (label.Type == ProgAnnotationType.Pass)
+                {
+                    Console.WriteLine($"{sp}\"\"\"Pass\"\"\"");
+                }
+                else if (label.Type == ProgAnnotationType.Unused)
+                {
+                    Console.WriteLine($"{sp}\"\"\"Unused\"\"\"");
+                }
+                else if (label.Type == ProgAnnotationType.States)
+                {
+                    string stateDoc = label.StateDoc.Count == 0 ? null : label.StateDoc.Last();
+                    if (stateDoc != null && stateDoc.EndsWith("\"")) stateDoc += " ";
+                    Console.WriteLine($"{sp}\"\"\"State {string.Join(",", label.States)}{(stateDoc == null ? "" : $": {stateDoc}")}\"\"\"");
+                }
             }
             else if (node is ProgBlock block)
             {
@@ -468,7 +497,8 @@ namespace ESDLang.Script
                 List<ProgramNode> nodes = seq.Simplify();
                 for (int i = nodes.Count - 2; i >= 0; i--)
                 {
-                    if (nodes[i] is ProgAnnotation l1 && nodes[i + 1] is ProgAnnotation l2)
+                    if (nodes[i] is ProgAnnotation l1 && nodes[i + 1] is ProgAnnotation l2
+                        && l1.Type == ProgAnnotationType.States && l2.Type == ProgAnnotationType.States)
                     {
                         l1.States.AddRange(l2.States);
                         l1.StateDoc.AddRange(l2.StateDoc);

@@ -57,6 +57,10 @@ namespace ESDLang.Script
             }
         }
 
+        private static (int, string) DumpXml(bool command, int id, string name)
+        {
+            return (id + (command ? 100000 : 0), $"        <{(command ? "Command" : "Function")} {(command ? "Bank=\"1\" " : "")}ID=\"{id}\" Name=\"{name}\" Description=\"\"/>");
+        }
         // Writes to the given path, or if chunks are involved, selects multiple paths. Does not write strings in chunks.
         public void Write(string path, EDDFormat format)
         {
@@ -75,16 +79,22 @@ namespace ESDLang.Script
             {
                 using (TextWriter writer = File.CreateText(path))
                 {
+                    Console.WriteLine($"edd is {edd}");
                     if (edd != null)
                     {
+                        List<(int, string)> xmls = new List<(int, string)>();
                         foreach (FunctionSpec f in edd.FunctionSpecs)
                         {
                             writer.WriteLine($"f{f.ID}: {f.Name}");
+                            xmls.Add(DumpXml(false, f.ID, f.Name));
                         }
                         foreach (CommandSpec f in edd.CommandSpecs)
                         {
                             writer.WriteLine($"c{f.ID}: {f.Name}");
+                            xmls.Add(DumpXml(true, (int)f.ID, f.Name));
                         }
+                        // Informal utility to generate XML
+                        writer.WriteLine(string.Join("\r\n", xmls.OrderBy(s => s).Select(s => s.Item2)));
                     }
                     foreach (KeyValuePair<string, int> entry in locs)
                     {

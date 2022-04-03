@@ -13,7 +13,7 @@ namespace ESDLang.Script
     {
         // For now, just a bunch of static methods. Could this make sense as an instantiable object?
         private static HashSet<string> exactChr = new HashSet<string> { "c0000", "enemyCommon" };
-        private static List<Regex> prefixes = new[] { @"t(\d{6})?", @"event(_m\d\d(_\d\d(_00_00)?)?)?", @"talk(_m\d\d(_\d\d(_00_00)?)?)?", @"ai(\d{6})?", @"dummy(_m\d\d)?" }.Select(s => new Regex($"^{s}$")).ToList();
+        private static List<Regex> prefixes = new[] { @"t(\d{6})?", @"t(\d{9})?", @"event(_m\d\d(_\d\d(_00_00)?)?)?", @"talk(_m\d\d(_\d\d(_00_00)?)?)?", @"ai(\d{6})?", @"dummy(_m\d\d)?" }.Select(s => new Regex($"^{s}$")).ToList();
         public static bool IsKnownPrefix(string name)
         {
             if (exactChr.Contains(name)) return true;
@@ -28,13 +28,17 @@ namespace ESDLang.Script
             [FromGame.SDT] = CmdType.Talk,
             [FromGame.DS2] = CmdType.Event,
             [FromGame.DS2S] = CmdType.Event,
+            [FromGame.ER] = CmdType.TalkER,
         };
         public static CmdType GetCmdType(string esd, FromGame game = FromGame.UNKNOWN)
         {
             if (esd.StartsWith("talk") || esd.StartsWith("event")) return CmdType.Event;
             if (esd.StartsWith("ai")) return CmdType.AI;
-            if (esd.StartsWith("t")) return CmdType.Talk;
             if (esd.StartsWith("dummy") || exactChr.Contains(esd)) return CmdType.Chr;
+            if (esd.StartsWith("t"))
+            {
+                return esd.Length == 10 ? CmdType.TalkER : CmdType.Talk;
+            }
             if (defaultCmds.TryGetValue(game, out CmdType type)) return type;
             return CmdType.None;
         }
@@ -55,7 +59,7 @@ namespace ESDLang.Script
             return esd;
         }
         // Function is up to 3 parts: ESD name, comment (if ESD name is recognized), and machine name.
-        private static List<Regex> esdNames = new[] { @"t\d{6}", @"event_m\d\d_\d\d(_00_00)?", @"talk_m\d\d_\d\d(_00_00)?", @"ai\d{6}", @"dummy_m\d\d" }.Concat(exactChr).Select(s => new Regex($"^{s}_")).ToList();
+        private static List<Regex> esdNames = new[] { @"t\d{6}", @"t\d{9}", @"event_m\d\d_\d\d(_00_00)?", @"talk_m\d\d_\d\d(_00_00)?", @"ai\d{6}", @"dummy_m\d\d" }.Concat(exactChr).Select(s => new Regex($"^{s}_")).ToList();
         public static (string, string) ParseFunction(string func)
         {
             foreach (Regex esdName in esdNames)

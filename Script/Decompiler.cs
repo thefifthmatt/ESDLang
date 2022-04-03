@@ -139,9 +139,14 @@ namespace ESDLang.Script
                     {
                         states[next].Prev.Add(id);
                     }
-                    CollapseRegisterCalls(state);
+                    if (options.Flag("regsubstitute"))
+                    {
+                        CollapseRegisterCalls(state);
+                    }
                 }
             }
+            // One caveats with args: they are calculated for all states, not just used ones.
+            // If we prune any states, arg data from dead code will be lost forever.
             Dictionary<int, MachineArgs> machineArgs = CalculateArgs(machines);
             CalculateArgNames(machineArgs);
             // Renamed values in this block
@@ -176,7 +181,7 @@ namespace ESDLang.Script
                         Subtree tree = stateCfg.Structure();
                         // Make a DAG of states.
                         // If they have diamond structure, is fine. If they have multi join points, more difficult.
-                        Machine m = GetProgram(machine, states, tree);
+                        Machine m = GetProgram(machine, states, tree, options.Flag("deadstates"));
 
                         Console.SetOut(writer);
                         PrintProgram(esdId, m, machineArgs[machine], replace);
@@ -184,11 +189,11 @@ namespace ESDLang.Script
                     else
                     {
                         // Individual state Python
-                        Machine basic = GetProgram(machine, states, null);
-                        basic.Node = basic.Unused;
+                        Machine m = GetProgram(machine, states, null, true);
+                        // m.Node = m.Unused;
 
                         Console.SetOut(writer);
-                        PrintProgram(esdId, basic, machineArgs[machine], replace);
+                        PrintProgram(esdId, m, machineArgs[machine], replace);
                     }
                     Console.WriteLine();
                 }
@@ -219,6 +224,10 @@ namespace ESDLang.Script
                         if (regs.ContainsKey(reg))
                         {
                             return regs[reg];
+                        }
+                        else
+                        {
+                            throw new Exception($"State {state.Machine} state {state.ID} has {f} but no SetREG{reg}. Use -noregsubstitute to decompile without trying to substitute registers");
                         }
                     }
                 }
@@ -385,35 +394,62 @@ namespace ESDLang.Script
             return topLabel == null ? top : topLabel;
         }
 
-        public Machine GetProgram(int id, SortedDictionary<int, State> states, Subtree s)
+        public Machine GetProgram(int id, SortedDictionary<int, State> states, Subtree s, bool addUnused)
         {
             HashSet<int> visited = new HashSet<int>();
             Machine machine = new Machine();
             machine.ID = id;
             machine.States = states;
             if (s != null) machine.Node = GetProgramNode(states, s, visited);
-            Sequence unused = new Sequence();
-            foreach (int node in states.Keys.Except(visited))
+            if (addUnused)
             {
-                unused.Add(Exec.Of(node, true));
-            }
-            if (unused.Parts.Count > 0)
-            {
-                machine.Unused = GetProgramNode(states, unused.Parts.Count == 1 ? unused.Parts[0] : unused, visited);
+                Sequence unusedSeq = new Sequence();
+                foreach (int node in states.Keys.Except(visited))
+                {
+                    unusedSeq.Add(Exec.Of(node, true));
+                }
+                if (unusedSeq.Parts.Count > 0)
+                {
+                    AnnotateJumps(unusedSeq);
+                    ProgramNode unusedNode = GetProgramNode(states, unusedSeq, visited);
+                    if (machine.Node == null)
+                    {
+                        machine.Node = unusedNode;
+                    }
+                    else
+                    {
+                        ProgAnnotation unusedAnn = new ProgAnnotation { Type = ProgAnnotationType.Unused };
+                        machine.Node = new ProgSeq
+                        {
+                            State = machine.Node.State,
+                            Nodes = new List<ProgramNode> { machine.Node, unusedAnn, unusedNode }
+                        };
+                    }
+                }
             }
             return machine;
         }
+
         public ProgramNode GetProgramNode(SortedDictionary<int, State> states, Subtree s, HashSet<int> visited)
         {
             // Common funcs
             int start = s.Start();
             StateDesc desc = states[start].Desc;
+            // descs: EDD for this block, cleared if the verbose command is not set.
+            // def: special block (e.g. WhilePaused)
+            // specialCmd: unique command to return specially, last in the block
             (ProgBlock, Statement, string) processBlock(Block b, List<CommandDesc> descs, string def = null, string specialCmd = null)
             {
                 if (b == null) return (null, null, null);
-                if (!options.Flag("cmdedd")) descs = null;
+                if (!options.Flag("cmdedd"))
+                {
+                    descs = null;
+                }
                 ProgBlock pblock = new ProgBlock { State = start };
-                if (def != null) pblock.Operation = def;
+                if (def != null)
+                {
+                    pblock.Operation = def;
+                }
                 Statement special = null;
                 string specialName = null;
                 List<string> names = new List<string>();
@@ -442,8 +478,15 @@ namespace ESDLang.Script
                 List<ProgramNode> resNodes = new List<ProgramNode>();
                 // Currently pass docs not passed through here. But returns don't have docs anyway, it seems.
                 (ProgBlock passBlock, Statement ret, string retName) = processBlock(b, null, specialCmd: "7:-1");
-                if (passBlock.Statements.Count > 0) resNodes.Add(passBlock);
-                if (ret != null) resNodes.Add(new ProgReturn { State = start, Value = ret.Args[0].AsInt(), Doc = retName });
+                if (passBlock.Statements.Count > 0)
+                {
+                    resNodes.Add(new ProgAnnotation { Type = ProgAnnotationType.Pass });
+                    resNodes.Add(passBlock);
+                }
+                if (ret != null)
+                {
+                    resNodes.Add(new ProgReturn { State = start, Value = ret.Args[0].AsInt(), Doc = retName });
+                }
                 if (resNodes.Count == 0) throw new Exception($"Have pass block {b} but no commands extracted");
                 return ProgSeq.From(resNodes);
             }
@@ -487,7 +530,13 @@ namespace ESDLang.Script
             // XX
             if (!visited.Contains(start) && !(s is Loop || s is Sequence))
             {
-                ProgAnnotation ann = new ProgAnnotation { State = start, States = new List<int> { start }, StateDoc = new[] { desc?.Name }.Where(n => n != null).ToList() };
+                ProgAnnotation ann = new ProgAnnotation
+                {
+                    State = start,
+                    States = new List<int> { start },
+                    StateDoc = new[] { desc?.Name }.Where(n => n != null).ToList(),
+                    Type = ProgAnnotationType.States,
+                };
                 nodes.Add(ann);
                 visited.Add(start);
             }
@@ -508,10 +557,8 @@ namespace ESDLang.Script
                         block.Add(call, callDoc);
                     }
                     nodes.AddRange(processExtraBlocks(state));
-                    if (next != -1)
-                    {
-                        nodes.Add(new ProgReturn { State = start });
-                    }
+                    // Previously, this was conditional, but we may concatenate machines so this is a good idea
+                    nodes.Add(new ProgReturn { State = start });
                 }
                 // Otherwise, continuation is either unconditional, await, or goto (irreducible case).
                 else
@@ -682,11 +729,13 @@ namespace ESDLang.Script
                 return newParts.Count == 1 ? newParts[0] : new Sequence { Parts = newParts };
             }
         }
-        public static void Annotate(Subtree sub)
+
+        public static void AnnotateJumps(Subtree sub)
         {
-            AnnotateRec(sub, -1, new List<int>(), new List<int>());
+            AnnotateJumpsRec(sub, -1, new List<int>(), new List<int>());
         }
-        public static void AnnotateRec(Subtree s, int next, List<int> breaks, List<int> continues)
+
+        public static void AnnotateJumpsRec(Subtree s, int next, List<int> breaks, List<int> continues)
         {
             if (s == null) return;
             s.Breaks = breaks;
@@ -698,7 +747,7 @@ namespace ESDLang.Script
                 {
                     Subtree item = subsub[i];
                     int subnext = i == subsub.Count - 1 ? lastNext : subsub[i + 1].Start();
-                    AnnotateRec(item, subnext, subbr, subcont);
+                    AnnotateJumpsRec(item, subnext, subbr, subcont);
                 }
             }
             if (s is Exec e)
@@ -709,7 +758,7 @@ namespace ESDLang.Script
             {
                 foreach (KeyValuePair<int, Subtree> branch in ie.Branches)
                 {
-                    AnnotateRec(branch.Value, next, breaks, continues);
+                    AnnotateJumpsRec(branch.Value, next, breaks, continues);
                 }
             }
             else if (s is Loop l)
@@ -726,6 +775,8 @@ namespace ESDLang.Script
             }
             else throw new Exception("Unknown AST type");
         }
+
+        private const int END = 9999999;
         public class CFG
         {
             public Dictionary<int, CFGNode> Nodes { get; set; }
@@ -733,6 +784,7 @@ namespace ESDLang.Script
             public List<int> Postorder { get; set; }
             public bool Explain { get; set; }
             public bool Debug { get; set; }
+
             public Subtree Structure()
             {
                 // return null;
@@ -768,10 +820,11 @@ namespace ESDLang.Script
                     }
                 }
                 Subtree sub = StructureRec(0, new List<int>(), new List<int>(), new List<int>());
-                Annotate(sub);
+                AnnotateJumps(sub);
                 // printStructure(sub, "");
                 return sub;
             }
+
             private Subtree StructureRec(int current, List<int> loops, List<int> follows, List<int> visited)
             {
                 // This includes 'official' exits out of the loops, end of if/else branches
@@ -899,6 +952,7 @@ namespace ESDLang.Script
                 }
                 return mseq;
             }
+
             public void GetCondTree()
             {
                 HashSet<int> reachable = new HashSet<int>(Intervals.SelectMany(e => e.Value));
@@ -989,6 +1043,7 @@ namespace ESDLang.Script
                     }
                 }
             }
+
             public Dictionary<int, int> LoopHead = new Dictionary<int, int>();
             public Dictionary<int, List<int>> LoopLatch = new Dictionary<int, List<int>>();
             public Dictionary<int, int> CondFollow = new Dictionary<int, int>();
@@ -999,6 +1054,7 @@ namespace ESDLang.Script
                 // Used mainly to determine what best follow node is
                 PRECHECK, POSTCHECK, NOCHECK
             }
+
             public void Classify()
             {
                 // Add terminal conditions for returns and tail calls
@@ -1031,6 +1087,7 @@ namespace ESDLang.Script
                 } while (added != 0);
                 GetCondTree();
             }
+
             private void GetAllBackedges()
             {
                 GetBackedges();
@@ -1056,6 +1113,7 @@ namespace ESDLang.Script
                     }
                 }
             }
+
             public void AddLatch(int h, int latch, HashSet<int> interval)
             {
                 AddMulti(LoopLatch, latch, h);
@@ -1127,6 +1185,7 @@ namespace ESDLang.Script
                     }
                 }
             }
+
             public void GetBackedges()
             {
                 if (Debug) foreach (KeyValuePair<int, HashSet<int>> e in Intervals) Console.WriteLine($"Interval {e.Key}: {string.Join(", ", e.Value)}");
@@ -1142,6 +1201,7 @@ namespace ESDLang.Script
                     }
                 }
             }
+
             public List<int> GetPostorder()
             {
                 List<int> order = new List<int>();
@@ -1161,6 +1221,7 @@ namespace ESDLang.Script
                 visit(0);
                 return order;
             }
+
             public static CFG FromStates(SortedDictionary<int, State> states)
             {
                 CFG cfg = new CFG();
@@ -1176,6 +1237,7 @@ namespace ESDLang.Script
                 cfg.AddGraphData();
                 return cfg;
             }
+
             public CFG GetIntervalGraph()
             {
                 if (Intervals.Count == Nodes.Count || Intervals.Values.All(i => i.Count == 1)) return null;
@@ -1198,11 +1260,13 @@ namespace ESDLang.Script
                 cfg.AddGraphData();
                 return cfg;
             }
+
             public void AddGraphData()
             {
                 Intervals = GetIntervals();
                 Postorder = GetPostorder();
             }
+
             private Dictionary<int, HashSet<int>> GetIntervals()
             {
                 Dictionary<int, HashSet<int>> intervals = new Dictionary<int, HashSet<int>>();
@@ -1238,7 +1302,7 @@ namespace ESDLang.Script
                 return intervals;
             }
         }
-        private const int END = 9999999;
+
         public class CFGNode
         {
             public HashSet<int> Prev = new HashSet<int>();
@@ -1275,7 +1339,10 @@ namespace ESDLang.Script
                         if (st.Name.StartsWith("6:"))
                         {
                             int target = int.Parse(st.Name.Substring(2));
-                            AddMulti(machineArgs[target].Callers, machineID, st);
+                            if (machineArgs.TryGetValue(target, out MachineArgs targetArgs))
+                            {
+                                AddMulti(targetArgs.Callers, machineID, st);
+                            }
                         }
                     }
                 }
@@ -1553,7 +1620,7 @@ namespace ESDLang.Script
                     if (sources.All(v => v.Value.TryAsInt(out int val) && (val == 0 || val == 1))) return "mode";
                     return "val";
                 }
-                Namespace ns = Namespace.GLOBAL;
+                Namespace ns = Namespace.Global;
                 // Namespaces for objects which are concretely referenced
                 HashSet<Namespace> useNamespaces = new HashSet<Namespace>(sources.SelectMany(s => s.Usages.Values.SelectMany(os => os.Select(o => o.Type))));
                 // Namespaces for declared types. May differ from usages e.g. for all items vs concrete item categories
@@ -1563,11 +1630,11 @@ namespace ESDLang.Script
                 else ns = declNamespaces.First();
                 switch (ns)
                 {
-                    case Namespace.GLOBAL: return "z";
-                    case Namespace.PROTECTOR: return "armor";
-                    case Namespace.ACCESSORY: return "ring";
-                    case Namespace.EVENT_FLAG: return "flag";
-                    case Namespace.TALK: return "text";
+                    case Namespace.Global: return "z";
+                    case Namespace.Protector: return "armor";
+                    case Namespace.Accessory: return "ring";
+                    case Namespace.EventFlag: return "flag";
+                    case Namespace.Talk: return "text";
                     default: return ns.ToString().ToLower();
                 }
             }
@@ -1657,96 +1724,115 @@ namespace ESDLang.Script
             {
                 Indices = new List<int> { 0, 1 },
                 Extract = args => Obj.Item((uint)args[0], args[1]),
-                Type = Namespace.ITEM,
+                Type = Namespace.Item,
             });
             AddMulti(extractors, "IsEquipmentIDObtained", extractors["ComparePlayerInventoryNumber"][0]);
+            AddMulti(extractors, "IsEquipmentIDEquipped", extractors["ComparePlayerInventoryNumber"][0]);
             AddMulti(extractors, "GetEventStatus", new IdExtractor
             {
                 Indices = new List<int> { 0 },
                 Extract = args => Obj.EventFlag(args[0]),
-                Type = Namespace.EVENT_FLAG,
+                Type = Namespace.EventFlag,
             });
             AddMulti(extractors, "TalkToPlayer", new IdExtractor
             {
                 Indices = new List<int> { 0 },
                 Extract = args => Obj.Talk(args[0]),
-                Type = Namespace.TALK,
+                Type = Namespace.Talk,
             });
             AddMulti(extractors, "TalkToPlayer", new IdExtractor
             {
                 Indices = new List<int> { 3 },
                 Extract = args => args.Count == 0 || args[0] == -1 ? null : Obj.EventFlag(args[0]),
-                Type = Namespace.EVENT_FLAG,
+                Type = Namespace.EventFlag,
             });
             // Commands
             AddMulti(extractors, "GetEventState", new IdExtractor
             {
                 Indices = new List<int> { 0 },
                 Extract = args => Obj.EventFlag(args[0]),
-                Type = Namespace.EVENT_FLAG,
+                Type = Namespace.EventFlag,
             });
             AddMulti(extractors, "OpenRegularShop", new IdExtractor
             {
                 Indices = new List<int> { 0, 1 },
                 Extract = args => Obj.Shop(args[0], args[1]),
-                Type = Namespace.SHOP,
+                Type = Namespace.Shop,
             });
             AddMulti(extractors, "AddTalkListData", new IdExtractor
             {
                 Indices = new List<int> { 1 },
                 Extract = args => Obj.Action(args[0]),
-                Type = Namespace.ACTION,
+                Type = Namespace.Action,
             });
             AddMulti(extractors, "OpenGenericDialog", extractors["AddTalkListData"][0]);
             AddMulti(extractors, "AddTalkListData", new IdExtractor
             {
                 Indices = new List<int> { 2 },
                 Extract = args => args[0] == -1 ? null : Obj.EventFlag(args[0]),
-                Type = Namespace.EVENT_FLAG,
+                Type = Namespace.EventFlag,
             });
             AddMulti(extractors, "AddTalkListDataIf", new IdExtractor
             {
                 Indices = new List<int> { 2 },
                 Extract = args => Obj.Action(args[0]),
-                Type = Namespace.ACTION,
+                Type = Namespace.Action,
             });
             AddMulti(extractors, "DisplayOneLineHelp", new IdExtractor
             {
                 Indices = new List<int> { 0 },
                 Extract = args => Obj.Action(args[0]),
-                Type = Namespace.ACTION,
+                Type = Namespace.Action,
             });
             AddMulti(extractors, "GetItemFromItemLot", new IdExtractor
             {
                 Indices = new List<int> { 0 },
                 Extract = args => Obj.Lot(args[0]),
-                Type = Namespace.LOT,
+                Type = Namespace.Lot,
             });
             AddMulti(extractors, "PlayerEquipmentQuantityChange", new IdExtractor
             {
                 Indices = new List<int> { 0, 1 },
                 Extract = args => Obj.Item((uint)args[0], args[1]),
-                Type = Namespace.ITEM,
+                Type = Namespace.Item,
             });
             AddMulti(extractors, "GetItemHeldNumLimit", extractors["PlayerEquipmentQuantityChange"][0]);
             AddMulti(extractors, "ReplaceTool", new IdExtractor
             {
                 Indices = new List<int> { 0 },
                 Extract = args => Obj.Item(3, args[0]),
-                Type = Namespace.GOODS,
+                Type = Namespace.Goods,
             });
             AddMulti(extractors, "ReplaceTool", new IdExtractor
             {
                 Indices = new List<int> { 1 },
                 Extract = args => Obj.Item(3, args[0]),
-                Type = Namespace.GOODS,
+                Type = Namespace.Goods,
             });
+            AddMulti(extractors, "AcquireGesture", new IdExtractor
+            {
+                Indices = new List<int> { 0 },
+                Extract = args => Obj.Of(Namespace.Gesture, args[0]),
+                Type = Namespace.Gesture,
+            });
+            AddMulti(extractors, "CheckActionButtonArea", new IdExtractor
+            {
+                Indices = new List<int> { 0 },
+                Extract = args => Obj.Of(Namespace.ActionButton, args[0]),
+                Type = Namespace.ActionButton,
+            });
+            // Elden Ring aliases
+            AddMulti(extractors, "AwardItemLot", extractors["GetItemFromItemLot"][0]);
+            AddMulti(extractors, "GetEventFlag", extractors["GetEventStatus"][0]);
+            AddMulti(extractors, "GetEventFlagValue", extractors["GetEventFlag"][0]);
+            AddMulti(extractors, "DoesPlayerHaveItem", extractors["ComparePlayerInventoryNumber"][0]);
+            AddMulti(extractors, "DoesPlayerHaveItemEquipped", extractors["ComparePlayerInventoryNumber"][0]);
             // DS2
             IdExtractor messageExtractor = new IdExtractor
             {
                 Indices = new List<int> { 0 },
                 Extract = args => Obj.Action(args[0]),
-                Type = Namespace.ACTION
+                Type = Namespace.Action
             };
             AddMulti(extractors, "DisplayOwnYesNoMenu", messageExtractor);
             AddMulti(extractors, "DisplayYesNoMenu", messageExtractor);
@@ -1758,7 +1844,7 @@ namespace ESDLang.Script
             {
                 Indices = new List<int> { index, index + 1 },
                 Extract = args => args[0] == 2 && args[1] != 0 ? Obj.Item(3, args[1]) : null,
-                Type = Namespace.GOODS,
+                Type = Namespace.Goods,
             };
             AddMulti(extractors, "DisplayOwnYesNoMenu", messageItemExtractor(3));
             AddMulti(extractors, "DisplayYesNoMenu", messageItemExtractor(4));
@@ -1769,7 +1855,7 @@ namespace ESDLang.Script
             {
                 Indices = new List<int> { 0 },
                 Extract = args => Obj.Talk(args[0]),
-                Type = Namespace.TALK
+                Type = Namespace.Talk
             };
             AddMulti(extractors, "StartConversation", dialogueExtractor);
             AddMulti(extractors, "ShowYesNoSelection", messageExtractor);
@@ -1778,7 +1864,7 @@ namespace ESDLang.Script
             {
                 Indices = new List<int> { index },
                 Extract = args => lot ? Obj.Lot(args[0]) : Obj.Item(3, args[0]),
-                Type = lot ? Namespace.LOT : Namespace.GOODS,
+                Type = lot ? Namespace.Lot : Namespace.Goods,
             };
             AddMulti(extractors, "ConsumeItem", itemExtractor(0, false));
             AddMulti(extractors, "AwardItem", itemExtractor(0, true));
@@ -1801,13 +1887,13 @@ namespace ESDLang.Script
             {
                 Indices = new List<int> { 1 },
                 Extract = args => Obj.Bonfire(args[0]),
-                Type = Namespace.BONFIRE
+                Type = Namespace.Bonfire
             });
             AddMulti(extractors, "GetBonfireAsceticCount", new IdExtractor
             {
                 Indices = new List<int> { 0 },
                 Extract = args => Obj.Bonfire(args[0]),
-                Type = Namespace.BONFIRE
+                Type = Namespace.Bonfire
             });
 
             return extractors;

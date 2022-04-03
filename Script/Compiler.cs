@@ -281,15 +281,22 @@ namespace ESDLang.Script
             {
                 List<(int, string)> lines = new List<(int, string)>();
                 TrackingReader reader = new TrackingReader { Reader = File.OpenText(path) };
-                while (true)
+                try
                 {
-                    int position = reader.Position;
-                    string line = reader.ReadLine();
-                    if (line == null)
+                    while (true)
                     {
-                        break;
+                        int position = reader.Position;
+                        string line = reader.ReadLine();
+                        if (line == null)
+                        {
+                            break;
+                        }
+                        lines.Add((position, line));
                     }
-                    lines.Add((position, line));
+                }
+                finally
+                {
+                    reader.Close();
                 }
                 HashSet<string> printedMachines = new HashSet<string>();
                 // TODO: Sort this list perhaps by file position
@@ -333,6 +340,10 @@ namespace ESDLang.Script
             public override int Peek()
             {
                 return Reader.Peek();
+            }
+            public override void Close()
+            {
+                Reader.Close();
             }
         }
         public Machine AddStateBreaks(ProgramNode machine, WalkContext context)
@@ -407,7 +418,7 @@ namespace ESDLang.Script
                     {
                         context.Error("Internal error - branching node shouldn't already have a call or prebranch nodes");
                     }
-                    if (state == null || mode == ControlMode.POST_CONDITION) newState();
+                    if (state == null || mode == ControlMode.POST_CONDITION || mode == ControlMode.POST_CONDITION_PASS) newState();
                     // Figure out situation with calls
                     string formatCall(Statement st)
                     {
@@ -463,7 +474,9 @@ namespace ESDLang.Script
                     }
                     else if (usesCalls)
                     {
-                        context.Error($"Call result is used in set of conditions but no call found");
+                        // Unfortunately... Elden Ring does this. TODO figure this out
+                        // Console.WriteLine("Call result is used in set of conditions but no call found");
+                        // context.Error($"Call result is used in set of conditions but no call found");
                     }
                     if (condCalls.Count > 0)
                     {
@@ -526,20 +539,38 @@ namespace ESDLang.Script
                 }
                 else if (node is ProgAnnotation ann)
                 {
-                    foreach (int declared in ann.States)
+                    if (ann.Type == ProgAnnotationType.Pass)
                     {
-                        newState(declared);
+                        if (mode == ControlMode.POST_CONDITION)
+                        {
+                            mode = ControlMode.POST_CONDITION_PASS;
+                        }
+                        else
+                        {
+                            context.Error("Can only use \"\"\"Pass\"\"\" annotation directly after a condition branch");
+                        }
                     }
-                    ann.State = state.ID;
+                    else if (ann.Type == ProgAnnotationType.States)
+                    {
+                        foreach (int declared in ann.States)
+                        {
+                            newState(declared);
+                        }
+                    }
+                    if (state != null)
+                    {
+                        ann.State = state.ID;
+                    }
                 }
                 else if (node is ProgBlock block)
                 {
                     if (block.Operation == null)
                     {
                         List<Statement> stmts = block.Statements;
-                        if (state != null && mode == ControlMode.POST_CONDITION)
+                        if (state != null)
                         {
-                            if (stmts[0].Name == "DebugEvent" || stmts[0].Name == "DebugLogOutput")
+                            // Inference for pass blocks in DS1. TODO see if this counts as POST_CONDITION_PASS
+                            if (mode == ControlMode.POST_CONDITION && (stmts[0].Name == "DebugEvent" || stmts[0].Name == "DebugLogOutput"))
                             {
                                 if (cond.Pass == null)
                                 {
@@ -556,6 +587,20 @@ namespace ESDLang.Script
                                 // Edit statements - to identify pass blocks when constructing jumps
                                 stmts.RemoveAt(0);
                                 if (stmts.Count == 0) return;
+                            }
+                            else if (mode == ControlMode.POST_CONDITION_PASS)
+                            {
+                                if (cond.Pass == null)
+                                {
+                                    cond.Pass = Block.MakeEmpty();
+                                }
+                                // In this case, multiple blocks can combine into one pass block
+                                cond.Pass.Cmds.AddRange(stmts);
+                                // Clear this mainly so there's no unconditional jump from this added later.
+                                // It's already been incorporated into the condition itself
+                                stmts.Clear();
+                                block.State = state.ID;
+                                return;
                             }
                         }
                         foreach (Statement st in stmts)
@@ -596,10 +641,10 @@ namespace ESDLang.Script
                 }
             }
             constructStates(machine);
-            // Then, add target states for all jumps and conditions
+            // Then, add target states for all jumps and conditions, receursing in reverse order
             int nextState = -1;
             HashSet<int> nextHandled = new HashSet<int>();
-            void useUnconditionalTransition(int from, Func<string> desc)
+            void useUnconditionalTransition(int from, string desc)
             {
                 if (from != nextState && nextState != -1)
                 {
@@ -607,7 +652,8 @@ namespace ESDLang.Script
                     State ls = states[from];
                     if (ls.Conditions.Count != 0)
                     {
-                        context.Error($"State transition already exists for {desc()} in {from} while trying to add transition to {nextState}");
+                        DebugProgramNode(machine, 0);
+                        context.Error($"State transition already exists for {desc} in {from} attempt unconditional transition to {nextState}: {string.Join(", ", ls.Conditions)}");
                     }
                     else
                     {
@@ -639,7 +685,11 @@ namespace ESDLang.Script
                         {
                             constructJumps(branch.Result, loopStack);
                             // TODO: Make this work for non-cfgs
-                            if (options.Flag("cfg") && nextState == after) context.Error($"Internal error - if/else branch at {nextState} to {branch.Cond} goes to self");
+                            // Apparently this also fails in Elden Ring, t307006000_x76 has a self-loop
+                            if (options.Flag("cfg") && nextState == after)
+                            {
+                                // context.Error($"Internal error - if/else branch at {nextState} to {branch.Cond} goes to self");
+                            }
                             branch.Cond.TargetState = nextState;
                         }
                     }
@@ -694,7 +744,7 @@ namespace ESDLang.Script
                 }
                 else if (node is ProgLabel label)
                 {
-                    useUnconditionalTransition(label.State, () => $"label {label.Label}");
+                    useUnconditionalTransition(label.State, $"label {label.Label}");
                 }
                 else if (node is ProgReturn ret)
                 {
@@ -705,7 +755,7 @@ namespace ESDLang.Script
                 {
                     foreach (int declared in Enumerable.Reverse(ann.States))
                     {
-                        useUnconditionalTransition(declared, () => $"declaration of state");
+                        useUnconditionalTransition(declared, "declaration of state");
                     }
                 }
                 else if (node is ProgBlock block)
@@ -715,7 +765,7 @@ namespace ESDLang.Script
                         // Pass block - nothing to do here
                         return;
                     }
-                    useUnconditionalTransition(block.State, () => $"statement block");
+                    useUnconditionalTransition(block.State, "statement block");
                 }
             }
             constructJumps(machine, new List<(string, int, int)>());
@@ -728,7 +778,7 @@ namespace ESDLang.Script
                 States = states,
             };
         }
-        enum ControlMode { START, ENTRY_COMMANDS, CALL, PAUSE_COMMANDS, POST_CONDITION }
+        enum ControlMode { START, ENTRY_COMMANDS, CALL, PAUSE_COMMANDS, POST_CONDITION, POST_CONDITION_PASS }
         // Don't use PythonWalker because we need to transform the entire AST anyway, and explicitly reject unsupported syntax.
         // Docs: http://docs.buddywing.com/html/T_IronPython_Compiler_Ast_Node.htm
         public ProgramNode WalkStatement(Py.Statement node, WalkContext context, int d, bool inIfElse=false)
@@ -895,6 +945,7 @@ namespace ESDLang.Script
                     ProgAnnotation ann = new ProgAnnotation();
                     if (parts.Length >= 2 && parts[0] == "State")
                     {
+                        ann.Type = ProgAnnotationType.States;
                         string[] states = parts[1].TrimEnd(':').Split(',');
                         foreach (string stateStr in states)
                         {
@@ -908,13 +959,26 @@ namespace ESDLang.Script
                                 break;
                             }
                         }
+                        if (ann.States.Count == 0)
+                        {
+                            context.Error(node, "Unknown state docstring - should start with \"State\" and ids, like \"State 1\" or \"State 3,4\"");
+                            return new ProgError();
+                        }
+                        context.UsedStates.AddRange(ann.States);
                     }
-                    if (ann.States.Count == 0)
+                    else if (parts.Length == 1 && parts[0] == "Pass")
                     {
-                        context.Error(node, "Unknown doc string format - should start with \"State\" and ids, like \"State 1\" or \"State 3,4\"");
+                        ann.Type = ProgAnnotationType.Pass;
+                    }
+                    else if (parts.Length == 1 && parts[0] == "Unused")
+                    {
+                        ann.Type = ProgAnnotationType.Unused;
+                    }
+                    else
+                    {
+                        context.Error(node, "Unknown docstring - should only be used for compilation metadata");
                         return new ProgError();
                     }
-                    context.UsedStates.AddRange(ann.States);
                     return ann;
                 }
                 else if (expr is Py.CallExpression call)

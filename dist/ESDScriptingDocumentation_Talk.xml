@@ -13,7 +13,6 @@
         <Command Bank="1" ID="9"   Name="ClearTalkProgressData" Description=""/>
         <Command Bank="1" ID="10"  Name="ShowShopMessage" Description=""/>
         <Command Bank="1" ID="11"  Name="SetEventState" Description=""/>
-        <Command Bank="5" ID="11"  Name="SetEventStateIf" Description=""/>
         <Command Bank="1" ID="12"  Name="CloseShopMessage" Description=""/>
         <Command Bank="1" ID="13"  Name="OpenCampMenu" Description=""/>
         <Command Bank="1" ID="14"  Name="CloseCampMenu" Description=""/>
@@ -22,7 +21,6 @@
         <Command Bank="1" ID="17"  Name="OpenGenericDialog" Description=""/>
         <Command Bank="1" ID="18"  Name="ForceCloseGenericDialog" Description=""/>
         <Command Bank="1" ID="19"  Name="AddTalkListData" Description=""/>
-        <Command Bank="5" ID="19"  Name="AddTalkListDataIf" Description=""/>
         <Command Bank="1" ID="20"  Name="ClearTalkListData" Description=""/>
         <Command Bank="1" ID="21"  Name="RequestMoviePlayback" Description=""/>
         <Command Bank="1" ID="22"  Name="OpenRegularShop" Description=""/>
@@ -79,7 +77,6 @@
         <Command Bank="1" ID="82"  Name="OpenChooseQuantityDialog" Description=""/>
         <Command Bank="1" ID="83"  Name="ClearQuantityValueOfChooseQuantityDialog" Description=""/>
         <Command Bank="1" ID="100" Name="SetWorkValue" Description=""/>
-        <Command Bank="5" ID="100" Name="SetWorkValueIf" Description=""/>
         <Command Bank="1" ID="101" Name="UpdatePlayerRespawnPoint" Description=""/>
         <Command Bank="1" ID="102" Name="SetMessageTagValue" Description=""/>
         <Command Bank="1" ID="103" Name="TurnCharacterToFaceEntity" Description=""/>
@@ -103,7 +100,7 @@
         <Command Bank="1" ID="125" Name="EquipNinjutsu" Description=""/>
         <Command Bank="1" ID="126" Name="ShowShopMessageAlt" Description=""/>
         <Command Bank="1" ID="127" Name="OpenBonfireSubmenu" Description=""/>
-        <Command Bank="1" ID="128" Name="SetMenuDisableTime" Description=""/>      
+        <Command Bank="1" ID="128" Name="SetMenuDisableTime" Description=""/>
     </CommandList>
     <FunctionList>
         <Function ID="0"   Name="GetWhetherEnemiesAreNearby" Description=""/>

@@ -64,6 +64,16 @@ namespace ESDLang.Script
 
         public void Run()
         {
+            bool backup = options.Flag("backup");
+            void MaybeBackup(string path)
+            {
+                string bak = path + ".bak";
+                if (backup && File.Exists(path) && !File.Exists(bak))
+                {
+                    Console.WriteLine($"Creating {Path.GetFileName(bak)}");
+                    File.Copy(path, bak);
+                }
+            }
             if (opt is ESDOptions.Info)
             {
                 // Generic info
@@ -129,8 +139,22 @@ namespace ESDLang.Script
                 }
                 Dictionary<string, ESD> compiled = new Dictionary<string, ESD>();
                 HashSet<string> usedFileNames = new HashSet<string>();
+                List<string> pyFiles = new List<string>();
+                // Add our own wildcard feature because WSL completely melts down getting 200 files at once, like a complete chump
                 foreach (string pyFile in options.PyInputs)
                 {
+                    if (pyFile.Contains("*"))
+                    {
+                        pyFiles.AddRange(Directory.GetFiles(Path.GetDirectoryName(pyFile), Path.GetFileName(pyFile)));
+                    }
+                    else
+                    {
+                        pyFiles.Add(pyFile);
+                    }
+                }
+                foreach (string pyFile in pyFiles)
+                {
+                    // Console.WriteLine($"Compiling {pyFile}");
                     Dictionary<string, ESD> result = new Compiler(LoadContext(pyFile), options).Compile(pyFile, baseDesc.Esd, esdFilter);
                     // Dictionary<string, ESD> result = new Dictionary<string, ESD>();
                     foreach (KeyValuePair<string, ESD> entry in result)
@@ -170,28 +194,45 @@ namespace ESDLang.Script
                     }
                 }
                 Console.WriteLine("---");
-                string outDir = GameEditor.AbsolutePath(spec.GameDir, bnd.DirName);
-                if (File.Exists(outDir)) throw new Exception($"Directory {outDir} is a file");
-                if (!Directory.Exists(outDir)) Directory.CreateDirectory(outDir);
+                string outDir;
+                if (bnd.DirName != null)
+                {
+                    outDir = GameEditor.AbsolutePath(spec.GameDir, bnd.DirName);
+                    if (File.Exists(outDir)) throw new Exception($"-writebnd argument {outDir} is not a directory");
+                    if (!Directory.Exists(outDir)) Directory.CreateDirectory(outDir);
+                }
+                else
+                {
+                    string outPath = GameEditor.AbsolutePath(spec.GameDir, bnd.FileName);
+                    FileInfo outInfo = new FileInfo(outPath);
+                    outDir = outInfo.DirectoryName;
+                    if (!(usedFileNames.Count == 1 && usedFileNames.First() == outInfo.Name))
+                    {
+                        Console.WriteLine($"Restricting output to {outInfo.Name}");
+                        usedFileNames = new HashSet<string> { outInfo.Name };
+                    }
+                }
                 foreach (KeyValuePair<string, SortedSet<string>> entry in fullPathForBase)
                 {
                     string fileName = entry.Key;
                     string baseName = GameEditor.BaseName(fileName);
+                    DCX.Type dcx = DCX.Type.None;
+                    if (fileName.EndsWith(".dcx"))
+                    {
+                        if (spec.Dcx == DCX.Type.Unknown)
+                        {
+                            throw new Exception($"Can't write {fileName} - no -outdcx provided");
+                        }
+                        dcx = spec.Dcx;
+                    }
                     if (fileName.EndsWith(".esd") || fileName.EndsWith(".esd.dcx"))
                     {
                         if (!compiled.ContainsKey(baseName)) continue;
-                        DCX.Type dcx = DCX.Type.None;
-                        if (fileName.EndsWith(".esd.dcx"))
-                        {
-                            if (spec.Dcx == DCX.Type.Unknown)
-                            {
-                                Console.WriteLine($"ERROR: Can't write {fileName} - no -outdcx provided");
-                                continue;
-                            }
-                            dcx = spec.Dcx;
-                        }
-                        Console.WriteLine($@"Writing {outDir}\{fileName}");
-                        compiled[baseName].Write($@"{outDir}\{fileName}", dcx);
+                        if (!usedFileNames.Contains(fileName)) continue;
+                        string outPath = $@"{outDir}\{fileName}";
+                        MaybeBackup(outPath);
+                        Console.WriteLine($@"Writing {outPath}");
+                        compiled[baseName].Write(outPath, dcx);
                     }
                     else if (fileName.EndsWith("esdbnd.dcx") || fileName.EndsWith("esdbnd"))
                     {
@@ -202,8 +243,42 @@ namespace ESDLang.Script
                             if (fullPath == null)
                             {
                                 fullPath = fullCand;
+                                string outPath = GameEditor.AbsolutePath(editor.Spec.GameDir, $@"{outDir}\{Path.GetFileName(fullPath)}");
+                                MaybeBackup(outPath);
                                 Console.WriteLine($@"Writing {fullPath} -> {outDir}\{fileName}");
-                                editor.OverrideBnd(fullPath, outDir, compiled, esd => esd.Write());
+                                IBinder outBnd = editor.GetOverrideBndRel(fullPath, compiled, esd => esd.Write());
+                                if (options.ExtraEsds.Count > 0)
+                                {
+                                    List<string> extraEsds = options.ExtraEsds
+                                        .Where(e => e.Value == baseName && compiled.ContainsKey(e.Key))
+                                        .Select(e => e.Key)
+                                        .ToList();
+                                    if (extraEsds.Count > 0)
+                                    {
+                                        // We are way out of our depth. Try to copy someone else's homework
+                                        BinderFile victim = outBnd.Files.Find(f => f.Name.EndsWith(".esd"));
+                                        if (victim == null) throw new Exception($"Can't pack new files using {fullPath}: no existing .esd files found within");
+                                        string bndPath = victim.Name.Substring(0, victim.Name.LastIndexOfAny(new[] { '/', '\\' }) + 1);
+                                        foreach (string extra in extraEsds)
+                                        {
+                                            Console.WriteLine($"Adding extra ESD {extra} to {baseName}");
+                                            ESD outEsd = compiled[extra];
+                                            outBnd.Files.Add(new BinderFile
+                                            {
+                                                Flags = victim.Flags,
+                                                CompressionType = victim.CompressionType,
+                                                Name = bndPath + extra + ".esd",
+                                                Bytes = outEsd.Write(),
+                                            });
+                                        }
+                                        int id = 0;
+                                        foreach (BinderFile file in outBnd.Files)
+                                        {
+                                            file.ID = id++;
+                                        }
+                                    }
+                                }
+                                editor.WriteBnd(outPath, outBnd, dcx);
                             }
                             else
                             {
@@ -237,15 +312,16 @@ namespace ESDLang.Script
                             // Filtered out
                             if (outEsd == null) continue;
                             string esdName = ESDName.FromFunctionPrefix(entry.Key);
-                            string fname = loose.Template.Replace("%e", esdName);
-                            if (esdFiles.ContainsKey(fname))
+                            string outPath = loose.Template.Replace("%e", esdName);
+                            if (esdFiles.ContainsKey(outPath))
                             {
-                                Console.WriteLine($"Not writing {pyFile}:{esdName} -> {fname} - already written");
+                                Console.WriteLine($"Not writing {pyFile}:{esdName} -> {outPath} - already written");
                                 continue;
                             }
-                            esdFiles[fname] = pyFile;
-                            Console.WriteLine($"Writing {pyFile}:{esdName} -> {fname}");
-                            outEsd.Write(fname);
+                            esdFiles[outPath] = pyFile;
+                            MaybeBackup(outPath);
+                            Console.WriteLine($"Writing {pyFile}:{esdName} -> {outPath}");
+                            outEsd.Write(outPath);
                         }
                     }
                 }
@@ -259,15 +335,16 @@ namespace ESDLang.Script
                     {
                         if (filter != null && !filter(esd)) continue;
                         string esdName = esd.Name;
-                        string fname = loose.Template.Replace("%e", esdName);
-                        if (esdFiles.ContainsKey(fname))
+                        string outPath = loose.Template.Replace("%e", esdName);
+                        if (esdFiles.ContainsKey(outPath))
                         {
-                            Console.WriteLine($"Not writing {esd.FilePath}:{esdName} -> {fname} - already written");
+                            Console.WriteLine($"Not writing {esd.FilePath}:{esdName} -> {outPath} - already written");
                             continue;
                         }
-                        esdFiles[fname] = esd.FilePath;
-                        Console.WriteLine($"Writing {esd.FilePath}:{esdName} -> {fname}");
-                        esd.Esd.Write(fname);
+                        esdFiles[outPath] = esd.FilePath;
+                        MaybeBackup(outPath);
+                        Console.WriteLine($"Writing {esd.FilePath}:{esdName} -> {outPath}");
+                        esd.Esd.Write(outPath);
                     }
                 }
             }
@@ -292,11 +369,34 @@ namespace ESDLang.Script
                 Predicate<ESDDesc> filter = GetFilter();
                 List<ESDDesc> esds = GetESDs(filter, parse: true, check: false);
                 HashSet<string> files = new HashSet<string>();
+                Dictionary<string, List<string>> filesByEsdName = new Dictionary<string, List<string>>();
                 foreach (ESDDesc esd in esds)
                 {
                     if (filter != null && !filter(esd)) continue;
-                    string fname = esd.Fill(template);
-                    if (fname != "-") Console.WriteLine($"Writing {esd.FilePath}:{esd.Name} -> {fname}");
+                    string outPath = esd.Fill(template);
+                    if (!filesByEsdName.TryGetValue(esd.Name, out List<string> nameFiles))
+                    {
+                        filesByEsdName[esd.Name] = nameFiles = new List<string>();
+                    }
+                    if (nameFiles.Contains(outPath))
+                    {
+                        List<string> message = new List<string>();
+                        message.Add($"Error: Won't write ESD duplicate {esd.Name} to {outPath} multiple times. It is found in these files:");
+                        message.AddRange(esds.Where(e => e.Name == esd.Name).Select(e => e.FilePath));
+                        throw new Exception(string.Join(Environment.NewLine, message));
+                    }
+                    nameFiles.Add(outPath);
+                    if (outPath != "-")
+                    {
+                        // Just in this case, also create directories, since it's a common use case to dump to a new directory
+                        string dirName = Path.GetDirectoryName(outPath);
+                        if (!string.IsNullOrWhiteSpace(dirName) && !File.Exists(dirName) && !Directory.Exists(dirName))
+                        {
+                            Directory.CreateDirectory(dirName);
+                        }
+                        MaybeBackup(outPath);
+                        Console.WriteLine($"Writing {esd.FilePath}:{esd.Name} -> {outPath}");
+                    }
                     // Try to find EDD for DS2
                     EDDText edd = null;
                     if (eddDir != null)
@@ -316,20 +416,20 @@ namespace ESDLang.Script
                     TextWriter writer = null;
                     try
                     {
-                        if (fname == "-")
+                        if (outPath == "-")
                         {
                             // Keep null to use Console.Out
                             Console.WriteLine("# -*- coding: utf-8 -*-");
                         }
-                        else if (!files.Contains(fname))
+                        else if (!files.Contains(outPath))
                         {
-                            files.Add(fname);
-                            writer = File.CreateText(fname);
+                            files.Add(outPath);
+                            writer = File.CreateText(outPath);
                             writer.WriteLine("# -*- coding: utf-8 -*-");
                         }
                         else
                         {
-                            writer = File.AppendText(fname);
+                            writer = File.AppendText(outPath);
                         }
                         new Decompiler(LoadContext(esd.Name), options, ESDName.ToFunctionPrefix(esd.Name), u, edd?.edd).Decompile(esd.Esd, writer ?? Console.Out);
                     }
@@ -341,6 +441,7 @@ namespace ESDLang.Script
             }
             else if (opt is ESDOptions.WriteEdd edd)
             {
+                if (backup) throw new Exception($"Backup not supported for writing EDDs");
                 Predicate<ESDDesc> filter = GetFilter();
                 List<ESDDesc> esds = GetESDs(filter, parse: false, check: false);
                 if (esds.Count == 0) throw new Exception("No ESD input files given (through -<game>, -esddir, -i)");
@@ -439,16 +540,16 @@ namespace ESDLang.Script
         }
         private Predicate<ESDDesc> GetFilter()
         {
-            if (options.Chrs.Count == 0 && options.Maps.Count == 0 && options.Esds.Count == 0) return null;
-            if (options.Chrs.Count > 0)
+            if (options.ChrFilters.Count == 0 && options.MapFilters.Count == 0 && options.EsdFilters.Count == 0) return null;
+            if (options.ChrFilters.Count > 0)
             {
                 if (!LoadMapData()) throw new Exception($"chrs used in filter but map data is not available for {spec.Game}");
             }
             return desc =>
             {
-                if (options.Chrs.Count > 0 && desc.Chr.Overlaps(options.Chrs)) return true;
-                if (options.Maps.Count > 0 && desc.Map != null && options.Maps.Any(map => desc.Map.StartsWith(map))) return true;
-                if (options.Esds.Count > 0 && options.Esds.Any(name => desc.Name.StartsWith(name))) return true;
+                if (options.ChrFilters.Count > 0 && desc.Chr.Overlaps(options.ChrFilters)) return true;
+                if (options.MapFilters.Count > 0 && desc.Map != null && options.MapFilters.Any(map => desc.Map.StartsWith(map))) return true;
+                if (options.EsdFilters.Count > 0 && options.EsdFilters.Any(name => desc.Name.StartsWith(name))) return true;
                 return false;
             };
         }
@@ -461,6 +562,7 @@ namespace ESDLang.Script
         }
         private List<ESDDesc> GetESDs(Predicate<ESDDesc> filter, bool parse, bool check)
         {
+
             bool load = parse || check;
             List<string> paths = new List<string>();
             List<ESDDesc> ret = new List<ESDDesc>();
@@ -486,6 +588,10 @@ namespace ESDLang.Script
                     }
                     if (parse)
                     {
+                        if (desc.Name == "t101206000")
+                        {
+                            // File.WriteAllBytes($"{desc.Name}b.esd", data);
+                        }
                         desc.Esd = ESD.Read(data);
                     }
                     if (check)
@@ -500,12 +606,13 @@ namespace ESDLang.Script
             }
             else if (spec.EsdDir != null)
             {
-                string absDir = $@"{spec.GameDir}\{spec.EsdDir}";
+                string absDir = GameEditor.AbsolutePath(spec.GameDir, spec.EsdDir);
                 paths = Directory.GetFiles(absDir, "*.esd").Concat(Directory.GetFiles(absDir, "*.esd.dcx")).Concat(Directory.GetFiles(absDir, "*esdbnd.dcx")).Concat(Directory.GetFiles(absDir, "*esdbnd")).ToList();
             }
             foreach (string inPath in paths)
             {
                 string path = WindowsifyPath(inPath);
+                Console.WriteLine($"Loading {path}");
                 if (path.EndsWith(".esd") || path.EndsWith(".esd.dcx"))
                 {
                     ESDDesc desc = makeDesc(path);
@@ -528,13 +635,13 @@ namespace ESDLang.Script
                         if (esdName.StartsWith("t") && int.TryParse(esdName.Substring(1), out int esdId))
                         {
                             Obj obj = Obj.Esd(esdId);
-                            foreach (Obj part in u.Prev(obj, Verb.CONTAINS, Namespace.PART))
+                            foreach (Obj part in u.Prev(obj, Verb.CONTAINS, Namespace.Part))
                             {
-                                foreach (Obj chr in u.Next(part, Verb.CONTAINS, Namespace.CHR_MODEL))
+                                foreach (Obj chr in u.Next(part, Verb.CONTAINS, Namespace.ChrModel))
                                 {
                                     desc.Chr.Add(chr.ID);
                                 }
-                                foreach (Obj npc in u.Next(part, Verb.CONTAINS, Namespace.HUMAN))
+                                foreach (Obj npc in u.Next(part, Verb.CONTAINS, Namespace.Human))
                                 {
                                     if (int.TryParse(npc.ID, out int id)) desc.Chr.Add("h" + npc.ID);
                                 }

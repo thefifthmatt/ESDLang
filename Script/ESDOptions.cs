@@ -18,39 +18,39 @@ namespace ESDLang.Script
         public Queue<Option> opts = new Queue<Option>();
         // State
         public Dictionary<string, bool> Flags = new Dictionary<string, bool>(defaultFlags);
-        // For now, all flags are default true
         public bool Flag(string name) => Flags[name];
-        public List<string> Chrs = new List<string>();
-        public List<string> Maps = new List<string>();
-        public List<string> Esds = new List<string>();
+        public List<string> ChrFilters = new List<string>();
+        public List<string> MapFilters = new List<string>();
+        public List<string> EsdFilters = new List<string>();
         public List<string> PyInputs = new List<string>();
         public List<string> EsdInputs = new List<string>();
+        public Dictionary<string, string> ExtraEsds = new Dictionary<string, string>();
         public string EddDir = null;
         public CmdType Type = CmdType.Unknown;
         public EDDText.EDDFormat EddFormat = EDDText.EDDFormat.Flat;
         public GameSpec Spec = new GameSpec();
         public Option LastAction = null;
 
+        public static readonly EnumOption<FromGame> Games = EnumOption<FromGame>.Create();
+
         // TODO: Change default... also in accessor function
         private static readonly Dictionary<string, bool> defaultFlags = new Dictionary<string, bool> {
             { "cfg", true },
             { "stateinfo", true },
+            { "deadstates", true },
             { "newstates", true },
+            { "regsubstitute", true },
             { "cmdedd", false },
             { "copysame", false },
+            { "backup", false },
         };
         private static readonly HashSet<string> allFlags = new HashSet<string>(defaultFlags.Keys.Concat(defaultFlags.Keys.Select(f => $"no{f}")));
-        private static readonly EnumOption<FromGame> games = EnumOption<FromGame>.Create();
         private static readonly EnumOption<DCX.Type> dcxs = EnumOption<DCX.Type>.Create();
         private static readonly EnumOption<CmdType> cmdTypes = EnumOption<CmdType>.Create();
         private static readonly EnumOption<EDDText.EDDFormat> eddFormats = EnumOption<EDDText.EDDFormat>.Create();
-        // private static readonly List<FromGame> gamesList = ((FromGame[])Enum.GetValues(typeof(FromGame))).Where(g => g != FromGame.UNKNOWN).ToList();
-        // private static readonly Dictionary<string, FromGame> games = gamesList.ToDictionary(f => f.ToString().ToLower(), f => f);
-        // private static readonly List<DCX.Type> dcxsList = ((DCX.Type[])Enum.GetValues(typeof(DCX.Type))).Where(d => d != DCX.Type.Unknown).ToList();
-        // private static readonly Dictionary<string, DCX.Type> dcxs = dcxsList.ToDictionary(f => f.ToString().ToLower(), f => f);
-        public static readonly HashSet<string> specFlags = new HashSet<string> { "basedir", "esddir", "maps", "msgs", "names", "layouts", "params", "outdcx" };
+        private static readonly HashSet<string> specFlags = new HashSet<string> { "basedir", "esddir", "maps", "msgs", "names", "layouts", "defs", "params", "outdcx" };
 
-        internal class EnumOption<T>
+        public class EnumOption<T>
         {
             public List<T> List { get; set; }
             public Dictionary<string, T> Names { get; set; }
@@ -77,16 +77,19 @@ namespace ESDLang.Script
         {
             this.opts = new Queue<Option>(opts);
         }
+
         public static string GetShortUsage()
         {
-            return $@"Usage: esdtool.exe [-h] [{string.Join(" | ", games.List.Select(g => $"-{g}".ToLower()))}]
+            return $@"Usage: esdtool.exe [-h] [{string.Join(" | ", Games.List.Select(g => $"-{g}".ToLower()))}]
                    [-basedir DIR] [-esddir DIR] [-maps DIR] [-msgs DIR] [-params FILE] [-names DIR]
-                   [-layouts DIR] [-outdcx DCXTYPE] [-i FILE1 FILE2 etc] [-f ESD MAP CHR etc]
-                   [-[no]cfg] [-[no]stateinfo] [-[no]newstates] [-[no]talk] [-[no]cmdedd]
-                   [-[no]copysame] [-cmdtype TYPE] [-edddir DIR]
-                   [-writepy TEMPLATE] [-writebnd DIR] [-writeloose TEMPLATE] [-writeedd DIR] [-info]
+                   [-layouts DIR] [-outdcx DCXTYPE] [-i FILE1 FILE2 etc] [-f ESD MAP CHR etc] [-extra ESD=BND etc]
+                   [-[no]cfg] [-[no]stateinfo] [-[no]deadstates] [-[no]newstates] [-[no]regsubstitute]
+                   [-[no]cmdedd] [-[no]copysame] [-[no]backup] [-cmdtype TYPE] [-edddir DIR]
+                   [-writepy TEMPLATE] [-writebndfile FILE] [-writebndfile DIR] [-writeloose TEMPLATE]
+                   [-writeedd DIR] [-info]
 ";
         }
+
         public static string GetUsage()
         {
             return $@"Usage: esdtool.exe <args>
@@ -97,7 +100,7 @@ operations. For instance, -ds1 -esddir chr will default everything to DS1, but t
 the subdirectory used for ESD inputs. The other way around will not work.
 
 > Game flag
-{string.Join(", ", games.List.Select(g => $"-{g}".ToLower()))}
+{string.Join(", ", Games.List.Select(g => $"-{g}".ToLower()))}
     Sets all game data flags to default known values for Steam installations of the given game, or
     clears them if unknown. This overrides all values which were there before. These default values
     are kept in SoulsIds in GameSpec.cs
@@ -107,7 +110,7 @@ the subdirectory used for ESD inputs. The other way around will not work.
 -basedir DIR
     Sets the base directory for esddir, maps, msgs, and params. UXM or similar tool must be used.
 -esddir DIR
-    Sets the relative dir for all ESDs, meaning all .esd, .esd.dcx, and .esdbnd.dcx files in
+    Sets the relative dir for all ESDs, meaning all .esd, .esd.dcx, and esdbnd.dcx files in
     that directory. Overrides -i for a list of ESDs and clears -f.
 -maps DIR
     Sets the relative dir for all MSB files. Used to look up chr info on ESDs, currently for
@@ -116,18 +119,20 @@ the subdirectory used for ESD inputs. The other way around will not work.
     Sets the relative dir where FMG bnds can be found. Used to annotate ESDs with game info.
 -params FILE
     Sets the relative file with game params. Used to annotate ESDs with game info.
-    Requires -layouts.
+    Requires -layouts or -defs.
 -names DIR
     A directory with names for game ids. Currently ModelName.txt is used alongside chr info.
 -layouts DIR
-    A directory with layout xml files, required to use -params.
+    A directory with layout xml files, required to use -params in most games.
+-defs DIR
+    A directory with paramdef xml files, required to use -params in Elden Ring.
 -outdcx [{string.Join(" | ", dcxs.List)}]
     Sets the DCX type to use when writing ESDs (writebnd/writeloose).
 
 > Input/output flags
 -i FILE1 FILE2 etc
     Can be used in two ways, for a list of one or more files. If all files end in .py, sets
-    the list of Python files to compile. If all files end in .esd, .esd.dcx, and .esdbnd.dcx,
+    the list of Python files to compile. If all files end in .esd, .esd.dcx, and esdbnd.dcx,
     sets the list of ESD files to decompile; also overrides -esddir and clears -f. These are
     relative to the current directory if relative paths.
 -f ESD MAP CHR etc
@@ -139,6 +144,10 @@ the subdirectory used for ESD inputs. The other way around will not work.
 -edddir DIR
     The directory to use to find .edd or .edd.txt files, default dist\<game>\edd when it exists
     for English translations. This can be set to the same as -esddir to use the original EDD files.
+-[no]backup
+    When enabled (default false), backs up files with a .bak suffix before writing them. If the
+    .bak file already exists, this does nothing. This is usually not needed if you're using a
+    separate mod directory.
 -writepy TEMPLATE
     Given ESD inputs (with -esddir or -i), decompile all ESDs, with filters if those exist. The
     template is a file name, with %e, %m, and %c replaced with ESD, map name prefix, and chr name
@@ -149,7 +158,15 @@ the subdirectory used for ESD inputs. The other way around will not work.
     Given Python inputs (with -i), and also ESD inputs (with -esddir or -i), write copies of those
     ESD/bnd files to the given directory if they have compiled ESDs. If the given directory is a
     relative path and gamedir is also provided, it will be relative to the game directory. Can be
-    used to write out final files for a mod. This does not create backups.
+    used to write out final files for a mod.
+-writebndfile FILE
+    Same as -writebnd, but it will only write to the given BND file. It will still compile all
+    inputs. If the given directory is a relative path and gamedir is also provided, it will be
+    relative to the game directory.
+-extra ESD1=BND2 ESD2=BND2 etc
+    Used with -writebnd to add extra ESD files not present in the original game ESDs. For example,
+    if the -writebnd directory contains m10_00_00_00.talkesdbnd.dcx, you can add a new ESD t100630
+    to it by specifying t100630=m10_00_00_00
 -[no]copysame
     When enabled (default false), writebnd not only writes copied of the compiled ESDs, but also
     copies of all ESDs which are identical to it. This can be used to decompile only one bonfire
@@ -182,9 +199,16 @@ the subdirectory used for ESD inputs. The other way around will not work.
 -[no]stateinfo
     When enabled (default true), writes state ids as docstrings. This is more cluttered but allows
     writing back commands/conditions to the same states.
+-[no]deadstates
+    When enabled (default true), adds unreachable states at the end of machines. This has no effect
+    on execution, and it can be noisy, but it can also be helpful for restoring cut content.
 -[no]newstates
-    When enabled (default true), allows creating states with fresh ids, rather than getting all ids
-    from docstrings (with -stateinfo).
+    When enabled (default true), allows creating states with fresh ids, rather than requiring tha
+    all all ids are specified in docstrings (with -stateinfo).
+-[no]regsubstitute
+    When enabled (default true), decompilation substitutes GetREG expressions with the contents of
+    equivalent SetREG expressions from within the same state. The reverse optimization is not
+    currently done during compilation.
 -[no]cmdedd
     When enabled (default false) and EDD is available, output text for each individual command
     where given a description. This appears to be automatically inserted based on the command id,
@@ -214,12 +238,12 @@ Recompile the given Python files into a subdirectory of the game, copying releva
 
         private void ClearFilters()
         {
-            Chrs.Clear();
-            Maps.Clear();
-            Esds.Clear();
+            ChrFilters.Clear();
+            MapFilters.Clear();
+            EsdFilters.Clear();
         }
 
-        public static ESDOptions Parse(string[] cargs)
+        public static ESDOptions Parse(IList<string> cargs)
         {
             HashSet<char> invalid = new HashSet<char>(Path.GetInvalidPathChars());
             Queue<string> args = new Queue<string>(cargs);
@@ -262,9 +286,9 @@ Recompile the given Python files into a subdirectory of the game, copying releva
                         if (!formats.Contains(ch)) throw new Exception($"Unknown format %{ch} for flag -{arg}");
                     }
                 }
-                if (games.Names.ContainsKey(arg))
+                if (Games.Names.ContainsKey(arg))
                 {
-                    opts.Add(new SetGame { Game = games.Names[arg] });
+                    opts.Add(new SetGame { Game = Games.Names[arg] });
                 }
                 else if (specFlags.Contains(arg))
                 {
@@ -324,6 +348,24 @@ Recompile the given Python files into a subdirectory of the game, copying releva
                     }
                     opts.Add(new AddInput { Name = vals });
                 }
+                else if (arg == "extra")
+                {
+                    List<string> vals = getMultiArg();
+                    Dictionary<string, string> extra = new Dictionary<string, string>();
+                    foreach (string val in vals)
+                    {
+                        string[] parts = val.Split('=');
+                        if (parts.Length != 2) throw new Exception($"Arg {val} for -extra requires format ESD=BND");
+                        extra[parts[0]] = parts[1];
+                    }
+                    opts.Add(new AddExtraEsds { Names = extra });
+                }
+                else if (arg == "writebndfile")
+                {
+                    string val = getOnlyArg();
+                    checkFilename(val);
+                    opts.Add(new WriteBnd { FileName = val });
+                }
                 else if (arg == "writebnd")
                 {
                     string val = getOnlyArg();
@@ -370,6 +412,7 @@ Recompile the given Python files into a subdirectory of the game, copying releva
                 {
                     Spec = ForGame(game.Game);
                     EsdInputs.Clear();
+                    ExtraEsds.Clear();
                     ClearFilters();
                 }
                 else if (opt is SetGameOpt gameOpt)
@@ -387,6 +430,7 @@ Recompile the given Python files into a subdirectory of the game, copying releva
                         case "names": Spec.NameDir = val; break;
                         case "msgs": Spec.MsgDir = val; break;
                         case "layouts": Spec.LayoutDir = WindowsifyPath(val); break;
+                        case "defs": Spec.DefDir = WindowsifyPath(val); break;
                         case "params": Spec.ParamFile = WindowsifyPath(val); break;
                         case "outdcx": Spec.Dcx = gameOpt.Dcx; break;
                         default: break;
@@ -404,15 +448,15 @@ Recompile the given Python files into a subdirectory of the game, copying releva
                     {
                         if (ESDName.IsKnownPrefix(val))
                         {
-                            Esds.Add(val);
+                            EsdFilters.Add(val);
                         }
                         else if (val.StartsWith("m"))
                         {
-                            Maps.Add(val);
+                            MapFilters.Add(val);
                         }
                         else if (val.StartsWith("c") || val.StartsWith("h"))
                         {
-                            Chrs.Add(val);
+                            ChrFilters.Add(val);
                         }
                         else throw new Exception($"Internal error: unknown filter {val}");
                     }
@@ -436,6 +480,13 @@ Recompile the given Python files into a subdirectory of the game, copying releva
                         }
                         EsdInputs.Clear();
                         EsdInputs.AddRange(input.Name);
+                    }
+                }
+                else if (opt is AddExtraEsds extra)
+                {
+                    foreach (KeyValuePair<string, string> entry in extra.Names)
+                    {
+                        ExtraEsds[entry.Key] = entry.Value;
                     }
                 }
                 else if (opt is SetCmdType cmd)
@@ -501,9 +552,14 @@ Recompile the given Python files into a subdirectory of the game, copying releva
         {
             public List<string> Name { get; set; }
         }
+        public class AddExtraEsds : Option
+        {
+            public Dictionary<string, string> Names { get; set; }
+        }
         public class WriteBnd : Option
         {
             public string DirName { get; set; }
+            public string FileName { get; set; }
         }
         public class WriteLoose : Option
         {
@@ -519,6 +575,6 @@ Recompile the given Python files into a subdirectory of the game, copying releva
         }
         public class Info : Option { }
 
-        public enum CmdType { Unknown, None, Talk, Chr, Event, AI }
+        public enum CmdType { Unknown, None, Talk, TalkER, Chr, Event, AI }
     }
 }

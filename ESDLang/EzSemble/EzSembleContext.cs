@@ -30,6 +30,10 @@ namespace ESDLang.EzSemble
                 ValueType = valueType;
                 Description = desc;
             }
+            public EzSembleMethodArgInfo Clone()
+            {
+                return (EzSembleMethodArgInfo)MemberwiseClone();
+            }
         }
 
         public class EzSembleEnumEntry
@@ -60,22 +64,28 @@ namespace ESDLang.EzSemble
             {
                 Name = name;
             }
+            public EzSembleMethodInfo Clone()
+            {
+                EzSembleMethodInfo other = (EzSembleMethodInfo)MemberwiseClone();
+                if (other.Args != null) other.Args = other.Args.Select(a => a.Clone()).ToList();
+                return other;
+            }
         }
 
         internal bool IsBigEndian = false;
 
         internal Dictionary<(int Bank, int ID), EzSembleMethodInfo> CommandInfoByID;
-        internal Dictionary<string, (int Bank, int ID)> CommandIDsByName 
-            => CommandInfoByID.ToDictionary(kvp => kvp.Value.Name, kvp => kvp.Key);
+        internal Dictionary<string, (int Bank, int ID)> CommandIDsByName;
         internal Dictionary<int, EzSembleMethodInfo> FunctionInfoByID;
-        internal Dictionary<string, int> FunctionIDsByName
-            => FunctionInfoByID.ToDictionary(kvp => kvp.Value.Name, kvp => kvp.Key);
+        internal Dictionary<string, int> FunctionIDsByName;
         internal Dictionary<string, List<EzSembleEnumEntry>> EnumInfo;
 
         public EzSembleContext()
         {
             CommandInfoByID = new Dictionary<(int Bank, int ID), EzSembleMethodInfo>();
+            CommandIDsByName = new Dictionary<string, (int Bank, int ID)>();
             FunctionInfoByID = new Dictionary<int, EzSembleMethodInfo>();
+            FunctionIDsByName = new Dictionary<string, int>();
             EnumInfo = new Dictionary<string, List<EzSembleEnumEntry>>();
         }
 
@@ -197,6 +207,22 @@ namespace ESDLang.EzSemble
                 }
 
                 context.CommandInfoByID.Add((bankID, commandID), newCommandInfo);
+
+                // This could be made an optional feature, but every game after DS1 appears to support conditional bank ids
+                if (bankID == 1)
+                {
+                    EzSembleMethodInfo ifInfo = newCommandInfo.Clone();
+                    ifInfo.Name = newCommandInfo.Name + "If";
+                    // Same as regular command, except the first arg is a boolean.
+                    if (ifInfo.Args != null)
+                    {
+                        ifInfo.Args.Insert(0, new EzSembleMethodArgInfo
+                        {
+                            Name = "ExecIf"
+                        });
+                    }
+                    context.CommandInfoByID.Add((5, commandID), ifInfo);
+                }
             }
 
             foreach (XmlNode functionNode in xml.SelectNodes("EzSembleContext/FunctionList/Function"))
@@ -240,6 +266,10 @@ namespace ESDLang.EzSemble
                 context.EnumInfo.Add(enumName, enumEntries);
             }
 
+            context.CommandIDsByName = context.CommandInfoByID.ToDictionary(kvp => kvp.Value.Name, kvp => kvp.Key);
+            context.FunctionIDsByName = context.FunctionInfoByID.ToDictionary(kvp => kvp.Value.Name, kvp => kvp.Key);
+
+
             return context;
         }
 
@@ -257,6 +287,10 @@ namespace ESDLang.EzSemble
                 {
                     foreach (var kvp in CommandInfoByID)
                     {
+                        if (kvp.Key.Bank == 5)
+                        {
+                            continue;
+                        }
                         xw.WriteStartElement("Command");
                         {
                             xw.WriteAttributeString("Bank", kvp.Key.Bank.ToString());
