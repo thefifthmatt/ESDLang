@@ -131,6 +131,10 @@ def t500732_x5(flag1=75000120, flag2=75000121, z1=75000121, z2=75000121):
     assert CheckSelfDeath() == 1
     """State 1"""
     t500732_x2(flag5=1810)
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t500732_x6():
     """State 0,1"""
@@ -166,7 +170,7 @@ def t500732_x9(flag1=75000120, flag2=75000121, z1=75000121, z2=75000121, flag3=1
     """State 0"""
     while True:
         """State 5"""
-        call = t500732_x20(z7=6830, flag9=1815, flag10=6000, flag11=6000, flag12=6000, flag13=6000)
+        call = t500732_x20(actionbutton1=6830, flag9=1815, flag10=6000, flag11=6000, flag12=6000, flag13=6000)
         if call.Done():
             """State 3"""
             call = t500732_x0(flag3=flag3)
@@ -214,6 +218,10 @@ def t500732_x9(flag1=75000120, flag2=75000121, z1=75000121, z2=75000121, flag3=1
             Goto('L1')
     """State 2"""
     t500732_x3(flag3=flag3)
+    Quit()
+    """Unused"""
+    """State 7"""
+    return 0
 
 def t500732_x10(flag5=1810):
     """State 0,1"""
@@ -272,13 +280,13 @@ def t500732_x14():
     if not GetEventStatus(75000100):
         """State 3"""
         # talk:83000000:"Oh, look at you, you've got your head screwed on correct."
-        assert t500732_x24(text4=83000000, z6=75000100, flag7=0, mode2=1)
+        assert t500732_x24(text4=83000000, z5=75000100, flag7=0, mode2=1)
     else:
         """State 2"""
         if not GetEventStatus(75000101):
             """State 4"""
             # talk:83000100:"Ohh, in all honesty there's something I should tell you..."
-            assert t500732_x24(text4=83000100, z6=75000101, flag7=0, mode2=1)
+            assert t500732_x24(text4=83000100, z5=75000101, flag7=0, mode2=1)
         else:
             """State 5"""
             # talk:83000200:"Well, that's the long and short of it."
@@ -293,7 +301,7 @@ def t500732_x15():
         if not GetEventStatus(50006621):
             """State 15"""
             # talk:83000700:"Oh, there you are, perfect timing."
-            assert t500732_x24(text4=83000700, z6=75000104, flag7=0, mode2=1)
+            assert t500732_x24(text4=83000700, z5=75000104, flag7=0, mode2=1)
             """State 16"""
             # lot:66210:Titanite Slab
             assert t500732_x26(lot1=66210)
@@ -321,19 +329,19 @@ def t500732_x15():
                     Goto('L0')
             """State 13"""
             # talk:83000650:"Not much to speak of, but bottoms up. To the greatest warrior there is."
-            assert t500732_x24(text4=83000650, z6=75000104, flag7=0, mode2=1)
+            assert t500732_x24(text4=83000650, z5=75000104, flag7=0, mode2=1)
         else:
             """State 3"""
             if not GetEventStatus(75000102):
                 """State 8"""
                 # talk:83000300:"Oh, I know who you are."
-                assert t500732_x24(text4=83000300, z6=75000102, flag7=0, mode2=1)
+                assert t500732_x24(text4=83000300, z5=75000102, flag7=0, mode2=1)
             else:
                 """State 4"""
                 if not GetEventStatus(75000103):
                     """State 9"""
                     # talk:83000400:"Ah, don't mind me. You needn't worry yourself with this nonsense."
-                    assert t500732_x24(text4=83000400, z6=75000103, flag7=0, mode2=1)
+                    assert t500732_x24(text4=83000400, z5=75000103, flag7=0, mode2=1)
                 else:
                     """State 10"""
                     # talk:83000500:"Past here, you'll find the remains of a giant earthen tower half-submerged in a poisonous swamp."
@@ -361,9 +369,9 @@ def t500732_x16():
         assert GetCurrentStateElapsedTime() > 1.4
         """State 7"""
         # talk:83000970:"All right, then. Bottoms up!"
-        assert t500732_x24(text4=83000970, z6=75100200, flag7=1, mode2=1)
+        assert t500732_x24(text4=83000970, z5=75100200, flag7=1, mode2=1)
         """State 11"""
-        assert t500732_x27(z3=33, z4=9034, flag4=6083)
+        assert t500732_x27(gesture1=33, z3=9034, flag4=6083)
     else:
         """State 2"""
         if not GetEventStatus(75100200):
@@ -373,7 +381,7 @@ def t500732_x16():
             if not GetEventStatus(75100201):
                 """State 8"""
                 # talk:83001000:"Now, I'm off in search of the Purging Monument."
-                assert t500732_x24(text4=83001000, z6=75100201, flag7=0, mode2=1)
+                assert t500732_x24(text4=83001000, z5=75100201, flag7=0, mode2=1)
             else:
                 """State 9"""
                 # talk:83001100:"Now, I'm off in search of the Purging Monument."
@@ -388,29 +396,29 @@ def t500732_x17():
         if GetEventStatus(75100232) == 1:
             """State 11"""
             # talk:83001500:"...Ahh, please, someone tell me..."
-            assert t500732_x19(text1=83001500, z5=75100204)
+            assert t500732_x19(text1=83001500, z4=75100204)
         else:
             """State 3"""
             if GetEventStatus(75100231) == 1:
                 """State 10"""
                 # talk:83001400:"...What did I come here in search of?"
-                assert t500732_x19(text1=83001400, z5=75100203)
+                assert t500732_x19(text1=83001400, z4=75100203)
             else:
                 """State 4"""
                 if not GetEventStatus(75100202):
                     """State 8"""
                     # talk:83001200:"Oh, and here we are again."
-                    assert t500732_x19(text1=83001200, z5=75100202)
+                    assert t500732_x19(text1=83001200, z4=75100202)
                 else:
                     """State 9"""
                     # talk:83001300:"Sorry, I know it doesn't concern you..."
-                    assert t500732_x19(text1=83001300, z5=75100202)
+                    assert t500732_x19(text1=83001300, z4=75100202)
     else:
         """State 5"""
         if not GetEventStatus(75100206):
             """State 6"""
             # talk:83001700:"Ahh, thank you, most sincerely."
-            assert t500732_x24(text4=83001700, z6=75100206, flag7=0, mode2=1)
+            assert t500732_x24(text4=83001700, z5=75100206, flag7=0, mode2=1)
         else:
             """State 7"""
             # talk:83001800:"...It won't be long now, before I know everything."
@@ -422,14 +430,14 @@ def t500732_x18():
     """State 0,2"""
     if DoesSelfHaveSpEffect(159) == 1:
         """State 5"""
-        assert t500732_x27(z3=27, z4=9028, flag4=6077)
+        assert t500732_x27(gesture1=27, z3=9028, flag4=6077)
     else:
         pass
     """State 1"""
     if not GetEventStatus(75100207):
         """State 3"""
         # talk:83001900:"Oh, finally, you've come."
-        assert t500732_x24(text4=83001900, z6=75100207, flag7=0, mode2=1)
+        assert t500732_x24(text4=83001900, z5=75100207, flag7=0, mode2=1)
     else:
         """State 4"""
         # talk:83002000:"I've much to thank you for, so I'll say it again and again."
@@ -437,7 +445,7 @@ def t500732_x18():
     """State 6"""
     return 0
 
-def t500732_x19(text1=_, z5=_):
+def t500732_x19(text1=_, z4=_):
     """State 0,8"""
     assert t500732_x25(text1=text1, flag6=0, mode1=1)
     """State 1"""
@@ -455,10 +463,10 @@ def t500732_x19(text1=_, z5=_):
     if GetTalkListEntryResult() == 1:
         """State 7"""
         # talk:83001600:"Are you certain of that?"
-        assert t500732_x24(text4=83001600, z6=75100205, flag7=0, mode2=1)
+        assert t500732_x24(text4=83001600, z5=75100205, flag7=0, mode2=1)
         """State 5"""
         Label('L0')
-        SetEventState(z5, 1)
+        SetEventState(z4, 1)
     elif GetTalkListEntryResult() == 2:
         """State 6"""
         if not GetEventStatus(75100202):
@@ -473,7 +481,7 @@ def t500732_x19(text1=_, z5=_):
     """State 10"""
     return 0
 
-def t500732_x20(z7=6830, flag9=1815, flag10=6000, flag11=6000, flag12=6000, flag13=6000):
+def t500732_x20(actionbutton1=6830, flag9=1815, flag10=6000, flag11=6000, flag12=6000, flag13=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -489,7 +497,7 @@ def t500732_x20(z7=6830, flag9=1815, flag10=6000, flag11=6000, flag12=6000, flag
         elif (not GetEventStatus(flag9) and not GetEventStatus(flag10) and not GetEventStatus(flag11)
               and not GetEventStatus(flag12) and not GetEventStatus(flag13)):
             pass
-        elif CheckActionButtonArea(z7):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -546,7 +554,7 @@ def t500732_x23(text5=_, flag1=_, flag8=0, mode3=1):
     """State 6"""
     return 0
 
-def t500732_x24(text4=_, z6=_, flag7=_, mode2=1):
+def t500732_x24(text4=_, z5=_, flag7=_, mode2=1):
     """State 0,5"""
     assert t500732_x22() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 1"""
@@ -559,7 +567,7 @@ def t500732_x24(text4=_, z6=_, flag7=_, mode2=1):
         """State 3"""
         ReportConversationEndToHavokBehavior()
     """State 2"""
-    SetEventState(z6, 1)
+    SetEventState(z5, 1)
     """State 6"""
     return 0
 
@@ -585,15 +593,15 @@ def t500732_x26(lot1=_):
     """State 2"""
     return 0
 
-def t500732_x27(z3=_, z4=_, flag4=_):
+def t500732_x27(gesture1=_, z3=_, flag4=_):
     """State 0,1"""
     if GetEventStatus(flag4) == 1:
         """State 2"""
         pass
     else:
         """State 3,4"""
-        AcquireGesture(z3)
-        OpenItemAcquisitionMenu(3, z4, 1)
+        AcquireGesture(gesture1)
+        OpenItemAcquisitionMenu(3, z3, 1)
         SetEventState(flag4, 1)
         assert not IsMenuOpen(63) and GetCurrentStateElapsedFrames() > 1
     """State 5"""
@@ -608,6 +616,9 @@ def t500732_x28():
         """State 2"""
         call = t500732_x6()
         assert GetEventStatus(1802) == 1 or GetEventStatus(1806) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t500732_x29():
     """State 0,1"""

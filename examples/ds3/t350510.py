@@ -10,7 +10,7 @@ def t350510_1():
         call = t350510_x12()
         assert not IsClientPlayer()
 
-def t350510_x0(z3=6000, flag3=1635, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
+def t350510_x0(actionbutton1=6000, flag3=1635, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t350510_x0(z3=6000, flag3=1635, flag4=6000, flag5=6000, flag6=6000, flag7=60
         elif (not GetEventStatus(flag3) and not GetEventStatus(flag4) and not GetEventStatus(flag5) and
               not GetEventStatus(flag6) and not GetEventStatus(flag7)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -225,7 +225,12 @@ def t350510_x8():
         """State 2"""
         pass
     """State 7"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 6"""
+    assert t350510_x1()
+    Goto('L0')
 
 def t350510_x9():
     """State 0,1"""
@@ -262,6 +267,9 @@ def t350510_x11():
         """State 2"""
         call = t350510_x14()
         assert GetEventStatus(1621) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t350510_x12():
     """State 0,1"""
@@ -275,6 +283,10 @@ def t350510_x13():
     assert CheckSelfDeath() == 1
     """State 1"""
     t350510_x7()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t350510_x14():
     """State 0,1"""
@@ -315,7 +327,7 @@ def t350510_x16(z1=-1):
     """State 0"""
     while True:
         """State 6"""
-        call = t350510_x0(z3=6000, flag3=1635, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
+        call = t350510_x0(actionbutton1=6000, flag3=1635, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
         if call.Done():
             """State 4"""
             call = t350510_x5()
@@ -362,6 +374,10 @@ def t350510_x16(z1=-1):
                 Goto('L0')
     """State 3"""
     t350510_x8()
+    Quit()
+    """Unused"""
+    """State 8"""
+    return 0
 
 def t350510_x17():
     """State 0,1"""

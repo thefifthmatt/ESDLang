@@ -10,7 +10,7 @@ def t450521_1():
         call = t450521_x11()
         assert not IsClientPlayer()
 
-def t450521_x0(z3=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
+def t450521_x0(actionbutton1=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t450521_x0(z3=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=60
         elif (not GetEventStatus(flag3) and not GetEventStatus(flag4) and not GetEventStatus(flag5) and
               not GetEventStatus(flag6) and not GetEventStatus(flag7)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -175,6 +175,9 @@ def t450521_x10():
         """State 2"""
         call = t450521_x13()
         assert GetEventStatus(1641) == 1 or GetEventStatus(1640) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t450521_x11():
     """State 0,1"""
@@ -188,6 +191,10 @@ def t450521_x12():
     assert CheckSelfDeath() == 1
     """State 1"""
     t450521_x6()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t450521_x13():
     """State 0,1"""
@@ -199,7 +206,7 @@ def t450521_x14(z1=74500120):
     """State 0"""
     while True:
         """State 4"""
-        call = t450521_x0(z3=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
+        call = t450521_x0(actionbutton1=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
         if IsPlayerDead() == 1:
             break
         elif IsAttackedBySomeone() == 1:
@@ -226,6 +233,10 @@ def t450521_x14(z1=74500120):
                 break
     """State 2"""
     t450521_x7()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 
 def t450521_x15():
     """State 0,1"""

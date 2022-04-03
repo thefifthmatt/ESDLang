@@ -152,7 +152,7 @@ def t400131_x6(action2=12003001):
         """State 4"""
         return 1
 
-def t400131_x7(z3=6132, flag1=6001, flag2=6000, flag3=6000, flag4=6000, flag5=6000):
+def t400131_x7(actionbutton1=6132, flag1=6001, flag2=6000, flag3=6000, flag4=6000, flag5=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -168,7 +168,7 @@ def t400131_x7(z3=6132, flag1=6001, flag2=6000, flag3=6000, flag4=6000, flag5=60
         elif (not GetEventStatus(flag1) and not GetEventStatus(flag2) and not GetEventStatus(flag3) and
               not GetEventStatus(flag4) and not GetEventStatus(flag5)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -223,6 +223,9 @@ def t400131_x11():
         """State 2"""
         call = t400131_x14()
         assert GetEventStatus(1021) == 1 and GetEventStatus(74000171) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400131_x12():
     """State 0,1"""
@@ -234,7 +237,7 @@ def t400131_x13(z1=2135, z2=390):
     """State 0"""
     while True:
         """State 1"""
-        assert t400131_x7(z3=6132, flag1=6001, flag2=6000, flag3=6000, flag4=6000, flag5=6000)
+        assert t400131_x7(actionbutton1=6132, flag1=6001, flag2=6000, flag3=6000, flag4=6000, flag5=6000)
         """State 3"""
         # weapon:6260000:Lorian's Greatsword, weapon:6280000:Lothric's Holy Sword
         call = t400131_x1(weapon1=6260000, weapon2=6280000)
@@ -243,7 +246,14 @@ def t400131_x13(z1=2135, z2=390):
         elif GetDistanceToPlayer() > 6:
             """State 2"""
             assert t400131_x8() and GetDistanceToPlayer() < 5.9
+    """Unused"""
+    """State 4"""
+    return 0
 
 def t400131_x14():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 

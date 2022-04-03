@@ -10,7 +10,7 @@ def t390250_1():
         call = t390250_x12()
         assert not IsClientPlayer()
 
-def t390250_x0(z3=6000, flag4=1275, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
+def t390250_x0(actionbutton1=6000, flag4=1275, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t390250_x0(z3=6000, flag4=1275, flag5=6000, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag4) and not GetEventStatus(flag5) and not GetEventStatus(flag6) and
               not GetEventStatus(flag7) and not GetEventStatus(flag8)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -178,6 +178,11 @@ def t390250_x6():
         Goto('L0')
     """State 24"""
     return 0
+    """Unused"""
+    """State 16,23"""
+    # talk:25000150:"Hm? Oh...you're not one of them, are you?"
+    assert t390250_x5(text1=25000150, flag1=0, mode1=1)
+    Goto('L0')
 
 def t390250_x7():
     """State 0,8"""
@@ -264,6 +269,9 @@ def t390250_x11():
         """State 2"""
         call = t390250_x14()
         assert GetEventStatus(1260) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t390250_x12():
     """State 0,1"""
@@ -277,15 +285,23 @@ def t390250_x13():
     assert CheckSelfDeath() == 1
     """State 1"""
     t390250_x8()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t390250_x14():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t390250_x15():
     """State 0"""
     while True:
         """State 5"""
-        call = t390250_x0(z3=6000, flag4=1275, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
+        call = t390250_x0(actionbutton1=6000, flag4=1275, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""
             call = t390250_x6()
@@ -316,4 +332,8 @@ def t390250_x15():
             break
     """State 2"""
     t390250_x9()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

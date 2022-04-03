@@ -10,7 +10,7 @@ def t400290_1():
         call = t400290_x13()
         assert not IsClientPlayer()
 
-def t400290_x0(z3=6000, flag4=1355, flag5=1357, flag6=6000, flag7=6000, flag8=6000):
+def t400290_x0(actionbutton1=6000, flag4=1355, flag5=1357, flag6=6000, flag7=6000, flag8=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t400290_x0(z3=6000, flag4=1355, flag5=1357, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag4) and not GetEventStatus(flag5) and not GetEventStatus(flag6) and
               not GetEventStatus(flag7) and not GetEventStatus(flag8)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -249,6 +249,9 @@ def t400290_x12():
         """State 2"""
         call = t400290_x15()
         assert GetEventStatus(1342) == 1 and GetEventStatus(9013) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400290_x13():
     """State 0,1"""
@@ -262,9 +265,17 @@ def t400290_x14():
     assert CheckSelfDeath() == 1
     """State 1"""
     t400290_x8()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400290_x15():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t400290_x16():
     """State 0,1"""
@@ -281,7 +292,23 @@ def t400290_x16():
         # talk:29001910:"Please, stop this!"
         assert t400290_x5(text1=29001910, flag1=0, mode1=1)
     """State 11"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 2"""
+    Goto('L1')
+    """State 3"""
+    Goto('L2')
+    """State 7"""
+    Label('L1')
+    # talk:29001510:" "
+    assert t400290_x3(text3=29001510, z2=74000721, flag3=0, mode3=1)
+    Goto('L0')
+    """State 8"""
+    Label('L2')
+    # talk:29001610:" "
+    assert t400290_x3(text3=29001610, z2=74000722, flag3=0, mode3=1)
+    Goto('L0')
 
 def t400290_x17():
     """State 0,3"""
@@ -313,7 +340,7 @@ def t400290_x19():
     while True:
         """State 6"""
         Label('L0')
-        call = t400290_x0(z3=6000, flag4=1355, flag5=1357, flag6=6000, flag7=6000, flag8=6000)
+        call = t400290_x0(actionbutton1=6000, flag4=1355, flag5=1357, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""
             call = t400290_x6()
@@ -368,4 +395,7 @@ def t400290_x19():
     elif (GetDistanceToPlayer() < 10 and GetEventStatus(1357) == 1 and not GetEventStatus(74000724) and
           (DoesSelfHaveSpEffect(150) == 1 or DoesSelfHaveSpEffect(151) == 1)):
         Goto('L2')
+    """Unused"""
+    """State 7"""
+    return 0
 

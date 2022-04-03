@@ -10,7 +10,7 @@ def t390310_1():
         call = t390310_x13()
         assert not IsClientPlayer()
 
-def t390310_x0(z2=_, flag8=1395, flag9=6000, flag10=6000, flag11=6000, flag12=6000):
+def t390310_x0(actionbutton1=_, flag8=1395, flag9=6000, flag10=6000, flag11=6000, flag12=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t390310_x0(z2=_, flag8=1395, flag9=6000, flag10=6000, flag11=6000, flag12=60
         elif (not GetEventStatus(flag8) and not GetEventStatus(flag9) and not GetEventStatus(flag10)
               and not GetEventStatus(flag11) and not GetEventStatus(flag12)):
             pass
-        elif CheckActionButtonArea(z2):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -251,7 +251,11 @@ def t390310_x11():
     """State 0,1,3,4"""
     assert t390310_x1()
     """State 5"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 2"""
+    Goto('L0')
 
 def t390310_x12():
     """State 0"""
@@ -262,6 +266,9 @@ def t390310_x12():
         """State 2"""
         call = t390310_x15()
         assert GetEventStatus(1386) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t390310_x13():
     """State 0,1"""
@@ -275,9 +282,17 @@ def t390310_x14():
     assert CheckSelfDeath() == 1
     """State 1"""
     t390310_x9()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t390310_x15():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t390310_x16(text2=31002200, text3=31002300, text4=31002400, flag3=73900150, flag4=73900151):
     """State 0,2"""
@@ -360,7 +375,8 @@ def t390310_x23():
         if not GetEventStatus(63900425):
             while True:
                 """State 7"""
-                call = t390310_x0(z2=6311, flag8=1395, flag9=6000, flag10=6000, flag11=6000, flag12=6000)
+                call = t390310_x0(actionbutton1=6311, flag8=1395, flag9=6000, flag10=6000, flag11=6000,
+                                  flag12=6000)
                 if call.Done():
                     """State 5"""
                     Label('L0')
@@ -397,7 +413,7 @@ def t390310_x23():
                     assert GetEventStatus(73900155) == 1
             """State 8"""
             Label('L2')
-            call = t390310_x0(z2=6000, flag8=1395, flag9=6000, flag10=6000, flag11=6000, flag12=6000)
+            call = t390310_x0(actionbutton1=6000, flag8=1395, flag9=6000, flag10=6000, flag11=6000, flag12=6000)
             if call.Done():
                 Goto('L0')
             elif IsPlayerAttacking() == 1 or (GetEventStatus(1396) == 1 and not GetEventStatus(73900199)):
@@ -408,4 +424,8 @@ def t390310_x23():
             Goto('L2')
     """State 4"""
     t390310_x10()
+    Quit()
+    """Unused"""
+    """State 9"""
+    return 0
 

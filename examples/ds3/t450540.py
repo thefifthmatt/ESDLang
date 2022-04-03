@@ -10,7 +10,7 @@ def t450540_1():
         call = t450540_x13()
         assert not IsClientPlayer()
 
-def t450540_x0(z1=6640, flag4=1695, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
+def t450540_x0(actionbutton1=6640, flag4=1695, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t450540_x0(z1=6640, flag4=1695, flag5=6000, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag4) and not GetEventStatus(flag5) and not GetEventStatus(flag6) and
               not GetEventStatus(flag7) and not GetEventStatus(flag8)):
             pass
-        elif CheckActionButtonArea(z1):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -66,11 +66,11 @@ def t450540_x2():
     """State 2"""
     return 0
 
-def t450540_x3(text3=_, z4=_, flag3=0, mode3=1):
+def t450540_x3(text3=_, z3=_, flag3=0, mode3=1):
     """State 0,5"""
     assert t450540_x2() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 2"""
-    SetEventState(z4, 1)
+    SetEventState(z3, 1)
     """State 1"""
     TalkToPlayer(text3, -1, -1, flag3)
     assert CheckSpecificPersonTalkHasEnded(0) == 1
@@ -83,7 +83,7 @@ def t450540_x3(text3=_, z4=_, flag3=0, mode3=1):
     """State 6"""
     return 0
 
-def t450540_x4(text2=_, z3=_, flag2=0, mode2=1):
+def t450540_x4(text2=_, z2=_, flag2=0, mode2=1):
     """State 0,5"""
     assert t450540_x2() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 1"""
@@ -96,7 +96,7 @@ def t450540_x4(text2=_, z3=_, flag2=0, mode2=1):
         """State 3"""
         ReportConversationEndToHavokBehavior()
     """State 2"""
-    SetEventState(z3, 1)
+    SetEventState(z2, 1)
     """State 6"""
     return 0
 
@@ -130,7 +130,7 @@ def t450540_x7():
         if not GetEventStatus(74500203):
             """State 21"""
             # talk:64000600:"Ohhh, my, thank you."
-            assert t450540_x4(text2=64000600, z3=74500203, flag2=0, mode2=1)
+            assert t450540_x4(text2=64000600, z2=74500203, flag2=0, mode2=1)
             """State 23"""
             # lot:65400:Titanite Slab
             assert t450540_x6(lot1=65400)
@@ -181,7 +181,7 @@ def t450540_x7():
             if not GetEventStatus(74500202):
                 """State 19"""
                 # talk:64000200:"Surely you've seen. The rot that afflicts our world."
-                assert t450540_x4(text2=64000200, z3=74500202, flag2=0, mode2=1)
+                assert t450540_x4(text2=64000200, z2=74500202, flag2=0, mode2=1)
             else:
                 """State 20"""
                 # talk:64000300:"Oh, please, it must be you."
@@ -245,7 +245,12 @@ def t450540_x10():
         """State 2"""
         pass
     """State 7"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 6"""
+    assert t450540_x1()
+    Goto('L0')
 
 def t450540_x11():
     """State 0,1"""
@@ -263,11 +268,14 @@ def t450540_x12():
     """State 0"""
     while True:
         """State 1"""
-        call = t450540_x14(z1=6640)
+        call = t450540_x14(actionbutton1=6640)
         assert not GetEventStatus(1680)
         """State 2"""
         call = t450540_x15()
         assert GetEventStatus(1680) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t450540_x13():
     """State 0,1"""
@@ -275,12 +283,16 @@ def t450540_x13():
     """State 2"""
     return 0
 
-def t450540_x14(z1=6640):
+def t450540_x14(actionbutton1=6640):
     """State 0,2"""
-    call = t450540_x17(z2=-1, z1=z1)
+    call = t450540_x17(z1=-1, actionbutton1=actionbutton1)
     assert CheckSelfDeath() == 1
     """State 1"""
     t450540_x9()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t450540_x15():
     """State 0,1"""
@@ -293,15 +305,15 @@ def t450540_x16():
     if not GetEventStatus(74500221):
         """State 4"""
         # talk:64000810:" "
-        assert t450540_x3(text3=64000810, z4=74500221, flag3=0, mode3=1)
+        assert t450540_x3(text3=64000810, z3=74500221, flag3=0, mode3=1)
     elif not GetEventStatus(74500222):
         """State 5"""
         # talk:64000820:" "
-        assert t450540_x3(text3=64000820, z4=74500222, flag3=0, mode3=1)
+        assert t450540_x3(text3=64000820, z3=74500222, flag3=0, mode3=1)
     elif not GetEventStatus(74500223):
         """State 6"""
         # talk:64000830:" "
-        assert t450540_x3(text3=64000830, z4=74500223, flag3=0, mode3=1)
+        assert t450540_x3(text3=64000830, z3=74500223, flag3=0, mode3=1)
     else:
         """State 2"""
         SetEventState(74500221, 0)
@@ -313,11 +325,12 @@ def t450540_x16():
     """State 7"""
     return 0
 
-def t450540_x17(z2=-1, z1=6640):
+def t450540_x17(z1=-1, actionbutton1=6640):
     """State 0"""
     while True:
         """State 5"""
-        call = t450540_x0(z1=z1, flag4=1695, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
+        call = t450540_x0(actionbutton1=actionbutton1, flag4=1695, flag5=6000, flag6=6000, flag7=6000,
+                          flag8=6000)
         if call.Done():
             """State 3"""
             call = t450540_x7()
@@ -348,6 +361,10 @@ def t450540_x17(z2=-1, z1=6640):
             break
     """State 2"""
     t450540_x10()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 
 def t450540_x18():
     """State 0,1"""

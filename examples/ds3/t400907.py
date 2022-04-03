@@ -23,9 +23,9 @@ def t400907_x0(action2=10010745):
         """State 4"""
         return 1
 
-def t400907_x1(z5=6000, flag4=1080, flag5=6000, flag6=6000, flag7=6000, flag8=6000, flag9=6000, flag10=6000,
-               flag11=6000, flag12=6000, flag13=6000, flag14=6000, flag15=6000, flag16=6000, flag17=6000,
-               flag18=6000):
+def t400907_x1(actionbutton1=6000, flag4=1080, flag5=6000, flag6=6000, flag7=6000, flag8=6000, flag9=6000,
+               flag10=6000, flag11=6000, flag12=6000, flag13=6000, flag14=6000, flag15=6000, flag16=6000,
+               flag17=6000, flag18=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -51,7 +51,7 @@ def t400907_x1(z5=6000, flag4=1080, flag5=6000, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag14) and not GetEventStatus(flag15) and not GetEventStatus(flag16)
               and not GetEventStatus(flag17) and not GetEventStatus(flag18)):
             pass
-        elif CheckActionButtonArea(z5):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 5"""
     return 0
@@ -159,7 +159,13 @@ def t400907_x8(z1=2, text3=90005030, text4=90005040):
             """State 7"""
             pass
     """State 15"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 4,9"""
+    # action:10010726:"Already belong to this Covenant"
+    assert t400907_x7(action1=10010726)
+    Goto('L0')
 
 def t400907_x9(goods1=375, z2=10020211):
     """State 0,2"""
@@ -331,15 +337,30 @@ def t400907_x16():
         """State 5"""
         assert t400907_x2()
     """State 8"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 1"""
+    Goto('L2')
+    """State 3"""
+    Label('L1')
+    assert t400907_x2()
+    Goto('L0')
+    """State 6"""
+    Label('L2')
+    call = t400907_x5(text5=90005000, z3=74009120, flag2=0)
+    if call.Done():
+        Goto('L0')
+    elif GetDistanceToPlayer() > 12:
+        Goto('L1')
 
 def t400907_x17():
     """State 0"""
     while True:
         """State 7"""
-        call = t400907_x1(z5=6000, flag4=1080, flag5=6000, flag6=6000, flag7=6000, flag8=6000, flag9=6000,
-                          flag10=6000, flag11=6000, flag12=6000, flag13=6000, flag14=6000, flag15=6000,
-                          flag16=6000, flag17=6000, flag18=6000)
+        call = t400907_x1(actionbutton1=6000, flag4=1080, flag5=6000, flag6=6000, flag7=6000, flag8=6000,
+                          flag9=6000, flag10=6000, flag11=6000, flag12=6000, flag13=6000, flag14=6000,
+                          flag15=6000, flag16=6000, flag17=6000, flag18=6000)
         if call.Done():
             """State 4"""
             call = t400907_x11()
@@ -385,6 +406,10 @@ def t400907_x17():
                 Goto('L1')
     """State 3"""
     t400907_x14()
+    Quit()
+    """Unused"""
+    """State 8"""
+    return 0
 
 def t400907_x18():
     """State 0,1"""

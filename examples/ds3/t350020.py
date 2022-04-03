@@ -22,7 +22,7 @@ def t350020_x0(action2=_):
         """State 4"""
         return 1
 
-def t350020_x1(z7=_, flag2=73500155, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
+def t350020_x1(actionbutton1=_, flag2=73500155, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -38,7 +38,7 @@ def t350020_x1(z7=_, flag2=73500155, flag3=6000, flag4=6000, flag5=6000, flag6=6
         elif (not GetEventStatus(flag2) and not GetEventStatus(flag3) and not GetEventStatus(flag4) and
               not GetEventStatus(flag5) and not GetEventStatus(flag6)):
             pass
-        elif CheckActionButtonArea(z7):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -113,12 +113,13 @@ def t350020_x6(goods1=373, val1=99, z3=21, z4=28, action4=13000026, action5=1300
             """State 16"""
             ChangePlayerStats(z3, 0, GetValueFromNumberSelectDialog() * 1)
             """State 21"""
+            Label('L0')
             SetEventState(z6, 1)
             if GetWorkValue(0) > 2:
                 """State 23,33"""
                 assert t350020_x3(lot1=lot2)
                 """State 28"""
-                Label('L0')
+                Label('L1')
                 assert t350020_x4(action3=action7)
             else:
                 """State 22"""
@@ -129,16 +130,16 @@ def t350020_x6(goods1=373, val1=99, z3=21, z4=28, action4=13000026, action5=1300
                         assert t350020_x3(lot1=lot1)
                     elif ComparePlayerStatus(z4, 3, 2) == 1:
                         """State 19,32"""
-                        Label('L1')
+                        Label('L2')
                         assert t350020_x3(lot1=lot2)
                     else:
                         """State 20"""
-                        Goto('L1')
+                        Goto('L2')
                     """State 26"""
                     assert t350020_x4(action3=action6)
                 else:
                     """State 8"""
-                    Goto('L0')
+                    Goto('L1')
             """State 25"""
             assert not GetEventStatus(flag1)
         elif call.Get() == 1:
@@ -148,7 +149,26 @@ def t350020_x6(goods1=373, val1=99, z3=21, z4=28, action4=13000026, action5=1300
         """State 5,27"""
         assert t350020_x4(action3=action5)
     """State 34"""
+    Label('L3')
     return 0
+    """Unused"""
+    """State 2"""
+    Label('L4')
+    ChangePlayerStats(z3, 5, val1)
+    Goto('L0')
+    """State 6"""
+    Label('L5')
+    # goods:373:Pale Tongue
+    PlayerEquipmentQuantityChange(3, goods1, -1 * (val1 - GetPlayerStatus(z3)))
+    Goto('L4')
+    """State 10"""
+    Goto('L6')
+    """State 14"""
+    Goto('L5')
+    """State 30"""
+    Label('L6')
+    assert t350020_x4(action3=action4)
+    Goto('L3')
 
 def t350020_x7(z2=28, lot1=4268, lot2=4267):
     """State 0,1"""
@@ -338,6 +358,9 @@ def t350020_x12():
         """State 2"""
         call = t350020_x15()
         assert GetEventStatus(6001) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t350020_x13():
     """State 0,1"""
@@ -353,7 +376,7 @@ def t350020_x14(z1=3501851):
     if GetEventStatus(1501) == 1 or CheckSelfDeath() == 1:
         """State 10"""
         Label('L1')
-        call = t350020_x1(z7=6017, flag2=73500155, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
+        call = t350020_x1(actionbutton1=6017, flag2=73500155, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
         if call.Done():
             pass
         elif not GetEventStatus(1501) and not CheckSelfDeath():
@@ -361,7 +384,8 @@ def t350020_x14(z1=3501851):
             assert GetCurrentStateElapsedFrames() > 1
             """State 8"""
             Label('L2')
-            call = t350020_x1(z7=6016, flag2=73500155, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
+            call = t350020_x1(actionbutton1=6016, flag2=73500155, flag3=6000, flag4=6000, flag5=6000,
+                              flag6=6000)
             if call.Done():
                 pass
             elif GetEventStatus(1501) == 1 or CheckSelfDeath() == 1:
@@ -383,6 +407,7 @@ def t350020_x14(z1=3501851):
     elif IsPlayerDead() == 1:
         """State 5"""
         t350020_x10()
+        Quit()
     elif GetDistanceToPlayer() > 12:
         """State 7"""
         assert t350020_x11() and GetDistanceToPlayer() < 10
@@ -392,9 +417,16 @@ def t350020_x14(z1=3501851):
         ClearPlayerDamageInfo()
         assert t350020_x2()
         Goto('L0')
+    """Unused"""
+    """State 11"""
+    return 0
 
 def t350020_x15():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t350020_x16(goods1=373, action1=_, action2=_, action3=_):
     """State 0,6"""

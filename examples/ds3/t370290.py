@@ -10,7 +10,7 @@ def t370290_1():
         call = t370290_x14()
         assert not IsClientPlayer()
 
-def t370290_x0(z5=6000, flag5=1355, flag6=6000, flag7=6000, flag8=6000, flag9=6000):
+def t370290_x0(actionbutton1=6000, flag5=1355, flag6=6000, flag7=6000, flag8=6000, flag9=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t370290_x0(z5=6000, flag5=1355, flag6=6000, flag7=6000, flag8=6000, flag9=60
         elif (not GetEventStatus(flag5) and not GetEventStatus(flag6) and not GetEventStatus(flag7) and
               not GetEventStatus(flag8) and not GetEventStatus(flag9)):
             pass
-        elif CheckActionButtonArea(z5):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -66,11 +66,11 @@ def t370290_x2():
     """State 2"""
     return 0
 
-def t370290_x3(text3=_, z4=_, flag4=0, mode3=1):
+def t370290_x3(text3=_, z3=_, flag4=0, mode3=1):
     """State 0,5"""
     assert t370290_x2() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 2"""
-    SetEventState(z4, 1)
+    SetEventState(z3, 1)
     """State 1"""
     TalkToPlayer(text3, -1, -1, flag4)
     assert CheckSpecificPersonTalkHasEnded(0) == 1
@@ -83,7 +83,7 @@ def t370290_x3(text3=_, z4=_, flag4=0, mode3=1):
     """State 6"""
     return 0
 
-def t370290_x4(text2=_, z3=73700150, flag3=0, mode2=1):
+def t370290_x4(text2=_, z2=73700150, flag3=0, mode2=1):
     """State 0,5"""
     assert t370290_x2() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 1"""
@@ -96,7 +96,7 @@ def t370290_x4(text2=_, z3=73700150, flag3=0, mode2=1):
         """State 3"""
         ReportConversationEndToHavokBehavior()
     """State 2"""
-    SetEventState(z3, 1)
+    SetEventState(z2, 1)
     """State 6"""
     return 0
 
@@ -123,15 +123,15 @@ def t370290_x6(lot1=61900):
     """State 2"""
     return 0
 
-def t370290_x7(z1=26, z2=9027, flag1=6076):
+def t370290_x7(gesture1=26, z1=9027, flag1=6076):
     """State 0,1"""
     if GetEventStatus(flag1) == 1:
         """State 2"""
         pass
     else:
         """State 3,4"""
-        AcquireGesture(z1)
-        OpenItemAcquisitionMenu(3, z2, 1)
+        AcquireGesture(gesture1)
+        OpenItemAcquisitionMenu(3, z1, 1)
         SetEventState(flag1, 1)
         assert not IsMenuOpen(63) and GetCurrentStateElapsedFrames() > 1
     """State 5"""
@@ -142,7 +142,7 @@ def t370290_x8():
     if not GetEventStatus(50006190):
         """State 3,10"""
         # talk:29001300:"Oh, I thought it might be you. Good to see you."
-        assert t370290_x4(text2=29001300, z3=73700150, flag3=0, mode2=1)
+        assert t370290_x4(text2=29001300, z2=73700150, flag3=0, mode2=1)
         """State 8"""
         # lot:61900:Ring of the Evil Eye
         assert t370290_x6(lot1=61900)
@@ -151,13 +151,13 @@ def t370290_x8():
         if not GetEventStatus(73700150):
             """State 5,9"""
             # talk:29001350:"Oh, I thought it might be you. Good to see you."
-            assert t370290_x4(text2=29001350, z3=73700150, flag3=0, mode2=1)
+            assert t370290_x4(text2=29001350, z2=73700150, flag3=0, mode2=1)
         else:
             """State 4,7"""
             # talk:29001400:"Ahh, you are brave indeed. To face your duty alone."
             assert t370290_x5(text1=29001400, flag2=0, mode1=1)
             """State 11"""
-            assert t370290_x7(z1=26, z2=9027, flag1=6076)
+            assert t370290_x7(gesture1=26, z1=9027, flag1=6076)
     """State 12"""
     return 0
 
@@ -234,7 +234,12 @@ def t370290_x11():
         """State 2"""
         pass
     """State 7"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 6"""
+    assert t370290_x1()
+    Goto('L0')
 
 def t370290_x12():
     """State 0,1"""
@@ -257,6 +262,9 @@ def t370290_x13():
         """State 2"""
         call = t370290_x16()
         assert GetEventStatus(1347) == 1 and GetEventStatus(9013) == 1 and not GetEventStatus(13700651)
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t370290_x14():
     """State 0,1"""
@@ -270,16 +278,24 @@ def t370290_x15():
     assert CheckSelfDeath() == 1
     """State 1"""
     t370290_x10()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t370290_x16():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t370290_x17():
     """State 0,1"""
     if not GetEventStatus(73700173):
         """State 4,9"""
         # talk:29001830:"What's happened to you?"
-        assert t370290_x3(text3=29001830, z4=73700173, flag4=0, mode3=1)
+        assert t370290_x3(text3=29001830, z3=73700173, flag4=0, mode3=1)
     else:
         """State 5,6"""
         SetEventState(73700171, 0)
@@ -289,14 +305,30 @@ def t370290_x17():
         # talk:29001930:"Please, stop this!"
         assert t370290_x5(text1=29001930, flag2=0, mode1=1)
     """State 11"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 2"""
+    Goto('L1')
+    """State 3"""
+    Goto('L2')
+    """State 7"""
+    Label('L1')
+    # talk:29001530:" "
+    assert t370290_x3(text3=29001530, z3=73700171, flag4=0, mode3=1)
+    Goto('L0')
+    """State 8"""
+    Label('L2')
+    # talk:29001630:" "
+    assert t370290_x3(text3=29001630, z3=73700172, flag4=0, mode3=1)
+    Goto('L0')
 
 def t370290_x18():
     """State 0,3"""
     if not GetEventStatus(73700170):
         """State 1,4"""
         # talk:29002030:"You've gone Hollow, have you?"
-        assert t370290_x3(text3=29002030, z4=73700170, flag4=0, mode3=1)
+        assert t370290_x3(text3=29002030, z3=73700170, flag4=0, mode3=1)
     else:
         """State 2"""
         pass
@@ -320,7 +352,7 @@ def t370290_x20():
     """State 0"""
     while True:
         """State 5"""
-        call = t370290_x0(z5=6000, flag5=1355, flag6=6000, flag7=6000, flag8=6000, flag9=6000)
+        call = t370290_x0(actionbutton1=6000, flag5=1355, flag6=6000, flag7=6000, flag8=6000, flag9=6000)
         if call.Done():
             """State 3"""
             call = t370290_x8()
@@ -351,4 +383,8 @@ def t370290_x20():
             break
     """State 2"""
     t370290_x11()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

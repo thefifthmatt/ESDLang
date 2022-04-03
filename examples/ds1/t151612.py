@@ -38,7 +38,7 @@ def t151612_1():
                 DisplayOneLineHelp(-1)
                 if (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
                     == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 15):
-                    Goto('L10')
+                    Goto('L12')
                 elif HasTalkEnded() == 1:
                     """State 22"""
                     SetEventState(71510036, 1)
@@ -54,7 +54,7 @@ def t151612_1():
                 DisplayOneLineHelp(-1)
                 if (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
                     == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 15):
-                    Goto('L10')
+                    Goto('L12')
                 elif HasTalkEnded() == 1:
                     """State 30"""
                     SetEventState(71510039, 1)
@@ -81,16 +81,18 @@ def t151612_1():
                             CloseShopMessage()
                             if IsPlayerMovingACertainDistance(1) == 1:
                                 """State 11"""
+                                Label('L3')
                                 if GetDistanceToPlayer() >= 17:
                                     pass
                                 else:
                                     """State 23"""
                                     SetEventState(71510041, 1)
                                     SetEventState(71510042, 0)
-                                    Goto('L9')
+                                    Goto('L11')
                             elif not IsPlayerMovingACertainDistance(1):
                                 pass
                             """State 10"""
+                            Label('L4')
                             ForceEndTalk(0)
                         elif not GetTalkListEntryResult():
                             pass
@@ -117,20 +119,20 @@ def t151612_1():
                                     ForceCloseGenericDialog()
                                     ForceEndTalk(0)
                                     ClearTalkProgressData()
-                                    Goto('L9')
+                                    Goto('L11')
                                 elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
                                     """State 45"""
-                                    Label('L3')
+                                    Label('L5')
                                     ClearTalkDisabledState()
                                     DebugEvent('会話タイマークリア　誓約同じ')
                                     """State 13"""
-                                    Label('L4')
+                                    Label('L6')
                                     if True:
                                         Goto('L1')
                                     elif GetDistanceToPlayer() >= 18:
-                                        Goto('L9')
+                                        Goto('L11')
                                 elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-                                    Goto('L3')
+                                    Goto('L5')
                             # goods:374:Souvenir of Reprisal
                             elif not IsEquipmentIDObtained(3, 374):
                                 """State 38"""
@@ -144,12 +146,12 @@ def t151612_1():
                                     pass
                                 elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
                                     """State 39"""
-                                    Label('L5')
+                                    Label('L7')
                                     ClearTalkDisabledState()
                                     DebugEvent('会話タイマークリア　誓約同じ')
-                                    Goto('L4')
+                                    Goto('L6')
                                 elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-                                    Goto('L5')
+                                    Goto('L7')
                             else:
                                 """State 36"""
                                 # action:10020204:"Offer <?gdsparam@374?>?"
@@ -160,11 +162,11 @@ def t151612_1():
                                     pass
                                 elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
                                     """State 35"""
-                                    Label('L6')
+                                    Label('L8')
                                     DebugEvent('捧げない')
-                                    Goto('L4')
-                                elif GetGenericDialogButtonResult() == 2 and not IsGenericDialogOpen():
                                     Goto('L6')
+                                elif GetGenericDialogButtonResult() == 2 and not IsGenericDialogOpen():
+                                    Goto('L8')
                                 elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
                                     """State 37"""
                                     DebugEvent('DECIDE_NUMBER')
@@ -175,9 +177,9 @@ def t151612_1():
                                         > 120 or GetDistanceToPlayer() > 15):
                                         pass
                                     elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
-                                        Goto('L6')
+                                        Goto('L8')
                                     elif GetGenericDialogButtonResult() == 2 and not IsGenericDialogOpen():
-                                        Goto('L6')
+                                        Goto('L8')
                                     elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
                                         """State 34"""
                                         DebugEvent('捧げる')
@@ -191,10 +193,10 @@ def t151612_1():
                                             SetEventState(11510597, 1)
                                             SetEventState(11510581, 1)
                                             if GetDistanceToPlayer() >= 15:
-                                                Goto('L9')
+                                                Goto('L11')
                                             elif not IsMenuOpen(63):
                                                 """State 49"""
-                                                Label('L7')
+                                                Label('L9')
                                                 # action:10010797:"Covenant allegiance deepened. Rank gained."
                                                 OpenGenericDialog(7, 10010797, 1, 0, 2)
                                                 DebugEvent('ランクアップ')
@@ -203,17 +205,17 @@ def t151612_1():
                                                     or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                                     > 120 or GetDistanceToPlayer() > 5 or IsAttackedBySomeone()
                                                     == 1):
-                                                    Goto('L8')
+                                                    Goto('L10')
                                                 elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
-                                                    Goto('L5')
+                                                    Goto('L7')
                                                 elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-                                                    Goto('L5')
+                                                    Goto('L7')
                                         elif DoesSelfHaveSpEffect(22, 80) == 1 and not GetEventStatus(844):
-                                            Goto('L7')
+                                            Goto('L9')
                                         elif DoesSelfHaveSpEffect(22, 30) == 1 and not GetEventStatus(844):
-                                            Goto('L7')
+                                            Goto('L9')
                                         elif DoesSelfHaveSpEffect(22, 10) == 1 and not GetEventStatus(844):
-                                            Goto('L7')
+                                            Goto('L9')
                                         elif not GetEventStatus(844):
                                             """State 48"""
                                             # action:10010796:"Covenant allegiance deepened."
@@ -224,11 +226,11 @@ def t151612_1():
                                                 or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                                 > 120 or GetDistanceToPlayer() > 5 or IsAttackedBySomeone()
                                                 == 1):
-                                                Goto('L8')
+                                                Goto('L10')
                                             elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
-                                                Goto('L5')
+                                                Goto('L7')
                                             elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-                                                Goto('L5')
+                                                Goto('L7')
                                         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                               or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                               > 120 or GetDistanceToPlayer() > 15):
@@ -237,9 +239,9 @@ def t151612_1():
                                 ForceCloseGenericDialog()
                                 ForceEndTalk(0)
                                 ClearTalkProgressData()
-                                Goto('L9')
+                                Goto('L11')
                             """State 40"""
-                            Label('L8')
+                            Label('L10')
                             ForceCloseGenericDialog()
                             ForceEndTalk(0)
                             ClearTalkProgressData()
@@ -256,17 +258,17 @@ def t151612_1():
                 DisplayOneLineHelp(-1)
                 if (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
                     == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 15):
-                    Goto('L10')
+                    Goto('L12')
                 elif HasTalkEnded() == 1:
                     """State 32"""
                     SetEventState(71510039, 0)
                     Goto('L0')
             """State 20"""
-            Label('L9')
+            Label('L11')
             SetEventState(11515350, 0)
             continue
         """State 17"""
-        Label('L10')
+        Label('L12')
         ClearTalkProgressData()
         """State 18"""
         ForceEndTalk(0)
@@ -282,22 +284,22 @@ def t151612_1():
         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
               == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 15):
             """State 8"""
-            Label('L11')
+            Label('L13')
             ForceCloseGenericDialog()
             ForceEndTalk(0)
             ClearTalkProgressData()
-            Goto('L9')
+            Goto('L11')
         elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
             """State 7"""
-            Label('L12')
+            Label('L14')
             ClearTalkDisabledState()
             DebugEvent('会話タイマークリア　誓約同じ')
-            Goto('L4')
+            Goto('L6')
         elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-            Goto('L12')
+            Goto('L14')
     elif IsMultiplayerInProgress() == 1:
         """State 50"""
-        Label('L13')
+        Label('L15')
         # action:10010747:"Cannot enter covenant with phantom present."
         OpenGenericDialog(7, 10010747, 1, 0, 2)
         DebugEvent('マルチプレイ中')
@@ -306,11 +308,11 @@ def t151612_1():
             pass
         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
               == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 15):
-            Goto('L11')
+            Goto('L13')
         elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
-            Goto('L12')
+            Goto('L14')
         elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-            Goto('L12')
+            Goto('L14')
     else:
         """State 5"""
         # action:10010745:"Join Covenant? (abandons former Covenant)"
@@ -318,7 +320,7 @@ def t151612_1():
         ChangePlayerStats(31, 5, 8)
         RequestUnlockTrophy(9)
         if IsMultiplayerInProgress() == 1:
-            Goto('L13')
+            Goto('L15')
         elif IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
             pass
         elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
@@ -330,16 +332,16 @@ def t151612_1():
             SetEventState(844, 1)
             if (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
                 == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 15):
-                Goto('L11')
+                Goto('L13')
             elif not GetEventStatus(844) and (not GetEventStatus(11510596) or not GetEventStatus(11510580)):
                 """State 42"""
                 SetEventState(11510596, 1)
                 SetEventState(11510580, 1)
                 if GetDistanceToPlayer() >= 15:
-                    Goto('L9')
+                    Goto('L11')
                 elif not IsMenuOpen(63):
                     """State 47"""
-                    Label('L14')
+                    Label('L16')
                     # action:10010729:"Covenant established"
                     OpenGenericDialog(7, 10010729, 1, 0, 2)
                     DebugEvent('誓約を交わしました')
@@ -349,37 +351,37 @@ def t151612_1():
                     elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
                           == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer()
                           > 15):
-                        Goto('L11')
+                        Goto('L13')
                     elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
                         """State 25"""
-                        Label('L15')
+                        Label('L17')
                         # talk:22001000:"Very well. Now thou art a Blade of the Darkmoon."
                         TalkToPlayer(22001000, -1, -1)
                         DebugEvent('誓約したあと')
                         if HasTalkEnded() == 1:
                             """State 1"""
-                            Label('L16')
+                            Label('L18')
                             ClearTalkDisabledState()
                             DebugEvent('会話タイマークリア　選択肢')
-                            Goto('L4')
+                            Goto('L6')
                         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or
                               IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or
                               GetDistanceToPlayer() > 15):
-                            Goto('L10')
+                            Goto('L12')
                     elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-                        Goto('L15')
+                        Goto('L17')
             elif not GetEventStatus(844):
-                Goto('L14')
+                Goto('L16')
         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
               == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 15):
             """State 2"""
             ForceCloseGenericDialog()
             ForceEndTalk(0)
             ClearTalkProgressData()
-            Goto('L9')
+            Goto('L11')
         elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
             """State 4"""
-            Label('L17')
+            Label('L19')
             DebugEvent('誓約を変更しない')
             SetEventState(71510038, 1)
             """State 26"""
@@ -387,15 +389,22 @@ def t151612_1():
             TalkToPlayer(22001100, -1, -1)
             DebugEvent('誓約しなかったあと')
             if HasTalkEnded() == 1:
-                Goto('L16')
+                Goto('L18')
             elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
                   == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 15):
-                Goto('L10')
+                Goto('L12')
         elif GetGenericDialogButtonResult() == 2 and not IsGenericDialogOpen():
-            Goto('L17')
+            Goto('L19')
     """State 29"""
     ForceCloseGenericDialog()
     ForceEndTalk(0)
     ClearTalkProgressData()
-    Goto('L9')
+    Goto('L11')
+    """Unused"""
+    """State 15"""
+    CloseMenu()
+    if IsPlayerMovingACertainDistance(1) == 1:
+        Goto('L3')
+    elif not IsPlayerMovingACertainDistance(1):
+        Goto('L4')
 

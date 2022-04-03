@@ -74,8 +74,12 @@ def t410990_x2():
     if call.Get() == 0:
         """State 4"""
         SetEventState(9901, 1)
+        Quit()
     elif call.Get() == 1:
         Goto('L0')
+    """Unused"""
+    """State 9"""
+    return 0
 
 def t410990_x3():
     """State 0,1"""

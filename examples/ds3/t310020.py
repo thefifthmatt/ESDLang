@@ -23,7 +23,7 @@ def t310020_x0(action3=12000021):
         """State 4"""
         return 1
 
-def t310020_x1(z5=6011, flag4=6001, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
+def t310020_x1(actionbutton1=6011, flag4=6001, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -39,7 +39,7 @@ def t310020_x1(z5=6011, flag4=6001, flag5=6000, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag4) and not GetEventStatus(flag5) and not GetEventStatus(flag6) and
               not GetEventStatus(flag7) and not GetEventStatus(flag8)):
             pass
-        elif CheckActionButtonArea(z5):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -76,15 +76,15 @@ def t310020_x3(lot2=_):
     """State 2"""
     return 0
 
-def t310020_x4(z6=0, z7=9000, flag3=6001):
+def t310020_x4(gesture1=0, z5=9000, flag3=6001):
     """State 0,1"""
     if GetEventStatus(flag3) == 1:
         """State 2"""
         pass
     else:
         """State 3,4"""
-        AcquireGesture(z6)
-        OpenItemAcquisitionMenu(3, z7, 1)
+        AcquireGesture(gesture1)
+        OpenItemAcquisitionMenu(3, z5, 1)
         SetEventState(flag3, 1)
         assert not IsMenuOpen(63) and GetCurrentStateElapsedFrames() > 1
     """State 5"""
@@ -98,7 +98,7 @@ def t310020_x5(action4=_):
     return 0
 
 def t310020_x6(goods1=374, val1=99, z2=19, z3=26, action5=13000021, action6=13000031, z1=12000001, action7=13000011,
-               action8=13000001, lot2=4218, lot3=4217, flag2=73100952, flag3=6001, z6=0, z7=9000):
+               action8=13000001, lot2=4218, lot3=4217, flag2=73100952, flag3=6001, gesture1=0, z5=9000):
     """State 0,1,11"""
     # goods:374:Vertebra Shackle
     if ComparePlayerInventoryNumber(3, goods1, 2, 0, 0) == 1:
@@ -116,6 +116,7 @@ def t310020_x6(goods1=374, val1=99, z2=19, z3=26, action5=13000021, action6=1300
             """State 17"""
             ChangePlayerStats(z2, 0, GetValueFromNumberSelectDialog() * 1)
             """State 16"""
+            Label('L0')
             if GetWorkValue(0) > 2:
                 """State 22,34"""
                 assert t310020_x3(lot2=lot3)
@@ -128,14 +129,14 @@ def t310020_x6(goods1=374, val1=99, z2=19, z3=26, action5=13000021, action6=1300
                         assert t310020_x3(lot2=lot2)
                     elif ComparePlayerStatus(z3, 3, 2) == 1:
                         """State 20,33"""
-                        Label('L0')
+                        Label('L1')
                         assert t310020_x3(lot2=lot3)
                     else:
                         """State 21"""
-                        Goto('L0')
+                        Goto('L1')
                     """State 27"""
                     assert t310020_x5(action4=action7)
-                    Goto('L1')
+                    Goto('L2')
                 else:
                     """State 8"""
                     pass
@@ -148,10 +149,28 @@ def t310020_x6(goods1=374, val1=99, z2=19, z3=26, action5=13000021, action6=1300
         """State 5,28"""
         assert t310020_x5(action4=action6)
     """State 26"""
-    Label('L1')
+    Label('L2')
     assert not GetEventStatus(flag2)
     """State 35"""
     return 0
+    """Unused"""
+    """State 2"""
+    Label('L3')
+    ChangePlayerStats(z2, 5, val1)
+    Goto('L0')
+    """State 6"""
+    Label('L4')
+    # goods:374:Vertebra Shackle
+    PlayerEquipmentQuantityChange(3, goods1, -1 * (val1 - GetPlayerStatus(z2)))
+    Goto('L3')
+    """State 10"""
+    Goto('L5')
+    """State 14"""
+    Goto('L4')
+    """State 31"""
+    Label('L5')
+    assert t310020_x5(action4=action5)
+    Goto('L2')
 
 def t310020_x7(goods1=374, z1=12000001):
     """State 0,2"""
@@ -173,13 +192,14 @@ def t310020_x8():
 
 def t310020_x9(lot1=4210, goods1=374, lot2=4218, lot3=4217, action1=15000401, action2=15000411, action3=12000021,
                action4=13000041, action5=13000021, action6=13000031, z1=12000001, action7=13000011, action8=13000001,
-               val1=99, z2=19, z3=26, flag1=6001, z4=73100951, flag2=73100952, flag3=6001, z6=0, z7=9000):
+               val1=99, z2=19, z3=26, flag1=6001, z4=73100951, flag2=73100952, flag3=6001, gesture1=0,
+               z5=9000):
     """State 0,10"""
     TurnCharacterToFaceEntity(69000, 10000, -1)
     SetTalkTime(1)
     assert GetCurrentStateElapsedTime() > 1
     """State 16"""
-    assert t310020_x4(z6=z6, z7=z7, flag3=flag3)
+    assert t310020_x4(gesture1=gesture1, z5=z5, flag3=flag3)
     """State 17"""
     assert t310020_x12(z3=z3, lot2=lot2, lot3=lot3)
     """State 7"""
@@ -214,7 +234,7 @@ def t310020_x9(lot1=4210, goods1=374, lot2=4218, lot3=4217, action1=15000401, ac
             """State 5,15"""
             assert (t310020_x6(goods1=goods1, val1=val1, z2=z2, z3=z3, action5=action5, action6=action6,
                     z1=z1, action7=action7, action8=action8, lot2=lot2, lot3=lot3, flag2=flag2, flag3=flag3,
-                    z6=z6, z7=z7))
+                    gesture1=gesture1, z5=z5))
         elif not (CheckSpecificPersonMenuIsOpen(1, 0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0)):
             """State 6,18"""
             return 0
@@ -227,19 +247,20 @@ def t310020_x10():
 
 def t310020_x11(lot1=4210, goods1=374, lot2=4218, lot3=4217, action1=15000401, action2=15000411, action3=12000021,
                 action4=13000041, action5=13000021, action6=13000031, z1=12000001, action7=13000011,
-                action8=13000001, val1=99, z2=19, z3=26, flag1=6001, z4=73100951, flag2=73100952, z5=6011,
-                flag3=6001, z6=0, z7=9000, flag4=6001):
+                action8=13000001, val1=99, z2=19, z3=26, flag1=6001, z4=73100951, flag2=73100952, actionbutton1=6011,
+                flag3=6001, gesture1=0, z5=9000, flag4=6001):
     """State 0"""
     ClearPlayerDamageInfo()
     while True:
         """State 4"""
-        assert t310020_x1(z5=z5, flag4=flag4, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
+        assert (t310020_x1(actionbutton1=actionbutton1, flag4=flag4, flag5=6000, flag6=6000, flag7=6000,
+                flag8=6000))
         """State 5"""
         ClearPlayerDamageInfo()
         call = t310020_x9(lot1=lot1, goods1=goods1, lot2=lot2, lot3=lot3, action1=action1, action2=action2,
                           action3=action3, action4=action4, action5=action5, action6=action6, z1=z1,
                           action7=action7, action8=action8, val1=val1, z2=z2, z3=z3, flag1=flag1, z4=z4,
-                          flag2=flag2, flag3=flag3, z6=z6, z7=z7)
+                          flag2=flag2, flag3=flag3, gesture1=gesture1, z5=z5)
         def ExitPause():
             TurnCharacterToFaceEntity(69002, 10000, -1)
         if call.Done():
@@ -257,6 +278,10 @@ def t310020_x11(lot1=4210, goods1=374, lot2=4218, lot3=4217, action1=15000401, a
             ClearPlayerDamageInfo()
     """State 2"""
     t310020_x8()
+    Quit()
+    """Unused"""
+    """State 7"""
+    return 0
 
 def t310020_x12(z3=26, lot2=4218, lot3=4217):
     """State 0,1"""
@@ -281,6 +306,9 @@ def t310020_x13():
         """State 2"""
         call = t310020_x16()
         assert GetEventStatus(6001) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t310020_x14():
     """State 0,1"""
@@ -293,9 +321,17 @@ def t310020_x15():
     # lot:4210:Mound-makers, goods:374:Vertebra Shackle, lot:4218:Bloodlust, lot:4217:Warmth, action:15000401:"Establish Covenant", action:15000411:"Offer <?gdsparam@374?>", action:12000021:"Join Covenant?", action:13000041:"Covenant established.", action:13000021:"Cannot offer more. Well done.", action:13000031:"No <?gdsparam@374?> in inventory", action:13000011:"Covenant allegiance deepened. Rank gained.", action:13000001:"Covenant allegiance deepened"
     t310020_x11(lot1=4210, goods1=374, lot2=4218, lot3=4217, action1=15000401, action2=15000411, action3=12000021,
                 action4=13000041, action5=13000021, action6=13000031, z1=12000001, action7=13000011,
-                action8=13000001, val1=99, z2=19, z3=26, flag1=6001, z4=73100951, flag2=73100952, z5=6011,
-                flag3=6001, z6=0, z7=9000, flag4=6001)
+                action8=13000001, val1=99, z2=19, z3=26, flag1=6001, z4=73100951, flag2=73100952, actionbutton1=6011,
+                flag3=6001, gesture1=0, z5=9000, flag4=6001)
+    Quit()
+    """Unused"""
+    """State 2"""
+    return 0
 
 def t310020_x16():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 

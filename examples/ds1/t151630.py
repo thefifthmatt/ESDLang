@@ -42,4 +42,7 @@ def t151630_1():
         ClearTalkProgressData()
         """State 1"""
         ForceEndTalk(0)
+    """Unused"""
+    """State 8"""
+    Quit()
 

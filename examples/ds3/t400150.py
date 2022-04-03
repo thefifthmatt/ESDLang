@@ -10,7 +10,7 @@ def t400150_1():
         call = t400150_x14()
         assert not IsClientPlayer()
 
-def t400150_x0(z10=6150, flag5=1075, flag6=6000, flag7=6000, flag8=6000, flag9=6000):
+def t400150_x0(actionbutton1=6150, flag5=1075, flag6=6000, flag7=6000, flag8=6000, flag9=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t400150_x0(z10=6150, flag5=1075, flag6=6000, flag7=6000, flag8=6000, flag9=6
         elif (not GetEventStatus(flag5) and not GetEventStatus(flag6) and not GetEventStatus(flag7) and
               not GetEventStatus(flag8) and not GetEventStatus(flag9)):
             pass
-        elif CheckActionButtonArea(z10):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -66,11 +66,11 @@ def t400150_x2():
     """State 2"""
     return 0
 
-def t400150_x3(text3=_, z9=_, flag4=0, mode3=1):
+def t400150_x3(text3=_, z8=_, flag4=0, mode3=1):
     """State 0,5"""
     assert t400150_x2() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 2"""
-    SetEventState(z9, 1)
+    SetEventState(z8, 1)
     """State 1"""
     TalkToPlayer(text3, -1, -1, flag4)
     assert CheckSpecificPersonTalkHasEnded(0) == 1
@@ -83,7 +83,7 @@ def t400150_x3(text3=_, z9=_, flag4=0, mode3=1):
     """State 6"""
     return 0
 
-def t400150_x4(text2=15000900, z8=74000400, flag3=0, mode2=1):
+def t400150_x4(text2=15000900, z7=74000400, flag3=0, mode2=1):
     """State 0,5"""
     assert t400150_x2() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 1"""
@@ -97,7 +97,7 @@ def t400150_x4(text2=15000900, z8=74000400, flag3=0, mode2=1):
         """State 3"""
         ReportConversationEndToHavokBehavior()
     """State 2"""
-    SetEventState(z8, 1)
+    SetEventState(z7, 1)
     """State 6"""
     return 0
 
@@ -116,15 +116,15 @@ def t400150_x5(text1=_, flag2=0, mode1=1):
     """State 5"""
     return 0
 
-def t400150_x6(z6=0, z7=9000, flag1=6050):
+def t400150_x6(gesture1=0, z6=9000, flag1=6050):
     """State 0,1"""
     if GetEventStatus(flag1) == 1:
         """State 2"""
         pass
     else:
         """State 3,4"""
-        AcquireGesture(z6)
-        OpenItemAcquisitionMenu(3, z7, 1)
+        AcquireGesture(gesture1)
+        OpenItemAcquisitionMenu(3, z6, 1)
         SetEventState(flag1, 1)
         assert not IsMenuOpen(63) and GetCurrentStateElapsedFrames() > 1
     """State 5"""
@@ -142,7 +142,7 @@ def t400150_x8():
     if not GetEventStatus(74000400):
         """State 2,6"""
         # talk:15000900:"Oh, our Champion of Ash, welcome home."
-        assert t400150_x4(text2=15000900, z8=74000400, flag3=0, mode2=1)
+        assert t400150_x4(text2=15000900, z7=74000400, flag3=0, mode2=1)
     elif ComparePlayerStatus(34, 1, 5) == 1:
         """State 4,8"""
         # talk:15001100:"Oh, our Champion of Ash. Welcome back."
@@ -228,6 +228,9 @@ def t400150_x13(z1=490):
         """State 2"""
         call = t400150_x19()
         assert not GetEventStatus(1061)
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400150_x14():
     """State 0,1"""
@@ -240,7 +243,7 @@ def t400150_x15():
     # talk:15001400:"As I have said, I was once a sorcerer."
     assert t400150_x5(text1=15001400, flag2=0, mode1=1)
     """State 2"""
-    assert t400150_x6(z6=0, z7=9000, flag1=6050)
+    assert t400150_x6(gesture1=0, z6=9000, flag1=6050)
     """State 3"""
     return 0
 
@@ -349,20 +352,28 @@ def t400150_x18():
     assert CheckSelfDeath() == 1
     """State 1"""
     t400150_x10()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400150_x19():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t400150_x20():
     """State 0,2"""
     if not GetEventStatus(74000421):
         """State 1,6"""
         # talk:15001700:" "
-        assert t400150_x3(text3=15001700, z9=74000421, flag4=0, mode3=1)
+        assert t400150_x3(text3=15001700, z8=74000421, flag4=0, mode3=1)
     elif not GetEventStatus(74000422):
         """State 3,7"""
         # talk:15001800:" "
-        assert t400150_x3(text3=15001800, z9=74000422, flag4=0, mode3=1)
+        assert t400150_x3(text3=15001800, z8=74000422, flag4=0, mode3=1)
     else:
         """State 4,5"""
         SetEventState(74000421, 0)
@@ -403,7 +414,7 @@ def t400150_x23():
     """State 0"""
     while True:
         """State 5"""
-        call = t400150_x0(z10=6150, flag5=1075, flag6=6000, flag7=6000, flag8=6000, flag9=6000)
+        call = t400150_x0(actionbutton1=6150, flag5=1075, flag6=6000, flag7=6000, flag8=6000, flag9=6000)
         if call.Done():
             """State 3"""
             call = t400150_x8()
@@ -434,4 +445,8 @@ def t400150_x23():
             Goto('L0')
     """State 2"""
     t400150_x11()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

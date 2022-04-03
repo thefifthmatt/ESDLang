@@ -211,6 +211,7 @@ def t140616_1():
                       == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() >
                       5 or IsPlayerDead() == 1):
                     Goto('L18')
+            # accessory:137:Old Witch's Ring
             elif (GetEventStatus(71400038) == 1 and not GetEventStatus(11406102) and IsEquipmentIDEquipped(2,
                   137) == 1):
                 """State 70"""
@@ -359,6 +360,7 @@ def t140616_1():
                                           or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                           > 120 or GetDistanceToPlayer() > 5):
                                         Goto('L18')
+                                # accessory:137:Old Witch's Ring
                                 elif (not GetEventStatus(71400042) and GetEventStatus(1286) == 1 and
                                       IsEquipmentIDEquipped(2, 137) == 1):
                                     """State 74"""
@@ -546,6 +548,7 @@ def t140616_1():
                       == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() >
                       5):
                     pass
+            # accessory:137:Old Witch's Ring
             elif IsEquipmentIDEquipped(2, 137) == 1 and GetEventStatus(71400000) == 1:
                 """State 55"""
                 # talk:26000300:"...You, you speak the tongue of the Fair Lady?"

@@ -39,6 +39,10 @@ def t400792_1():
         Goto('L0')
     elif GetDistanceToPlayer() >= 5:
         Goto('L1')
+    """Unused"""
+    """State 6"""
+    t400792_x2()
+    Quit()
 
 def t400792_x0():
     """State 0,1"""
@@ -189,5 +193,28 @@ def t400792_x2():
         elif not GetTalkListEntryResult():
             Goto('L0')
     """State 20"""
+    Label('L1')
     return 0
+    """Unused"""
+    """State 14"""
+    OpenRepairShop()
+    DebugEvent('修理ショップ')
+    assert not IsMenuOpen(11)
+    Goto('L1')
+    """State 15"""
+    OpenEnhanceShop(0)
+    DebugEvent('武器強化')
+    assert not IsMenuOpen(11)
+    Goto('L1')
+    """State 16"""
+    OpenEnhanceShop(10)
+    DebugEvent('防具強化')
+    assert not IsMenuOpen(11)
+    Goto('L1')
+    """State 19"""
+    DebugEvent('武器進化')
+    OpenEquipmentChangeOfPurposeShop()
+    CombineMenuFlagAndEventFlag(253, 331)
+    assert not IsMenuOpen(11)
+    Goto('L1')
 

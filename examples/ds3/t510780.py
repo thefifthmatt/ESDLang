@@ -108,7 +108,12 @@ def t510780_x5(text7=_, text8=_):
             """State 5"""
             pass
     """State 8"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 6"""
+    assert t510780_x0()
+    Goto('L0')
 
 def t510780_x6():
     """State 0,1"""
@@ -151,6 +156,9 @@ def t510780_x7(text4=_, text5=_, text6=_):
             """State 9"""
             SetEventState(75100132, 1)
             assert t510780_x0()
+    """Unused"""
+    """State 10"""
+    return 0
 
 def t510780_x8():
     """State 0"""
@@ -161,6 +169,9 @@ def t510780_x8():
         """State 2"""
         call = t510780_x11()
         assert GetEventStatus(1900) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t510780_x9():
     """State 0"""
@@ -171,6 +182,9 @@ def t510780_x9():
         """State 2"""
         call = t510780_x11()
         assert GetEventStatus(1900) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t510780_x10():
     """State 0"""
@@ -183,6 +197,9 @@ def t510780_x10():
         # talk:88000700:"Spear of the Church, turn back.", talk:88000800:"Turn back, Spear of the Church.", talk:88000900:"Foolishness. To forswear thy covenant and the King's decree.", talk:88001100:" ", talk:88001000:"Divine spear of yore, by sacred decree, protect our dear Princess..."
         call = t510780_x15(text4=88000700, text5=88000800, text6=88000900, text7=88001100, text8=88001000)
         assert not GetEventStatus(15100723)
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t510780_x11():
     """State 0,1"""
@@ -194,7 +211,15 @@ def t510780_x12(text4=_, text5=_, text6=_):
     """State 0,3"""
     assert t510780_x0()
     """State 2"""
+    Label('L0')
     t510780_x7(text4=text4, text5=text5, text6=text6)
+    Quit()
+    """Unused"""
+    """State 1"""
+    assert t510780_x6() and GetDistanceToPlayer() < 90
+    Goto('L0')
+    """State 4"""
+    return 0
 
 def t510780_x13(text7=_, text8=_):
     """State 0,1"""
@@ -234,6 +259,9 @@ def t510780_x15(text4=_, text5=_, text6=_, text7=_, text8=_):
         """State 3"""
         call = t510780_x16()
         assert not GetEventStatus(15105802)
+    """Unused"""
+    """State 4"""
+    return 0
 
 def t510780_x16():
     """State 0,1"""
@@ -253,6 +281,9 @@ def t510780_x17():
         # talk:88000900:"Foolishness. To forswear thy covenant and the King's decree.", talk:88001100:" ", talk:88001000:"Divine spear of yore, by sacred decree, protect our dear Princess..."
         call = t510780_x18(text1=88000900, text2=88001100, text3=88001000)
         assert GetEventStatus(15100723) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t510780_x18(text1=_, text2=_, text3=_):
     """State 0"""
@@ -268,12 +299,19 @@ def t510780_x18(text1=_, text2=_, text3=_):
         """State 3"""
         call = t510780_x21()
         assert not GetEventStatus(15105802)
+    """Unused"""
+    """State 4"""
+    return 0
 
 def t510780_x19(text1=_):
     """State 0,1"""
     assert t510780_x0()
     """State 2"""
     t510780_x22(text1=text1)
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t510780_x20(text2=_, text3=_):
     """State 0,1"""
@@ -291,9 +329,13 @@ def t510780_x20(text2=_, text3=_):
         assert GetDistanceToPlayer() > 95
         """State 7"""
         t510780_x0()
+        Quit()
     else:
         """State 4"""
-        pass
+        Quit()
+    """Unused"""
+    """State 8"""
+    return 0
 
 def t510780_x21():
     """State 0,1"""
@@ -302,6 +344,10 @@ def t510780_x21():
     assert GetDistanceToPlayer() > 95
     """State 2"""
     t510780_x0()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t510780_x22(text1=_):
     """State 0,1"""
@@ -323,13 +369,22 @@ def t510780_x22(text1=_):
         Quit()
     """State 4"""
     Label('L0')
+    Quit()
+    """Unused"""
+    """State 8"""
+    return 0
 
 def t510780_x23(text2=_, text3=_):
     """State 0,1"""
     if not GetEventStatus(15105702) and not GetEventStatus(15105811):
         """State 2"""
         t510780_x3(text2=text2, z1=15105702, flag2=1, mode2=1)
+        Quit()
     else:
         """State 3"""
         t510780_x4(text3=text3, flag1=1, mode1=1)
+        Quit()
+    """Unused"""
+    """State 4"""
+    return 0
 

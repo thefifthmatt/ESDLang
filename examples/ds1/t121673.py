@@ -594,4 +594,14 @@ def t121673_1():
         Goto('L0')
     elif GetDistanceToPlayer() >= 5:
         Goto('L19')
+    """Unused"""
+    """State 35"""
+    # talk:59000900:"Did you really slay Knight Artorias?"
+    TalkToPlayer(59000900, -1, -1)
+    DisplayOneLineHelp(-1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L2')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L19')
 

@@ -10,7 +10,7 @@ def t450561_1():
         call = t450561_x9()
         assert not IsClientPlayer()
 
-def t450561_x0(z3=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
+def t450561_x0(actionbutton1=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t450561_x0(z3=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=60
         elif (not GetEventStatus(flag3) and not GetEventStatus(flag4) and not GetEventStatus(flag5) and
               not GetEventStatus(flag6) and not GetEventStatus(flag7)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -103,6 +103,41 @@ def t450561_x4(text1=66000202, flag1=0, mode1=1):
 def t450561_x5():
     """State 0,8"""
     t450561_x1()
+    Quit()
+    """Unused"""
+    """State 1"""
+    if GetEventStatus(9322) == 1:
+        pass
+    else:
+        Goto('L0')
+    """State 2"""
+    Goto('L4')
+    """State 3"""
+    Label('L0')
+    if GetDistanceToPlayer() < 70:
+        pass
+    else:
+        Goto('L1')
+    """State 4"""
+    Goto('L3')
+    """State 5"""
+    Label('L1')
+    Goto('L4')
+    """State 6"""
+    Label('L2')
+    assert t450561_x1()
+    Goto('L4')
+    """State 7"""
+    Label('L3')
+    # talk:66000202:""When the Ashes are two, a flame alighteth.""
+    call = t450561_x4(text1=66000202, flag1=0, mode1=1)
+    if call.Done():
+        pass
+    elif GetDistanceToPlayer() > 72:
+        Goto('L2')
+    """State 9"""
+    Label('L4')
+    return 0
 
 def t450561_x6():
     """State 0,1"""
@@ -134,6 +169,9 @@ def t450561_x8():
         """State 2"""
         call = t450561_x11()
         assert GetEventStatus(1720) == 1 and GetEventStatus(14505802) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t450561_x9():
     """State 0,1"""
@@ -147,6 +185,10 @@ def t450561_x10():
     assert GetEventStatus(9322) == 1
     """State 1"""
     t450561_x5()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t450561_x11():
     """State 0,1"""
@@ -158,7 +200,7 @@ def t450561_x12(z1=-1):
     """State 0"""
     while True:
         """State 1"""
-        call = t450561_x0(z3=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
+        call = t450561_x0(actionbutton1=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
         assert GetEventStatus(74500332) == 1 and not GetEventStatus(74500301) and GetDistanceToPlayer() < 80
         """State 2"""
         call = t450561_x7()
@@ -167,4 +209,7 @@ def t450561_x12(z1=-1):
         elif GetDistanceToPlayer() > 90:
             """State 3"""
             assert t450561_x6()
+    """Unused"""
+    """State 4"""
+    return 0
 

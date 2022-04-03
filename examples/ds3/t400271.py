@@ -10,7 +10,7 @@ def t400271_1():
         call = t400271_x10()
         assert not IsClientPlayer()
 
-def t400271_x0(z2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
+def t400271_x0(actionbutton1=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t400271_x0(z2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=60
         elif (not GetEventStatus(flag3) and not GetEventStatus(flag4) and not GetEventStatus(flag5) and
               not GetEventStatus(flag6) and not GetEventStatus(flag7)):
             pass
-        elif CheckActionButtonArea(z2):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -158,6 +158,9 @@ def t400271_x9():
         """State 2"""
         call = t400271_x12()
         assert GetEventStatus(1304) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400271_x10():
     """State 0,1"""
@@ -171,9 +174,17 @@ def t400271_x11():
     assert CheckSelfDeath() == 1
     """State 1"""
     t400271_x5()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400271_x12():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t400271_x13():
     """State 0,1,2"""
@@ -193,7 +204,7 @@ def t400271_x15():
     """State 0"""
     while True:
         """State 4"""
-        call = t400271_x0(z2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
+        call = t400271_x0(actionbutton1=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
         if IsPlayerDead() == 1:
             break
         elif GetDistanceToPlayer() < 10 and not GetEventStatus(74000674) and GetEventStatus(14005543) == 1:
@@ -208,4 +219,8 @@ def t400271_x15():
                 assert t400271_x7() and GetDistanceToPlayer() < 4.9
     """State 1"""
     t400271_x6()
+    Quit()
+    """Unused"""
+    """State 5"""
+    return 0
 

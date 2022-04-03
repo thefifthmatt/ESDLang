@@ -2,6 +2,7 @@
 def t000010_1():
     """State 0,1"""
     t000010_x0()
+    Quit()
 
 def t000010_x0():
     """State 0"""
@@ -16,4 +17,7 @@ def t000010_x0():
             assert f113() > 1 or not f116(-1) == 1000000
         elif f113() > 1 or not f116(-1) == 1000000:
             pass
+    """Unused"""
+    """State 4"""
+    return 0
 

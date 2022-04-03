@@ -580,4 +580,14 @@ def t102607_1():
             Goto('L0')
         elif GetDistanceToPlayer() >= 5:
             Goto('L15')
+    """Unused"""
+    """State 33"""
+    # talk:17001200:"Oh! Please, forgive me. I was absorbed in prayer."
+    TalkToPlayer(17001200, -1, -1)
+    DisplayOneLineHelp(-1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L15')
 

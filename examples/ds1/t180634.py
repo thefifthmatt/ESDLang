@@ -1165,4 +1165,47 @@ def t180634_1():
         Goto('L0')
     elif GetDistanceToPlayer() >= 15:
         Goto('L42')
+    """Unused"""
+    """State 5"""
+    TalkToPlayer(-1, -1, -1)
+    DebugEvent('誓約結ぶ前会話')
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L2')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 12):
+        Goto('L42')
+    """State 10"""
+    TalkToPlayer(-1, -1, -1)
+    DebugEvent('誓約したあと')
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L2')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 12):
+        Goto('L42')
+    """State 11"""
+    TalkToPlayer(-1, -1, -1)
+    DebugEvent('誓約しなかったあと')
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L2')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 12):
+        Goto('L42')
+    """State 41"""
+    # talk:44000200:"A wise choice, Undead warrior."
+    TalkToPlayer(44000200, -1, -1)
+    DebugEvent('イエスを選んだあと')
+    DisplayOneLineHelp(-1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L2')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 12):
+        Goto('L42')
+    """State 79"""
+    DisplayOneLineHelp(-1)
+    TalkToPlayer(44000110, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L2')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 180 or GetDistanceToPlayer() > 20):
+        Goto('L42')
 

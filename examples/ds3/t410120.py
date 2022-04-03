@@ -51,6 +51,9 @@ def t410120_x2():
         """State 2"""
         call = t410120_x5()
         assert GetEventStatus(74100100) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t410120_x3():
     """State 0,1"""
@@ -63,7 +66,15 @@ def t410120_x4():
     assert GetEventStatus(74100100) == 1
     """State 2"""
     t410120_x1()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t410120_x5():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 

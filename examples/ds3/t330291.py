@@ -10,7 +10,7 @@ def t330291_1():
         call = t330291_x13()
         assert not IsClientPlayer()
 
-def t330291_x0(z3=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
+def t330291_x0(actionbutton1=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t330291_x0(z3=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag4) and not GetEventStatus(flag5) and not GetEventStatus(flag6) and
               not GetEventStatus(flag7) and not GetEventStatus(flag8)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -231,6 +231,9 @@ def t330291_x12():
         """State 2"""
         call = t330291_x15()
         assert GetEventStatus(1341) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t330291_x13():
     """State 0,1"""
@@ -243,7 +246,7 @@ def t330291_x14():
     while True:
         """State 7"""
         Label('L0')
-        call = t330291_x0(z3=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
+        call = t330291_x0(actionbutton1=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 4"""
             call = t330291_x6()
@@ -296,9 +299,16 @@ def t330291_x14():
         Goto('L1')
     elif GetDistanceToPlayer() < 10 and GetEventStatus(1357) == 1 and not GetEventStatus(73300174):
         Goto('L3')
+    """Unused"""
+    """State 8"""
+    return 0
 
 def t330291_x15():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t330291_x16():
     """State 0,1"""

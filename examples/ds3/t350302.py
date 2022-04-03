@@ -10,7 +10,7 @@ def t350302_1():
         call = t350302_x5()
         assert not IsClientPlayer()
 
-def t350302_x0(z2=6000, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
+def t350302_x0(actionbutton1=6000, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t350302_x0(z2=6000, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=60
         elif (not GetEventStatus(flag2) and not GetEventStatus(flag3) and not GetEventStatus(flag4) and
               not GetEventStatus(flag5) and not GetEventStatus(flag6)):
             pass
-        elif CheckActionButtonArea(z2):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -92,6 +92,9 @@ def t350302_x4():
         """State 2"""
         call = t350302_x7()
         assert GetEventStatus(1361) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t350302_x5():
     """State 0,1"""
@@ -101,7 +104,7 @@ def t350302_x5():
 
 def t350302_x6():
     """State 0,2"""
-    call = t350302_x0(z2=6000, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
+    call = t350302_x0(actionbutton1=6000, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
     assert GetEventStatus(73500271) == 1
     """State 1"""
     if GetCurrentStateElapsedTime() > 1:
@@ -112,19 +115,37 @@ def t350302_x6():
         pass
     """State 4"""
     t350302_x1()
+    Quit()
+    """Unused"""
+    """State 5"""
+    return 0
 
 def t350302_x7():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t350302_x8():
     """State 0,1"""
     if not GetEventStatus(73500255):
         """State 2"""
-        pass
+        Quit()
     else:
         """State 5"""
         # talk:30000400:"Huh? Where's the old giant?"
         assert t350302_x3(text1=30000400, z1=73500251, flag1=0, mode1=1)
         """State 6"""
+        Label('L0')
         return 0
+    """Unused"""
+    """State 3"""
+    # talk:30000200:"Shame on you, you greedy guts. "
+    assert t350302_x3(text1=30000200, z1=73500251, flag1=0, mode1=1)
+    Goto('L0')
+    """State 4"""
+    # talk:30000300:"Shame on you, you rotten cleric."
+    assert t350302_x3(text1=30000300, z1=73500251, flag1=0, mode1=1)
+    Goto('L0')
 

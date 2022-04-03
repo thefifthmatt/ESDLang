@@ -424,7 +424,7 @@ def t102608_1():
                                                         # action:15000200:"Enter Covenant"
                                                         AddTalkListData(2, 15000200, -1)
                                                         # action:15000350:"Learn gesture"
-                                                        AddTalkListData(5, 15000350, -1)
+                                                        AddTalkListData(5, 15000350, 280)
                                                         # action:15000000:"Talk"
                                                         AddTalkListData(3, 15000000, 1202)
                                                         # action:15000005:"Leave"

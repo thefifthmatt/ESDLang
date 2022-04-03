@@ -9,20 +9,20 @@ def talk_m10_15_7520():
         else:
             pass
         """State 3: [Lib] Event: Branch_SubState"""
-        call = talk_m10_15_x9(z21=103695, z22=104190, z23=115020101)
+        call = talk_m10_15_x9(flag4=103695, flag5=104190, flag6=115020101)
         if call.Get() == 1:
             """State 4: [Lib] Reunion hostility_SubState"""
-            call = talk_m10_15_x3(text6=75209200, z11=0, z12=20, z13=80)
+            call = talk_m10_15_x3(text6=75209200, z9=0, z10=20, z11=80)
             if call.Done():
                 """State 6: [Lib] Hostile state_SubState"""
                 Label('L0')
-                call = talk_m10_15_x6(z19=115020102, text11=75209500, text12=75209500, z20=75209500)
+                call = talk_m10_15_x6(flag3=115020102, text11=75209500, text12=75209500, z17=75209500)
                 if KilledPlayer() != 0:
                     pass
                 elif (HpValue() > 1) != 1:
                     """State 7: [Lib] Death state_SubState"""
                     Label('L1')
-                    talk_m10_15_x7(text14=75209600, z25=0)
+                    talk_m10_15_x7(text14=75209600, z19=0)
                     Quit()
             elif KilledPlayer() != 0:
                 pass
@@ -42,7 +42,7 @@ def talk_m10_15_7520():
                     """State 5: [Lib] Hostile waiting_SubState"""
                     Label('L2')
                     call = talk_m10_15_x5(text15=75209400, text16=75209410, text17=75209420, text18=75209400,
-                                          z26=115020105, z27=115020106)
+                                          flag7=115020105, flag8=115020106)
                     if call.Done():
                         pass
                     elif KilledPlayer() != 0:
@@ -51,7 +51,7 @@ def talk_m10_15_7520():
                         Goto('L1')
                     elif (NumberOfTimesDamaged(1) > 3) != 0:
                         """State 10: [Lib] First adversification_SubState"""
-                        call = talk_m10_15_x4(z28=103690, text19=75209100, z29=0, z30=103695)
+                        call = talk_m10_15_x4(flag9=103690, text19=75209100, z20=0, z21=103695)
                         if call.Done():
                             Goto('L0')
                         elif KilledPlayer() != 0:
@@ -63,10 +63,11 @@ def talk_m10_15_7520():
                 elif (NumberOfTimesDamaged(1) > 1) != 0 and GetEventFlag(115020105) != 1:
                     Goto('L2')
         """State 8: [Lib] Killing state_SubState"""
-        talk_m10_15_x8(text13=75209300, z24=0)
+        talk_m10_15_x8(text13=75209300, z18=0)
         Quit()
     """State 2: Conversation: System: End"""
     EndMachine()
+    Quit()
 
 def talk_m10_15_7710():
     """Sealed person"""
@@ -78,20 +79,20 @@ def talk_m10_15_7710():
         else:
             pass
         """State 4: [Lib] Event: Branch_SubState"""
-        call = talk_m10_15_x9(z21=103840, z22=104340, z23=115020141)
+        call = talk_m10_15_x9(flag4=103840, flag5=104340, flag6=115020141)
         if call.Get() == 1:
             """State 6: [Lib] Reunion hostility_SubState"""
-            call = talk_m10_15_x3(text6=77109200, z11=0, z12=20, z13=80)
+            call = talk_m10_15_x3(text6=77109200, z9=0, z10=20, z11=80)
             if call.Done():
                 """State 8: [Lib] Hostile state_SubState"""
                 Label('L0')
-                call = talk_m10_15_x6(z19=115020142, text11=77109500, text12=77109500, z20=77109500)
+                call = talk_m10_15_x6(flag3=115020142, text11=77109500, text12=77109500, z17=77109500)
                 if KilledPlayer() != 0:
                     pass
                 elif (HpValue() > 1) != 1:
                     """State 9: [Lib] Death state_SubState"""
                     Label('L1')
-                    talk_m10_15_x7(text14=77109600, z25=0)
+                    talk_m10_15_x7(text14=77109600, z19=0)
                     Quit()
             elif KilledPlayer() != 0:
                 pass
@@ -119,7 +120,7 @@ def talk_m10_15_7710():
                         """State 7: [Lib] Waiting for hostility (living person) _SubState"""
                         Label('L3')
                         call = talk_m10_15_x5(text15=77109450, text16=77109460, text17=77109470, text18=77109450,
-                                              z26=115020145, z27=115020146)
+                                              flag7=115020145, flag8=115020146)
                         if call.Done():
                             pass
                         elif KilledPlayer() != 0:
@@ -129,7 +130,7 @@ def talk_m10_15_7710():
                         elif (NumberOfTimesDamaged(1) > 3) != 0:
                             """State 5: [Lib] First adversification_SubState"""
                             Label('L4')
-                            call = talk_m10_15_x4(z28=103840, text19=77109100, z29=0, z30=0)
+                            call = talk_m10_15_x4(flag9=103840, text19=77109100, z20=0, z21=0)
                             if call.Done():
                                 Goto('L0')
                             elif KilledPlayer() != 0:
@@ -140,7 +141,7 @@ def talk_m10_15_7710():
                         """State 11: [Lib] Hostile waiting (dead) _SubState"""
                         Label('L5')
                         call = talk_m10_15_x5(text15=77109400, text16=77109410, text17=77109420, text18=77109400,
-                                              z26=115020145, z27=115020146)
+                                              flag7=115020145, flag8=115020146)
                         if call.Done():
                             pass
                         elif KilledPlayer() != 0:
@@ -162,16 +163,17 @@ def talk_m10_15_7710():
         elif call.Get() == 0:
             Goto('L2')
         """State 10: [Lib] Killing state_SubState"""
-        talk_m10_15_x8(text13=77109300, z24=0)
+        talk_m10_15_x8(text13=77109300, z18=0)
         Quit()
     """State 3: Conversation: System: End"""
     EndMachine()
+    Quit()
 
-def talk_m10_15_x0(text20=_, z33=_, z34=0):
+def talk_m10_15_x0(text20=_, z24=_, z25=0):
     """[Lib] Conversation: General purpose
     text20: Conversation ID
-    z33: Conversation flag
-    z34: Global event flag
+    z24: Conversation flag
+    z25: Global event flag
     """
     """State 0,1,2: Conversation: key guide creation"""
     CreateKeyGuideArea(9, 600)
@@ -183,143 +185,146 @@ def talk_m10_15_x0(text20=_, z33=_, z34=0):
     """State 6: Conversation: Message waiting"""
     assert ConversationEnded() != 0
     """State 5: Conversation: flag setting"""
-    SetEventFlag(z33, 1)
-    SetEventFlag(z34, 1)
+    SetEventFlag(z24, 1)
+    SetEventFlag(z25, 1)
     """State 7: Conversation: End"""
     return 0
 
-def talk_m10_15_x1(text1=_, z29=_, z31=-1, z32=0):
+def talk_m10_15_x1(text1=_, z20=_, z22=-1, z23=0):
     """[Lib] Conversation: Display only
     text1: Conversation ID
-    z29: Conversation flag
-    z31: Display distance
-    z32: Global event flag
+    z20: Conversation flag
+    z22: Display distance
+    z23: Global event flag
     """
     """State 0,1,2: Conversation: Message"""
-    StartConversation(text1, GetCommonEventParamDecimal(7), z31)
+    StartConversation(text1, GetCommonEventParamDecimal(7), z22)
     """State 4: Conversation: Wait for message"""
     assert ConversationEnded() != 0
     """State 3: Conversation: flag setting"""
-    SetEventFlag(z29, 1)
+    SetEventFlag(z20, 1)
     """State 5: Conversation: End"""
     return 0
 
-def talk_m10_15_x2(text13=_, z24=0):
+def talk_m10_15_x2(text13=_, z18=0):
     """[Lib] Conversation: Event end
     text13: Conversation ID
-    z24: Conversation flag
+    z18: Conversation flag
     """
     """State 0,1,2: Conversation: Message"""
     StartConversation(text13, GetCommonEventParamDecimal(7), -1)
     assert ConversationEnded() != 0
     """State 3: Conversation: flag setting"""
-    SetEventFlag(z24, 1)
+    SetEventFlag(z18, 1)
     """State 4: Conversation: End"""
     return 0
 
-def talk_m10_15_x3(text6=_, z11=0, z12=20, z13=80):
+def talk_m10_15_x3(text6=_, z9=0, z10=20, z11=80):
     """[Lib] Reunion hostility
     text6: Conversation message ID
-    z11: Conversation flag ID
-    z12: Display distance
-    z13: Audible distance ratio
+    z9: Conversation flag ID
+    z10: Display distance
+    z11: Audible distance ratio
     """
     """State 0,1: Reunion hostility: start"""
     ClearNpcMenuResults()
     DeleteKeyGuideArea()
     """State 2: [Lib] Conversation: Hostile display only_SubState"""
-    assert talk_m10_15_x23(text6=text6, z11=z11, z12=z12, z13=z13)
+    assert talk_m10_15_x23(text6=text6, z9=z9, z10=z10, z11=z11)
     """State 3: Reunion hostility: finished"""
     return 0
 
-def talk_m10_15_x4(z28=_, text19=_, z29=0, z30=_):
+def talk_m10_15_x4(flag9=_, text19=_, z20=0, z21=_):
     """[Lib] First hostility
-    z28: Hostile: Global event flag
+    flag9: Hostile: Global event flag
     text19: Conversation ID
-    z29: Conversation flag
-    z30: Hostile map: Global event flag
+    z20: Conversation flag
+    z21: Hostile map: Global event flag
     """
     """State 0,1: First hostility: start"""
     EndPlayerActionRequest()
-    SetEventFlag(z28, 1)
-    SetEventFlag(z30, 1)
+    SetEventFlag(flag9, 1)
+    SetEventFlag(z21, 1)
     SetEventFlag(103999, 1)
     ClearNpcMenuResults()
     CloseNpcMenuIf(NpcMenuDisplay() != 0)
     DeleteKeyGuideArea()
     CancelConversation()
-    assert GetEventFlag(z28) != 0 and GetEventFlag(103999) != 0
+    assert GetEventFlag(flag9) != 0 and GetEventFlag(103999) != 0
     """State 2: First hostility: save execution"""
     SaveExecution()
     assert ConversationEnded() != 0
     """State 3: Conversation: First hostilization_SubState"""
-    assert talk_m10_15_x1(text1=text19, z29=z29, z31=-1, z32=0)
+    assert talk_m10_15_x1(text1=text19, z20=z20, z22=-1, z23=0)
     """State 4: First hostility: end"""
     return 0
 
-def talk_m10_15_x5(text15=_, text16=_, text17=_, text18=_, z26=_, z27=_):
+def talk_m10_15_x5(text15=_, text16=_, text17=_, text18=_, flag7=_, flag8=_):
     """[Lib] Hostile waiting
     text15: Conversation ID: 1 attacked
     text16: Conversation ID: Attacked 2
     text17: Conversation ID: 3 attacked
     text18: Conversation ID: 4 attacked
-    z26: No use: Area and other flags
-    z27: No, twice: Area and other flags
+    flag7: No use: Area and other flags
+    flag8: No, twice: Area and other flags
     """
     """State 0,1: Hostility: Start"""
     GenerateRandomNumber(0, 0, 100)
     DeleteKeyGuideArea()
     CancelConversation()
     """State 2: Hostility: Set damage flag"""
-    SetEventFlagIf((NumberOfTimesDamaged(1) > 2) != 0 and GetEventFlag(z27) != 1, z27, 1)
-    SetEventFlagIf((NumberOfTimesDamaged(1) > 1) != 0 and GetEventFlag(z26) != 1, z26, 1)
+    SetEventFlagIf((NumberOfTimesDamaged(1) > 2) != 0 and GetEventFlag(flag8) != 1, flag8, 1)
+    SetEventFlagIf((NumberOfTimesDamaged(1) > 1) != 0 and GetEventFlag(flag7) != 1, flag7, 1)
     """State 3: Hostility: Branch"""
     if (GetRandomValue(0) > 80 and GetRandomValue(0) < 100) != 0:
         """State 7: Conversation: 4_SubState attacked"""
-        assert talk_m10_15_x1(text1=text18, z29=0, z31=-1, z32=0)
+        assert talk_m10_15_x1(text1=text18, z20=0, z22=-1, z23=0)
     elif (GetRandomValue(0) > 60 and GetRandomValue(0) < 80) != 0:
         """State 6: Conversation: Attacked 3_SubState"""
-        assert talk_m10_15_x1(text1=text17, z29=0, z31=-1, z32=0)
+        assert talk_m10_15_x1(text1=text17, z20=0, z22=-1, z23=0)
     elif (GetRandomValue(0) > 40 and GetRandomValue(0) < 60) != 0:
         """State 5: Conversation: 2_SubState attacked"""
-        assert talk_m10_15_x1(text1=text16, z29=0, z31=-1, z32=0)
+        assert talk_m10_15_x1(text1=text16, z20=0, z22=-1, z23=0)
     elif (GetRandomValue(0) > 20 and GetRandomValue(0) < 40) != 0:
         """State 4: Conversation: Attacked 1_SubState"""
-        assert talk_m10_15_x1(text1=text15, z29=0, z31=-1, z32=0)
+        assert talk_m10_15_x1(text1=text15, z20=0, z22=-1, z23=0)
     else:
         pass
     """State 8: Hostility: End"""
     return 0
 
-def talk_m10_15_x6(z19=_, text11=_, text12=_, z20=_):
+def talk_m10_15_x6(flag3=_, text11=_, text12=_, z17=_):
     """[Lib] Hostile state
-    z19: Area and other flags: HP decreased
+    flag3: Area and other flags: HP decreased
     text11: Conversation ID: HP drop 1
     text12: Conversation ID: HP drop 2
-    z20: Conversation ID: HP drop 3
+    z17: Conversation ID: HP drop 3
     """
     """State 0,1: Hostile state: Start"""
     CancelConversation()
     while True:
         """State 2: Hostile state: standby"""
         BecomeHostile(1)
-        assert (HpRatio() > 50) != 1 and GetEventFlag(z19) != 1 and ConversationEnded() != 0
+        assert (HpRatio() > 50) != 1 and GetEventFlag(flag3) != 1 and ConversationEnded() != 0
         """State 3: Hostile state: HP decreased"""
         GenerateRandomNumber(0, 0, 30)
         if (GetRandomValue(0) > 0 and GetRandomValue(0) < 10) != 0:
             """State 4: Conversation: HP drop 1_SubState"""
-            assert talk_m10_15_x10(text11=text11, z19=z19)
+            assert talk_m10_15_x10(text11=text11, flag3=flag3)
         elif (GetRandomValue(0) > 10 and GetRandomValue(0) < 20) != 0:
             """State 5: Conversation: HP drop 2_SubState"""
-            assert talk_m10_15_x10(text11=text12, z19=z19)
+            assert talk_m10_15_x10(text11=text12, flag3=flag3)
         else:
             """State 6: Conversation: HP drop 3_SubState"""
-            assert talk_m10_15_x10(text11=text12, z19=z19)
+            assert talk_m10_15_x10(text11=text12, flag3=flag3)
+    """Unused"""
+    """State 7: End state"""
+    return 0
 
-def talk_m10_15_x7(text14=_, z25=0):
+def talk_m10_15_x7(text14=_, z19=0):
     """[Lib] Death status
     text14: Conversation ID
-    z25: Global: death flag
+    z19: Global: death flag
     """
     """State 0,1: Death status: Start"""
     EndPlayerActionRequest()
@@ -328,32 +333,40 @@ def talk_m10_15_x7(text14=_, z25=0):
     CancelConversation()
     assert ConversationEnded() != 0
     """State 2: Conversation: death message_SubState"""
-    talk_m10_15_x2(text13=text14, z24=z25)
+    talk_m10_15_x2(text13=text14, z18=z19)
+    Quit()
+    """Unused"""
+    """State 3: End state"""
+    return 0
 
-def talk_m10_15_x8(text13=_, z24=0):
+def talk_m10_15_x8(text13=_, z18=0):
     """[Lib] Murder status
     text13: Conversation ID
-    z24: Conversation flag
+    z18: Conversation flag
     """
     """State 0,1: Killed state: Start"""
     DeleteKeyGuideArea()
     CancelConversation()
     assert ConversationEnded() != 0
     """State 2: Conversation: Killing message_SubState"""
-    talk_m10_15_x2(text13=text13, z24=z24)
+    talk_m10_15_x2(text13=text13, z18=z18)
+    Quit()
+    """Unused"""
+    """State 3: End state"""
+    return 0
 
-def talk_m10_15_x9(z21=_, z22=_, z23=_):
+def talk_m10_15_x9(flag4=_, flag5=_, flag6=_):
     """[Lib] Event: Branch
-    z21: Hostile flag
-    z22: death flag
-    z23: Conversation start flag
+    flag4: Hostile flag
+    flag5: death flag
+    flag6: Conversation start flag
     """
     """State 0,1: Event: Branch"""
     ClearNpcMenuResults()
-    if GetEventFlag(z22) != 0:
+    if GetEventFlag(flag5) != 0:
         """State 2: Event: Ghosts: Waiting"""
-        assert GetEventFlag(z23) != 0
-    elif GetEventFlag(z21) != 0:
+        assert GetEventFlag(flag6) != 0
+    elif GetEventFlag(flag4) != 0:
         """State 4: Event: End: Encounter Encounter"""
         return 1
     else:
@@ -361,23 +374,23 @@ def talk_m10_15_x9(z21=_, z22=_, z23=_):
     """State 3: Event: End: Normal encounter"""
     return 0
 
-def talk_m10_15_x10(text11=_, z19=_):
+def talk_m10_15_x10(text11=_, flag3=_):
     """[Lib] Conversation: HP drop
     text11: Conversation ID
-    z19: Area and other flags: HP decreased
+    flag3: Area and other flags: HP decreased
     """
     """State 0,1,2: Conversation: Message"""
     StartConversation(text11, GetCommonEventParamDecimal(7), -1)
     assert ConversationEnded() != 0
     """State 3: Conversation: Other area flag setting"""
-    SetEventFlag(z19, 1)
+    SetEventFlag(flag3, 1)
     """State 4: Conversation: End"""
     return 0
 
-def talk_m10_15_x11(text10=_, z18=0, action2=_):
+def talk_m10_15_x11(text10=_, z16=0, action2=_):
     """[Lib] Choice conversation: Mes⇒Choice
     text10: Conversation ID
-    z18: Global conversation flag
+    z16: Global conversation flag
     action2: Selected conversation ID
     """
     """State 0,1,2: Conversation: key guide creation"""
@@ -390,7 +403,7 @@ def talk_m10_15_x11(text10=_, z18=0, action2=_):
     """State 5: Conversation: Message waiting"""
     assert ConversationEnded() != 0
     """State 6: Conversation: flag setting"""
-    SetEventFlag(z18, 1)
+    SetEventFlag(z16, 1)
     """State 7: Conversation: Select message"""
     ShowYesNoSelection(action2, GetCommonEventParamDecimal(7), -1)
     """State 8: Conversation: Selection message input waiting"""
@@ -429,25 +442,26 @@ def talk_m10_15_x12(action1=1205):
         """State 3: End state: YES"""
         return 0
 
-def talk_m10_15_x13(z14=0, z15=220, z16=_, z17=0):
+def talk_m10_15_x13(z12=0, z13=220, z14=_, z15=0):
     """[Lib] Menu start: General purpose
-    z14: Camera parameter ID
-    z15: Target Damipoly ID
-    z16: NPC event parameter ID
-    z17: Cancel distance
+    z12: Camera parameter ID
+    z13: Target Damipoly ID
+    z14: NPC event parameter ID
+    z15: Cancel distance
     """
     """State 0,1,2: Menu start: Open"""
-    OpenNpcMenu(z17, z14, z15, z16)
+    OpenNpcMenu(z15, z12, z13, z14)
     """State 3: Menu start: Standby"""
+    Label('L0')
     if (NpcMenuResult() == 19) != 0:
         """State 6: Cancel: End state"""
         return 0
     elif (NpcMenuResult() == 18) != 0:
         """State 7: Normal: End state"""
-        Label('L0')
+        Label('L1')
         return 1
     elif (NpcMenuResult() == 17) != 0:
-        Goto('L0')
+        Goto('L1')
     elif (NpcMenuResult() == 16) != 0:
         """State 8: Conversation: end state"""
         return 2
@@ -484,6 +498,13 @@ def talk_m10_15_x13(z14=0, z15=220, z16=_, z17=0):
     elif (NpcMenuResult() == 21) != 0:
         """State 19: Level up: End state"""
         return 13
+    """Unused"""
+    """State 4: Menu start: Shop waiting"""
+    Label('L2')
+    Goto('L0')
+    """State 5: Menu start: Shop start"""
+    ClearNpcMenuSelection()
+    Goto('L2')
 
 def talk_m10_15_x14(text8=77102600, text9=77102700):
     """[Lib] Menu exit: General purpose
@@ -494,10 +515,10 @@ def talk_m10_15_x14(text8=77102600, text9=77102700):
     CloseNpcMenu()
     if NpcMenuDisplay() != 1 and NpcMenuUsageResult() != 0:
         """State 2: Purchase and leave _SubState"""
-        assert talk_m10_15_x1(text1=text8, z29=0, z31=-1, z32=0)
+        assert talk_m10_15_x1(text1=text8, z20=0, z22=-1, z23=0)
     elif NpcMenuDisplay() != 1:
         """State 3: Leave without purchase _SubState"""
-        assert talk_m10_15_x1(text1=text9, z29=0, z31=-1, z32=0)
+        assert talk_m10_15_x1(text1=text9, z20=0, z22=-1, z23=0)
     """State 4: End state"""
     return 0
 
@@ -509,38 +530,38 @@ def talk_m10_15_x15(text7=77102800):
     CloseNpcMenu()
     assert NpcMenuDisplay() != 1
     """State 3: When you leave the shop _SubState"""
-    assert talk_m10_15_x1(text1=text7, z29=0, z31=-1, z32=0)
+    assert talk_m10_15_x1(text1=text7, z20=0, z22=-1, z23=0)
     """State 4: End state"""
     return 0
 
-def talk_m10_15_x16(lot3=1771000, z9=102800, text4=77106000, text5=77106010):
+def talk_m10_15_x16(lot3=1771000, z7=102800, text4=77106000, text5=77106010):
     """[Lib] Equipment transfer: Mes⇒Item⇒Mes
     lot3: Release seal: NPC menu
-    z9: Global event flag
+    z7: Global event flag
     text4: First half: Conversation ID
     text5: Second half: Conversation ID
     """
     """State 0,1,2: Equipment transfer: First half of conversation _SubState"""
-    call = talk_m10_15_x1(text1=text4, z29=0, z31=-1, z32=0)
+    call = talk_m10_15_x1(text1=text4, z20=0, z22=-1, z23=0)
     # lot:1771000:Chaos Hood
     if call.Done() and CanGetItemLot(lot3, 1) != 1:
         """State 5: [Lib] Inventory full dialog: Item display_SubState"""
-        assert talk_m10_15_x24(z10=1011, lot1=lot3)
+        assert talk_m10_15_x24(z8=1011, lot1=lot3)
     elif call.Done():
         """State 3: [Lib] Item acquisition dialog_SubState"""
-        assert talk_m10_15_x17(lot3=lot3, z9=z9)
+        assert talk_m10_15_x17(lot3=lot3, z7=z7)
         """State 4: Equipment transfer: Second half of conversation _SubState"""
-        assert talk_m10_15_x1(text1=text5, z29=0, z31=-1, z32=0)
+        assert talk_m10_15_x1(text1=text5, z20=0, z22=-1, z23=0)
     """State 6: End state"""
     return 0
 
-def talk_m10_15_x17(lot3=1771000, z9=102800):
+def talk_m10_15_x17(lot3=1771000, z7=102800):
     """[Lib] Item acquisition dialog
     lot3: Release seal: NPC menu
-    z9: Global flag
+    z7: Global flag
     """
     """State 0,1: Item acquisition dialog: Display"""
-    SetEventFlag(z9, 1)
+    SetEventFlag(z7, 1)
     # lot:1771000:Chaos Hood
     AwardItem(lot3, 1)
     assert ItemAwardDisplay() != 0
@@ -549,16 +570,16 @@ def talk_m10_15_x17(lot3=1771000, z9=102800):
     """State 3: End state"""
     return 0
 
-def talk_m10_15_x18(lot2=_, z4=_, text2=_, text3=_, z5=_, z6=_, z7=0, z8=0):
+def talk_m10_15_x18(lot2=_, flag2=_, text2=_, text3=_, z3=_, z4=_, z5=0, z6=0):
     """[Lib] Conversation: Item transfer: Mes⇒Item⇒Mes: Key
     lot2: Release seal: NPC menu
-    z4: Item transfer: Global event flag
+    flag2: Item transfer: Global event flag
     text2: First half: Conversation ID
     text3: Second half: Conversation ID
-    z5: Conversation: Global conversation flag
-    z6: Trophy acquisition: Area and other flags
-    z7: Emigration permission: Global event flag
-    z8: White Phantom Appearance: Global Event Flag
+    z3: Conversation: Global conversation flag
+    z4: Trophy acquisition: Area and other flags
+    z5: Emigration permission: Global event flag
+    z6: White Phantom Appearance: Global Event Flag
     """
     """State 0,1,2: Item transfer: key guide creation"""
     CreateKeyGuideArea(9, 600)
@@ -567,32 +588,32 @@ def talk_m10_15_x18(lot2=_, z4=_, text2=_, text3=_, z5=_, z6=_, z7=0, z8=0):
     """State 4: Item transfer: Delete key guide"""
     DeleteKeyGuideArea()
     """State 6: Item transfer: First half of conversation_SubState"""
-    call = talk_m10_15_x1(text1=text2, z29=0, z31=-1, z32=0)
-    if call.Done() and GetEventFlag(z4) != 0:
+    call = talk_m10_15_x1(text1=text2, z20=0, z22=-1, z23=0)
+    if call.Done() and GetEventFlag(flag2) != 0:
         """State 5: Item transfer: Conversation flag: Setting"""
+        SetEventFlag(z3, 1)
         SetEventFlag(z5, 1)
-        SetEventFlag(z7, 1)
-        SetEventFlag(z8, 1)
+        SetEventFlag(z6, 1)
         """State 7: Item transfer: Second half of conversation _SubState"""
         Label('L0')
-        assert talk_m10_15_x1(text1=text3, z29=0, z31=-1, z32=0)
+        assert talk_m10_15_x1(text1=text3, z20=0, z22=-1, z23=0)
     elif call.Done() and CanGetItemLot(lot2, 1) != 1:
         """State 9: [Lib] Inventory full dialog: Item display_SubState"""
-        assert talk_m10_15_x24(z10=1011, lot1=lot2)
+        assert talk_m10_15_x24(z8=1011, lot1=lot2)
     elif call.Done():
         """State 8: [Lib] Item acquisition dialog: Conversation_SubState"""
-        assert talk_m10_15_x20(lot1=lot2, z1=z4, z2=z5, z3=z6, z7=z7, z8=z8)
+        assert talk_m10_15_x20(lot1=lot2, flag1=flag2, z1=z3, z2=z4, z5=z5, z6=z6)
         Goto('L0')
     """State 10: End state"""
     return 0
 
-def talk_m10_15_x19(lot1=1771040, z1=102804, text1=77102300, z2=205230, z3=0):
+def talk_m10_15_x19(lot1=1771040, flag1=102804, text1=77102300, z1=205230, z2=0):
     """[Lib] Conversation: Item transfer: Mes⇒Item: Key
     lot1: Release seal: NPC menu
-    z1: Item transfer: Global event flag
+    flag1: Item transfer: Global event flag
     text1: Conversation ID
-    z2: Conversation: Global conversation flag
-    z3: Trophy acquisition: Area and other flags
+    z1: Conversation: Global conversation flag
+    z2: Trophy acquisition: Area and other flags
     """
     """State 0,1,2: Item transfer: key guide creation"""
     CreateKeyGuideArea(9, 600)
@@ -601,35 +622,35 @@ def talk_m10_15_x19(lot1=1771040, z1=102804, text1=77102300, z2=205230, z3=0):
     """State 4: Item transfer: Delete key guide"""
     DeleteKeyGuideArea()
     """State 6: Item transfer: Conversation_SubState"""
-    call = talk_m10_15_x1(text1=text1, z29=0, z31=-1, z32=0)
-    if call.Done() and GetEventFlag(z1) != 0:
+    call = talk_m10_15_x1(text1=text1, z20=0, z22=-1, z23=0)
+    if call.Done() and GetEventFlag(flag1) != 0:
         """State 5: Item transfer: Conversation flag: Setting"""
-        SetEventFlag(z2, 1)
+        SetEventFlag(z1, 1)
     # lot:1771040:Unleash Magic
     elif call.Done() and CanGetItemLot(lot1, 1) != 1:
         """State 8: [Lib] Inventory full dialog: Item display_SubState"""
-        assert talk_m10_15_x24(z10=1011, lot1=lot1)
+        assert talk_m10_15_x24(z8=1011, lot1=lot1)
     elif call.Done():
         """State 7: [Lib] Item acquisition dialog: Conversation_SubState"""
-        assert talk_m10_15_x20(lot1=lot1, z1=z1, z2=z2, z3=z3, z7=0, z8=0)
+        assert talk_m10_15_x20(lot1=lot1, flag1=flag1, z1=z1, z2=z2, z5=0, z6=0)
     """State 9: End state"""
     return 0
 
-def talk_m10_15_x20(lot1=_, z1=_, z2=_, z3=_, z7=0, z8=0):
+def talk_m10_15_x20(lot1=_, flag1=_, z1=_, z2=_, z5=0, z6=0):
     """[Lib] Item acquisition dialog: Conversation
     lot1: Release seal: NPC menu
-    z1: Item transfer: Global event flag
-    z2: Conversation: Global conversation flag
-    z3: Trophy acquisition: Area and other flags
-    z7: Emigration permission: Global event flag
-    z8: White Phantom Appearance: Global Event Flag
+    flag1: Item transfer: Global event flag
+    z1: Conversation: Global conversation flag
+    z2: Trophy acquisition: Area and other flags
+    z5: Emigration permission: Global event flag
+    z6: White Phantom Appearance: Global Event Flag
     """
     """State 0,1: Item acquisition dialog: Display"""
-    SetEventFlag(z8, 1)
-    SetEventFlag(z7, 1)
-    SetEventFlag(z3, 1)
+    SetEventFlag(z6, 1)
+    SetEventFlag(z5, 1)
     SetEventFlag(z2, 1)
     SetEventFlag(z1, 1)
+    SetEventFlag(flag1, 1)
     AwardItem(lot1, 1)
     assert ItemAwardDisplay() != 0
     """State 2: Item acquisition dialog: Wait"""
@@ -653,27 +674,27 @@ def talk_m10_15_x22():
     """State 3: End state"""
     return 0
 
-def talk_m10_15_x23(text6=_, z11=0, z12=20, z13=80):
+def talk_m10_15_x23(text6=_, z9=0, z10=20, z11=80):
     """[Lib] Conversation: Hostile display only
     text6: Conversation ID
-    z11: Conversation flag
-    z12: Display distance
-    z13: Audible distance ratio
+    z9: Conversation flag
+    z10: Display distance
+    z11: Audible distance ratio
     """
     """State 0,1,5: Conversation: Waiting for display"""
     assert 132004 and (CompareOwnEzStateFlag(3) == 10) != 0
     """State 2: Conversation: Message"""
-    StartConversation(text6, GetCommonEventParamDecimal(7), z12)
+    StartConversation(text6, GetCommonEventParamDecimal(7), z10)
     """State 4: Conversation: Wait for message"""
     assert ConversationEnded() != 0
     """State 3: Conversation: flag setting"""
-    SetEventFlag(z11, 1)
+    SetEventFlag(z9, 1)
     """State 6: Conversation: End"""
     return 0
 
-def talk_m10_15_x24(z10=1011, lot1=_):
+def talk_m10_15_x24(z8=1011, lot1=_):
     """[Lib] Inventory full dialog: Item display
-    z10: Text ID
+    z8: Text ID
     lot1: Release seal: NPC menu
     """
     """State 0,1: OK dialog: Display"""
@@ -692,12 +713,12 @@ def talk_m10_15_x25():
         != 0):
         """State 6: Equipment item transfer_SubState"""
         # lot:1752000:Mirrah Greatsword, talk:75206000:"Please...find my brother..."
-        assert (talk_m10_15_x18(lot2=1752000, z4=102497, text2=75206000, text3=75206010, z5=0, z6=115020107,
-                z7=0, z8=0))
+        assert (talk_m10_15_x18(lot2=1752000, flag2=102497, text2=75206000, text3=75206010, z3=0, z4=115020107,
+                z5=0, z6=0))
     elif GetEventFlag(203651) != 0:
         """State 5: Encounter 5th: Speak: Part 3_SubState"""
         # talk:75202100:"My name is Lucatiel."
-        call = talk_m10_15_x0(text20=75202100, z33=0, z34=0)
+        call = talk_m10_15_x0(text20=75202100, z24=0, z25=0)
         if call.Done() and GetEventFlag(102489) != 1:
             """State 2: Encounter 5th: Stop generation"""
             SetEventFlag(102489, 1)
@@ -707,11 +728,11 @@ def talk_m10_15_x25():
     elif GetEventFlag(203650) != 0:
         """State 4: Encounter 5th: Speak: Part 2_SubState"""
         # talk:75202000:"How goes your journey?"
-        assert talk_m10_15_x0(text20=75202000, z33=203651, z34=0)
+        assert talk_m10_15_x0(text20=75202000, z24=203651, z25=0)
     else:
         """State 3: Encounter 5th: Speak: Part 1_SubState"""
         # talk:75201900:"Who are you..."
-        assert talk_m10_15_x0(text20=75201900, z33=203650, z34=0)
+        assert talk_m10_15_x0(text20=75201900, z24=203650, z25=0)
     """State 7: End state"""
     return 0
 
@@ -766,7 +787,7 @@ def talk_m10_15_x28():
         if (not GetPlayerHollowState()) != 0:
             """State 4: Release seal: Raw person: Talk to 1 (loop) _SubState"""
             # talk:77103100:"By the very gods... What have you done..."
-            call = talk_m10_15_x0(text20=77103100, z33=0, z34=0)
+            call = talk_m10_15_x0(text20=77103100, z24=0, z25=0)
             if call.Done():
                 break
             elif (GetPlayerHollowState() == 1) != 0 and ConversationEnded() != 0:
@@ -776,7 +797,7 @@ def talk_m10_15_x28():
         elif GetEventFlag(205240) != 0:
             """State 3: Unsealing: Dead: Talking 2 (single loop) _SubState"""
             # talk:77103000:"I'll spend some time travelling the lands..."
-            call = talk_m10_15_x0(text20=77103000, z33=205240, z34=0)
+            call = talk_m10_15_x0(text20=77103000, z24=205240, z25=0)
             if call.Done():
                 pass
             elif (not GetPlayerHollowState()) != 0 and ConversationEnded() != 0:
@@ -784,7 +805,7 @@ def talk_m10_15_x28():
         else:
             """State 2: Unseal: Dead: Talk to 1_SubState"""
             # talk:77102900:"Hmgh..."
-            call = talk_m10_15_x0(text20=77102900, z33=205240, z34=0)
+            call = talk_m10_15_x0(text20=77102900, z24=205240, z25=0)
             if call.Done():
                 pass
             elif (not GetPlayerHollowState()) != 0 and ConversationEnded() != 0:
@@ -825,29 +846,29 @@ def talk_m10_15_x30():
     if GetEventFlag(205221) != 0:
         """State 7: Sealed: Dead: Talk to 3_SubState"""
         # talk:77100800:"Now, I don't have anything against humans,\nbut how is it that you go about defining good and evil?"
-        assert talk_m10_15_x0(text20=77100800, z33=205222, z34=0)
+        assert talk_m10_15_x0(text20=77100800, z24=205222, z25=0)
         """State 6: Sealing: Dead: Talking 3: 1st person request dialog_SubState"""
         # action:1205:"What is your choice?"
         call = talk_m10_15_x12(action1=1205)
         if call.Get() == 0:
             """State 4: Sealed: Dead: 1st request: YES_SubState"""
             # talk:77100900:"Yes, I see, how very kind of you."
-            assert talk_m10_15_x1(text1=77100900, z29=205223, z31=-1, z32=0)
+            assert talk_m10_15_x1(text1=77100900, z20=205223, z22=-1, z23=0)
         elif call.Get() == 1:
             """State 5: Sealing: Dead: 1st request: NO_SubState"""
             Label('L0')
             # talk:77101100:"Yes, yes, of course.\nForget that I asked."
-            assert talk_m10_15_x1(text1=77101100, z29=0, z31=-1, z32=0)
+            assert talk_m10_15_x1(text1=77101100, z20=0, z22=-1, z23=0)
         elif call.Get() == 2:
             Goto('L0')
     elif GetEventFlag(205220) != 0:
         """State 3: Sealing: Dead: Talk to 2_SubState"""
         # talk:77100500:"This? This contains my power."
-        assert talk_m10_15_x0(text20=77100500, z33=205221, z34=0)
+        assert talk_m10_15_x0(text20=77100500, z24=205221, z25=0)
     else:
         """State 2: Sealed: Dead: Talk to 1_SubState"""
         # talk:77100400:"Well, you're nicely hollowed, aren't you..."
-        assert talk_m10_15_x0(text20=77100400, z33=205220, z34=0)
+        assert talk_m10_15_x0(text20=77100400, z24=205220, z25=0)
     """State 8: End state"""
     return 0
 
@@ -858,7 +879,7 @@ def talk_m10_15_x31():
     if GetEventFlag(205226) != 0:
         """State 8: Sealing: Dead: Second person request: Second person request conversation_SubState"""
         # talk:77101300:"I want you to kill one more."
-        assert talk_m10_15_x0(text20=77101300, z33=0, z34=0)
+        assert talk_m10_15_x0(text20=77101300, z24=0, z25=0)
         """State 7: Sealing: Dead: Second person request: Second person request dialog_SubState"""
         # action:1205:"What is your choice?"
         call = talk_m10_15_x12(action1=1205)
@@ -866,18 +887,18 @@ def talk_m10_15_x31():
             """State 5: Sealing: Dead: Second person request: Second person request: YES_SubState"""
             Label('L0')
             # talk:77101400:"Yes, I knew I could count on you."
-            assert talk_m10_15_x1(text1=77101400, z29=205224, z31=-1, z32=0)
+            assert talk_m10_15_x1(text1=77101400, z20=205224, z22=-1, z23=0)
         elif call.Get() == 1:
             """State 6: Sealing: Dead: Second person request: Second person request: NO_SubState"""
             Label('L1')
             # talk:77101100:"Yes, yes, of course.\nForget that I asked."
-            assert talk_m10_15_x1(text1=77101100, z29=0, z31=-1, z32=0)
+            assert talk_m10_15_x1(text1=77101100, z20=0, z22=-1, z23=0)
         elif call.Get() == 2:
             Goto('L1')
     elif GetEventFlag(205226) != 0:
         """State 4: Sealed: Dead: Second person request: Second person request_SubState"""
         # talk:77101300:"I want you to kill one more."
-        call = talk_m10_15_x11(text10=77101300, z18=0, action2=77101330)
+        call = talk_m10_15_x11(text10=77101300, z16=0, action2=77101330)
         if call.Get() == 1:
             Goto('L0')
         elif call.Get() == 0:
@@ -888,12 +909,12 @@ def talk_m10_15_x31():
     elif (ItemCount(50950000, 1, 1, 0) > 1) != 0:
         """State 3: Sealed: Dead: Second Request: First Request Achieved_SubState"""
         # lot:1771010:Dispelling Ring, talk:77101200:"Heh heh heh... Fine work.", talk:77101202:""
-        assert (talk_m10_15_x18(lot2=1771010, z4=102801, text2=77101200, text3=77101202, z5=205226, z6=0,
-                z7=0, z8=0))
+        assert (talk_m10_15_x18(lot2=1771010, flag2=102801, text2=77101200, text3=77101202, z3=205226,
+                z4=0, z5=0, z6=0))
     else:
         """State 2: Sealed: Dead: Second person request: First person not achieved_SubState"""
         # talk:77101000:"I want you to kill a merchant named Gilligan."
-        call = talk_m10_15_x0(text20=77101000, z33=0, z34=0)
+        call = talk_m10_15_x0(text20=77101000, z24=0, z25=0)
         if call.Done():
             pass
         # goods:50950000:Ladder Miniature
@@ -909,31 +930,31 @@ def talk_m10_15_x32():
     if GetEventFlag(205227) != 0:
         """State 6: Sealed: Dead: 3rd person request: 3rd person request conversation_SubState"""
         # talk:77101600:"I want you to kill one more."
-        assert talk_m10_15_x0(text20=77101600, z33=0, z34=0)
+        assert talk_m10_15_x0(text20=77101600, z24=0, z25=0)
         """State 7: Sealed: Dead: Third person request: Third person request dialog_SubState"""
         # action:1205:"What is your choice?"
         call = talk_m10_15_x12(action1=1205)
         if call.Get() == 0:
             """State 4: Sealing: Dead: Third person request: Third person request: YES_SubState"""
             # talk:77101700:"Yes, very good."
-            assert talk_m10_15_x1(text1=77101700, z29=205225, z31=-1, z32=0)
+            assert talk_m10_15_x1(text1=77101700, z20=205225, z22=-1, z23=0)
         elif call.Get() == 1:
             """State 5: Sealing: Dead: Third person request: Third person request: NO_SubState"""
             Label('L0')
             # talk:77101100:"Yes, yes, of course.\nForget that I asked."
-            assert talk_m10_15_x1(text1=77101100, z29=0, z31=-1, z32=0)
+            assert talk_m10_15_x1(text1=77101100, z20=0, z22=-1, z23=0)
         elif call.Get() == 2:
             Goto('L0')
     # goods:27510100:Cale's Helm
     elif (ItemCount(27510100, 1, 1, 0) > 1) != 0:
         """State 3: Sealed: Dead: 3rd request: 2nd request achieved_SubState"""
         # lot:1771020:Simpleton's Spice, talk:77101200:"Heh heh heh... Fine work.", talk:77101202:""
-        assert (talk_m10_15_x18(lot2=1771020, z4=102802, text2=77101200, text3=77101202, z5=205227, z6=0,
-                z7=0, z8=0))
+        assert (talk_m10_15_x18(lot2=1771020, flag2=102802, text2=77101200, text3=77101202, z3=205227,
+                z4=0, z5=0, z6=0))
     else:
         """State 2: Sealing: Dead: 3rd person Request: 2nd person unachieved_SubState"""
         # talk:77101500:"I want you to kill Cale,\nthe cartographer."
-        assert talk_m10_15_x0(text20=77101500, z33=0, z34=0)
+        assert talk_m10_15_x0(text20=77101500, z24=0, z25=0)
     """State 8: End state"""
     return 0
 
@@ -944,7 +965,7 @@ def talk_m10_15_x33():
     if GetEventFlag(205228) != 0:
         """State 7: Sealed: Dead: 4th person request: 4th person request conversation_SubState"""
         # talk:77102000:"You could kill a dozen like that, and it wouldn't matter.\nI want you to kill someone of import."
-        assert talk_m10_15_x0(text20=77102000, z33=0, z34=0)
+        assert talk_m10_15_x0(text20=77102000, z24=0, z25=0)
         """State 8: Sealing: Dead: 4th request: 4th request dialog_SubState"""
         # action:1205:"What is your choice?"
         call = talk_m10_15_x12(action1=1205)
@@ -956,13 +977,13 @@ def talk_m10_15_x33():
             """State 6: Sealed: Dead: 4th request: 4th request: NO_SubState"""
             Label('L1')
             # talk:77102100:"Having second thoughts?"
-            assert talk_m10_15_x1(text1=77102100, z29=0, z31=-1, z32=0)
+            assert talk_m10_15_x1(text1=77102100, z20=0, z22=-1, z23=0)
         elif call.Get() == 2:
             Goto('L1')
     elif GetEventFlag(205228) != 0:
         """State 5: Sealed: Dead: 4th request: 4th request_SubState"""
         # talk:77102000:"You could kill a dozen like that, and it wouldn't matter.\nI want you to kill someone of import."
-        call = talk_m10_15_x11(text10=77102000, z18=0, action2=77102070)
+        call = talk_m10_15_x11(text10=77102000, z16=0, action2=77102070)
         if call.Get() == 1:
             Goto('L0')
         elif call.Get() == 0:
@@ -973,12 +994,12 @@ def talk_m10_15_x33():
     elif (ItemCount(3900000, 1, 1, 0) > 1) != 0:
         """State 4: Sealed: Dead: 4th request: 3rd request achieved_SubState"""
         # lot:1771030:Forbidden Sun
-        assert (talk_m10_15_x18(lot2=1771030, z4=102803, text2=77101250, text3=77101252, z5=205228, z6=0,
-                z7=0, z8=0))
+        assert (talk_m10_15_x18(lot2=1771030, flag2=102803, text2=77101250, text3=77101252, z3=205228,
+                z4=0, z5=0, z6=0))
     else:
         """State 3: Sealed: Dead: 4th Request: 3rd unachieved_SubState"""
         # talk:77101800:"I want you to kill Felkin.\nThat's Felkin, the hexer."
-        assert talk_m10_15_x0(text20=77101800, z33=0, z34=0)
+        assert talk_m10_15_x0(text20=77101800, z24=0, z25=0)
     """State 9: End state"""
     return 0
 
@@ -990,14 +1011,14 @@ def talk_m10_15_x34():
     if (ItemCount(60355000, 1, 1, 0) > 1) != 0:
         """State 4: Sealing: Dead: Final request: 4th person achieved_SubState"""
         # lot:1771040:Unleash Magic, talk:77102300:"Yes, that's the feather."
-        assert talk_m10_15_x19(lot1=1771040, z1=102804, text1=77102300, z2=205230, z3=0)
+        assert talk_m10_15_x19(lot1=1771040, flag1=102804, text1=77102300, z1=205230, z2=0)
         """State 2: Sealed: Dead: Final Request: White Phantom Appearance: Set Flag"""
         SetEventFlag(102811, 1)
         assert GetEventFlag(102811) != 0
     else:
         """State 3: Sealed: Dead: Final request: 4th unachieved_SubState"""
         # talk:77102200:"Your mark is the girl in Majula known as the muse."
-        assert talk_m10_15_x0(text20=77102200, z33=0, z34=0)
+        assert talk_m10_15_x0(text20=77102200, z24=0, z25=0)
     """State 5: End state"""
     return 0
 
@@ -1005,10 +1026,10 @@ def talk_m10_15_x35():
     """Enclosed person: NPC menu"""
     """State 0,1,2: Menu: First conversation_SubState"""
     # talk:77102500:"What do you require?"
-    assert talk_m10_15_x0(text20=77102500, z33=0, z34=0)
+    assert talk_m10_15_x0(text20=77102500, z24=0, z25=0)
     while True:
         """State 3: [Lib] Menu start: General purpose_SubState"""
-        call = talk_m10_15_x13(z14=0, z15=220, z16=77100000, z17=0)
+        call = talk_m10_15_x13(z12=0, z13=220, z14=77100000, z15=0)
         if call.Get() == 2:
             """State 6: Enclosed person: Menu conversation_SubState"""
             call = talk_m10_15_x37()
@@ -1037,19 +1058,19 @@ def talk_m10_15_x36():
     if GetEventFlag(205220) != 0 and GetEventFlag(205202) != 1:
         """State 5: Sealed: Living: After deceased conversation _SubState"""
         # talk:77100300:"I haven't said anything strange, have I?"
-        assert talk_m10_15_x0(text20=77100300, z33=205202, z34=0)
+        assert talk_m10_15_x0(text20=77100300, z24=205202, z25=0)
     elif GetEventFlag(205201) != 0:
         """State 4: Sealing: Living: Talking 3 (single loop) _SubState"""
         # talk:77100200:"Please, just leave me alone."
-        assert talk_m10_15_x0(text20=77100200, z33=0, z34=0)
+        assert talk_m10_15_x0(text20=77100200, z24=0, z25=0)
     elif GetEventFlag(205200) != 0:
         """State 3: Sealing: Living: Talk to 2_SubState"""
         # talk:77100100:"Just leave me alone, please."
-        assert talk_m10_15_x0(text20=77100100, z33=205201, z34=0)
+        assert talk_m10_15_x0(text20=77100100, z24=205201, z25=0)
     else:
         """State 2: Sealed: Living: Talk to 1_SubState"""
         # talk:77100000:"P-please, just stay away."
-        assert talk_m10_15_x0(text20=77100000, z33=205200, z34=0)
+        assert talk_m10_15_x0(text20=77100000, z24=205200, z25=0)
     """State 6: End state"""
     return 0
 
@@ -1059,11 +1080,11 @@ def talk_m10_15_x37():
     if GetEventFlag(205230) != 0 and GetEventFlag(102800) != 1 and GetEventFlag(104340) != 1:
         """State 4: Equipment transfer (condition: all requests achieved) _SubState"""
         # lot:1771000:Chaos Hood, talk:77106000:"Heh heh heh heh heh..."
-        assert talk_m10_15_x16(lot3=1771000, z9=102800, text4=77106000, text5=77106010)
+        assert talk_m10_15_x16(lot3=1771000, z7=102800, text4=77106000, text5=77106010)
     else:
         """State 3: Menu conversation: Part 1_SubState"""
         # talk:77102400:"Now I am at peace."
-        assert talk_m10_15_x1(text1=77102400, z29=0, z31=-1, z32=0)
+        assert talk_m10_15_x1(text1=77102400, z20=0, z22=-1, z23=0)
     """State 2: Menu conversation: End"""
     ClearNpcMenuSelection()
     """State 5: End state"""
@@ -1083,7 +1104,7 @@ def talk_m10_15_x38():
 def talk_m10_15_x39():
     """Release seal: NPC menu"""
     """State 0,1,2: [Lib] Menu start: General purpose_SubState"""
-    call = talk_m10_15_x13(z14=0, z15=220, z16=77101000, z17=0)
+    call = talk_m10_15_x13(z12=0, z13=220, z14=77101000, z15=0)
     if call.Get() == 0:
         """State 4: [Lib] Menu canceled: No Mes_SubState"""
         assert talk_m10_15_x22()

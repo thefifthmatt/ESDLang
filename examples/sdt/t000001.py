@@ -2,6 +2,7 @@
 def t000001_1():
     """State 0,1"""
     t000001_x5()
+    Quit()
 
 def t000001_x0(action2=_):
     """State 0,1"""
@@ -56,7 +57,7 @@ def t000001_x2(lot1=_):
     """State 5"""
     return 0
 
-def t000001_x3(z28=_, flag4=6001, flag5=6000):
+def t000001_x3(actionbutton1=_, flag4=6001, flag5=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -74,7 +75,7 @@ def t000001_x3(z28=_, flag4=6001, flag5=6000):
         """State 3"""
         if CompareBonfireState(0):
             pass
-        elif CheckActionButtonArea(z28) and not f116(10000) == 90:
+        elif CheckActionButtonArea(actionbutton1) and not f116(10000) == 90:
             break
         elif (not (not GetOneLineHelpStatus() and not IsClientPlayer() and not IsPlayerDead() and not
               IsCharacterDisabled())):
@@ -98,7 +99,7 @@ def t000001_x5():
         Label('L0')
         """State 17"""
         Label('L1')
-        call = t000001_x3(z28=6101, flag4=6001, flag5=6000)
+        call = t000001_x3(actionbutton1=6101, flag4=6001, flag5=6000)
         if call.Done():
             """State 13"""
             ClearPlayerDamageInfo()
@@ -121,15 +122,15 @@ def t000001_x5():
                 SetEventState(8258, 0)
             if call.Done():
                 pass
-            elif (HasPlayerBeenAttacked() == 1 or CompareBonfireState(0) or GetDistanceToPlayer() > 5
-                  or f116(10000) == 90):
+            elif (HasPlayerBeenAttacked() == 1 or (CompareBonfireState(0) and GetDistanceToPlayer() >
+                  5) or f116(10000) == 90):
                 """State 16"""
                 Label('L2')
                 assert t000001_x7()
         elif CompareBonfireLevel(0, 0) == 1:
             """State 18"""
             Label('L3')
-            call = t000001_x3(z28=6100, flag4=6001, flag5=6000)
+            call = t000001_x3(actionbutton1=6100, flag4=6001, flag5=6000)
             if call.Done():
                 """State 5"""
                 ClearPlayerDamageInfo()
@@ -157,7 +158,7 @@ def t000001_x5():
                     SetEventState(8258, 0)
                 if call.Done():
                     pass
-                elif (HasPlayerBeenAttacked() == 1 or CompareBonfireState(0) or (GetDistanceToPlayer()
+                elif (HasPlayerBeenAttacked() == 1 or (CompareBonfireState(0) and GetDistanceToPlayer()
                       > 5 and f116(10000) == 90)):
                     Goto('L2')
             elif CompareBonfireLevel(5, 0) == 1:
@@ -167,6 +168,9 @@ def t000001_x5():
         Goto('L3')
     """State 11"""
     Goto('L0')
+    """Unused"""
+    """State 20"""
+    return 0
 
 def t000001_x6(goods1=2100, goods2=2110, goods3=2120):
     """State 0,8"""
@@ -181,12 +185,13 @@ def t000001_x6(goods1=2100, goods2=2110, goods3=2120):
     else:
         """State 19,12"""
         MainBonfireMenuFlag()
-        """State 37"""
+        """State 44"""
         assert t000001_x10()
-        """State 41"""
+        """State 48"""
         assert t000001_x14()
         while True:
             """State 1"""
+            Label('L0')
             ClearTalkListData()
             """State 2"""
             # action:15000120:"Rest"
@@ -199,14 +204,14 @@ def t000001_x6(goods1=2100, goods2=2110, goods3=2120):
             AddTalkListDataIf(GetEventStatus(6219) == 1, 8, 15000300, 6001)
             # action:15000170:"Enhance Physical Attributes"
             AddTalkListDataIf(GetEventStatus(6217) == 1, 6, 15000170, 6001)
-            """State 45"""
-            # goods:5200:Memory: Gyoubu Oniwa, goods:5201:Memory: Lady Butterfly, goods:5202:Memory: Genichiro, goods:5203:Memory: Screen Monkeys, goods:5204:Memory: Guardian Ape, goods:5205:Memory: Corrupted Monk, goods:5206:Memory: Great Shinobi, goods:5207:Memory: Foster Father, goods:5208:Memory: True Monk, goods:5209:Memory: Divine Dragon, goods:5210:Memory: Hatred Demon, goods:5211:Memory: Saint Isshin , goods:5212:Memory: Isshin Ashina, goods:5300:Remnant: Gyoubu, goods:5301:Remnant: Lady Butterfly , goods:5302:Remnant: Genichiro, goods:5303:Remnant: Screen Monkeys, goods:5304:Remnant: Guardian Ape, goods:5305:Remnant: Corrupted Monk, goods:5306:Remnant: Great Shinobi, goods:5307:Remnant: Foster Father, goods:5308:Remnant: True Monk, goods:5309:Remnant: Divine Dragon, goods:5310:Remnant: Hatred Demon, goods:5311:Remnant: Saint Isshin, goods:5312:Remnant: Isshin Ashina, goods:5213:Memory: Headless Ape, goods:5313:Remnant: Headless Ape
+            """State 52"""
+            # goods:5200:Memory: Gyoubu Oniwa, goods:5201:Memory: Lady Butterfly, goods:5202:Memory: Genichiro, goods:5203:Memory: Screen Monkeys, goods:5204:Memory: Guardian Ape, goods:5205:Memory: Corrupted Monk, goods:5206:Memory: Great Shinobi, goods:5207:Memory: Foster Father, goods:5208:Memory: True Monk, goods:5209:Memory: Divine Dragon, goods:5210:Memory: Hatred Demon, goods:5211:Memory: Saint Isshin , goods:5212:Memory: Isshin Ashina, goods:5300:Remnant: Gyoubu, goods:5301:Remnant: Lady Butterfly , goods:5302:Remnant: Genichiro, goods:5303:Remnant: Screen Monkeys, goods:5304:Remnant: Guardian Ape, goods:5305:Remnant: Corrupted Monk, goods:5306:Remnant: Great Shinobi, goods:5307:Remnant: Foster Father, goods:5308:Remnant: True Monk, goods:5309:Remnant: Divine Dragon, goods:5310:Remnant: Hatred Demon, goods:5311:Remnant: Saint Isshin, goods:5312:Remnant: Isshin Ashina, goods:5213:Memory: Headless Ape, goods:5313:Remnant: Headless Ape, goods:5220:Memory: Inner Genichiro, goods:5221:Memory: Inner Father, goods:5222:Memory: Inner Isshin
             call = t000001_x24(goods6=5200, goods7=5201, goods8=5202, goods9=5203, goods10=5204, goods11=5205,
                                goods12=5206, goods13=5207, goods14=5208, goods15=5209, goods16=5210,
                                goods17=5211, goods18=5212, goods19=5300, goods20=5301, goods21=5302,
                                goods22=5303, goods23=5304, goods24=5305, goods25=5306, goods26=5307,
                                goods27=5308, goods28=5309, goods29=5310, goods30=5311, goods31=5312,
-                               goods32=5213, goods33=5313)
+                               goods32=5213, goods33=5313, goods34=5220, goods35=5221, goods36=5222)
             if call.Get() == 0:
                 """State 31"""
                 # action:15000600:"Enhance Attack Power"
@@ -221,6 +226,14 @@ def t000001_x6(goods1=2100, goods2=2110, goods3=2120):
             # action:15000190:"Start Playthrough #<?nextLoopCount?>"
             AddTalkListDataIf((GetEventStatus(11110100) == 1 or GetEventStatus(11120110) == 1) and DoesSelfHaveSpEffect(3100011) == 1,
                               10, 15000190, 6001)
+            # goods:9800:Another's Memory: Shura, goods:9810:Another's Memory: Ashina, goods:9820:Another's Memory: Tengu, action:15000902:"Change Form"
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, 9800, 4, 1, 0) == 1 or ComparePlayerInventoryNumber(3, 9810, 4, 1, 0) == 1 or ComparePlayerInventoryNumber(3, 9820, 4, 1, 0) == 1,
+                              16, 15000902, 6001)
+            # action:15000900:"Reflection of Strength"
+            AddTalkListDataIf(f123() == 1, 14, 15000900, 6001)
+            # action:15000901:"Gauntlet of Strength"
+            AddTalkListDataIf(f124(1) == 1 or f124(2) == 1 or f124(3) == 1 or f124(4) == 1, 15, 15000901,
+                              6001)
             """State 4"""
             OpenBonfireMenu(1)
             assert not (CheckSpecificPersonMenuIsOpen(21, 0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0))
@@ -236,7 +249,7 @@ def t000001_x6(goods1=2100, goods2=2110, goods3=2120):
                     """State 11"""
                     pass
             elif GetTalkListEntryResult() == 10:
-                """State 29,42"""
+                """State 29,49"""
                 assert t000001_x19() and not (CheckSpecificPersonMenuIsOpen(-1, 0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0))
             elif GetTalkListEntryResult() == 8:
                 """State 26,27"""
@@ -247,13 +260,13 @@ def t000001_x6(goods1=2100, goods2=2110, goods3=2120):
                 SetEventState(12505781, 1)
                 """State 25"""
                 assert GetCurrentStateElapsedTime() > 10
-                Goto('L0')
+                Goto('L1')
             elif GetTalkListEntryResult() == 6:
-                """State 21,38"""
+                """State 21,45"""
                 # goods:4000:Prayer Bead
                 assert t000001_x11(val1=4, goods4=4000, z5=4100)
             elif GetTalkListEntryResult() == 4:
-                """State 13,43"""
+                """State 13,50"""
                 assert t000001_x20() and not (CheckSpecificPersonMenuIsOpen(5, 0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0))
             elif GetTalkListEntryResult() == 2:
                 """State 14"""
@@ -263,27 +276,65 @@ def t000001_x6(goods1=2100, goods2=2110, goods3=2120):
                 GiveSpEffectToPlayer(131)
                 assert GetCurrentStateElapsedTime() > 2.85
             elif GetTalkListEntryResult() == 11:
-                """State 32,44"""
-                # goods:5200:Memory: Gyoubu Oniwa, goods:5201:Memory: Lady Butterfly, goods:5202:Memory: Genichiro, goods:5203:Memory: Screen Monkeys, goods:5204:Memory: Guardian Ape, goods:5205:Memory: Corrupted Monk, goods:5206:Memory: Great Shinobi, goods:5207:Memory: Foster Father, goods:5208:Memory: True Monk, goods:5209:Memory: Divine Dragon, goods:5210:Memory: Hatred Demon, goods:5211:Memory: Saint Isshin , goods:5212:Memory: Isshin Ashina, goods:5213:Memory: Headless Ape
-                assert (t000001_x22(goods34=5200, goods35=5201, goods36=5202, goods37=5203, goods38=5204,
-                        goods39=5205, goods40=5206, goods41=5207, goods42=5208, goods43=5209, goods44=5210,
-                        goods45=5211, goods46=5212, z9=5300, z10=5301, z11=5302, z12=5303, z13=5304,
+                """State 32,51"""
+                # goods:5200:Memory: Gyoubu Oniwa, goods:5201:Memory: Lady Butterfly, goods:5202:Memory: Genichiro, goods:5203:Memory: Screen Monkeys, goods:5204:Memory: Guardian Ape, goods:5205:Memory: Corrupted Monk, goods:5206:Memory: Great Shinobi, goods:5207:Memory: Foster Father, goods:5208:Memory: True Monk, goods:5209:Memory: Divine Dragon, goods:5210:Memory: Hatred Demon, goods:5211:Memory: Saint Isshin , goods:5212:Memory: Isshin Ashina, goods:5213:Memory: Headless Ape, goods:5220:Memory: Inner Genichiro, goods:5221:Memory: Inner Father, goods:5222:Memory: Inner Isshin
+                assert (t000001_x22(goods37=5200, goods38=5201, goods39=5202, goods40=5203, goods41=5204,
+                        goods42=5205, goods43=5206, goods44=5207, goods45=5208, goods46=5209, goods47=5210,
+                        goods48=5211, goods49=5212, z9=5300, z10=5301, z11=5302, z12=5303, z13=5304,
                         z14=5305, z15=5306, z16=5307, z17=5308, z18=5309, z19=5310, z20=5311, z21=5312,
-                        goods47=5213, z22=5313))
+                        goods50=5213, z22=5313, goods51=5220, goods52=5221, goods53=5222))
             elif GetTalkListEntryResult() == 12:
-                """State 34,46"""
+                """State 34,53"""
                 assert t000001_x25()
             elif GetTalkListEntryResult() == 13:
-                """State 35,47"""
+                """State 35,54"""
                 assert t000001_x30()
+            elif GetTalkListEntryResult() == 14:
+                """State 36,38"""
+                c1_129()
+                assert GetCurrentStateElapsedFrames() > 1
+                """State 39"""
+                if f125() == 1:
+                    """State 40"""
+                    Quit()
+                elif not (CheckSpecificPersonMenuIsOpen(-1, 0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0)):
+                    pass
+            elif GetTalkListEntryResult() == 15:
+                """State 37,55"""
+                assert t000001_x36() and not (CheckSpecificPersonMenuIsOpen(-1, 0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0))
+            elif GetTalkListEntryResult() == 16:
+                """State 41,42"""
+                c1_132()
+                assert not (CheckSpecificPersonMenuIsOpen(-1, 0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0))
             else:
                 """State 5"""
-                Goto('L0')
+                Goto('L1')
         """State 9,7"""
         Quit()
-    """State 48"""
-    Label('L0')
+    """State 56"""
+    Label('L1')
     return 0
+    """Unused"""
+    """State 16"""
+    Goto('L2')
+    """State 22"""
+    Goto('L3')
+    """State 28"""
+    Goto('L4')
+    """State 43"""
+    Label('L2')
+    # goods:3000:Healing Gourd, goods:4400:Gourd Seed
+    assert t000001_x8(goods54=3000, goods55=4400, z27=30)
+    Goto('L0')
+    """State 46"""
+    Label('L3')
+    assert t000001_x12(z23=5, z24=10, z25=15, z26=20)
+    Goto('L0')
+    """State 47"""
+    Label('L4')
+    assert (t000001_x13(goods1=goods1, goods2=goods2, goods3=goods3) and not (CheckSpecificPersonMenuIsOpen(-1,
+            0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0)))
+    Goto('L0')
 
 def t000001_x7():
     """State 0,1"""
@@ -291,24 +342,24 @@ def t000001_x7():
     """State 2"""
     return 0
 
-def t000001_x8(goods48=3000, goods49=4400, z27=30):
+def t000001_x8(goods54=3000, goods55=4400, z27=30):
     """State 0,1"""
     # goods:3000:Healing Gourd
-    if not GetEstusAllocation(0) > GetItemHeldNumLimit(3, goods48):
+    if not GetEstusAllocation(0) > GetItemHeldNumLimit(3, goods54):
         """State 2"""
         # goods:4400:Gourd Seed
-        if ComparePlayerInventoryNumber(3, goods49, 4, 1, 0) == 1:
+        if ComparePlayerInventoryNumber(3, goods55, 4, 1, 0) == 1:
             """State 4,13"""
             # action:13000001:"Consume Gourd Seed to increase maximum uses of Healing Gourd?"
             call = t000001_x0(action2=13000001)
             if call.Done() and GetGenericDialogButtonResult() == 1:
                 """State 6,8"""
                 # goods:4400:Gourd Seed
-                PlayerEquipmentQuantityChange(3, goods49, -1)
+                PlayerEquipmentQuantityChange(3, goods55, -1)
                 """State 9"""
                 EstusAllocationUpdate(GetEstusAllocation(0) + 1, 0)
                 # goods:3000:Healing Gourd
-                if GetEstusAllocation(0) > GetItemHeldNumLimit(3, goods48):
+                if GetEstusAllocation(0) > GetItemHeldNumLimit(3, goods54):
                     """State 11,10"""
                     RequestUnlockTrophy(8)
                 else:
@@ -604,6 +655,7 @@ def t000001_x19():
         """State 2"""
         SetEventState(9520, 1)
         """State 1"""
+        Quit()
 
 def t000001_x20():
     """State 0,1"""
@@ -624,242 +676,281 @@ def t000001_x20():
     """State 10"""
     return 0
 
-def t000001_x21(goods34=5200, goods35=5201, goods36=5202, goods37=5203, goods38=5204, goods39=5205, goods40=5206,
-                goods41=5207, goods42=5208, goods43=5209, goods44=5210, goods45=5211, goods46=5212, z9=5300,
+def t000001_x21(goods37=5200, goods38=5201, goods39=5202, goods40=5203, goods41=5204, goods42=5205, goods43=5206,
+                goods44=5207, goods45=5208, goods46=5209, goods47=5210, goods48=5211, goods49=5212, z9=5300,
                 z10=5301, z11=5302, z12=5303, z13=5304, z14=5305, z15=5306, z16=5307, z17=5308, z18=5309,
-                z19=5310, z20=5311, z21=5312, goods47=5213, z22=5313):
+                z19=5310, z20=5311, z21=5312, goods50=5213, z22=5313, goods51=5220, goods52=5221, goods53=5222):
     """State 0,1"""
     # goods:5200:Memory: Gyoubu Oniwa
-    if ComparePlayerInventoryNumber(3, goods34, 4, 1, 0) == 1:
+    if ComparePlayerInventoryNumber(3, goods37, 4, 1, 0) == 1:
         pass
     else:
         """State 2"""
         # goods:5201:Memory: Lady Butterfly
-        if ComparePlayerInventoryNumber(3, goods35, 4, 1, 0) == 1:
+        if ComparePlayerInventoryNumber(3, goods38, 4, 1, 0) == 1:
             pass
         else:
             """State 3"""
             # goods:5202:Memory: Genichiro
-            if ComparePlayerInventoryNumber(3, goods36, 4, 1, 0) == 1:
+            if ComparePlayerInventoryNumber(3, goods39, 4, 1, 0) == 1:
                 pass
             else:
                 """State 4"""
                 # goods:5203:Memory: Screen Monkeys
-                if ComparePlayerInventoryNumber(3, goods37, 4, 1, 0) == 1:
+                if ComparePlayerInventoryNumber(3, goods40, 4, 1, 0) == 1:
                     pass
                 else:
                     """State 5"""
                     # goods:5204:Memory: Guardian Ape
-                    if ComparePlayerInventoryNumber(3, goods38, 4, 1, 0) == 1:
+                    if ComparePlayerInventoryNumber(3, goods41, 4, 1, 0) == 1:
                         pass
                     else:
                         """State 6"""
                         # goods:5205:Memory: Corrupted Monk
-                        if ComparePlayerInventoryNumber(3, goods39, 4, 1, 0) == 1:
+                        if ComparePlayerInventoryNumber(3, goods42, 4, 1, 0) == 1:
                             pass
                         else:
                             """State 7"""
                             # goods:5206:Memory: Great Shinobi
-                            if ComparePlayerInventoryNumber(3, goods40, 4, 1, 0) == 1:
+                            if ComparePlayerInventoryNumber(3, goods43, 4, 1, 0) == 1:
                                 pass
                             else:
                                 """State 8"""
                                 # goods:5207:Memory: Foster Father
-                                if ComparePlayerInventoryNumber(3, goods41, 4, 1, 0) == 1:
+                                if ComparePlayerInventoryNumber(3, goods44, 4, 1, 0) == 1:
                                     pass
                                 else:
                                     """State 9"""
                                     # goods:5208:Memory: True Monk
-                                    if ComparePlayerInventoryNumber(3, goods42, 4, 1, 0) == 1:
+                                    if ComparePlayerInventoryNumber(3, goods45, 4, 1, 0) == 1:
                                         pass
                                     else:
                                         """State 10"""
                                         # goods:5209:Memory: Divine Dragon
-                                        if ComparePlayerInventoryNumber(3, goods43, 4, 1, 0) == 1:
+                                        if ComparePlayerInventoryNumber(3, goods46, 4, 1, 0) == 1:
                                             pass
                                         else:
                                             """State 11"""
                                             # goods:5210:Memory: Hatred Demon
-                                            if ComparePlayerInventoryNumber(3, goods44, 4, 1, 0) == 1:
+                                            if ComparePlayerInventoryNumber(3, goods47, 4, 1, 0) == 1:
                                                 pass
                                             else:
                                                 """State 12"""
                                                 # goods:5211:Memory: Saint Isshin 
-                                                if ComparePlayerInventoryNumber(3, goods45, 4, 1, 0) == 1:
+                                                if ComparePlayerInventoryNumber(3, goods48, 4, 1, 0) == 1:
                                                     pass
                                                 else:
                                                     """State 13"""
                                                     # goods:5212:Memory: Isshin Ashina
-                                                    if (ComparePlayerInventoryNumber(3, goods46, 4, 1,
+                                                    if (ComparePlayerInventoryNumber(3, goods49, 4, 1,
                                                         0) == 1):
                                                         pass
                                                     else:
                                                         """State 14"""
                                                         # goods:5213:Memory: Headless Ape
-                                                        if (ComparePlayerInventoryNumber(3, goods47,
+                                                        if (ComparePlayerInventoryNumber(3, goods50,
                                                             4, 1, 0) == 1):
                                                             pass
                                                         else:
-                                                            """State 16"""
-                                                            return 1
-    """State 15"""
+                                                            """State 15"""
+                                                            # goods:5220:Memory: Inner Genichiro
+                                                            if (ComparePlayerInventoryNumber(3, goods51,
+                                                                4, 1, 0) == 1):
+                                                                pass
+                                                            else:
+                                                                """State 16"""
+                                                                # goods:5221:Memory: Inner Father
+                                                                if (ComparePlayerInventoryNumber(3, goods52,
+                                                                    4, 1, 0) == 1):
+                                                                    pass
+                                                                else:
+                                                                    """State 17"""
+                                                                    # goods:5222:Memory: Inner Isshin
+                                                                    if (ComparePlayerInventoryNumber(3, goods53,
+                                                                        4, 1, 0) == 1):
+                                                                        pass
+                                                                    else:
+                                                                        """State 19"""
+                                                                        return 1
+    """State 18"""
     return 0
 
-def t000001_x22(goods34=5200, goods35=5201, goods36=5202, goods37=5203, goods38=5204, goods39=5205, goods40=5206,
-                goods41=5207, goods42=5208, goods43=5209, goods44=5210, goods45=5211, goods46=5212, z9=5300,
+def t000001_x22(goods37=5200, goods38=5201, goods39=5202, goods40=5203, goods41=5204, goods42=5205, goods43=5206,
+                goods44=5207, goods45=5208, goods46=5209, goods47=5210, goods48=5211, goods49=5212, z9=5300,
                 z10=5301, z11=5302, z12=5303, z13=5304, z14=5305, z15=5306, z16=5307, z17=5308, z18=5309,
-                z19=5310, z20=5311, z21=5312, goods47=5213, z22=5313):
-    """State 0,19"""
-    # goods:5100:Memory
-    if ComparePlayerInventoryNumber(3, 5100, 0, 98, 0) == 1:
-        """State 22"""
-        # action:13000041:"Attack Power cannot be enhanced further."
-        assert t000001_x4(action1=13000041)
-    else:
-        """State 36"""
-        call = t000001_x21(goods34=goods34, goods35=goods35, goods36=goods36, goods37=goods37, goods38=goods38,
-                           goods39=goods39, goods40=goods40, goods41=goods41, goods42=goods42, goods43=goods43,
-                           goods44=goods44, goods45=goods45, goods46=goods46, z9=z9, z10=z10, z11=z11,
-                           z12=z12, z13=z13, z14=z14, z15=z15, z16=z16, z17=z17, z18=z18, z19=z19, z20=z20,
-                           z21=z21, goods47=goods47, z22=z22)
-        if call.Get() == 1:
-            """State 37"""
-            # action:13000042:"You don't have any Battle Memories."
-            assert t000001_x4(action1=13000042)
-            Goto('L0')
-        elif call.Done():
-            pass
+                z19=5310, z20=5311, z21=5312, goods50=5213, z22=5313, goods51=5220, goods52=5221, goods53=5222):
+    """State 0,37"""
+    call = t000001_x21(goods37=goods37, goods38=goods38, goods39=goods39, goods40=goods40, goods41=goods41,
+                       goods42=goods42, goods43=goods43, goods44=goods44, goods45=goods45, goods46=goods46,
+                       goods47=goods47, goods48=goods48, goods49=goods49, z9=z9, z10=z10, z11=z11, z12=z12,
+                       z13=z13, z14=z14, z15=z15, z16=z16, z17=z17, z18=z18, z19=z19, z20=z20, z21=z21,
+                       goods50=goods50, z22=z22, goods51=goods51, goods52=goods52, goods53=goods53)
+    if call.Get() == 1:
+        """State 38"""
+        # action:13000042:"You don't have any Battle Memories."
+        assert t000001_x4(action1=13000042)
+    elif call.Done():
         while True:
             """State 1"""
             ClearTalkListData()
             """State 2"""
             # goods:5200:Memory: Gyoubu Oniwa, action:15000710:"Confront Memory: Gyoubu"
-            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods34, 4, 1, 0) == 1, 1, 15000710, -1)
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods37, 4, 1, 0) == 1, 1, 15000710, -1)
             # goods:5201:Memory: Lady Butterfly, action:15000711:"Confront Memory: Butterfly"
-            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods35, 4, 1, 0) == 1, 2, 15000711, -1)
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods38, 4, 1, 0) == 1, 2, 15000711, -1)
             # goods:5202:Memory: Genichiro, action:15000712:"Confront Memory: Genichiro "
-            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods36, 4, 1, 0) == 1, 3, 15000712, -1)
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods39, 4, 1, 0) == 1, 3, 15000712, -1)
             # goods:5203:Memory: Screen Monkeys, action:15000713:"Confront Memory: Screen Monkeys"
-            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods37, 4, 1, 0) == 1, 4, 15000713, -1)
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods40, 4, 1, 0) == 1, 4, 15000713, -1)
             # goods:5204:Memory: Guardian Ape, action:15000714:"Confront Memory: Guardian Ape"
-            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods38, 4, 1, 0) == 1, 5, 15000714, -1)
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods41, 4, 1, 0) == 1, 5, 15000714, -1)
             # goods:5213:Memory: Headless Ape, action:15000723:"Confront Memory: Headless Ape"
-            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods47, 4, 1, 0) == 1, 14, 15000723, -1)
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods50, 4, 1, 0) == 1, 14, 15000723, -1)
             # goods:5205:Memory: Corrupted Monk, action:15000715:"Confront Memory: Corrupted Monk"
-            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods39, 4, 1, 0) == 1, 6, 15000715, -1)
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods42, 4, 1, 0) == 1, 6, 15000715, -1)
             # goods:5208:Memory: True Monk, action:15000718:"Confront Memory: True Monk"
-            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods42, 4, 1, 0) == 1, 9, 15000718, -1)
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods45, 4, 1, 0) == 1, 9, 15000718, -1)
             # goods:5206:Memory: Great Shinobi, action:15000716:"Confront Memory: Great Shinobi, Owl"
-            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods40, 4, 1, 0) == 1, 7, 15000716, -1)
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods43, 4, 1, 0) == 1, 7, 15000716, -1)
             # goods:5207:Memory: Foster Father, action:15000717:"Confront Memory: Owl (Father)"
-            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods41, 4, 1, 0) == 1, 8, 15000717, -1)
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods44, 4, 1, 0) == 1, 8, 15000717, -1)
             # goods:5209:Memory: Divine Dragon, action:15000719:"Confront Memory: Divine Dragon"
-            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods43, 4, 1, 0) == 1, 10, 15000719, -1)
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods46, 4, 1, 0) == 1, 10, 15000719, -1)
             # goods:5212:Memory: Isshin Ashina, action:15000722:"Confront Memory: Isshin Ashina"
-            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods46, 4, 1, 0) == 1, 13, 15000722, -1)
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods49, 4, 1, 0) == 1, 13, 15000722, -1)
             # goods:5211:Memory: Saint Isshin , action:15000721:"Confront Memory: Saint Isshin"
-            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods45, 4, 1, 0) == 1, 12, 15000721, -1)
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods48, 4, 1, 0) == 1, 12, 15000721, -1)
             # goods:5210:Memory: Hatred Demon, action:15000720:"Confront Memory: Hate Demon"
-            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods44, 4, 1, 0) == 1, 11, 15000720, -1)
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods47, 4, 1, 0) == 1, 11, 15000720, -1)
+            # goods:5220:Memory: Inner Genichiro, action:15000730:"Confront Memory: Inner Genichiro"
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods51, 4, 1, 0) == 1, 15, 15000730, -1)
+            # goods:5221:Memory: Inner Father, action:15000731:"Confront Memory: Inner Father"
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods52, 4, 1, 0) == 1, 16, 15000731, -1)
+            # goods:5222:Memory: Inner Isshin, action:15000732:"Confront Memory: Inner Isshin"
+            AddTalkListDataIf(ComparePlayerInventoryNumber(3, goods53, 4, 1, 0) == 1, 17, 15000732, -1)
             """State 3"""
             OpenBonfireSubmenu(0)
             assert not (CheckSpecificPersonMenuIsOpen(21, 0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0))
             """State 4"""
             if GetTalkListEntryResult() == 1:
-                """State 6,23"""
-                assert t000001_x23(goods34=goods34, lot2=60210)
+                """State 6,24"""
+                assert t000001_x23(goods37=goods37, lot2=60210, lot3=60510)
             elif GetTalkListEntryResult() == 2:
-                """State 7,24"""
-                assert t000001_x23(goods34=goods35, lot2=60220)
+                """State 7,25"""
+                assert t000001_x23(goods37=goods38, lot2=60220, lot3=60520)
             elif GetTalkListEntryResult() == 3:
-                """State 8,25"""
-                assert t000001_x23(goods34=goods36, lot2=60230)
+                """State 8,26"""
+                assert t000001_x23(goods37=goods39, lot2=60230, lot3=60530)
             elif GetTalkListEntryResult() == 4:
-                """State 9,26"""
-                assert t000001_x23(goods34=goods37, lot2=60240)
+                """State 9,27"""
+                assert t000001_x23(goods37=goods40, lot2=60240, lot3=60540)
             elif GetTalkListEntryResult() == 5:
-                """State 10,27"""
-                assert t000001_x23(goods34=goods38, lot2=60250)
+                """State 10,28"""
+                assert t000001_x23(goods37=goods41, lot2=60250, lot3=60550)
             elif GetTalkListEntryResult() == 6:
-                """State 11,28"""
-                assert t000001_x23(goods34=goods39, lot2=60260)
+                """State 11,29"""
+                assert t000001_x23(goods37=goods42, lot2=60260, lot3=60560)
             elif GetTalkListEntryResult() == 7:
-                """State 12,29"""
-                assert t000001_x23(goods34=goods40, lot2=60270)
+                """State 12,30"""
+                assert t000001_x23(goods37=goods43, lot2=60270, lot3=60570)
             elif GetTalkListEntryResult() == 8:
-                """State 13,30"""
-                assert t000001_x23(goods34=goods41, lot2=60280)
+                """State 13,31"""
+                assert t000001_x23(goods37=goods44, lot2=60280, lot3=60580)
             elif GetTalkListEntryResult() == 9:
-                """State 14,31"""
-                assert t000001_x23(goods34=goods42, lot2=60290)
+                """State 14,32"""
+                assert t000001_x23(goods37=goods45, lot2=60290, lot3=60590)
             elif GetTalkListEntryResult() == 10:
-                """State 15,32"""
-                assert t000001_x23(goods34=goods43, lot2=60300)
+                """State 15,33"""
+                assert t000001_x23(goods37=goods46, lot2=60300, lot3=60600)
             elif GetTalkListEntryResult() == 11:
-                """State 16,33"""
-                assert t000001_x23(goods34=goods44, lot2=60310)
+                """State 16,34"""
+                assert t000001_x23(goods37=goods47, lot2=60310, lot3=60610)
             elif GetTalkListEntryResult() == 12:
-                """State 17,34"""
-                assert t000001_x23(goods34=goods45, lot2=60320)
+                """State 17,35"""
+                assert t000001_x23(goods37=goods48, lot2=60320, lot3=60620)
             elif GetTalkListEntryResult() == 13:
-                """State 18,35"""
-                assert t000001_x23(goods34=goods46, lot2=60330)
+                """State 18,36"""
+                assert t000001_x23(goods37=goods49, lot2=60330, lot3=60630)
             elif GetTalkListEntryResult() == 14:
-                """State 21,39"""
-                assert t000001_x23(goods34=goods47, lot2=60340)
+                """State 20,40"""
+                assert t000001_x23(goods37=goods50, lot2=60340, lot3=60640)
+            elif GetTalkListEntryResult() == 15:
+                """State 21,41"""
+                assert t000001_x23(goods37=goods51, lot2=60350, lot3=60650)
+            elif GetTalkListEntryResult() == 16:
+                """State 22,42"""
+                assert t000001_x23(goods37=goods52, lot2=60360, lot3=60660)
+            elif GetTalkListEntryResult() == 17:
+                """State 23,43"""
+                assert t000001_x23(goods37=goods53, lot2=60370, lot3=60670)
             else:
                 """State 5"""
                 break
-            """State 20"""
-            # goods:5100:Memory
-            if ComparePlayerInventoryNumber(3, 5100, 0, 98, 0) == 1:
+            """State 19,39"""
+            call = t000001_x21(goods37=goods37, goods38=goods38, goods39=goods39, goods40=goods40, goods41=goods41,
+                               goods42=goods42, goods43=goods43, goods44=goods44, goods45=goods45, goods46=goods46,
+                               goods47=goods47, goods48=goods48, goods49=goods49, z9=z9, z10=z10, z11=z11,
+                               z12=z12, z13=z13, z14=z14, z15=z15, z16=z16, z17=z17, z18=z18, z19=z19,
+                               z20=z20, z21=z21, goods50=goods50, z22=z22, goods51=goods51, goods52=goods52,
+                               goods53=goods53)
+            if call.Get() == 1:
                 break
-            else:
-                """State 38"""
-                call = t000001_x21(goods34=goods34, goods35=goods35, goods36=goods36, goods37=goods37,
-                                   goods38=goods38, goods39=goods39, goods40=goods40, goods41=goods41,
-                                   goods42=goods42, goods43=goods43, goods44=goods44, goods45=goods45,
-                                   goods46=goods46, z9=z9, z10=z10, z11=z11, z12=z12, z13=z13, z14=z14,
-                                   z15=z15, z16=z16, z17=z17, z18=z18, z19=z19, z20=z20, z21=z21, goods47=goods47,
-                                   z22=z22)
-                if call.Get() == 1:
-                    break
-                elif call.Done():
-                    pass
-    """State 40"""
-    Label('L0')
+            elif call.Done():
+                pass
+    """State 44"""
     return 0
 
-def t000001_x23(goods34=_, lot2=_):
-    """State 0,3"""
-    assert GetCurrentStateElapsedTime() > 1
-    """State 1"""
-    PlayerEquipmentQuantityChange(3, goods34, -1)
-    # goods:5400:Memory
-    PlayerEquipmentQuantityChange(3, 5400, -1)
-    """State 6"""
-    def ExitPause():
-        GiveSpEffectToPlayer(130)
-    assert t000001_x2(lot1=lot2)
-    """State 2"""
-    assert GetCurrentStateElapsedTime() > 1
-    """State 4"""
+def t000001_x23(goods37=_, lot2=_, lot3=_):
+    """State 0,5"""
     # goods:5100:Memory
-    if ComparePlayerInventoryNumber(3, 5100, 0, 98, 0) == 1:
-        """State 7"""
-        # action:13000052:"Attack Power has been increased to maximum possible value."
-        assert t000001_x4(action1=13000052)
+    if ComparePlayerInventoryNumber(3, 5100, 4, 98, 0) == 1:
+        """State 13"""
+        # action:12001040:"Attack power is at maximum and cannot be upgraded further.\nConvert the battle Memory to a Remnant?"
+        call = t000001_x0(action2=12001040)
+        if call.Get() == 0:
+            """State 6"""
+            assert GetCurrentStateElapsedTime() > 1
+            """State 8"""
+            PlayerEquipmentQuantityChange(3, goods37, -1)
+            # goods:5400:Memory
+            PlayerEquipmentQuantityChange(3, 5400, -1)
+            """State 14"""
+            assert t000001_x2(lot1=lot3) and GetCurrentStateElapsedTime() > 1
+            """State 9"""
+        elif call.Done():
+            """State 7"""
+            pass
     else:
-        """State 5"""
-        # action:13000040:"Attack Power has been enhanced."
-        assert t000001_x4(action1=13000040)
-    """State 8"""
+        """State 3"""
+        assert GetCurrentStateElapsedTime() > 1
+        """State 1"""
+        PlayerEquipmentQuantityChange(3, goods37, -1)
+        # goods:5400:Memory
+        PlayerEquipmentQuantityChange(3, 5400, -1)
+        """State 11"""
+        def ExitPause():
+            GiveSpEffectToPlayer(130)
+        assert t000001_x2(lot1=lot2)
+        """State 2"""
+        assert GetCurrentStateElapsedTime() > 1
+        """State 4"""
+        # goods:5100:Memory
+        if ComparePlayerInventoryNumber(3, 5100, 0, 98, 0) == 1:
+            """State 12"""
+            # action:13000052:"Attack Power has been increased to maximum possible value."
+            assert t000001_x4(action1=13000052)
+        else:
+            """State 10"""
+            # action:13000040:"Attack Power has been enhanced."
+            assert t000001_x4(action1=13000040)
+    """State 15"""
     return 0
 
 def t000001_x24(goods6=5200, goods7=5201, goods8=5202, goods9=5203, goods10=5204, goods11=5205, goods12=5206,
                 goods13=5207, goods14=5208, goods15=5209, goods16=5210, goods17=5211, goods18=5212, goods19=5300,
                 goods20=5301, goods21=5302, goods22=5303, goods23=5304, goods24=5305, goods25=5306, goods26=5307,
-                goods27=5308, goods28=5309, goods29=5310, goods30=5311, goods31=5312, goods32=5213, goods33=5313):
+                goods27=5308, goods28=5309, goods29=5310, goods30=5311, goods31=5312, goods32=5213, goods33=5313,
+                goods34=5220, goods35=5221, goods36=5222):
     """State 0,1"""
     # goods:5200:Memory: Gyoubu Oniwa, goods:5300:Remnant: Gyoubu
     if (ComparePlayerInventoryNumber(3, goods6, 4, 1, 0) == 1 or ComparePlayerInventoryNumber(3, goods19,
@@ -948,9 +1039,30 @@ def t000001_x24(goods6=5200, goods7=5201, goods8=5202, goods9=5203, goods10=5204
                                                             goods33, 4, 1, 0) == 1):
                                                             pass
                                                         else:
-                                                            """State 16"""
-                                                            return 1
-    """State 15"""
+                                                            """State 15"""
+                                                            # goods:5220:Memory: Inner Genichiro, goods:5320:Remnant: Inner Genichiro
+                                                            if (ComparePlayerInventoryNumber(3, goods34,
+                                                                4, 1, 0) == 1 or ComparePlayerInventoryNumber(3,
+                                                                5320, 4, 1, 0) == 1):
+                                                                pass
+                                                            else:
+                                                                """State 16"""
+                                                                # goods:5221:Memory: Inner Father, goods:5321:Remnant: Inner Father
+                                                                if (ComparePlayerInventoryNumber(3, goods35,
+                                                                    4, 1, 0) == 1 or ComparePlayerInventoryNumber(3,
+                                                                    5321, 4, 1, 0) == 1):
+                                                                    pass
+                                                                else:
+                                                                    """State 17"""
+                                                                    # goods:5222:Memory: Inner Isshin, goods:5322:Remnant: Inner Isshin
+                                                                    if (ComparePlayerInventoryNumber(3, goods36,
+                                                                        4, 1, 0) == 1 or ComparePlayerInventoryNumber(3,
+                                                                        5322, 4, 1, 0) == 1):
+                                                                        pass
+                                                                    else:
+                                                                        """State 19"""
+                                                                        return 1
+    """State 18"""
     return 0
 
 def t000001_x25():
@@ -970,7 +1082,27 @@ def t000001_x26(val2=5, z6=14, val3=5, z7=26, val4=6, z8=51, val5=7):
     """State 0,1,2,6"""
     assert t000001_x27(val2=val2)
     """State 10"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 3"""
+    Goto('L1')
+    """State 4"""
+    Goto('L2')
+    """State 5"""
+    Goto('L3')
+    """State 7"""
+    Label('L1')
+    assert t000001_x27(val2=val3)
+    Goto('L0')
+    """State 8"""
+    Label('L2')
+    assert t000001_x27(val2=val4)
+    Goto('L0')
+    """State 9"""
+    Label('L3')
+    assert t000001_x27(val2=val5)
+    Goto('L0')
 
 def t000001_x27(val2=_):
     """State 0,1"""
@@ -1292,4 +1424,50 @@ def t000001_x35(flag1=70002000, z1=70003300, z2=9500):
         SetEventState(71100147, 1)
     """State 3"""
     return 0
+
+def t000001_x36():
+    """State 0,14"""
+    MainBonfireMenuFlag()
+    while True:
+        """State 1"""
+        ClearTalkListData()
+        """State 2"""
+        # action:15001001:"Gauntlet of Strength: Divine Heir"
+        AddTalkListDataIf(f124(1) == 1, 1, 15001001, 6001)
+        # action:15001002:"Gauntlet of Strength: Shura"
+        AddTalkListDataIf(f124(2) == 1, 2, 15001002, 6001)
+        # action:15001003:"Gauntlet of Strength: Severance"
+        AddTalkListDataIf(f124(3) == 1, 3, 15001003, 6001)
+        # action:15001004:"Gauntlet of Strength: Mortal Journey"
+        AddTalkListDataIf(f124(4) == 1, 4, 15001004, 6001)
+        """State 3"""
+        OpenBonfireSubmenu(1)
+        assert not (CheckSpecificPersonMenuIsOpen(21, 0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0))
+        """State 4"""
+        if GetTalkListEntryResult() == 1:
+            """State 5"""
+            c1_130(1)
+        elif GetTalkListEntryResult() == 2:
+            """State 6"""
+            c1_130(2)
+        elif GetTalkListEntryResult() == 3:
+            """State 7"""
+            c1_130(3)
+        elif GetTalkListEntryResult() == 4:
+            """State 8"""
+            c1_130(4)
+        else:
+            """State 9,13"""
+            MainBonfireMenuFlag()
+            """State 15"""
+            return 0
+        """State 10"""
+        assert GetCurrentStateElapsedFrames() > 1
+        """State 11"""
+        if f126() == 1:
+            break
+        elif not (CheckSpecificPersonMenuIsOpen(-1, 0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0)):
+            pass
+    """State 12"""
+    Quit()
 

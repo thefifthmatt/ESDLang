@@ -10,7 +10,7 @@ def t450550_1():
         call = t450550_x12()
         assert not IsClientPlayer()
 
-def t450550_x0(z3=6650, flag3=1715, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
+def t450550_x0(actionbutton1=6650, flag3=1715, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t450550_x0(z3=6650, flag3=1715, flag4=6000, flag5=6000, flag6=6000, flag7=60
         elif (not GetEventStatus(flag3) and not GetEventStatus(flag4) and not GetEventStatus(flag5) and
               not GetEventStatus(flag6) and not GetEventStatus(flag7)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -219,10 +219,13 @@ def t450550_x7():
     """State 1,2"""
     if GetDistanceToPlayer() < 10:
         """State 4"""
-        pass
+        Quit()
     else:
         """State 5"""
-        pass
+        Quit()
+    """Unused"""
+    """State 7"""
+    return 0
 
 def t450550_x8():
     """State 0,1,2"""
@@ -244,7 +247,12 @@ def t450550_x9():
         """State 2"""
         pass
     """State 7"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 6"""
+    assert t450550_x1()
+    Goto('L0')
 
 def t450550_x10():
     """State 0,1"""
@@ -267,6 +275,9 @@ def t450550_x11():
         """State 2"""
         call = t450550_x14()
         assert GetEventStatus(1700) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t450550_x12():
     """State 0,1"""
@@ -280,6 +291,10 @@ def t450550_x13():
     assert CheckSelfDeath() == 1
     """State 2"""
     t450550_x8()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t450550_x14():
     """State 0,1"""
@@ -291,7 +306,7 @@ def t450550_x15(z1=-1):
     """State 0"""
     while True:
         """State 5"""
-        call = t450550_x0(z3=6650, flag3=1715, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
+        call = t450550_x0(actionbutton1=6650, flag3=1715, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
         if call.Done():
             """State 3"""
             call = t450550_x6(lot1=65500)
@@ -322,4 +337,8 @@ def t450550_x15(z1=-1):
             Goto('L0')
     """State 2"""
     t450550_x9()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

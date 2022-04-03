@@ -10,7 +10,7 @@ def t380290_1():
         call = t380290_x13()
         assert not IsClientPlayer()
 
-def t380290_x0(z3=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
+def t380290_x0(actionbutton1=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t380290_x0(z3=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag4) and not GetEventStatus(flag5) and not GetEventStatus(flag6) and
               not GetEventStatus(flag7) and not GetEventStatus(flag8)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -277,7 +277,12 @@ def t380290_x10():
         """State 2"""
         pass
     """State 7"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 6"""
+    assert t380290_x1()
+    Goto('L0')
 
 def t380290_x11():
     """State 0,1"""
@@ -300,6 +305,9 @@ def t380290_x12():
         """State 2"""
         call = t380290_x15()
         assert GetEventStatus(1344) == 1 and GetEventStatus(9013) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t380290_x13():
     """State 0,1"""
@@ -313,9 +321,17 @@ def t380290_x14():
     assert CheckSelfDeath() == 1
     """State 1"""
     t380290_x9()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t380290_x15():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t380290_x16():
     """State 0,1"""
@@ -332,7 +348,23 @@ def t380290_x16():
         # talk:29001920:"Please, stop this!"
         assert t380290_x5(text1=29001920, flag1=0, mode1=1)
     """State 11"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 2"""
+    Goto('L1')
+    """State 3"""
+    Goto('L2')
+    """State 7"""
+    Label('L1')
+    # talk:29001520:" "
+    assert t380290_x3(text3=29001520, z2=73800121, flag3=0, mode3=1)
+    Goto('L0')
+    """State 8"""
+    Label('L2')
+    # talk:29001620:" "
+    assert t380290_x3(text3=29001620, z2=73800122, flag3=0, mode3=1)
+    Goto('L0')
 
 def t380290_x17():
     """State 0,3"""
@@ -350,7 +382,7 @@ def t380290_x18():
     """State 0"""
     while True:
         """State 5"""
-        call = t380290_x0(z3=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
+        call = t380290_x0(actionbutton1=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""
             call = t380290_x7()
@@ -381,4 +413,8 @@ def t380290_x18():
             break
     """State 2"""
     t380290_x10()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

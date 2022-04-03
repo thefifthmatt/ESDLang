@@ -2,6 +2,11 @@
 def t170005_1():
     """State 0,2"""
     t170005_x7()
+    Quit()
+    """Unused"""
+    """State 1"""
+    t170005_x6()
+    Quit()
 
 def t170005_x0(action3=_):
     """State 0,1"""
@@ -40,21 +45,21 @@ def t170005_x1():
     """State 8"""
     return 0
 
-def t170005_x2(z3=17, z4=9019, flag3=6067):
+def t170005_x2(gesture1=17, z2=9019, flag3=6067):
     """State 0,1"""
     if GetEventStatus(flag3) == 1:
         """State 2"""
         pass
     else:
         """State 3,4"""
-        AcquireGesture(z3)
-        OpenItemAcquisitionMenu(3, z4, 1)
+        AcquireGesture(gesture1)
+        OpenItemAcquisitionMenu(3, z2, 1)
         SetEventState(flag3, 1)
         assert not IsMenuOpen(63) and GetCurrentStateElapsedFrames() > 1
     """State 5"""
     return 0
 
-def t170005_x3(z2=_, flag1=6001, flag2=6000):
+def t170005_x3(actionbutton1=_, flag1=6001, flag2=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -73,7 +78,7 @@ def t170005_x3(z2=_, flag1=6001, flag2=6000):
         """State 3"""
         if CompareBonfireState(0):
             pass
-        elif CheckActionButtonArea(z2):
+        elif CheckActionButtonArea(actionbutton1):
             break
         elif (not (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
               and not IsPlayerDead() and not IsCharacterDisabled())):
@@ -107,6 +112,9 @@ def t170005_x6():
         """State 2"""
         call = t170005_x10()
         assert not IsMultiplayerInProgress()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t170005_x7():
     """State 0,1"""
@@ -115,7 +123,7 @@ def t170005_x7():
         Label('L0')
         """State 17"""
         Label('L1')
-        assert t170005_x3(z2=6101, flag1=6001, flag2=6000)
+        assert t170005_x3(actionbutton1=6101, flag1=6001, flag2=6000)
         """State 13"""
         ClearPlayerDamageInfo()
         """State 12"""
@@ -138,7 +146,7 @@ def t170005_x7():
             assert t170005_x12()
     else:
         """State 3,18"""
-        call = t170005_x3(z2=6100, flag1=6001, flag2=6000)
+        call = t170005_x3(actionbutton1=6100, flag1=6001, flag2=6000)
         if call.Done():
             """State 5"""
             ClearPlayerDamageInfo()
@@ -166,6 +174,12 @@ def t170005_x7():
     SetEventState(6030, 0)
     assert not GetEventStatus(6030)
     Goto('L0')
+    """Unused"""
+    """State 9"""
+    RequestUnlockTrophy(41)
+    Quit()
+    """State 20"""
+    return 0
 
 def t170005_x8():
     """State 0,6"""
@@ -174,7 +188,7 @@ def t170005_x8():
         pass
     elif call.Done():
         """State 2,7"""
-        call = t170005_x3(z2=6100, flag1=6001, flag2=6000)
+        call = t170005_x3(actionbutton1=6100, flag1=6001, flag2=6000)
         if call.Done():
             """State 4"""
             TurnCharacterToFaceEntity(-1, 10000, -1)
@@ -187,6 +201,10 @@ def t170005_x8():
         elif CompareBonfireLevel(5, 0) == 1:
             pass
     """State 1"""
+    Quit()
+    """Unused"""
+    """State 8"""
+    return 0
 
 def t170005_x9():
     """State 0,1"""
@@ -203,6 +221,9 @@ def t170005_x10():
         """State 2"""
         call = t170005_x9()
         assert not IsClientPlayer()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t170005_x11():
     """State 0,10"""
@@ -211,6 +232,7 @@ def t170005_x11():
     MainBonfireMenuFlag()
     while True:
         """State 1"""
+        Label('L0')
         ClearTalkListData()
         """State 2"""
         # action:15000120:"Rest"
@@ -262,6 +284,52 @@ def t170005_x11():
     """State 11,19"""
     SetEventState(74000013, 1)
     """State 9"""
+    Quit()
+    """Unused"""
+    """State 6"""
+    Goto('L2')
+    """State 7"""
+    Label('L1')
+    OpenMagicEquip(1000, 1000)
+    assert not (CheckSpecificPersonMenuIsOpen(11, 0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0))
+    Goto('L0')
+    """State 14,15"""
+    OpenRepository()
+    assert not (CheckSpecificPersonMenuIsOpen(3, 0) == 1 and not CheckSpecificPersonGenericDialogIsOpen(0))
+    Goto('L0')
+    """State 24"""
+    Label('L2')
+    if GetEventStatus(6030) == 1:
+        pass
+    else:
+        Goto('L3')
+    """State 25"""
+    Goto('L1')
+    """State 26"""
+    Label('L3')
+    Goto('L6')
+    """State 27"""
+    Label('L4')
+    assert GetCurrentStateElapsedFrames() > 1
+    """State 28"""
+    TurnCharacterToFaceEntity(68013, 10000, -1)
+    SetEventState(6030, 1)
+    assert GetCurrentStateElapsedTime() > 2 and GetEventStatus(6030) == 1
+    Goto('L1')
+    """State 29"""
+    Label('L5')
+    Goto('L0')
+    """State 32"""
+    t170005_x2(gesture1=17, z2=9019, flag3=6067)
+    Quit()
+    """State 33"""
+    Label('L6')
+    # action:10010780:"You need to rest in order to select Recovery Tools.\nDo you want to rest?"
+    call = t170005_x0(action3=10010780)
+    if call.Get() == 0:
+        Goto('L4')
+    elif call.Get() == 1:
+        Goto('L5')
 
 def t170005_x12():
     """State 0,1"""

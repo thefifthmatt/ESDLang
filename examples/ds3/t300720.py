@@ -202,4 +202,19 @@ def t300720_x2():
     """State 26"""
     Label('L1')
     return 0
+    """Unused"""
+    """State 22"""
+    DebugEvent('逃げ帰る')
+    """State 23"""
+    OpenGenericDialog(2, 10020040, 3, 4, 2)
+    if GetGenericDialogButtonResult() == 2:
+        Goto('L1')
+    elif GetGenericDialogButtonResult() == 2:
+        Goto('L1')
+    elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
+        pass
+    """State 24"""
+    SetEventState(13005518, 1)
+    assert not IsGenericDialogOpen()
+    Goto('L1')
 

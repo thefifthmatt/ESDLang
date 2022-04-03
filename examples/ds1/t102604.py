@@ -715,4 +715,15 @@ def t102604_1():
     elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
           1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
         Goto('L17')
+    """Unused"""
+    """State 91"""
+    Quit()
+    """State 92"""
+    Quit()
+    """State 93"""
+    Quit()
+    """State 94"""
+    Quit()
+    """State 95"""
+    Quit()
 

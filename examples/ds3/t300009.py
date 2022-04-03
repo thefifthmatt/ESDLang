@@ -2,6 +2,7 @@
 def t300009_1():
     """State 0,1"""
     t300009_x5()
+    Quit()
 
 def t300009_x0(action2=_):
     """State 0,1"""
@@ -40,7 +41,7 @@ def t300009_x1():
     """State 8"""
     return 0
 
-def t300009_x2(z2=6101, flag3=6001, flag4=6000):
+def t300009_x2(actionbutton2=6101, flag3=6001, flag4=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -53,7 +54,7 @@ def t300009_x2(z2=6101, flag3=6001, flag4=6000):
         """State 3"""
         if CompareBonfireState(0):
             pass
-        elif CheckActionButtonArea(z2):
+        elif CheckActionButtonArea(actionbutton2):
             break
         elif (not (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
               and not IsPlayerDead() and not IsCharacterDisabled())):
@@ -70,7 +71,7 @@ def t300009_x3(action1=_):
     """State 2"""
     return 0
 
-def t300009_x4(z1=6100, flag1=6001, flag2=6000):
+def t300009_x4(actionbutton1=6100, flag1=6001, flag2=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -79,7 +80,7 @@ def t300009_x4(z1=6100, flag1=6001, flag2=6000):
         """State 3"""
         assert GetEventStatus(flag1) == 1 and not GetEventStatus(flag2)
         """State 2"""
-        if CheckActionButtonArea(z1):
+        if CheckActionButtonArea(actionbutton1):
             break
         elif (not (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
               and not IsPlayerDead() and not IsCharacterDisabled())):
@@ -98,6 +99,9 @@ def t300009_x5():
         """State 2"""
         call = t300009_x9()
         assert not IsMultiplayerInProgress()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t300009_x6():
     """State 0,1"""
@@ -106,7 +110,7 @@ def t300009_x6():
         Label('L0')
     else:
         """State 3,12"""
-        call = t300009_x4(z1=6100, flag1=6001, flag2=6000)
+        call = t300009_x4(actionbutton1=6100, flag1=6001, flag2=6000)
         if call.Done():
             """State 7"""
             TurnCharacterToFaceEntity(-1, 10000, -1)
@@ -118,7 +122,7 @@ def t300009_x6():
         elif CompareBonfireLevel(5, 0) == 1:
             pass
     """State 11"""
-    assert t300009_x2(z2=6101, flag3=6001, flag4=6000)
+    assert t300009_x2(actionbutton2=6101, flag3=6001, flag4=6000)
     """State 5"""
     ClearPlayerDamageInfo()
     """State 6"""
@@ -137,6 +141,9 @@ def t300009_x6():
         """State 10"""
         assert t300009_x12()
         Goto('L0')
+    """Unused"""
+    """State 13"""
+    return 0
 
 def t300009_x7():
     """State 0,5"""
@@ -145,7 +152,7 @@ def t300009_x7():
         pass
     elif call.Done():
         """State 2,6"""
-        call = t300009_x4(z1=6100, flag1=6001, flag2=6000)
+        call = t300009_x4(actionbutton1=6100, flag1=6001, flag2=6000)
         if call.Done():
             """State 4"""
             TurnCharacterToFaceEntity(-1, 10000, -1)
@@ -156,6 +163,10 @@ def t300009_x7():
         elif CompareBonfireLevel(5, 0) == 1:
             pass
     """State 1"""
+    Quit()
+    """Unused"""
+    """State 7"""
+    return 0
 
 def t300009_x8():
     """State 0,1"""
@@ -172,12 +183,16 @@ def t300009_x9():
         """State 2"""
         call = t300009_x8()
         assert not IsClientPlayer()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t300009_x10():
     """State 0,12"""
     assert GetCurrentStateElapsedTime() > 2.5
     while True:
         """State 1"""
+        Label('L0')
         ClearTalkListData()
         """State 2"""
         # action:15000005:"Leave"
@@ -207,6 +222,9 @@ def t300009_x10():
             """State 8,9"""
             OpenMagicEquip(1000, 1000)
             assert not CheckSpecificPersonMenuIsOpen(11, 0)
+    """Unused"""
+    """State 7"""
+    Goto('L0')
 
 def t300009_x11():
     """State 0,1"""

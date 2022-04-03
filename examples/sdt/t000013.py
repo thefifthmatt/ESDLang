@@ -2,6 +2,7 @@
 def t000013_1():
     """State 0,1"""
     t000013_x0()
+    Quit()
 
 def t000013_x0():
     """State 0"""
@@ -12,4 +13,7 @@ def t000013_x0():
         def WhilePaused():
             c1_116()
         assert CheckSelfDeath() == 1
+    """Unused"""
+    """State 3"""
+    return 0
 

@@ -10,7 +10,7 @@ def t400180_1():
         call = t400180_x14()
         assert not IsClientPlayer()
 
-def t400180_x0(z4=6180, flag10=1135, flag11=6000, flag12=6000, flag13=6000, flag14=6000):
+def t400180_x0(actionbutton1=6180, flag10=1135, flag11=6000, flag12=6000, flag13=6000, flag14=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t400180_x0(z4=6180, flag10=1135, flag11=6000, flag12=6000, flag13=6000, flag
         elif (not GetEventStatus(flag10) and not GetEventStatus(flag11) and not GetEventStatus(flag12)
               and not GetEventStatus(flag13) and not GetEventStatus(flag14)):
             pass
-        elif CheckActionButtonArea(z4):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -66,11 +66,11 @@ def t400180_x2():
     """State 2"""
     return 0
 
-def t400180_x3(text5=_, z3=_, flag9=0, mode3=1):
+def t400180_x3(text5=_, z2=_, flag9=0, mode3=1):
     """State 0,5"""
     assert t400180_x2() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 2"""
-    SetEventState(z3, 1)
+    SetEventState(z2, 1)
     """State 1"""
     TalkToPlayer(text5, -1, -1, flag9)
     assert CheckSpecificPersonTalkHasEnded(0) == 1
@@ -123,15 +123,15 @@ def t400180_x6(lot1=60805):
     """State 2"""
     return 0
 
-def t400180_x7(z1=31, z2=9032, flag2=6081):
+def t400180_x7(gesture1=31, z1=9032, flag2=6081):
     """State 0,1"""
     if GetEventStatus(flag2) == 1:
         """State 2"""
         pass
     else:
         """State 3,4"""
-        AcquireGesture(z1)
-        OpenItemAcquisitionMenu(3, z2, 1)
+        AcquireGesture(gesture1)
+        OpenItemAcquisitionMenu(3, z1, 1)
         SetEventState(flag2, 1)
         assert not IsMenuOpen(63) and GetCurrentStateElapsedFrames() > 1
     """State 5"""
@@ -146,7 +146,7 @@ def t400180_x8():
     elif GetEventStatus(1123) == 1:
         """State 4"""
         # talk:18000200:"Hello again.", talk:18000300:"If you should require assistance, use my sign."
-        assert t400180_x24(text1=18000200, text2=18000300, flag1=74000751, z1=31, z2=9032, flag2=6081)
+        assert t400180_x24(text1=18000200, text2=18000300, flag1=74000751, gesture1=31, z1=9032, flag2=6081)
     elif GetEventStatus(1125) == 1:
         """State 3"""
         # talk:18002500:"Mm, I have not thanked you, for your generous rescue.", talk:18002550:"If you require help on your travels, I offer you my sign."
@@ -172,7 +172,7 @@ def t400180_x9():
             if not GetEventStatus(74000795):
                 """State 5,17"""
                 # talk:18001100:" ", talk:18001900:" "
-                call = t400180_x18(text5=18001100, z3=74000795, flag4=1136, flag5=1137, text6=18001900)
+                call = t400180_x18(text5=18001100, z2=74000795, flag4=1136, flag5=1137, text6=18001900)
                 if call.Get() == 0:
                     pass
                 elif call.Get() == 1:
@@ -188,7 +188,7 @@ def t400180_x9():
             elif not GetEventStatus(74000796):
                 """State 6,18"""
                 # talk:18001210:" ", talk:18002000:" "
-                call = t400180_x18(text5=18001210, z3=74000796, flag4=1136, flag5=1137, text6=18002000)
+                call = t400180_x18(text5=18001210, z2=74000796, flag4=1136, flag5=1137, text6=18002000)
                 if call.Get() == 0:
                     pass
                 elif call.Get() == 1:
@@ -196,7 +196,7 @@ def t400180_x9():
             elif not GetEventStatus(74000797):
                 """State 11,19"""
                 # talk:18001400:"What are you doing?", talk:18002200:"What's come over you!"
-                call = t400180_x18(text5=18001400, z3=74000797, flag4=1136, flag5=1137, text6=18002200)
+                call = t400180_x18(text5=18001400, z2=74000797, flag4=1136, flag5=1137, text6=18002200)
                 if call.Get() == 0:
                     pass
                 elif call.Get() == 1:
@@ -208,7 +208,7 @@ def t400180_x9():
                 SetEventState(74000797, 0)
                 """State 20"""
                 # talk:18001510:"Cease this, at once!", talk:18002300:"Please, stop this!"
-                call = t400180_x18(text5=18001510, z3=74000798, flag4=1136, flag5=1137, text6=18002300)
+                call = t400180_x18(text5=18001510, z2=74000798, flag4=1136, flag5=1137, text6=18002300)
                 if call.Get() == 0:
                     pass
                 elif call.Get() == 1:
@@ -276,9 +276,19 @@ def t400180_x11():
 
 def t400180_x12():
     """State 0,1,3,4"""
+    Label('L0')
     assert t400180_x1()
     """State 6"""
+    Label('L1')
     return 0
+    """Unused"""
+    """State 2,5"""
+    # talk:18000000:"Mm, you're an Unkindled, aren't you."
+    call = t400180_x5(text2=18000000, flag7=0, mode1=1)
+    if call.Done():
+        Goto('L1')
+    elif GetDistanceToPlayer() > 12:
+        Goto('L0')
 
 def t400180_x13():
     """State 0"""
@@ -291,6 +301,9 @@ def t400180_x13():
         call = t400180_x16()
         assert (GetEventStatus(1121) == 1 or GetEventStatus(1123) == 1 or GetEventStatus(1125) == 1 or
                 GetEventStatus(1127) == 1 or GetEventStatus(1133) == 1)
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400180_x14():
     """State 0,1"""
@@ -304,9 +317,17 @@ def t400180_x15():
     assert CheckSelfDeath() == 1
     """State 1"""
     t400180_x10()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400180_x16():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t400180_x17(text7=_, text8=_, flag6=_):
     """State 0,1"""
@@ -319,11 +340,11 @@ def t400180_x17(text7=_, text8=_, flag6=_):
     """State 4"""
     return 0
 
-def t400180_x18(text5=_, z3=_, flag4=1136, flag5=1137, text6=_):
+def t400180_x18(text5=_, z2=_, flag4=1136, flag5=1137, text6=_):
     """State 0,1"""
     if not GetEventStatus(1127):
         """State 3"""
-        call = t400180_x3(text5=text5, z3=z3, flag9=0, mode3=1)
+        call = t400180_x3(text5=text5, z2=z2, flag9=0, mode3=1)
         if call.Done():
             pass
         elif GetDistanceToPlayer() > 12:
@@ -336,7 +357,7 @@ def t400180_x18(text5=_, z3=_, flag4=1136, flag5=1137, text6=_):
             return 1
     else:
         """State 4"""
-        call = t400180_x3(text5=text6, z3=z3, flag9=0, mode3=1)
+        call = t400180_x3(text5=text6, z2=z2, flag9=0, mode3=1)
         if call.Done():
             pass
         elif GetEventStatus(flag4) == 1 or GetEventStatus(flag5) == 1:
@@ -351,11 +372,11 @@ def t400180_x19():
     if not GetEventStatus(73500150):
         """State 2"""
         # talk:18001600:"You've been clean Hollowed, have you?"
-        assert t400180_x3(text5=18001600, z3=74000799, flag9=0, mode3=1)
+        assert t400180_x3(text5=18001600, z2=74000799, flag9=0, mode3=1)
     else:
         """State 3"""
         # talk:18002800:"Yes, I see, an arrant Finger you've become."
-        assert t400180_x3(text5=18002800, z3=74000799, flag9=0, mode3=1)
+        assert t400180_x3(text5=18002800, z2=74000799, flag9=0, mode3=1)
     """State 4"""
     return 0
 
@@ -443,7 +464,7 @@ def t400180_x23(text3=18002500, text4=18002550, flag3=74000752):
     """State 6"""
     return 0
 
-def t400180_x24(text1=18000200, text2=18000300, flag1=74000751, z1=31, z2=9032, flag2=6081):
+def t400180_x24(text1=18000200, text2=18000300, flag1=74000751, gesture1=31, z1=9032, flag2=6081):
     """State 0,1"""
     if not GetEventStatus(flag1):
         """State 2"""
@@ -452,7 +473,7 @@ def t400180_x24(text1=18000200, text2=18000300, flag1=74000751, z1=31, z2=9032, 
         """State 3"""
         assert t400180_x5(text2=text2, flag7=0, mode1=1)
     """State 4"""
-    assert t400180_x7(z1=z1, z2=z2, flag2=flag2)
+    assert t400180_x7(gesture1=gesture1, z1=z1, flag2=flag2)
     """State 5"""
     return 0
 
@@ -460,7 +481,7 @@ def t400180_x25():
     """State 0"""
     while True:
         """State 5"""
-        call = t400180_x0(z4=6180, flag10=1135, flag11=6000, flag12=6000, flag13=6000, flag14=6000)
+        call = t400180_x0(actionbutton1=6180, flag10=1135, flag11=6000, flag12=6000, flag13=6000, flag14=6000)
         if call.Done():
             """State 3"""
             call = t400180_x8()
@@ -491,4 +512,8 @@ def t400180_x25():
             break
     """State 2"""
     t400180_x11()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

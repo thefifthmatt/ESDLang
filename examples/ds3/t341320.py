@@ -62,6 +62,10 @@ def t341320_x2(text1=_, flag1=0, mode1=1):
 
 def t341320_x3():
     """State 0,1"""
+    Quit()
+    """Unused"""
+    """State 2"""
+    return 0
 
 def t341320_x4():
     """State 0,1,3"""
@@ -78,8 +82,12 @@ def t341320_x4():
         """State 5"""
         pass
     """State 8"""
+    Label('L0')
     SetEventState(73410110, 1)
     return 0
+    """Unused"""
+    """State 2"""
+    Goto('L0')
 
 def t341320_x5():
     """State 0,2"""
@@ -98,7 +106,11 @@ def t341320_x5():
         """State 5"""
         pass
     """State 8"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 1"""
+    Goto('L0')
 
 def t341320_x6():
     """State 0,1,2,3"""
@@ -115,6 +127,9 @@ def t341320_x7():
         """State 2"""
         call = t341320_x10()
         assert GetEventStatus(1400) == 1 and GetEventStatus(13415830) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t341320_x8():
     """State 0,1"""
@@ -128,9 +143,17 @@ def t341320_x9():
     assert CheckSelfDeath() == 1
     """State 1"""
     t341320_x4()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t341320_x10():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t341320_x11():
     """State 0,2"""
@@ -138,6 +161,7 @@ def t341320_x11():
     SetEventState(73410102, 1)
     while True:
         """State 1"""
+        Label('L0')
         SetEventState(73410100, 0)
         """State 4"""
         call = t341320_x3()
@@ -148,6 +172,13 @@ def t341320_x11():
             assert t341320_x12()
     """State 3"""
     t341320_x5()
+    Quit()
+    """Unused"""
+    """State 5"""
+    assert t341320_x6()
+    Goto('L0')
+    """State 7"""
+    return 0
 
 def t341320_x12():
     """State 0,1"""

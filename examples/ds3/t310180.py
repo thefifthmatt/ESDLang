@@ -81,4 +81,8 @@ def t310180_x4():
     """State 3"""
     # talk:18000500:"Good night, grandad..."
     t310180_x2(text1=18000500, flag1=0, mode1=1)
+    Quit()
+    """Unused"""
+    """State 5"""
+    return 0
 

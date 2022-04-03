@@ -532,4 +532,36 @@ def t121675_1():
     elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
           1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 6):
         Goto('L15')
+    """Unused"""
+    """State 9"""
+    # talk:59001500:"...Well, you've quite the nerve!"
+    TalkToPlayer(59001500, -1, -1)
+    SetEventState(71210004, 1)
+    ForceCloseMenu()
+    if CheckSelfDeath() == 1:
+        Goto('L5')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 10):
+        Goto('L15')
+    """State 35"""
+    Label('L16')
+    SetEventState(11215201, 0)
+    Goto('L6')
+    """State 36"""
+    Label('L17')
+    # talk:61000900:"Thou shalt see further on."
+    TalkToPlayer(61000900, -1, -1)
+    DisplayOneLineHelp(-1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif HasTalkEnded() == 1:
+        Goto('L16')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 6):
+        Goto('L15')
+    """State 71"""
+    assert (IsPlayerTalkingToMe() == 1 and GetRelativeAngleBetweenPlayerAndSelf() <= 45 and GetDistanceToPlayer()
+            <= 4 and GetOneLineHelpStatus() == 1 and GetEventStatus(11215201) == 1 and GetEventStatus(11216101)
+            == 1)
+    Goto('L17')
 

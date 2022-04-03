@@ -10,7 +10,7 @@ def t330230_1():
         call = t330230_x12()
         assert not IsClientPlayer()
 
-def t330230_x0(z5=6000, flag4=1235, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
+def t330230_x0(actionbutton1=6000, flag4=1235, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t330230_x0(z5=6000, flag4=1235, flag5=6000, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag4) and not GetEventStatus(flag5) and not GetEventStatus(flag6) and
               not GetEventStatus(flag7) and not GetEventStatus(flag8)):
             pass
-        elif CheckActionButtonArea(z5):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -306,6 +306,9 @@ def t330230_x11():
         """State 2"""
         call = t330230_x14()
         assert GetEventStatus(1220) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t330230_x12():
     """State 0,1"""
@@ -319,9 +322,17 @@ def t330230_x13(z1=3):
     assert CheckSelfDeath() == 1
     """State 1"""
     t330230_x8()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t330230_x14():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t330230_x15():
     """State 0,2"""
@@ -338,7 +349,17 @@ def t330230_x15():
         # talk:23001500:"Stop while you're still ahead."
         assert t330230_x5(text1=23001500, flag1=0, mode1=1)
     """State 7"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 3"""
+    # talk:23001100:" "
+    assert t330230_x3(text3=23001100, z4=73300121, flag3=0, mode3=1)
+    Goto('L0')
+    """State 4"""
+    # talk:23001200:" "
+    assert t330230_x3(text3=23001200, z4=73300122, flag3=0, mode3=1)
+    Goto('L0')
 
 def t330230_x16():
     """State 0,1"""
@@ -363,7 +384,7 @@ def t330230_x18():
     """State 0"""
     while True:
         """State 5"""
-        call = t330230_x0(z5=6000, flag4=1235, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
+        call = t330230_x0(actionbutton1=6000, flag4=1235, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""
             call = t330230_x6(z2=10)
@@ -396,4 +417,8 @@ def t330230_x18():
             break
     """State 2"""
     t330230_x9()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

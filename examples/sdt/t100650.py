@@ -11,6 +11,7 @@ def t100650_1():
         """State 4"""
         assert t100650_x0()
     """State 2"""
+    Quit()
 
 def t100650_x0():
     """State 0,1"""
@@ -132,6 +133,9 @@ def t100650_x6(val1=10, val2=15, flag1=71008500, text1=65001300):
         elif not GetEventStatus(flag1):
             """State 3"""
             assert t100650_x3(flag1=flag1, text1=text1, val1=val1, val2=val2)
+    """Unused"""
+    """State 4"""
+    return 0
 
 def t100650_x7():
     """State 0,1"""

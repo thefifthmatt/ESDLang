@@ -77,6 +77,9 @@ def t370292_x7():
         """State 2"""
         call = t370292_x10()
         assert GetEventStatus(1903) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t370292_x8():
     """State 0,1"""
@@ -88,7 +91,7 @@ def t370292_x9():
     """State 0"""
     while True:
         """State 6"""
-        call = t370292_x11(z1=6000)
+        call = t370292_x11(actionbutton1=6000)
         if call.Done():
             """State 4"""
             call = t370292_x2()
@@ -123,11 +126,19 @@ def t370292_x9():
             Goto('L0')
     """State 3"""
     t370292_x5()
+    Quit()
+    """Unused"""
+    """State 7"""
+    return 0
 
 def t370292_x10():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
-def t370292_x11(z1=6000):
+def t370292_x11(actionbutton1=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -141,7 +152,7 @@ def t370292_x11(z1=6000):
             pass
         elif not GetEventStatus(1915) or GetEventStatus(73700151) == 1:
             pass
-        elif CheckActionButtonArea(z1):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0

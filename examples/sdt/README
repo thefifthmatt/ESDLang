@@ -1,10 +1,10 @@
 ESDs:
-m00_00_00_00: t000001.esd: d03446fd, c1001 (Invisible)
+m00_00_00_00: t000001.esd: 9e57eb44, c1001 (Invisible)
+m00_00_00_00: t000002.esd: 75df9ea9, c1001 (Invisible)
 m00_00_00_00: t000010.esd: fb3be905, c1010 (Ashina Soldier), c1011 (Tutorial Ashina Soldier), c1020 (Samurai General), c1070 (Shura Samurai), c1360 (Assassin (Senpou)), c1550 (Bandit)
 m00_00_00_00: t000011.esd: e6f9a3c5, c1010 (Ashina Soldier)
 m00_00_00_00: t000012.esd: 27f49c01, c7100 (Genichiro Ashina), c7400 (Emma), c7470 (Kotaro)
 m00_00_00_00: t000013.esd: 40dc5233, c1010 (Ashina Soldier)
-m00_00_00_00: t000014.esd: 27f49c01
 m10_00_00_00: t100000.esd: 4d771dbb
 m10_00_00_00: t100001.esd: 4d771dbb
 m10_00_00_00: t100002.esd: 4d771dbb
@@ -41,7 +41,7 @@ m11_00_00_00: t110004.esd: 4d771dbb
 m11_00_00_00: t110005.esd: 4d771dbb
 m11_00_00_00: t110006.esd: 4d771dbb
 m11_00_00_00: t110010.esd: eb1467fe, c1001 (Invisible)
-m11_00_00_00: t110100.esd: 04bfd372, c1001 (Invisible), c7010 (Sculptor)
+m11_00_00_00: t110100.esd: eee2fd62, c1001 (Invisible), c7010 (Sculptor)
 m11_00_00_00: t110101.esd: 2a22c960
 m11_00_00_00: t110102.esd: 7de2207d, c7020 (Demon of Hatred)
 m11_00_00_00: t110110.esd: d965041c, c7200 (Kuro)

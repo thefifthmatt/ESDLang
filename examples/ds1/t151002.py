@@ -173,7 +173,7 @@ def t151002_1():
                             ClearTalkProgressData()
                             CloseShopMessage()
                             DebugEvent('リスト強制開放')
-                            Goto('L18')
+                            Goto('L19')
                         elif CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1:
                             Goto('L4')
                         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or
@@ -598,6 +598,7 @@ def t151002_1():
                             else:
                                 pass
                             """State 18"""
+                            Label('L17')
                             # action:10010729:"Covenant established"
                             OpenGenericDialog(7, 10010729, 1, 0, 2)
                             DisplayOneLineHelp(-1)
@@ -607,13 +608,13 @@ def t151002_1():
                                 Goto('L3')
                             elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
                                 """State 19"""
-                                Label('L17')
+                                Label('L18')
                                 ClearTalkActionState()
                                 DisplayOneLineHelp(-1)
                                 ClearPlayerDamageInfo()
                                 SetEventState(760, 0)
                             elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-                                Goto('L17')
+                                Goto('L18')
                         elif CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1:
                             Goto('L4')
                         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or
@@ -626,7 +627,15 @@ def t151002_1():
                 EndBonfireKindleAnimLoop()
                 Goto('L3')
             """State 41"""
-            Label('L18')
+            Label('L19')
             ClearTalkDisabledState()
             DebugEvent('会話タイマーをクリア　待機へ')
+    """Unused"""
+    """State 17"""
+    SetEventState(11010594, 1)
+    if (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+        1 or GetRelativeAngleBetweenPlayerAndSelf() > 180 or GetDistanceToPlayer() > 8):
+        Goto('L3')
+    elif not IsMenuOpen(63):
+        Goto('L17')
 

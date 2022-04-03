@@ -2,6 +2,7 @@
 def t500002_1():
     """State 0,1"""
     t500002_x4()
+    Quit()
 
 def t500002_x0():
     """State 0,1"""
@@ -28,21 +29,21 @@ def t500002_x0():
     """State 8"""
     return 0
 
-def t500002_x1(z2=17, z3=9019, flag3=6067):
+def t500002_x1(gesture1=17, z1=9019, flag3=6067):
     """State 0,1"""
     if GetEventStatus(flag3) == 1:
         """State 2"""
         pass
     else:
         """State 3,4"""
-        AcquireGesture(z2)
-        OpenItemAcquisitionMenu(3, z3, 1)
+        AcquireGesture(gesture1)
+        OpenItemAcquisitionMenu(3, z1, 1)
         SetEventState(flag3, 1)
         assert not IsMenuOpen(63) and GetCurrentStateElapsedFrames() > 1
     """State 5"""
     return 0
 
-def t500002_x2(z1=_, flag1=6001, flag2=6000):
+def t500002_x2(actionbutton1=_, flag1=6001, flag2=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -55,7 +56,7 @@ def t500002_x2(z1=_, flag1=6001, flag2=6000):
         """State 3"""
         if CompareBonfireState(0):
             pass
-        elif CheckActionButtonArea(z1):
+        elif CheckActionButtonArea(actionbutton1):
             break
         elif (not (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
               and not IsPlayerDead() and not IsCharacterDisabled())):
@@ -82,6 +83,9 @@ def t500002_x4():
         """State 2"""
         call = t500002_x8()
         assert not IsMultiplayerInProgress()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t500002_x5():
     """State 0,1"""
@@ -90,7 +94,7 @@ def t500002_x5():
         Label('L0')
     else:
         """State 3,15"""
-        call = t500002_x2(z1=6100, flag1=6001, flag2=6000)
+        call = t500002_x2(actionbutton1=6100, flag1=6001, flag2=6000)
         if call.Done():
             """State 7"""
             TurnCharacterToFaceEntity(-1, 10000, -1)
@@ -106,7 +110,7 @@ def t500002_x5():
         elif CompareBonfireLevel(5, 0) == 1:
             pass
     """State 14"""
-    assert t500002_x2(z1=6101, flag1=6001, flag2=6000)
+    assert t500002_x2(actionbutton1=6101, flag1=6001, flag2=6000)
     """State 5"""
     ClearPlayerDamageInfo()
     """State 6"""
@@ -127,6 +131,9 @@ def t500002_x5():
         """State 13"""
         assert t500002_x10()
         Goto('L0')
+    """Unused"""
+    """State 16"""
+    return 0
 
 def t500002_x6():
     """State 0,6"""
@@ -135,7 +142,7 @@ def t500002_x6():
         pass
     elif call.Done():
         """State 2,7"""
-        call = t500002_x2(z1=6100, flag1=6001, flag2=6000)
+        call = t500002_x2(actionbutton1=6100, flag1=6001, flag2=6000)
         if call.Done():
             """State 4"""
             TurnCharacterToFaceEntity(-1, 10000, -1)
@@ -148,6 +155,10 @@ def t500002_x6():
         elif CompareBonfireLevel(5, 0) == 1:
             pass
     """State 1"""
+    Quit()
+    """Unused"""
+    """State 8"""
+    return 0
 
 def t500002_x7():
     """State 0,1"""
@@ -164,12 +175,15 @@ def t500002_x8():
         """State 2"""
         call = t500002_x7()
         assert not IsClientPlayer()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t500002_x9():
     """State 0,10"""
     assert GetCurrentStateElapsedTime() > 2
     """State 21"""
-    assert t500002_x1(z2=17, z3=9019, flag3=6067)
+    assert t500002_x1(gesture1=17, z1=9019, flag3=6067)
     """State 17"""
     MainBonfireMenuFlag()
     while True:
@@ -217,6 +231,7 @@ def t500002_x9():
     """State 11,19"""
     SetEventState(74000013, 1)
     """State 9"""
+    Quit()
 
 def t500002_x10():
     """State 0,1"""

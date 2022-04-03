@@ -131,6 +131,9 @@ def t111652_x6(val1=100, val2=100, flag1=71118510, text1=65000800):
         elif not GetEventStatus(flag1):
             """State 3"""
             assert t111652_x3(flag1=flag1, text1=text1, val1=val1, val2=val2)
+    """Unused"""
+    """State 4"""
+    return 0
 
 def t111652_x7():
     """State 0,1"""

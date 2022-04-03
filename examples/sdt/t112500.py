@@ -2,7 +2,8 @@
 def t112500_1():
     """State 0,1"""
     # talk:90000050:"Eavesdrop dummy text (the Imperial Prince is in the Moon-view tower)"
-    t112500_x3(text1=90000050, val1=10, z1=962050)
+    t112500_x3(text1=90000050, val1=10, actionbutton1=962050)
+    Quit()
 
 def t112500_x0():
     """State 0,1"""
@@ -55,11 +56,11 @@ def t112500_x2(text1=90000050, flag1=0, mode1=1):
     """State 5"""
     return 0
 
-def t112500_x3(text1=90000050, val1=10, z1=962050):
+def t112500_x3(text1=90000050, val1=10, actionbutton1=962050):
     """State 0"""
     while True:
         """State 2"""
-        call = t112500_x4(text1=text1, val1=val1, z1=z1)
+        call = t112500_x4(text1=text1, val1=val1, actionbutton1=actionbutton1)
         if CheckSelfDeath() == 1:
             break
         elif DoesSelfHaveSpEffect(4600) == 1:
@@ -70,7 +71,7 @@ def t112500_x3(text1=90000050, val1=10, z1=962050):
     """State 4"""
     return 0
 
-def t112500_x4(text1=90000050, val1=10, z1=962050):
+def t112500_x4(text1=90000050, val1=10, actionbutton1=962050):
     """State 0"""
     while Loop('mainloop'):
         """State 5"""
@@ -116,13 +117,14 @@ def t112500_x4(text1=90000050, val1=10, z1=962050):
                     elif GetDistanceToPlayer() > val1 or DoesSelfHaveSpEffect(4600) == 1:
                         """State 13"""
                         assert not DoesSelfHaveSpEffect(4600)
-                    elif CheckActionButtonArea(z1):
+                    elif CheckActionButtonArea(actionbutton1):
                         Break('mainloop')
-                elif CheckActionButtonArea(z1):
+                elif CheckActionButtonArea(actionbutton1):
                     Break('mainloop')
-        elif CheckActionButtonArea(z1):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 11"""
+    Quit()
 
 def t112500_x5():
     """State 0,1"""

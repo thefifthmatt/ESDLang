@@ -4,18 +4,10 @@ def t102627_1():
     SetEventState(71100055, 0)
     while True:
         """State 6"""
+        Label('L0')
         DebugEvent('unknow')
         if CheckSelfDeath() == 1 and not GetEventStatus(1462) and GetDistanceToPlayer() <= 5:
-            """State 16"""
-            Label('L0')
-            # talk:37002900:"Heheh, not too shabby..."
-            TalkToPlayer(37002900, -1, -1)
-            DisplayOneLineHelp(-1)
-            ForceCloseMenu()
-            if HasTalkEnded() == 1:
-                continue
-            elif GetDistanceToPlayer() >= 5:
-                pass
+            break
         elif (GetEventStatus(1461) == 1 and IsPlayerDead() == 1 and not GetEventStatus(71100055) and
               GetDistanceToPlayer() <= 5 and HasDisableTalkPeriodElapsed() == 1 and not IsTalkingToSomeoneElse()
               and not CheckSelfDeath() and not IsCharacterDisabled() and not IsClientPlayer() and GetRelativeAngleBetweenPlayerAndSelf()
@@ -155,7 +147,7 @@ def t102627_1():
                 def ExitPause():
                     RemoveMyAggro()
                 assert CheckSelfDeath() == 1 and GetDistanceToPlayer() <= 5
-                Goto('L0')
+                break
             elif HasTalkEnded() == 1:
                 """State 52"""
                 SetEventState(71100050, 1)
@@ -639,4 +631,32 @@ def t102627_1():
         ClearTalkProgressData()
         """State 2"""
         ForceEndTalk(0)
+    """State 16"""
+    # talk:37002900:"Heheh, not too shabby..."
+    TalkToPlayer(37002900, -1, -1)
+    DisplayOneLineHelp(-1)
+    ForceCloseMenu()
+    if HasTalkEnded() == 1:
+        Goto('L0')
+    elif GetDistanceToPlayer() >= 5:
+        Goto('L6')
+    """Unused"""
+    """State 41"""
+    DisplayOneLineHelp(-1)
+    # talk:37000500:"Did you see that hoity-toity cleric? He went through the\ngraveyard and down into the Catacombs."
+    TalkToPlayer(37000500, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L6')
+    """State 42"""
+    DisplayOneLineHelp(-1)
+    # talk:37000900:"That cleric was spared?"
+    TalkToPlayer(37000900, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L6')
 

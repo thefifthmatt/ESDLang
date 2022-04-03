@@ -10,7 +10,7 @@ def t400300_1():
         call = t400300_x10()
         assert not IsClientPlayer()
 
-def t400300_x0(z3=6300, flag4=1375, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
+def t400300_x0(actionbutton1=6300, flag4=1375, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t400300_x0(z3=6300, flag4=1375, flag5=6000, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag4) and not GetEventStatus(flag5) and not GetEventStatus(flag6) and
               not GetEventStatus(flag7) and not GetEventStatus(flag8)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -133,7 +133,13 @@ def t400300_x6():
         # talk:30001600:"Oh, no matter, I'll look after things."
         assert t400300_x5(text1=30001600, flag1=0, mode1=1)
     """State 8"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 4"""
+    # talk:30001300:"Sorry, friend."
+    assert t400300_x4(text2=30001300, z1=74000900, flag2=0, mode2=1)
+    Goto('L0')
 
 def t400300_x7():
     """State 0,3"""
@@ -159,9 +165,18 @@ def t400300_x7():
 
 def t400300_x8():
     """State 0,1,3,4"""
+    Label('L0')
     assert t400300_x1()
     """State 6"""
+    Label('L1')
     return 0
+    """Unused"""
+    """State 2,5"""
+    call = t400300_x14()
+    if call.Done():
+        Goto('L1')
+    elif GetDistanceToPlayer() > 12:
+        Goto('L0')
 
 def t400300_x9():
     """State 0"""
@@ -172,6 +187,9 @@ def t400300_x9():
         """State 2"""
         call = t400300_x12()
         assert GetEventStatus(1364) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400300_x10():
     """State 0,1"""
@@ -184,7 +202,7 @@ def t400300_x11():
     SetUpdateDistance(50)
     while True:
         """State 5"""
-        call = t400300_x0(z3=6300, flag4=1375, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
+        call = t400300_x0(actionbutton1=6300, flag4=1375, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""
             call = t400300_x6()
@@ -209,9 +227,17 @@ def t400300_x11():
             break
     """State 2"""
     t400300_x7()
+    Quit()
+    """Unused"""
+    """State 7"""
+    return 0
 
 def t400300_x12():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t400300_x13():
     """State 0,1"""

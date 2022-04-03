@@ -10,7 +10,7 @@ def t350190_1():
         call = t350190_x12()
         assert not IsClientPlayer()
 
-def t350190_x0(z3=6000, flag4=1155, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
+def t350190_x0(actionbutton1=6000, flag4=1155, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t350190_x0(z3=6000, flag4=1155, flag5=6000, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag4) and not GetEventStatus(flag5) and not GetEventStatus(flag6) and
               not GetEventStatus(flag7) and not GetEventStatus(flag8)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -229,6 +229,9 @@ def t350190_x11():
         """State 2"""
         call = t350190_x14()
         assert GetEventStatus(1146) == 1 or GetEventStatus(1147) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t350190_x12():
     """State 0,1"""
@@ -242,9 +245,17 @@ def t350190_x13():
     assert CheckSelfDeath() == 1
     """State 1"""
     t350190_x8()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t350190_x14():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t350190_x15():
     """State 0,3,4"""
@@ -261,7 +272,23 @@ def t350190_x15():
         # talk:19002240:"Can you even hear me? If you can, cease this at once."
         assert t350190_x5(text1=19002240, flag1=0, mode1=1)
     """State 12"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 1"""
+    Goto('L1')
+    """State 2"""
+    Goto('L2')
+    """State 8"""
+    Label('L1')
+    # talk:19002200:" "
+    assert t350190_x3(text3=19002200, z2=73500221, flag3=0, mode3=1)
+    Goto('L0')
+    """State 9"""
+    Label('L2')
+    # talk:19002210:" "
+    assert t350190_x3(text3=19002210, z2=73500222, flag3=0, mode3=1)
+    Goto('L0')
 
 def t350190_x16():
     """State 0,3,4"""
@@ -293,7 +320,7 @@ def t350190_x19():
     """State 0"""
     while True:
         """State 5"""
-        call = t350190_x0(z3=6000, flag4=1155, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
+        call = t350190_x0(actionbutton1=6000, flag4=1155, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""
             call = t350190_x6()
@@ -324,4 +351,8 @@ def t350190_x19():
             break
     """State 2"""
     t350190_x9()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

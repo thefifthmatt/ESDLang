@@ -23,9 +23,9 @@ def t350906_x0(action2=10010745):
         """State 4"""
         return 1
 
-def t350906_x1(z5=6000, flag4=1060, flag5=6000, flag6=6000, flag7=6000, flag8=6000, flag9=6000, flag10=6000,
-               flag11=6000, flag12=6000, flag13=6000, flag14=6000, flag15=6000, flag16=6000, flag17=6000,
-               flag18=6000):
+def t350906_x1(actionbutton1=6000, flag4=1060, flag5=6000, flag6=6000, flag7=6000, flag8=6000, flag9=6000,
+               flag10=6000, flag11=6000, flag12=6000, flag13=6000, flag14=6000, flag15=6000, flag16=6000,
+               flag17=6000, flag18=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -51,7 +51,7 @@ def t350906_x1(z5=6000, flag4=1060, flag5=6000, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag14) and not GetEventStatus(flag15) and not GetEventStatus(flag16)
               and not GetEventStatus(flag17) and not GetEventStatus(flag18)):
             pass
-        elif CheckActionButtonArea(z5):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 5"""
     return 0
@@ -183,13 +183,98 @@ def t350906_x9(goods1=373, z2=10020210):
 
 def t350906_x10():
     """State 0,1,2,4,9"""
+    Label('L0')
     # goods:373:Pale Tongue
     assert t350906_x18(z1=5, goods1=373)
     """State 10"""
+    Label('L1')
     return 0
+    """Unused"""
+    """State 3"""
+    Goto('L2')
+    """State 5,6"""
+    SetEventState(73509019, 0)
+    Goto('L3')
+    """State 7"""
+    Label('L2')
+    assert t350906_x5(text2=90004000, z3=73509019, flag2=0)
+    Goto('L1')
+    """State 8"""
+    Label('L3')
+    assert t350906_x6(text1=90004000, flag1=0)
+    Goto('L0')
 
 def t350906_x11():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    Label('L0')
+    if GetEventStatus(1076) == 1 or GetEventStatus(1077) == 1:
+        Goto('L1')
+    else:
+        pass
+    """State 2"""
+    if not GetEventStatus(73509019):
+        Goto('L2')
+    else:
+        Goto('L3')
+    """State 3"""
+    Label('L1')
+    if not GetEventStatus(73509019):
+        Goto('L4')
+    elif not GetEventStatus(73509019) and GetSelfHP() < 50:
+        Goto('L5')
+    else:
+        Goto('L6')
+    """State 4"""
+    Label('L2')
+    Goto('L9')
+    """State 5"""
+    Label('L3')
+    Goto('L13')
+    """State 6"""
+    Label('L4')
+    Goto('L10')
+    """State 7"""
+    Label('L5')
+    Goto('L11')
+    """State 8"""
+    Label('L6')
+    Goto('L13')
+    """State 9"""
+    SetEventState(73509019, 1)
+    Goto('L8')
+    """State 10"""
+    Label('L7')
+    assert GetCurrentStateElapsedFrames() > 1
+    Goto('L0')
+    """State 11"""
+    Label('L8')
+    assert t350906_x3()
+    Goto('L7')
+    """State 12"""
+    Label('L9')
+    call = t350906_x4(text3=90004000, z4=73509019, flag3=0)
+    if call.Done():
+        Goto('L13')
+    elif GetEventStatus(1076) == 1 or GetEventStatus(1077) == 1:
+        Goto('L12')
+    """State 13"""
+    Label('L10')
+    assert t350906_x4(text3=90004000, z4=73509019, flag3=0)
+    Goto('L13')
+    """State 14"""
+    Label('L11')
+    assert t350906_x4(text3=90004000, z4=73509019, flag3=0)
+    Goto('L13')
+    """State 15"""
+    Label('L12')
+    assert t350906_x2()
+    Goto('L4')
+    """State 16"""
+    Label('L13')
+    return 0
 
 def t350906_x12():
     """State 0,1"""
@@ -226,21 +311,63 @@ def t350906_x13():
 
 def t350906_x14():
     """State 0,1,3,5"""
+    Label('L0')
     assert t350906_x2()
     """State 7"""
+    Label('L1')
     return 0
+    """Unused"""
+    """State 2,4"""
+    SetEventState(73509019, 1)
+    """State 6"""
+    call = t350906_x6(text1=90004000, flag1=0)
+    if call.Done():
+        Goto('L1')
+    elif GetDistanceToPlayer() > 12:
+        Goto('L0')
 
 def t350906_x15():
     """State 0,4"""
     t350906_x3()
+    Quit()
+    """Unused"""
+    """State 1"""
+    Goto('L2')
+    """State 2"""
+    Goto('L3')
+    """State 3"""
+    Label('L0')
+    assert t350906_x2()
+    Goto('L4')
+    """State 5"""
+    Label('L1')
+    assert t350906_x2()
+    Goto('L4')
+    """State 6"""
+    Label('L2')
+    call = t350906_x5(text2=90004000, z3=73509019, flag2=0)
+    if call.Done():
+        Goto('L4')
+    elif GetDistanceToPlayer() > 12:
+        Goto('L0')
+    """State 7"""
+    Label('L3')
+    call = t350906_x4(text3=90004000, z4=73509019, flag3=0)
+    if call.Done():
+        pass
+    elif GetDistanceToPlayer() > 12:
+        Goto('L1')
+    """State 8"""
+    Label('L4')
+    return 0
 
 def t350906_x16():
     """State 0"""
     while True:
         """State 7"""
-        assert (t350906_x1(z5=6000, flag4=1060, flag5=6000, flag6=6000, flag7=6000, flag8=6000, flag9=6000,
-                flag10=6000, flag11=6000, flag12=6000, flag13=6000, flag14=6000, flag15=6000, flag16=6000,
-                flag17=6000, flag18=6000))
+        assert (t350906_x1(actionbutton1=6000, flag4=1060, flag5=6000, flag6=6000, flag7=6000, flag8=6000,
+                flag9=6000, flag10=6000, flag11=6000, flag12=6000, flag13=6000, flag14=6000, flag15=6000,
+                flag16=6000, flag17=6000, flag18=6000))
         """State 4"""
         call = t350906_x10()
         if call.Done():
@@ -248,6 +375,23 @@ def t350906_x16():
         elif GetDistanceToPlayer() > 5:
             """State 5"""
             assert t350906_x14() and GetDistanceToPlayer() < 4.9
+    """Unused"""
+    """State 1"""
+    t350906_x11()
+    def ExitPause():
+        RemoveMyAggro()
+    Quit()
+    """State 2"""
+    t350906_x12()
+    Quit()
+    """State 3"""
+    t350906_x13()
+    Quit()
+    """State 6"""
+    t350906_x15()
+    Quit()
+    """State 8"""
+    return 0
 
 def t350906_x17():
     """State 0,1"""
@@ -259,6 +403,7 @@ def t350906_x18(z1=5, goods1=373):
     """State 0"""
     while True:
         """State 1"""
+        Label('L0')
         ClearTalkListData()
         if ComparePlayerStatus(11, 0, z1) == 1:
             """State 13,15"""
@@ -297,4 +442,9 @@ def t350906_x18(z1=5, goods1=373):
         elif GetTalkListEntryResult() == 2:
             """State 20"""
             assert t350906_x8(goods1=goods1, z2=10020210, action1=15000320)
+    """Unused"""
+    """State 7,16"""
+    # action:10010726:"Already belong to this Covenant"
+    assert t350906_x7(action1=10010726)
+    Goto('L0')
 

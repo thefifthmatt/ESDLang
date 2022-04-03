@@ -64,6 +64,10 @@ def t370180_x2(text1=18003000, flag1=0, mode1=1):
 def t370180_x3():
     """State 0,1"""
     t370180_x0()
+    Quit()
+    """Unused"""
+    """State 2"""
+    return 0
 
 def t370180_x4():
     """State 0"""
@@ -73,4 +77,8 @@ def t370180_x4():
     """State 2"""
     # talk:18003000:"Thank you for your kind assistance."
     t370180_x2(text1=18003000, flag1=0, mode1=1)
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 

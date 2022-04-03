@@ -79,6 +79,10 @@ def t300324_x3(text1=_, flag1=0, mode1=1):
 
 def t300324_x4():
     """State 0,1"""
+    Quit()
+    """Unused"""
+    """State 2"""
+    return 0
 
 def t300324_x5():
     """State 0,1,3"""
@@ -95,7 +99,11 @@ def t300324_x5():
         """State 5"""
         pass
     """State 8"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 2"""
+    Goto('L0')
 
 def t300324_x6():
     """State 0,2,3"""
@@ -112,7 +120,11 @@ def t300324_x6():
         """State 5"""
         pass
     """State 8"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 1"""
+    Goto('L0')
 
 def t300324_x7():
     """State 0"""
@@ -123,6 +135,9 @@ def t300324_x7():
         """State 2"""
         call = t300324_x10()
         assert not GetEventStatus(13000830) and GetEventStatus(13005830) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t300324_x8():
     """State 0,1"""
@@ -137,9 +152,17 @@ def t300324_x9():
     """State 1"""
     # talk:34001000:" "
     t300324_x3(text1=34001000, flag1=0, mode1=1)
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t300324_x10():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t300324_x11():
     """State 0,2,3"""
@@ -156,7 +179,11 @@ def t300324_x11():
         """State 5"""
         pass
     """State 8"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 1"""
+    Goto('L0')
 
 def t300324_x12():
     """State 0"""
@@ -184,4 +211,8 @@ def t300324_x12():
             Goto('L0')
     """State 1"""
     t300324_x5()
+    Quit()
+    """Unused"""
+    """State 5"""
+    return 0
 

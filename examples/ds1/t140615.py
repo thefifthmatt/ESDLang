@@ -6,9 +6,11 @@ def t140615_1():
         Label('L0')
         DebugEvent('待機')
         SetUpdateDistance(25)
+        # accessory:137:Old Witch's Ring
         if (CheckSelfDeath() == 1 and not GetEventStatus(1272) and IsEquipmentIDEquipped(2, 137) == 1
             and GetDistanceToPlayer() <= 8):
             break
+        # accessory:137:Old Witch's Ring
         elif (IsPlayerTalkingToMe() == 1 and GetRelativeAngleBetweenPlayerAndSelf() <= 45 and GetDistanceToPlayer()
               <= 5 and GetOneLineHelpStatus() == 1 and not IsEquipmentIDEquipped(2, 137)):
             """State 213"""
@@ -23,6 +25,7 @@ def t140615_1():
                 ForceEndTalk(3)
                 def ExitPause():
                     RemoveMyAggro()
+                # accessory:137:Old Witch's Ring
                 if CheckSelfDeath() == 1 and IsEquipmentIDEquipped(2, 137) == 1 and GetDistanceToPlayer() <= 8:
                     """State 73"""
                     Label('L2')
@@ -43,6 +46,7 @@ def t140615_1():
                     ClearTalkDisabledState()
                     RemoveMyAggro()
                     continue
+                # accessory:137:Old Witch's Ring
                 elif (not GetEventStatus(71400010) and IsPlayerAttacking() == 1 and GetDistanceToPlayer()
                       <= 8 and GetEventStatus(71400009) == 1 and IsEquipmentIDEquipped(2, 137) == 1):
                     """State 57"""
@@ -56,6 +60,7 @@ def t140615_1():
                         ClearTalkProgressData()
                         def ExitPause():
                             RemoveMyAggro()
+                        # accessory:137:Old Witch's Ring
                         if (CheckSelfDeath() == 1 and IsEquipmentIDEquipped(2, 137) == 1 and GetDistanceToPlayer()
                             <= 8):
                             break
@@ -69,6 +74,7 @@ def t140615_1():
                           == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer()
                           > 8):
                         pass
+                # accessory:137:Old Witch's Ring
                 elif (not GetEventStatus(71400009) and IsPlayerAttacking() == 1 and GetDistanceToPlayer()
                       <= 8 and GetEventStatus(71400008) == 1 and IsEquipmentIDEquipped(2, 137) == 1):
                     """State 55"""
@@ -86,6 +92,7 @@ def t140615_1():
                           == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer()
                           > 8):
                         pass
+                # accessory:137:Old Witch's Ring
                 elif (not GetEventStatus(71400008) and IsPlayerAttacking() == 1 and GetDistanceToPlayer()
                       <= 8 and IsEquipmentIDEquipped(2, 137) == 1):
                     """State 20"""
@@ -133,9 +140,11 @@ def t140615_1():
                             ForceEndTalk(0)
                             ClearTalkProgressData()
                             CloseShopMessage()
+                            # accessory:137:Old Witch's Ring
                             if (CheckSelfDeath() == 1 and IsEquipmentIDEquipped(2, 137) == 1 and GetDistanceToPlayer()
                                 <= 8):
                                 Goto('L2')
+                            # accessory:137:Old Witch's Ring
                             elif (IsPlayerMovingACertainDistance(1) == 1 and IsEquipmentIDEquipped(2,
                                   137) == 1):
                                 """State 15"""
@@ -156,6 +165,7 @@ def t140615_1():
                             break
                         elif GetTalkListEntryResult() == 7:
                             """State 40"""
+                            # accessory:137:Old Witch's Ring
                             if not IsEquipmentIDEquipped(2, 137):
                                 """State 214"""
                                 # talk:25001900:"...?"
@@ -172,7 +182,7 @@ def t140615_1():
                                 elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                       or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                       > 120 or GetDistanceToPlayer() > 8):
-                                    Goto('L27')
+                                    Goto('L28')
                             elif not GetEventStatus(11406101) and GetEventStatus(71400004) == 1:
                                 """State 52"""
                                 # talk:25001600:"Quelaag?"
@@ -187,7 +197,7 @@ def t140615_1():
                                 elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                       or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                       > 120 or GetDistanceToPlayer() > 8):
-                                    Goto('L27')
+                                    Goto('L28')
                             elif not GetEventStatus(11406101) and GetEventStatus(71400003) == 1:
                                 """State 50"""
                                 # talk:25001400:"Quelaag, my dear sister..."
@@ -202,7 +212,7 @@ def t140615_1():
                                 elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                       or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                       > 120 or GetDistanceToPlayer() > 8):
-                                    Goto('L27')
+                                    Goto('L28')
                             elif not GetEventStatus(11406101) and not GetEventStatus(71400003):
                                 """State 22"""
                                 # talk:25001300:"Quelaag, my dear sister..."
@@ -217,7 +227,7 @@ def t140615_1():
                                 elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                       or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                       > 120 or GetDistanceToPlayer() > 8):
-                                    Goto('L27')
+                                    Goto('L28')
                             elif GetEventStatus(11406101) == 1:
                                 """State 54"""
                                 # talk:25001500:"I'll be fine, I have you, dear sister."
@@ -229,7 +239,7 @@ def t140615_1():
                                 elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                       or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                       > 120 or GetDistanceToPlayer() > 8):
-                                    Goto('L27')
+                                    Goto('L28')
                         elif GetTalkListEntryResult() == 8:
                             break
                         elif GetTalkListEntryResult() == 3:
@@ -246,6 +256,7 @@ def t140615_1():
                                     ForceCloseGenericDialog()
                                     ForceEndTalk(0)
                                     ClearTalkProgressData()
+                                    # accessory:137:Old Witch's Ring
                                     if (CheckSelfDeath() == 1 and IsEquipmentIDEquipped(2, 137) == 1
                                         and GetDistanceToPlayer() <= 8):
                                         Goto('L2')
@@ -265,6 +276,7 @@ def t140615_1():
                                     pass
                                 elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
                                     pass
+                            # accessory:137:Old Witch's Ring
                             elif IsEquipmentIDEquipped(2, 137) == 1:
                                 """State 5"""
                                 # talk:25000700:"Enter a Covenant? Again?"
@@ -289,6 +301,7 @@ def t140615_1():
                                         ForceCloseGenericDialog()
                                         ForceEndTalk(0)
                                         ClearTalkProgressData()
+                                        # accessory:137:Old Witch's Ring
                                         if IsEquipmentIDEquipped(2, 137) == 1:
                                             Goto('L8')
                                         else:
@@ -345,7 +358,7 @@ def t140615_1():
                                 elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                       or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                       > 120 or GetDistanceToPlayer() > 8):
-                                    Goto('L27')
+                                    Goto('L28')
                             else:
                                 """State 215"""
                                 # talk:25001900:"...?"
@@ -358,7 +371,7 @@ def t140615_1():
                                 elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                       or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                       > 120 or GetDistanceToPlayer() > 8):
-                                    Goto('L27')
+                                    Goto('L28')
                             """State 8"""
                             ClearTalkDisabledState()
                             DebugEvent('会話タイマークリア　誓約同じ')
@@ -441,6 +454,7 @@ def t140615_1():
                                             elif not IsMenuOpen(63):
                                                 """State 216"""
                                                 Label('L18')
+                                                # accessory:137:Old Witch's Ring
                                                 if IsEquipmentIDEquipped(2, 137) == 1:
                                                     """State 70"""
                                                     DebugEvent('人間性を捧げた会話')
@@ -453,7 +467,7 @@ def t140615_1():
                                                           or IsCharacterDisabled() or IsClientPlayer()
                                                           == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                                           > 120 or GetDistanceToPlayer() > 8):
-                                                        Goto('L27')
+                                                        Goto('L28')
                                                     elif HasTalkEnded() == 1:
                                                         pass
                                                 else:
@@ -474,6 +488,7 @@ def t140615_1():
                                                 elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
                                                     """State 210"""
                                                     Label('L19')
+                                                    # accessory:137:Old Witch's Ring
                                                     if (DoesSelfHaveSpEffect(23, 100) == 1 and not GetEventStatus(71400011)
                                                         and IsEquipmentIDEquipped(2, 137) == 1 and not
                                                         GetEventStatus(849)):
@@ -493,13 +508,14 @@ def t140615_1():
                                                               or IsCharacterDisabled() or IsClientPlayer()
                                                               == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                                               > 120 or GetDistanceToPlayer() > 8):
-                                                            Goto('L27')
+                                                            Goto('L28')
                                                     else:
                                                         Goto('L17')
                                                 elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
                                                     Goto('L19')
                                         elif DoesSelfHaveSpEffect(23, 80) == 1 and not GetEventStatus(849):
                                             Goto('L18')
+                                        # accessory:137:Old Witch's Ring
                                         elif (DoesSelfHaveSpEffect(23, 100) == 1 and not GetEventStatus(71400011)
                                               and IsEquipmentIDEquipped(2, 137) == 1 and not GetEventStatus(849)):
                                             Goto('L20')
@@ -1295,15 +1311,18 @@ def t140615_1():
                             ForceCloseGenericDialog()
                             ForceEndTalk(0)
                             ClearTalkProgressData()
+                            # accessory:137:Old Witch's Ring
                             if (CheckSelfDeath() == 1 and IsEquipmentIDEquipped(2, 137) == 1 and GetDistanceToPlayer()
                                 <= 8):
                                 Goto('L2')
                             else:
                                 Continue('mainloop')
                         """State 14"""
+                        Label('L27')
                         ForceEndTalk(0)
                         Continue('mainloop')
                     """State 34"""
+                    # accessory:137:Old Witch's Ring
                     if IsEquipmentIDEquipped(2, 137) == 1 and ComparePlayerStatus(11, 0, 9) == 1:
                         """State 11"""
                         DebugEvent('買って立ち去る')
@@ -1318,6 +1337,7 @@ def t140615_1():
                               IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or
                               GetDistanceToPlayer() > 8):
                             pass
+                    # accessory:137:Old Witch's Ring
                     elif IsEquipmentIDEquipped(2, 137) == 1:
                         """State 12"""
                         DebugEvent('買わず立ち去る')
@@ -1435,7 +1455,7 @@ def t140615_1():
             DisplayOneLineHelp(-1)
             continue
         """State 30"""
-        Label('L27')
+        Label('L28')
         ClearTalkProgressData()
         """State 31"""
         ForceEndTalk(0)
@@ -1447,5 +1467,72 @@ def t140615_1():
     if HasTalkEnded() == 1:
         Goto('L0')
     elif GetDistanceToPlayer() >= 8:
+        Goto('L28')
+    """Unused"""
+    """State 28"""
+    CloseMenu()
+    # accessory:137:Old Witch's Ring
+    if CheckSelfDeath() == 1 and IsEquipmentIDEquipped(2, 137) == 1 and GetDistanceToPlayer() <= 8:
+        Goto('L2')
+    # accessory:137:Old Witch's Ring
+    elif IsPlayerMovingACertainDistance(1) == 1 and IsEquipmentIDEquipped(2, 137) == 1:
+        Goto('L8')
+    elif not IsPlayerMovingACertainDistance(1):
         Goto('L27')
+    else:
+        Goto('L0')
+    """State 45"""
+    TalkToPlayer(-1, -1, -1)
+    DebugEvent('誓約したあと')
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 8):
+        Goto('L28')
+    """State 46"""
+    TalkToPlayer(-1, -1, -1)
+    DebugEvent('誓約しなかったあと')
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 8):
+        Goto('L28')
+    """State 64"""
+    Label('L29')
+    # action:10010795:"Cannot offer more. Well done."
+    OpenGenericDialog(7, 10010795, 1, 0, 2)
+    DebugEvent('これ以上捧げられない')
+    DisplayOneLineHelp(-1)
+    if CheckSelfDeath() == 1:
+        Goto('L10')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 180 or GetDistanceToPlayer() > 8 or IsAttackedBySomeone()
+          == 1):
+        Goto('L30')
+    elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
+        pass
+    elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
+        pass
+    """State 68"""
+    ClearTalkDisabledState()
+    DebugEvent('会話タイマークリア')
+    ClearTalkActionState()
+    ForceCloseGenericDialog()
+    Goto('L9')
+    """State 69"""
+    Label('L30')
+    ForceCloseGenericDialog()
+    ForceEndTalk(0)
+    ClearTalkProgressData()
+    Goto('L0')
+    """State 72"""
+    DisplayOneLineHelp(-1)
+    Quit()
+    """State 77"""
+    SetEventState(11400597, 1)
+    assert GetDistanceToPlayer() >= 12
+    Goto('L0')
+    """State 206"""
+    assert ComparePlayerStatus(23, 0, 100) == 1
+    Goto('L29')
 

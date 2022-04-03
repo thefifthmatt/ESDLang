@@ -10,7 +10,7 @@ def t510740_1():
         call = t510740_x13()
         assert not IsClientPlayer()
 
-def t510740_x0(z4=6000, flag4=1835, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
+def t510740_x0(actionbutton1=6000, flag4=1835, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t510740_x0(z4=6000, flag4=1835, flag5=6000, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag4) and not GetEventStatus(flag5) and not GetEventStatus(flag6) and
               not GetEventStatus(flag7) and not GetEventStatus(flag8)):
             pass
-        elif CheckActionButtonArea(z4):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -353,7 +353,12 @@ def t510740_x10():
         """State 2"""
         pass
     """State 7"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 6"""
+    assert t510740_x1()
+    Goto('L0')
 
 def t510740_x11():
     """State 0,1"""
@@ -376,6 +381,9 @@ def t510740_x12():
         """State 2"""
         call = t510740_x15()
         assert GetEventStatus(1820) == 1 or GetEventStatus(1822) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t510740_x13():
     """State 0,1"""
@@ -389,6 +397,10 @@ def t510740_x14():
     assert CheckSelfDeath() == 1
     """State 1"""
     t510740_x9()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t510740_x15():
     """State 0,1"""
@@ -425,7 +437,7 @@ def t510740_x17(z1=-1):
     """State 0"""
     while True:
         """State 5"""
-        call = t510740_x0(z4=6000, flag4=1835, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
+        call = t510740_x0(actionbutton1=6000, flag4=1835, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""
             call = t510740_x7()
@@ -456,6 +468,10 @@ def t510740_x17(z1=-1):
             break
     """State 2"""
     t510740_x10()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 
 def t510740_x18():
     """State 0,1"""

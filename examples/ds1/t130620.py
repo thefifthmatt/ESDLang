@@ -168,6 +168,7 @@ def t130620_1():
                             elif not IsMenuOpen(12):
                                 continue
                         elif GetTalkListEntryResult() == 2:
+                            """Pass"""
                             DebugEvent('強化ショップが呼ばれる')
                             """State 41"""
                             OpenEnhanceShop(0)
@@ -593,5 +594,15 @@ def t130620_1():
     if HasTalkEnded() == 1:
         Goto('L0')
     elif GetDistanceToPlayer() >= 5:
+        Goto('L16')
+    """Unused"""
+    """State 35"""
+    # talk:30000000:"...Be gone with you!"
+    TalkToPlayer(30000000, -1, -1)
+    DisplayOneLineHelp(-1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
         Goto('L16')
 

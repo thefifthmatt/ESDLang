@@ -403,4 +403,32 @@ def t170643_1():
         Goto('L0')
     elif GetDistanceToPlayer() >= 5:
         Goto('L9')
+    """Unused"""
+    """State 1"""
+    # talk:13021400:"The tomes stored in these Archives are truly magnificent."
+    TalkToPlayer(13021400, -1, -1)
+    DebugEvent('誓約結ぶ前会話')
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L9')
+    """State 33"""
+    # talk:13021600:"I fail to see your design,"
+    TalkToPlayer(13021600, -1, -1)
+    DebugEvent('誓約したあと')
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L9')
+    """State 34"""
+    # talk:13021500:"...Who are you..."
+    TalkToPlayer(13021500, -1, -1)
+    DebugEvent('誓約しなかったあと')
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L9')
 

@@ -10,7 +10,7 @@ def t400172_1():
         call = t400172_x4()
         assert not IsClientPlayer()
 
-def t400172_x0(z3=6170, flag2=6001, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
+def t400172_x0(actionbutton1=6170, flag2=6001, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t400172_x0(z3=6170, flag2=6001, flag3=6000, flag4=6000, flag5=6000, flag6=60
         elif (not GetEventStatus(flag2) and not GetEventStatus(flag3) and not GetEventStatus(flag4) and
               not GetEventStatus(flag5) and not GetEventStatus(flag6)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -56,15 +56,15 @@ def t400172_x1():
     """State 8"""
     return 0
 
-def t400172_x2(z1=30, z2=9031, flag1=6080):
+def t400172_x2(gesture1=30, z1=9031, flag1=6080):
     """State 0,1"""
     if GetEventStatus(flag1) == 1:
         """State 2"""
         pass
     else:
         """State 3,4"""
-        AcquireGesture(z1)
-        OpenItemAcquisitionMenu(3, z2, 1)
+        AcquireGesture(gesture1)
+        OpenItemAcquisitionMenu(3, z1, 1)
         SetEventState(flag1, 1)
         assert not IsMenuOpen(63) and GetCurrentStateElapsedFrames() > 1
     """State 5"""
@@ -79,6 +79,9 @@ def t400172_x3():
         """State 2"""
         call = t400172_x6()
         assert not GetEventStatus(1100) and not GetEventStatus(1102) and not GetEventStatus(1101)
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400172_x4():
     """State 0,1"""
@@ -88,10 +91,18 @@ def t400172_x4():
 
 def t400172_x5():
     """State 0,1"""
-    assert t400172_x0(z3=6170, flag2=6001, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
+    assert t400172_x0(actionbutton1=6170, flag2=6001, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
     """State 2"""
-    t400172_x2(z1=30, z2=9031, flag1=6080)
+    t400172_x2(gesture1=30, z1=9031, flag1=6080)
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400172_x6():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 

@@ -10,7 +10,7 @@ def t310310_1():
         call = t310310_x12()
         assert not IsClientPlayer()
 
-def t310310_x0(z2=6000, flag8=1395, flag9=6000, flag10=6000, flag11=6000, flag12=6000):
+def t310310_x0(actionbutton1=6000, flag8=1395, flag9=6000, flag10=6000, flag11=6000, flag12=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t310310_x0(z2=6000, flag8=1395, flag9=6000, flag10=6000, flag11=6000, flag12
         elif (not GetEventStatus(flag8) and not GetEventStatus(flag9) and not GetEventStatus(flag10)
               and not GetEventStatus(flag11) and not GetEventStatus(flag12)):
             pass
-        elif CheckActionButtonArea(z2):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -239,7 +239,11 @@ def t310310_x10():
     """State 0,1,3,4"""
     assert t310310_x1()
     """State 5"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 2"""
+    Goto('L0')
 
 def t310310_x11():
     """State 0"""
@@ -250,6 +254,9 @@ def t310310_x11():
         """State 2"""
         call = t310310_x14()
         assert GetEventStatus(1380) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t310310_x12():
     """State 0,1"""
@@ -263,9 +270,17 @@ def t310310_x13():
     assert CheckSelfDeath() == 1
     """State 1"""
     t310310_x8()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t310310_x14():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t310310_x15(text2=31000000, text3=31000100, text4=31000200, flag3=73100350, flag4=73100351):
     """State 0,2"""
@@ -322,7 +337,7 @@ def t310310_x20():
     """State 0"""
     while True:
         """State 5"""
-        call = t310310_x0(z2=6000, flag8=1395, flag9=6000, flag10=6000, flag11=6000, flag12=6000)
+        call = t310310_x0(actionbutton1=6000, flag8=1395, flag9=6000, flag10=6000, flag11=6000, flag12=6000)
         if call.Done():
             """State 3"""
             call = t310310_x6()
@@ -353,4 +368,8 @@ def t310310_x20():
             break
     """State 2"""
     t310310_x9()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

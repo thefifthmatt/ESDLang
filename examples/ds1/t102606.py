@@ -121,6 +121,7 @@ def t102606_1():
                                 Goto('L2')
                             elif IsPlayerMovingACertainDistance(1) == 1:
                                 """State 11"""
+                                Label('L8')
                                 if GetDistanceToPlayer() >= 12:
                                     pass
                                 else:
@@ -129,18 +130,18 @@ def t102606_1():
                                     SetEventState(71020027, 0)
                                     Continue('mainloop')
                                 """State 10"""
-                                Label('L8')
+                                Label('L9')
                                 ForceEndTalk(0)
                                 Continue('mainloop')
                             elif not IsPlayerMovingACertainDistance(1):
-                                Goto('L8')
+                                Goto('L9')
                         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or
                               IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or
                               GetDistanceToPlayer() > 3):
                             Goto('L7')
                         elif not GetTalkListEntryResult():
                             """State 30"""
-                            Label('L9')
+                            Label('L10')
                             """State 189"""
                             ClearTalkDisabledState()
                             DebugEvent('会話タイマークリア　誓約同じ')
@@ -153,7 +154,7 @@ def t102606_1():
                                 Goto('L1')
                             elif HasTalkEnded() == 1:
                                 """State 19"""
-                                Label('L10')
+                                Label('L11')
                                 if True:
                                     pass
                                 elif GetDistanceToPlayer() >= 3:
@@ -161,9 +162,9 @@ def t102606_1():
                             elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                   or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                   > 120 or GetDistanceToPlayer() > 5):
-                                Goto('L22')
+                                Goto('L23')
                         elif GetTalkListEntryResult() == 4:
-                            Goto('L9')
+                            Goto('L10')
                         elif GetTalkListEntryResult() == 1:
                             """State 35"""
                             # goods:215:Estus Flask+7, goods:214:Estus Flask+7
@@ -186,12 +187,12 @@ def t102606_1():
                                     Continue('mainloop')
                                 elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
                                     """State 180"""
-                                    Label('L11')
+                                    Label('L12')
                                     ClearTalkDisabledState()
                                     DebugEvent('会話タイマークリア　誓約同じ')
-                                    Goto('L10')
-                                elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
                                     Goto('L11')
+                                elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
+                                    Goto('L12')
                             # goods:390:Fire Keeper Soul, goods:391:Fire Keeper Soul, goods:392:Fire Keeper Soul, goods:393:Fire Keeper Soul, goods:394:Fire Keeper Soul, goods:395:Fire Keeper Soul, goods:396:Fire Keeper Soul
                             elif (not IsEquipmentIDObtained(3, 390) and not IsEquipmentIDObtained(3,
                                   391) and not IsEquipmentIDObtained(3, 392) and not IsEquipmentIDObtained(3,
@@ -215,12 +216,12 @@ def t102606_1():
                                     Continue('mainloop')
                                 elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
                                     """State 7"""
-                                    Label('L12')
+                                    Label('L13')
                                     ClearTalkDisabledState()
                                     DebugEvent('会話タイマークリア　誓約同じ')
-                                    Goto('L10')
+                                    Goto('L11')
                                 elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-                                    Goto('L12')
+                                    Goto('L13')
                             # goods:390:Fire Keeper Soul, goods:391:Fire Keeper Soul, goods:392:Fire Keeper Soul, goods:393:Fire Keeper Soul, goods:394:Fire Keeper Soul, goods:395:Fire Keeper Soul, goods:396:Fire Keeper Soul
                             elif (IsEquipmentIDObtained(3, 390) == 1 or IsEquipmentIDObtained(3, 391)
                                   == 1 or IsEquipmentIDObtained(3, 392) == 1 or IsEquipmentIDObtained(3,
@@ -241,14 +242,14 @@ def t102606_1():
                                     Continue('mainloop')
                                 elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
                                     """State 4"""
-                                    Label('L13')
+                                    Label('L14')
                                     DebugEvent('強化しない')
                                     """State 1"""
                                     ClearTalkDisabledState()
                                     DebugEvent('会話タイマークリア　選択肢')
-                                    Goto('L10')
+                                    Goto('L11')
                                 elif GetGenericDialogButtonResult() == 2 and not IsGenericDialogOpen():
-                                    Goto('L13')
+                                    Goto('L14')
                                 # goods:390:Fire Keeper Soul
                                 elif (GetGenericDialogButtonResult() == 1 and IsEquipmentIDObtained(3,
                                       390) == 1 and not IsGenericDialogOpen()):
@@ -340,7 +341,7 @@ def t102606_1():
                                         # goods:213:Estus Flask+6, goods:215:Estus Flask+7
                                         ReplaceTool(213, 215, 1)
                                     """State 82,182"""
-                                    Label('L14')
+                                    Label('L15')
                                     # action:10010891:"Estus Flask reinforced"
                                     OpenGenericDialog(7, 10010891, 1, 0, 2)
                                     DebugEvent('エスト瓶強化しました')
@@ -358,12 +359,12 @@ def t102606_1():
                                         Continue('mainloop')
                                     elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
                                         """State 183"""
-                                        Label('L15')
+                                        Label('L16')
                                         ClearTalkDisabledState()
                                         DebugEvent('会話タイマークリア　誓約同じ')
-                                        Goto('L10')
+                                        Goto('L11')
                                     elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-                                        Goto('L15')
+                                        Goto('L16')
                                 # goods:391:Fire Keeper Soul
                                 elif (GetGenericDialogButtonResult() == 1 and IsEquipmentIDObtained(3,
                                       391) == 1 and not IsGenericDialogOpen()):
@@ -455,7 +456,7 @@ def t102606_1():
                                         # goods:213:Estus Flask+6, goods:215:Estus Flask+7
                                         ReplaceTool(213, 215, 1)
                                     """State 98"""
-                                    Goto('L14')
+                                    Goto('L15')
                                 # goods:392:Fire Keeper Soul
                                 elif (GetGenericDialogButtonResult() == 1 and IsEquipmentIDObtained(3,
                                       392) == 1 and not IsGenericDialogOpen()):
@@ -547,7 +548,7 @@ def t102606_1():
                                         # goods:213:Estus Flask+6, goods:215:Estus Flask+7
                                         ReplaceTool(213, 215, 1)
                                     """State 114"""
-                                    Goto('L14')
+                                    Goto('L15')
                                 # goods:393:Fire Keeper Soul
                                 elif (GetGenericDialogButtonResult() == 1 and IsEquipmentIDObtained(3,
                                       393) == 1 and not IsGenericDialogOpen()):
@@ -639,7 +640,7 @@ def t102606_1():
                                         # goods:213:Estus Flask+6, goods:215:Estus Flask+7
                                         ReplaceTool(213, 215, 1)
                                     """State 130"""
-                                    Goto('L14')
+                                    Goto('L15')
                                 # goods:394:Fire Keeper Soul
                                 elif (GetGenericDialogButtonResult() == 1 and IsEquipmentIDObtained(3,
                                       394) == 1 and not IsGenericDialogOpen()):
@@ -731,7 +732,7 @@ def t102606_1():
                                         # goods:213:Estus Flask+6, goods:215:Estus Flask+7
                                         ReplaceTool(213, 215, 1)
                                     """State 146"""
-                                    Goto('L14')
+                                    Goto('L15')
                                 # goods:395:Fire Keeper Soul
                                 elif (GetGenericDialogButtonResult() == 1 and IsEquipmentIDObtained(3,
                                       395) == 1 and not IsGenericDialogOpen()):
@@ -823,7 +824,7 @@ def t102606_1():
                                         # goods:213:Estus Flask+6, goods:215:Estus Flask+7
                                         ReplaceTool(213, 215, 1)
                                     """State 162"""
-                                    Goto('L14')
+                                    Goto('L15')
                                 # goods:396:Fire Keeper Soul
                                 elif (GetGenericDialogButtonResult() == 1 and IsEquipmentIDObtained(3,
                                       396) == 1 and not IsGenericDialogOpen()):
@@ -915,7 +916,7 @@ def t102606_1():
                                         # goods:213:Estus Flask+6, goods:215:Estus Flask+7
                                         ReplaceTool(213, 215, 1)
                                     """State 178"""
-                                    Goto('L14')
+                                    Goto('L15')
                             """State 40"""
                             ForceCloseGenericDialog()
                             ForceEndTalk(0)
@@ -927,7 +928,7 @@ def t102606_1():
                         elif GetTalkListEntryResult() == 2:
                             break
                     """State 185"""
-                    Label('L16')
+                    Label('L17')
                     # action:10010191:"No response. She cannot speak."
                     OpenGenericDialog(7, 10010191, 1, 0, 2)
                     DebugEvent('口がきけないようだ')
@@ -935,7 +936,7 @@ def t102606_1():
                     DisplayOneLineHelp(-1)
                     if CheckSelfDeath() == 1:
                         """State 66"""
-                        Label('L17')
+                        Label('L18')
                         ForceCloseGenericDialog()
                         ForceEndTalk(0)
                         ClearTalkProgressData()
@@ -953,12 +954,12 @@ def t102606_1():
                         continue
                     elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
                         """State 186"""
-                        Label('L18')
+                        Label('L19')
                         ClearTalkDisabledState()
                         DebugEvent('会話タイマークリア　誓約同じ')
                         Goto('L6')
                     elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-                        Goto('L18')
+                        Goto('L19')
                 elif GetDistanceToPlayer() >= 3:
                     continue
             elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
@@ -987,7 +988,7 @@ def t102606_1():
         elif (not GetEventStatus(71020020) and IsPlayerTalkingToMe() == 1 and GetRelativeAngleBetweenPlayerAndSelf()
               <= 45 and GetDistanceToPlayer() <= 2 and GetOneLineHelpStatus() == 1 and GetEventStatus(1140)
               == 1):
-            Goto('L16')
+            Goto('L17')
         elif (not GetOneLineHelpStatus() and HasDisableTalkPeriodElapsed() == 1 and not IsTalkingToSomeoneElse()
               and not CheckSelfDeath() and not IsCharacterDisabled() and not IsClientPlayer() and GetRelativeAngleBetweenPlayerAndSelf()
               <= 45 and GetDistanceToPlayer() <= 2 and not GetEventStatus(1141) and not GetEventStatus(1143)
@@ -1030,7 +1031,7 @@ def t102606_1():
                 OpenGenericDialog(7, 10010190, 1, 0, 2)
                 DebugEvent('人間性持ってない')
                 if CheckSelfDeath() == 1:
-                    Goto('L17')
+                    Goto('L18')
                 elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
                       == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() >
                       5 or IsAttackedBySomeone() == 1):
@@ -1041,38 +1042,38 @@ def t102606_1():
                     continue
                 elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
                     """State 64"""
-                    Label('L19')
+                    Label('L20')
                     ClearTalkDisabledState()
                     DebugEvent('会話タイマークリア　誓約同じ')
                     continue
                 elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-                    Goto('L19')
+                    Goto('L20')
             # goods:390:Fire Keeper Soul
             elif IsEquipmentIDObtained(3, 390) == 1:
                 """State 62"""
                 # action:10020100:"Return <?gdsparam@390?>?"
                 OpenGenericDialog(8, 10020100, 3, 4, 2)
                 if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
-                    Goto('L17')
+                    Goto('L18')
                 elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
                       == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() >
                       5):
                     """State 60"""
-                    Label('L20')
+                    Label('L21')
                     ForceCloseGenericDialog()
                     ForceEndTalk(0)
                     ClearTalkProgressData()
                     continue
                 elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
                     """State 59"""
-                    Label('L21')
+                    Label('L22')
                     ClearTalkDisabledState()
                     DebugEvent('会話タイマークリア　選択肢')
                     continue
                 elif GetGenericDialogButtonResult() == 2 and not IsGenericDialogOpen():
                     """State 61"""
                     DebugEvent('人間性を戻さない')
-                    Goto('L21')
+                    Goto('L22')
                 elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
                     """State 188"""
                     # action:10020101:"Returned <?gdsparam@390?> to its owner"
@@ -1083,20 +1084,20 @@ def t102606_1():
                     # goods:390:Fire Keeper Soul
                     PlayerEquipmentQuantityChange(3, 390, -1)
                     if CheckSelfDeath() == 1:
-                        Goto('L17')
+                        Goto('L18')
                     elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
                           == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer()
                           > 5 or IsAttackedBySomeone() == 1):
-                        Goto('L20')
+                        Goto('L21')
                     elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
-                        Goto('L21')
+                        Goto('L22')
                     elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-                        Goto('L21')
+                        Goto('L22')
         elif (IsPlayerTalkingToMe() == 1 and GetRelativeAngleBetweenPlayerAndSelf() <= 45 and GetDistanceToPlayer()
               <= 2 and GetOneLineHelpStatus() == 1):
             Goto('L6')
         """State 26"""
-        Label('L22')
+        Label('L23')
         ClearTalkProgressData()
         """State 27"""
         ForceEndTalk(0)
@@ -1113,5 +1114,105 @@ def t102606_1():
         Goto('L6')
     elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
           1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
-        Goto('L22')
+        Goto('L23')
+    """Unused"""
+    """State 24"""
+    CloseMenu()
+    if CheckSelfDeath() == 1 and GetDistanceToPlayer() <= 5:
+        Goto('L2')
+    elif IsPlayerMovingACertainDistance(1) == 1:
+        Goto('L8')
+    elif not IsPlayerMovingACertainDistance(1):
+        Goto('L9')
+    """State 31"""
+    # talk:16000000:"..."
+    TalkToPlayer(16000000, -1, -1)
+    DisplayOneLineHelp(-1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L23')
+    """State 45"""
+    # talk:16000000:"..."
+    TalkToPlayer(16000000, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L23')
+    """State 46"""
+    # talk:16000010:"..."
+    TalkToPlayer(16000010, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L23')
+    """State 47"""
+    # talk:16000020:"..."
+    TalkToPlayer(16000020, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L23')
+    """State 48"""
+    # talk:16000030:"..."
+    TalkToPlayer(16000030, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L23')
+    """State 49"""
+    # talk:16000040:"..."
+    TalkToPlayer(16000040, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L23')
+    """State 50"""
+    # talk:16000050:"..."
+    TalkToPlayer(16000050, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L23')
+    """State 51"""
+    # talk:16000060:"..."
+    TalkToPlayer(16000060, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L23')
+    """State 52"""
+    # talk:16000070:"..."
+    TalkToPlayer(16000070, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L23')
+    """State 53"""
+    # talk:16000080:"..."
+    TalkToPlayer(16000080, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L23')
+    """State 54"""
+    # talk:16000090:"..."
+    TalkToPlayer(16000090, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L23')
+    """State 55"""
+    Quit()
 

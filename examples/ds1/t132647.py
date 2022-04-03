@@ -281,6 +281,7 @@ def t132647_1():
     CloseShopMessage()
     if IsPlayerMovingACertainDistance(1) == 1:
         """State 6"""
+        Label('L10')
         if GetDistanceToPlayer() >= 15:
             pass
         else:
@@ -289,6 +290,14 @@ def t132647_1():
     elif not IsPlayerMovingACertainDistance(1):
         pass
     """State 5"""
+    Label('L11')
     ForceEndTalk(0)
     Goto('L0')
+    """Unused"""
+    """State 8"""
+    CloseMenu()
+    if IsPlayerMovingACertainDistance(1) == 1:
+        Goto('L10')
+    elif not IsPlayerMovingACertainDistance(1):
+        Goto('L11')
 

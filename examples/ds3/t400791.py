@@ -191,6 +191,10 @@ def t400791_x2():
             return 0
         elif not GetTalkListEntryResult():
             Goto('L0')
+    """Unused"""
+    """State 17"""
+    t400791_x3(z1=111, flag1=123, z2=134, z3=0, z4=0, z5=0)
+    Quit()
 
 def t400791_x3(z1=111, flag1=123, z2=134, z3=0, z4=0, z5=0):
     """State 0,2"""
@@ -201,17 +205,30 @@ def t400791_x3(z1=111, flag1=123, z2=134, z3=0, z4=0, z5=0):
         CloseShopMessage()
         """State 5"""
         SetEventState(72000011, 1)
+        Quit()
     elif not GetEventStatus(flag1):
         """State 1"""
         TalkToPlayer(99004000, -1, -1)
         """State 3"""
         SetEventState(72000010, 1)
+        Quit()
     elif True:
         """State 6"""
         TalkToPlayer(99004000, -1, -1)
         CloseShopMessage()
+        Quit()
     else:
         """State 8"""
         TalkToPlayer(99004000, -1, -1)
         CloseShopMessage()
+        Quit()
+    """Unused"""
+    """State 7"""
+    SetEventState(72000012, 1)
+    Quit()
+    """State 9"""
+    SetEventState(72000013, 1)
+    Quit()
+    """State 10"""
+    return 0
 

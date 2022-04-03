@@ -2,6 +2,7 @@
 def t400000_1():
     """State 0,1"""
     t400000_x7()
+    Quit()
 
 def t400000_x0(action3=_):
     """State 0,1"""
@@ -40,21 +41,21 @@ def t400000_x1():
     """State 8"""
     return 0
 
-def t400000_x2(z5=17, z6=9019, flag3=6067):
+def t400000_x2(gesture1=17, z4=9019, flag3=6067):
     """State 0,1"""
     if GetEventStatus(flag3) == 1:
         """State 2"""
         pass
     else:
         """State 3,4"""
-        AcquireGesture(z5)
-        OpenItemAcquisitionMenu(3, z6, 1)
+        AcquireGesture(gesture1)
+        OpenItemAcquisitionMenu(3, z4, 1)
         SetEventState(flag3, 1)
         assert not IsMenuOpen(63) and GetCurrentStateElapsedFrames() > 1
     """State 5"""
     return 0
 
-def t400000_x3(z4=_, flag1=6001, flag2=_):
+def t400000_x3(actionbutton1=_, flag1=6001, flag2=_):
     """State 0"""
     while True:
         """State 1"""
@@ -73,7 +74,7 @@ def t400000_x3(z4=_, flag1=6001, flag2=_):
         """State 3"""
         if CompareBonfireState(0):
             pass
-        elif CheckActionButtonArea(z4):
+        elif CheckActionButtonArea(actionbutton1):
             break
         elif (not (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
               and not IsPlayerDead() and not IsCharacterDisabled())):
@@ -150,6 +151,13 @@ def t400000_x6(goods1=150, goods6=_):
 def t400000_x7():
     """State 0,1"""
     t400000_x8()
+    Quit()
+    """Unused"""
+    """State 2"""
+    t400000_x11()
+    Quit()
+    """State 3"""
+    return 0
 
 def t400000_x8():
     """State 0,1"""
@@ -158,7 +166,7 @@ def t400000_x8():
         Label('L0')
     else:
         """State 3,20"""
-        call = t400000_x3(z4=6100, flag1=6001, flag2=74000010)
+        call = t400000_x3(actionbutton1=6100, flag1=6001, flag2=74000010)
         if call.Done():
             """State 7"""
             TurnCharacterToFaceEntity(-1, 10000, -1)
@@ -180,7 +188,7 @@ def t400000_x8():
             SetEventState(13000000, 1)
     while True:
         """State 19"""
-        call = t400000_x3(z4=6102, flag1=6001, flag2=74000010)
+        call = t400000_x3(actionbutton1=6102, flag1=6001, flag2=74000010)
         if call.Done():
             break
         elif GetEventStatus(14000618) == 1 and GetEventStatus(6500) == 1:
@@ -229,6 +237,9 @@ def t400000_x8():
     elif (HasPlayerBeenAttacked() == 1 or GetDistanceToPlayer() > 3 or CompareBonfireState(0) or IsPlayerDead()
           == 1):
         Goto('L1')
+    """Unused"""
+    """State 22"""
+    return 0
 
 def t400000_x9():
     """State 0,4"""
@@ -237,7 +248,7 @@ def t400000_x9():
         pass
     elif call.Done():
         """State 2,5"""
-        call = t400000_x3(z4=6100, flag1=6001, flag2=6000)
+        call = t400000_x3(actionbutton1=6100, flag1=6001, flag2=6000)
         if call.Done():
             """State 3"""
             OfferHumanity()
@@ -245,6 +256,10 @@ def t400000_x9():
         elif CompareBonfireLevel(5, 0) == 1:
             pass
     """State 1"""
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 
 def t400000_x10():
     """State 0,1"""
@@ -261,6 +276,9 @@ def t400000_x11():
         """State 2"""
         call = t400000_x10()
         assert not IsClientPlayer()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400000_x12():
     """State 0,33"""
@@ -289,7 +307,7 @@ def t400000_x12():
         """State 11"""
         assert GetCurrentStateElapsedTime() > 2
         """State 50"""
-        assert t400000_x2(z5=17, z6=9019, flag3=6067)
+        assert t400000_x2(gesture1=17, z4=9019, flag3=6067)
         """State 51"""
         # goods:150:Estus Flask, goods:151:Estus Flask, goods:190:Ashen Estus Flask, goods:191:Ashen Estus Flask, goods:152:Estus Flask+1, goods:153:Estus Flask+1, goods:192:Ashen Estus Flask+1, goods:193:Ashen Estus Flask+1, goods:154:Estus Flask+2, goods:155:Estus Flask+2, goods:194:Ashen Estus Flask+2, goods:195:Ashen Estus Flask+2, goods:156:Estus Flask+3, goods:157:Estus Flask+3, goods:196:Ashen Estus Flask+3, goods:197:Ashen Estus Flask+3, goods:158:Estus Flask+4, goods:159:Estus Flask+4, goods:198:Ashen Estus Flask+4, goods:199:Ashen Estus Flask+4, goods:160:Estus Flask+5, goods:161:Estus Flask+5, goods:200:Ashen Estus Flask+5, goods:201:Ashen Estus Flask+5, goods:162:Estus Flask+6, goods:163:Estus Flask+6, goods:202:Ashen Estus Flask+6, goods:203:Ashen Estus Flask+6, goods:164:Estus Flask+7, goods:165:Estus Flask+7, goods:204:Ashen Estus Flask+7, goods:205:Ashen Estus Flask+7, goods:166:Estus Flask+8, goods:167:Estus Flask+8, goods:206:Ashen Estus Flask+8, goods:207:Ashen Estus Flask+8, goods:168:Estus Flask+9, goods:169:Estus Flask+9, goods:208:Ashen Estus Flask+9, goods:209:Ashen Estus Flask+9, goods:170:Estus Flask+10, goods:171:Estus Flask+10, goods:210:Ashen Estus Flask+10, goods:211:Ashen Estus Flask+10
         assert t400000_x19(goods1=150, z1=10, z2=11)
@@ -380,10 +398,11 @@ def t400000_x12():
                     SetEventState(14005617, 0)
                     """State 17"""
                     assert GetCurrentStateElapsedTime() > 10
-                    Goto('L1')
+                    Goto('L2')
                 elif call.Get() == 1:
                     pass
                 """State 19"""
+                Label('L1')
                 continue
         elif GetTalkListEntryResult() == 99 or not GetTalkListEntryResult():
             """State 6"""
@@ -418,8 +437,19 @@ def t400000_x12():
                     and not CheckSpecificPersonGenericDialogIsOpen(2))
             continue
         """State 58"""
-        Label('L1')
+        Label('L2')
         return 0
+    """Unused"""
+    """State 21"""
+    Label('L3')
+    Quit()
+    """State 47"""
+    # action:99000101:""
+    call = t400000_x0(action3=99000101)
+    if call.Get() == 0:
+        Goto('L3')
+    elif call.Get() == 1:
+        Goto('L1')
 
 def t400000_x13(goods2=2143, val1=11):
     """State 0,6"""
@@ -606,6 +636,9 @@ def t400000_x17(mode1=1, val2=2, val3=3, val4=4, val5=5, val6=6, val7=7, val8=8,
                                                 SetEventState(6030, 1)
     """State 15"""
     return 0
+    """Unused"""
+    """State 12"""
+    Quit()
 
 def t400000_x18(val1=11):
     """State 0,3"""

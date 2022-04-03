@@ -10,7 +10,7 @@ def t511740_1():
         call = t511740_x10()
         assert not IsClientPlayer()
 
-def t511740_x0(z3=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
+def t511740_x0(actionbutton1=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t511740_x0(z3=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=60
         elif (not GetEventStatus(flag3) and not GetEventStatus(flag4) and not GetEventStatus(flag5) and
               not GetEventStatus(flag6) and not GetEventStatus(flag7)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -158,6 +158,13 @@ def t511740_x8():
 def t511740_x9():
     """State 0,1"""
     t511740_x11()
+    Quit()
+    """Unused"""
+    """State 2"""
+    t511740_x12()
+    Quit()
+    """State 3"""
+    return 0
 
 def t511740_x10():
     """State 0,1"""
@@ -171,6 +178,10 @@ def t511740_x11():
     assert CheckSelfDeath() == 1
     """State 1"""
     t511740_x5()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t511740_x12():
     """State 0,1"""
@@ -182,7 +193,7 @@ def t511740_x13(z1=-1):
     """State 0"""
     while True:
         """State 3"""
-        call = t511740_x0(z3=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
+        call = t511740_x0(actionbutton1=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
         if IsPlayerDead() == 1:
             break
         elif not GetEventStatus(75110150) and GetDistanceToPlayer() < 32 and GetEventStatus(15115860) == 1:
@@ -197,6 +208,10 @@ def t511740_x13(z1=-1):
                 break
     """State 1"""
     t511740_x6()
+    Quit()
+    """Unused"""
+    """State 5"""
+    return 0
 
 def t511740_x14():
     """State 0,1"""

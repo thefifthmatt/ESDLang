@@ -10,7 +10,7 @@ def t370401_1():
         call = t370401_x11()
         assert not IsClientPlayer()
 
-def t370401_x0(z2=6000, flag3=1575, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
+def t370401_x0(actionbutton1=6000, flag3=1575, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t370401_x0(z2=6000, flag3=1575, flag4=6000, flag5=6000, flag6=6000, flag7=60
         elif (not GetEventStatus(flag3) and not GetEventStatus(flag4) and not GetEventStatus(flag5) and
               not GetEventStatus(flag6) and not GetEventStatus(flag7)):
             pass
-        elif CheckActionButtonArea(z2):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -179,6 +179,9 @@ def t370401_x10():
         """State 2"""
         call = t370401_x13()
         assert GetEventStatus(1564) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t370401_x11():
     """State 0,1"""
@@ -192,9 +195,17 @@ def t370401_x12():
     assert CheckSelfDeath() == 1
     """State 1"""
     t370401_x7()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t370401_x13():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t370401_x14():
     """State 0,1"""
@@ -220,7 +231,7 @@ def t370401_x15():
     """State 0"""
     while True:
         """State 6"""
-        call = t370401_x0(z2=6000, flag3=1575, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
+        call = t370401_x0(actionbutton1=6000, flag3=1575, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
         if call.Done():
             """State 4"""
             call = t370401_x5()
@@ -254,4 +265,8 @@ def t370401_x15():
             assert not GetEventStatus(73700330)
     """State 3"""
     t370401_x8()
+    Quit()
+    """Unused"""
+    """State 7"""
+    return 0
 

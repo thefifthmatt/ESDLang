@@ -10,7 +10,7 @@ def t500760_1():
         call = t500760_x12()
         assert not IsClientPlayer()
 
-def t500760_x0(z3=6860, flag7=1875, flag8=6000, flag9=6000, flag10=6000, flag11=6000):
+def t500760_x0(actionbutton1=6860, flag7=1875, flag8=6000, flag9=6000, flag10=6000, flag11=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t500760_x0(z3=6860, flag7=1875, flag8=6000, flag9=6000, flag10=6000, flag11=
         elif (not GetEventStatus(flag7) and not GetEventStatus(flag8) and not GetEventStatus(flag9) and
               not GetEventStatus(flag10) and not GetEventStatus(flag11)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -258,6 +258,9 @@ def t500760_x11():
         """State 2"""
         call = t500760_x14()
         assert GetEventStatus(1860) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t500760_x12():
     """State 0,1"""
@@ -273,6 +276,10 @@ def t500760_x13(z1=-1, flag1=75000171, flag2=75000172, flag3=75000173, text1=860
     assert CheckSelfDeath() == 1
     """State 1"""
     t500760_x8()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t500760_x14():
     """State 0,1"""
@@ -320,7 +327,7 @@ def t500760_x17(z1=-1, flag1=75000171, flag2=75000172, flag3=75000173, text1=860
     """State 0"""
     while True:
         """State 5"""
-        call = t500760_x0(z3=6860, flag7=1875, flag8=6000, flag9=6000, flag10=6000, flag11=6000)
+        call = t500760_x0(actionbutton1=6860, flag7=1875, flag8=6000, flag9=6000, flag10=6000, flag11=6000)
         if call.Done():
             """State 3"""
             call = t500760_x6()
@@ -352,6 +359,10 @@ def t500760_x17(z1=-1, flag1=75000171, flag2=75000172, flag3=75000173, text1=860
             break
     """State 2"""
     t500760_x9()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 
 def t500760_x18():
     """State 0,1,2"""
@@ -368,6 +379,7 @@ def t500760_x20():
     """State 0,1"""
     if GetEventStatus(75000154) == 1:
         """State 8"""
+        Label('L0')
         # talk:86000700:"You're not willing to reconsider, are you?"
         assert t500760_x4(text5=86000700, z2=75000155, flag5=0, mode2=1)
     else:
@@ -383,7 +395,18 @@ def t500760_x20():
             """State 3"""
             SetEventState(75000152, 0)
     """State 9"""
+    Label('L1')
     return 0
+    """Unused"""
+    """State 4"""
+    if not GetEventStatus(75000154):
+        pass
+    else:
+        Goto('L0')
+    """State 7"""
+    # talk:86000500:"Why, where did you hear that name, love?"
+    assert t500760_x4(text5=86000500, z2=75000154, flag5=0, mode2=1)
+    Goto('L1')
 
 def t500760_x21():
     """State 0,1"""

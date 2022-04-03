@@ -2,9 +2,10 @@
 def t110410_1():
     """State 0,1"""
     t110410_x8(flag11=6000, flag12=6000, flag13=6000, val1=12, val2=10, val3=12, val4=10, val5=12, flag14=6001,
-               val6=7008000, flag15=6000, flag16=6001, flag17=6000, flag18=6000, mode3=1, val7=1000000,
-               val8=1000000, val9=1000000, mode4=1, mode5=1, mode6=0, val10=1000000, val11=1000000, mode7=0,
+               actionbutton1=7008000, flag15=6000, flag16=6001, flag17=6000, flag18=6000, mode3=1, val6=1000000,
+               val7=1000000, val8=1000000, mode4=1, mode5=1, mode6=0, val9=1000000, val10=1000000, mode7=0,
                flag19=6000, mode8=0)
+    Quit()
 
 def t110410_1000():
     """State 0,2"""
@@ -14,6 +15,7 @@ def t110410_1000():
     """State 1"""
     def WhilePaused():
         c1_119(0)
+    Quit()
 
 def t110410_1101():
     """State 0,2"""
@@ -30,14 +32,16 @@ def t110410_1101():
     """State 1"""
     def WhilePaused():
         c1_119(0)
+    Quit()
 
 def t110410_1103():
     """State 0,2"""
     # talk:41030400:"May the departed...  rest... in peace..."
-    assert t110410_x6(text5=41030400, flag24=1, mode14=1)
+    assert t110410_x6(text5=41030400, flag24=1, mode13=1)
     """State 1"""
     def WhilePaused():
         c1_119(0)
+    Quit()
 
 def t110410_x0(action1=12095010):
     """State 0,1"""
@@ -52,27 +56,28 @@ def t110410_x0(action1=12095010):
         """State 4"""
         return 1
 
-def t110410_x1(val6=7008000, flag16=6001, flag20=6000, flag21=6000, flag22=6000, flag23=6000, mode9=0,
-               flag15=6000, val7=1000000, val8=1000000, val9=1000000, val10=1000000, val11=1000000):
+def t110410_x1(actionbutton1=7008000, flag16=6001, flag20=6000, flag21=6000, flag22=6000, flag23=6000,
+               actionbutton2=0, flag15=6000, val6=1000000, val7=1000000, val8=1000000, val9=1000000,
+               val10=1000000):
     """State 0"""
     while Loop('mainloop'):
         """State 3"""
-        call = t110410_x30(val6=val6, flag16=flag16, flag20=flag20, flag21=flag21, flag22=flag22, flag23=flag23,
-                           mode9=mode9, flag15=flag15)
+        call = t110410_x30(actionbutton1=actionbutton1, flag16=flag16, flag20=flag20, flag21=flag21,
+                           flag22=flag22, flag23=flag23, actionbutton2=actionbutton2, flag15=flag15)
         if call.Done():
             break
-        elif (not f116(-1) == val7 and not f116(-1) == val8 and not f116(-1) == val9 and not DoesSelfHaveSpEffect(4510)
-              and not val7 == -1 and not f116(-1) == val10 and not f116(-1) == val11):
+        elif (not f116(-1) == val6 and not f116(-1) == val7 and not f116(-1) == val8 and not DoesSelfHaveSpEffect(4510)
+              and not val6 == -1 and not f116(-1) == val9 and not f116(-1) == val10):
             pass
         while True:
             """State 1"""
-            assert (f116(-1) == val7 or f116(-1) == val8 or f116(-1) == val9 or (DoesSelfHaveSpEffect(4510)
-                    == 1 and f116(-1) == val10 and f116(-1) == val11))
+            assert (f116(-1) == val6 or f116(-1) == val7 or f116(-1) == val8 or (DoesSelfHaveSpEffect(4510)
+                    == 1 and f116(-1) == val9 and f116(-1) == val10))
             """State 2"""
             if GetCurrentStateElapsedTime() > 0.5:
                 Continue('mainloop')
-            elif (not f116(-1) == val7 and not f116(-1) == val8 and not f116(-1) == val9 and not DoesSelfHaveSpEffect(4510)
-                  and not f116(-1) == val10 and not f116(-1) == val11):
+            elif (not f116(-1) == val6 and not f116(-1) == val7 and not f116(-1) == val8 and not DoesSelfHaveSpEffect(4510)
+                  and not f116(-1) == val9 and not f116(-1) == val10):
                 pass
     """State 4"""
     SetTalkTime(0.1)
@@ -113,7 +118,7 @@ def t110410_x3():
     """State 2"""
     return 0
 
-def t110410_x4(text1=_, flag1=_, flag26=1, mode16=1):
+def t110410_x4(text1=_, flag1=_, flag26=1, mode15=1):
     """State 0,7"""
     assert t110410_x3() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 2"""
@@ -132,7 +137,7 @@ def t110410_x4(text1=_, flag1=_, flag26=1, mode16=1):
             GiveSpEffectToPlayer(30700)
         assert CheckSpecificPersonTalkHasEnded(0) == 1
     """State 4"""
-    if not mode16:
+    if not mode15:
         pass
     else:
         """State 3"""
@@ -140,7 +145,7 @@ def t110410_x4(text1=_, flag1=_, flag26=1, mode16=1):
     """State 8"""
     return 0
 
-def t110410_x5(text15=_, z10=_, flag25=0, mode15=1):
+def t110410_x5(text15=_, z10=_, flag25=0, mode14=1):
     """State 0,7"""
     assert t110410_x3() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 5"""
@@ -157,7 +162,7 @@ def t110410_x5(text15=_, z10=_, flag25=0, mode15=1):
             GiveSpEffectToPlayer(30700)
         assert CheckSpecificPersonTalkHasEnded(0) == 1
     """State 4"""
-    if not mode15:
+    if not mode14:
         pass
     else:
         """State 3"""
@@ -167,7 +172,7 @@ def t110410_x5(text15=_, z10=_, flag25=0, mode15=1):
     """State 8"""
     return 0
 
-def t110410_x6(text5=_, flag24=_, mode14=1):
+def t110410_x6(text5=_, flag24=_, mode13=1):
     """State 0,6"""
     assert t110410_x3() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 4"""
@@ -184,7 +189,7 @@ def t110410_x6(text5=_, flag24=_, mode14=1):
             GiveSpEffectToPlayer(30700)
         assert CheckSpecificPersonTalkHasEnded(0) == 1
     """State 3"""
-    if not mode14:
+    if not mode13:
         pass
     else:
         """State 2"""
@@ -209,16 +214,16 @@ def t110410_x7(lot1=69900):
     return 0
 
 def t110410_x8(flag11=6000, flag12=6000, flag13=6000, val1=12, val2=10, val3=12, val4=10, val5=12, flag14=6001,
-               val6=7008000, flag15=6000, flag16=6001, flag17=6000, flag18=6000, mode3=1, val7=1000000,
-               val8=1000000, val9=1000000, mode4=1, mode5=1, mode6=0, val10=1000000, val11=1000000, mode7=0,
+               actionbutton1=7008000, flag15=6000, flag16=6001, flag17=6000, flag18=6000, mode3=1, val6=1000000,
+               val7=1000000, val8=1000000, mode4=1, mode5=1, mode6=0, val9=1000000, val10=1000000, mode7=0,
                flag19=6000, mode8=0):
     """State 0"""
     while True:
         """State 1"""
         RemoveMyAggro()
-        call = t110410_x9(val1=val1, val2=val2, val3=val3, val4=val4, val5=val5, flag14=flag14, val6=val6,
-                          flag15=flag15, flag16=flag16, flag17=flag17, flag18=flag18, mode3=mode3, val7=val7,
-                          val8=val8, val9=val9, mode4=mode4, mode5=mode5, mode6=mode6, val10=val10, val11=val11,
+        call = t110410_x9(val1=val1, val2=val2, val3=val3, val4=val4, val5=val5, flag14=flag14, actionbutton1=actionbutton1,
+                          flag15=flag15, flag16=flag16, flag17=flag17, flag18=flag18, mode3=mode3, val6=val6,
+                          val7=val7, val8=val8, mode4=mode4, mode5=mode5, mode6=mode6, val9=val9, val10=val10,
                           mode7=mode7, mode8=mode8)
         def WhilePaused():
             c5_116(GetDistanceToPlayer() < 4)
@@ -234,15 +239,18 @@ def t110410_x8(flag11=6000, flag12=6000, flag13=6000, val1=12, val2=10, val3=12,
         """State 2"""
         call = t110410_x10(flag11=flag11, val2=val2, val3=val3)
         assert not CheckSelfDeath() and not GetEventStatus(flag11) and not DoesSelfHaveSpEffect(30100)
+    """Unused"""
+    """State 4"""
+    return 0
 
-def t110410_x9(val1=12, val2=10, val3=12, val4=10, val5=12, flag14=6001, val6=7008000, flag15=6000, flag16=6001,
-               flag17=6000, flag18=6000, mode3=1, val7=1000000, val8=1000000, val9=1000000, mode4=1,
-               mode5=1, mode6=0, val10=1000000, val11=1000000, mode7=0, mode8=0):
+def t110410_x9(val1=12, val2=10, val3=12, val4=10, val5=12, flag14=6001, actionbutton1=7008000, flag15=6000,
+               flag16=6001, flag17=6000, flag18=6000, mode3=1, val6=1000000, val7=1000000, val8=1000000,
+               mode4=1, mode5=1, mode6=0, val9=1000000, val10=1000000, mode7=0, mode8=0):
     """State 0"""
     while True:
         """State 4"""
-        call = t110410_x26(val6=val6, flag15=flag15, flag16=flag16, val7=val7, val8=val8, val9=val9,
-                           val10=val10, val11=val11)
+        call = t110410_x26(actionbutton1=actionbutton1, flag15=flag15, flag16=flag16, val6=val6, val7=val7,
+                           val8=val8, val9=val9, val10=val10)
         if call.Done():
             """State 1"""
             Label('L0')
@@ -268,6 +276,9 @@ def t110410_x9(val1=12, val2=10, val3=12, val4=10, val5=12, flag14=6001, val6=70
         def ExitPause():
             RemoveMyAggro()
         assert t110410_x13(val2=val2, val3=val3)
+    """Unused"""
+    """State 5"""
+    return 0
 
 def t110410_x10(flag11=6000, val2=10, val3=12):
     """State 0,1"""
@@ -299,7 +310,7 @@ def t110410_x11(val1=12, mode3=1, mode4=1, mode5=1, mode6=0, mode7=0):
         c1_117(mode3, 10000)
         c1_117(1000000, -1)
         SetTalkTime(0.01)
-        c5_128(mode5 == 1, 0.1)
+        SetMenuDisableTimeIf(mode5 == 1, 0.1)
         c5_120(val1 == 1 and not mode3 and mode7 == 1, 1, 0, 9, 9, 9, 9, 9, 9, 9)
     if call.Done():
         pass
@@ -381,10 +392,13 @@ def t110410_x17(val2=10, val3=12):
         elif GetDistanceToPlayer() > val3:
             """State 4"""
             assert t110410_x2()
+    """Unused"""
+    """State 5"""
+    return 0
 
 def t110410_x18():
     """State 0,1"""
-    assert t110410_x20(z9=1101, mode10=0, mode11=0, mode12=0, mode13=0)
+    assert t110410_x20(z9=1101, mode9=0, mode10=0, mode11=0, mode12=0)
     """State 2"""
     return 0
 
@@ -399,13 +413,13 @@ def t110410_x19(mode4=1, mode6=0):
         def WhilePaused():
             c5_120(mode4 == 1 and not mode6, 1, 0, 9, 9, 9, 9, 9, 9, 9)
             c5_120(mode4 == 1 and mode6 == 1, 2, 9, 0, 9, 9, 9, 9, 9, 9)
-        assert t110410_x20(z9=1000, mode10=0, mode11=0, mode12=0, mode13=0)
+        assert t110410_x20(z9=1000, mode9=0, mode10=0, mode11=0, mode12=0)
     elif GetCurrentStateElapsedTime() > 5:
         pass
     """State 5"""
     return 0
 
-def t110410_x20(z9=_, mode10=0, mode11=0, mode12=0, mode13=0):
+def t110410_x20(z9=_, mode9=0, mode10=0, mode11=0, mode12=0):
     """State 0,4"""
     if f118(z9) == 1:
         """State 2"""
@@ -413,7 +427,7 @@ def t110410_x20(z9=_, mode10=0, mode11=0, mode12=0, mode13=0):
         """State 1"""
         def WhilePaused():
             c1_118(z9)
-        assert f117() == mode10 or f117() == mode11 or f117() == mode12 or f117() == mode13
+        assert f117() == mode9 or f117() == mode10 or f117() == mode11 or f117() == mode12
         """State 5"""
         return 0
     else:
@@ -422,7 +436,7 @@ def t110410_x20(z9=_, mode10=0, mode11=0, mode12=0, mode13=0):
 
 def t110410_x21():
     """State 0,1"""
-    call = t110410_x20(z9=1103, mode10=0, mode11=0, mode12=0, mode13=0)
+    call = t110410_x20(z9=1103, mode9=0, mode10=0, mode11=0, mode12=0)
     if call.Get() == 1:
         """State 2"""
         assert t110410_x2()
@@ -433,17 +447,17 @@ def t110410_x21():
 
 def t110410_x22():
     """State 0,2"""
-    call = t110410_x20(z9=1102, mode10=0, mode11=0, mode12=0, mode13=0)
+    call = t110410_x20(z9=1102, mode9=0, mode10=0, mode11=0, mode12=0)
     if call.Get() == 1:
         """State 1"""
-        pass
+        Quit()
     elif call.Done():
         """State 3"""
         return 0
 
 def t110410_x23():
     """State 0,1"""
-    assert t110410_x20(z9=1001, mode10=0, mode11=0, mode12=0, mode13=0)
+    assert t110410_x20(z9=1001, mode9=0, mode10=0, mode11=0, mode12=0)
     """State 2"""
     return 0
 
@@ -460,21 +474,26 @@ def t110410_x24(val2=10, val3=12):
             assert not IsPlayerDead()
     """State 2"""
     t110410_x14(val2=val2, val3=val3)
+    Quit()
+    """Unused"""
+    """State 4"""
+    return 0
 
 def t110410_x25():
     """State 0,1"""
-    assert t110410_x20(z9=1100, mode10=0, mode11=0, mode12=0, mode13=0)
+    assert t110410_x20(z9=1100, mode9=0, mode10=0, mode11=0, mode12=0)
     """State 2"""
     return 0
 
-def t110410_x26(val6=7008000, flag15=6000, flag16=6001, val7=1000000, val8=1000000, val9=1000000, val10=1000000,
-                val11=1000000):
+def t110410_x26(actionbutton1=7008000, flag15=6000, flag16=6001, val6=1000000, val7=1000000, val8=1000000,
+                val9=1000000, val10=1000000):
     """State 0,1"""
-    call = t110410_x20(z9=2000, mode10=0, mode11=0, mode12=0, mode13=0)
+    call = t110410_x20(z9=2000, mode9=0, mode10=0, mode11=0, mode12=0)
     if call.Get() == 1:
         """State 2"""
-        assert (t110410_x1(val6=val6, flag16=flag16, flag20=6000, flag21=6000, flag22=6000, flag23=6000,
-                mode9=0, flag15=flag15, val7=val7, val8=val8, val9=val9, val10=val10, val11=val11))
+        assert (t110410_x1(actionbutton1=actionbutton1, flag16=flag16, flag20=6000, flag21=6000, flag22=6000,
+                flag23=6000, actionbutton2=0, flag15=flag15, val6=val6, val7=val7, val8=val8, val9=val9,
+                val10=val10))
     elif call.Done():
         pass
     """State 3"""
@@ -495,7 +514,7 @@ def t110410_x27(val2=10, val3=12):
 
 def t110410_x28():
     """State 0,1"""
-    assert t110410_x20(z9=1002, mode10=0, mode11=0, mode12=0, mode13=0)
+    assert t110410_x20(z9=1002, mode9=0, mode10=0, mode11=0, mode12=0)
     """State 2"""
     return 0
 
@@ -510,8 +529,8 @@ def t110410_x29(shop1=1100000, shop2=1100049):
     """State 6"""
     return 0
 
-def t110410_x30(val6=7008000, flag16=6001, flag20=6000, flag21=6000, flag22=6000, flag23=6000, mode9=0,
-                flag15=6000):
+def t110410_x30(actionbutton1=7008000, flag16=6001, flag20=6000, flag21=6000, flag22=6000, flag23=6000,
+                actionbutton2=0, flag15=6000):
     """State 0"""
     while Loop('mainloop'):
         """State 1"""
@@ -531,7 +550,7 @@ def t110410_x30(val6=7008000, flag16=6001, flag20=6000, flag21=6000, flag22=6000
                 Continue('mainloop')
             elif GetEventStatus(flag15) == 1:
                 pass
-            elif CheckActionButtonArea(val6 + mode9) and not f116(10000) == 90:
+            elif CheckActionButtonArea(actionbutton1 + actionbutton2) and not f116(10000) == 90:
                 Break('mainloop')
     """State 5"""
     SetTalkTime(0.1)
@@ -543,27 +562,48 @@ def t110410_x31(text10=41900000, text11=41900010, text12=41900050, text13=419001
     if GetEventStatus(flag9) == 1:
         pass
     else:
-        Goto('L0')
+        Goto('L1')
     """State 2"""
     if not GetEventStatus(flag10):
         """State 10"""
         if not GetEventStatus(70004000):
             """State 3,13"""
-            assert t110410_x6(text5=text10, flag24=0, mode14=1)
+            assert t110410_x6(text5=text10, flag24=0, mode13=1)
         else:
             """State 4,14"""
-            assert t110410_x6(text5=text11, flag24=0, mode14=1)
+            assert t110410_x6(text5=text11, flag24=0, mode13=1)
     else:
         """State 11,5,17"""
-        assert t110410_x6(text5=text12, flag24=0, mode14=1)
+        assert t110410_x6(text5=text12, flag24=0, mode13=1)
     """State 12"""
+    Label('L0')
     SetEventState(flag10, 1)
     """State 18"""
     return 0
     """State 7"""
-    Label('L0')
+    Label('L1')
     """State 20"""
     return 2
+    """Unused"""
+    """State 6"""
+    Goto('L3')
+    """State 8"""
+    Goto('L4')
+    """State 9"""
+    Label('L2')
+    SetEventState(z8, 0)
+    Goto('L5')
+    """State 15"""
+    Label('L3')
+    assert t110410_x6(text5=text13, flag24=0, mode13=1)
+    Goto('L0')
+    """State 16"""
+    Label('L4')
+    assert t110410_x6(text5=text14, flag24=0, mode13=1)
+    Goto('L2')
+    """State 19"""
+    Label('L5')
+    return 1
 
 def t110410_x32(flag7=70002050, flag8=71100783, z5=3, z6=4):
     """State 0,1"""
@@ -580,7 +620,14 @@ def t110410_x32(flag7=70002050, flag8=71100783, z5=3, z6=4):
         """State 2"""
         pass
     """State 9"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 6,8"""
+    # action:15000800:"Give Dragonrot Pellet"
+    AddTalkListDataIf(ComparePlayerInventoryNumber(3, 9550, 4, 1, 0) == 1 and not GetEventStatus(flag8),
+                      z6, 15000800, -1)
+    Goto('L0')
 
 def t110410_x33(text8=41900400, text9=41900410, flag6=71100782, mode2=_):
     """State 0,1"""
@@ -593,13 +640,13 @@ def t110410_x33(text8=41900400, text9=41900410, flag6=71100782, mode2=_):
             return 1
     else:
         """State 2,7"""
-        assert t110410_x6(text5=text8, flag24=0, mode14=1)
+        assert t110410_x6(text5=text8, flag24=0, mode13=1)
         """State 4"""
         SetEventState(flag6, 1)
         """State 8"""
         assert t110410_x7(lot1=69900)
     """State 5,9"""
-    assert t110410_x6(text5=text9, flag24=0, mode14=1)
+    assert t110410_x6(text5=text9, flag24=0, mode13=1)
     """State 6"""
     SetEventState(flag6, 0)
     """State 10"""
@@ -631,14 +678,14 @@ def t110410_x34(text6=41900200, text7=41900100, z1=71100781, z2=71100780, z3=711
             """State 5"""
             SetEventState(z2, 1)
             """State 4,15"""
-            assert t110410_x6(text5=text7, flag24=0, mode14=1)
+            assert t110410_x6(text5=text7, flag24=0, mode13=1)
             """State 10"""
             SetEventState(z2, 0)
         elif call.Done():
             """State 11"""
             SetEventState(z1, 1)
             """State 12,16"""
-            assert t110410_x6(text5=text6, flag24=0, mode14=1)
+            assert t110410_x6(text5=text6, flag24=0, mode13=1)
             """State 13"""
             SetEventState(z1, 0)
     """State 17"""
@@ -648,7 +695,7 @@ def t110410_x35(text5=41900300, flag5=70002050):
     """State 0,1"""
     if GetEventStatus(flag5) == 1:
         """State 3,4"""
-        assert t110410_x6(text5=text5, flag24=0, mode14=1)
+        assert t110410_x6(text5=text5, flag24=0, mode13=1)
         """State 5"""
         return 0
     else:
@@ -670,16 +717,16 @@ def t110410_x36(text1=41030000, flag1=71100795, text2=41030100, flag2=71100796, 
     """State 1"""
     if not text1 == -1 and not GetEventStatus(flag1):
         """State 4"""
-        assert t110410_x4(text1=text1, flag1=flag1, flag26=1, mode16=1)
+        assert t110410_x4(text1=text1, flag1=flag1, flag26=1, mode15=1)
     elif not text2 == -1 and not GetEventStatus(flag2):
         """State 5"""
-        assert t110410_x4(text1=text2, flag1=flag2, flag26=1, mode16=1)
+        assert t110410_x4(text1=text2, flag1=flag2, flag26=1, mode15=1)
     elif not text3 == -1 and not GetEventStatus(flag3):
         """State 6"""
-        assert t110410_x4(text1=text3, flag1=flag3, flag26=1, mode16=1)
+        assert t110410_x4(text1=text3, flag1=flag3, flag26=1, mode15=1)
     else:
         """State 7"""
-        assert t110410_x4(text1=text4, flag1=flag4, flag26=1, mode16=1)
+        assert t110410_x4(text1=text4, flag1=flag4, flag26=1, mode15=1)
     """State 8"""
     return 0
 
@@ -690,13 +737,13 @@ def t110410_x37():
         if not GetEventStatus(71100750):
             """State 3,10"""
             # talk:41000000:"Care to purchase an offering?"
-            assert t110410_x5(text15=41000000, z10=71100750, flag25=0, mode15=1)
+            assert t110410_x5(text15=41000000, z10=71100750, flag25=0, mode14=1)
             """State 9"""
             RequestUnlockTrophy(18)
         else:
             """State 4,11"""
             # talk:41000100:"Care to purchase an offering?"
-            assert t110410_x6(text5=41000100, flag24=0, mode14=1)
+            assert t110410_x6(text5=41000100, flag24=0, mode13=1)
         """State 5"""
         SetEventState(71100751, 1)
     else:
@@ -704,11 +751,11 @@ def t110410_x37():
         if GetEventStatus(71100753) == 1 and not GetEventStatus(71100754):
             """State 7,12"""
             # talk:41000300:"Hey you...I thought I told you to stop."
-            assert t110410_x5(text15=41000300, z10=71100754, flag25=0, mode15=1)
+            assert t110410_x5(text15=41000300, z10=71100754, flag25=0, mode14=1)
         else:
             """State 8,13"""
             # talk:41000200:"Care to purchase an offering?"
-            assert t110410_x6(text5=41000200, flag24=0, mode14=1)
+            assert t110410_x6(text5=41000200, flag24=0, mode13=1)
     """State 14"""
     return 0
 
@@ -717,6 +764,7 @@ def t110410_x38():
     MainBonfireMenuFlag()
     while True:
         """State 2"""
+        Label('L0')
         ClearTalkListData()
         """State 3"""
         # action:15000010:"Purchase items"
@@ -748,23 +796,29 @@ def t110410_x38():
         else:
             """State 10,17"""
             return 0
+    """Unused"""
+    """State 9,16"""
+    # talk:41900200:".........", talk:41900100:"Drink this..."
+    assert (t110410_x34(text6=41900200, text7=41900100, z1=71100781, z2=71100780, z3=71100783, mode1=0,
+            z4=9520))
+    Goto('L0')
 
 def t110410_x39():
     """State 0,1"""
     if not GetEventStatus(71100755) and GetEventStatus(71100757) == 1:
         """State 2,6"""
         # talk:41020200:"Don't use that thing around here.\nYou'll scare the crows."
-        assert t110410_x5(text15=41020200, z10=71100755, flag25=0, mode15=1)
+        assert t110410_x5(text15=41020200, z10=71100755, flag25=0, mode14=1)
     else:
         """State 3"""
         if not GetEventStatus(71100752):
             """State 4,7"""
             # talk:41020000:"Where you find the departed, you'll find the Memorial Mob..."
-            assert t110410_x5(text15=41020000, z10=71100752, flag25=0, mode15=1)
+            assert t110410_x5(text15=41020000, z10=71100752, flag25=0, mode14=1)
         else:
             """State 5,8"""
             # talk:41020100:"May the departed rest in peace..."
-            assert t110410_x6(text5=41020100, flag24=0, mode14=1)
+            assert t110410_x6(text5=41020100, flag24=0, mode13=1)
     """State 9"""
     return 0
 

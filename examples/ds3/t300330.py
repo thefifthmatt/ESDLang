@@ -11,7 +11,7 @@ def t300330_1():
         call = t300330_x12()
         assert not IsClientPlayer()
 
-def t300330_x0(z2=6330, flag3=1435, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
+def t300330_x0(actionbutton1=6330, flag3=1435, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -27,7 +27,7 @@ def t300330_x0(z2=6330, flag3=1435, flag4=6000, flag5=6000, flag6=6000, flag7=60
         elif (not GetEventStatus(flag3) and not GetEventStatus(flag4) and not GetEventStatus(flag5) and
               not GetEventStatus(flag6) and not GetEventStatus(flag7)):
             pass
-        elif CheckActionButtonArea(z2):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -152,6 +152,11 @@ def t300330_x6():
     t300330_x16()
     def ExitPause():
         SetEventState(73000180, 1)
+    Quit()
+    """Unused"""
+    """State 9"""
+    SetEventState(73000181, 1)
+    Quit()
 
 def t300330_x7():
     """State 0,4"""
@@ -231,6 +236,9 @@ def t300330_x11():
         """State 2"""
         call = t300330_x14()
         assert GetEventStatus(1420) == 1 or GetEventStatus(1421) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t300330_x12():
     """State 0,1"""
@@ -244,9 +252,17 @@ def t300330_x13():
     assert CheckSelfDeath() == 1 or GetEventStatus(73000182) == 1
     """State 1"""
     t300330_x8()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t300330_x14():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t300330_x15():
     """State 0,1"""
@@ -285,7 +301,7 @@ def t300330_x17():
     """State 0"""
     while True:
         """State 6"""
-        call = t300330_x0(z2=6330, flag3=1435, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
+        call = t300330_x0(actionbutton1=6330, flag3=1435, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
         if call.Done():
             """State 4"""
             call = t300330_x6()
@@ -319,4 +335,8 @@ def t300330_x17():
             assert not GetEventStatus(73000180)
     """State 3"""
     t300330_x9()
+    Quit()
+    """Unused"""
+    """State 7"""
+    return 0
 

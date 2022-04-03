@@ -23,7 +23,7 @@ def t400220_x0(action1=12012000):
         """State 4"""
         return 1
 
-def t400220_x1(z5=6000, flag5=1215, flag6=6000, flag7=6000, flag8=6000, flag9=6000):
+def t400220_x1(actionbutton1=6000, flag5=1215, flag6=6000, flag7=6000, flag8=6000, flag9=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -39,7 +39,7 @@ def t400220_x1(z5=6000, flag5=1215, flag6=6000, flag7=6000, flag8=6000, flag9=60
         elif (not GetEventStatus(flag5) and not GetEventStatus(flag6) and not GetEventStatus(flag7) and
               not GetEventStatus(flag8) and not GetEventStatus(flag9)):
             pass
-        elif CheckActionButtonArea(z5):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -79,11 +79,11 @@ def t400220_x3():
     """State 2"""
     return 0
 
-def t400220_x4(text3=_, z4=_, flag4=0, mode3=1):
+def t400220_x4(text3=_, z3=_, flag4=0, mode3=1):
     """State 0,5"""
     assert t400220_x3() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 2"""
-    SetEventState(z4, 1)
+    SetEventState(z3, 1)
     """State 1"""
     TalkToPlayer(text3, -1, -1, flag4)
     assert CheckSpecificPersonTalkHasEnded(0) == 1
@@ -96,7 +96,7 @@ def t400220_x4(text3=_, z4=_, flag4=0, mode3=1):
     """State 6"""
     return 0
 
-def t400220_x5(text2=_, z3=_, flag3=0, mode2=1):
+def t400220_x5(text2=_, z2=_, flag3=0, mode2=1):
     """State 0,5"""
     assert t400220_x3() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 1"""
@@ -109,7 +109,7 @@ def t400220_x5(text2=_, z3=_, flag3=0, mode2=1):
         """State 3"""
         ReportConversationEndToHavokBehavior()
     """State 2"""
-    SetEventState(z3, 1)
+    SetEventState(z2, 1)
     """State 6"""
     return 0
 
@@ -128,15 +128,15 @@ def t400220_x6(text1=_, flag2=0, mode1=1):
     """State 5"""
     return 0
 
-def t400220_x7(z1=22, z2=9023, flag1=6072):
+def t400220_x7(gesture1=22, z1=9023, flag1=6072):
     """State 0,1"""
     if GetEventStatus(flag1) == 1:
         """State 2"""
         pass
     else:
         """State 3,4"""
-        AcquireGesture(z1)
-        OpenItemAcquisitionMenu(3, z2, 1)
+        AcquireGesture(gesture1)
+        OpenItemAcquisitionMenu(3, z1, 1)
         SetEventState(flag1, 1)
         assert not IsMenuOpen(63) and GetCurrentStateElapsedFrames() > 1
     """State 5"""
@@ -151,7 +151,7 @@ def t400220_x8():
             if not GetEventStatus(74000300):
                 """State 3,40"""
                 # talk:22000900:"Oh, hello, you're back."
-                assert t400220_x5(text2=22000900, z3=74000300, flag3=0, mode2=1)
+                assert t400220_x5(text2=22000900, z2=74000300, flag3=0, mode2=1)
             elif (GetEventStatus(74000301) == 1 and not GetEventStatus(74000302) and GetEventStatus(74000325)
                   == 1):
                 """State 5,36"""
@@ -173,7 +173,7 @@ def t400220_x8():
                 if GetTalkListEntryResult() == 5:
                     """State 10,39"""
                     # talk:22001700:"Thank you. You will not be disappointed."
-                    assert t400220_x5(text2=22001700, z3=74000303, flag3=0, mode2=1)
+                    assert t400220_x5(text2=22001700, z2=74000303, flag3=0, mode2=1)
                     """State 13"""
                     Label('L0')
                     SetEventState(74000302, 1)
@@ -197,7 +197,7 @@ def t400220_x8():
             if not GetEventStatus(74000304):
                 """State 17,41"""
                 # talk:22001100:"Oh, hello, you've come at a good time."
-                assert t400220_x5(text2=22001100, z3=74000304, flag3=0, mode2=1)
+                assert t400220_x5(text2=22001100, z2=74000304, flag3=0, mode2=1)
             elif GetEventStatus(138) == 1 and GetEventStatus(9311) == 1 and not GetEventStatus(74000305):
                 """State 16,42"""
                 # talk:22002000:"Ahh, hello, fine work, I say."
@@ -218,7 +218,7 @@ def t400220_x8():
                 if GetTalkListEntryResult() == 5:
                     """State 22,44"""
                     # talk:22002100:"Mm, a fine choice!"
-                    assert t400220_x5(text2=22002100, z3=74000306, flag3=0, mode2=1)
+                    assert t400220_x5(text2=22002100, z2=74000306, flag3=0, mode2=1)
                     """State 24"""
                     Label('L3')
                     SetEventState(74000305, 1)
@@ -236,7 +236,7 @@ def t400220_x8():
             if not GetEventStatus(74000307):
                 """State 33,48"""
                 # talk:22001200:"Oh, then, we are both safe and sound."
-                assert t400220_x5(text2=22001200, z3=74000307, flag3=0, mode2=1)
+                assert t400220_x5(text2=22001200, z2=74000307, flag3=0, mode2=1)
             elif GetEventStatus(142) == 1 and not GetEventStatus(74000308):
                 """State 32,47"""
                 # talk:22002400:"You know, I was thinking..."
@@ -257,7 +257,7 @@ def t400220_x8():
                 if GetTalkListEntryResult() == 5:
                     """State 29,46"""
                     # talk:22002500:"Thank you, for placing your trust in me."
-                    assert t400220_x5(text2=22002500, z3=74000309, flag3=0, mode2=1)
+                    assert t400220_x5(text2=22002500, z2=74000309, flag3=0, mode2=1)
                     """State 31"""
                     Label('L4')
                     SetEventState(74000308, 1)
@@ -279,7 +279,7 @@ def t400220_x8():
         assert t400220_x6(text1=22003900, flag2=0, mode1=1)
         """State 49"""
         SetEventState(74000325, 1)
-        assert t400220_x7(z1=22, z2=9023, flag1=6072)
+        assert t400220_x7(gesture1=22, z1=9023, flag1=6072)
     """State 51"""
     Label('L5')
     return 0
@@ -393,6 +393,9 @@ def t400220_x13():
         """State 2"""
         call = t400220_x18()
         assert GetEventStatus(1201) == 1 or GetEventStatus(1203) == 1 or GetEventStatus(1206) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400220_x14():
     """State 0,1"""
@@ -483,7 +486,7 @@ def t400220_x16():
             if GetTalkListEntryResult() == 5:
                 """State 32,48"""
                 # talk:22002500:"Thank you, for placing your trust in me."
-                assert t400220_x5(text2=22002500, z3=74000309, flag3=0, mode2=1)
+                assert t400220_x5(text2=22002500, z2=74000309, flag3=0, mode2=1)
             elif GetTalkListEntryResult() == 6:
                 """State 33,47"""
                 # talk:22002600:"Right, fine. You're very thoughtful, you are."
@@ -517,7 +520,7 @@ def t400220_x16():
             if GetTalkListEntryResult() == 5:
                 """State 25,46"""
                 # talk:22002100:"Mm, a fine choice!"
-                assert t400220_x5(text2=22002100, z3=74000306, flag3=0, mode2=1)
+                assert t400220_x5(text2=22002100, z2=74000306, flag3=0, mode2=1)
             elif GetTalkListEntryResult() == 6:
                 """State 26,45"""
                 # talk:22002200:"All right, fine and well."
@@ -551,7 +554,7 @@ def t400220_x16():
             if GetTalkListEntryResult() == 5:
                 """State 17,39"""
                 # talk:22001700:"Thank you. You will not be disappointed."
-                assert t400220_x5(text2=22001700, z3=74000303, flag3=0, mode2=1)
+                assert t400220_x5(text2=22001700, z2=74000303, flag3=0, mode2=1)
             elif GetTalkListEntryResult() == 6:
                 """State 18,38"""
                 # talk:22001800:"All right, fine and well."
@@ -578,24 +581,32 @@ def t400220_x17():
     assert CheckSelfDeath() == 1
     """State 1"""
     t400220_x10()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400220_x18():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t400220_x19():
     """State 0,1"""
     if not GetEventStatus(74000321):
         """State 3"""
         # talk:22002900:" "
-        assert t400220_x4(text3=22002900, z4=74000321, flag4=0, mode3=1)
+        assert t400220_x4(text3=22002900, z3=74000321, flag4=0, mode3=1)
     elif not GetEventStatus(74000322):
         """State 4"""
         # talk:22003000:" "
-        assert t400220_x4(text3=22003000, z4=74000322, flag4=0, mode3=1)
+        assert t400220_x4(text3=22003000, z3=74000322, flag4=0, mode3=1)
     elif not GetEventStatus(74000323):
         """State 5"""
         # talk:22003100:"What's got into you?"
-        assert t400220_x4(text3=22003100, z4=74000323, flag4=0, mode3=1)
+        assert t400220_x4(text3=22003100, z3=74000323, flag4=0, mode3=1)
     else:
         """State 2"""
         SetEventState(74000321, 0)
@@ -612,7 +623,7 @@ def t400220_x20():
     if not GetEventStatus(74000320):
         """State 3"""
         # talk:22003600:"You're headed for the brink, aren't you?"
-        assert t400220_x4(text3=22003600, z4=74000320, flag4=0, mode3=1)
+        assert t400220_x4(text3=22003600, z3=74000320, flag4=0, mode3=1)
     else:
         """State 2"""
         pass
@@ -643,7 +654,7 @@ def t400220_x22():
     """State 0"""
     while True:
         """State 5"""
-        call = t400220_x1(z5=6000, flag5=1215, flag6=6000, flag7=6000, flag8=6000, flag9=6000)
+        call = t400220_x1(actionbutton1=6000, flag5=1215, flag6=6000, flag7=6000, flag8=6000, flag9=6000)
         if call.Done():
             """State 3"""
             call = t400220_x8()
@@ -674,4 +685,8 @@ def t400220_x22():
             break
     """State 2"""
     t400220_x11()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

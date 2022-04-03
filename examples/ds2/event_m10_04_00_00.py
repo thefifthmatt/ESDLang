@@ -2,42 +2,48 @@
 def event_m10_04_3010():
     """Invade the world of miracles"""
     """State 0,3: [Preset] Intrusion item usage determination_SubState"""
-    call = event_m10_04_x59(z34=2)
+    call = event_m10_04_x59(z32=2)
     if call.Get() == 1:
         """State 1: Finish"""
         EndMachine()
+        Quit()
     elif call.Get() == 0:
         """State 2: Rerun"""
         RestartMachine()
+        Quit()
 
 def event_m10_04_3020():
     """Invade the world of miraculous people_return from the destination"""
     """State 0,2: [Preset] Return from intrusion_SubState"""
     # lot:60006000:Rotunda Lockstone
-    assert event_m10_04_x63(z29=152, z30=50, lot1=60006000, z31=2103, z32=300010, z33=104322)
+    assert event_m10_04_x63(z27=152, z28=50, lot1=60006000, z29=2103, z30=300010, z31=104322)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_4000():
     """The key door that opens with the key of Mr. A's house"""
     """State 0,2: [Lib] Item specified door unlocking_SubState"""
-    assert event_m10_04_x6(z100=1005, z101=1105, z102=50860000, z103=104000050)
+    assert event_m10_04_x6(z90=1005, z91=1105, z92=50860000, z93=104000050)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_4100():
     """The key door that opens with the key of Mr. B's house"""
     """State 0,2: [Lib] Item specified door unlocking_SubState"""
-    assert event_m10_04_x6(z100=1005, z101=1105, z102=50870000, z103=104000051)
+    assert event_m10_04_x6(z90=1005, z91=1105, z92=50870000, z93=104000051)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_4200():
     """The key door that opens with the key of death"""
     """State 0,2: [Lib] Item specified door unlocking_SubState"""
-    assert event_m10_04_x6(z100=1005, z101=1105, z102=50820000, z103=104000052)
+    assert event_m10_04_x6(z90=1005, z91=1105, z92=50820000, z93=104000052)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_5000():
     """NPC Ladder Shop Small Ladder_Navigation Mesh Change"""
@@ -45,6 +51,7 @@ def event_m10_04_5000():
     DeleteNavimeshAttribute(500000, 2)
     """State 2: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_5010():
     """NPC ladder shop middle ladder_Navimesh change"""
@@ -52,6 +59,7 @@ def event_m10_04_5010():
     DeleteNavimeshAttribute(501000, 2)
     """State 2: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_5020():
     """NPC Ladder Shop Large Ladder_Navigation Mesh Change"""
@@ -59,58 +67,66 @@ def event_m10_04_5020():
     DeleteNavimeshAttribute(502000, 2)
     """State 2: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_6000():
     """Treasure corpse from well"""
     """State 0,2: [Preset] OBJ animation playback by attacking OBJ_SubState"""
-    assert event_m10_04_x22(z83=10042105, z84=-1, z85=10046000, z86=70, z87=20)
+    assert event_m10_04_x22(z73=10042105, z74=-1, z75=10046000, z76=70, z77=20)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_8000():
     """Madura-Giant Morima Gimmick Door"""
     """State 0,2: [Preset] Madura-Giant Morima Gimmick Door_SubState"""
-    assert (event_m10_04_x35(z56=10043010, z57=10041015, z58=10041020, z59=800001, z60=800002, z61=800010,
-            z62=800011))
+    assert (event_m10_04_x35(z53=10043010, z54=10041015, z55=10041020, z56=800001, z57=800002, z58=800010,
+            z59=800011))
     """State 1: Rerun"""
     RestartMachine()
+    Quit()
 
 def event_m10_04_9000():
     """Revolving door switch"""
     """State 0,2: [Preset] Revolving door switch_SubState"""
     # goods:50890000:Rotunda Lockstone
-    assert event_m10_04_x41(z35=10043020, z36=10043000, z37=104020156, goods1=50890000)
+    assert event_m10_04_x41(z33=10043020, z34=10043000, flag3=104020156, item1=50890000)
     """State 1: Rerun"""
     RestartMachine()
+    Quit()
 
 def event_m10_04_9010():
     """Toggles global flags related to revolving doors"""
     """State 0,2: [Preset] Switching global flags related to revolving doors_SubState"""
-    assert event_m10_04_x42(z49=10043000)
+    assert event_m10_04_x42(z46=10043000)
     """State 1: Rerun"""
     RestartMachine()
+    Quit()
 
 def event_m10_04_9020():
     """Changing the navigation mesh of the revolving door"""
     """State 0,2: [Preset] Navimesh change of the revolving door_SubState"""
-    assert event_m10_04_x51(z38=10043000, z39=30, z40=40, z41=902000, z42=902001)
+    assert event_m10_04_x51(z35=10043000, z36=30, z37=40, z38=902000, z39=902001)
     """State 1: Rerun"""
     RestartMachine()
+    Quit()
 
 def event_m10_04_10000():
     """Switching the gimmick door related flags on the connection path"""
     """State 0,2: [Lib] [Preset] Switch connection flag when in map_SubState"""
-    assert event_m10_04_x17(z93=105405, z94=0)
+    assert event_m10_04_x17(z83=105405, z84=0)
     """State 1: Rerun"""
     RestartMachine()
+    Quit()
 
 def event_m10_04_11000():
     """Flame 1 on the updated world map"""
     """State 0,2: [Preset] World map to be updated_SubState"""
     # bonfire:10655:Cardinal Tower
-    assert event_m10_04_x47(z43=10043600, z44=150, z45=10043610, z46=100971, bonfire3=10655, z47=104010070)
+    assert event_m10_04_x47(z40=10043600, z41=150, z42=10043610, z43=100971, bonfire3=10655, z44=104010070)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_11010():
     """Flame 2 on the updated world map"""
@@ -118,9 +134,10 @@ def event_m10_04_11010():
     assert EventEnded(11000) != 0
     """State 3: [Preset] World map to be updated_SubState"""
     # bonfire:16685:The Saltfort
-    assert event_m10_04_x47(z43=10043600, z44=151, z45=10043620, z46=100963, bonfire3=16685, z47=104010071)
+    assert event_m10_04_x47(z40=10043600, z41=151, z42=10043620, z43=100963, bonfire3=16685, z44=104010071)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_11020():
     """Flame 3 on the updated world map 3"""
@@ -128,9 +145,10 @@ def event_m10_04_11020():
     assert EventEnded(11010) != 0
     """State 3: [Preset] World map to be updated_SubState"""
     # bonfire:19660:Eygil's Idol
-    assert event_m10_04_x47(z43=10043600, z44=152, z45=10043630, z46=100952, bonfire3=19660, z47=104010072)
+    assert event_m10_04_x47(z40=10043600, z41=152, z42=10043630, z43=100952, bonfire3=19660, z44=104010072)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_11030():
     """Flame 4 on the updated world map"""
@@ -138,9 +156,10 @@ def event_m10_04_11030():
     assert EventEnded(11020) != 0
     """State 3: [Preset] World map to be updated_SubState"""
     # bonfire:25660:Hidden Chamber
-    assert event_m10_04_x47(z43=10043600, z44=153, z45=10043640, z46=100966, bonfire3=25660, z47=104010073)
+    assert event_m10_04_x47(z40=10043600, z41=153, z42=10043640, z43=100966, bonfire3=25660, z44=104010073)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_11040():
     """Flame 5 on the updated world map"""
@@ -148,9 +167,10 @@ def event_m10_04_11040():
     assert EventEnded(11030) != 0
     """State 3: [Preset] World map to be updated_SubState"""
     # bonfire:14650:Lower Brightstone Cove
-    assert event_m10_04_x47(z43=10043600, z44=154, z45=10043650, z46=100951, bonfire3=14650, z47=104010074)
+    assert event_m10_04_x47(z40=10043600, z41=154, z42=10043650, z43=100951, bonfire3=14650, z44=104010074)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_11050():
     """Flame 6 on the updated world map"""
@@ -158,9 +178,10 @@ def event_m10_04_11050():
     assert EventEnded(11040) != 0
     """State 3: [Preset] World map to be updated_SubState"""
     # bonfire:24650:Undead Ditch
-    assert event_m10_04_x47(z43=10043600, z44=155, z45=10043660, z46=100804, bonfire3=24650, z47=104010075)
+    assert event_m10_04_x47(z40=10043600, z41=155, z42=10043660, z43=100804, bonfire3=24650, z44=104010075)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_11060():
     """Fire 7 on the updated world map"""
@@ -168,10 +189,11 @@ def event_m10_04_11060():
     assert EventEnded(11050) != 0
     """State 3: [Preset] Updated World Map_Old Dragon_SubState"""
     # bonfire:27655:Shrine Entrance
-    assert (event_m10_04_x81(z11=10043600, z12=156, z13=10043670, z14=103140, bonfire2=27655, z15=104010076,
-            z16=100977))
+    assert (event_m10_04_x81(z9=10043600, z10=156, z11=10043670, z12=103140, bonfire2=27655, z13=104010076,
+            z14=100977))
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_11070():
     """Fire 8 on the updated world map"""
@@ -179,23 +201,26 @@ def event_m10_04_11070():
     assert EventEnded(11060) != 0
     """State 3: [Preset] World map to be updated_SubState"""
     # bonfire:21650:King's Gate
-    assert event_m10_04_x47(z43=10043600, z44=157, z45=10043680, z46=100974, bonfire3=21650, z47=104010077)
+    assert event_m10_04_x47(z40=10043600, z41=157, z42=10043680, z43=100974, bonfire3=21650, z44=104010077)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_12000():
     """Obelisk _ front side"""
     """State 0,2: [Preset] Obelisk_Front Side_SubState"""
-    assert event_m10_04_x65(z25=10041000)
+    assert event_m10_04_x65(z23=10041000)
     """State 1: Rerun"""
     RestartMachine()
+    Quit()
 
 def event_m10_04_12010():
     """Obelisk_Backside"""
     """State 0,2: [Preset] Obelisk_Backside_SubState"""
-    assert event_m10_04_x66(z24=10041010)
+    assert event_m10_04_x66(z22=10041010)
     """State 1: Rerun"""
     RestartMachine()
+    Quit()
 
 def event_m10_04_14000():
     """SFX linked to miraculous migration"""
@@ -203,53 +228,63 @@ def event_m10_04_14000():
     assert event_m10_04_x79()
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_15000():
     """Miracles emigrated by clearing the hidden port"""
     """State 0,2: [Preset] Miracles migrated by clearing the hidden port_SubState"""
-    assert event_m10_04_x85(z9=100961, z10=102765)
+    assert event_m10_04_x85(z7=100961, z8=102765)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_20000():
     """Defeat Skeleton: Round 1"""
     """State 0,1: Zako death determination_SubState"""
-    event_m10_04_x64(z26=1100, z27=0, z28=104000060)
+    event_m10_04_x64(z24=1100, z25=0, z26=104000060)
+    Quit()
 
 def event_m10_04_20001():
     """Defeat Skeleton: Round 2"""
     """State 0,1: Zako death determination_SubState"""
-    event_m10_04_x64(z26=1101, z27=1, z28=104000061)
+    event_m10_04_x64(z24=1101, z25=1, z26=104000061)
+    Quit()
 
 def event_m10_04_20002():
     """Defeat Skeleton: Round 3"""
     """State 0,1: Zako death determination_SubState"""
-    event_m10_04_x64(z26=1102, z27=2, z28=104000062)
+    event_m10_04_x64(z24=1102, z25=2, z26=104000062)
+    Quit()
 
 def event_m10_04_20003():
     """Defeat Skeleton: Round 4"""
     """State 0,1: Zako death determination_SubState"""
-    event_m10_04_x64(z26=1103, z27=3, z28=104000063)
+    event_m10_04_x64(z24=1103, z25=3, z26=104000063)
+    Quit()
 
 def event_m10_04_20004():
     """Defeat Skeleton: Round 5"""
     """State 0,1: Zako death determination_SubState"""
-    event_m10_04_x64(z26=1104, z27=4, z28=104000064)
+    event_m10_04_x64(z24=1104, z25=4, z26=104000064)
+    Quit()
 
 def event_m10_04_20005():
     """Defeat Skeleton: Orbit 6"""
     """State 0,1: Zako death determination_SubState"""
-    event_m10_04_x64(z26=1105, z27=5, z28=104000065)
+    event_m10_04_x64(z24=1105, z25=5, z26=104000065)
+    Quit()
 
 def event_m10_04_20006():
     """Defeat Skeleton: Orbit 7"""
     """State 0,1: Zako death determination_SubState"""
-    event_m10_04_x64(z26=1106, z27=6, z28=104000066)
+    event_m10_04_x64(z24=1106, z25=6, z26=104000066)
+    Quit()
 
 def event_m10_04_20007():
     """Defeat Skeleton: 8 laps"""
     """State 0,1: Zako death determination_SubState"""
-    event_m10_04_x64(z26=1107, z27=7, z28=104000067)
+    event_m10_04_x64(z24=1107, z25=7, z26=104000067)
+    Quit()
 
 def event_m10_04_50000():
     """[DLC] Cheat item purchase flag management"""
@@ -257,28 +292,30 @@ def event_m10_04_50000():
     assert event_m10_04_x89()
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_80000():
     """Rebirth Fire 01_Main bonfire in the middle of the village"""
     """State 0,2: [Lib] [Preset] Reproduction fire _SubState"""
-    assert event_m10_04_x26(z81=1004000, z82=1004099)
+    assert event_m10_04_x26(z71=1004000, z72=1004099)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
-def event_m10_04_x0(z89=_, mode1=0, z116=0, z117=1, z118=1):
+def event_m10_04_x0(z79=_, mode1=0, flag11=0, z106=1, z107=1):
     """[Lib] Normal poly play
-    z89: Poly play ID
+    z79: Poly play ID
     mode1: Destination point ID after poly play
-    z116: Poly drama played flag
-    z117: End fade
-    z118: Start fade
+    flag11: Poly drama played flag
+    z106: End fade
+    z107: Start fade
     """
     """State 0,6: Wait for in-game start"""
     assert InGame() != 0
     """State 5: Played judgment"""
-    if GetEventFlag(z116) != 1:
+    if GetEventFlag(flag11) != 1:
         """State 1: Poly play"""
-        PlayCutscene(z89, z117, z118)
+        PlayCutscene(z79, z106, z107)
         assert (CutscenePlaying() == 1) != 0
         """State 4: Poly Play Pre Warp"""
         WarpPlayersWithinMapIf((mode1 > 1) != 0, mode1)
@@ -288,59 +325,63 @@ def event_m10_04_x0(z89=_, mode1=0, z116=0, z117=1, z118=1):
         pass
     """State 2: Warp after the poly drama"""
     WarpPlayersWithinMapIf((mode1 > 1) != 0, mode1)
-    SetEventFlag(z116, 1)
+    SetEventFlag(flag11, 1)
     """State 7: End state"""
     return 0
 
-def event_m10_04_x1(z113=0, z114=0, z115=10040000, z32=300010):
+def event_m10_04_x1(z103=0, z104=0, z105=10040000, z30=300010):
     """[Lib] Warp between maps after poly play
-    z113: Pre-warp poly play ID
-    z114: Poly Play ID after Warp
-    z115: Map ID
-    z32: Point ID
+    z103: Pre-warp poly play ID
+    z104: Poly Play ID after Warp
+    z105: Map ID
+    z30: Point ID
     """
     """State 0,1: Poly drama warp"""
-    PlayCutsceneAndWarpToMap(z113, z114, z115, z32, 0)
+    PlayCutsceneAndWarpToMap(z103, z104, z105, z30, 0)
     assert CutsceneWarpEnded() != 0
     """State 2: End state"""
     return 0
 
-def event_m10_04_x2(z109=_, z110=_, z111=_, z112=_):
+def event_m10_04_x2(z99=_, z100=_, z101=_, z102=_):
     """[Lib] NPC: Grave Placement: General purpose
-    z109: Death map: Global event flag
-    z110: Tomb: OBJ instance ID
-    z111: Tomb move to: Generator ID
-    z112: NPC information parameter ID
+    z99: Death map: Global event flag
+    z100: Tomb: OBJ instance ID
+    z101: Tomb move to: Generator ID
+    z102: NPC information parameter ID
     """
     """State 0,1: Grave Placement: Start"""
     IsPlayerInTheMap(0, 1, 0)
     assert ConditionGroup(0)
     """State 2: Grave placement: branch"""
-    CompareEventFlag(8, z109, 1)
-    IsGraveGeneratable(8, z112, 1)
+    CompareEventFlag(8, z99, 1)
+    IsGraveGeneratable(8, z102, 1)
     if ConditionGroup(8):
         """State 4: Grave Placement: Death"""
         ChangeOwnObjState(20)
-        CompareObjState(0, z110, 20, 0)
+        CompareObjState(0, z100, 20, 0)
         assert ConditionGroup(0)
         """State 6: Grave Placement: Warp Move"""
     else:
         """State 3: Grave Placement: Survival"""
         ChangeOwnObjState(10)
-        CompareObjState(0, z110, 10, 0)
+        CompareObjState(0, z100, 10, 0)
         assert ConditionGroup(0)
     """State 5: Grave Placement: System: Finish"""
     EndMachine()
+    Quit()
+    """Unused"""
+    """State 7: End state"""
+    return 0
 
-def event_m10_04_x3(z106=_, z107=_, npc1=_):
+def event_m10_04_x3(z96=_, z97=_, npc1=_):
     """[Lib] NPC: Grave: Key Guide: Key Guide
-    z106: Global: death flag
-    z107: Grave OBJ instance ID
+    z96: Global: death flag
+    z97: Grave OBJ instance ID
     npc1: NPC information parameter ID
     """
     """State 0,1,5: Key guide: Grave display judgment"""
-    CompareObjState(0, z107, 10, 0)
-    CompareObjState(1, z107, 20, 0)
+    CompareObjState(0, z97, 10, 0)
+    CompareObjState(1, z97, 20, 0)
     if ConditionGroup(0):
         pass
     elif ConditionGroup(1):
@@ -352,7 +393,7 @@ def event_m10_04_x3(z106=_, z107=_, npc1=_):
     Label('L0')
     CreateKeyGuideArea(34, 610)
     """State 11: Key guide: Waiting for input"""
-    IsObjSearched(0, z107)
+    IsObjSearched(0, z97)
     IsPlayerInTheMap(1, 0, 0)
     if ConditionGroup(0):
         """State 3: Key Guide: Use Soul dialog"""
@@ -381,11 +422,12 @@ def event_m10_04_x3(z106=_, z107=_, npc1=_):
     """State 6: Key guide: Reset"""
     DeleteKeyGuideArea()
     RestartMachine()
+    Quit()
 
-def event_m10_04_x4(z104=_, z105=_, npc1=_):
+def event_m10_04_x4(z94=_, z95=_, npc1=_):
     """[Lib] NPC: Grave: Key Guide: Appearance of Ghosts
-    z104: Area other flags: Ghost appearance
-    z105: Area other flags: Conversation start
+    z94: Area other flags: Ghost appearance
+    z95: Area other flags: Conversation start
     npc1: NPC information parameter ID
     """
     """State 0,5: Appearance of ghost: Player action starts"""
@@ -398,8 +440,8 @@ def event_m10_04_x4(z104=_, z105=_, npc1=_):
     CompareStateTime(0, 4, 2, 4)
     assert ConditionGroup(0)
     """State 1: Ghost appearance: Appearance"""
-    SetEventFlag(z104, 1)
-    CompareEventFlag(0, z104, 1)
+    SetEventFlag(z94, 1)
+    CompareEventFlag(0, z94, 1)
     assert ConditionGroup(0)
     """State 8: Ghost appearance: waiting for completion"""
     CompareStateTime(0, 4, 2, 4)
@@ -413,57 +455,61 @@ def event_m10_04_x4(z104=_, z105=_, npc1=_):
     CompareStateTime(0, 2.1, 2, 2.1)
     assert ConditionGroup(0)
     """State 4: Ghost appearance: Conversation start flag"""
-    SetEventFlag(z105, 1)
-    CompareEventFlag(0, z105, 1)
+    SetEventFlag(z95, 1)
+    CompareEventFlag(0, z95, 1)
     assert ConditionGroup(0)
     """State 10: End state"""
     return 0
 
-def event_m10_04_x5(z104=_, z105=_, z106=_, z107=_, z108=_, npc1=_):
+def event_m10_04_x5(z94=_, z95=_, z96=_, z97=_, z98=_, npc1=_):
     """[Lib] NPC: Grave: Key guide: General purpose
-    z104: Ghost Appearance: Area Other Flag
-    z105: Conversation start: Area and other flags
-    z106: Death: Global event flag
-    z107: Tomb: OBJ instance ID
-    z108: Grave event ID
+    z94: Ghost Appearance: Area Other Flag
+    z95: Conversation start: Area and other flags
+    z96: Death: Global event flag
+    z97: Tomb: OBJ instance ID
+    z98: Grave event ID
     npc1: NPC information parameter ID
     """
     """State 0,1: Key guide: Start"""
     IsPlayerInTheMap(8, 1, 0)
-    CompareEventStatus(8, z108, 1, 0)
-    CompareEventFlag(9, z104, 1)
-    CompareObjState(9, z107, 20, 0)
+    CompareEventStatus(8, z98, 1, 0)
+    CompareEventFlag(9, z94, 1)
+    CompareObjState(9, z97, 20, 0)
     if IsGuest() != 0:
         pass
     elif ConditionGroup(9):
         """State 3: Key guide: Start conversation: Set flag"""
-        SetEventFlag(z105, 1)
-        CompareEventFlag(0, z105, 1)
+        SetEventFlag(z95, 1)
+        CompareEventFlag(0, z95, 1)
         assert ConditionGroup(0)
     elif ConditionGroup(8):
         """State 4: [Lib] NPC: Grave: Key Guide: Key Guide_SubState"""
-        assert event_m10_04_x3(z106=z106, z107=z107, npc1=npc1)
+        assert event_m10_04_x3(z96=z96, z97=z97, npc1=npc1)
         """State 5: [Lib] NPC: Grave: Key Guide: Ghost Appearance_SubState"""
-        assert event_m10_04_x4(z104=z104, z105=z105, npc1=npc1)
+        assert event_m10_04_x4(z94=z94, z95=z95, npc1=npc1)
     """State 2: Key Guide: System: Exit"""
     EndMachine()
+    Quit()
+    """Unused"""
+    """State 6: End state"""
+    return 0
 
-def event_m10_04_x6(z100=1005, z101=1105, z102=_, z103=_):
+def event_m10_04_x6(z90=1005, z91=1105, z92=_, z93=_):
     """[Lib] Item specified door unlocking_2
-    z100: Text ID when opened
-    z101: Text ID when not opened
-    z102: item
-    z103: Key gimmick flag
+    z90: Text ID when opened
+    z91: Text ID when not opened
+    z92: item
+    z93: Key gimmick flag
     """
     """State 0,1: Setting unlocking information"""
-    SetUnlockInfo(0, z102, z100, z101, z103, 0)
+    SetUnlockInfo(0, z92, z90, z91, z93, 0)
     """State 2: End state"""
     return 0
 
-def event_m10_04_x7(z98=_, z99=_):
+def event_m10_04_x7(z88=_, z89=_):
     """[Lib] NPC: Death determination: General purpose
-    z98: Generator ID
-    z99: Death map: Global event flag
+    z88: Generator ID
+    z89: Death map: Global event flag
     """
     """State 0,1: Death determination: Start"""
     IsPlayerInTheMap(0, 1, 0)
@@ -471,54 +517,59 @@ def event_m10_04_x7(z98=_, z99=_):
         pass
     elif ConditionGroup(0):
         """State 3: Death determination: branch"""
-        CompareEventFlag(0, z99, 1)
+        CompareEventFlag(0, z89, 1)
         if ConditionGroup(0):
             pass
         else:
             """State 2: Death determination: Wait"""
-            IsChrDead(0, z98)
+            IsChrDead(0, z88)
             assert ConditionGroup(0)
             """State 5: Death determination: death flag setting"""
-            SetEventFlag(z99, 1)
-            CompareEventFlag(0, z99, 1)
+            SetEventFlag(z89, 1)
+            CompareEventFlag(0, z89, 1)
             assert ConditionGroup(0)
     """State 4: Death determination: System: End"""
     EndMachine()
+    Quit()
+    """Unused"""
+    """State 6: End state"""
+    return 0
 
-def event_m10_04_x8(z96=10041100, z97=104020097):
+def event_m10_04_x8(z86=10041100, z87=104020097):
     """[Lib] OBJ Pledge: First move
-    z96: OBJ instance ID
-    z97: During menu operation: Area and other flags
+    z86: OBJ instance ID
+    z87: During menu operation: Area and other flags
     """
     """State 0,10: OBJ: Pledge: Initialization"""
-    SetEventFlag(z97, 0)
+    SetEventFlag(z87, 0)
     """State 1: OBJ: Pledge: Start"""
-    SetObjSync(z96, 0)
+    SetObjSync(z86, 0)
     IsPlayerInTheMap(8, 1, 0)
-    CompareEventFlag(8, z97, 0)
+    CompareEventFlag(8, z87, 0)
     assert ConditionGroup(8)
     """State 2: OBJ: Pledge: Net multiplayer judgment"""
     if IsGuest() != 0:
         """State 3: OBJ: Pledge: Hide"""
         ChangeOwnObjState(10)
-        CompareObjState(0, z96, 10, 0)
+        CompareObjState(0, z86, 10, 0)
         assert ConditionGroup(0)
         """State 9: OBJ: Pledge: System: End"""
         EndMachine()
+        Quit()
     else:
         """State 4: OBJ: Pledge: Display"""
         ChangeOwnObjState(30)
-        CompareObjState(0, z96, 30, 0)
+        CompareObjState(0, z86, 30, 0)
         assert ConditionGroup(0)
         """State 5: OBJ: Pledge: Start: Wait"""
-        IsObjSearched(0, z96)
+        IsObjSearched(0, z86)
         assert ConditionGroup(0)
         """State 7: OBJ: Pledge: Launch"""
-        SetEventFlag(z97, 1)
-        CompareEventFlag(0, z97, 1)
+        SetEventFlag(z87, 1)
+        CompareEventFlag(0, z87, 1)
         assert ConditionGroup(0)
         """State 8: OBJ: Pledge: Menu running: Wait"""
-        CompareEventFlag(0, z97, 0)
+        CompareEventFlag(0, z87, 0)
         assert ConditionGroup(0)
         """State 11: OBJ: Pledge: Timer"""
         KeyGuideTemporarilyInvalid(1)
@@ -526,6 +577,10 @@ def event_m10_04_x8(z96=10041100, z97=104020097):
         assert ConditionGroup(0)
         """State 6: OBJ: Pledge: System: Re-execution"""
         RestartMachine()
+        Quit()
+    """Unused"""
+    """State 12: End state"""
+    return 0
 
 def event_m10_04_x9():
     """[Lib] [Reproduction] OBJ attach_sky"""
@@ -537,35 +592,35 @@ def event_m10_04_x10():
     """State 0,1: End state"""
     return 0
 
-def event_m10_04_x11(z11=10043600, z12=_, z13=_):
+def event_m10_04_x11(z9=10043600, z10=_, z11=_):
     """[Lib] [execute] OBJ attach
-    z11: Parent OBJ instance ID
-    z12: Parent Damipoli ID
-    z13: Child OBJ instance ID
+    z9: Parent OBJ instance ID
+    z10: Parent Damipoli ID
+    z11: Child OBJ instance ID
     """
     """State 0,1: OBJ attach"""
-    AttachObjToObj(z11, z12, z13)
+    AttachObjToObj(z9, z10, z11)
     """State 2: End state"""
     return 0
 
-def event_m10_04_x12(z11=10043600, z12=_, z13=_):
+def event_m10_04_x12(z9=10043600, z10=_, z11=_):
     """[Lib] [Preset] OBJ attach
-    z11: Parent OBJ instance ID
-    z12: Parent Damipoli ID
-    z13: Child OBJ instance ID
+    z9: Parent OBJ instance ID
+    z10: Parent Damipoli ID
+    z11: Child OBJ instance ID
     """
     """State 0,1: [Lib] [Reproduction] OBJ attach_empty_SubState"""
     assert event_m10_04_x9()
     """State 3: [Lib] [Condition] OBJ attach_empty_SubState"""
     assert event_m10_04_x10()
     """State 2: [Lib] [Execution] OBJ attach_SubState"""
-    assert event_m10_04_x11(z11=z11, z12=z12, z13=z13)
+    assert event_m10_04_x11(z9=z9, z10=z10, z11=z11)
     """State 4: End state"""
     return 0
 
-def event_m10_04_x13(z95=102722):
+def event_m10_04_x13(z85=102722):
     """[Lib] Appearance determination: Magician
-    z95: Appearance permission: Global event flag
+    z85: Appearance permission: Global event flag
     """
     """State 0,1: Appearance determination: Start"""
     IsPlayerInTheMap(0, 1, 0)
@@ -586,12 +641,16 @@ def event_m10_04_x13(z95=102722):
             else:
                 Goto('L0')
         """State 4: Appearance judgment: Appearance permission"""
-        SetEventFlag(z95, 1)
-        CompareEventFlag(0, z95, 1)
+        SetEventFlag(z85, 1)
+        CompareEventFlag(0, z85, 1)
         assert ConditionGroup(0)
     """State 5: Generation stop judgment: System: End"""
     Label('L0')
     EndMachine()
+    Quit()
+    """Unused"""
+    """State 6: End state"""
+    return 0
 
 def event_m10_04_x14():
     """[Lib] [Reproduction] Switch the connection flag when in the map"""
@@ -606,15 +665,15 @@ def event_m10_04_x15():
     """State 2: End state"""
     return 0
 
-def event_m10_04_x16(z93=105405, z94=0):
+def event_m10_04_x16(z83=105405, z84=0):
     """[Lib] [Execution] Switch to connection flag when in map
-    z93: Global event flag for connection
-    z94: Flag switching
+    z83: Global event flag for connection
+    z84: Flag switching
     """
     """State 0,1: Switch global event flag for connection"""
-    SetEventFlag(z93, z94)
+    SetEventFlag(z83, z84)
     """State 2: Wait for flag transition"""
-    CompareEventFlag(0, z93, z94)
+    CompareEventFlag(0, z83, z84)
     assert ConditionGroup(0)
     """State 3: For next judgment: Did you get out of the map?"""
     IsPlayerInTheMap(0, 0, 0)
@@ -622,90 +681,107 @@ def event_m10_04_x16(z93=105405, z94=0):
     """State 4: End state"""
     return 0
 
-def event_m10_04_x17(z93=105405, z94=0):
+def event_m10_04_x17(z83=105405, z84=0):
     """[Lib] [Preset] Switch the connection flag when in the map
-    z93: Global event flag for connection
-    z94: Flag switching
+    z83: Global event flag for connection
+    z84: Flag switching
     """
     """State 0,1: [Lib] [Reproduction] Switch connection flag when in map_SubState"""
     assert event_m10_04_x14()
     """State 3: [Lib] [Condition] Switch to the connection flag when in the map_SubState"""
     assert event_m10_04_x15()
     """State 2: [Lib] [Execution] Switch to connection flag when in map _SubState"""
-    assert event_m10_04_x16(z93=z93, z94=z94)
+    assert event_m10_04_x16(z83=z83, z84=z84)
     """State 4: End state"""
     return 0
 
-def event_m10_04_x18(z88=_, z89=_, z90=_, z91=_, z92=104020089):
+def event_m10_04_x18(z78=_, z79=_, z80=_, z81=_, z82=104020089):
     """[Lib] Ladder shop: Ladder installation
-    z88: OBJ instance ID
-    z89: Poly play ID
-    z90: Size ladder installation: Global event flag
-    z91: Size ladder installation: Area and other flags
-    z92: Conversation standby: Area and other flags
+    z78: OBJ instance ID
+    z79: Poly play ID
+    z80: Size ladder installation: Global event flag
+    z81: Size ladder installation: Area and other flags
+    z82: Conversation standby: Area and other flags
     """
     """State 0,5: Ladder setting: Area Other flags: Setting"""
-    SetEventFlag(z91, 1)
-    CompareEventFlag(0, z91, 1)
+    SetEventFlag(z81, 1)
+    CompareEventFlag(0, z81, 1)
     assert ConditionGroup(0)
     """State 6: Ladder setting: conversation waiting"""
-    CompareEventFlag(0, z92, 1)
+    CompareEventFlag(0, z82, 1)
     assert ConditionGroup(0)
     """State 1,7: [Lib] Normal poly play_SubState"""
-    assert event_m10_04_x0(z89=z89, mode1=0, z116=0, z117=1, z118=1)
+    assert event_m10_04_x0(z79=z79, mode1=0, flag11=0, z106=1, z107=1)
     """State 2: Ladder installation: Ladder display"""
-    SetEventFlag(z90, 1)
-    ChangeObjState(z88, 10)
-    CompareObjState(8, z88, 10, 0)
-    CompareEventFlag(8, z90, 1)
+    Label('L0')
+    SetEventFlag(z80, 1)
+    ChangeObjState(z78, 10)
+    CompareObjState(8, z78, 10, 0)
+    CompareEventFlag(8, z80, 1)
     assert ConditionGroup(8)
     """State 3: Ladder installation: System: End"""
     EndMachine()
+    Quit()
+    """Unused"""
+    """State 4: Erasing all ladders: Erasing"""
+    ChangeObjState(10041310, 30)
+    ChangeObjState(10041305, 30)
+    ChangeObjState(10041300, 30)
+    CompareObjState(8, 10041310, 30, 0)
+    CompareObjState(8, 10041305, 30, 0)
+    CompareObjState(8, 10041300, 30, 0)
+    SetEventFlag(102170, 0)
+    SetEventFlag(102171, 0)
+    SetEventFlag(102172, 0)
+    assert ConditionGroup(8)
+    Goto('L0')
+    """State 8: End state"""
+    return 0
 
 def event_m10_04_x19():
     """[Reproduction] OBJ animation playback by attacking OBJ"""
     """State 0,1: End state"""
     return 0
 
-def event_m10_04_x20(z83=10042105, z84=-1):
+def event_m10_04_x20(z73=10042105, z74=-1):
     """[Condition] OBJ animation playback by attacking OBJ
-    z83: Trigger OBJ instance ID
-    z84: Damage attribute
+    z73: Trigger OBJ instance ID
+    z74: Damage attribute
     """
     """State 0,1: Was OBJ attacked?"""
-    IsObjDamaged(0, z83, z84, -1, 0)
+    IsObjDamaged(0, z73, z74, -1, 0)
     assert ConditionGroup(0)
     """State 2: End state"""
     return 0
 
-def event_m10_04_x21(z85=10046000, z86=70, z83=10042105, z87=20):
+def event_m10_04_x21(z75=10046000, z76=70, z73=10042105, z77=20):
     """[Execution] OBJ animation playback by attacking OBJ
-    z85: Target OBJ instance ID
-    z86: Anime OBJ State ID
-    z83: Trigger OBJ instance ID
-    z87: Trigger animation OBJ state ID
+    z75: Target OBJ instance ID
+    z76: Anime OBJ State ID
+    z73: Trigger OBJ instance ID
+    z77: Trigger animation OBJ state ID
     """
     """State 0,1: Animation playback of trigger OBJ and target OBJ"""
-    ChangeObjState(z85, z86)
-    ChangeObjState(z83, z87)
-    assert CompareObjStateId(z85, z86, 0) and CompareObjStateId(z83, z87, 0)
+    ChangeObjState(z75, z76)
+    ChangeObjState(z73, z77)
+    assert CompareObjStateId(z75, z76, 0) and CompareObjStateId(z73, z77, 0)
     """State 2: End state"""
     return 0
 
-def event_m10_04_x22(z83=10042105, z84=-1, z85=10046000, z86=70, z87=20):
+def event_m10_04_x22(z73=10042105, z74=-1, z75=10046000, z76=70, z77=20):
     """[Preset] OBJ animation playback by attacking OBJ
-    z83: Trigger OBJ instance ID
-    z84: Damage attribute
-    z85: Target OBJ instance ID
-    z86: Anime OBJ State ID
-    z87: Trigger animation OBJ state ID
+    z73: Trigger OBJ instance ID
+    z74: Damage attribute
+    z75: Target OBJ instance ID
+    z76: Anime OBJ State ID
+    z77: Trigger animation OBJ state ID
     """
     """State 0,1: [Reproduction] OBJ animation playback by attacking OBJ_SubState"""
     assert event_m10_04_x19()
     """State 3: [Condition] OBJ animation playback by attacking OBJ_SubState"""
-    assert event_m10_04_x20(z83=z83, z84=z84)
+    assert event_m10_04_x20(z73=z73, z74=z74)
     """State 2: [Execution] OBJ animation playback by attacking OBJ_SubState"""
-    assert event_m10_04_x21(z85=z85, z86=z86, z83=z83, z87=z87)
+    assert event_m10_04_x21(z75=z75, z76=z76, z73=z73, z77=z77)
     """State 4: End state"""
     return 0
 
@@ -714,13 +790,13 @@ def event_m10_04_x23():
     """State 0,1: End state"""
     return 0
 
-def event_m10_04_x24(z81=1004000, z82=1004099):
+def event_m10_04_x24(z71=1004000, z72=1004099):
     """[Lib] [execute] Rebirth fire
-    z81: Flag start ID
-    z82: Flag end ID
+    z71: Flag start ID
+    z72: Flag end ID
     """
     """State 0,1: Flag reset"""
-    SetEventFlagsInRange(z81, z82, 0)
+    SetEventFlagsInRange(z71, z72, 0)
     """State 2: End state"""
     return 0
 
@@ -729,54 +805,54 @@ def event_m10_04_x25():
     """State 0,1: End state"""
     return 0
 
-def event_m10_04_x26(z81=1004000, z82=1004099):
+def event_m10_04_x26(z71=1004000, z72=1004099):
     """[Lib] [Preset] Rebirth
-    z81: Flag start ID
-    z82: Flag end ID
+    z71: Flag start ID
+    z72: Flag end ID
     """
     """State 0,1: [Lib] [Reproduction] Reproduction of fire_sky_SubState"""
     assert event_m10_04_x23()
     """State 3: [Lib] [Condition] Reproduction fire_Sky_SubState"""
     assert event_m10_04_x25()
     """State 2: [Lib] [Execution] Regenerative fire _SubState"""
-    assert event_m10_04_x24(z81=z81, z82=z82)
+    assert event_m10_04_x24(z71=z71, z72=z72)
     """State 4: End state"""
     return 0
 
-def event_m10_04_x27(z79=_, z80=_):
+def event_m10_04_x27(flag10=_, z70=_):
     """[Lib] [Preset] Get trophy
-    z79: Acquisition trigger_other flags
-    z80: Trophy type
+    flag10: Acquisition trigger_other flags
+    z70: Trophy type
     """
     """State 0,1: Have you acquired a trophy?"""
-    if GetEventFlag(z79) != 0:
+    if GetEventFlag(flag10) != 0:
         pass
     else:
         """State 2: Wait for specified flag"""
-        CompareEventFlag(0, z79, 1)
+        CompareEventFlag(0, flag10, 1)
         assert ConditionGroup(0)
         """State 3: Trophy acquisition"""
-        AwardTrophy(z80)
+        AwardTrophy(z70)
     """State 4: End state"""
     return 0
 
-def event_m10_04_x28(z75=_, z76=_, z77=_, z78=_):
+def event_m10_04_x28(z69=_, flag7=_, flag8=_, flag9=_):
     """Dragon Miko: Boss Defeat Counter
-    z75: Main Boss: Global event flag
-    z76: Sub 1 boss: Global event flag
-    z77: Sub 2 boss: Global event flag
-    z78: Sub 3 boss: Global event flag
+    z69: Main Boss: Global event flag
+    flag7: Sub 1 boss: Global event flag
+    flag8: Sub 2 boss: Global event flag
+    flag9: Sub 3 boss: Global event flag
     """
     """State 0,1: Defeat Boss"""
-    if GetEventFlag(z76) != 0:
+    if GetEventFlag(flag7) != 0:
         """State 3: Boss Defeat: Main + Sub 1 branch"""
-        if GetEventFlag(z77) != 0:
+        if GetEventFlag(flag8) != 0:
             """State 6: Defeat Boss: Defeat 3"""
             Label('L0')
             SetEventFlag(102082, 1)
             CompareEventFlag(0, 102082, 1)
             assert ConditionGroup(0)
-        elif GetEventFlag(z78) != 0:
+        elif GetEventFlag(flag9) != 0:
             Goto('L0')
         else:
             """State 5: Defeat Boss: Defeat 2"""
@@ -784,13 +860,13 @@ def event_m10_04_x28(z75=_, z76=_, z77=_, z78=_):
             SetEventFlag(102081, 1)
             CompareEventFlag(0, 102081, 1)
             assert ConditionGroup(0)
-    elif GetEventFlag(z77) != 0:
+    elif GetEventFlag(flag8) != 0:
         """State 4: Boss Defeated: Main + Sub 2 branch"""
-        if GetEventFlag(z78) != 0:
+        if GetEventFlag(flag9) != 0:
             Goto('L0')
         else:
             Goto('L1')
-    elif GetEventFlag(z78) != 0:
+    elif GetEventFlag(flag9) != 0:
         Goto('L1')
     else:
         """State 2: Defeat Boss: Defeat 1"""
@@ -800,34 +876,34 @@ def event_m10_04_x28(z75=_, z76=_, z77=_, z78=_):
     """State 7: End state"""
     return 0
 
-def event_m10_04_x29(z71=_, z72=_, z73=_, z74=_):
+def event_m10_04_x29(z68=_, flag4=_, flag5=_, flag6=_):
     """Miracle: Boss Defeat Counter
-    z71: Main Boss: Global event flag
-    z72: Sub 1 boss: Global event flag
-    z73: Sub 2 boss: Global event flag
-    z74: Sub 3 boss: Global event flag
+    z68: Main Boss: Global event flag
+    flag4: Sub 1 boss: Global event flag
+    flag5: Sub 2 boss: Global event flag
+    flag6: Sub 3 boss: Global event flag
     """
     """State 0,1: Defeat Boss"""
-    if GetEventFlag(z72) != 0:
+    if GetEventFlag(flag4) != 0:
         """State 3: Boss Defeat: Main + Sub 1 branch"""
-        if GetEventFlag(z73) != 0:
+        if GetEventFlag(flag5) != 0:
             """State 6: Defeat Boss: Defeat 3"""
             Label('L0')
             SetEventFlag(102761, 1)
             CompareEventFlag(0, 102761, 1)
             assert ConditionGroup(0)
-        elif GetEventFlag(z74) != 0:
+        elif GetEventFlag(flag6) != 0:
             Goto('L0')
         else:
             """State 5: Defeat Boss: Defeat 2"""
             Label('L1')
-    elif GetEventFlag(z73) != 0:
+    elif GetEventFlag(flag5) != 0:
         """State 4: Boss Defeated: Main + Sub 2 branch"""
-        if GetEventFlag(z74) != 0:
+        if GetEventFlag(flag6) != 0:
             Goto('L0')
         else:
             Goto('L1')
-    elif GetEventFlag(z74) != 0:
+    elif GetEventFlag(flag6) != 0:
         Goto('L1')
     else:
         """State 2: Defeat Boss: Defeat 1"""
@@ -835,31 +911,31 @@ def event_m10_04_x29(z71=_, z72=_, z73=_, z74=_):
     """State 7: End state"""
     return 0
 
-def event_m10_04_x30(z63=_, z64=_):
+def event_m10_04_x30(z60=_, z61=_):
     """Miracle Person: Revolving Door: Single Anime Play
-    z63: Animation playback: OBJ State ID
-    z64: Target state: OBJ state ID
+    z60: Animation playback: OBJ State ID
+    z61: Target state: OBJ state ID
     """
     """State 0,1: Animation playback: Playback request"""
-    ChangeOwnObjState(z63)
-    CompareObjState(0, 10043000, z63, 0)
+    ChangeOwnObjState(z60)
+    CompareObjState(0, 10043000, z60, 0)
     assert ConditionGroup(0)
     """State 2: Animation playback: Playback standby"""
-    CompareObjState(0, 10043000, z64, 0)
+    CompareObjState(0, 10043000, z61, 0)
     assert ConditionGroup(0)
     """State 3: End state"""
     return 0
 
-def event_m10_04_x31(z63=_, z64=_, z65=_, z66=_, z67=_, z68=_, z69=_, z70=0):
+def event_m10_04_x31(z60=_, z61=_, z62=_, z63=_, z64=_, z65=_, z66=_, z67=0):
     """Miracle Person: Revolving Door: Whole Anime Play
-    z63: Close: Anime State: OBJ State
-    z64: Close: Target state: OBJ state
-    z65: Move: Anime State: OBJ State
-    z66: Movement: Target state: OBJ state
-    z67: Open: Anime State: OBJ State
-    z68: Open: Target state: OBJ state
-    z69: Reading map ID
-    z70: Animation start waiting time
+    z60: Close: Anime State: OBJ State
+    z61: Close: Target state: OBJ state
+    z62: Move: Anime State: OBJ State
+    z63: Movement: Target state: OBJ state
+    z64: Open: Anime State: OBJ State
+    z65: Open: Target state: OBJ state
+    z66: Reading map ID
+    z67: Animation start waiting time
     """
     """State 0,5: Judgment during OBJ operation"""
     SetEventFlag(104020156, 1)
@@ -871,40 +947,40 @@ def event_m10_04_x31(z63=_, z64=_, z65=_, z66=_, z67=_, z68=_, z69=_, z70=0):
     CompareObjState(0, 10043000, 82, 0)
     if ConditionGroup(0):
         """State 4: OBJ active standby"""
-        CompareObjState(0, 10043000, z64, 0)
-        CompareObjState(1, 10043000, z66, 0)
-        CompareObjState(2, 10043000, z68, 0)
+        CompareObjState(0, 10043000, z61, 0)
+        CompareObjState(1, 10043000, z63, 0)
+        CompareObjState(2, 10043000, z65, 0)
         if ConditionGroup(0):
             """State 1: Reserve standby time setting"""
             Label('L0')
-            CompareStateTime(0, z70, 2, z70)
+            CompareStateTime(0, z67, 2, z67)
             assert ConditionGroup(0)
             """State 9: Revolving door: Door movement_SubState"""
-            assert event_m10_04_x30(z63=z65, z64=z66)
+            assert event_m10_04_x30(z60=z62, z61=z63)
             """State 2: [DC] Loading completion confirmation and chunk comparison"""
             Label('L1')
-            IsMapReadAndBackreadStable(0, z69, 1)
+            IsMapReadAndBackreadStable(0, z66, 1)
             CompareChunkPhase(0, 2, 4)
             assert ConditionGroup(0)
             """State 10: Revolving door: lattice closed ⇒ open _SubState"""
-            assert event_m10_04_x30(z63=z67, z64=z68)
+            assert event_m10_04_x30(z60=z64, z61=z65)
         elif ConditionGroup(1):
             Goto('L1')
         elif ConditionGroup(2):
             """State 7: Waiting to open the lattice"""
-            CompareObjState(0, 10043000, z68, 0)
+            CompareObjState(0, 10043000, z65, 0)
             assert ConditionGroup(0)
     else:
         """State 6: OBJ state judgment"""
-        CompareObjState(0, 10043000, z64, 0)
-        CompareObjState(1, 10043000, z66, 0)
+        CompareObjState(0, 10043000, z61, 0)
+        CompareObjState(1, 10043000, z63, 0)
         if ConditionGroup(0):
             Goto('L0')
         elif ConditionGroup(1):
             Goto('L1')
         else:
             """State 8: Revolving door: Lattice open⇒Close_SubState"""
-            assert event_m10_04_x30(z63=z63, z64=z64)
+            assert event_m10_04_x30(z60=z60, z61=z61)
             Goto('L0')
     """State 3: Animation playback start flag OFF setting"""
     SetEventFlag(104020156, 0)
@@ -913,11 +989,11 @@ def event_m10_04_x31(z63=_, z64=_, z65=_, z66=_, z67=_, z68=_, z69=_, z70=0):
     """State 11: End state"""
     return 0
 
-def event_m10_04_x32(z56=10043010, z57=10041015, z58=10041020):
+def event_m10_04_x32(z53=10043010, z54=10041015, z55=10041020):
     """[Reproduction] Madura-Giant Morima Gimmick Door
-    z56: Door instance ID
-    z57: Instance ID of the madura lever
-    z58: Giant forest lever instance ID
+    z53: Door instance ID
+    z54: Instance ID of the madura lever
+    z55: Giant forest lever instance ID
     """
     """State 0,2: Event ends for guests"""
     if IsGuest() != 0:
@@ -925,47 +1001,47 @@ def event_m10_04_x32(z56=10043010, z57=10041015, z58=10041020):
         return 1
     else:
         """State 1: Initialize the OBJ state of the door"""
-        InitializeObj(z56)
+        InitializeObj(z53)
         """State 4: Navi Mesh Change: Unable to progress"""
         AddNavimeshAttribute(800000, 2)
         """State 3: Enable key guide for lever"""
-        DisableObjKeyGuide(z57, 0)
-        DisableObjKeyGuide(z58, 0)
+        DisableObjKeyGuide(z54, 0)
+        DisableObjKeyGuide(z55, 0)
         """State 5: End state"""
         return 0
 
-def event_m10_04_x33(z57=10041015, z58=10041020):
+def event_m10_04_x33(z54=10041015, z55=10041020):
     """[Conditions] Madura-Giant Morima Gimmick Door
-    z57: Instance ID of the madura lever
-    z58: Giant forest lever instance ID
+    z54: Instance ID of the madura lever
+    z55: Giant forest lever instance ID
     """
     """State 0,1: Lever operation standby"""
-    CompareObjState(0, z57, 74, 0)
-    CompareObjState(0, z58, 74, 0)
-    CompareObjState(0, z57, 84, 0)
-    CompareObjState(0, z58, 84, 0)
+    CompareObjState(0, z54, 74, 0)
+    CompareObjState(0, z55, 74, 0)
+    CompareObjState(0, z54, 84, 0)
+    CompareObjState(0, z55, 84, 0)
     assert ConditionGroup(0)
     """State 2: End state"""
     return 0
 
-def event_m10_04_x34(z56=10043010, z57=10041015, z58=10041020, z59=800001, z60=800002, z61=800010, z62=800011):
+def event_m10_04_x34(z53=10043010, z54=10041015, z55=10041020, z56=800001, z57=800002, z58=800010, z59=800011):
     """[Execution] Madura-Giant Morima Gimmick Door
-    z56: Door instance ID
-    z57: Instance ID of the madura lever
-    z58: Giant forest lever instance ID
-    z59: Point ID for door closing judgment_Start
-    z60: Door closing judgment point ID_End
-    z61: Forced door closing point ID_start
-    z62: Forced door closing point ID_End
+    z53: Door instance ID
+    z54: Instance ID of the madura lever
+    z55: Giant forest lever instance ID
+    z56: Point ID for door closing judgment_Start
+    z57: Door closing judgment point ID_End
+    z58: Forced door closing point ID_start
+    z59: Forced door closing point ID_End
     """
     """State 0,1: OBJ state transition: Door: 70"""
-    ChangeObjState(z56, 70)
+    ChangeObjState(z53, 70)
     """State 2: Disabling the key guide of the lever"""
-    DisableObjKeyGuide(z57, 1)
-    DisableObjKeyGuide(z58, 1)
+    DisableObjKeyGuide(z54, 1)
+    DisableObjKeyGuide(z55, 1)
     """State 3: Has the door opened?"""
-    CompareObjState(0, z56, 30, 0)
-    IsPlayerInsidePoint(1, z61, z62, 1)
+    CompareObjState(0, z53, 30, 0)
+    IsPlayerInsidePoint(1, z58, z59, 1)
     if ConditionGroup(1):
         pass
     elif ConditionGroup(0):
@@ -973,41 +1049,41 @@ def event_m10_04_x34(z56=10043010, z57=10041015, z58=10041020, z59=800001, z60=8
         DeleteNavimeshAttribute(800000, 2)
         """State 4: Judgment of conditions for closing the door"""
         CompareStateTime(0, 0.7, 2, 0.7)
-        IsPlayerInsidePoint(0, z59, z60, 1)
-        IsPlayerInsidePoint(1, z61, z62, 1)
+        IsPlayerInsidePoint(0, z56, z57, 1)
+        IsPlayerInsidePoint(1, z58, z59, 1)
         if ConditionGroup(1):
             pass
         elif ConditionGroup(0):
             """State 5: OBJ state transition: Door: 80"""
-            ChangeObjState(z56, 80)
+            ChangeObjState(z53, 80)
             """State 6: Has the door closed or entered the forced door closing point?"""
-            CompareObjState(0, z56, 10, 0)
-            IsPlayerInsidePoint(0, z61, z62, 1)
+            CompareObjState(0, z53, 10, 0)
+            IsPlayerInsidePoint(0, z58, z59, 1)
             assert ConditionGroup(0)
     """State 8: End state"""
     return 0
 
-def event_m10_04_x35(z56=10043010, z57=10041015, z58=10041020, z59=800001, z60=800002, z61=800010, z62=800011):
+def event_m10_04_x35(z53=10043010, z54=10041015, z55=10041020, z56=800001, z57=800002, z58=800010, z59=800011):
     """[Preset] Madura-Giant Morima Gimmick Door
-    z56: Door instance ID
-    z57: Instance ID of the madura lever
-    z58: Giant forest lever instance ID
-    z59: Point ID for door closing judgment_Start
-    z60: Door closing judgment point ID_End
-    z61: Forced door closing point ID_start
-    z62: Forced door closing point ID_End
+    z53: Door instance ID
+    z54: Instance ID of the madura lever
+    z55: Giant forest lever instance ID
+    z56: Point ID for door closing judgment_Start
+    z57: Door closing judgment point ID_End
+    z58: Forced door closing point ID_start
+    z59: Forced door closing point ID_End
     """
     """State 0,1: Disable OBJ sync"""
-    SetObjSync(z56, 0)
+    SetObjSync(z53, 0)
     """State 2: [Reproduction] Madura-Giant Morima Gimmick Door_SubState"""
-    call = event_m10_04_x32(z56=z56, z57=z57, z58=z58)
+    call = event_m10_04_x32(z53=z53, z54=z54, z55=z55)
     if call.Get() == 1:
         pass
     elif call.Done():
         """State 3: [Conditions] Madura-Giant Morima Gimmick Door_SubState"""
-        assert event_m10_04_x33(z57=z57, z58=z58)
+        assert event_m10_04_x33(z54=z54, z55=z55)
         """State 4: [Execution] Madura-Giant Morima Gimmick Door_SubState"""
-        assert event_m10_04_x34(z56=z56, z57=z57, z58=z58, z59=z59, z60=z60, z61=z61, z62=z62)
+        assert event_m10_04_x34(z53=z53, z54=z54, z55=z55, z56=z56, z57=z57, z58=z58, z59=z59)
     """State 5: End state"""
     return 0
 
@@ -1019,7 +1095,7 @@ def event_m10_04_x36():
     if (GetRandomValue(0) > 0 and GetRandomValue(0) < 1) != 0:
         """State 3: Armor_on the desk on the wall_SubState"""
         Label('L1')
-        call = event_m10_04_x37(z55=10043500)
+        call = event_m10_04_x37(z52=10043500)
         if call.Get() == 0 and (GetGlobalVariable(202) == GetAreaVariable(63)) != 0:
             pass
         elif call.Get() == 0:
@@ -1030,7 +1106,7 @@ def event_m10_04_x36():
         elif call.Get() == 1:
             """State 4: Armor_in the box_SubState"""
             Label('L3')
-            call = event_m10_04_x37(z55=10043501)
+            call = event_m10_04_x37(z52=10043501)
             if call.Get() == 0 and (GetGlobalVariable(202) == GetAreaVariable(63)) != 0:
                 pass
             elif call.Get() == 0:
@@ -1038,7 +1114,7 @@ def event_m10_04_x36():
             elif call.Get() == 1:
                 """State 5: Armor_on the desk in front_SubState"""
                 Label('L4')
-                call = event_m10_04_x37(z55=10043502)
+                call = event_m10_04_x37(z52=10043502)
                 if call.Get() == 0 and (GetGlobalVariable(202) == GetAreaVariable(63)) != 0:
                     pass
                 elif call.Get() == 0:
@@ -1046,7 +1122,7 @@ def event_m10_04_x36():
                 elif call.Get() == 1:
                     """State 6: 籠 Hand_on the desk on the wall_SubState"""
                     Label('L5')
-                    call = event_m10_04_x37(z55=10043520)
+                    call = event_m10_04_x37(z52=10043520)
                     if call.Get() == 0 and (GetGlobalVariable(202) == GetAreaVariable(63)) != 0:
                         pass
                     elif call.Get() == 0:
@@ -1054,7 +1130,7 @@ def event_m10_04_x36():
                     elif call.Get() == 1:
                         """State 7: The right side of the front desk _SubState"""
                         Label('L6')
-                        call = event_m10_04_x37(z55=10043521)
+                        call = event_m10_04_x37(z52=10043521)
                         if call.Get() == 0 and (GetGlobalVariable(202) == GetAreaVariable(63)) != 0:
                             pass
                         elif call.Get() == 0:
@@ -1062,7 +1138,7 @@ def event_m10_04_x36():
                         elif call.Get() == 1:
                             """State 8: 籠 手 _in the box_SubState"""
                             Label('L7')
-                            call = event_m10_04_x37(z55=10043522)
+                            call = event_m10_04_x37(z52=10043522)
                             if call.Get() == 0 and (GetGlobalVariable(202) == GetAreaVariable(63)) != 0:
                                 pass
                             elif call.Get() == 0:
@@ -1070,7 +1146,7 @@ def event_m10_04_x36():
                             elif call.Get() == 1:
                                 """State 9: 籠 Hand_Center on the front desk_SubState"""
                                 Label('L8')
-                                call = event_m10_04_x37(z55=10043523)
+                                call = event_m10_04_x37(z52=10043523)
                                 if call.Get() == 0 and (GetGlobalVariable(202) == GetAreaVariable(63)) != 0:
                                     pass
                                 elif call.Get() == 0:
@@ -1078,7 +1154,7 @@ def event_m10_04_x36():
                                 elif call.Get() == 1:
                                     """State 10: 籠 手 _The right side of the wall shelf_SubState"""
                                     Label('L9')
-                                    call = event_m10_04_x37(z55=10043524)
+                                    call = event_m10_04_x37(z52=10043524)
                                     if (call.Get() == 0 and (GetGlobalVariable(202) == GetAreaVariable(63))
                                         != 0):
                                         pass
@@ -1087,7 +1163,7 @@ def event_m10_04_x36():
                                     elif call.Get() == 1:
                                         """State 11: 籠 手 _Left side of wall shelf_SubState"""
                                         Label('L10')
-                                        call = event_m10_04_x37(z55=10043525)
+                                        call = event_m10_04_x37(z52=10043525)
                                         if (call.Get() == 0 and (GetGlobalVariable(202) == GetAreaVariable(63))
                                             != 0):
                                             pass
@@ -1096,7 +1172,7 @@ def event_m10_04_x36():
                                         elif call.Get() == 1:
                                             """State 12: On the desk on the wall side_SubState"""
                                             Label('L11')
-                                            call = event_m10_04_x37(z55=10043540)
+                                            call = event_m10_04_x37(z52=10043540)
                                             if (call.Get() == 0 and (GetGlobalVariable(202) == GetAreaVariable(63))
                                                 != 0):
                                                 pass
@@ -1105,7 +1181,7 @@ def event_m10_04_x36():
                                             elif call.Get() == 1:
                                                 """State 13: Ingredients_Bottom right side of the desk on the wall_SubState"""
                                                 Label('L12')
-                                                call = event_m10_04_x37(z55=10043541)
+                                                call = event_m10_04_x37(z52=10043541)
                                                 if (call.Get() == 0 and (GetGlobalVariable(202) == GetAreaVariable(63))
                                                     != 0):
                                                     pass
@@ -1114,7 +1190,7 @@ def event_m10_04_x36():
                                                 elif call.Get() == 1:
                                                     """State 14: Ingredients_Left side under the desk on the wall side_SubState"""
                                                     Label('L13')
-                                                    call = event_m10_04_x37(z55=10043542)
+                                                    call = event_m10_04_x37(z52=10043542)
                                                     if (call.Get() == 0 and (GetGlobalVariable(202) ==
                                                         GetAreaVariable(63)) != 0):
                                                         pass
@@ -1123,7 +1199,7 @@ def event_m10_04_x36():
                                                     elif call.Get() == 1:
                                                         """State 15: Ingredients_in the box_SubState"""
                                                         Label('L14')
-                                                        call = event_m10_04_x37(z55=10043543)
+                                                        call = event_m10_04_x37(z52=10043543)
                                                         if (call.Get() == 0 and (GetGlobalVariable(202)
                                                             == GetAreaVariable(63)) != 0):
                                                             pass
@@ -1132,7 +1208,7 @@ def event_m10_04_x36():
                                                         elif call.Get() == 1:
                                                             """State 16: 兜 _On the right side of the desk on the wall_SubState"""
                                                             Label('L15')
-                                                            call = event_m10_04_x37(z55=10043560)
+                                                            call = event_m10_04_x37(z52=10043560)
                                                             if (call.Get() == 0 and (GetGlobalVariable(202)
                                                                 == GetAreaVariable(63)) != 0):
                                                                 pass
@@ -1141,7 +1217,7 @@ def event_m10_04_x36():
                                                             elif call.Get() == 1:
                                                                 """State 17: 兜 _On the front desk_SubState"""
                                                                 Label('L16')
-                                                                call = event_m10_04_x37(z55=10043561)
+                                                                call = event_m10_04_x37(z52=10043561)
                                                                 if (call.Get() == 0 and (GetGlobalVariable(202)
                                                                     == GetAreaVariable(63)) != 0):
                                                                     pass
@@ -1150,7 +1226,7 @@ def event_m10_04_x36():
                                                                 elif call.Get() == 1:
                                                                     """State 18: 兜 _You are on the armor of the desk on the wall_SubState"""
                                                                     Label('L17')
-                                                                    call = event_m10_04_x37(z55=10043562)
+                                                                    call = event_m10_04_x37(z52=10043562)
                                                                     if (call.Get() == 0 and (GetGlobalVariable(202)
                                                                         == GetAreaVariable(63)) != 0):
                                                                         pass
@@ -1159,7 +1235,7 @@ def event_m10_04_x36():
                                                                     elif call.Get() == 1:
                                                                         """State 19: 兜 _Left side of wall shelf_SubState"""
                                                                         Label('L18')
-                                                                        call = event_m10_04_x37(z55=10043563)
+                                                                        call = event_m10_04_x37(z52=10043563)
                                                                         if (call.Get() == 0 and (GetGlobalVariable(202)
                                                                             == GetAreaVariable(63)) != 0):
                                                                             pass
@@ -1168,7 +1244,7 @@ def event_m10_04_x36():
                                                                         elif call.Get() == 1:
                                                                             """State 20: 兜 _Center on wall shelf_SubState"""
                                                                             Label('L19')
-                                                                            call = event_m10_04_x37(z55=10043564)
+                                                                            call = event_m10_04_x37(z52=10043564)
                                                                             if (call.Get() == 0 and (GetGlobalVariable(202)
                                                                                 == GetAreaVariable(63)) != 0):
                                                                                 pass
@@ -1177,7 +1253,7 @@ def event_m10_04_x36():
                                                                             elif call.Get() == 1:
                                                                                 """State 21: 兜 _Right side of the wall shelf_SubState"""
                                                                                 Label('L20')
-                                                                                call = event_m10_04_x37(z55=10043565)
+                                                                                call = event_m10_04_x37(z52=10043565)
                                                                                 if (call.Get() == 0 and (GetGlobalVariable(202)
                                                                                     == GetAreaVariable(63)) != 0):
                                                                                     pass
@@ -1224,44 +1300,43 @@ def event_m10_04_x36():
     """State 22: End state"""
     return 0
 
-def event_m10_04_x37(z55=_):
+def event_m10_04_x37(z52=_):
     """Armor shop: Single armor selection
-    z55: OBJ instance ID
+    z52: OBJ instance ID
     """
     """State 0,1: Single armor selection: Start"""
-    CompareObjState(0, z55, 20, 0)
+    CompareObjState(0, z52, 20, 0)
     if ConditionGroup(0):
         """State 4: Not set: End state"""
         return 1
     else:
         """State 2: Single armor selection: Setting"""
-        ChangeObjStateIf(CompareObjStateId(z55, 10, 0), z55, 20)
-        CompareObjState(0, z55, 20, 0)
+        ChangeObjStateIf(CompareObjStateId(z52, 10, 0), z52, 20)
+        CompareObjState(0, z52, 20, 0)
         assert ConditionGroup(0)
         """State 3: Setting: End state"""
         return 0
 
-def event_m10_04_x38(z35=10043020, goods1=50890000):
+def event_m10_04_x38(z33=10043020, item1=50890000):
     """[Reproduction] Revolving door switch
-    z35: OBJ instance ID of the switch
-    goods1: Launch item
+    z33: OBJ instance ID of the switch
+    item1: Launch item
     """
     """State 0,1: Key guide enabled"""
-    ChangeObjState(z35, 30)
+    ChangeObjState(z33, 30)
     """State 2: End state"""
     return 0
 
-def event_m10_04_x39(z35=10043020, goods1=50890000):
+def event_m10_04_x39(z33=10043020, item1=50890000):
     """[Conditions] Revolving door switch
-    z35: OBJ instance ID of the switch
-    goods1: Launch item
+    z33: OBJ instance ID of the switch
+    item1: Launch item
     """
     """State 0,1: Judgment to examine"""
-    IsObjSearched(0, z35)
+    IsObjSearched(0, z33)
     assert ConditionGroup(0)
     """State 2: Do you have a launch item?"""
-    # goods:50890000:Rotunda Lockstone
-    DoesPlayerHaveItem(0, goods1, 1, 3, 1, 1, 0)
+    DoesPlayerHaveItem(0, item1, 1, 3, 1, 1, 0)
     if ConditionGroup(0):
         """State 3: Rotate the door"""
         return 0
@@ -1269,69 +1344,69 @@ def event_m10_04_x39(z35=10043020, goods1=50890000):
         """State 4: Show message"""
         return 1
 
-def event_m10_04_x40(z35=10043020, z36=10043000, z37=104020156):
+def event_m10_04_x40(z33=10043020, z34=10043000, flag3=104020156):
     """[Execution] Revolving door switch_Revolving door execution
-    z35: OBJ instance ID of the switch
-    z36: OBJ instance ID of the revolving door
-    z37: Rotation flag
+    z33: OBJ instance ID of the switch
+    z34: OBJ instance ID of the revolving door
+    flag3: Rotation flag
     """
     """State 0,1: Rotation flag ON"""
-    SetEventFlag(z37, 1)
-    assert GetEventFlag(z37) != 0
+    SetEventFlag(flag3, 1)
+    assert GetEventFlag(flag3) != 0
     """State 3: Key guide disabled"""
-    ChangeObjState(z35, 10)
+    ChangeObjState(z33, 10)
     """State 5: Wait for flag OFF"""
-    CompareEventFlag(0, z37, 0)
+    CompareEventFlag(0, flag3, 0)
     assert ConditionGroup(0)
     """State 2: Waiting for next start"""
-    CompareObjState(0, z36, 30, 0)
-    CompareObjState(0, z36, 40, 0)
+    CompareObjState(0, z34, 30, 0)
+    CompareObjState(0, z34, 40, 0)
     assert ConditionGroup(0)
     """State 4: Key guide enabled"""
-    ChangeObjState(z35, 30)
+    ChangeObjState(z33, 30)
     """State 6: End of rotation"""
     return 0
 
-def event_m10_04_x41(z35=10043020, z36=10043000, z37=104020156, goods1=50890000):
+def event_m10_04_x41(z33=10043020, z34=10043000, flag3=104020156, item1=50890000):
     """[Preset] Revolving door switch
-    z35: OBJ instance ID of the switch
-    z36: OBJ instance ID of the revolving door
-    z37: Rotation start flag
-    goods1: Launch item
+    z33: OBJ instance ID of the switch
+    z34: OBJ instance ID of the revolving door
+    flag3: Rotation start flag
+    item1: Launch item
     """
     """State 0,1: [Reproduction] Revolving door switch_SubState"""
-    assert event_m10_04_x38(z35=z35, goods1=goods1)
+    assert event_m10_04_x38(z33=z33, item1=item1)
     """State 3: [Condition] Revolving door switch_SubState"""
-    call = event_m10_04_x39(z35=z35, goods1=goods1)
+    call = event_m10_04_x39(z33=z33, item1=item1)
     if call.Get() == 0:
         """State 2: [Execution] Revolving door switch_Revolving door execution_SubState"""
-        assert event_m10_04_x40(z35=z35, z36=z36, z37=z37)
+        assert event_m10_04_x40(z33=z33, z34=z34, flag3=flag3)
     elif call.Get() == 1:
         """State 4: [Execute] Revolving door switch_Message display_SubState"""
         assert event_m10_04_x55()
     """State 5: Rerun"""
     return 0
 
-def event_m10_04_x42(z49=10043000):
+def event_m10_04_x42(z46=10043000):
     """[Preset] Switch the global flags related to revolving doors
-    z49: Instance ID of revolving door OBJ
+    z46: Instance ID of revolving door OBJ
     """
     """State 0,1: [Reproduction] Switching global flags related to revolving doors_SubState"""
     assert event_m10_04_x43()
     """State 2: [Conditions] Switch global flags related to revolving doors_SubState"""
-    call = event_m10_04_x44(z49=z49)
+    call = event_m10_04_x44(z46=z46)
     if call.Get() == 0:
         """State 3: [Execution] Switching global flags related to revolving doors_Heide Great Fire Tower_SubState"""
-        assert event_m10_04_x45(z53=0, z54=3)
+        assert event_m10_04_x45(z50=0, z51=3)
     elif call.Get() == 1:
         """State 4: [Execution] Switching global flags related to revolving doors_Hunting Forest_SubState"""
-        assert event_m10_04_x45(z53=1, z54=4)
+        assert event_m10_04_x45(z50=1, z51=4)
     elif call.Get() == 2:
         """State 5: [Execution] Toggling global flags related to revolving doors_Operation area (Heide large fire tower side door open) _SubState"""
-        assert event_m10_04_x46(z50=0, z51=2, z49=z49, z52=40)
+        assert event_m10_04_x46(z47=0, z48=2, z46=z46, z49=40)
     elif call.Get() == 3:
         """State 6: [Execution] Switching global flags related to revolving doors_Operation area (hunting forest door open) _SubState"""
-        assert event_m10_04_x46(z50=1, z51=2, z49=z49, z52=30)
+        assert event_m10_04_x46(z47=1, z48=2, z46=z46, z49=30)
     """State 7: End state"""
     return 0
 
@@ -1340,9 +1415,9 @@ def event_m10_04_x43():
     """State 0,1: End state"""
     return 0
 
-def event_m10_04_x44(z49=10043000):
+def event_m10_04_x44(z46=10043000):
     """[Condition] Switching global flags related to revolving doors
-    z49: Instance ID of revolving door OBJ
+    z46: Instance ID of revolving door OBJ
     """
     """State 0,1: Which hit group are you on?"""
     IsPlayerOnHitGroup(0, 3, 1)
@@ -1372,87 +1447,87 @@ def event_m10_04_x44(z49=10043000):
         """State 5: Operation area_Hunting forest side door is open"""
         return 3
 
-def event_m10_04_x45(z53=_, z54=_):
+def event_m10_04_x45(z50=_, z51=_):
     """[Execute] Switch global flags related to revolving doors_Aisle area
-    z53: ON / OFF of global flag
-    z54: Hit group ID
-    """
-    """State 0,1: Change global event flag"""
-    SetEventFlag(105400, z53)
-    """State 2: Did you disappear from the hit group you were riding on?"""
-    IsPlayerOnHitGroup(0, z54, 0)
-    assert ConditionGroup(0)
-    """State 3: End state"""
-    return 0
-
-def event_m10_04_x46(z50=_, z51=2, z49=10043000, z52=_):
-    """[Execute] Switch global flags related to revolving doors_Operation area
     z50: ON / OFF of global flag
     z51: Hit group ID
-    z49: Instance ID of revolving door OBJ
-    z52: Revolving door OBJ state ID
     """
     """State 0,1: Change global event flag"""
     SetEventFlag(105400, z50)
-    """State 2: Did you leave the operating area? Or has the open door changed?"""
+    """State 2: Did you disappear from the hit group you were riding on?"""
     IsPlayerOnHitGroup(0, z51, 0)
-    CompareObjState(0, z49, z52, 0)
     assert ConditionGroup(0)
     """State 3: End state"""
     return 0
 
-def event_m10_04_x47(z43=10043600, z44=_, z45=_, z46=_, bonfire3=_, z47=_):
+def event_m10_04_x46(z47=_, z48=2, z46=10043000, z49=_):
+    """[Execute] Switch global flags related to revolving doors_Operation area
+    z47: ON / OFF of global flag
+    z48: Hit group ID
+    z46: Instance ID of revolving door OBJ
+    z49: Revolving door OBJ state ID
+    """
+    """State 0,1: Change global event flag"""
+    SetEventFlag(105400, z47)
+    """State 2: Did you leave the operating area? Or has the open door changed?"""
+    IsPlayerOnHitGroup(0, z48, 0)
+    CompareObjState(0, z46, z49, 0)
+    assert ConditionGroup(0)
+    """State 3: End state"""
+    return 0
+
+def event_m10_04_x47(z40=10043600, z41=_, z42=_, z43=_, bonfire3=_, z44=_):
     """[Preset] Updated world map
-    z43: World map OBJ instance ID
-    z44: World map OBJ Damipoli ID
-    z45: Instance ID of the flame OBJ on the world map
-    z46: Global event flag ID for MAP clear determination
+    z40: World map OBJ instance ID
+    z41: World map OBJ Damipoli ID
+    z42: Instance ID of the flame OBJ on the world map
+    z43: Global event flag ID for MAP clear determination
     bonfire3: Bonfire ID for lap level determination
-    z47: NPC flag setting
+    z44: NPC flag setting
     """
     """State 0,1: [Reproduction] Updated world map _SubState"""
-    assert event_m10_04_x48(z11=z43, z12=z44, z13=z45)
+    assert event_m10_04_x48(z9=z40, z10=z41, z11=z42)
     """State 2: [Condition] World map to be updated_SubState"""
-    call = event_m10_04_x49(z46=z46, bonfire3=bonfire3, z47=z47)
+    call = event_m10_04_x49(z43=z43, bonfire3=bonfire3, z44=z44)
     if call.Get() == 2:
         """State 3: [Execute] World map to be updated _ Blue flame _ SubState"""
-        assert event_m10_04_x50(z13=z45, z48=20)
+        assert event_m10_04_x50(z11=z42, z45=20)
     elif call.Get() == 1:
         """State 4: [Execution] World map to be updated_Red Flame_SubState"""
-        assert event_m10_04_x50(z13=z45, z48=30)
+        assert event_m10_04_x50(z11=z42, z45=30)
     elif call.Done():
         pass
     """State 5: End state"""
     return 0
 
-def event_m10_04_x48(z11=10043600, z12=_, z13=_):
+def event_m10_04_x48(z9=10043600, z10=_, z11=_):
     """[Reproduction] Updated world map
-    z11: World map OBJ instance ID
-    z12: World map OBJ Damipoli ID
-    z13: Instance ID of the flame OBJ on the world map
+    z9: World map OBJ instance ID
+    z10: World map OBJ Damipoli ID
+    z11: Instance ID of the flame OBJ on the world map
     """
     """State 0,1: [Lib] [Preset] OBJ attach_SubState"""
-    assert event_m10_04_x12(z11=z11, z12=z12, z13=z13)
+    assert event_m10_04_x12(z9=z9, z10=z10, z11=z11)
     """State 2: End state"""
     return 0
 
-def event_m10_04_x49(z46=_, bonfire3=_, z47=_):
+def event_m10_04_x49(z43=_, bonfire3=_, z44=_):
     """[Condition] World map to be updated
-    z46: Global event flag ID for MAP clear determination
+    z43: Global event flag ID for MAP clear determination
     bonfire3: Bonfire ID for lap level determination
-    z47: NPC flag
+    z44: NPC flag
     """
     """State 0,1: Has the MAP strategy been completed?"""
-    CompareEventFlag(8, z47, 1)
-    CompareEventFlag(8, z46, 1)
-    CompareEventFlag(0, z46, 1)
+    CompareEventFlag(8, z44, 1)
+    CompareEventFlag(8, z43, 1)
+    CompareEventFlag(0, z43, 1)
     if ConditionGroup(8):
         pass
     elif ConditionGroup(0):
         """State 3: Set NPC flag and add variable"""
         AddAreaVariable(60, 1)
-        SetEventFlag(z47, 1)
-        CompareEventFlag(0, z47, 1)
+        SetEventFlag(z44, 1)
+        CompareEventFlag(0, z44, 1)
         assert ConditionGroup(0)
     else:
         """State 4: End state"""
@@ -1466,34 +1541,34 @@ def event_m10_04_x49(z46=_, bonfire3=_, z47=_):
         """State 5: Lit red flame"""
         return 1
 
-def event_m10_04_x50(z13=_, z48=_):
+def event_m10_04_x50(z11=_, z45=_):
     """[Execution] Updated world map
-    z13: Instance ID of the flame OBJ on the world map
-    z48: State ID of the flame lit on the world map OBJ
+    z11: Instance ID of the flame OBJ on the world map
+    z45: State ID of the flame lit on the world map OBJ
     """
     """State 0,1: Lighting the flame"""
-    ChangeObjState(z13, z48)
+    ChangeObjState(z11, z45)
     """State 2: End state"""
     return 0
 
-def event_m10_04_x51(z38=10043000, z39=30, z40=40, z41=902000, z42=902001):
+def event_m10_04_x51(z35=10043000, z36=30, z37=40, z38=902000, z39=902001):
     """[Preset] Revolving door navigation mesh change
-    z38: Instance ID of revolving door OBJ
-    z39: Hunting forest door open
-    z40: Heide large fire tower side door open
-    z41: Navimesh change ID for hunting forest
-    z42: Navimesh change ID on Heide Great Fire Tower side
+    z35: Instance ID of revolving door OBJ
+    z36: Hunting forest door open
+    z37: Heide large fire tower side door open
+    z38: Navimesh change ID for hunting forest
+    z39: Navimesh change ID on Heide Great Fire Tower side
     """
     """State 0,1: [Reproduction] Navi mesh change of the revolving door_SubState"""
     assert event_m10_04_x52()
     """State 4: [Condition] Change navigation mesh of the revolving door_SubState"""
-    call = event_m10_04_x53(z38=z38, z39=z39, z40=z40)
+    call = event_m10_04_x53(z35=z35, z36=z36, z37=z37)
     if call.Get() == 0:
         """State 2: [Execution] Revolving door navigation mesh change_Hunting forest side door opening_SubState"""
-        assert event_m10_04_x54(z41=z41, z42=z42, z38=z38, z40=z40)
+        assert event_m10_04_x54(z38=z38, z39=z39, z35=z35, z37=z37)
     elif call.Get() == 1:
         """State 3: [Execution] Navimesh change of revolving door _ Heide large fire tower side door opening _ SubState"""
-        assert event_m10_04_x54(z41=z42, z42=z41, z38=z38, z40=z39)
+        assert event_m10_04_x54(z38=z39, z39=z38, z35=z35, z37=z36)
     """State 5: End state"""
     return 0
 
@@ -1502,15 +1577,15 @@ def event_m10_04_x52():
     """State 0,1: End state"""
     return 0
 
-def event_m10_04_x53(z38=10043000, z39=30, z40=40):
+def event_m10_04_x53(z35=10043000, z36=30, z37=40):
     """[Conditions] Changing the navigation mesh of the revolving door
-    z38: Instance ID of revolving door OBJ
-    z39: Hunting forest door open
-    z40: Heide large fire tower side door open
+    z35: Instance ID of revolving door OBJ
+    z36: Hunting forest door open
+    z37: Heide large fire tower side door open
     """
     """State 0,1: Judgment of revolving door status"""
-    CompareObjState(0, z38, z39, 0)
-    CompareObjState(1, z38, z40, 0)
+    CompareObjState(0, z35, z36, 0)
+    CompareObjState(1, z35, z37, 0)
     if ConditionGroup(0):
         """State 2: Hunting forest door is open"""
         return 0
@@ -1518,18 +1593,18 @@ def event_m10_04_x53(z38=10043000, z39=30, z40=40):
         """State 3: Heide Fire Tower side door is open"""
         return 1
 
-def event_m10_04_x54(z41=_, z42=_, z38=10043000, z40=_):
+def event_m10_04_x54(z38=_, z39=_, z35=10043000, z37=_):
     """[Execution] Changing the navigation mesh of the revolving door
-    z41: Navimesh change ID for open door
-    z42: Navimesh change ID for closed door
-    z38: Instance ID of revolving door OBJ
-    z40: Reverse door open state
+    z38: Navimesh change ID for open door
+    z39: Navimesh change ID for closed door
+    z35: Instance ID of revolving door OBJ
+    z37: Reverse door open state
     """
     """State 0,1: Navigation mesh change"""
-    DeleteNavimeshAttribute(z41, 2)
-    AddNavimeshAttribute(z42, 2)
+    DeleteNavimeshAttribute(z38, 2)
+    AddNavimeshAttribute(z39, 2)
     """State 2: Was the opposite door open?"""
-    CompareObjState(0, z38, z40, 0)
+    CompareObjState(0, z35, z37, 0)
     assert ConditionGroup(0)
     """State 3: End state"""
     return 0
@@ -1569,34 +1644,34 @@ def event_m10_04_x56():
     """State 7: No intrusion"""
     return 1
 
-def event_m10_04_x57(z34=2):
+def event_m10_04_x57(z32=2):
     """[Condition] Intrusion item usage judgment
-    z34: Hit group ID
+    z32: Hit group ID
     """
     """State 0,1: Waiting for entry into revolving door room"""
-    IsPlayerOnHitGroup(0, z34, 1)
+    IsPlayerOnHitGroup(0, z32, 1)
     assert ConditionGroup(0)
     """State 2: Item available"""
     return 0
 
-def event_m10_04_x58(z34=2):
+def event_m10_04_x58(z32=2):
     """[Execution] Intrusion item usage judgment
-    z34: Hit group ID
+    z32: Hit group ID
     """
     """State 0,1: Item availability flag ON"""
     SetEventFlag(102770, 1)
     """State 3: Network text FE display"""
     OpenNetworkMessageMenu(2100, 0, 0, 0)
     """State 2: Wait for next decision"""
-    IsPlayerOnHitGroup(0, z34, 0)
+    IsPlayerOnHitGroup(0, z32, 0)
     CompareEventFlag(0, 104320, 1)
     assert ConditionGroup(0)
     """State 4: Rerun"""
     return 0
 
-def event_m10_04_x59(z34=2):
+def event_m10_04_x59(z32=2):
     """[Preset] Intrusion item usage judgment
-    z34: Hit group ID
+    z32: Hit group ID
     """
     """State 0,1: [Reproduction] Intrusion item use determination_SubState"""
     call = event_m10_04_x56()
@@ -1605,9 +1680,9 @@ def event_m10_04_x59(z34=2):
         return 1
     elif call.Get() == 0:
         """State 3: [Condition] Intrusion item use determination_SubState"""
-        assert event_m10_04_x57(z34=z34)
+        assert event_m10_04_x57(z32=z32)
         """State 2: [Execution] Intrusion item use determination_SubState"""
-        assert event_m10_04_x58(z34=z34)
+        assert event_m10_04_x58(z32=z32)
         """State 4: Rerun"""
         return 0
 
@@ -1616,16 +1691,16 @@ def event_m10_04_x60():
     """State 0,1: End state"""
     return 0
 
-def event_m10_04_x61(z29=152, z30=50):
+def event_m10_04_x61(z27=152, z28=50):
     """[Condition] Return from the intruder
-    z29: Generator ID
-    z30: Hit group ID
+    z27: Generator ID
+    z28: Hit group ID
     """
     """State 0,2: Did you enter the invasion destination?"""
-    IsPlayerOnHitGroup(0, z30, 1)
+    IsPlayerOnHitGroup(0, z28, 1)
     assert ConditionGroup(0)
     """State 1: Did you defeat the miraculous black spirit?"""
-    IsChrDead(0, z29)
+    IsChrDead(0, z27)
     assert ConditionGroup(0)
     """State 3: [BEST] Item acquisition judgment"""
     # lot:60006000:Rotunda Lockstone
@@ -1636,15 +1711,15 @@ def event_m10_04_x61(z29=152, z30=50):
         """State 5: Get key items only"""
         return 1
 
-def event_m10_04_x62(lot1=_, z31=2103, z32=300010, z33=104322):
+def event_m10_04_x62(lot1=_, z29=2103, z30=300010, z31=104322):
     """[Execution] Return from intrusion
     lot1: Item lottery
-    z31: Network text ID
-    z32: Return point ID
-    z33: Miracle person_map death flag
+    z29: Network text ID
+    z30: Return point ID
+    z31: Miracle person_map death flag
     """
     """State 0,5: Miracle map death flag ON"""
-    SetEventFlag(z33, 1)
+    SetEventFlag(z31, 1)
     """State 6: Weight after defeat"""
     assert (GetStateTime() > 1.5) != 0
     """State 1: Reward acquisition"""
@@ -1653,78 +1728,94 @@ def event_m10_04_x62(lot1=_, z31=2103, z32=300010, z33=104322):
     """State 2: Waiting for hidden item acquisition FE"""
     assert ItemAwardDisplay() != 1
     """State 3: Network FE display"""
-    OpenNetworkMessageMenu(z31, 0, 0, 0)
+    OpenNetworkMessageMenu(z29, 0, 0, 0)
     """State 4: Network FE hidden waiting"""
     assert (GetStateTime() > 8) != 0
     """State 7: [Lib] Warp between maps after poly play_SubState"""
-    assert event_m10_04_x1(z113=0, z114=0, z115=10040000, z32=z32)
+    assert event_m10_04_x1(z103=0, z104=0, z105=10040000, z30=z30)
     """State 8: End state"""
     return 0
 
-def event_m10_04_x63(z29=152, z30=50, lot1=60006000, z31=2103, z32=300010, z33=104322):
+def event_m10_04_x63(z27=152, z28=50, lot1=60006000, z29=2103, z30=300010, z31=104322):
     """[Preset] Return from intrusion
-    z29: Generator ID
-    z30: Hit group ID
+    z27: Generator ID
+    z28: Hit group ID
     lot1: Item lottery
-    z31: Network text ID
-    z32: Return point ID
-    z33: Miracle person_map death flag
+    z29: Network text ID
+    z30: Return point ID
+    z31: Miracle person_map death flag
     """
     """State 0,1: [Reproduction] Return from the intrusion_SubState"""
     assert event_m10_04_x60()
     """State 3: [Condition] Return from the intrusion_SubState"""
-    call = event_m10_04_x61(z29=z29, z30=z30)
+    call = event_m10_04_x61(z27=z27, z28=z28)
     if call.Get() == 0:
         """State 2: [Execution] Return from the intrusion_SubState"""
-        assert event_m10_04_x62(lot1=lot1, z31=z31, z32=z32, z33=z33)
+        assert event_m10_04_x62(lot1=lot1, z29=z29, z30=z30, z31=z31)
     elif call.Get() == 1:
         """State 4: [BEST] [Execution] Return from intrusion_Key item only_SubState"""
         # lot:60045000:Rotunda Lockstone
-        assert event_m10_04_x62(lot1=60045000, z31=z31, z32=z32, z33=z33)
+        assert event_m10_04_x62(lot1=60045000, z29=z29, z30=z30, z31=z31)
     """State 5: End state"""
     return 0
 
-def event_m10_04_x64(z26=_, z27=_, z28=_):
+def event_m10_04_x64(z24=_, z25=_, z26=_):
     """Zako death determination
-    z26: Generator ID
-    z27: Lap level
-    z28: Defeat: Area and other flags
+    z24: Generator ID
+    z25: Lap level
+    z26: Defeat: Area and other flags
     """
     """State 0,4: Death determination: Judgment level determination"""
+    Label('L0')
     # bonfire:4650:The Far Fire
-    CompareGameCycleForBonfire(0, 4650, 2, z27, 4)
+    CompareGameCycleForBonfire(0, 4650, 2, z25, 4)
     if ConditionGroup(0):
         pass
     else:
         """State 1: Death determination: Death determination"""
-        IsChrDead(0, z26)
+        IsChrDead(0, z24)
         assert ConditionGroup(0)
         """State 2: Death determination: Count"""
-        SetEventFlag(z28, 1)
+        SetEventFlag(z26, 1)
     """State 3: Death determination: System: End"""
+    Label('L1')
     EndMachine()
+    Quit()
+    """Unused"""
+    """State 5: Death determination: cartography: death"""
+    CompareEventFlag(0, 104180, 1)
+    if ConditionGroup(0):
+        Goto('L1')
+    else:
+        pass
+    """State 6: Death determination: Map writing: Emigration"""
+    CompareEventFlag(0, 102462, 1)
+    assert ConditionGroup(0)
+    Goto('L0')
+    """State 7: End state"""
+    return 0
 
-def event_m10_04_x65(z25=10041000):
+def event_m10_04_x65(z23=10041000):
     """[Preset] Obelisk _ front side
-    z25: Obelisk OBJ instance ID to check
+    z23: Obelisk OBJ instance ID to check
     """
     """State 0,1: [Reproduction] Obelisk_SubState"""
     assert event_m10_04_x67()
     """State 2: [Condition] Obelisk_SubState"""
-    assert event_m10_04_x68(z24=z25)
+    assert event_m10_04_x68(z22=z23)
     """State 3: [Execution] Obelisk_Front_SubState"""
     assert event_m10_04_x69()
     """State 4: End state"""
     return 0
 
-def event_m10_04_x66(z24=10041010):
+def event_m10_04_x66(z22=10041010):
     """[Preset] Obelisk _ reverse side
-    z24: Obelisk OBJ instance ID to check
+    z22: Obelisk OBJ instance ID to check
     """
     """State 0,1: [Reproduction] Obelisk_SubState"""
     assert event_m10_04_x67()
     """State 2: [Condition] Obelisk_SubState"""
-    assert event_m10_04_x68(z24=z24)
+    assert event_m10_04_x68(z22=z22)
     """State 3: [Execution] Obelisk_Backside_SubState"""
     assert event_m10_04_x70()
     """State 4: End state"""
@@ -1735,12 +1826,12 @@ def event_m10_04_x67():
     """State 0,1: End state"""
     return 0
 
-def event_m10_04_x68(z24=_):
+def event_m10_04_x68(z22=_):
     """[Condition] Obelisk
-    z24: Obelisk OBJ instance ID to check
+    z22: Obelisk OBJ instance ID to check
     """
     """State 0,1: Have you examined OBJ?"""
-    IsObjSearched(0, z24)
+    IsObjSearched(0, z22)
     assert ConditionGroup(0)
     """State 2: End state"""
     return 0
@@ -1759,12 +1850,12 @@ def event_m10_04_x70():
     """State 2: End state"""
     return 0
 
-def event_m10_04_x71(z23=_):
+def event_m10_04_x71(z21=_):
     """Trophy: Single survival
-    z23: Death: Global event flag
+    z21: Death: Global event flag
     """
     """State 0,1: Death determination"""
-    CompareEventFlag(0, z23, 1)
+    CompareEventFlag(0, z21, 1)
     if ConditionGroup(0):
         """State 3: Failure: Exit state"""
         return 1
@@ -1772,24 +1863,24 @@ def event_m10_04_x71(z23=_):
         """State 2: Success: Exit state"""
         return 0
 
-def event_m10_04_x72(z20=_, z21=_, z22=_):
+def event_m10_04_x72(z18=_, z19=_, z20=_):
     """Trophy: Migration survival
-    z20: Death: Global event flag
-    z21: Previous map hostile: Global event flag
-    z22: Emigration permission: Global event flag
+    z18: Death: Global event flag
+    z19: Previous map hostile: Global event flag
+    z20: Emigration permission: Global event flag
     """
     """State 0,1: Death determination"""
-    CompareEventFlag(0, z20, 1)
+    CompareEventFlag(0, z18, 1)
     if ConditionGroup(0):
         pass
     else:
         """State 2: Hostility"""
-        CompareEventFlag(0, z21, 1)
+        CompareEventFlag(0, z19, 1)
         if ConditionGroup(0):
             pass
         else:
             """State 3: Emigration permission judgment"""
-            CompareEventFlag(0, z22, 0)
+            CompareEventFlag(0, z20, 0)
             if ConditionGroup(0):
                 pass
             else:
@@ -1798,24 +1889,24 @@ def event_m10_04_x72(z20=_, z21=_, z22=_):
     """State 5: Failure: Exit state"""
     return 1
 
-def event_m10_04_x73(z17=104300, z18=103801, z19=102722):
+def event_m10_04_x73(z15=104300, z16=103801, z17=102722):
     """Trophy: Surviving the Magician
-    z17: Death: Global event flag
-    z18: Previous map hostile: Global event flag
-    z19: Emigration permission: Global event flag
+    z15: Death: Global event flag
+    z16: Previous map hostile: Global event flag
+    z17: Emigration permission: Global event flag
     """
     """State 0,1: Death determination"""
-    CompareEventFlag(0, z17, 1)
+    CompareEventFlag(0, z15, 1)
     if ConditionGroup(0):
         pass
     else:
         """State 2: Hostility"""
-        CompareEventFlag(0, z18, 1)
+        CompareEventFlag(0, z16, 1)
         if ConditionGroup(0):
             pass
         else:
             """State 3: Emigration permission judgment"""
-            CompareEventFlag(0, z19, 0)
+            CompareEventFlag(0, z17, 0)
             if ConditionGroup(0):
                 pass
             else:
@@ -1933,27 +2024,27 @@ def event_m10_04_x79():
     """State 4: End state"""
     return 0
 
-def event_m10_04_x80(z14=103140, bonfire2=27655, z15=104010076, z16=100977):
+def event_m10_04_x80(z12=103140, bonfire2=27655, z13=104010076, z14=100977):
     """[Condition] World map to be updated
-    z14: Global event flag ID for MAP clear determination
+    z12: Global event flag ID for MAP clear determination
     bonfire2: Bonfire ID for lap level determination
-    z15: NPC flag
-    z16: Global flag for MAP clear determination ②
+    z13: NPC flag
+    z14: Global flag for MAP clear determination ②
     """
     """State 0,1: Has the MAP strategy been completed?"""
-    CompareEventFlag(8, z15, 1)
+    CompareEventFlag(8, z13, 1)
+    CompareEventFlag(1, z12, 1)
     CompareEventFlag(1, z14, 1)
-    CompareEventFlag(1, z16, 1)
     SetConditionGroup(8, 1)
+    CompareEventFlag(0, z12, 1)
     CompareEventFlag(0, z14, 1)
-    CompareEventFlag(0, z16, 1)
     if ConditionGroup(8):
         pass
     elif ConditionGroup(0):
         """State 3: Set NPC flag and add variable"""
         AddAreaVariable(60, 1)
-        SetEventFlag(z15, 1)
-        CompareEventFlag(0, z15, 1)
+        SetEventFlag(z13, 1)
+        CompareEventFlag(0, z13, 1)
         assert ConditionGroup(0)
     else:
         """State 4: End state"""
@@ -1968,27 +2059,26 @@ def event_m10_04_x80(z14=103140, bonfire2=27655, z15=104010076, z16=100977):
         """State 5: Lit red flame"""
         return 1
 
-def event_m10_04_x81(z11=10043600, z12=156, z13=10043670, z14=103140, bonfire2=27655, z15=104010076,
-                     z16=100977):
+def event_m10_04_x81(z9=10043600, z10=156, z11=10043670, z12=103140, bonfire2=27655, z13=104010076, z14=100977):
     """[Preset] World map to be updated
-    z11: World map OBJ instance ID
-    z12: World map OBJ Damipoli ID
-    z13: Instance ID of the flame OBJ on the world map
-    z14: Global event flag ID for MAP clear determination
+    z9: World map OBJ instance ID
+    z10: World map OBJ Damipoli ID
+    z11: Instance ID of the flame OBJ on the world map
+    z12: Global event flag ID for MAP clear determination
     bonfire2: Bonfire ID for lap level determination
-    z15: NPC flag setting
-    z16: Global event flag ID for MAP clear determination ②
+    z13: NPC flag setting
+    z14: Global event flag ID for MAP clear determination ②
     """
     """State 0,1: [Reproduction] Updated world map _SubState"""
-    assert event_m10_04_x48(z11=z11, z12=z12, z13=z13)
+    assert event_m10_04_x48(z9=z9, z10=z10, z11=z11)
     """State 4: [Conditions] World map to be updated_Old Dragon_SubState"""
-    call = event_m10_04_x80(z14=z14, bonfire2=bonfire2, z15=z15, z16=z16)
+    call = event_m10_04_x80(z12=z12, bonfire2=bonfire2, z13=z13, z14=z14)
     if call.Get() == 2:
         """State 2: [Execute] World map to be updated _ Blue flame _ SubState"""
-        assert event_m10_04_x50(z13=z13, z48=20)
+        assert event_m10_04_x50(z11=z11, z45=20)
     elif call.Get() == 1:
         """State 3: [Execution] World map to be updated_Red Flame_SubState"""
-        assert event_m10_04_x50(z13=z13, z48=30)
+        assert event_m10_04_x50(z11=z11, z45=30)
     elif call.Done():
         pass
     """State 5: End state"""
@@ -2004,12 +2094,12 @@ def event_m10_04_x82():
         """State 3: The guests"""
         return 1
 
-def event_m10_04_x83(z9=100961):
+def event_m10_04_x83(z7=100961):
     """[Conditions] Miracles emigrated by clearing the hidden port
-    z9: Boss Defeat Global Flag
+    z7: Boss Defeat Global Flag
     """
     """State 0,1: Did you destroy the boss?"""
-    CompareEventFlag(0, z9, 1)
+    CompareEventFlag(0, z7, 1)
     if ConditionGroup(0):
         """State 2: Defeated"""
         return 0
@@ -2017,28 +2107,28 @@ def event_m10_04_x83(z9=100961):
         """State 3: Undefeated"""
         return 1
 
-def event_m10_04_x84(z10=102765):
+def event_m10_04_x84(z8=102765):
     """[Execution] The miraculous people migrated by clearing the hidden port
-    z10: Miracle Person: Emigration Flag
+    z8: Miracle Person: Emigration Flag
     """
     """State 0,1: Miracle Person: Immigration Flag ON"""
-    SetEventFlag(z10, 1)
+    SetEventFlag(z8, 1)
     """State 2: End state"""
     return 0
 
-def event_m10_04_x85(z9=100961, z10=102765):
+def event_m10_04_x85(z7=100961, z8=102765):
     """[Preset] Miracles emigrated by clearing the hidden port
-    z9: Boss Defeat Global Flag
-    z10: Miracle Person: Emigration Flag
+    z7: Boss Defeat Global Flag
+    z8: Miracle Person: Emigration Flag
     """
     """State 0,1: [Reproduction] Miracles migrated by clearing the hidden port_SubState"""
     call = event_m10_04_x82()
     if call.Get() == 0:
         """State 3: [Conditions] Miracles emigrated by clearing the hidden port_SubState"""
-        call = event_m10_04_x83(z9=z9)
+        call = event_m10_04_x83(z7=z7)
         if call.Get() == 0:
             """State 2: [Execution] The miraculous people migrated by clearing the hidden port_SubState"""
-            assert event_m10_04_x84(z10=z10)
+            assert event_m10_04_x84(z8=z8)
         elif call.Get() == 1:
             pass
     elif call.Get() == 1:
@@ -2164,13 +2254,13 @@ def event_m10_04_x89():
     """State 4: End state"""
     return 0
 
-def event_m10_04_x90(z2=104000002, z3=104000001):
+def event_m10_04_x90(flag1=104000002, flag2=104000001):
     """[DC] [Reproduction] Reincarnation of Pig
-    z2: Fate generation flag
-    z3: Parent pig generation flag
+    flag1: Fate generation flag
+    flag2: Parent pig generation flag
     """
     """State 0,1: Has a fang beast appeared?"""
-    if GetEventFlag(z2) != 0:
+    if GetEventFlag(flag1) != 0:
         pass
     else:
         Goto('L0')
@@ -2178,72 +2268,72 @@ def event_m10_04_x90(z2=104000002, z3=104000001):
     return 2
     """State 2: Has a parent pig appeared?"""
     Label('L0')
-    if GetEventFlag(z3) != 0:
+    if GetEventFlag(flag2) != 0:
         """State 4: During parent pig production"""
         return 1
     else:
         """State 3: During piglet production"""
         return 0
 
-def event_m10_04_x91(z4=1000, z5=1001, z6=1002):
+def event_m10_04_x91(z2=1000, z3=1001, z4=1002):
     """[DC] [Condition] Reincarnation of pigs_pigs
-    z4: Piglet generator ID
-    z5: Piglet ② generator ID
-    z6: Piglet ③ Generator ID
+    z2: Piglet generator ID
+    z3: Piglet ② generator ID
+    z4: Piglet ③ Generator ID
     """
     """State 0,1: Have all the piglets been depleted?"""
+    IsChrMaxRespawnCount(8, z2, 1, 0)
+    IsChrMaxRespawnCount(8, z3, 1, 0)
     IsChrMaxRespawnCount(8, z4, 1, 0)
+    assert ConditionGroup(8)
+    """State 2: End state"""
+    return 0
+
+def event_m10_04_x92(flag2=_):
+    """[DC] [execution] pig reincarnation
+    flag2: Generate flag
+    """
+    """State 0,1: Generation flag ON"""
+    SetEventFlag(flag2, 1)
+    """State 2: End state"""
+    return 0
+
+def event_m10_04_x93(z5=1010, z6=1011):
+    """[DC] [Condition] Reincarnation of pigs_parent pig
+    z5: Parent pig ① generator ID
+    z6: Parent pig ② generator ID
+    """
+    """State 0,1: Has all the parent pigs been exhausted?"""
     IsChrMaxRespawnCount(8, z5, 1, 0)
     IsChrMaxRespawnCount(8, z6, 1, 0)
     assert ConditionGroup(8)
     """State 2: End state"""
     return 0
 
-def event_m10_04_x92(z3=_):
-    """[DC] [execution] pig reincarnation
-    z3: Generate flag
-    """
-    """State 0,1: Generation flag ON"""
-    SetEventFlag(z3, 1)
-    """State 2: End state"""
-    return 0
-
-def event_m10_04_x93(z7=1010, z8=1011):
-    """[DC] [Condition] Reincarnation of pigs_parent pig
-    z7: Parent pig ① generator ID
-    z8: Parent pig ② generator ID
-    """
-    """State 0,1: Has all the parent pigs been exhausted?"""
-    IsChrMaxRespawnCount(8, z7, 1, 0)
-    IsChrMaxRespawnCount(8, z8, 1, 0)
-    assert ConditionGroup(8)
-    """State 2: End state"""
-    return 0
-
-def event_m10_04_x94(z2=104000002, z3=104000001, z4=1000, z5=1001, z6=1002, z7=1010, z8=1011):
+def event_m10_04_x94(flag1=104000002, flag2=104000001, z2=1000, z3=1001, z4=1002, z5=1010, z6=1011):
     """[DC] [Preset] Pig reincarnation
-    z2: Fate generation flag
-    z3: Parent pig generation flag
-    z4: Piglet generator ID
-    z5: Piglet ② generator ID
-    z6: Piglet ③ Generator ID
-    z7: Parent pig ① generator ID
-    z8: Parent pig ② generator ID
+    flag1: Fate generation flag
+    flag2: Parent pig generation flag
+    z2: Piglet generator ID
+    z3: Piglet ② generator ID
+    z4: Piglet ③ Generator ID
+    z5: Parent pig ① generator ID
+    z6: Parent pig ② generator ID
     """
     """State 0,1: [DC] [Reproduction] Reincarnation of pigs_SubState"""
-    call = event_m10_04_x90(z2=z2, z3=z3)
+    call = event_m10_04_x90(flag1=flag1, flag2=flag2)
     if call.Get() == 2:
         pass
     elif call.Get() == 1:
         """State 4: [DC] [Condition] Reincarnation of pigs_Parent pigs_SubState"""
-        assert event_m10_04_x93(z7=z7, z8=z8)
+        assert event_m10_04_x93(z5=z5, z6=z6)
         """State 5: [DC] [Execution] Pig reincarnation_2_SubState"""
-        assert event_m10_04_x92(z3=z2)
+        assert event_m10_04_x92(flag2=flag1)
     elif call.Get() == 0:
         """State 3: [DC] [Condition] Reincarnation of pig"""
-        assert event_m10_04_x91(z4=z4, z5=z5, z6=z6)
+        assert event_m10_04_x91(z2=z2, z3=z3, z4=z4)
         """State 2: [DC] [execution] Reincarnation of pigs_SubState"""
-        assert event_m10_04_x92(z3=z3)
+        assert event_m10_04_x92(flag2=flag2)
     """State 6: Finish"""
     return 0
 
@@ -2293,13 +2383,15 @@ def event_m10_04_x98(bonfire1=4650, z1=10045060):
 def event_m10_04_111052():
     """OBJ: Dragon Maiden: Tomb"""
     """State 0,1: [Lib] NPC: Grave Placement: General Purpose_SubState"""
-    event_m10_04_x2(z109=104020, z110=10044500, z111=207, z112=7000)
+    event_m10_04_x2(z99=104020, z100=10044500, z101=207, z102=7000)
+    Quit()
 
 def event_m10_04_111053():
     """OBJ: Dragon Maiden: Key Guide"""
     """State 0,1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState"""
     # npc:7000:Emerald Herald
-    event_m10_04_x5(z104=104010160, z105=104020161, z106=104020, z107=10044500, z108=111052, npc1=7000)
+    event_m10_04_x5(z94=104010160, z95=104020161, z96=104020, z97=10044500, z98=111052, npc1=7000)
+    Quit()
 
 def event_m10_04_111054():
     """OBJ: Dragon Lady: Boss Defeat Counter"""
@@ -2324,20 +2416,21 @@ def event_m10_04_111054():
             assert ConditionGroup(0)
         elif ConditionGroup(1):
             """State 5: Dragon Miko: Boss Defeat Counter (Forgotten Sinner) _SubState"""
-            assert event_m10_04_x28(z75=100963, z76=100952, z77=100966, z78=100951)
+            assert event_m10_04_x28(z69=100963, flag7=100952, flag8=100966, flag9=100951)
         elif ConditionGroup(2):
             """State 6: Dragon Miko: Boss Defeat Counter (Fused Iron Demon) _SubState"""
-            assert event_m10_04_x28(z75=100952, z76=100963, z77=100966, z78=100951)
+            assert event_m10_04_x28(z69=100952, flag7=100963, flag8=100966, flag9=100951)
         elif ConditionGroup(3):
             """State 7: Dragon Miko: Boss Defeat Counter (Butcher) _SubState"""
-            assert event_m10_04_x28(z75=100966, z76=100963, z77=100952, z78=100951)
+            assert event_m10_04_x28(z69=100966, flag7=100963, flag8=100952, flag9=100951)
         elif ConditionGroup(4):
             """State 8: Dragon Miko: Boss Defeat Counter (Queen Queen) _SubState"""
-            assert event_m10_04_x28(z75=100951, z76=100963, z77=100952, z78=100966)
+            assert event_m10_04_x28(z69=100951, flag7=100963, flag8=100952, flag9=100966)
         else:
             pass
     """State 3: Boss Defeat: System: End"""
     EndMachine()
+    Quit()
 
 def event_m10_04_111055():
     """OBJ: Dragon Lady: Random generation"""
@@ -2415,37 +2508,44 @@ def event_m10_04_111055():
                         assert ConditionGroup(0)
     """State 3: Random generation: System: Exit"""
     EndMachine()
+    Quit()
 
 def event_m10_04_111092():
     """OBJ: Ladder Shop: Grave"""
     """State 0,1: [Lib] NPC: Grave Placement: General Purpose_SubState"""
-    event_m10_04_x2(z109=104052, z110=10044000, z111=46, z112=7040)
+    event_m10_04_x2(z99=104052, z100=10044000, z101=46, z102=7040)
+    Quit()
 
 def event_m10_04_111093():
     """OBJ: Ladder Shop: Tomb Key Guide"""
     """State 0,1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState"""
     # npc:7040:Laddersmith Gilligan
-    event_m10_04_x5(z104=104010080, z105=104020081, z106=104050, z107=10044000, z108=111092, npc1=7040)
+    event_m10_04_x5(z94=104010080, z95=104020081, z96=104050, z97=10044000, z98=111092, npc1=7040)
+    Quit()
 
 def event_m10_04_111094():
     """OBJ: Ladder shop: Death determination"""
     """State 0,1: [Lib] NPC: Death determination: General purpose_SubState"""
-    event_m10_04_x7(z98=45, z99=104052)
+    event_m10_04_x7(z88=45, z89=104052)
+    Quit()
 
 def event_m10_04_111095():
     """OBJ: Ladder shop: Small ladder installation"""
     """State 0,1: [Lib] Ladder shop: Ladder installation_SubState"""
-    event_m10_04_x18(z88=10041310, z89=100450, z90=102170, z91=104020086, z92=104020089)
+    event_m10_04_x18(z78=10041310, z79=100450, z80=102170, z81=104020086, z82=104020089)
+    Quit()
 
 def event_m10_04_111096():
     """OBJ ： Ladder shop ： Installation of middle ladder"""
     """State 0,1: [Lib] Ladder shop: Ladder installation_SubState"""
-    event_m10_04_x18(z88=10041305, z89=100451, z90=102171, z91=104020087, z92=104020089)
+    event_m10_04_x18(z78=10041305, z79=100451, z80=102171, z81=104020087, z82=104020089)
+    Quit()
 
 def event_m10_04_111097():
     """OBJ: Ladder shop: Large ladder installation"""
     """State 0,1: [Lib] Ladder shop: Ladder installation_SubState"""
-    event_m10_04_x18(z88=10041300, z89=100452, z90=102172, z91=104020088, z92=104020089)
+    event_m10_04_x18(z78=10041300, z79=100452, z80=102172, z81=104020088, z82=104020089)
+    Quit()
 
 def event_m10_04_111098():
     """OBJ: Ladder shop: Eliminate all ladders"""
@@ -2484,7 +2584,19 @@ def event_m10_04_111098():
         else:
             pass
     """State 4: Complete ladder elimination: System: End"""
+    Label('L0')
     EndMachine()
+    Quit()
+    """Unused"""
+    """State 3: Erasing all ladders: Erasing"""
+    ChangeObjState(10041310, 30)
+    ChangeObjState(10041305, 30)
+    ChangeObjState(10041300, 30)
+    CompareObjState(8, 10041310, 30, 0)
+    CompareObjState(8, 10041305, 30, 0)
+    CompareObjState(8, 10041300, 30, 0)
+    assert ConditionGroup(8)
+    Goto('L0')
 
 def event_m10_04_111099():
     """OBJ: Ladder shop: Appearance judgment"""
@@ -2507,17 +2619,20 @@ def event_m10_04_111099():
             pass
     """State 3: Appearance determination: System: End"""
     EndMachine()
+    Quit()
 
 def event_m10_04_111222():
     """OBJ: Broken Blue Warrior: Grave"""
     """State 0,1: [Lib] NPC: Grave Placement: General Purpose_SubState"""
-    event_m10_04_x2(z109=104140, z110=10044100, z111=101, z112=7410)
+    event_m10_04_x2(z99=104140, z100=10044100, z101=101, z102=7410)
+    Quit()
 
 def event_m10_04_111223():
     """OBJ: Broken blue warrior: Key guide"""
     """State 0,1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState"""
     # npc:7410:Crestfallen Saulden
-    event_m10_04_x5(z104=104010090, z105=104020091, z106=104140, z107=10044100, z108=111222, npc1=7410)
+    event_m10_04_x5(z94=104010090, z95=104020091, z96=104140, z97=10044100, z98=111222, npc1=7410)
+    Quit()
 
 def event_m10_04_111224():
     """OBJ: Broken warrior: The migrants count"""
@@ -2527,77 +2642,77 @@ def event_m10_04_111224():
     """State 15: Emigration count: initialization"""
     SetAreaVariable(58, 0)
     """State 16: Dragon Miko: Single Survival_SubState"""
-    call = event_m10_04_x71(z23=104020)
+    call = event_m10_04_x71(z21=104020)
     if call.Get() == 1:
         pass
     elif call.Get() == 0:
         """State 4: Dragon Miko: Count Up"""
         AddAreaVariable(58, 1)
     """State 17: Ladder Shop: Emigration survival_SubState"""
-    call = event_m10_04_x72(z20=104050, z21=103551, z22=102165)
+    call = event_m10_04_x72(z18=104050, z19=103551, z20=102165)
     if call.Get() == 1:
         pass
     elif call.Get() == 0:
         """State 5: Ladder shop: Count up"""
         AddAreaVariable(58, 1)
     """State 18: Broken spirited warrior: Single survival _SubState"""
-    call = event_m10_04_x71(z23=104140)
+    call = event_m10_04_x71(z21=104140)
     if call.Get() == 1:
         pass
     elif call.Get() == 0:
         """State 6: Broken hearted blue warrior: Count up"""
         AddAreaVariable(58, 1)
     """State 19: Map writing: Emigration survival_SubState"""
-    call = event_m10_04_x72(z20=104180, z21=103681, z22=102460)
+    call = event_m10_04_x72(z18=104180, z19=103681, z20=102460)
     if call.Get() == 1:
         pass
     elif call.Get() == 0:
         """State 7: Map writing: Count up"""
         AddAreaVariable(58, 1)
     """State 20: Yorozu Baba: Emigration Survival_SubState"""
-    call = event_m10_04_x72(z20=104210, z21=103711, z22=102521)
+    call = event_m10_04_x72(z18=104210, z19=103711, z20=102521)
     if call.Get() == 1:
         pass
     elif call.Get() == 0:
         """State 8: Yorozu Baba: Count up"""
         AddAreaVariable(58, 1)
     """State 21: Armor Shop: Single Survival_SubState"""
-    call = event_m10_04_x71(z23=104250)
+    call = event_m10_04_x71(z21=104250)
     if call.Get() == 1:
         pass
     elif call.Get() == 0:
         """State 9: Armor shop: Count up"""
         AddAreaVariable(58, 1)
     """State 22: Material shop: Emigration survival_SubState"""
-    call = event_m10_04_x72(z20=104260, z21=103761, z22=102625)
+    call = event_m10_04_x72(z18=104260, z19=103761, z20=102625)
     if call.Get() == 1:
         pass
     elif call.Get() == 0:
         """State 10: Material shop: Count up"""
         AddAreaVariable(58, 1)
     """State 23: Magician: Immigration Survival_SubState"""
-    call = event_m10_04_x72(z20=104270, z21=103771, z22=102650)
+    call = event_m10_04_x72(z18=104270, z19=103771, z20=102650)
     if call.Get() == 1:
         pass
     elif call.Get() == 0:
         """State 11: Magician: Count Up"""
         AddAreaVariable(58, 1)
     """State 24: Blacksmith: Single Survival_SubState"""
-    call = event_m10_04_x71(z23=104280)
+    call = event_m10_04_x71(z21=104280)
     if call.Get() == 1:
         pass
     elif call.Get() == 0:
         """State 12: Blacksmith: Count Up"""
         AddAreaVariable(58, 1)
     """State 25: Trophy: Survival of Magician Migration_SubState"""
-    call = event_m10_04_x73(z17=104300, z18=103801, z19=102722)
+    call = event_m10_04_x73(z15=104300, z16=103801, z17=102722)
     if call.Get() == 1:
         pass
     elif call.Get() == 0:
         """State 13: Magician: Count up"""
         AddAreaVariable(58, 1)
     """State 26: Miracle People: Emigration Survival_SubState"""
-    call = event_m10_04_x72(z20=104320, z21=103821, z22=102765)
+    call = event_m10_04_x72(z18=104320, z19=103821, z20=102765)
     if call.Get() == 1:
         pass
     elif call.Get() == 0:
@@ -2609,22 +2724,26 @@ def event_m10_04_111224():
     assert ConditionGroup(0)
     """State 2: Emigration count: System: Re-execution"""
     RestartMachine()
+    Quit()
 
 def event_m10_04_111262():
     """OBJ: Mapping: Grave"""
     """State 0,1: [Lib] NPC: Grave Placement: General Purpose_SubState"""
-    event_m10_04_x2(z109=104182, z110=10044200, z111=86, z112=7510)
+    event_m10_04_x2(z99=104182, z100=10044200, z101=86, z102=7510)
+    Quit()
 
 def event_m10_04_111263():
     """OBJ: cartography: key guide"""
     """State 0,1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState"""
     # npc:7510:Cartographer Cale
-    event_m10_04_x5(z104=104010100, z105=104020101, z106=104180, z107=10044200, z108=111262, npc1=7510)
+    event_m10_04_x5(z94=104010100, z95=104020101, z96=104180, z97=10044200, z98=111262, npc1=7510)
+    Quit()
 
 def event_m10_04_111264():
     """OBJ: Mapping: Death determination"""
     """State 0,1: [Lib] NPC: Death determination: General purpose_SubState"""
-    event_m10_04_x7(z98=85, z99=104182)
+    event_m10_04_x7(z88=85, z89=104182)
+    Quit()
 
 def event_m10_04_111265():
     """OBJ: Map writing: Migration decision"""
@@ -2649,6 +2768,7 @@ def event_m10_04_111265():
             assert ConditionGroup(0)
     """State 3: Migration determination: System: End"""
     EndMachine()
+    Quit()
 
 def event_m10_04_111266():
     """OBJ: Mapping: Skeleton Defeat Count"""
@@ -2743,6 +2863,7 @@ def event_m10_04_111266():
         assert ConditionGroup(0)
     """State 2: Defeat Count: System: End"""
     EndMachine()
+    Quit()
 
 def event_m10_04_111267():
     """OBJ: Map writing: Appearance determination"""
@@ -2772,34 +2893,55 @@ def event_m10_04_111267():
     CompareEventFlag(8, 104020108, 1)
     assert ConditionGroup(8)
     """State 2: Appearance determination: System: End"""
+    Label('L0')
     EndMachine()
+    Quit()
+    """Unused"""
+    """State 1: Appearance determination: Start old"""
+    CompareEventStatus(8, 111265, 1, 0)
+    CompareEventStatus(8, 111266, 1, 0)
+    IsPlayerInsidePoint(8, 10000000, 10000000, 0)
+    CompareEventFlag(0, 104000107, 1)
+    assert ConditionGroup(8)
+    """State 3: Appearance determination: Appearance permission old"""
+    SetGlobalVariable(207, 0)
+    CompareEventFlagValue(8, 0, 207, 0, 0)
+    SetEventFlag(104020106, 1)
+    CompareEventFlag(8, 104020106, 1)
+    assert ConditionGroup(8)
+    Goto('L0')
 
 def event_m10_04_111292():
     """OBJ: Yorozu Baba: Tomb"""
     """State 0,1: [Lib] NPC: Grave Placement: General Purpose_SubState"""
-    event_m10_04_x2(z109=104212, z110=10044150, z111=261, z112=7540)
+    event_m10_04_x2(z99=104212, z100=10044150, z101=261, z102=7540)
+    Quit()
 
 def event_m10_04_111293():
     """OBJ: Yorozu Baba: Key Guide"""
     """State 0,1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState"""
     # npc:7540:Merchant Hag Melentia
-    event_m10_04_x5(z104=104010170, z105=104020171, z106=104210, z107=10044150, z108=111292, npc1=7540)
+    event_m10_04_x5(z94=104010170, z95=104020171, z96=104210, z97=10044150, z98=111292, npc1=7540)
+    Quit()
 
 def event_m10_04_111294():
     """OBJ: Yorozu Baba: Death determination"""
     """State 0,1: [Lib] NPC: Death determination: General purpose_SubState"""
-    event_m10_04_x7(z98=260, z99=104212)
+    event_m10_04_x7(z88=260, z89=104212)
+    Quit()
 
 def event_m10_04_111332():
     """OBJ: Armor shop: Tomb"""
     """State 0,1: [Lib] NPC: Grave Placement: General Purpose_SubState"""
-    event_m10_04_x2(z109=104250, z110=10044250, z111=106, z112=7610)
+    event_m10_04_x2(z99=104250, z100=10044250, z101=106, z102=7610)
+    Quit()
 
 def event_m10_04_111333():
     """OBJ: Armor shop: Key guide"""
     """State 0,1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState"""
     # npc:7610:Maughlin the Armourer
-    event_m10_04_x5(z104=104010110, z105=104020111, z106=104250, z107=10044250, z108=111332, npc1=7610)
+    event_m10_04_x5(z94=104010110, z95=104020111, z96=104250, z97=10044250, z98=111332, npc1=7610)
+    Quit()
 
 def event_m10_04_111334():
     """OBJ: Armor shop: State transition"""
@@ -2849,7 +2991,14 @@ def event_m10_04_111334():
                     CompareEventFlag(8, 102612, 0)
                     assert ConditionGroup(8)
     """State 3: State transition: System: Exit"""
+    Label('L0')
     EndMachine()
+    Quit()
+    """Unused"""
+    """State 9: State transition: Shop list update: Standby"""
+    CompareEventStatus(0, 111338, 1, 0)
+    assert ConditionGroup(0)
+    Goto('L0')
 
 def event_m10_04_111335():
     """OBJ: Armor shop: Armor arrangement"""
@@ -2921,6 +3070,16 @@ def event_m10_04_111335():
                 SetGlobalVariableIf((not GetGlobalVariable(203)) != 0, 203, 1)
     """State 3: Armor placement: System: End"""
     EndMachine()
+    Quit()
+    """Unused"""
+    """State 8: Armor placement: System: Re-execution"""
+    Label('L0')
+    RestartMachine()
+    Quit()
+    """State 9: Armor placement: Re-execution: Standby"""
+    IsPlayerInTheMap(0, 0, 0)
+    assert ConditionGroup(0)
+    Goto('L0')
 
 def event_m10_04_111336():
     """OBJ: Armor shop: Shop list"""
@@ -2950,38 +3109,45 @@ def event_m10_04_111336():
             Goto('L0')
     """State 2: Shop list: System: End"""
     EndMachine()
+    Quit()
 
 def event_m10_04_111342():
     """OBJ: Material shop: Tomb"""
     """State 0,1: [Lib] NPC: Grave Placement: General Purpose_SubState"""
-    event_m10_04_x2(z109=104262, z110=10044350, z111=111, z112=7620)
+    event_m10_04_x2(z99=104262, z100=10044350, z101=111, z102=7620)
+    Quit()
 
 def event_m10_04_111343():
     """OBJ: Material shop: Key guide"""
     """State 0,1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState"""
     # npc:7620:Stone Trader Chloanne
-    event_m10_04_x5(z104=104010120, z105=104020121, z106=104260, z107=10044350, z108=111342, npc1=7620)
+    event_m10_04_x5(z94=104010120, z95=104020121, z96=104260, z97=10044350, z98=111342, npc1=7620)
+    Quit()
 
 def event_m10_04_111344():
     """OBJ: Material shop: Death determination"""
     """State 0,1: [Lib] NPC: Death determination: General purpose_SubState"""
-    event_m10_04_x7(z98=110, z99=104262)
+    event_m10_04_x7(z88=110, z89=104262)
+    Quit()
 
 def event_m10_04_111352():
     """OBJ: Magician: Tomb"""
     """State 0,1: [Lib] NPC: Grave Placement: General Purpose_SubState"""
-    event_m10_04_x2(z109=104272, z110=10044450, z111=116, z112=7630)
+    event_m10_04_x2(z99=104272, z100=10044450, z101=116, z102=7630)
+    Quit()
 
 def event_m10_04_111353():
     """OBJ: Magician: Key Guide"""
     """State 0,1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState"""
     # npc:7630:Rosabeth of Melfia
-    event_m10_04_x5(z104=104010194, z105=104020195, z106=104270, z107=10044450, z108=111352, npc1=7630)
+    event_m10_04_x5(z94=104010194, z95=104020195, z96=104270, z97=10044450, z98=111352, npc1=7630)
+    Quit()
 
 def event_m10_04_111354():
     """OBJ: Magician: Death check"""
     """State 0,1: [Lib] NPC: Death determination: General purpose_SubState"""
-    event_m10_04_x7(z98=115, z99=104272)
+    event_m10_04_x7(z88=115, z89=104272)
+    Quit()
 
 def event_m10_04_111355():
     """OBJ: Magician: Appearance determination"""
@@ -3014,17 +3180,20 @@ def event_m10_04_111355():
                 pass
     """State 3: Appearance determination: System: End"""
     EndMachine()
+    Quit()
 
 def event_m10_04_111362():
     """OBJ: Blacksmith: Grave"""
     """State 0,1: [Lib] NPC: Grave Placement: General Purpose_SubState"""
-    event_m10_04_x2(z109=104280, z110=10044300, z111=121, z112=7640)
+    event_m10_04_x2(z99=104280, z100=10044300, z101=121, z102=7640)
+    Quit()
 
 def event_m10_04_111363():
     """OBJ: Blacksmith: Key guide"""
     """State 0,1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState"""
     # npc:7640:Blacksmith Lenigrast
-    event_m10_04_x5(z104=104010130, z105=104020131, z106=104280, z107=10044300, z108=111362, npc1=7640)
+    event_m10_04_x5(z94=104010130, z95=104020131, z96=104280, z97=10044300, z98=111362, npc1=7640)
+    Quit()
 
 def event_m10_04_111365():
     """OBJ: Blacksmith: Judgment of movement"""
@@ -3034,6 +3203,7 @@ def event_m10_04_111365():
         pass
     elif ConditionGroup(0):
         """State 5: Movement judgment: Door unlocked judgment"""
+        Label('L0')
         CompareEventFlag(0, 102661, 1)
         if ConditionGroup(0):
             pass
@@ -3046,12 +3216,20 @@ def event_m10_04_111365():
                 CompareEventFlag(0, 102661, 1)
                 assert ConditionGroup(0)
             else:
-                Goto('L0')
+                Goto('L1')
         """State 7: Judgment: Previous generator: Delete"""
         DeleteEnemyByGeneratorGroup(60, 0)
     """State 4: Movement judgment: System: End"""
-    Label('L0')
+    Label('L1')
     EndMachine()
+    Quit()
+    """Unused"""
+    """State 6: Movement judgment: Death judgment"""
+    CompareEventFlag(0, 104280, 1)
+    if ConditionGroup(0):
+        Goto('L1')
+    else:
+        Goto('L0')
 
 def event_m10_04_111366():
     """OBJ: Blacksmith: Door unlocking judgment"""
@@ -3061,6 +3239,7 @@ def event_m10_04_111366():
         pass
     elif ConditionGroup(0):
         """State 6: Door unlocking determination: Unlocking determination"""
+        Label('L0')
         CompareEventFlag(0, 102660, 1)
         if ConditionGroup(0):
             pass
@@ -3076,44 +3255,60 @@ def event_m10_04_111366():
                 CompareEventFlag(0, 102660, 1)
                 assert ConditionGroup(0)
     """State 3: Door unlocking determination: System: End"""
+    Label('L1')
     EndMachine()
+    Quit()
+    """Unused"""
+    """State 5: Door unlocking judgment: Death judgment"""
+    CompareEventFlag(0, 104280, 1)
+    if ConditionGroup(0):
+        Goto('L1')
+    else:
+        Goto('L0')
 
 def event_m10_04_111392():
     """OBJ: Magician: Tomb"""
     """State 0,1: [Lib] NPC: Grave Placement: General Purpose_SubState"""
-    event_m10_04_x2(z109=104302, z110=10044400, z111=136, z112=7660)
+    event_m10_04_x2(z99=104302, z100=10044400, z101=136, z102=7660)
+    Quit()
 
 def event_m10_04_111393():
     """OBJ: Magician: Key Guide"""
     """State 0,1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState"""
     # npc:7660:Carhillion of the Fold
-    event_m10_04_x5(z104=104010140, z105=104020141, z106=104300, z107=10044400, z108=111392, npc1=7660)
+    event_m10_04_x5(z94=104010140, z95=104020141, z96=104300, z97=10044400, z98=111392, npc1=7660)
+    Quit()
 
 def event_m10_04_111394():
     """OBJ: Magician: Death determination"""
     """State 0,1: [Lib] NPC: Death determination: General purpose_SubState"""
-    event_m10_04_x7(z98=135, z99=104302)
+    event_m10_04_x7(z88=135, z89=104302)
+    Quit()
 
 def event_m10_04_111395():
     """OBJ: Magician: Appearance judgment"""
     """State 0,1: [Lib] Appearance determination: Magician_SubState"""
-    event_m10_04_x13(z95=102722)
+    event_m10_04_x13(z85=102722)
+    Quit()
 
 def event_m10_04_111412():
     """OBJ: Miracle Person: Grave"""
     """State 0,1: [Lib] NPC: Grave Placement: General Purpose_SubState"""
-    event_m10_04_x2(z109=104322, z110=10044050, z111=151, z112=7690)
+    event_m10_04_x2(z99=104322, z100=10044050, z101=151, z102=7690)
+    Quit()
 
 def event_m10_04_111413():
     """OBJ: Miracle Person: Key Guide"""
     """State 0,1: [Lib] NPC: Grave: Key Guide: General Purpose_SubState"""
     # npc:7690:Licia of Lindeldt
-    event_m10_04_x5(z104=104010150, z105=104020151, z106=104320, z107=10044050, z108=111412, npc1=7690)
+    event_m10_04_x5(z94=104010150, z95=104020151, z96=104320, z97=10044050, z98=111412, npc1=7690)
+    Quit()
 
 def event_m10_04_111414():
     """OBJ: Miracle: Death decision"""
     """State 0,1: [Lib] NPC: Death determination: General purpose_SubState"""
-    event_m10_04_x7(z98=150, z99=104322)
+    event_m10_04_x7(z88=150, z89=104322)
+    Quit()
 
 def event_m10_04_111415():
     """OBJ: Miracle Person: Boss Defeat Counter"""
@@ -3132,20 +3327,21 @@ def event_m10_04_111415():
             pass
         elif ConditionGroup(1):
             """State 4: Miracle: Boss Defeat Counter (Forgotten Sinner) _SubState"""
-            assert event_m10_04_x29(z71=100963, z72=100952, z73=100966, z74=100951)
+            assert event_m10_04_x29(z68=100963, flag4=100952, flag5=100966, flag6=100951)
         elif ConditionGroup(2):
             """State 5: Miracle: Boss Defeat Counter (Demon Iron) _SubState"""
-            assert event_m10_04_x29(z71=100952, z72=100963, z73=100966, z74=100951)
+            assert event_m10_04_x29(z68=100952, flag4=100963, flag5=100966, flag6=100951)
         elif ConditionGroup(3):
             """State 6: Miracle: Boss Defeat Counter (Butcher) _SubState"""
-            assert event_m10_04_x29(z71=100966, z72=100963, z73=100952, z74=100951)
+            assert event_m10_04_x29(z68=100966, flag4=100963, flag5=100952, flag6=100951)
         elif ConditionGroup(4):
             """State 7: Miracle Person: Boss Defeat Counter (Queen of Amber) _SubState"""
-            assert event_m10_04_x29(z71=100951, z72=100963, z73=100952, z74=100966)
+            assert event_m10_04_x29(z68=100951, flag4=100963, flag5=100952, flag6=100966)
         else:
             pass
     """State 2: Boss Defeat: System: End"""
     EndMachine()
+    Quit()
 
 def event_m10_04_111416():
     """OBJ: Miracle Person: Revolving Door"""
@@ -3174,11 +3370,11 @@ def event_m10_04_111416():
     if ConditionGroup(0):
         """State 7: Revolving door: Left lattice start_SubState"""
         Label('L1')
-        assert event_m10_04_x31(z63=70, z64=31, z65=71, z66=32, z67=72, z68=40, z69=10310000, z70=0)
+        assert event_m10_04_x31(z60=70, z61=31, z62=71, z63=32, z64=72, z65=40, z66=10310000, z67=0)
     elif ConditionGroup(1):
         """State 8: Revolving door: Right lattice start_SubState"""
         Label('L2')
-        assert event_m10_04_x31(z63=80, z64=41, z65=81, z66=42, z67=82, z68=30, z69=10230000, z70=0)
+        assert event_m10_04_x31(z60=80, z61=41, z62=81, z63=42, z64=82, z65=30, z66=10230000, z67=0)
     else:
         """State 2: Revolving door: Start standby"""
         CompareEventFlag(0, 104020156, 1)
@@ -3205,6 +3401,7 @@ def event_m10_04_111416():
             pass
     """State 4: Revolving door: System: Re-execution"""
     RestartMachine()
+    Quit()
 
 def event_m10_04_111467():
     """OBJ: Cat: Random generation"""
@@ -3281,10 +3478,35 @@ def event_m10_04_111467():
                 CompareEventFlag(0, 104010192, 1)
                 assert ConditionGroup(0)
         """State 12: Random generation: System termination: Wait"""
+        Label('L0')
         CompareEventStatus(0, 111468, 1, 0)
         assert ConditionGroup(0)
     """State 13: Random generation: System: Exit"""
     EndMachine()
+    Quit()
+    """Unused"""
+    """State 7: Random generation: Cat: Fits on railing"""
+    DeleteEnemyByGeneratorGroup(40, 0)
+    DeleteEnemyByGeneratorGroup(41, 0)
+    DeleteEnemyByGeneratorGroup(43, 0)
+    DeleteEnemyByGeneratorGroup(44, 0)
+    DeleteEnemyByGeneratorGroup(45, 0)
+    DeleteEnemyByGeneratorGroup(46, 0)
+    SetEventFlag(104010188, 1)
+    CompareEventFlag(0, 104010188, 1)
+    assert ConditionGroup(0)
+    Goto('L0')
+    """State 8: Random generation: Cat: Curled in a pot"""
+    DeleteEnemyByGeneratorGroup(40, 0)
+    DeleteEnemyByGeneratorGroup(41, 0)
+    DeleteEnemyByGeneratorGroup(42, 0)
+    DeleteEnemyByGeneratorGroup(44, 0)
+    DeleteEnemyByGeneratorGroup(45, 0)
+    DeleteEnemyByGeneratorGroup(46, 0)
+    SetEventFlag(104010189, 1)
+    CompareEventFlag(0, 104010189, 1)
+    assert ConditionGroup(0)
+    Goto('L0')
 
 def event_m10_04_111468():
     """OBJ: Cat: Shop list"""
@@ -3303,39 +3525,45 @@ def event_m10_04_111468():
         pass
     """State 3: Shop list: End"""
     EndMachine()
+    Quit()
 
 def event_m10_04_112000():
     """OBJ: Strong man's monument (pledge event)"""
     """State 0,1: [Lib] OBJ Pledge: Initial _SubState"""
-    event_m10_04_x8(z96=10041100, z97=104020097)
+    event_m10_04_x8(z86=10041100, z87=104020097)
+    Quit()
 
 def event_m10_04_120030():
     """Trophy: The Weak Pledge"""
     """State 0,2: [Lib] [Preset] Get Trophy_SubState"""
-    assert event_m10_04_x27(z79=104020030, z80=21)
+    assert event_m10_04_x27(flag10=104020030, z70=21)
     """State 1: System: Exit"""
     EndMachine()
+    Quit()
 
 def event_m10_04_120070():
     """Trophy: The Pledge of the Strong"""
     """State 0,2: [Lib] [Preset] Get Trophy_SubState"""
-    assert event_m10_04_x27(z79=104020031, z80=25)
+    assert event_m10_04_x27(flag10=104020031, z70=25)
     """State 1: System: Exit"""
     EndMachine()
+    Quit()
 
 def event_m10_04_120090():
     """Trophy: Strange map completion"""
     """State 0,2: [Lib] [Preset] Get Trophy_SubState"""
-    assert event_m10_04_x27(z79=104020032, z80=28)
+    assert event_m10_04_x27(flag10=104020032, z70=28)
     """State 1: System: Exit"""
     EndMachine()
+    Quit()
 
 def event_m10_04_120100():
     """Trophy: Abandoned people"""
     """State 0,2: [Lib] [Preset] Get Trophy_SubState"""
-    assert event_m10_04_x27(z79=104020033, z80=30)
+    assert event_m10_04_x27(flag10=104020033, z70=30)
     """State 1: System: Exit"""
     EndMachine()
+    Quit()
 
 def event_m10_04_120101():
     """Trophy: Abandoned people: Survival judgment"""
@@ -3347,57 +3575,57 @@ def event_m10_04_120101():
     CompareEventStatus(8, 111099, 1, 0)
     assert ConditionGroup(8)
     """State 4: Dragon Miko: Single Survival_SubState"""
-    call = event_m10_04_x71(z23=104020)
+    call = event_m10_04_x71(z21=104020)
     if call.Get() == 1:
         pass
     elif call.Get() == 0:
         """State 5: Ladder Shop: Emigration survival_SubState"""
-        call = event_m10_04_x72(z20=104050, z21=103551, z22=102165)
+        call = event_m10_04_x72(z18=104050, z19=103551, z20=102165)
         if call.Get() == 1:
             pass
         elif call.Get() == 0:
             """State 6: Broken spirited warrior: Single survival _SubState"""
-            call = event_m10_04_x71(z23=104140)
+            call = event_m10_04_x71(z21=104140)
             if call.Get() == 1:
                 pass
             elif call.Get() == 0:
                 """State 7: Map writing: Emigration survival_SubState"""
-                call = event_m10_04_x72(z20=104180, z21=103681, z22=102460)
+                call = event_m10_04_x72(z18=104180, z19=103681, z20=102460)
                 if call.Get() == 1:
                     pass
                 elif call.Get() == 0:
                     """State 8: Yorozu Baba: Emigration Survival_SubState"""
-                    call = event_m10_04_x72(z20=104210, z21=103711, z22=102521)
+                    call = event_m10_04_x72(z18=104210, z19=103711, z20=102521)
                     if call.Get() == 1:
                         pass
                     elif call.Get() == 0:
                         """State 9: Armor Shop: Single Survival_SubState"""
-                        call = event_m10_04_x71(z23=104250)
+                        call = event_m10_04_x71(z21=104250)
                         if call.Get() == 1:
                             pass
                         elif call.Get() == 0:
                             """State 10: Material shop: Emigration survival_SubState"""
-                            call = event_m10_04_x72(z20=104260, z21=103761, z22=102625)
+                            call = event_m10_04_x72(z18=104260, z19=103761, z20=102625)
                             if call.Get() == 1:
                                 pass
                             elif call.Get() == 0:
                                 """State 11: Magician: Immigration Survival_SubState"""
-                                call = event_m10_04_x72(z20=104270, z21=103771, z22=102650)
+                                call = event_m10_04_x72(z18=104270, z19=103771, z20=102650)
                                 if call.Get() == 1:
                                     pass
                                 elif call.Get() == 0:
                                     """State 12: Blacksmith: Single Survival_SubState"""
-                                    call = event_m10_04_x71(z23=104280)
+                                    call = event_m10_04_x71(z21=104280)
                                     if call.Get() == 1:
                                         pass
                                     elif call.Get() == 0:
                                         """State 13: Trophy: Survival of Magician Migration_SubState"""
-                                        call = event_m10_04_x73(z17=104300, z18=103801, z19=102722)
+                                        call = event_m10_04_x73(z15=104300, z16=103801, z17=102722)
                                         if call.Get() == 1:
                                             pass
                                         elif call.Get() == 0:
                                             """State 14: Miracle People: Emigration Survival_SubState"""
-                                            call = event_m10_04_x72(z20=104320, z21=103821, z22=102765)
+                                            call = event_m10_04_x72(z18=104320, z19=103821, z20=102765)
                                             if call.Get() == 1:
                                                 pass
                                             elif call.Get() == 0:
@@ -3407,20 +3635,23 @@ def event_m10_04_120101():
                                                 assert ConditionGroup(0)
     """State 2: Trophy acquisition: System: End"""
     EndMachine()
+    Quit()
 
 def event_m10_04_120150():
     """Trophy: Miser"""
     """State 0,2: [Lib] [Preset] Get Trophy_SubState"""
-    assert event_m10_04_x27(z79=104020034, z80=35)
+    assert event_m10_04_x27(flag10=104020034, z70=35)
     """State 1: System: Exit"""
     EndMachine()
+    Quit()
 
 def event_m10_04_4000000():
     """[DC] Pig reincarnation"""
     """State 0,2: [DC] [Preset] Pig Reincarnation_SubState"""
-    assert event_m10_04_x94(z2=104000002, z3=104000001, z4=1000, z5=1001, z6=1002, z7=1010, z8=1011)
+    assert event_m10_04_x94(flag1=104000002, flag2=104000001, z2=1000, z3=1001, z4=1002, z5=1010, z6=1011)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m10_04_4001000():
     """[DC] Treasure box changes mimic"""
@@ -3429,4 +3660,5 @@ def event_m10_04_4001000():
     assert event_m10_04_x98(bonfire1=4650, z1=10045060)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 

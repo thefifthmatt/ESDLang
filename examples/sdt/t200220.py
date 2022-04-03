@@ -2,9 +2,10 @@
 def t200220_1():
     """State 0,1"""
     t200220_x9(flag10=1059, flag11=1055, flag12=1056, val1=5, val2=10, val3=12, val4=10, val5=12, flag13=72000356,
-               val6=7002200, flag14=6000, flag15=6001, flag16=72000043, flag17=6000, mode14=1, val7=1000000,
-               val8=1730011, val9=1000000, mode15=0, mode16=1, mode17=0, val10=1000000, val11=1000000,
-               mode18=0, flag18=6000, mode19=0)
+               actionbutton1=7002200, flag14=6000, flag15=6001, flag16=72000043, flag17=6000, mode14=1,
+               val6=1000000, val7=1730011, val8=1000000, mode15=0, mode16=1, mode17=0, val9=1000000,
+               val10=1000000, mode18=0, flag18=6000, mode19=0)
+    Quit()
 
 def t200220_1000():
     """State 0,2,3"""
@@ -20,27 +21,30 @@ def t200220_1000():
     SetEventState(72000382, 1)
     def WhilePaused():
         c1_119(0)
+    Quit()
 
 def t200220_1100():
     """State 0,2"""
     # talk:22001800:"(Pant, pant, pant...)"
-    assert t200220_x4(text17=22001800, z17=72000356, flag25=1, mode27=1)
+    assert t200220_x4(text17=22001800, z17=72000356, flag25=1, mode26=1)
     """State 1"""
     def WhilePaused():
         c1_119(0)
+    Quit()
 
 def t200220_2000():
     """State 0,2"""
     if GetEventStatus(72000383) == 1:
         """State 4,6"""
         Label('L0')
-        assert (t200220_x1(val6=7002204, flag15=6001, flag19=6000, flag20=6000, flag21=6000, flag22=6000,
-                mode20=0, flag14=6000, val7=1000000, val8=1730011, val9=1000000, val10=1000000, val11=1000000))
+        assert (t200220_x1(actionbutton1=7002204, flag15=6001, flag19=6000, flag20=6000, flag21=6000,
+                flag22=6000, actionbutton2=0, flag14=6000, val6=1000000, val7=1730011, val8=1000000,
+                val9=1000000, val10=1000000))
     else:
         """State 3,5"""
-        call = t200220_x1(val6=7002200, flag15=6001, flag19=6000, flag20=6000, flag21=6000, flag22=6000,
-                          mode20=0, flag14=6000, val7=1000000, val8=1730011, val9=1000000, val10=1000000,
-                          val11=1000000)
+        call = t200220_x1(actionbutton1=7002200, flag15=6001, flag19=6000, flag20=6000, flag21=6000,
+                          flag22=6000, actionbutton2=0, flag14=6000, val6=1000000, val7=1730011, val8=1000000,
+                          val9=1000000, val10=1000000)
         if call.Done():
             pass
         elif GetEventStatus(72000383) == 1:
@@ -48,6 +52,7 @@ def t200220_2000():
     """State 1"""
     def WhilePaused():
         c1_119(0)
+    Quit()
 
 def t200220_x0(action9=_):
     """State 0,1"""
@@ -61,27 +66,27 @@ def t200220_x0(action9=_):
         """State 4"""
         return 1
 
-def t200220_x1(val6=_, flag15=6001, flag19=6000, flag20=6000, flag21=6000, flag22=6000, mode20=0, flag14=6000,
-               val7=1000000, val8=1730011, val9=1000000, val10=1000000, val11=1000000):
+def t200220_x1(actionbutton1=_, flag15=6001, flag19=6000, flag20=6000, flag21=6000, flag22=6000, actionbutton2=0,
+               flag14=6000, val6=1000000, val7=1730011, val8=1000000, val9=1000000, val10=1000000):
     """State 0"""
     while Loop('mainloop'):
         """State 3"""
-        call = t200220_x30(val6=val6, flag15=flag15, flag19=flag19, flag20=flag20, flag21=flag21, flag22=flag22,
-                           mode20=mode20, flag14=flag14)
+        call = t200220_x30(actionbutton1=actionbutton1, flag15=flag15, flag19=flag19, flag20=flag20,
+                           flag21=flag21, flag22=flag22, actionbutton2=actionbutton2, flag14=flag14)
         if call.Done():
             break
-        elif (not f116(-1) == val7 and not f116(-1) == val8 and not f116(-1) == val9 and not DoesSelfHaveSpEffect(4510)
-              and not val7 == -1 and not f116(-1) == val10 and not f116(-1) == val11):
+        elif (not f116(-1) == val6 and not f116(-1) == val7 and not f116(-1) == val8 and not DoesSelfHaveSpEffect(4510)
+              and not val6 == -1 and not f116(-1) == val9 and not f116(-1) == val10):
             pass
         while True:
             """State 1"""
-            assert (f116(-1) == val7 or f116(-1) == val8 or f116(-1) == val9 or (DoesSelfHaveSpEffect(4510)
-                    == 1 and f116(-1) == val10 and f116(-1) == val11))
+            assert (f116(-1) == val6 or f116(-1) == val7 or f116(-1) == val8 or (DoesSelfHaveSpEffect(4510)
+                    == 1 and f116(-1) == val9 and f116(-1) == val10))
             """State 2"""
             if GetCurrentStateElapsedTime() > 0.5:
                 Continue('mainloop')
-            elif (not f116(-1) == val7 and not f116(-1) == val8 and not f116(-1) == val9 and not DoesSelfHaveSpEffect(4510)
-                  and not f116(-1) == val10 and not f116(-1) == val11):
+            elif (not f116(-1) == val6 and not f116(-1) == val7 and not f116(-1) == val8 and not DoesSelfHaveSpEffect(4510)
+                  and not f116(-1) == val9 and not f116(-1) == val10):
                 pass
     """State 4"""
     SetTalkTime(0.1)
@@ -122,7 +127,7 @@ def t200220_x3():
     """State 2"""
     return 0
 
-def t200220_x4(text17=22001800, z17=72000356, flag25=1, mode27=1):
+def t200220_x4(text17=22001800, z17=72000356, flag25=1, mode26=1):
     """State 0,7"""
     assert t200220_x3() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 2"""
@@ -143,7 +148,7 @@ def t200220_x4(text17=22001800, z17=72000356, flag25=1, mode27=1):
             GiveSpEffectToPlayer(30700)
         assert CheckSpecificPersonTalkHasEnded(0) == 1
     """State 4"""
-    if not mode27:
+    if not mode26:
         pass
     else:
         """State 3"""
@@ -151,7 +156,7 @@ def t200220_x4(text17=22001800, z17=72000356, flag25=1, mode27=1):
     """State 8"""
     return 0
 
-def t200220_x5(text2=_, flag3=_, flag24=0, mode26=1):
+def t200220_x5(text2=_, flag3=_, flag24=0, mode25=1):
     """State 0,7"""
     assert t200220_x3() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 5"""
@@ -168,7 +173,7 @@ def t200220_x5(text2=_, flag3=_, flag24=0, mode26=1):
             GiveSpEffectToPlayer(30700)
         assert CheckSpecificPersonTalkHasEnded(0) == 1
     """State 4"""
-    if not mode26:
+    if not mode25:
         pass
     else:
         """State 3"""
@@ -178,7 +183,7 @@ def t200220_x5(text2=_, flag3=_, flag24=0, mode26=1):
     """State 8"""
     return 0
 
-def t200220_x6(text1=_, flag23=0, mode25=1):
+def t200220_x6(text1=_, flag23=0, mode24=1):
     """State 0,6"""
     assert t200220_x3() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 4"""
@@ -195,7 +200,7 @@ def t200220_x6(text1=_, flag23=0, mode25=1):
             GiveSpEffectToPlayer(30700)
         assert CheckSpecificPersonTalkHasEnded(0) == 1
     """State 3"""
-    if not mode25:
+    if not mode24:
         pass
     else:
         """State 2"""
@@ -227,17 +232,17 @@ def t200220_x8(action8=_):
     return 0
 
 def t200220_x9(flag10=1059, flag11=1055, flag12=1056, val1=5, val2=10, val3=12, val4=10, val5=12, flag13=72000356,
-               val6=7002200, flag14=6000, flag15=6001, flag16=72000043, flag17=6000, mode14=1, val7=1000000,
-               val8=1730011, val9=1000000, mode15=0, mode16=1, mode17=0, val10=1000000, val11=1000000,
-               mode18=0, flag18=6000, mode19=0):
+               actionbutton1=7002200, flag14=6000, flag15=6001, flag16=72000043, flag17=6000, mode14=1,
+               val6=1000000, val7=1730011, val8=1000000, mode15=0, mode16=1, mode17=0, val9=1000000,
+               val10=1000000, mode18=0, flag18=6000, mode19=0):
     """State 0"""
     while True:
         """State 1"""
         RemoveMyAggro()
-        call = t200220_x10(val1=val1, val2=val2, val3=val3, val4=val4, val5=val5, flag13=flag13, val6=val6,
+        call = t200220_x10(val1=val1, val2=val2, val3=val3, val4=val4, val5=val5, flag13=flag13, actionbutton1=actionbutton1,
                            flag14=flag14, flag15=flag15, flag16=flag16, flag17=flag17, mode14=mode14,
-                           val7=val7, val8=val8, val9=val9, mode15=mode15, mode16=mode16, mode17=mode17,
-                           val10=val10, val11=val11, mode18=mode18, mode19=mode19)
+                           val6=val6, val7=val7, val8=val8, mode15=mode15, mode16=mode16, mode17=mode17,
+                           val9=val9, val10=val10, mode18=mode18, mode19=mode19)
         def WhilePaused():
             c5_116(GetDistanceToPlayer() < 4)
         if (CheckSelfDeath() == 1 or GetEventStatus(flag10) == 1) and not GetEventStatus(flag18):
@@ -252,15 +257,18 @@ def t200220_x9(flag10=1059, flag11=1055, flag12=1056, val1=5, val2=10, val3=12, 
         """State 2"""
         call = t200220_x11(flag10=flag10, val2=val2, val3=val3)
         assert not CheckSelfDeath() and not GetEventStatus(flag10) and not DoesSelfHaveSpEffect(30100)
+    """Unused"""
+    """State 4"""
+    return 0
 
-def t200220_x10(val1=5, val2=10, val3=12, val4=10, val5=12, flag13=72000356, val6=7002200, flag14=6000,
-                flag15=6001, flag16=72000043, flag17=6000, mode14=1, val7=1000000, val8=1730011, val9=1000000,
-                mode15=0, mode16=1, mode17=0, val10=1000000, val11=1000000, mode18=0, mode19=0):
+def t200220_x10(val1=5, val2=10, val3=12, val4=10, val5=12, flag13=72000356, actionbutton1=7002200, flag14=6000,
+                flag15=6001, flag16=72000043, flag17=6000, mode14=1, val6=1000000, val7=1730011, val8=1000000,
+                mode15=0, mode16=1, mode17=0, val9=1000000, val10=1000000, mode18=0, mode19=0):
     """State 0"""
     while True:
         """State 4"""
-        call = t200220_x27(val6=val6, flag14=flag14, flag15=flag15, val7=val7, val8=val8, val9=val9,
-                           val10=val10, val11=val11)
+        call = t200220_x27(actionbutton1=actionbutton1, flag14=flag14, flag15=flag15, val6=val6, val7=val7,
+                           val8=val8, val9=val9, val10=val10)
         if call.Done():
             """State 1"""
             Label('L0')
@@ -287,6 +295,9 @@ def t200220_x10(val1=5, val2=10, val3=12, val4=10, val5=12, flag13=72000356, val
         def ExitPause():
             RemoveMyAggro()
         assert t200220_x14(val2=val2, val3=val3)
+    """Unused"""
+    """State 5"""
+    return 0
 
 def t200220_x11(flag10=1059, val2=10, val3=12):
     """State 0,1"""
@@ -318,7 +329,7 @@ def t200220_x12(val1=5, mode14=1, mode15=0, mode16=1, mode17=0, mode18=0):
         c1_117(mode14, 10000)
         c1_117(1000000, -1)
         SetTalkTime(0.01)
-        c5_128(mode16 == 1, 0.1)
+        SetMenuDisableTimeIf(mode16 == 1, 0.1)
         c5_120(val1 == 1 and not mode14 and mode18 == 1, 1, 0, 9, 9, 9, 9, 9, 9, 9)
     if call.Done():
         pass
@@ -400,10 +411,13 @@ def t200220_x18(val2=10, val3=12):
         elif GetDistanceToPlayer() > val3:
             """State 4"""
             assert t200220_x2()
+    """Unused"""
+    """State 5"""
+    return 0
 
 def t200220_x19():
     """State 0,1"""
-    assert t200220_x21(z16=1101, mode21=0, mode22=0, mode23=0, mode24=0)
+    assert t200220_x21(z16=1101, mode20=0, mode21=0, mode22=0, mode23=0)
     """State 2"""
     return 0
 
@@ -418,13 +432,13 @@ def t200220_x20(mode15=0, mode17=0):
         def WhilePaused():
             c5_120(mode15 == 1 and not mode17, 1, 0, 9, 9, 9, 9, 9, 9, 9)
             c5_120(mode15 == 1 and mode17 == 1, 2, 9, 0, 9, 9, 9, 9, 9, 9)
-        assert t200220_x21(z16=1000, mode21=0, mode22=0, mode23=0, mode24=0)
+        assert t200220_x21(z16=1000, mode20=0, mode21=0, mode22=0, mode23=0)
     elif GetCurrentStateElapsedTime() > 5:
         pass
     """State 5"""
     return 0
 
-def t200220_x21(z16=_, mode21=0, mode22=0, mode23=0, mode24=0):
+def t200220_x21(z16=_, mode20=0, mode21=0, mode22=0, mode23=0):
     """State 0,4"""
     if f118(z16) == 1:
         """State 2"""
@@ -432,7 +446,7 @@ def t200220_x21(z16=_, mode21=0, mode22=0, mode23=0, mode24=0):
         """State 1"""
         def WhilePaused():
             c1_118(z16)
-        assert f117() == mode21 or f117() == mode22 or f117() == mode23 or f117() == mode24
+        assert f117() == mode20 or f117() == mode21 or f117() == mode22 or f117() == mode23
         """State 5"""
         return 0
     else:
@@ -441,7 +455,7 @@ def t200220_x21(z16=_, mode21=0, mode22=0, mode23=0, mode24=0):
 
 def t200220_x22():
     """State 0,1"""
-    call = t200220_x21(z16=1103, mode21=0, mode22=0, mode23=0, mode24=0)
+    call = t200220_x21(z16=1103, mode20=0, mode21=0, mode22=0, mode23=0)
     if call.Get() == 1:
         """State 2"""
         assert t200220_x2()
@@ -452,17 +466,17 @@ def t200220_x22():
 
 def t200220_x23():
     """State 0,2"""
-    call = t200220_x21(z16=1102, mode21=0, mode22=0, mode23=0, mode24=0)
+    call = t200220_x21(z16=1102, mode20=0, mode21=0, mode22=0, mode23=0)
     if call.Get() == 1:
         """State 1"""
-        pass
+        Quit()
     elif call.Done():
         """State 3"""
         return 0
 
 def t200220_x24():
     """State 0,1"""
-    assert t200220_x21(z16=1001, mode21=0, mode22=0, mode23=0, mode24=0)
+    assert t200220_x21(z16=1001, mode20=0, mode21=0, mode22=0, mode23=0)
     """State 2"""
     return 0
 
@@ -479,21 +493,26 @@ def t200220_x25(val2=10, val3=12):
             assert not IsPlayerDead()
     """State 2"""
     t200220_x15(val2=val2, val3=val3)
+    Quit()
+    """Unused"""
+    """State 4"""
+    return 0
 
 def t200220_x26():
     """State 0,1"""
-    assert t200220_x21(z16=1100, mode21=0, mode22=0, mode23=0, mode24=0)
+    assert t200220_x21(z16=1100, mode20=0, mode21=0, mode22=0, mode23=0)
     """State 2"""
     return 0
 
-def t200220_x27(val6=7002200, flag14=6000, flag15=6001, val7=1000000, val8=1730011, val9=1000000, val10=1000000,
-                val11=1000000):
+def t200220_x27(actionbutton1=7002200, flag14=6000, flag15=6001, val6=1000000, val7=1730011, val8=1000000,
+                val9=1000000, val10=1000000):
     """State 0,1"""
-    call = t200220_x21(z16=2000, mode21=0, mode22=0, mode23=0, mode24=0)
+    call = t200220_x21(z16=2000, mode20=0, mode21=0, mode22=0, mode23=0)
     if call.Get() == 1:
         """State 2"""
-        assert (t200220_x1(val6=val6, flag15=flag15, flag19=6000, flag20=6000, flag21=6000, flag22=6000,
-                mode20=0, flag14=flag14, val7=val7, val8=val8, val9=val9, val10=val10, val11=val11))
+        assert (t200220_x1(actionbutton1=actionbutton1, flag15=flag15, flag19=6000, flag20=6000, flag21=6000,
+                flag22=6000, actionbutton2=0, flag14=flag14, val6=val6, val7=val7, val8=val8, val9=val9,
+                val10=val10))
     elif call.Done():
         pass
     """State 3"""
@@ -514,11 +533,12 @@ def t200220_x28(val2=10, val3=12):
 
 def t200220_x29():
     """State 0,1"""
-    assert t200220_x21(z16=1002, mode21=0, mode22=0, mode23=0, mode24=0)
+    assert t200220_x21(z16=1002, mode20=0, mode21=0, mode22=0, mode23=0)
     """State 2"""
     return 0
 
-def t200220_x30(val6=_, flag15=6001, flag19=6000, flag20=6000, flag21=6000, flag22=6000, mode20=0, flag14=6000):
+def t200220_x30(actionbutton1=_, flag15=6001, flag19=6000, flag20=6000, flag21=6000, flag22=6000, actionbutton2=0,
+                flag14=6000):
     """State 0"""
     while Loop('mainloop'):
         """State 1"""
@@ -538,7 +558,7 @@ def t200220_x30(val6=_, flag15=6001, flag19=6000, flag20=6000, flag21=6000, flag
                 Continue('mainloop')
             elif GetEventStatus(flag14) == 1:
                 pass
-            elif CheckActionButtonArea(val6 + mode20) and not f116(10000) == 90:
+            elif CheckActionButtonArea(actionbutton1 + actionbutton2) and not f116(10000) == 90:
                 Break('mainloop')
     """State 5"""
     SetTalkTime(0.1)
@@ -552,21 +572,21 @@ def t200220_x31(z14=1044, z15=1042, flag9=72000351, text12=22004500, text13=2200
         # goods:9000:Divine Dragon's Tears
         if ComparePlayerInventoryNumber(3, goods10, 4, 1, 0) == 1:
             """State 9,14"""
-            assert t200220_x6(text1=text12, flag23=0, mode25=1)
+            assert t200220_x6(text1=text12, flag23=0, mode24=1)
         else:
             """State 10,15"""
-            assert t200220_x6(text1=text13, flag23=0, mode25=1)
+            assert t200220_x6(text1=text13, flag23=0, mode24=1)
     elif GetEventStatus(1042) == 1:
         """State 3,13"""
-        assert t200220_x6(text1=text14, flag23=0, mode25=1)
+        assert t200220_x6(text1=text14, flag23=0, mode24=1)
     else:
         """State 2,5"""
         if GetEventStatus(flag9) == 1:
             """State 7,12"""
-            assert t200220_x6(text1=text15, flag23=0, mode25=1)
+            assert t200220_x6(text1=text15, flag23=0, mode24=1)
         else:
             """State 6,11"""
-            assert t200220_x6(text1=text16, flag23=0, mode25=1)
+            assert t200220_x6(text1=text16, flag23=0, mode24=1)
     """State 16"""
     return 0
 
@@ -679,7 +699,7 @@ def t200220_x34(flag4=72000016, goods4=9192, goods5=9193, goods1=9215, goods2=30
         if not GetEventStatus(flag4):
             """State 2,24"""
             # talk:22002600:"Shinobi of the Divine Heir."
-            assert t200220_x5(text2=22002600, flag3=flag4, flag24=0, mode26=1)
+            assert t200220_x5(text2=22002600, flag3=flag4, flag24=0, mode25=1)
             """State 23"""
             SetEventState(72000041, 1)
         else:
@@ -687,7 +707,7 @@ def t200220_x34(flag4=72000016, goods4=9192, goods5=9193, goods1=9215, goods2=30
             if GetEventStatus(72000017) == 1:
                 """State 16,33"""
                 # talk:22005100:"I will eat the two persimmons,\nand become the cradle to return the Dragon's Heritage to its rightful place."
-                assert t200220_x6(text1=22005100, flag23=0, mode25=1)
+                assert t200220_x6(text1=22005100, flag23=0, mode24=1)
             else:
                 """State 15,4"""
                 # goods:9192:Fresh Serpent Viscera, goods:9193:Dried Serpent Viscera
@@ -697,7 +717,7 @@ def t200220_x34(flag4=72000016, goods4=9192, goods5=9193, goods1=9215, goods2=30
                     # talk:22003200:"Shinobi of the Divine Heir.\nHave you acquired both persimmons of the serpent?"
                     def WhilePaused():
                         c5_120(GetCurrentStateElapsedTime() > 0.5, 1, 0, 9, 9, 9, 9, 9, 9, 9)
-                    assert t200220_x6(text1=22003200, flag23=0, mode25=1)
+                    assert t200220_x6(text1=22003200, flag23=0, mode24=1)
                     """State 26"""
                     c1_120(1, 0, 9, 9, 9, 9, 9, 9, 9)
                     # action:14022007:"Give Persimmons of the Serpent", action:14022008:"Keep Persimmons of the Serpent"
@@ -716,7 +736,7 @@ def t200220_x34(flag4=72000016, goods4=9192, goods5=9193, goods1=9215, goods2=30
                         Label('L0')
                         """State 27"""
                         # talk:22011300:"Yes, I've found them."
-                        assert t200220_x5(text2=22011300, flag3=72000017, flag24=0, mode26=1)
+                        assert t200220_x5(text2=22011300, flag3=72000017, flag24=0, mode25=1)
                         """State 20"""
                         SetEventState(72000027, 0)
                         SetEventState(72000042, 1)
@@ -725,7 +745,7 @@ def t200220_x34(flag4=72000016, goods4=9192, goods5=9193, goods1=9215, goods2=30
                         Label('L1')
                         """State 28"""
                         # talk:22011400:"... Not yet."
-                        assert t200220_x5(text2=22011400, flag3=72000018, flag24=0, mode26=1)
+                        assert t200220_x5(text2=22011400, flag3=72000018, flag24=0, mode25=1)
                         """State 21"""
                         SetEventState(72000028, 0)
                     elif call.Get() == 2:
@@ -739,20 +759,20 @@ def t200220_x34(flag4=72000016, goods4=9192, goods5=9193, goods1=9215, goods2=30
                         # talk:22002800:"Shinobi of the Divine Heir."
                         def WhilePaused():
                             c5_120(GetCurrentStateElapsedTime() > 0.5, 1, 0, 9, 9, 9, 9, 9, 9, 9)
-                        assert t200220_x5(text2=22002800, flag3=72000363, flag24=0, mode26=1)
+                        assert t200220_x5(text2=22002800, flag3=72000363, flag24=0, mode25=1)
                     # goods:9193:Dried Serpent Viscera
                     elif ComparePlayerInventoryNumber(3, goods5, 4, 1, 0) == 1 and not GetEventStatus(72000364):
                         """State 10,30"""
                         # talk:22002900:"Shinobi of the Divine Heir."
                         def WhilePaused():
                             c5_120(GetCurrentStateElapsedTime() > 0.5, 1, 0, 9, 9, 9, 9, 9, 9, 9)
-                        assert t200220_x5(text2=22002900, flag3=72000364, flag24=0, mode26=1)
+                        assert t200220_x5(text2=22002900, flag3=72000364, flag24=0, mode25=1)
                     else:
                         """State 8,31"""
                         # talk:22002700:"Shinobi of the Divine Heir."
                         def WhilePaused():
                             c5_120(GetCurrentStateElapsedTime() > 0.5, 1, 0, 9, 9, 9, 9, 9, 9, 9)
-                        assert t200220_x6(text1=22002700, flag23=0, mode25=1)
+                        assert t200220_x6(text1=22002700, flag23=0, mode24=1)
                     """State 32"""
                     c1_120(1, 0, 9, 9, 9, 9, 9, 9, 9)
                     def WhilePaused():
@@ -789,13 +809,13 @@ def t200220_x35(goods1=9215, goods2=3070, goods3=9009, goods6=3071, mode3=_, goo
                 # talk:22003700:"Shinobi of the Divine Heir."
                 def WhilePaused():
                     c5_120(GetCurrentStateElapsedTime() > 0.5, 1, 0, 9, 9, 9, 9, 9, 9, 9)
-                assert t200220_x5(text2=22003700, flag3=72000039, flag24=0, mode26=1)
+                assert t200220_x5(text2=22003700, flag3=72000039, flag24=0, mode25=1)
             else:
                 """State 5,12"""
                 # talk:22003500:"Shinobi of the Divine Heir."
                 def WhilePaused():
                     c5_120(GetCurrentStateElapsedTime() > 0.5, 1, 0, 9, 9, 9, 9, 9, 9, 9)
-                assert t200220_x6(text1=22003500, flag23=0, mode25=1)
+                assert t200220_x6(text1=22003500, flag23=0, mode24=1)
             """State 11"""
             c1_120(1, 0, 9, 9, 9, 9, 9, 9, 9)
             def WhilePaused():
@@ -852,7 +872,7 @@ def t200220_x37(lot1=62208, lot2=62214, z2=3080, z3=3081, mode8=_):
             if GetEventStatus(72000368) == 1:
                 """State 11,34"""
                 # talk:22004300:"I apologize... Shinobi of the Divine Heir."
-                assert t200220_x6(text1=22004300, flag23=0, mode25=1)
+                assert t200220_x6(text1=22004300, flag23=0, mode24=1)
                 Goto('L4')
             else:
                 """State 12,14"""
@@ -879,7 +899,7 @@ def t200220_x37(lot1=62208, lot2=62214, z2=3080, z3=3081, mode8=_):
             if GetEventStatus(72000367) == 1:
                 """State 6,33"""
                 # talk:22001500:"I apologize... Shinobi of the Divine Heir."
-                assert t200220_x6(text1=22001500, flag23=0, mode25=1)
+                assert t200220_x6(text1=22001500, flag23=0, mode24=1)
                 Goto('L4')
             else:
                 """State 5,7"""
@@ -972,7 +992,7 @@ def t200220_x38(goods1=9215, mode12=_, mode13=_, goods7=9228):
             Label('L0')
             """State 20"""
             # talk:22011500:"This is for you."
-            assert t200220_x5(text2=22011500, flag3=72000362, flag24=0, mode26=1)
+            assert t200220_x5(text2=22011500, flag3=72000362, flag24=0, mode25=1)
             """State 10"""
             Label('L1')
             SetEventState(72000374, 0)
@@ -988,7 +1008,7 @@ def t200220_x38(goods1=9215, mode12=_, mode13=_, goods7=9228):
             Label('L2')
             """State 21"""
             # talk:22011600:"This is for you."
-            assert t200220_x5(text2=22011600, flag3=72000362, flag24=0, mode26=1)
+            assert t200220_x5(text2=22011600, flag3=72000362, flag24=0, mode25=1)
             Goto('L1')
     else:
         """State 12"""
@@ -1047,13 +1067,13 @@ def t200220_x40(text9=22011900, text10=22011910, text11=22011920, flag7=72000370
     """State 0,1"""
     if not text9 == -1 and not GetEventStatus(flag7):
         """State 3"""
-        assert t200220_x5(text2=text9, flag3=flag7, flag24=0, mode26=1)
+        assert t200220_x5(text2=text9, flag3=flag7, flag24=0, mode25=1)
     elif not text10 == -1 and not GetEventStatus(flag8):
         """State 4"""
-        assert t200220_x5(text2=text10, flag3=flag8, flag24=0, mode26=1)
+        assert t200220_x5(text2=text10, flag3=flag8, flag24=0, mode25=1)
     else:
         """State 5"""
-        assert t200220_x5(text2=text11, flag3=z11, flag24=0, mode26=1)
+        assert t200220_x5(text2=text11, flag3=z11, flag24=0, mode25=1)
         """State 2"""
         SetEventState(flag7, 0)
         SetEventState(flag8, 0)
@@ -1068,13 +1088,13 @@ def t200220_x41(goods3=9009, mode10=_):
         if not GetEventStatus(72000401):
             """State 22"""
             # talk:22012000:"Do you know what this is?"
-            assert t200220_x6(text1=22012000, flag23=0, mode25=1)
+            assert t200220_x6(text1=22012000, flag23=0, mode24=1)
             """State 17"""
             SetEventState(72000401, 1)
         else:
             """State 18,28"""
             # talk:22012008:"... Shinobi of the Divine Heir."
-            assert t200220_x6(text1=22012008, flag23=0, mode25=1)
+            assert t200220_x6(text1=22012008, flag23=0, mode24=1)
         """State 19,23"""
         # action:14022009:"Give Sakura Droplet", action:14022010:"Keep Sakura Droplet"
         call = t200220_x36(action6=14022009, action7=14022010, z12=72000036, z13=72000037)
@@ -1083,7 +1103,7 @@ def t200220_x41(goods3=9009, mode10=_):
             Label('L0')
             """State 25"""
             # talk:22012100:"Please do."
-            assert (t200220_x5(text2=22012100, flag3=72000021, flag24=0, mode26=1) and GetCurrentStateElapsedTime()
+            assert (t200220_x5(text2=22012100, flag3=72000021, flag24=0, mode25=1) and GetCurrentStateElapsedTime()
                     > 0.1)
             """State 4,5"""
             # goods:9009:Sakura Droplet
@@ -1099,7 +1119,7 @@ def t200220_x41(goods3=9009, mode10=_):
             Label('L1')
             """State 26"""
             # talk:22012110:"It appears the Sakura Droplet's power now resides within you."
-            assert t200220_x5(text2=22012110, flag3=72000022, flag24=0, mode26=1)
+            assert t200220_x5(text2=22012110, flag3=72000022, flag24=0, mode25=1)
             """State 14"""
             Label('L2')
             SetEventState(72000036, 0)
@@ -1110,7 +1130,7 @@ def t200220_x41(goods3=9009, mode10=_):
             Label('L3')
             """State 24"""
             # talk:22012200:"I'd rather not."
-            assert t200220_x5(text2=22012200, flag3=72000023, flag24=0, mode26=1)
+            assert t200220_x5(text2=22012200, flag3=72000023, flag24=0, mode25=1)
             Goto('L2')
         elif call.Get() == 2:
             """State 3"""
@@ -1146,19 +1166,19 @@ def t200220_x42(text5=22003000, text6=22003100, text7=22003800, text8=22004000, 
         # goods:9000:Divine Dragon's Tears
         if ComparePlayerInventoryNumber(3, goods9, 4, 1, 0) == 1:
             """State 6,13"""
-            assert t200220_x6(text1=text8, flag23=0, mode25=1)
+            assert t200220_x6(text1=text8, flag23=0, mode24=1)
         else:
             """State 5,12"""
-            assert t200220_x6(text1=text7, flag23=0, mode25=1)
+            assert t200220_x6(text1=text7, flag23=0, mode24=1)
     else:
         """State 2,7"""
         # goods:9192:Fresh Serpent Viscera
         if ComparePlayerInventoryNumber(3, goods8, 4, 1, 0) == 1:
             """State 9,11"""
-            assert t200220_x6(text1=text6, flag23=0, mode25=1)
+            assert t200220_x6(text1=text6, flag23=0, mode24=1)
         else:
             """State 8,10"""
-            assert t200220_x6(text1=text5, flag23=0, mode25=1)
+            assert t200220_x6(text1=text5, flag23=0, mode24=1)
     """State 14"""
     return 0
 
@@ -1234,7 +1254,7 @@ def t200220_x45(text3=_, text4=_, lot1=_, flag5=_, z5=_, mode9=_):
     """State 0,3"""
     if not mode9:
         """State 4,10"""
-        assert t200220_x6(text1=text3, flag23=0, mode25=1)
+        assert t200220_x6(text1=text3, flag23=0, mode24=1)
         """State 8"""
         assert not DoesSelfHaveSpEffect(3730000)
         """State 2"""
@@ -1250,7 +1270,7 @@ def t200220_x45(text3=_, text4=_, lot1=_, flag5=_, z5=_, mode9=_):
             """State 7,14"""
             return 1
     """State 1,11"""
-    assert t200220_x5(text2=text4, flag3=z5, flag24=0, mode26=1)
+    assert t200220_x5(text2=text4, flag3=z5, flag24=0, mode25=1)
     """State 9"""
     SetEventState(flag5, 0)
     """State 13"""
@@ -1263,7 +1283,7 @@ def t200220_x46():
         Label('L0')
         """State 13"""
         # talk:22010400:"I do."
-        assert t200220_x5(text2=22010400, flag3=72000002, flag24=0, mode26=1)
+        assert t200220_x5(text2=22010400, flag3=72000002, flag24=0, mode25=1)
         """State 8"""
         assert GetCurrentStateElapsedTime() > 0.1
     elif not GetEventStatus(72000003) and GetEventStatus(72000026) == 1:
@@ -1271,17 +1291,17 @@ def t200220_x46():
         Label('L1')
         """State 14"""
         # talk:22010500:"........."
-        assert t200220_x5(text2=22010500, flag3=72000003, flag24=0, mode26=1)
+        assert t200220_x5(text2=22010500, flag3=72000003, flag24=0, mode25=1)
     else:
         """State 1"""
         if not GetEventStatus(72000038):
             """State 3,10"""
             # talk:22001200:"Why do you seek this place?"
-            assert t200220_x5(text2=22001200, flag3=72000038, flag24=0, mode26=1)
+            assert t200220_x5(text2=22001200, flag3=72000038, flag24=0, mode25=1)
         else:
             """State 2,11"""
             # talk:22001300:"It is so-called, for not one who has drawn it has ever survived.\n"
-            assert t200220_x6(text1=22001300, flag23=0, mode25=1)
+            assert t200220_x6(text1=22001300, flag23=0, mode24=1)
         """State 7,12"""
         # action:14022000:"I do", action:14022001:"Never mind"
         call = t200220_x36(action6=14022000, action7=14022001, z12=72000025, z13=72000026)
@@ -1329,18 +1349,18 @@ def t200220_x48(z1=3060, goods1=9215, flag1=72000361, goods2=3070, goods3=9009, 
                 if not GetEventStatus(71120147):
                     """State 5,14"""
                     # talk:22002150:"Did you give the rice to the Divine Heir?"
-                    assert t200220_x5(text2=22002150, flag3=flag1, flag24=0, mode26=1)
+                    assert t200220_x5(text2=22002150, flag3=flag1, flag24=0, mode25=1)
                     Goto('L0')
                 else:
                     """State 6,15"""
                     # talk:22002100:"Did you give the rice to the Divine Heir?"
-                    assert t200220_x5(text2=22002100, flag3=flag1, flag24=0, mode26=1)
+                    assert t200220_x5(text2=22002100, flag3=flag1, flag24=0, mode25=1)
                     Goto('L0')
         """State 12"""
         # talk:22004700:"Shinobi of the Divine Heir."
         def WhilePaused():
             c5_120(GetCurrentStateElapsedTime() > 0.5, 1, 0, 9, 9, 9, 9, 9, 9, 9)
-        assert t200220_x6(text1=22004700, flag23=0, mode25=1)
+        assert t200220_x6(text1=22004700, flag23=0, mode24=1)
         """State 13"""
         c1_120(1, 0, 9, 9, 9, 9, 9, 9, 9)
         def WhilePaused():
@@ -1362,13 +1382,13 @@ def t200220_x49(goods1=9215, goods2=3070, goods3=9009, goods6=3071, goods7=9228)
         # talk:22001700:"(Soft snoring)"
         def WhilePaused():
             c5_120(GetCurrentStateElapsedTime() > 0.5, 1, 0, 9, 9, 9, 9, 9, 9, 9)
-        assert t200220_x5(text2=22001700, flag3=72000004, flag24=0, mode26=1)
+        assert t200220_x5(text2=22001700, flag3=72000004, flag24=0, mode25=1)
     else:
         """State 3,6"""
         # talk:22001710:"Shinobi of the Divine Heir..."
         def WhilePaused():
             c5_120(GetCurrentStateElapsedTime() > 0.5, 1, 0, 9, 9, 9, 9, 9, 9, 9)
-        assert t200220_x6(text1=22001710, flag23=0, mode25=1)
+        assert t200220_x6(text1=22001710, flag23=0, mode24=1)
     """State 5"""
     c1_120(1, 0, 9, 9, 9, 9, 9, 9, 9)
     def WhilePaused():
@@ -1397,7 +1417,7 @@ def t200220_x51(goods2=3070, mode2=_, goods6=3071):
         if not GetEventStatus(72000040):
             """State 2,20"""
             # talk:22001810:"  "
-            assert t200220_x5(text2=22001810, flag3=72000040, flag24=0, mode26=1)
+            assert t200220_x5(text2=22001810, flag3=72000040, flag24=0, mode25=1)
         else:
             """State 3,10,11,4"""
             # goods:3070:Persimmon, goods:3071:Taro Persimmon
@@ -1407,7 +1427,7 @@ def t200220_x51(goods2=3070, mode2=_, goods6=3071):
                 # talk:22002000:"You've come to visit... Shinobi of the Divine Heir."
                 def WhilePaused():
                     c1_120(1, 0, 9, 9, 9, 9, 9, 9, 9)
-                assert t200220_x6(text1=22002000, flag23=0, mode25=1)
+                assert t200220_x6(text1=22002000, flag23=0, mode24=1)
                 """State 23"""
                 c1_120(1, 0, 9, 9, 9, 9, 9, 9, 9)
                 # action:14022002:"Give Persimmon", action:14022003:"Keep Persimmon"
@@ -1426,7 +1446,7 @@ def t200220_x51(goods2=3070, mode2=_, goods6=3071):
                     # talk:22010600:"I found a persimmon."
                     def WhilePaused():
                         c5_120(GetCurrentStateElapsedTime() > 0.5, 1, 0, 9, 9, 9, 9, 9, 9, 9)
-                    assert t200220_x5(text2=22010600, flag3=72000009, flag24=0, mode26=1)
+                    assert t200220_x5(text2=22010600, flag3=72000009, flag24=0, mode25=1)
                     """State 13"""
                     SetEventState(72000378, 1)
                     """State 26"""
@@ -1442,7 +1462,7 @@ def t200220_x51(goods2=3070, mode2=_, goods6=3071):
                     # talk:22010650:"I thank you, Shinobi of the Divine Heir."
                     def WhilePaused():
                         c5_120(GetCurrentStateElapsedTime() > 0.5, 1, 0, 9, 9, 9, 9, 9, 9, 9)
-                    assert t200220_x6(text1=22010650, flag23=0, mode25=1)
+                    assert t200220_x6(text1=22010650, flag23=0, mode24=1)
                     """State 29"""
                     c1_120(1, 0, 9, 9, 9, 9, 9, 9, 9)
                     def WhilePaused():
@@ -1465,7 +1485,7 @@ def t200220_x51(goods2=3070, mode2=_, goods6=3071):
                     Label('L2')
                     """State 25"""
                     # talk:22010700:"........."
-                    assert t200220_x5(text2=22010700, flag3=72000010, flag24=0, mode26=1)
+                    assert t200220_x5(text2=22010700, flag3=72000010, flag24=0, mode25=1)
                     """State 16"""
                     SetEventState(72000032, 0)
                 elif call.Get() == 2:
@@ -1474,7 +1494,7 @@ def t200220_x51(goods2=3070, mode2=_, goods6=3071):
             else:
                 """State 5,21"""
                 # talk:22001900:"I am sorry I am unable... to give you any rice..."
-                assert t200220_x6(text1=22001900, flag23=0, mode25=1)
+                assert t200220_x6(text1=22001900, flag23=0, mode24=1)
     else:
         """State 12"""
         if GetEventStatus(72000378) == 1:
@@ -1494,7 +1514,7 @@ def t200220_x52(goods2=3070, mode1=_, goods6=3071):
     if not mode1:
         """State 5,9,10,15"""
         # talk:22004800:"  "
-        call = t200220_x6(text1=22004800, flag23=0, mode25=1)
+        call = t200220_x6(text1=22004800, flag23=0, mode24=1)
         def WhilePaused():
             c1_120(1, 0, 9, 9, 9, 9, 9, 9, 9)
         # goods:3070:Persimmon, goods:3071:Taro Persimmon
@@ -1514,7 +1534,7 @@ def t200220_x52(goods2=3070, mode1=_, goods6=3071):
                 Label('L0')
                 """State 21"""
                 # talk:22010700:"........."
-                assert t200220_x6(text1=22010700, flag23=0, mode25=1)
+                assert t200220_x6(text1=22010700, flag23=0, mode24=1)
                 """State 13"""
                 SetEventState(72000410, 0)
                 Goto('L3')
@@ -1535,7 +1555,7 @@ def t200220_x52(goods2=3070, mode1=_, goods6=3071):
                 Label('L1')
                 """State 17"""
                 # talk:22011800:"I've brought a persimmon.  Eat."
-                assert t200220_x5(text2=22011800, flag3=72000011, flag24=0, mode26=1)
+                assert t200220_x5(text2=22011800, flag3=72000011, flag24=0, mode25=1)
                 """State 7"""
                 SetEventState(72000029, 0)
                 """State 11"""
@@ -1549,7 +1569,7 @@ def t200220_x52(goods2=3070, mode1=_, goods6=3071):
                 Label('L2')
                 """State 18"""
                 # talk:22010700:"........."
-                assert t200220_x5(text2=22010700, flag3=72000012, flag24=0, mode26=1)
+                assert t200220_x5(text2=22010700, flag3=72000012, flag24=0, mode25=1)
                 """State 8"""
                 SetEventState(72000030, 0)
                 Goto('L3')
@@ -1665,7 +1685,7 @@ def t200220_x54(goods6=3071, mode7=_):
             Label('L0')
             """State 12"""
             # talk:22011930:"I've brought a persimmon."
-            assert t200220_x5(text2=22011930, flag3=72000372, flag24=0, mode26=1)
+            assert t200220_x5(text2=22011930, flag3=72000372, flag24=0, mode25=1)
             """State 6"""
             SetEventState(72000377, 0)
         else:
@@ -1690,7 +1710,7 @@ def t200220_x55(goods1=9215, goods2=3070, goods3=9009, goods6=3071, mode5=_, goo
             # talk:22004700:"Shinobi of the Divine Heir."
             def WhilePaused():
                 c5_120(GetCurrentStateElapsedTime() > 0.5, 1, 0, 9, 9, 9, 9, 9, 9, 9)
-            assert t200220_x6(text1=22004700, flag23=0, mode25=1)
+            assert t200220_x6(text1=22004700, flag23=0, mode24=1)
             """State 21"""
             c1_120(1, 0, 9, 9, 9, 9, 9, 9, 9)
             def WhilePaused():
@@ -1703,7 +1723,7 @@ def t200220_x55(goods1=9215, goods2=3070, goods3=9009, goods6=3071, mode5=_, goo
             # talk:22002200:"My friends... What should I do...?"
             def WhilePaused():
                 c5_120(GetCurrentStateElapsedTime() > 0.5, 1, 10, 9, 9, 9, 9, 9, 9, 9)
-            assert t200220_x6(text1=22002200, flag23=0, mode25=1)
+            assert t200220_x6(text1=22002200, flag23=0, mode24=1)
             """State 15"""
             c1_120(1, 10, 9, 9, 9, 9, 9, 9, 9)
             # action:14022004:"Greet her", action:14022005:"Give Holy Chapter: Infested", action:14022006:"Leave"
@@ -1720,7 +1740,7 @@ def t200220_x55(goods1=9215, goods2=3070, goods3=9009, goods6=3071, mode5=_, goo
                 # talk:22010800:"... Hello."
                 def WhilePaused():
                     c5_120(GetCurrentStateElapsedTime() > 0.5, 1, 0, 9, 9, 9, 9, 9, 9, 9)
-                assert t200220_x5(text2=22010800, flag3=72000005, flag24=0, mode26=1)
+                assert t200220_x5(text2=22010800, flag3=72000005, flag24=0, mode25=1)
                 """State 11"""
                 SetEventState(72000033, 0)
                 """State 19"""
@@ -1740,7 +1760,7 @@ def t200220_x55(goods1=9215, goods2=3070, goods3=9009, goods6=3071, mode5=_, goo
                 Label('L1')
                 """State 18"""
                 # talk:22010900:"........."
-                assert t200220_x5(text2=22010900, flag3=72000008, flag24=0, mode26=1)
+                assert t200220_x5(text2=22010900, flag3=72000008, flag24=0, mode25=1)
                 """State 13"""
                 SetEventState(72000035, 0)
             elif call.Get() == 3:
@@ -1764,7 +1784,7 @@ def t200220_x56(text1=22003400, text2=22003420, lot3=62212, flag2=72000366, flag
         """State 4,8"""
         def WhilePaused():
             c5_120(GetCurrentStateElapsedTime() > 0.5, 1, 0, 9, 9, 9, 9, 9, 9, 9)
-        assert t200220_x6(text1=text1, flag23=0, mode25=1)
+        assert t200220_x6(text1=text1, flag23=0, mode24=1)
         """State 2"""
         SetEventState(flag2, 1)
         """State 10"""
@@ -1782,7 +1802,7 @@ def t200220_x56(text1=22003400, text2=22003420, lot3=62212, flag2=72000366, flag
             """State 6,12"""
             return 1
     """State 1,9"""
-    assert t200220_x5(text2=text2, flag3=flag3, flag24=0, mode26=1)
+    assert t200220_x5(text2=text2, flag3=flag3, flag24=0, mode25=1)
     """State 7"""
     SetEventState(flag2, 0)
     """State 11"""

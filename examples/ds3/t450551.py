@@ -64,7 +64,38 @@ def t450551_x3():
     """State 0,8"""
     assert t450551_x0()
     """State 9"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 1"""
+    if GetEventStatus(1718) == 1:
+        pass
+    else:
+        Goto('L1')
+    """State 2"""
+    Goto('L0')
+    """State 3"""
+    Label('L1')
+    if GetDistanceToPlayer() < 10:
+        pass
+    else:
+        Goto('L2')
+    """State 4"""
+    Goto('L4')
+    """State 5"""
+    Label('L2')
+    Goto('L0')
+    """State 6"""
+    Label('L3')
+    assert t450551_x0()
+    Goto('L0')
+    """State 7"""
+    Label('L4')
+    call = t450551_x10()
+    if call.Done():
+        Goto('L0')
+    elif GetDistanceToPlayer() > 12:
+        Goto('L3')
 
 def t450551_x4():
     """State 0,3"""
@@ -96,6 +127,9 @@ def t450551_x5():
         """State 2"""
         call = t450551_x8()
         assert GetEventStatus(14505810) == 1 and not GetEventStatus(14505802)
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t450551_x6():
     """State 0,1"""
@@ -109,6 +143,10 @@ def t450551_x7():
     assert CheckSelfDeath() == 1 or GetEventStatus(9322) == 1
     """State 2"""
     t450551_x3()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t450551_x8():
     """State 0,1"""
@@ -121,6 +159,10 @@ def t450551_x9(z1=-1):
     assert IsPlayerDead() == 1
     """State 2"""
     t450551_x4()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t450551_x10():
     """State 0,1"""

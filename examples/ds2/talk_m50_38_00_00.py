@@ -15,7 +15,7 @@ def talk_m50_38_6840():
                 """State 11: [Lib] Conversation: Display only _SubState"""
                 Label('L0')
                 # talk:51300130:"Foolish..."
-                assert talk_m50_38_x0(text2=51300130, z8=0, z9=-1, z10=0)
+                assert talk_m50_38_x0(text2=51300130, z7=0, z8=-1, z9=0)
                 """State 2: Hostility: Set damage flag"""
                 AddAreaVariable(63, 1)
             elif call.Done():
@@ -61,6 +61,10 @@ def talk_m50_38_6840():
     SaveExecution()
     assert GetEventFlag(103980) != 0
     Goto('L1')
+    """Unused"""
+    """State 5: Enmity: Damage reset"""
+    ResetDamageTakenCount()
+    Quit()
 
 def talk_m50_38_6841():
     """Crown number check"""
@@ -113,20 +117,21 @@ def talk_m50_38_6841():
             Goto('L5')
     """State 10: Conversation: System: End"""
     EndMachine()
+    Quit()
 
-def talk_m50_38_x0(text2=_, z8=0, z9=_, z10=0):
+def talk_m50_38_x0(text2=_, z7=0, z8=_, z9=0):
     """[Lib] Conversation: Display only
     text2: Conversation ID
-    z8: Conversation flag
-    z9: Display distance
-    z10: Global event flag
+    z7: Conversation flag
+    z8: Display distance
+    z9: Global event flag
     """
     """State 0,1,2: Conversation: Message"""
-    StartConversation(text2, GetCommonEventParamDecimal(7), z9)
+    StartConversation(text2, GetCommonEventParamDecimal(7), z8)
     """State 4: Conversation: Wait for message"""
     assert ConversationEnded() != 0
     """State 3: Conversation: flag setting"""
-    SetEventFlag(z8, 1)
+    SetEventFlag(z7, 1)
     """State 5: Conversation: End"""
     return 0
 
@@ -143,13 +148,13 @@ def talk_m50_38_x1(action1=1011):
     """State 3: End state"""
     return 0
 
-def talk_m50_38_x2(lot1=1787000, z7=103140):
+def talk_m50_38_x2(lot1=1787000, z6=103140):
     """[Lib] Item acquisition dialog
     lot1: Item lottery ID
-    z7: Global flag
+    z6: Global flag
     """
     """State 0,1: Item acquisition dialog: Display"""
-    SetEventFlag(z7, 1)
+    SetEventFlag(z6, 1)
     # lot:1787000:Ashen Mist Heart
     AwardItem(lot1, 1)
     assert ItemAwardDisplay() != 0
@@ -158,26 +163,26 @@ def talk_m50_38_x2(lot1=1787000, z7=103140):
     """State 3: End state"""
     return 0
 
-def talk_m50_38_x3(text2=51300120, text3=51300127, z4=538010110, z5=0, z6=0):
+def talk_m50_38_x3(text2=51300120, text3=51300127, flag1=538010110, z4=0, z5=0):
     """[Lib] Conversation: Poly Play: Mes⇒Poly⇒Mes
     text2: First half conversation: conversation ID
     text3: Second half conversation: conversation ID
-    z4: Poly drama play start: area and other flags
-    z5: Global event flag 1
-    z6: Global event flag 2
+    flag1: Poly drama play start: area and other flags
+    z4: Global event flag 1
+    z5: Global event flag 2
     """
     """State 0,4: Poly play: First half: Message_SubState"""
-    assert talk_m50_38_x0(text2=text2, z8=0, z9=-1, z10=0)
+    assert talk_m50_38_x0(text2=text2, z7=0, z8=-1, z9=0)
     """State 1: Conversation: Poly play"""
-    SetEventFlag(z4, 1)
-    assert GetEventFlag(z4) != 0
+    SetEventFlag(flag1, 1)
+    assert GetEventFlag(flag1) != 0
     """State 2: Conversation: Poly drama playback standby"""
-    assert GetEventFlag(z4) != 1
+    assert GetEventFlag(flag1) != 1
     """State 3: Conversation: Global event flag setting"""
+    SetEventFlag(z4, 1)
     SetEventFlag(z5, 1)
-    SetEventFlag(z6, 1)
     """State 5: Poly play: Second half: Message_SubState"""
-    assert talk_m50_38_x0(text2=text3, z8=0, z9=-1, z10=0)
+    assert talk_m50_38_x0(text2=text3, z7=0, z8=-1, z9=0)
     """State 6: End state"""
     return 0
 
@@ -225,10 +230,11 @@ def talk_m50_38_x5():
             SetEventFlag(103201, 1)
             assert GetEventFlag(100730) != 0
             """State 19: Wait ①"""
+            Label('L1')
             assert (GetStateTime() > 1.5) != 0
             """State 37: [Lib] Conversation: Van Clad Conversation: Four Crowns 1_1: Display only_SubState"""
             # talk:51300127:"The rest will follow..."
-            assert talk_m50_38_x0(text2=51300127, z8=0, z9=20, z10=0)
+            assert talk_m50_38_x0(text2=51300127, z7=0, z8=20, z9=0)
             """State 20: Wait ②"""
             assert (GetStateTime() > 1.5) != 0
             """State 13: Forced return flag"""
@@ -293,48 +299,70 @@ def talk_m50_38_x5():
             # goods:21650100:Crown of the Sunken King
             if (ItemCount(21650100, 1, 1, 0) > 1) != 0 and GetEventFlag(101051) != 0:
                 """State 6: Underground crown possession"""
-                Label('L1')
+                Label('L2')
                 AddAreaVariable(1, 1)
                 # goods:21630100:Crown of the Old Iron King
                 if (ItemCount(21630100, 1, 1, 0) > 1) != 0 and GetEventFlag(101061) != 0:
                     """State 9: Possession of ash crown"""
-                    Label('L2')
+                    Label('L3')
                     AddAreaVariable(1, 1)
                     # goods:21640100:Crown of the Ivory King
                     if (ItemCount(21640100, 1, 1, 0) > 1) != 0 and GetEventFlag(101070) != 0:
                         """State 11: Possession of a crown of ice"""
-                        Label('L3')
+                        Label('L4')
                         AddAreaVariable(1, 1)
                     else:
                         """State 12: No possession of ice crown"""
-                        Label('L4')
+                        Label('L5')
                 else:
                     """State 10: No possession of ash crown"""
-                    Label('L5')
+                    Label('L6')
                     # goods:21640100:Crown of the Ivory King
                     if (ItemCount(21640100, 1, 1, 0) > 1) != 0 and GetEventFlag(101070) != 0:
-                        Goto('L3')
-                    else:
                         Goto('L4')
+                    else:
+                        Goto('L5')
             else:
                 """State 7: No underground crown possession"""
-                Label('L6')
+                Label('L7')
                 # goods:21630100:Crown of the Old Iron King
                 if (ItemCount(21630100, 1, 1, 0) > 1) != 0 and GetEventFlag(101061) != 0:
-                    Goto('L2')
+                    Goto('L3')
                 else:
-                    Goto('L5')
+                    Goto('L6')
         # goods:25130100:King's Crown
         elif (ItemCount(25130100, 1, 1, 0) > 1) != 1:
             """State 5: No crown possession"""
             # goods:21650100:Crown of the Sunken King
             if (ItemCount(21650100, 1, 1, 0) > 1) != 0 and GetEventFlag(101051) != 0:
-                Goto('L1')
+                Goto('L2')
             else:
-                Goto('L6')
+                Goto('L7')
         """State 8: Crown number check flag"""
         SetEventFlag(538020010, 1)
         Goto('L0')
-    """State 2,38: End state"""
+    """State 2: Conversation: End"""
+    Label('L8')
+    """State 38: End state"""
     return 0
+    """Unused"""
+    """State 14: Conversation: key guide creation"""
+    CreateKeyGuideArea(9, 50389010)
+    assert ConversationRequest() != 0
+    """State 15: Conversation: Delete key guide area"""
+    DeleteKeyGuideArea()
+    Goto('L9')
+    """State 21: [Lib] Item acquisition dialog_SubState"""
+    # lot:1787000:Ashen Mist Heart
+    assert talk_m50_38_x2(lot1=1787000, z6=103140)
+    Goto('L8')
+    """State 23: Inventory full confirmation dialog_SubState"""
+    # action:1011:"Your inventory bag is full"
+    assert talk_m50_38_x1(action1=1011)
+    Goto('L8')
+    """State 36: [Lib] Conversation: Poly Play: Mes⇒Poly⇒Mes_SubState"""
+    Label('L9')
+    # talk:51300120:"One day, fire will fade,\nand Dark will become a curse.", talk:51300127:"The rest will follow..."
+    assert talk_m50_38_x3(text2=51300120, text3=51300127, flag1=538010110, z4=0, z5=0)
+    Goto('L1')
 

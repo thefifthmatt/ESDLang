@@ -23,7 +23,7 @@ def t370160_x0(action2=12006001):
         """State 4"""
         return 1
 
-def t370160_x1(z9=_, flag5=1095, flag6=6000, flag7=6000, flag8=6000, flag9=6000):
+def t370160_x1(actionbutton1=_, flag5=1095, flag6=6000, flag7=6000, flag8=6000, flag9=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -39,7 +39,7 @@ def t370160_x1(z9=_, flag5=1095, flag6=6000, flag7=6000, flag8=6000, flag9=6000)
         elif (not GetEventStatus(flag5) and not GetEventStatus(flag6) and not GetEventStatus(flag7) and
               not GetEventStatus(flag8) and not GetEventStatus(flag9)):
             pass
-        elif CheckActionButtonArea(z9):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -304,6 +304,9 @@ def t370160_x15():
         """State 2"""
         call = t370160_x18()
         assert GetEventStatus(1095) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t370160_x16():
     """State 0,1"""
@@ -317,9 +320,17 @@ def t370160_x17():
     assert CheckSelfDeath() == 1
     """State 1"""
     t370160_x13()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t370160_x18():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t370160_x19():
     """State 0,1"""
@@ -546,6 +557,7 @@ def t370160_x26(goods1=372, z1=12006000, z2=13006000, text1=16002400, text2=1600
             AddRankingPoints(5, GetValueFromNumberSelectDialog())
             assert GetCurrentStateElapsedTime() > 3.5
             """State 27"""
+            Label('L0')
             if GetWorkValue(0) > 2:
                 pass
             else:
@@ -560,7 +572,7 @@ def t370160_x26(goods1=372, z1=12006000, z2=13006000, text1=16002400, text2=1600
                         assert t370160_x6(text2=text1, flag2=0, mode1=1)
                         """State 33"""
                         assert t370160_x7(lot1=lot1)
-                        Goto('L0')
+                        Goto('L2')
                     elif ComparePlayerStatus(z5, 3, 2) == 1:
                         """State 21"""
                         pass
@@ -571,12 +583,13 @@ def t370160_x26(goods1=372, z1=12006000, z2=13006000, text1=16002400, text2=1600
                             pass
                         else:
                             """State 24"""
-                            Goto('L0')
+                            Goto('L2')
                     """State 14,35"""
                     assert t370160_x6(text2=text2, flag2=0, mode1=1)
                     """State 34"""
+                    Label('L1')
                     assert t370160_x7(lot1=lot2)
-                    Goto('L0')
+                    Goto('L2')
                 else:
                     pass
             """State 8,30"""
@@ -590,8 +603,34 @@ def t370160_x26(goods1=372, z1=12006000, z2=13006000, text1=16002400, text2=1600
         # action:13000035:"No <?gdsparam@372?> in inventory"
         assert t370160_x8(action1=13000035)
     """State 38"""
-    Label('L0')
+    Label('L2')
     return 0
+    """Unused"""
+    """State 2"""
+    Label('L3')
+    ChangePlayerStats(z4, 5, val1)
+    Goto('L5')
+    """State 6"""
+    Label('L4')
+    # goods:372:Proof of a Concord Kept
+    PlayerEquipmentQuantityChange(3, goods1, -1 * (val1 - GetPlayerStatus(z4)))
+    Goto('L3')
+    """State 10"""
+    Goto('L6')
+    """State 15"""
+    Goto('L4')
+    """State 25"""
+    Label('L5')
+    AddRankingPoints(5, GetWorkValue(0))
+    Goto('L0')
+    """State 32"""
+    Label('L6')
+    # action:13000025:"Cannot offer more. Well done."
+    assert t370160_x8(action1=13000025)
+    Goto('L2')
+    """State 36"""
+    assert t370160_x6(text2=text3, flag2=0, mode1=1)
+    Goto('L1')
 
 def t370160_x27():
     """State 0,4"""
@@ -611,6 +650,7 @@ def t370160_x27():
             # talk:16002500:"My Blade of the Darkmoon, thy deeds merit great worship."
             assert t370160_x6(text2=16002500, flag2=0, mode1=1)
             """State 7"""
+            Label('L0')
             # lot:60630:Darkmoon Ring
             assert t370160_x7(lot1=60630)
         else:
@@ -619,6 +659,10 @@ def t370160_x27():
             assert t370160_x6(text2=16000500, flag2=0, mode1=1)
     """State 11"""
     return 0
+    """Unused"""
+    """State 10"""
+    assert t370160_x6(text2=16002550, flag2=0, mode1=1)
+    Goto('L0')
 
 def t370160_x28():
     """State 0"""
@@ -650,15 +694,18 @@ def t370160_x28():
         def ExitPause():
             RemoveMyAggro()
         assert t370160_x12()
+    """Unused"""
+    """State 6"""
+    return 0
 
 def t370160_x29():
     """State 0,1"""
     if not GetEventStatus(6750):
         """State 2"""
-        assert t370160_x1(z9=6160, flag5=1095, flag6=6000, flag7=6000, flag8=6000, flag9=6000)
+        assert t370160_x1(actionbutton1=6160, flag5=1095, flag6=6000, flag7=6000, flag8=6000, flag9=6000)
     else:
         """State 3"""
-        assert t370160_x1(z9=6161, flag5=1095, flag6=6000, flag7=6000, flag8=6000, flag9=6000)
+        assert t370160_x1(actionbutton1=6161, flag5=1095, flag6=6000, flag7=6000, flag8=6000, flag9=6000)
     """State 4"""
     return 0
 

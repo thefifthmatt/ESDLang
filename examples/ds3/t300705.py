@@ -11,6 +11,7 @@ def t300705_1():
               and not CheckSelfDeath() and not IsCharacterDisabled() and not IsClientPlayer() and GetRelativeAngleBetweenPlayerAndSelf()
               <= 45 and GetDistanceToPlayer() <= 2 and CompareBonfireState(1) == 1 and CheckActionButtonArea(6100)):
             """State 9"""
+            Label('L1')
             DebugEvent('人間性を捧げた')
             OfferHumanity()
             RequestUnlockTrophy(26)
@@ -19,6 +20,7 @@ def t300705_1():
             DebugEvent('会話タイマークリア　最初')
     while Loop('loop1'):
         """State 1"""
+        Label('L2')
         DebugEvent('待機')
         SetUpdateDistance(10)
         if CompareBonfireLevel(0, 0) == 1:
@@ -32,14 +34,14 @@ def t300705_1():
             SetEventState(760, 0)
             if CompareBonfireState(0) == 1:
                 """State 6"""
-                Label('L1')
+                Label('L3')
                 ForceEndTalk(0)
                 ClearTalkProgressData()
                 CloseShopMessage()
                 DebugEvent('リスト強制開放')
                 EndBonfireKindleAnimLoop()
             elif GetDistanceToPlayer() >= 8 or GetPlayerYDistance() > 1:
-                Goto('L1')
+                Goto('L3')
             elif CompareBonfireState(1) == 1 and GetEventStatus(4084):
                 while True:
                     """State 4"""
@@ -64,13 +66,13 @@ def t300705_1():
                     def ExitPause():
                         ClearTalkListData()
                     if CompareBonfireState(0) == 1 or IsPlayerDead() == 1:
-                        Goto('L1')
+                        Goto('L3')
                     elif HasPlayerBeenAttacked() == 1:
-                        Goto('L1')
+                        Goto('L3')
                     elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
                           == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 180 or GetDistanceToPlayer()
                           > 8):
-                        Goto('L1')
+                        Goto('L3')
                     elif not GetTalkListEntryResult():
                         break
                     elif GetTalkListEntryResult() == 1:
@@ -79,15 +81,15 @@ def t300705_1():
                         DebugEvent('ソウルショップ')
                         if CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1:
                             """State 34"""
-                            Label('L2')
+                            Label('L4')
                             CloseMenu()
                             DebugEvent('メッセージボックス閉じる')
                             EndBonfireKindleAnimLoop()
-                            Goto('L1')
+                            Goto('L3')
                         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or
                               IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or
                               GetDistanceToPlayer() > 8 or GetPlayerYDistance() > 1):
-                            Goto('L2')
+                            Goto('L4')
                         elif not IsMenuOpen(23):
                             pass
                     elif GetTalkListEntryResult() == 2:
@@ -95,11 +97,11 @@ def t300705_1():
                         OpenEnhanceShop(0)
                         DebugEvent('武器強化')
                         if CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1:
-                            Goto('L2')
+                            Goto('L4')
                         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or
                               IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or
                               GetDistanceToPlayer() > 8 or GetPlayerYDistance() > 1):
-                            Goto('L2')
+                            Goto('L4')
                         elif not IsMenuOpen(13):
                             pass
                     elif GetTalkListEntryResult() == 4:
@@ -107,16 +109,16 @@ def t300705_1():
                         OpenRepairShop()
                         DebugEvent('修理ショップ')
                         if CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1:
-                            Goto('L2')
+                            Goto('L4')
                         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or
                               IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or
                               GetDistanceToPlayer() > 8 or GetPlayerYDistance() > 1):
-                            Goto('L2')
+                            Goto('L4')
                         elif not IsMenuOpen(12):
                             pass
                     elif GetTalkListEntryResult() == 12:
                         """State 16"""
-                        Label('L3')
+                        Label('L5')
                         StartWarpMenuInit()
                         DebugEvent('ワープメニューを開く')
                         if WasWarpMenuDestinationSelected() == 1:
@@ -125,17 +127,17 @@ def t300705_1():
                             ClearTalkProgressData()
                             CloseShopMessage()
                             DebugEvent('リスト強制開放')
-                            Goto('L15')
+                            Goto('L17')
                         elif CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1:
-                            Goto('L2')
+                            Goto('L4')
                         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or
                               IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or
                               GetDistanceToPlayer() > 8 or GetPlayerYDistance() > 1):
-                            Goto('L2')
+                            Goto('L4')
                         elif not IsMenuOpen(36):
                             pass
                     elif GetTalkListEntryResult() == 7 and GetEventStatus(706) == 1:
-                        Goto('L3')
+                        Goto('L5')
                     elif GetTalkListEntryResult() == 7 and not GetEventStatus(706):
                         """State 52"""
                         # action:10010712:"This bonfire is cut off from the others. Cannot warp."
@@ -143,31 +145,31 @@ def t300705_1():
                         DebugEvent('ワープできない')
                         DisplayOneLineHelp(-1)
                         if CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1:
-                            Goto('L2')
+                            Goto('L4')
                         elif (CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1 or IsPlayerDead()
                               == 1):
                             """State 44"""
-                            Label('L4')
+                            Label('L6')
                             ForceCloseGenericDialog()
                             ForceEndTalk(0)
                             ClearTalkProgressData()
                         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or
                               IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or
                               GetDistanceToPlayer() > 8):
-                            Goto('L4')
+                            Goto('L6')
                         elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
                             """State 45"""
-                            Label('L5')
+                            Label('L7')
                             ClearTalkDisabledState()
                             DebugEvent('会話タイマークリア')
                             ClearTalkActionState()
                             ForceCloseGenericDialog()
                         elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
-                            Goto('L5')
+                            Goto('L7')
                     elif GetTalkListEntryResult() == 8:
                         """State 17"""
                         if CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1:
-                            Goto('L2')
+                            Goto('L4')
                         elif GetPlayerChrType() == 8:
                             """State 50"""
                             # action:10010725:"Cannot kindle while Hollowed"
@@ -183,16 +185,16 @@ def t300705_1():
                                 pass
                             elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
                                 """State 28"""
-                                Label('L6')
+                                Label('L8')
                                 ClearTalkDisabledState()
                                 DebugEvent('会話タイマークリア')
                                 ClearTalkActionState()
                                 ForceCloseGenericDialog()
                                 continue
                             elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
-                                Goto('L6')
+                                Goto('L8')
                             """State 27"""
-                            Label('L7')
+                            Label('L9')
                             ForceCloseGenericDialog()
                             ForceEndTalk(0)
                             ClearTalkProgressData()
@@ -204,15 +206,15 @@ def t300705_1():
                             DisplayOneLineHelp(-1)
                             if (CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1 or IsPlayerDead()
                                 == 1):
-                                Goto('L7')
+                                Goto('L9')
                             elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                   or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                   > 120 or GetDistanceToPlayer() > 8):
-                                Goto('L7')
+                                Goto('L9')
                             elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-                                Goto('L6')
+                                Goto('L8')
                             elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
-                                Goto('L6')
+                                Goto('L8')
                         elif CompareBonfireLevel(0, 4) == 1:
                             """State 24"""
                             # action:10010723:"Cannot kindle any further"
@@ -222,23 +224,23 @@ def t300705_1():
                             if (CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1 or IsPlayerDead()
                                 == 1):
                                 """State 30"""
-                                Label('L8')
+                                Label('L10')
                                 ForceCloseGenericDialog()
                                 ForceEndTalk(0)
                                 ClearTalkProgressData()
                             elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                   or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                   > 120 or GetDistanceToPlayer() > 8):
-                                Goto('L8')
+                                Goto('L10')
                             elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
                                 """State 29"""
-                                Label('L9')
+                                Label('L11')
                                 ClearTalkDisabledState()
                                 DebugEvent('会話タイマークリア')
                                 ClearTalkActionState()
                                 ForceCloseGenericDialog()
                             elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
-                                Goto('L9')
+                                Goto('L11')
                         elif CompareBonfireLevel(0, 2) == 1 and not GetEventStatus(257):
                             """State 49"""
                             # action:10010724:"Cannot kindle further without the secret rite"
@@ -247,15 +249,15 @@ def t300705_1():
                             DisplayOneLineHelp(-1)
                             if (CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1 or IsPlayerDead()
                                 == 1):
-                                Goto('L8')
+                                Goto('L10')
                             elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                   or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                   > 120 or GetDistanceToPlayer() > 8):
-                                Goto('L8')
+                                Goto('L10')
                             elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-                                Goto('L9')
+                                Goto('L11')
                             elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
-                                Goto('L9')
+                                Goto('L11')
                         else:
                             """State 19"""
                             # action:10010741:"Offer humanity and kindle flame?"
@@ -263,7 +265,7 @@ def t300705_1():
                             if (CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1 or IsPlayerDead()
                                 == 1):
                                 """State 22"""
-                                Label('L10')
+                                Label('L12')
                                 ForceCloseGenericDialog()
                                 ForceEndTalk(0)
                                 ClearTalkProgressData()
@@ -271,7 +273,7 @@ def t300705_1():
                             elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                   or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                   > 120 or GetDistanceToPlayer() > 8):
-                                Goto('L10')
+                                Goto('L12')
                             elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
                                 pass
                             elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
@@ -299,11 +301,11 @@ def t300705_1():
                         DebugEvent('倉庫')
                         OpenRepository()
                         if CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1:
-                            Goto('L2')
+                            Goto('L4')
                         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or
                               IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or
                               GetDistanceToPlayer() > 8 or GetPlayerYDistance() > 1):
-                            Goto('L2')
+                            Goto('L4')
                         elif not IsMenuOpen(26):
                             pass
                     elif GetTalkListEntryResult() == 5:
@@ -311,11 +313,11 @@ def t300705_1():
                         OpenMagicEquip(10000, 10099)
                         DebugEvent('魔法装備ショップ')
                         if CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1:
-                            Goto('L2')
+                            Goto('L4')
                         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or
                               IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or
                               GetDistanceToPlayer() > 8 or GetPlayerYDistance() > 1):
-                            Goto('L2')
+                            Goto('L4')
                         elif not IsMenuOpen(25):
                             pass
                     elif GetTalkListEntryResult() == 3:
@@ -323,11 +325,11 @@ def t300705_1():
                         OpenEnhanceShop(10)
                         DebugEvent('防具強化')
                         if CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1:
-                            Goto('L2')
+                            Goto('L4')
                         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or
                               IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or
                               GetDistanceToPlayer() > 8 or GetPlayerYDistance() > 1):
-                            Goto('L2')
+                            Goto('L4')
                         elif not IsMenuOpen(13):
                             pass
                     elif GetTalkListEntryResult() == 9:
@@ -336,7 +338,7 @@ def t300705_1():
                         """State 36"""
                         DebugEvent('亡者から復活する')
                         if CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1:
-                            Goto('L2')
+                            Goto('L4')
                         elif GetEventStatus(751) == 1:
                             """State 53"""
                             # action:10010736:"Cannot reverse Hollowing while cursed"
@@ -345,15 +347,15 @@ def t300705_1():
                             DisplayOneLineHelp(-1)
                             if (CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1 or IsPlayerDead()
                                 == 1):
-                                Goto('L4')
+                                Goto('L6')
                             elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                   or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                   > 120 or GetDistanceToPlayer() > 8):
-                                Goto('L4')
+                                Goto('L6')
                             elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-                                Goto('L5')
+                                Goto('L7')
                             elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
-                                Goto('L5')
+                                Goto('L7')
                         elif not GetPlayerChrType():
                             """State 42"""
                             # action:10010730:""
@@ -363,23 +365,23 @@ def t300705_1():
                             if (CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1 or IsPlayerDead()
                                 == 1):
                                 """State 47"""
-                                Label('L11')
+                                Label('L13')
                                 ForceCloseGenericDialog()
                                 ForceEndTalk(0)
                                 ClearTalkProgressData()
                             elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                   or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                   > 120 or GetDistanceToPlayer() > 8):
-                                Goto('L11')
+                                Goto('L13')
                             elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
                                 """State 46"""
-                                Label('L12')
+                                Label('L14')
                                 ClearTalkDisabledState()
                                 DebugEvent('会話タイマークリア')
                                 ClearTalkActionState()
                                 ForceCloseGenericDialog()
                             elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
-                                Goto('L12')
+                                Goto('L14')
                         elif GetStatus(10) <= 1:
                             """State 43"""
                             # action:10010731:"No humanity"
@@ -388,15 +390,15 @@ def t300705_1():
                             DisplayOneLineHelp(-1)
                             if (CompareBonfireState(0) == 1 or HasPlayerBeenAttacked() == 1 or IsPlayerDead()
                                 == 1):
-                                Goto('L4')
+                                Goto('L6')
                             elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                   or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                   > 120 or GetDistanceToPlayer() > 8):
-                                Goto('L4')
+                                Goto('L6')
                             elif GetGenericDialogButtonResult() == 1 and not IsGenericDialogOpen():
-                                Goto('L5')
+                                Goto('L7')
                             elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
-                                Goto('L5')
+                                Goto('L7')
                         else:
                             """State 37"""
                             # action:10010732:"Offer humanity and reverse Hollowing?"
@@ -410,10 +412,10 @@ def t300705_1():
                                 pass
                             elif not GetGenericDialogButtonResult() and not IsGenericDialogOpen():
                                 """State 38"""
-                                Label('L13')
+                                Label('L15')
                                 DebugEvent('人間性を捧げない')
                                 """State 41"""
-                                Label('L14')
+                                Label('L16')
                                 ClearTalkDisabledState()
                                 DebugEvent('会話タイマークリア　リストへ')
                                 ClearTalkActionState()
@@ -450,18 +452,39 @@ def t300705_1():
                                           > 8)):
                                         Continue('loop1')
                                     elif not IsMenuOpen(53) and not GetEventStatus(764):
-                                        Goto('L14')
+                                        Goto('L16')
                             elif GetGenericDialogButtonResult() == 2 and not IsGenericDialogOpen():
-                                Goto('L13')
+                                Goto('L15')
                             """State 40"""
                             ForceCloseGenericDialog()
                             ForceEndTalk(0)
                             ClearTalkProgressData()
                 """State 7"""
                 EndBonfireKindleAnimLoop()
-                Goto('L1')
+                Goto('L3')
             """State 26"""
-            Label('L15')
+            Label('L17')
             ClearTalkDisabledState()
             DebugEvent('会話タイマーをクリア　待機へ')
+    """Unused"""
+    """State 2"""
+    # action:10010182:"Light bonfire"
+    DisplayOneLineHelp(10010182)
+    Goto('L2')
+    """State 3"""
+    DisplayOneLineHelp(-1)
+    Goto('L2')
+    """State 11"""
+    DisplayOneLineHelp(-1)
+    Goto('L1')
+    """State 12"""
+    DisplayOneLineHelp(-1)
+    Goto('L0')
+    """State 13"""
+    # action:10010182:"Light bonfire"
+    DisplayOneLineHelp(10010182)
+    Goto('L0')
+    """State 33"""
+    DisplayOneLineHelp(-1)
+    Goto('L2')
 

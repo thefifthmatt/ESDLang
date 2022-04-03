@@ -27,4 +27,5 @@ def talk_m50_36_110000():
         assert talk_m50_36_x0(text1=75700010, z1=0, z2=30, z3=0)
     """State 2: End of conversation"""
     EndMachine()
+    Quit()
 

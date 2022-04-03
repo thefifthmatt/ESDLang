@@ -58,7 +58,7 @@ m33_00_00_00: t330290.esd: 160452d5, c0000 (Human), h26000 (Anri of Astora (fema
 m33_00_00_00: t330291.esd: 3b24ed4b
 m33_00_00_00: t330295.esd: 238155b4, c0000 (Human), h26050 (Anri of Astora (male))
 m33_00_00_00: t330360.esd: a7294020, c0000 (Human), h26300 (Horace the Hushed)
-m34_00_00_00: t340000.esd: 8d0b532e, c1000
+m34_00_00_00: t340000.esd: 8d0b532e
 m34_00_00_00: t340001.esd: 8d0b532e
 m34_00_00_00: t340002.esd: 8d0b532e
 m34_01_00_00: t341000.esd: 7fb4142d, c1000
@@ -134,7 +134,7 @@ m40_00_00_00: t400140.esd: 4f20c121, c0000 (Human), h25000 (Yuria of Londor)
 m40_00_00_00: t400150.esd: 547bbc0e, c2160 (Stone-humped Hag)
 m40_00_00_00: t400170.esd: 91deb4d3, c0000 (Human), h25100 (Hawkwood the Deserter)
 m40_00_00_00: t400171.esd: 95497d6c, c0000 (Human), h25100 (Hawkwood the Deserter)
-m40_00_00_00: t400172.esd: d64f6b04, c0100
+m40_00_00_00: t400172.esd: d64f6b04
 m40_00_00_00: t400180.esd: 20d6c2d4, c0000 (Human), h25200 (Sirris of the Sunless Realms)
 m40_00_00_00: t400190.esd: e3207dfe, c0000 (Human), h25300 (Ringfinger Leonhard)
 m40_00_00_00: t400200.esd: 056758e4, c3190
@@ -198,7 +198,7 @@ m50_00_00_00: t500000.esd: 7fb4142d, c1000
 m50_00_00_00: t500001.esd: 7fb4142d, c1000
 m50_00_00_00: t500002.esd: 7fb4142d, c1000
 m50_00_00_00: t500003.esd: 7fb4142d, c1000
-m50_00_00_00: t500004.esd: 7fb4142d, c1000
+m50_00_00_00: t500004.esd: 7fb4142d
 m50_00_00_00: t500730.esd: 7e97a4c3, c0000 (Human), h21401 (Amnesiac Lapp)
 m50_00_00_00: t500731.esd: 1f87f729, c0000 (Human), h21401 (Amnesiac Lapp)
 m50_00_00_00: t500732.esd: 948d0f27, c0000 (Human), h21401 (Amnesiac Lapp)
@@ -218,7 +218,7 @@ m51_00_00_00: t510740.esd: 30e32a73, c0000 (Human), h21500 (Shira)
 m51_00_00_00: t510750.esd: cbd61d5b, c6330 (Locust Preacher)
 m51_00_00_00: t510751.esd: d896a04f, c6330 (Locust Preacher)
 m51_00_00_00: t510752.esd: 0e39131f, c6330 (Locust Preacher)
-m51_00_00_00: t510770.esd: 852e51e2, c6270 (Lothric Thief), c6300
+m51_00_00_00: t510770.esd: 852e51e2, c6300
 m51_00_00_00: t510780.esd: 6247ed82, c6280 (Judicator)
 m51_01_00_00: t511000.esd: 35b1cf45, c1000
 m51_01_00_00: t511001.esd: 35b1cf45, c1000

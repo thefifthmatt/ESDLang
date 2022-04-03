@@ -168,6 +168,10 @@ def t400500_x8():
         assert t400500_x7() and GetDistanceToPlayer() < 4.9
     """State 2"""
     t400500_x6()
+    Quit()
+    """Unused"""
+    """State 5"""
+    return 0
 
 def t400500_x9():
     """State 0,1"""

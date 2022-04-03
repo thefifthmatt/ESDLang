@@ -6,6 +6,7 @@ def event_m50_38_51000():
     assert event_m50_38_x4(z7=5100000, z8=63, action5=2013, z9=5000000, val3=1.5)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m50_38_52000():
     """Return to immortality_time limit"""
@@ -15,6 +16,7 @@ def event_m50_38_52000():
             z5=5000000))
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m50_38_53000():
     """Return to immortality_End of quest"""
@@ -23,33 +25,35 @@ def event_m50_38_53000():
     assert event_m50_38_x12(action1=2013, z1=5000000, mode1=1)
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
 def event_m50_38_100000():
     """Poly play"""
     """State 0: Start state"""
     assert GetEventFlag(538010110) != 0
     """State 3: [Lib] Normal poly play_SubState"""
-    assert event_m50_38_x0(z10=503810, mode2=0, z11=538020102, z12=1, z13=1)
+    assert event_m50_38_x0(z10=503810, mode2=0, flag1=538020102, z11=1, z12=1)
     """State 2: Poly play end"""
     SetEventFlag(538010110, 0)
     assert GetEventFlag(538010110) != 1
     """State 1: Finish"""
     EndMachine()
+    Quit()
 
-def event_m50_38_x0(z10=503810, mode2=0, z11=538020102, z12=1, z13=1):
+def event_m50_38_x0(z10=503810, mode2=0, flag1=538020102, z11=1, z12=1):
     """[Lib] Normal poly play
     z10: Poly play ID
     mode2: Destination point ID after poly play
-    z11: Poly drama played flag
-    z12: End fade
-    z13: Start fade
+    flag1: Poly drama played flag
+    z11: End fade
+    z12: Start fade
     """
     """State 0,6: Wait for in-game start"""
     assert InGame() != 0
     """State 5: Played judgment"""
-    if GetEventFlag(z11) != 1:
+    if GetEventFlag(flag1) != 1:
         """State 1: Poly play"""
-        PlayCutscene(z10, z12, z13)
+        PlayCutscene(z10, z11, z12)
         assert (CutscenePlaying() == 1) != 0
         """State 4: Poly Play Pre Warp"""
         WarpPlayersWithinMapIf((mode2 > 1) != 0, mode2)
@@ -59,7 +63,7 @@ def event_m50_38_x0(z10=503810, mode2=0, z11=538020102, z12=1, z13=1):
         pass
     """State 2: Warp after the poly drama"""
     WarpPlayersWithinMapIf((mode2 > 1) != 0, mode2)
-    SetEventFlag(z11, 1)
+    SetEventFlag(flag1, 1)
     """State 7: End state"""
     return 0
 

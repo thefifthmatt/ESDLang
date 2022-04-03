@@ -2,6 +2,7 @@
 def t340002_1():
     """State 0,1"""
     t340002_x4()
+    Quit()
 
 def t340002_x0(action2=_):
     """State 0,1"""
@@ -38,7 +39,7 @@ def t340002_x1():
     """State 8"""
     return 0
 
-def t340002_x2(z1=_, flag1=6001, flag2=6000):
+def t340002_x2(actionbutton1=_, flag1=6001, flag2=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -51,7 +52,7 @@ def t340002_x2(z1=_, flag1=6001, flag2=6000):
         """State 3"""
         if CompareBonfireState(0):
             pass
-        elif CheckActionButtonArea(z1):
+        elif CheckActionButtonArea(actionbutton1):
             break
         elif (not (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
               and not IsPlayerDead() and not IsCharacterDisabled())):
@@ -77,6 +78,9 @@ def t340002_x4():
         """State 2"""
         call = t340002_x8()
         assert not IsMultiplayerInProgress()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t340002_x5():
     """State 0,1"""
@@ -85,7 +89,7 @@ def t340002_x5():
         Label('L0')
     else:
         """State 3,13"""
-        call = t340002_x2(z1=6100, flag1=6001, flag2=6000)
+        call = t340002_x2(actionbutton1=6100, flag1=6001, flag2=6000)
         if call.Done():
             """State 7"""
             TurnCharacterToFaceEntity(-1, 10000, -1)
@@ -99,7 +103,7 @@ def t340002_x5():
         elif CompareBonfireLevel(5, 0) == 1:
             pass
     """State 12"""
-    assert t340002_x2(z1=6101, flag1=6001, flag2=6000)
+    assert t340002_x2(actionbutton1=6101, flag1=6001, flag2=6000)
     """State 5"""
     ClearPlayerDamageInfo()
     """State 6"""
@@ -118,6 +122,9 @@ def t340002_x5():
         """State 11"""
         assert t340002_x11()
         Goto('L0')
+    """Unused"""
+    """State 14"""
+    return 0
 
 def t340002_x6():
     """State 0,4"""
@@ -126,7 +133,7 @@ def t340002_x6():
         pass
     elif call.Done():
         """State 2,5"""
-        call = t340002_x2(z1=6100, flag1=6001, flag2=6000)
+        call = t340002_x2(actionbutton1=6100, flag1=6001, flag2=6000)
         if call.Done():
             """State 3"""
             OfferHumanity()
@@ -134,6 +141,10 @@ def t340002_x6():
         elif CompareBonfireLevel(5, 0) == 1:
             pass
     """State 1"""
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 
 def t340002_x7():
     """State 0,1"""
@@ -150,12 +161,16 @@ def t340002_x8():
         """State 2"""
         call = t340002_x7()
         assert not IsClientPlayer()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t340002_x9():
     """State 0,12"""
     assert GetCurrentStateElapsedTime() > 2.5
     while True:
         """State 1"""
+        Label('L0')
         ClearTalkListData()
         """State 2"""
         # action:15000150:"Travel"
@@ -184,6 +199,17 @@ def t340002_x9():
             OpenMagicEquip(1000, 1000)
             assert not CheckSpecificPersonMenuIsOpen(11, 0)
     """State 13,11"""
+    Quit()
+    """Unused"""
+    """State 4"""
+    ForceCloseMenu()
+    Goto('L1')
+    """State 7"""
+    Goto('L0')
+    """State 16"""
+    Label('L1')
+    assert t340002_x10()
+    Goto('L0')
 
 def t340002_x10():
     """State 0,1"""

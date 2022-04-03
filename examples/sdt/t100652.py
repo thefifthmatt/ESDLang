@@ -6,6 +6,7 @@ def t100652_1():
     # talk:65001200:"... Oh?  You're supposed to be dead..."
     assert t100652_x1(text1=65001200, z1=71008505, flag1=1, mode1=1)
     """State 2"""
+    Quit()
 
 def t100652_x0():
     """State 0,1"""

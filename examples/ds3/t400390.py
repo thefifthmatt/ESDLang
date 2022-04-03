@@ -45,7 +45,7 @@ def t400390_x1():
     """State 2"""
     return 0
 
-def t400390_x2(text2=39000000, z4=74000990, flag3=0, mode2=1):
+def t400390_x2(text2=39000000, z3=74000990, flag3=0, mode2=1):
     """State 0,5"""
     assert t400390_x1() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 1"""
@@ -59,7 +59,7 @@ def t400390_x2(text2=39000000, z4=74000990, flag3=0, mode2=1):
         """State 3"""
         ReportConversationEndToHavokBehavior()
     """State 2"""
-    SetEventState(z4, 1)
+    SetEventState(z3, 1)
     """State 6"""
     return 0
 
@@ -78,15 +78,15 @@ def t400390_x3(text1=_, flag2=0, mode1=1):
     """State 5"""
     return 0
 
-def t400390_x4(z2=24, z3=9025, flag1=6074):
+def t400390_x4(gesture1=24, z2=9025, flag1=6074):
     """State 0,1"""
     if GetEventStatus(flag1) == 1:
         """State 2"""
         pass
     else:
         """State 3,4"""
-        AcquireGesture(z2)
-        OpenItemAcquisitionMenu(3, z3, 1)
+        AcquireGesture(gesture1)
+        OpenItemAcquisitionMenu(3, z2, 1)
         SetEventState(flag1, 1)
         assert not IsMenuOpen(63) and GetCurrentStateElapsedFrames() > 1
     """State 5"""
@@ -110,7 +110,7 @@ def t400390_x6():
     if not GetEventStatus(74000990):
         """State 3,18"""
         # talk:39000000:"You, you."
-        assert t400390_x2(text2=39000000, z4=74000990, flag3=0, mode2=1)
+        assert t400390_x2(text2=39000000, z3=74000990, flag3=0, mode2=1)
     elif GetEventStatus(2040) == 1 or GetEventStatus(2041) == 1 or GetEventStatus(2042) == 1:
         """State 4"""
         if GetEventStatus(2040) == 1:
@@ -126,7 +126,7 @@ def t400390_x6():
                 # talk:39000200:"Pickle pee, pickle pee!"
                 assert t400390_x3(text1=39000200, flag2=0, mode1=1)
                 """State 24"""
-                assert t400390_x4(z2=24, z3=9025, flag1=6074)
+                assert t400390_x4(gesture1=24, z2=9025, flag1=6074)
             else:
                 """State 13,14"""
                 SetEventState(2040, 0)
@@ -211,6 +211,10 @@ def t400390_x9():
         assert t400390_x8() and GetDistanceToPlayer() < 10
     """State 2"""
     t400390_x7()
+    Quit()
+    """Unused"""
+    """State 5"""
+    return 0
 
 def t400390_x10():
     """State 0,1"""

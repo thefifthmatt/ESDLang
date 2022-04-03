@@ -10,7 +10,8 @@ def t400010_1():
         call = t400010_x3()
         assert not IsClientPlayer()
 
-def t400010_x0(z1=6000, flag1=6001, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6001):
+def t400010_x0(actionbutton1=6000, flag1=6001, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000,
+               flag7=6001):
     """State 0"""
     while True:
         """State 1"""
@@ -29,7 +30,7 @@ def t400010_x0(z1=6000, flag1=6001, flag2=6000, flag3=6000, flag4=6000, flag5=60
             pass
         elif not GetEventStatus(flag7):
             pass
-        elif CheckActionButtonArea(z1):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -63,8 +64,8 @@ def t400010_x2():
     """State 0"""
     while True:
         """State 1"""
-        assert (t400010_x0(z1=6000, flag1=6001, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000,
-                flag7=6001))
+        assert (t400010_x0(actionbutton1=6000, flag1=6001, flag2=6000, flag3=6000, flag4=6000, flag5=6000,
+                flag6=6000, flag7=6001))
         """State 2"""
         call = t400010_x4()
         if call.Done():
@@ -72,6 +73,9 @@ def t400010_x2():
         elif GetDistanceToPlayer() > 5:
             """State 3"""
             assert t400010_x1()
+    """Unused"""
+    """State 4"""
+    return 0
 
 def t400010_x3():
     """State 0,1"""

@@ -164,7 +164,12 @@ def t380295_x3():
         """State 2"""
         pass
     """State 7"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 6"""
+    assert t380295_x11()
+    Goto('L0')
 
 def t380295_x4():
     """State 0,1"""
@@ -184,9 +189,17 @@ def t380295_x5():
     assert CheckSelfDeath() == 1
     """State 1"""
     t380295_x2()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t380295_x6():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t380295_x7():
     """State 0,1"""
@@ -203,7 +216,23 @@ def t380295_x7():
         # talk:29001920:"Please, stop this!"
         assert t380295_x15(text1=29001920, flag1=0, mode1=1)
     """State 11"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 2"""
+    Goto('L1')
+    """State 3"""
+    Goto('L2')
+    """State 7"""
+    Label('L1')
+    # talk:29001520:" "
+    assert t380295_x13(text3=29001520, z2=73800121, flag3=0, mode3=1)
+    Goto('L0')
+    """State 8"""
+    Label('L2')
+    # talk:29001620:" "
+    assert t380295_x13(text3=29001620, z2=73800122, flag3=0, mode3=1)
+    Goto('L0')
 
 def t380295_x8():
     """State 0,3"""
@@ -221,7 +250,7 @@ def t380295_x9():
     """State 0"""
     while True:
         """State 5"""
-        call = t380295_x10(z3=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
+        call = t380295_x10(actionbutton1=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""
             call = t380295_x0()
@@ -252,8 +281,12 @@ def t380295_x9():
             break
     """State 2"""
     t380295_x3()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 
-def t380295_x10(z3=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
+def t380295_x10(actionbutton1=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -269,7 +302,7 @@ def t380295_x10(z3=6000, flag4=1355, flag5=6000, flag6=6000, flag7=6000, flag8=6
         elif (not GetEventStatus(flag4) and not GetEventStatus(flag5) and not GetEventStatus(flag6) and
               not GetEventStatus(flag7) and not GetEventStatus(flag8)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -375,6 +408,9 @@ def t380295_x17():
         """State 2"""
         call = t380295_x6()
         assert GetEventStatus(1344) == 1 and not GetEventStatus(9013)
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t380295_x18():
     """State 0,1"""

@@ -380,10 +380,14 @@ namespace ESDLang.Script
                     }
                     if (nameFiles.Contains(outPath))
                     {
-                        List<string> message = new List<string>();
-                        message.Add($"Error: Won't write ESD duplicate {esd.Name} to {outPath} multiple times. It is found in these files:");
-                        message.AddRange(esds.Where(e => e.Name == esd.Name).Select(e => e.FilePath));
-                        throw new Exception(string.Join(Environment.NewLine, message));
+                        // This happens in DS1 with t100000 in m10_00_00_00 and 12_00_00_01.
+                        // We could also check for content duplication or not. Actual differences may deserve a full error.
+                        Console.WriteLine($"Warning: Won't write ESD duplicate {esd.Name} to {outPath} multiple times. It is found in these files:");
+                        foreach (string dupePath in esds.Where(e => e.Name == esd.Name).Select(e => e.FilePath))
+                        {
+                            Console.WriteLine(dupePath);
+                        }
+                        continue;
                     }
                     nameFiles.Add(outPath);
                     if (outPath != "-")

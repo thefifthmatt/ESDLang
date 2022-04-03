@@ -78,6 +78,7 @@ def t102603_1():
                 if True:
                     while True:
                         """State 3"""
+                        Label('L6')
                         # action:15000010:"Purchase Item"
                         AddTalkListData(1, 15000010, -1)
                         ShowShopMessage(0, 0, 0)
@@ -87,7 +88,7 @@ def t102603_1():
                             ClearTalkListData()
                         if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
                             """State 18"""
-                            Label('L6')
+                            Label('L7')
                             ForceEndTalk(0)
                             ClearTalkProgressData()
                             CloseShopMessage()
@@ -95,7 +96,7 @@ def t102603_1():
                                 Goto('L2')
                             elif IsPlayerMovingACertainDistance(1) == 1:
                                 """State 5"""
-                                Label('L7')
+                                Label('L8')
                                 if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
                                     Goto('L1')
                                 elif GetDistanceToPlayer() >= 12:
@@ -112,12 +113,12 @@ def t102603_1():
                             OpenRegularShop(5000, 5019)
                             if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
                                 """State 17"""
-                                Label('L8')
+                                Label('L9')
                                 CloseMenu()
                                 if CheckSelfDeath() == 1 and GetDistanceToPlayer() <= 5:
                                     Goto('L2')
                                 elif IsPlayerMovingACertainDistance(1) == 1:
-                                    Goto('L7')
+                                    Goto('L8')
                                 elif not IsPlayerMovingACertainDistance(1):
                                     pass
                                 else:
@@ -127,13 +128,13 @@ def t102603_1():
                             elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled()
                                   or IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf()
                                   > 120 or GetDistanceToPlayer() > 3):
-                                Goto('L8')
+                                Goto('L9')
                         elif GetTalkListEntryResult() == 4:
                             break
                         elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or
                               IsClientPlayer() == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or
                               GetDistanceToPlayer() > 3):
-                            Goto('L6')
+                            Goto('L7')
                         """State 4"""
                         ForceEndTalk(0)
                         Continue('mainloop')
@@ -159,7 +160,7 @@ def t102603_1():
                         """State 46"""
                         if GetEventStatus(721) == 1:
                             """State 49"""
-                            Label('L9')
+                            Label('L10')
                             # talk:13010900:"Farewell."
                             TalkToPlayer(13010900, -1, -1)
                             if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
@@ -173,7 +174,7 @@ def t102603_1():
                                   > 120 or GetDistanceToPlayer() > 5):
                                 pass
                         elif GetEventStatus(71020047) == 1:
-                            Goto('L9')
+                            Goto('L10')
                         elif not GetEventStatus(71020047):
                             """State 48"""
                             # talk:13010800:"No results, eh..."
@@ -343,7 +344,7 @@ def t102603_1():
             DisplayOneLineHelp(-1)
             Goto('L1')
         """State 19"""
-        Label('L10')
+        Label('L11')
         ClearTalkProgressData()
         """State 20"""
         ForceEndTalk(0)
@@ -355,5 +356,44 @@ def t102603_1():
     if HasTalkEnded() == 1:
         Goto('L0')
     elif GetDistanceToPlayer() >= 5:
-        Goto('L10')
+        Goto('L11')
+    """Unused"""
+    """State 11"""
+    # talk:13011000:"Heading out, are you?"
+    TalkToPlayer(13011000, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L11')
+    """State 12"""
+    if True:
+        Goto('L6')
+    elif GetDistanceToPlayer() >= 3:
+        Goto('L0')
+    """State 27"""
+    # talk:13010600:"Hello there. Glad to see you alive."
+    TalkToPlayer(13010600, -1, -1)
+    DisplayOneLineHelp(-1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L11')
+    """State 28"""
+    # talk:13011100:"I fail to see your design,"
+    TalkToPlayer(13011100, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L11')
+    """State 32"""
+    # talk:13011200:"Heavens...the folly of youth..."
+    TalkToPlayer(13011200, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L11')
 

@@ -10,9 +10,9 @@ def t400902_1():
         call = t400902_x14()
         assert not IsClientPlayer()
 
-def t400902_x0(z3=6000, flag4=1040, flag5=6000, flag6=6000, flag7=6000, flag8=6000, flag9=6000, flag10=6000,
-               flag11=6000, flag12=6000, flag13=6000, flag14=6000, flag15=6000, flag16=6000, flag17=6000,
-               flag18=6000):
+def t400902_x0(actionbutton1=6000, flag4=1040, flag5=6000, flag6=6000, flag7=6000, flag8=6000, flag9=6000,
+               flag10=6000, flag11=6000, flag12=6000, flag13=6000, flag14=6000, flag15=6000, flag16=6000,
+               flag17=6000, flag18=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -38,7 +38,7 @@ def t400902_x0(z3=6000, flag4=1040, flag5=6000, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag14) and not GetEventStatus(flag15) and not GetEventStatus(flag16)
               and not GetEventStatus(flag17) and not GetEventStatus(flag18)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 5"""
     return 0
@@ -233,7 +233,22 @@ def t400902_x11():
         """State 5"""
         assert t400902_x1()
     """State 8"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 1"""
+    Goto('L2')
+    """State 3"""
+    Label('L1')
+    assert t400902_x1()
+    Goto('L0')
+    """State 6"""
+    Label('L2')
+    call = t400902_x4(text2=90003000, z1=74009040, flag2=0)
+    if call.Done():
+        Goto('L0')
+    elif GetDistanceToPlayer() > 12:
+        Goto('L1')
 
 def t400902_x12():
     """State 0"""
@@ -276,9 +291,9 @@ def t400902_x13():
     """State 0"""
     while True:
         """State 7"""
-        call = t400902_x0(z3=6000, flag4=1040, flag5=6000, flag6=6000, flag7=6000, flag8=6000, flag9=6000,
-                          flag10=6000, flag11=6000, flag12=6000, flag13=6000, flag14=6000, flag15=6000,
-                          flag16=6000, flag17=6000, flag18=6000)
+        call = t400902_x0(actionbutton1=6000, flag4=1040, flag5=6000, flag6=6000, flag7=6000, flag8=6000,
+                          flag9=6000, flag10=6000, flag11=6000, flag12=6000, flag13=6000, flag14=6000,
+                          flag15=6000, flag16=6000, flag17=6000, flag18=6000)
         if call.Done():
             """State 4"""
             call = t400902_x6()
@@ -324,6 +339,10 @@ def t400902_x13():
                 Goto('L1')
     """State 3"""
     t400902_x9()
+    Quit()
+    """Unused"""
+    """State 8"""
+    return 0
 
 def t400902_x14():
     """State 0,1"""

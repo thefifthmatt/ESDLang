@@ -10,7 +10,7 @@ def t330170_1():
         call = t330170_x10()
         assert not IsClientPlayer()
 
-def t330170_x0(z2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
+def t330170_x0(actionbutton1=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t330170_x0(z2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=60
         elif (not GetEventStatus(flag3) and not GetEventStatus(flag4) and not GetEventStatus(flag5) and
               not GetEventStatus(flag6) and not GetEventStatus(flag7)):
             pass
-        elif CheckActionButtonArea(z2):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -165,6 +165,9 @@ def t330170_x9():
         """State 2"""
         call = t330170_x12()
         assert GetEventStatus(1104) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t330170_x10():
     """State 0,1"""
@@ -178,9 +181,17 @@ def t330170_x11():
     assert CheckSelfDeath() == 1
     """State 1"""
     t330170_x6()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t330170_x12():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t330170_x13():
     """State 0,2"""
@@ -216,7 +227,7 @@ def t330170_x15():
     """State 0"""
     while True:
         """State 3"""
-        call = t330170_x0(z2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
+        call = t330170_x0(actionbutton1=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
         if IsPlayerDead() == 1:
             break
         elif not GetEventStatus(73300200) and GetDistanceToPlayer() < 18:
@@ -233,4 +244,8 @@ def t330170_x15():
                 break
     """State 1"""
     t330170_x7()
+    Quit()
+    """Unused"""
+    """State 5"""
+    return 0
 

@@ -5,6 +5,7 @@ def t112650_1():
     """State 2"""
     # talk:65000600:"That shinobi at the bottom of the well..."
     t112650_x6(val1=23, val2=26, flag1=71128500, text1=65000600)
+    Quit()
 
 def t112650_x0():
     """State 0,1"""
@@ -126,6 +127,9 @@ def t112650_x6(val1=23, val2=26, flag1=71128500, text1=65000600):
         elif not GetEventStatus(flag1):
             """State 3"""
             assert t112650_x3(flag1=flag1, text1=text1, val1=val1, val2=val2)
+    """Unused"""
+    """State 4"""
+    return 0
 
 def t112650_x7():
     """State 0,1"""

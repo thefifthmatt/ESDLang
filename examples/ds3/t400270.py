@@ -10,7 +10,7 @@ def t400270_1():
         call = t400270_x11()
         assert not IsClientPlayer()
 
-def t400270_x0(z2=6000, flag3=1315, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
+def t400270_x0(actionbutton1=6000, flag3=1315, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t400270_x0(z2=6000, flag3=1315, flag4=6000, flag5=6000, flag6=6000, flag7=60
         elif (not GetEventStatus(flag3) and not GetEventStatus(flag4) and not GetEventStatus(flag5) and
               not GetEventStatus(flag6) and not GetEventStatus(flag7)):
             pass
-        elif CheckActionButtonArea(z2):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -217,6 +217,9 @@ def t400270_x10():
         """State 2"""
         call = t400270_x13()
         assert GetEventStatus(1302) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400270_x11():
     """State 0,1"""
@@ -230,9 +233,17 @@ def t400270_x12():
     assert CheckSelfDeath() == 1
     """State 1"""
     t400270_x7()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400270_x13():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t400270_x14():
     """State 0,1"""
@@ -249,7 +260,23 @@ def t400270_x14():
         # talk:27001610:"Curse you, damn fool!"
         assert t400270_x4(text1=27001610, flag1=0, mode1=1)
     """State 11"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 2"""
+    Goto('L1')
+    """State 3"""
+    Goto('L2')
+    """State 7"""
+    Label('L1')
+    # talk:27001210:" "
+    assert t400270_x3(text2=27001210, z1=74000671, flag2=0, mode2=1)
+    Goto('L0')
+    """State 8"""
+    Label('L2')
+    # talk:27001310:" "
+    assert t400270_x3(text2=27001310, z1=74000672, flag2=0, mode2=1)
+    Goto('L0')
 
 def t400270_x15():
     """State 0,3"""
@@ -293,7 +320,7 @@ def t400270_x18():
     """State 0"""
     while True:
         """State 5"""
-        call = t400270_x0(z2=6000, flag3=1315, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
+        call = t400270_x0(actionbutton1=6000, flag3=1315, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
         if call.Done():
             """State 3"""
             call = t400270_x5()
@@ -326,4 +353,8 @@ def t400270_x18():
             break
     """State 2"""
     t400270_x8()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

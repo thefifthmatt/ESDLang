@@ -22,7 +22,7 @@ def t400120_x0(action2=_):
         """State 4"""
         return 1
 
-def t400120_x1(z4=6120, flag4=1015, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
+def t400120_x1(actionbutton1=6120, flag4=1015, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -38,7 +38,7 @@ def t400120_x1(z4=6120, flag4=1015, flag5=6000, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag4) and not GetEventStatus(flag5) and not GetEventStatus(flag6) and
               not GetEventStatus(flag7) and not GetEventStatus(flag8)):
             pass
-        elif CheckActionButtonArea(z4):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -361,6 +361,9 @@ def t400120_x14():
         """State 2"""
         call = t400120_x17()
         assert GetEventStatus(1000) == 1 or GetEventStatus(1001) == 1 or GetEventStatus(1002) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400120_x15():
     """State 0,1"""
@@ -374,9 +377,17 @@ def t400120_x16():
     assert CheckSelfDeath() == 1
     """State 2"""
     t400120_x11()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400120_x17():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t400120_x18():
     """State 0,1"""
@@ -616,7 +627,7 @@ def t400120_x26():
     """State 0"""
     while True:
         """State 5"""
-        call = t400120_x1(z4=6120, flag4=1015, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
+        call = t400120_x1(actionbutton1=6120, flag4=1015, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""
             SetEventState(74000139, 1)
@@ -648,4 +659,8 @@ def t400120_x26():
             break
     """State 2"""
     t400120_x12()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

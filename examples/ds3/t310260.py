@@ -10,7 +10,7 @@ def t310260_1():
         call = t310260_x13()
         assert not IsClientPlayer()
 
-def t310260_x0(z5=6000, flag5=1295, flag6=6000, flag7=6000, flag8=6000, flag9=6000):
+def t310260_x0(actionbutton1=6000, flag5=1295, flag6=6000, flag7=6000, flag8=6000, flag9=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t310260_x0(z5=6000, flag5=1295, flag6=6000, flag7=6000, flag8=6000, flag9=60
         elif (not GetEventStatus(flag5) and not GetEventStatus(flag6) and not GetEventStatus(flag7) and
               not GetEventStatus(flag8) and not GetEventStatus(flag9)):
             pass
-        elif CheckActionButtonArea(z5):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -66,11 +66,11 @@ def t310260_x2():
     """State 2"""
     return 0
 
-def t310260_x3(text3=_, z4=_, flag4=0, mode3=1):
+def t310260_x3(text3=_, z3=_, flag4=0, mode3=1):
     """State 0,5"""
     assert t310260_x2() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 2"""
-    SetEventState(z4, 1)
+    SetEventState(z3, 1)
     """State 1"""
     TalkToPlayer(text3, -1, -1, flag4)
     assert CheckSpecificPersonTalkHasEnded(0) == 1
@@ -83,7 +83,7 @@ def t310260_x3(text3=_, z4=_, flag4=0, mode3=1):
     """State 6"""
     return 0
 
-def t310260_x4(text2=_, z3=_, flag3=0, mode2=1):
+def t310260_x4(text2=_, z2=_, flag3=0, mode2=1):
     """State 0,5"""
     assert t310260_x2() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 1"""
@@ -96,7 +96,7 @@ def t310260_x4(text2=_, z3=_, flag3=0, mode2=1):
         """State 3"""
         ReportConversationEndToHavokBehavior()
     """State 2"""
-    SetEventState(z3, 1)
+    SetEventState(z2, 1)
     """State 6"""
     return 0
 
@@ -115,15 +115,15 @@ def t310260_x5(text1=_, flag2=0, mode1=1):
     """State 5"""
     return 0
 
-def t310260_x6(z1=9, z2=9014, flag1=6059):
+def t310260_x6(gesture1=9, z1=9014, flag1=6059):
     """State 0,1"""
     if GetEventStatus(flag1) == 1:
         """State 2"""
         pass
     else:
         """State 3,4"""
-        AcquireGesture(z1)
-        OpenItemAcquisitionMenu(3, z2, 1)
+        AcquireGesture(gesture1)
+        OpenItemAcquisitionMenu(3, z1, 1)
         SetEventState(flag1, 1)
         assert not IsMenuOpen(63) and GetCurrentStateElapsedFrames() > 1
     """State 5"""
@@ -159,7 +159,7 @@ def t310260_x7():
                 """State 18"""
                 assert not GetEventStatus(73100132)
                 """State 25"""
-                assert t310260_x6(z1=9, z2=9014, flag1=6059)
+                assert t310260_x6(gesture1=9, z1=9014, flag1=6059)
         else:
             """State 9"""
             pass
@@ -187,7 +187,7 @@ def t310260_x7():
         if GetTalkListEntryResult() == 1:
             """State 24"""
             # talk:26000300:"Oh, thank you, sweet Champion."
-            assert t310260_x4(text2=26000300, z3=73100130, flag3=0, mode2=1)
+            assert t310260_x4(text2=26000300, z2=73100130, flag3=0, mode2=1)
             """State 17"""
             SetEventState(73100102, 1)
             """State 16"""
@@ -264,6 +264,9 @@ def t310260_x12():
         """State 2"""
         call = t310260_x15()
         assert GetEventStatus(1280) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t310260_x13():
     """State 0,1"""
@@ -277,16 +280,24 @@ def t310260_x14():
     assert CheckSelfDeath() == 1
     """State 1"""
     t310260_x9()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t310260_x15():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t310260_x16():
     """State 0,1"""
     if not GetEventStatus(73100123):
         """State 5"""
         # talk:26000800:"Have mercy!"
-        assert t310260_x3(text3=26000800, z4=73100123, flag4=0, mode3=1)
+        assert t310260_x3(text3=26000800, z3=73100123, flag4=0, mode3=1)
     else:
         """State 2"""
         SetEventState(73100121, 0)
@@ -296,7 +307,17 @@ def t310260_x16():
         # talk:26000900:"Please, stop this!"
         assert t310260_x5(text1=26000900, flag2=0, mode1=1)
     """State 7"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 3"""
+    # talk:26000600:" "
+    assert t310260_x3(text3=26000600, z3=73100121, flag4=0, mode3=1)
+    Goto('L0')
+    """State 4"""
+    # talk:26000700:" "
+    assert t310260_x3(text3=26000700, z3=73100122, flag4=0, mode3=1)
+    Goto('L0')
 
 def t310260_x17():
     """State 0,1"""
@@ -305,7 +326,7 @@ def t310260_x17():
         assert GetCurrentStateElapsedTime() > 5
         """State 3"""
         # talk:26000100:"Ahh, yes, there you are, so close, indeed."
-        assert t310260_x4(text2=26000100, z3=73100100, flag3=0, mode2=1)
+        assert t310260_x4(text2=26000100, z2=73100100, flag3=0, mode2=1)
         """State 4"""
         return 0
     elif not GetEventStatus(73100131):
@@ -316,7 +337,7 @@ def t310260_x18():
     """State 0"""
     while True:
         """State 5"""
-        call = t310260_x0(z5=6000, flag5=1295, flag6=6000, flag7=6000, flag8=6000, flag9=6000)
+        call = t310260_x0(actionbutton1=6000, flag5=1295, flag6=6000, flag7=6000, flag8=6000, flag9=6000)
         if call.Done():
             """State 3"""
             call = t310260_x7()
@@ -347,4 +368,8 @@ def t310260_x18():
             break
     """State 2"""
     t310260_x10()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

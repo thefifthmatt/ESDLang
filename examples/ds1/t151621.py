@@ -198,6 +198,7 @@ def t151621_1():
                             elif not IsMenuOpen(12):
                                 continue
                         elif GetTalkListEntryResult() == 2:
+                            """Pass"""
                             DebugEvent('強化ショップが呼ばれる')
                             """State 42"""
                             OpenEnhanceShop(0)

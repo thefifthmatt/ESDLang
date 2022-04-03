@@ -4,9 +4,10 @@ def t111330_1():
     assert GetCurrentStateElapsedTime() > 1
     """State 1"""
     t111330_x5(flag1=11115802, flag2=11115801, flag3=6000, val1=5, val2=60, val3=65, val4=60, val5=65,
-               flag4=6001, val6=-1, flag5=6000, flag6=6001, flag7=6000, flag8=6000, mode1=1, val7=1000000,
-               val8=1000000, val9=1000000, mode2=1, mode3=1, mode4=0, val10=1000000, val11=1000000, mode5=0,
-               flag9=6000, mode6=0)
+               flag4=6001, actionbutton1=-1, flag5=6000, flag6=6001, flag7=6000, flag8=6000, mode1=1,
+               val6=1000000, val7=1000000, val8=1000000, mode2=1, mode3=1, mode4=0, val9=1000000, val10=1000000,
+               mode5=0, flag9=6000, mode6=0)
+    Quit()
 
 def t111330_1001():
     """State 0,2"""
@@ -16,10 +17,11 @@ def t111330_1001():
     else:
         """State 4,5"""
         # talk:33160500:"For the glory of Ashina..."
-        assert t111330_x4(text1=33160500, flag14=1, mode12=1)
+        assert t111330_x4(text1=33160500, flag14=1, mode11=1)
     """State 1"""
     def WhilePaused():
         c1_119(0)
+    Quit()
 
 def t111330_1002():
     """State 0,2"""
@@ -35,6 +37,7 @@ def t111330_1002():
     """State 1"""
     def WhilePaused():
         c1_119(0)
+    Quit()
 
 def t111330_1102():
     """State 0"""
@@ -45,7 +48,7 @@ def t111330_1102():
         elif not GetEventStatus(71110450):
             """State 3,7"""
             # talk:33160000:"Face me..."
-            call = t111330_x3(text2=33160000, z2=71110450, flag15=1, mode13=1)
+            call = t111330_x3(text2=33160000, z2=71110450, flag15=1, mode12=1)
             if call.Done():
                 continue
             elif f120() - f121() == 1 and not GetEventStatus(71110455):
@@ -55,43 +58,44 @@ def t111330_1102():
         elif not GetEventStatus(71110460) and GetEventStatus(71110451) == 1:
             """State 5,9"""
             # talk:33160200:"The power of the Dragon's Blood?"
-            assert t111330_x3(text2=33160200, z2=71110460, flag15=1, mode13=1)
+            assert t111330_x3(text2=33160200, z2=71110460, flag15=1, mode12=1)
             continue
         elif not GetEventStatus(71110461) and GetEventStatus(71110452) == 1:
             """State 6,10"""
             # talk:33160300:"I will take him back..."
-            assert t111330_x3(text2=33160300, z2=71110461, flag15=1, mode13=1)
+            assert t111330_x3(text2=33160300, z2=71110461, flag15=1, mode12=1)
             continue
         """State 4"""
         assert GetCurrentStateElapsedTime() > 4
         """State 8"""
         # talk:33160100:"I'm not finished yet... Shinobi of the Divine Heir...!"
-        assert t111330_x3(text2=33160100, z2=71110455, flag15=1, mode13=1)
+        assert t111330_x3(text2=33160100, z2=71110455, flag15=1, mode12=1)
     """State 1"""
     def WhilePaused():
         c1_119(0)
+    Quit()
 
-def t111330_x0(val6=-1, flag6=6001, flag10=6000, flag11=6000, flag12=6000, flag13=6000, mode7=0, flag5=6000,
-               val7=1000000, val8=1000000, val9=1000000, val10=1000000, val11=1000000):
+def t111330_x0(actionbutton1=-1, flag6=6001, flag10=6000, flag11=6000, flag12=6000, flag13=6000, actionbutton2=0,
+               flag5=6000, val6=1000000, val7=1000000, val8=1000000, val9=1000000, val10=1000000):
     """State 0"""
     while Loop('mainloop'):
         """State 3"""
-        call = t111330_x26(val6=val6, flag6=flag6, flag10=flag10, flag11=flag11, flag12=flag12, flag13=flag13,
-                           mode7=mode7, flag5=flag5)
+        call = t111330_x26(actionbutton1=actionbutton1, flag6=flag6, flag10=flag10, flag11=flag11, flag12=flag12,
+                           flag13=flag13, actionbutton2=actionbutton2, flag5=flag5)
         if call.Done():
             break
-        elif (not f116(-1) == val7 and not f116(-1) == val8 and not f116(-1) == val9 and not DoesSelfHaveSpEffect(4510)
-              and not val7 == -1 and not f116(-1) == val10 and not f116(-1) == val11):
+        elif (not f116(-1) == val6 and not f116(-1) == val7 and not f116(-1) == val8 and not DoesSelfHaveSpEffect(4510)
+              and not val6 == -1 and not f116(-1) == val9 and not f116(-1) == val10):
             pass
         while True:
             """State 1"""
-            assert (f116(-1) == val7 or f116(-1) == val8 or f116(-1) == val9 or (DoesSelfHaveSpEffect(4510)
-                    == 1 and f116(-1) == val10 and f116(-1) == val11))
+            assert (f116(-1) == val6 or f116(-1) == val7 or f116(-1) == val8 or (DoesSelfHaveSpEffect(4510)
+                    == 1 and f116(-1) == val9 and f116(-1) == val10))
             """State 2"""
             if GetCurrentStateElapsedTime() > 0.5:
                 Continue('mainloop')
-            elif (not f116(-1) == val7 and not f116(-1) == val8 and not f116(-1) == val9 and not DoesSelfHaveSpEffect(4510)
-                  and not f116(-1) == val10 and not f116(-1) == val11):
+            elif (not f116(-1) == val6 and not f116(-1) == val7 and not f116(-1) == val8 and not DoesSelfHaveSpEffect(4510)
+                  and not f116(-1) == val9 and not f116(-1) == val10):
                 pass
     """State 4"""
     SetTalkTime(0.1)
@@ -132,7 +136,7 @@ def t111330_x2():
     """State 2"""
     return 0
 
-def t111330_x3(text2=_, z2=_, flag15=1, mode13=1):
+def t111330_x3(text2=_, z2=_, flag15=1, mode12=1):
     """State 0,7"""
     assert t111330_x2() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 2"""
@@ -151,7 +155,7 @@ def t111330_x3(text2=_, z2=_, flag15=1, mode13=1):
             GiveSpEffectToPlayer(30700)
         assert CheckSpecificPersonTalkHasEnded(0) == 1
     """State 4"""
-    if not mode13:
+    if not mode12:
         pass
     else:
         """State 3"""
@@ -159,7 +163,7 @@ def t111330_x3(text2=_, z2=_, flag15=1, mode13=1):
     """State 8"""
     return 0
 
-def t111330_x4(text1=33160500, flag14=1, mode12=1):
+def t111330_x4(text1=33160500, flag14=1, mode11=1):
     """State 0,6"""
     assert t111330_x2() and CheckSpecificPersonTalkHasEnded(0) == 1
     """State 4"""
@@ -178,7 +182,7 @@ def t111330_x4(text1=33160500, flag14=1, mode12=1):
             GiveSpEffectToPlayer(30700)
         assert CheckSpecificPersonTalkHasEnded(0) == 1
     """State 3"""
-    if not mode12:
+    if not mode11:
         pass
     else:
         """State 2"""
@@ -187,16 +191,16 @@ def t111330_x4(text1=33160500, flag14=1, mode12=1):
     return 0
 
 def t111330_x5(flag1=11115802, flag2=11115801, flag3=6000, val1=5, val2=60, val3=65, val4=60, val5=65,
-               flag4=6001, val6=-1, flag5=6000, flag6=6001, flag7=6000, flag8=6000, mode1=1, val7=1000000,
-               val8=1000000, val9=1000000, mode2=1, mode3=1, mode4=0, val10=1000000, val11=1000000, mode5=0,
-               flag9=6000, mode6=0):
+               flag4=6001, actionbutton1=-1, flag5=6000, flag6=6001, flag7=6000, flag8=6000, mode1=1,
+               val6=1000000, val7=1000000, val8=1000000, mode2=1, mode3=1, mode4=0, val9=1000000, val10=1000000,
+               mode5=0, flag9=6000, mode6=0):
     """State 0"""
     while True:
         """State 1"""
         RemoveMyAggro()
-        call = t111330_x6(val1=val1, val2=val2, val3=val3, val4=val4, val5=val5, flag4=flag4, val6=val6,
-                          flag5=flag5, flag6=flag6, flag7=flag7, flag8=flag8, mode1=mode1, val7=val7,
-                          val8=val8, val9=val9, mode2=mode2, mode3=mode3, mode4=mode4, val10=val10, val11=val11,
+        call = t111330_x6(val1=val1, val2=val2, val3=val3, val4=val4, val5=val5, flag4=flag4, actionbutton1=actionbutton1,
+                          flag5=flag5, flag6=flag6, flag7=flag7, flag8=flag8, mode1=mode1, val6=val6,
+                          val7=val7, val8=val8, mode2=mode2, mode3=mode3, mode4=mode4, val9=val9, val10=val10,
                           mode5=mode5, mode6=mode6)
         def WhilePaused():
             c5_116(GetDistanceToPlayer() < 4)
@@ -212,15 +216,18 @@ def t111330_x5(flag1=11115802, flag2=11115801, flag3=6000, val1=5, val2=60, val3
         """State 2"""
         call = t111330_x7(flag1=flag1, val2=val2, val3=val3)
         assert not CheckSelfDeath() and not GetEventStatus(flag1) and not DoesSelfHaveSpEffect(30100)
+    """Unused"""
+    """State 4"""
+    return 0
 
-def t111330_x6(val1=5, val2=60, val3=65, val4=60, val5=65, flag4=6001, val6=-1, flag5=6000, flag6=6001,
-               flag7=6000, flag8=6000, mode1=1, val7=1000000, val8=1000000, val9=1000000, mode2=1, mode3=1,
-               mode4=0, val10=1000000, val11=1000000, mode5=0, mode6=0):
+def t111330_x6(val1=5, val2=60, val3=65, val4=60, val5=65, flag4=6001, actionbutton1=-1, flag5=6000,
+               flag6=6001, flag7=6000, flag8=6000, mode1=1, val6=1000000, val7=1000000, val8=1000000,
+               mode2=1, mode3=1, mode4=0, val9=1000000, val10=1000000, mode5=0, mode6=0):
     """State 0"""
     while True:
         """State 4"""
-        call = t111330_x23(val6=val6, flag5=flag5, flag6=flag6, val7=val7, val8=val8, val9=val9, val10=val10,
-                           val11=val11)
+        call = t111330_x23(actionbutton1=actionbutton1, flag5=flag5, flag6=flag6, val6=val6, val7=val7,
+                           val8=val8, val9=val9, val10=val10)
         if call.Done():
             """State 1"""
             Label('L0')
@@ -246,6 +253,9 @@ def t111330_x6(val1=5, val2=60, val3=65, val4=60, val5=65, flag4=6001, val6=-1, 
         def ExitPause():
             RemoveMyAggro()
         assert t111330_x10(val2=val2, val3=val3)
+    """Unused"""
+    """State 5"""
+    return 0
 
 def t111330_x7(flag1=11115802, val2=60, val3=65):
     """State 0,1"""
@@ -277,7 +287,7 @@ def t111330_x8(val1=5, mode1=1, mode2=1, mode3=1, mode4=0, mode5=0):
         c1_117(mode1, 10000)
         c1_117(1000000, -1)
         SetTalkTime(0.01)
-        c5_128(mode3 == 1, 0.1)
+        SetMenuDisableTimeIf(mode3 == 1, 0.1)
         c5_120(val1 == 1 and not mode1 and mode5 == 1, 1, 0, 9, 9, 9, 9, 9, 9, 9)
     if call.Done():
         pass
@@ -359,10 +369,13 @@ def t111330_x14(val2=60, val3=65):
         elif GetDistanceToPlayer() > val3:
             """State 4"""
             assert t111330_x1()
+    """Unused"""
+    """State 5"""
+    return 0
 
 def t111330_x15():
     """State 0,1"""
-    assert t111330_x17(z1=1101, mode8=0, mode9=0, mode10=0, mode11=0)
+    assert t111330_x17(z1=1101, mode7=0, mode8=0, mode9=0, mode10=0)
     """State 2"""
     return 0
 
@@ -377,13 +390,13 @@ def t111330_x16(mode2=1, mode4=0):
         def WhilePaused():
             c5_120(mode2 == 1 and not mode4, 1, 0, 9, 9, 9, 9, 9, 9, 9)
             c5_120(mode2 == 1 and mode4 == 1, 2, 9, 0, 9, 9, 9, 9, 9, 9)
-        assert t111330_x17(z1=1000, mode8=0, mode9=0, mode10=0, mode11=0)
+        assert t111330_x17(z1=1000, mode7=0, mode8=0, mode9=0, mode10=0)
     elif GetCurrentStateElapsedTime() > 5:
         pass
     """State 5"""
     return 0
 
-def t111330_x17(z1=_, mode8=0, mode9=0, mode10=0, mode11=0):
+def t111330_x17(z1=_, mode7=0, mode8=0, mode9=0, mode10=0):
     """State 0,4"""
     if f118(z1) == 1:
         """State 2"""
@@ -391,7 +404,7 @@ def t111330_x17(z1=_, mode8=0, mode9=0, mode10=0, mode11=0):
         """State 1"""
         def WhilePaused():
             c1_118(z1)
-        assert f117() == mode8 or f117() == mode9 or f117() == mode10 or f117() == mode11
+        assert f117() == mode7 or f117() == mode8 or f117() == mode9 or f117() == mode10
         """State 5"""
         return 0
     else:
@@ -400,7 +413,7 @@ def t111330_x17(z1=_, mode8=0, mode9=0, mode10=0, mode11=0):
 
 def t111330_x18():
     """State 0,1"""
-    call = t111330_x17(z1=1103, mode8=0, mode9=0, mode10=0, mode11=0)
+    call = t111330_x17(z1=1103, mode7=0, mode8=0, mode9=0, mode10=0)
     if call.Get() == 1:
         """State 2"""
         assert t111330_x1()
@@ -411,17 +424,17 @@ def t111330_x18():
 
 def t111330_x19():
     """State 0,2"""
-    call = t111330_x17(z1=1102, mode8=0, mode9=0, mode10=0, mode11=0)
+    call = t111330_x17(z1=1102, mode7=0, mode8=0, mode9=0, mode10=0)
     if call.Get() == 1:
         """State 1"""
-        pass
+        Quit()
     elif call.Done():
         """State 3"""
         return 0
 
 def t111330_x20():
     """State 0,1"""
-    assert t111330_x17(z1=1001, mode8=0, mode9=0, mode10=0, mode11=0)
+    assert t111330_x17(z1=1001, mode7=0, mode8=0, mode9=0, mode10=0)
     """State 2"""
     return 0
 
@@ -438,21 +451,26 @@ def t111330_x21(val2=60, val3=65):
             assert not IsPlayerDead()
     """State 2"""
     t111330_x11(val2=val2, val3=val3)
+    Quit()
+    """Unused"""
+    """State 4"""
+    return 0
 
 def t111330_x22():
     """State 0,1"""
-    assert t111330_x17(z1=1100, mode8=0, mode9=0, mode10=0, mode11=0)
+    assert t111330_x17(z1=1100, mode7=0, mode8=0, mode9=0, mode10=0)
     """State 2"""
     return 0
 
-def t111330_x23(val6=-1, flag5=6000, flag6=6001, val7=1000000, val8=1000000, val9=1000000, val10=1000000,
-                val11=1000000):
+def t111330_x23(actionbutton1=-1, flag5=6000, flag6=6001, val6=1000000, val7=1000000, val8=1000000, val9=1000000,
+                val10=1000000):
     """State 0,1"""
-    call = t111330_x17(z1=2000, mode8=0, mode9=0, mode10=0, mode11=0)
+    call = t111330_x17(z1=2000, mode7=0, mode8=0, mode9=0, mode10=0)
     if call.Get() == 1:
         """State 2"""
-        assert (t111330_x0(val6=val6, flag6=flag6, flag10=6000, flag11=6000, flag12=6000, flag13=6000,
-                mode7=0, flag5=flag5, val7=val7, val8=val8, val9=val9, val10=val10, val11=val11))
+        assert (t111330_x0(actionbutton1=actionbutton1, flag6=flag6, flag10=6000, flag11=6000, flag12=6000,
+                flag13=6000, actionbutton2=0, flag5=flag5, val6=val6, val7=val7, val8=val8, val9=val9,
+                val10=val10))
     elif call.Done():
         pass
     """State 3"""
@@ -473,11 +491,12 @@ def t111330_x24(val2=60, val3=65):
 
 def t111330_x25():
     """State 0,1"""
-    assert t111330_x17(z1=1002, mode8=0, mode9=0, mode10=0, mode11=0)
+    assert t111330_x17(z1=1002, mode7=0, mode8=0, mode9=0, mode10=0)
     """State 2"""
     return 0
 
-def t111330_x26(val6=-1, flag6=6001, flag10=6000, flag11=6000, flag12=6000, flag13=6000, mode7=0, flag5=6000):
+def t111330_x26(actionbutton1=-1, flag6=6001, flag10=6000, flag11=6000, flag12=6000, flag13=6000, actionbutton2=0,
+                flag5=6000):
     """State 0"""
     while Loop('mainloop'):
         """State 1"""
@@ -497,7 +516,7 @@ def t111330_x26(val6=-1, flag6=6001, flag10=6000, flag11=6000, flag12=6000, flag
                 Continue('mainloop')
             elif GetEventStatus(flag5) == 1:
                 pass
-            elif CheckActionButtonArea(val6 + mode7) and not f116(10000) == 90:
+            elif CheckActionButtonArea(actionbutton1 + actionbutton2) and not f116(10000) == 90:
                 Break('mainloop')
     """State 5"""
     SetTalkTime(0.1)

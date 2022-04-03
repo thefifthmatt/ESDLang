@@ -10,7 +10,7 @@ def t400260_1():
         call = t400260_x13()
         assert not IsClientPlayer()
 
-def t400260_x0(z4=6000, flag4=1295, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
+def t400260_x0(actionbutton1=6000, flag4=1295, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t400260_x0(z4=6000, flag4=1295, flag5=6000, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag4) and not GetEventStatus(flag5) and not GetEventStatus(flag6) and
               not GetEventStatus(flag7) and not GetEventStatus(flag8)):
             pass
-        elif CheckActionButtonArea(z4):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -286,6 +286,9 @@ def t400260_x12():
         """State 2"""
         call = t400260_x17()
         assert GetEventStatus(1281) == 1 or GetEventStatus(1282) == 1 or GetEventStatus(1283) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400260_x13():
     """State 0,1"""
@@ -403,9 +406,17 @@ def t400260_x16():
     assert CheckSelfDeath() == 1
     """State 1"""
     t400260_x9()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400260_x17():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t400260_x18():
     """State 0,1"""
@@ -491,6 +502,7 @@ def t400260_x21():
     """State 2"""
     assert GetCurrentStateElapsedTime() > 5
     """State 3"""
+    # protector:24502000:Morne's Gauntlets
     if IsEquipmentIDEquipped(1, 24502000) == 1:
         """State 4"""
         # talk:26003000:"Ohh, you again, touch me, one last time."
@@ -509,7 +521,7 @@ def t400260_x22():
     """State 0"""
     while True:
         """State 5"""
-        call = t400260_x0(z4=6000, flag4=1295, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
+        call = t400260_x0(actionbutton1=6000, flag4=1295, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""
             call = t400260_x7()
@@ -540,4 +552,8 @@ def t400260_x22():
             break
     """State 2"""
     t400260_x10()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

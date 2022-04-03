@@ -5,11 +5,12 @@ def t100100_1():
     if CheckSelfDeath() == 1:
         """State 3"""
         t100100_x5()
+        Quit()
     elif GetEventStatus(71000100) == 1:
         """State 1"""
-        pass
+        Quit()
 
-def t100100_x0(z2=6910, flag2=6001, flag3=6001, flag4=6001, flag5=6001, flag6=6001):
+def t100100_x0(actionbutton1=6910, flag2=6001, flag3=6001, flag4=6001, flag5=6001, flag6=6001):
     """State 0"""
     while True:
         """State 1"""
@@ -25,7 +26,7 @@ def t100100_x0(z2=6910, flag2=6001, flag3=6001, flag4=6001, flag5=6001, flag6=60
         elif (not GetEventStatus(flag2) and not GetEventStatus(flag3) and not GetEventStatus(flag4) and
               not GetEventStatus(flag5) and not GetEventStatus(flag6)):
             pass
-        elif CheckActionButtonArea(z2):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -87,7 +88,7 @@ def t100100_x4():
     """State 0"""
     while True:
         """State 1"""
-        call = t100100_x0(z2=6910, flag2=6001, flag3=6001, flag4=6001, flag5=6001, flag6=6001)
+        call = t100100_x0(actionbutton1=6910, flag2=6001, flag3=6001, flag4=6001, flag5=6001, flag6=6001)
         if call.Done():
             """State 2"""
             TurnCharacterToFaceEntity(700400, 10000, -1)
@@ -122,6 +123,10 @@ def t100100_x4():
             break
     """State 4"""
     t100100_x8()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 
 def t100100_x5():
     """State 0,1"""

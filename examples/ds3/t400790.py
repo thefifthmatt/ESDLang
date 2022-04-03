@@ -153,6 +153,7 @@ def t400790_x2():
     ClearTalkListData()
     while True:
         """State 7"""
+        Label('L0')
         # action:15000100:"Level Up"
         AddTalkListData(1, 15000100, -1)
         # action:15000005:"Leave"
@@ -171,4 +172,11 @@ def t400790_x2():
             assert HasTalkEnded() == 1
             """State 15"""
             return 0
+    """Unused"""
+    """State 10"""
+    DebugEvent('会話状態')
+    """State 12"""
+    TalkToPlayer(90000020, -1, -1)
+    assert HasTalkEnded() == 1
+    Goto('L0')
 

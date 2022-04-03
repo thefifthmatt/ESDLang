@@ -22,7 +22,7 @@ def t310021_x0(action2=_):
         """State 4"""
         return 1
 
-def t310021_x1(z9=6030, flag2=6001, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
+def t310021_x1(actionbutton1=6030, flag2=6001, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -38,7 +38,7 @@ def t310021_x1(z9=6030, flag2=6001, flag3=6000, flag4=6000, flag5=6000, flag6=60
         elif (not GetEventStatus(flag2) and not GetEventStatus(flag3) and not GetEventStatus(flag4) and
               not GetEventStatus(flag5) and not GetEventStatus(flag6)):
             pass
-        elif CheckActionButtonArea(z9):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -133,6 +133,9 @@ def t310021_x8():
         """State 2"""
         call = t310021_x11()
         assert GetEventStatus(6001) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t310021_x9():
     """State 0,1"""
@@ -144,7 +147,7 @@ def t310021_x10():
     """State 0"""
     while True:
         """State 4"""
-        assert t310021_x1(z9=6030, flag2=6001, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
+        assert t310021_x1(actionbutton1=6030, flag2=6001, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
         """State 2"""
         call = t310021_x5()
         if call.Done():
@@ -156,9 +159,17 @@ def t310021_x10():
             assert t310021_x7() and GetDistanceToPlayer() < 4.9
     """State 1"""
     t310021_x6()
+    Quit()
+    """Unused"""
+    """State 5"""
+    return 0
 
 def t310021_x11():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t310021_x12(z7=100, z8=1):
     """State 0,1"""

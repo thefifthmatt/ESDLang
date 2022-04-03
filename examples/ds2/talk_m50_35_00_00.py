@@ -17,6 +17,7 @@ def talk_m50_35_6820():
             assert talk_m50_35_x0(text1=75900500, z1=0, z2=35, z3=0)
     """State 2: Conversation: System: End"""
     EndMachine()
+    Quit()
 
 def talk_m50_35_x0(text1=_, z1=0, z2=35, z3=0):
     """[Lib] Conversation: Display only

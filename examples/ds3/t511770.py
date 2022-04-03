@@ -10,7 +10,7 @@ def t511770_1():
         call = t511770_x9()
         assert not IsClientPlayer()
 
-def t511770_x0(z9=6000, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
+def t511770_x0(actionbutton1=6000, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t511770_x0(z9=6000, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=60
         elif (not GetEventStatus(flag2) and not GetEventStatus(flag3) and not GetEventStatus(flag4) and
               not GetEventStatus(flag5) and not GetEventStatus(flag6)):
             pass
-        elif CheckActionButtonArea(z9):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -102,7 +102,11 @@ def t511770_x5(val1=25, val2=35):
         """State 5"""
         pass
     """State 8"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 2"""
+    Goto('L0')
 
 def t511770_x6():
     """State 0,1"""
@@ -127,8 +131,17 @@ def t511770_x7():
 
 def t511770_x8():
     """State 0,1"""
+    Label('L0')
     t511770_x10(z1=-1, z2=75110221, z3=75110222, z4=75110223, z5=87000700, z6=87000710, z7=87000720,
                 z8=87000730, val1=25, val2=35)
+    Quit()
+    """Unused"""
+    """State 2"""
+    call = t511770_x11()
+    assert GetEventStatus(1881) == 1
+    Goto('L0')
+    """State 3"""
+    return 0
 
 def t511770_x9():
     """State 0,1"""
@@ -146,6 +159,9 @@ def t511770_x10(z1=-1, z2=75110221, z3=75110222, z4=75110223, z5=87000700, z6=87
         """State 1"""
         call = t511770_x5(val1=val1, val2=val2)
         assert not CheckSelfDeath()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t511770_x11():
     """State 0,1"""
@@ -158,7 +174,7 @@ def t511770_x12(z1=-1, z2=75110221, z3=75110222, z4=75110223, z5=87000700, z6=87
     """State 0"""
     while True:
         """State 2"""
-        call = t511770_x0(z9=6000, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
+        call = t511770_x0(actionbutton1=6000, flag2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
         if call.Done():
             """State 4"""
             call = t511770_x4()
@@ -178,6 +194,9 @@ def t511770_x12(z1=-1, z2=75110221, z3=75110222, z4=75110223, z5=87000700, z6=87
             Goto('L0')
         """State 1"""
         assert t511770_x6()
+    """Unused"""
+    """State 5"""
+    return 0
 
 def t511770_x13():
     """State 0,1,2"""

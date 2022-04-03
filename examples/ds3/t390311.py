@@ -10,7 +10,7 @@ def t390311_1():
         call = t390311_x14()
         assert not IsClientPlayer()
 
-def t390311_x0(z8=6000, flag7=1395, flag8=6000, flag9=6000, flag10=6000, flag11=6000):
+def t390311_x0(actionbutton1=6000, flag7=1395, flag8=6000, flag9=6000, flag10=6000, flag11=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t390311_x0(z8=6000, flag7=1395, flag8=6000, flag9=6000, flag10=6000, flag11=
         elif (not GetEventStatus(flag7) and not GetEventStatus(flag8) and not GetEventStatus(flag9) and
               not GetEventStatus(flag10) and not GetEventStatus(flag11)):
             pass
-        elif CheckActionButtonArea(z8):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -123,15 +123,15 @@ def t390311_x6(lot1=62105):
     """State 2"""
     return 0
 
-def t390311_x7(z6=33, z7=9034, flag3=6083):
+def t390311_x7(gesture1=33, z6=9034, flag3=6083):
     """State 0,1"""
     if GetEventStatus(flag3) == 1:
         """State 2"""
         pass
     else:
         """State 3,4"""
-        AcquireGesture(z6)
-        OpenItemAcquisitionMenu(3, z7, 1)
+        AcquireGesture(gesture1)
+        OpenItemAcquisitionMenu(3, z6, 1)
         SetEventState(flag3, 1)
         assert not IsMenuOpen(63) and GetCurrentStateElapsedFrames() > 1
     """State 5"""
@@ -268,7 +268,11 @@ def t390311_x12():
     """State 0,1,3,4"""
     assert t390311_x1()
     """State 5"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 2"""
+    Goto('L0')
 
 def t390311_x13():
     """State 0"""
@@ -279,6 +283,9 @@ def t390311_x13():
         """State 2"""
         call = t390311_x16()
         assert GetEventStatus(1388) == 1 or GetEventStatus(1389) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t390311_x14():
     """State 0,1"""
@@ -292,9 +299,17 @@ def t390311_x15():
     assert CheckSelfDeath() == 1
     """State 1"""
     t390311_x10()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t390311_x16():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t390311_x17(text4=_, z5=_, flag1=1396, flag2=1397):
     """State 0,2"""
@@ -350,19 +365,23 @@ def t390311_x21(text1=31002800, text2=31002850, text3=31002880, z1=73900161, z2=
     """State 8"""
     assert t390311_x4(text1=text2, z1=z2, flag5=0, mode2=1) and GetCurrentStateElapsedTime() > 1
     """State 10"""
+    Label('L0')
     assert t390311_x5(text3=text3, flag4=0, mode1=1)
     """State 9"""
-    assert t390311_x7(z6=33, z7=9034, flag3=6083)
+    assert t390311_x7(gesture1=33, z6=9034, flag3=6083)
     """State 5"""
     SetEventState(z3, 1)
     """State 11"""
     return 0
+    """Unused"""
+    """State 4"""
+    Goto('L0')
 
 def t390311_x22():
     """State 0"""
     while True:
         """State 8"""
-        call = t390311_x0(z8=6000, flag7=1395, flag8=6000, flag9=6000, flag10=6000, flag11=6000)
+        call = t390311_x0(actionbutton1=6000, flag7=1395, flag8=6000, flag9=6000, flag10=6000, flag11=6000)
         if call.Done():
             """State 6"""
             call = t390311_x8()
@@ -404,4 +423,11 @@ def t390311_x22():
             elif GetEventStatus(9314) == 1 and GetEventStatus(73900164) == 1 and not GetEventStatus(711):
                 break
     """State 3"""
+    Quit()
+    """Unused"""
+    """State 5"""
+    t390311_x11()
+    Quit()
+    """State 10"""
+    return 0
 

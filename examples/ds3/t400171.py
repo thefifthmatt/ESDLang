@@ -10,7 +10,7 @@ def t400171_1():
         call = t400171_x11()
         assert not IsClientPlayer()
 
-def t400171_x0(z3=6000, flag4=1115, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
+def t400171_x0(actionbutton1=6000, flag4=1115, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t400171_x0(z3=6000, flag4=1115, flag5=6000, flag6=6000, flag7=6000, flag8=60
         elif (not GetEventStatus(flag4) and not GetEventStatus(flag5) and not GetEventStatus(flag6) and
               not GetEventStatus(flag7) and not GetEventStatus(flag8)):
             pass
-        elif CheckActionButtonArea(z3):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -157,7 +157,29 @@ def t400171_x6():
             """State 14"""
             pass
     """State 23"""
+    Label('L1')
     return 0
+    """Unused"""
+    """State 5"""
+    Goto('L2')
+    """State 6"""
+    Goto('L3')
+    """State 17"""
+    Label('L2')
+    # talk:17001300:" ", talk:17001700:" "
+    call = t400171_x14(text1=17001300, z1=74000840, flag1=1116, z2=1117, text2=17001700)
+    if call.Get() == 0:
+        Goto('L1')
+    elif call.Get() == 1:
+        Goto('L0')
+    """State 18"""
+    Label('L3')
+    # talk:17001310:" ", talk:17001800:" "
+    call = t400171_x14(text1=17001310, z1=74000841, flag1=1116, z2=1117, text2=17001800)
+    if call.Get() == 0:
+        Goto('L1')
+    elif call.Get() == 1:
+        Goto('L0')
 
 def t400171_x7():
     """State 0,1"""
@@ -204,9 +226,19 @@ def t400171_x8():
 
 def t400171_x9():
     """State 0,1,3,4"""
+    Label('L0')
     assert t400171_x1()
     """State 6"""
+    Label('L1')
     return 0
+    """Unused"""
+    """State 2,5"""
+    # talk:17000000:"Ahhh, another one, roused from the sleep of death?"
+    call = t400171_x4(text3=17000000, flag2=0, mode1=1)
+    if call.Done():
+        Goto('L1')
+    elif GetDistanceToPlayer() > 12:
+        Goto('L0')
 
 def t400171_x10():
     """State 0"""
@@ -217,6 +249,9 @@ def t400171_x10():
         """State 2"""
         call = t400171_x13()
         assert GetEventStatus(1100) == 1 or GetEventStatus(1101) == 1 or GetEventStatus(1102) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400171_x11():
     """State 0,1"""
@@ -230,9 +265,17 @@ def t400171_x12():
     assert CheckSelfDeath() == 1
     """State 1"""
     t400171_x7()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400171_x13():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t400171_x14(text1=_, z1=_, flag1=1116, z2=1117, text2=_):
     """State 0,1"""
@@ -304,7 +347,7 @@ def t400171_x18():
     """State 0"""
     while True:
         """State 5"""
-        call = t400171_x0(z3=6000, flag4=1115, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
+        call = t400171_x0(actionbutton1=6000, flag4=1115, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             """State 3"""
             call = t400171_x5()
@@ -337,4 +380,8 @@ def t400171_x18():
             break
     """State 2"""
     t400171_x8()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

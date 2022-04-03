@@ -7,11 +7,8 @@
         <Command Bank="1" ID="130004" Name="ExitAndExecuteEvent" Description="Unused"/>
         <Command Bank="1" ID="130021" Name="StandbyNotification" Description=""/>
         <Command Bank="1" ID="130101" Name="SetEventFlag" Description=""/>
-        <Command Bank="5" ID="130101" Name="SetEventFlagIf" Description=""/>
         <Command Bank="1" ID="130121" Name="SetAreaVariable" Description=""/>
-        <Command Bank="5" ID="130121" Name="SetAreaVariableIf" Description=""/>
         <Command Bank="1" ID="130122" Name="SetGlobalVariable" Description=""/>
-        <Command Bank="5" ID="130122" Name="SetGlobalVariableIf" Description=""/>
         <Command Bank="1" ID="130123" Name="AddAreaVariable" Description=""/>
         <Command Bank="1" ID="130124" Name="AddGlobalVariable" Description=""/>
         <Command Bank="1" ID="130125" Name="SetCharacterLocalVariable" Description="Unused"/>
@@ -45,15 +42,12 @@
         <Command Bank="1" ID="130342" Name="StartPlayerLevelUpMotion" Description="Unused"/>
         <Command Bank="1" ID="130343" Name="EndPlayerLevelUpMotion" Description="Unused"/>
         <Command Bank="1" ID="130351" Name="ResetDamageTakenCount" Description=""/>
-        <Command Bank="5" ID="130351" Name="ResetDamageTakenCountIf" Description=""/>
         <Command Bank="1" ID="130361" Name="ChangeEquipment" Description="Unused"/>
         <Command Bank="1" ID="130381" Name="ChangePlayerCovenant" Description=""/>
-        <Command Bank="5" ID="130381" Name="ChangePlayerCovenantIf" Description=""/>
         <Command Bank="1" ID="130382" Name="AddPlayerCovenantContribution" Description=""/>
         <Command Bank="1" ID="130407" Name="DeleteKeyGuideArea" Description=""/>
         <Command Bank="1" ID="130408" Name="CreateKeyGuideArea" Description=""/>
         <Command Bank="1" ID="130431" Name="KeyGuideTemporarilyInvalid" Description=""/>
-        <Command Bank="5" ID="130431" Name="KeyGuideTemporarilyInvalidIf" Description=""/>
         <Command Bank="1" ID="130432" Name="ProhibitInGameMenu" Description=""/>
         <Command Bank="1" ID="130441" Name="DisplayOwnYesNoMenu" Description=""/>
         <Command Bank="1" ID="130442" Name="CloseYesNoMenu" Description=""/>
@@ -70,7 +64,6 @@
         <Command Bank="1" ID="130455" Name="OpenRespecMenu" Description=""/>
         <Command Bank="1" ID="130461" Name="OpenNpcMenu" Description=""/>
         <Command Bank="1" ID="130462" Name="CloseNpcMenu" Description=""/>
-        <Command Bank="5" ID="130462" Name="CloseNpcMenuIf" Description=""/>
         <Command Bank="1" ID="130463" Name="ClearNpcMenuResults" Description=""/>
         <Command Bank="1" ID="130464" Name="ClearNpcMenuSelection" Description=""/>
         <Command Bank="1" ID="130465" Name="ClearNpcMenuAction" Description=""/>
@@ -158,7 +151,6 @@
         <Command Bank="1" ID="131634" Name="ChangeToDynamicObj" Description=""/>
         <Command Bank="1" ID="131635" Name="ChangeOwnObjState" Description=""/>
         <Command Bank="1" ID="131636" Name="ChangeObjState" Description=""/>
-        <Command Bank="5" ID="131636" Name="ChangeObjStateIf" Description=""/>
         <Command Bank="1" ID="131637" Name="WarpObjToCharacter" Description=""/>
         <Command Bank="1" ID="131638" Name="DisableObjKeyGuide" Description=""/>
         <Command Bank="1" ID="131639" Name="WarpObjToGeneratorPosition" Description=""/>
@@ -201,7 +193,6 @@
         <Command Bank="1" ID="132112" Name="StopWindGenerator" Description=""/>
         <Command Bank="1" ID="132113" Name="SetWindSpeedMultiplier" Description=""/>
         <Command Bank="1" ID="132121" Name="WarpPlayersWithinMap" Description=""/>
-        <Command Bank="5" ID="132121" Name="WarpPlayersWithinMapIf" Description=""/>
         <Command Bank="1" ID="132122" Name="WarpEnemiesWithinMap" Description=""/>
         <Command Bank="1" ID="132123" Name="WarpSelfWithinMap" Description="Unused"/>
         <Command Bank="1" ID="132125" Name="PlayCutsceneAndWarpToMap" Description=""/>
@@ -331,7 +322,6 @@
         <Command Bank="1" ID="140803" Name="IsItemLeft" Description=""/>
         <Command Bank="1" ID="140811" Name="WasObjItemAcquired" Description=""/>
         <Command Bank="1" ID="1" Name="GenerateRandomNumber" Description=""/>
-        <Command Bank="5" ID="1" Name="GenerateRandomNumberIf" Description=""/>
         <Command Bank="1" ID="2" Name="ResetTimer" Description=""/>
         <Command Bank="1" ID="3" Name="StartTimer" Description=""/>
         <Command Bank="1" ID="4" Name="StopTimer" Description=""/>

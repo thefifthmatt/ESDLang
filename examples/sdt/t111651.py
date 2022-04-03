@@ -15,11 +15,12 @@ def t111651_1():
     """State 5"""
     if GetDistanceToPlayer() > 40:
         """State 6"""
-        pass
+        Quit()
     else:
         """State 7"""
         # talk:65000700:"... Sounds like he's calmed down..."
         t111651_x6(val1=40, val2=45, flag1=71118505, text1=65000700)
+        Quit()
 
 def t111651_x0():
     """State 0,1"""
@@ -127,6 +128,9 @@ def t111651_x6(val1=40, val2=45, flag1=71118505, text1=65000700):
         elif not GetEventStatus(flag1):
             """State 3"""
             assert t111651_x7(flag1=flag1, text1=text1, val1=val1, val2=val2)
+    """Unused"""
+    """State 4"""
+    return 0
 
 def t111651_x7(flag1=71118505, text1=65000700, val1=40, val2=45):
     """State 0,1"""
@@ -139,4 +143,5 @@ def t111651_x7(flag1=71118505, text1=65000700, val1=40, val2=45):
     elif CheckSelfDeath() == 1:
         """State 2"""
         t111651_x5()
+        Quit()
 

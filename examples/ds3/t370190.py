@@ -10,7 +10,7 @@ def t370190_1():
         call = t370190_x11()
         assert not IsClientPlayer()
 
-def t370190_x0(z2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
+def t370190_x0(actionbutton1=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t370190_x0(z2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=60
         elif (not GetEventStatus(flag3) and not GetEventStatus(flag4) and not GetEventStatus(flag5) and
               not GetEventStatus(flag6) and not GetEventStatus(flag7)):
             pass
-        elif CheckActionButtonArea(z2):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -190,6 +190,13 @@ def t370190_x10():
 def t370190_x11():
     """State 0,1"""
     t370190_x12()
+    Quit()
+    """Unused"""
+    """State 2"""
+    t370190_x13()
+    Quit()
+    """State 3"""
+    return 0
 
 def t370190_x12():
     """State 0,2"""
@@ -197,9 +204,17 @@ def t370190_x12():
     assert CheckSelfDeath() == 1
     """State 1"""
     t370190_x6()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t370190_x13():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t370190_x14():
     """State 0,3,4"""
@@ -242,7 +257,7 @@ def t370190_x17():
     """State 0"""
     while True:
         """State 5"""
-        call = t370190_x0(z2=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
+        call = t370190_x0(actionbutton1=6000, flag3=6000, flag4=6000, flag5=6000, flag6=6000, flag7=6000)
         if IsAttackedBySomeone() == 1:
             """State 1"""
             Label('L0')
@@ -271,4 +286,8 @@ def t370190_x17():
                     Goto('L0')
     """State 2"""
     t370190_x7()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 

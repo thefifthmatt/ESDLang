@@ -136,6 +136,10 @@ def t510752_x6(flag1=75000272, flag2=75000273, flag3=75000274, flag4=75000275, z
     assert CheckSelfDeath() == 1
     """State 1"""
     t510752_x2(flag10=flag10)
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t510752_x7():
     """State 0,1"""
@@ -182,7 +186,7 @@ def t510752_x10(flag1=75000272, flag2=75000273, flag3=75000274, flag4=75000275, 
     """State 0"""
     while True:
         """State 5"""
-        call = t510752_x14(z5=6000, flag7=flag7, flag14=6000, flag15=6000, flag16=6000, flag17=6000)
+        call = t510752_x14(actionbutton1=6000, flag7=flag7, flag14=6000, flag15=6000, flag16=6000, flag17=6000)
         if call.Done():
             """State 3"""
             call = t510752_x0(flag6=flag6, text2=text2, text3=text3)
@@ -230,6 +234,10 @@ def t510752_x10(flag1=75000272, flag2=75000273, flag3=75000274, flag4=75000275, 
             assert t510752_x13() and not DoesSelfHaveSpEffect(16338)
     """State 2"""
     t510752_x3(flag8=flag8, flag9=flag9)
+    Quit()
+    """Unused"""
+    """State 8"""
+    return 0
 
 def t510752_x11():
     """State 0,1,2"""
@@ -257,7 +265,7 @@ def t510752_x13():
     """State 3"""
     return 0
 
-def t510752_x14(z5=6000, flag7=1850, flag14=6000, flag15=6000, flag16=6000, flag17=6000):
+def t510752_x14(actionbutton1=6000, flag7=1850, flag14=6000, flag15=6000, flag16=6000, flag17=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -273,7 +281,7 @@ def t510752_x14(z5=6000, flag7=1850, flag14=6000, flag15=6000, flag16=6000, flag
         elif (not GetEventStatus(flag7) and not GetEventStatus(flag14) and not GetEventStatus(flag15)
               and not GetEventStatus(flag16) and not GetEventStatus(flag17)):
             pass
-        elif CheckActionButtonArea(z5):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -369,6 +377,13 @@ def t510752_x20():
     t510752_x6(flag1=75000272, flag2=75000273, flag3=75000274, flag4=75000275, z1=85001000, z2=85001010,
                z3=85001020, z4=85001030, flag5=75000270, text1=85000400, flag6=75000271, text2=85000500,
                text3=85000400, flag7=1850, flag8=1851, flag9=1852, flag10=1853, val1=4.9, val2=5)
+    Quit()
+    """Unused"""
+    """State 2"""
+    t510752_x7()
+    Quit()
+    """State 3"""
+    return 0
 
 def t510752_x21():
     """State 0,1"""

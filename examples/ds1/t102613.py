@@ -618,4 +618,37 @@ def t102613_1():
         Goto('L0')
     elif GetDistanceToPlayer() >= 5:
         Goto('L21')
+    """Unused"""
+    """State 48"""
+    DebugEvent('素養無し')
+    if not GetEventStatus(71000014):
+        pass
+    elif GetEventStatus(71000014) == 1:
+        Goto('L22')
+    """State 49"""
+    # talk:23010010:"Well, I see you made it out!"
+    TalkToPlayer(23010010, -1, -1)
+    DisplayOneLineHelp(-1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif HasTalkEnded() == 1:
+        pass
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L21')
+    """State 50"""
+    SetEventState(71000014, 1)
+    Goto('L0')
+    """State 51"""
+    Label('L22')
+    # talk:23010250:"Oh, hello there."
+    TalkToPlayer(23010250, -1, -1)
+    DisplayOneLineHelp(-1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L1')
+    elif HasTalkEnded() == 1:
+        Goto('L0')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 5):
+        Goto('L21')
 

@@ -22,7 +22,7 @@ def t400130_x0(action2=_):
         """State 4"""
         return 1
 
-def t400130_x1(z5=_, flag4=1035, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
+def t400130_x1(actionbutton1=_, flag4=1035, flag5=6000, flag6=6000, flag7=6000, flag8=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -38,7 +38,7 @@ def t400130_x1(z5=_, flag4=1035, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         elif (not GetEventStatus(flag4) and not GetEventStatus(flag5) and not GetEventStatus(flag6) and
               not GetEventStatus(flag7) and not GetEventStatus(flag8)):
             pass
-        elif CheckActionButtonArea(z5):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -300,6 +300,10 @@ def t400130_x12():
 def t400130_x13():
     """State 0,1,2"""
     t400130_x27()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400130_x14():
     """State 0,1"""
@@ -348,6 +352,9 @@ def t400130_x17():
         """State 2"""
         call = t400130_x20()
         assert GetEventStatus(1020) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400130_x18():
     """State 0,1"""
@@ -361,9 +368,17 @@ def t400130_x19(goods1=2135, z1=390, goods2=2138):
     assert CheckSelfDeath() == 1
     """State 2"""
     t400130_x13()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400130_x20():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t400130_x21(weapon1=6260000, weapon2=6280000):
     """State 0,15"""
@@ -422,13 +437,13 @@ def t400130_x23():
     if GetEventStatus(74000181) == 1:
         """State 2,4"""
         Label('L0')
-        call = t400130_x1(z5=6130, flag4=1035, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
+        call = t400130_x1(actionbutton1=6130, flag4=1035, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
         if call.Done():
             pass
         elif not GetEventStatus(74000181):
             """State 5"""
             Label('L1')
-            call = t400130_x1(z5=6131, flag4=1035, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
+            call = t400130_x1(actionbutton1=6131, flag4=1035, flag5=6000, flag6=6000, flag7=6000, flag8=6000)
             if call.Done():
                 pass
             elif GetEventStatus(74000181) == 1:
@@ -532,6 +547,10 @@ def t400130_x26(goods1=2135, z1=390, goods2=2138):
             Goto('L0')
     """State 2"""
     t400130_x14()
+    Quit()
+    """Unused"""
+    """State 7"""
+    return 0
 
 def t400130_x27():
     """State 0,1"""

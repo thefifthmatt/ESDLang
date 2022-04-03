@@ -665,4 +665,14 @@ def t101637_1():
         Goto('L0')
     elif GetDistanceToPlayer() >= 5:
         Goto('L20')
+    """Unused"""
+    """State 86"""
+    # action:10010735:"You were cleansed of sin"
+    OpenGenericDialog(7, 10010735, 1, 0, 1)
+    DebugEvent('免罪する')
+    DisplayOneLineHelp(-1)
+    SubtractAcquittalCostFromPlayerSouls(500, 1)
+    SetEventState(755, 1)
+    SetEventState(71800064, 1)
+    Quit()
 

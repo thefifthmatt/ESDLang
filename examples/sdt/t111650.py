@@ -3,6 +3,7 @@ def t111650_1():
     """State 0,1"""
     # talk:65000900:"Hey, you didn't see a little scoundrel come running through here, did you?"
     t111650_x6(val1=13.5, val2=22.5, flag1=71118500, text1=65000900)
+    Quit()
 
 def t111650_x0():
     """State 0,1"""
@@ -124,6 +125,9 @@ def t111650_x6(val1=13.5, val2=22.5, flag1=71118500, text1=65000900):
         elif not GetEventStatus(flag1):
             """State 3"""
             assert t111650_x3(flag1=flag1, text1=text1, val1=val1, val2=val2)
+    """Unused"""
+    """State 4"""
+    return 0
 
 def t111650_x7():
     """State 0,1"""

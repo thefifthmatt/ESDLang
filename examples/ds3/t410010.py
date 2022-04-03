@@ -2,6 +2,7 @@
 def t410010_1():
     """State 0,1"""
     t410010_x3()
+    Quit()
 
 def t410010_x0():
     """State 0,1"""
@@ -28,7 +29,7 @@ def t410010_x0():
     """State 8"""
     return 0
 
-def t410010_x1(z1=_, flag1=6001, flag2=6000):
+def t410010_x1(actionbutton1=_, flag1=6001, flag2=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -47,7 +48,7 @@ def t410010_x1(z1=_, flag1=6001, flag2=6000):
         """State 3"""
         if CompareBonfireState(0):
             pass
-        elif CheckActionButtonArea(z1):
+        elif CheckActionButtonArea(actionbutton1):
             break
         elif (not (not GetOneLineHelpStatus() and not IsTalkingToSomeoneElse() and not IsClientPlayer()
               and not IsPlayerDead() and not IsCharacterDisabled())):
@@ -74,6 +75,9 @@ def t410010_x3():
         """State 2"""
         call = t410010_x7()
         assert not IsMultiplayerInProgress()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t410010_x4():
     """State 0,1"""
@@ -82,7 +86,7 @@ def t410010_x4():
         Label('L0')
     else:
         """State 3,14"""
-        call = t410010_x1(z1=6100, flag1=6001, flag2=6000)
+        call = t410010_x1(actionbutton1=6100, flag1=6001, flag2=6000)
         if call.Done():
             """State 7"""
             TurnCharacterToFaceEntity(-1, 10000, -1)
@@ -96,7 +100,7 @@ def t410010_x4():
         elif CompareBonfireLevel(5, 0) == 1:
             pass
     """State 13"""
-    assert t410010_x1(z1=6101, flag1=6001, flag2=6000)
+    assert t410010_x1(actionbutton1=6101, flag1=6001, flag2=6000)
     """State 5"""
     ClearPlayerDamageInfo()
     """State 6"""
@@ -117,6 +121,9 @@ def t410010_x4():
         """State 12"""
         assert t410010_x9()
         Goto('L0')
+    """Unused"""
+    """State 15"""
+    return 0
 
 def t410010_x5():
     """State 0,6"""
@@ -125,7 +132,7 @@ def t410010_x5():
         pass
     elif call.Done():
         """State 2,7"""
-        call = t410010_x1(z1=6100, flag1=6001, flag2=6000)
+        call = t410010_x1(actionbutton1=6100, flag1=6001, flag2=6000)
         if call.Done():
             """State 4"""
             TurnCharacterToFaceEntity(-1, 10000, -1)
@@ -138,6 +145,10 @@ def t410010_x5():
         elif CompareBonfireLevel(5, 0) == 1:
             pass
     """State 1"""
+    Quit()
+    """Unused"""
+    """State 8"""
+    return 0
 
 def t410010_x6():
     """State 0,1"""
@@ -154,6 +165,9 @@ def t410010_x7():
         """State 2"""
         call = t410010_x6()
         assert not IsClientPlayer()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t410010_x8():
     """State 0,10"""

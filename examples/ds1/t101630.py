@@ -140,6 +140,7 @@ def t101630_1():
             """State 1"""
             DisplayOneLineHelp(-1)
         """State 7"""
+        Label('L2')
         ClearTalkProgressData()
         def ExitPause():
             RemoveMyAggro()
@@ -164,10 +165,10 @@ def t101630_1():
                 pass
             elif HasTalkEnded() == 1:
                 """State 13"""
-                Label('L2')
+                Label('L3')
                 SetEventState(71500037, 1)
                 """State 11"""
-                Label('L3')
+                Label('L4')
                 ClearTalkDisabledState()
                 RemoveMyAggro()
                 continue
@@ -184,15 +185,15 @@ def t101630_1():
             if CheckSelfDeath() == 1:
                 pass
             elif HasTalkEnded() == 1:
-                Goto('L2')
+                Goto('L3')
             elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
                   == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 10):
                 Goto('L1')
         elif GetEventStatus(1574) == 1:
             """State 10"""
-            Label('L4')
+            Label('L5')
             ForceEndTalk(3)
-            Goto('L3')
+            Goto('L4')
         elif (not GetEventStatus(71500034) and IsPlayerAttacking() == 1 and GetDistanceToPlayer() <=
               5 and GetEventStatus(71500033) == 1):
             """State 26"""
@@ -205,7 +206,7 @@ def t101630_1():
             elif HasTalkEnded() == 1:
                 """State 27"""
                 SetEventState(71500034, 1)
-                Goto('L3')
+                Goto('L4')
             elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
                   == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 7):
                 Goto('L1')
@@ -220,14 +221,14 @@ def t101630_1():
             elif HasTalkEnded() == 1:
                 """State 9"""
                 SetEventState(71500033, 1)
-                Goto('L3')
+                Goto('L4')
             elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer()
                   == 1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 7):
                 Goto('L1')
         elif GetEventStatus(71500036) == 1:
-            Goto('L4')
+            Goto('L5')
         else:
-            Goto('L4')
+            Goto('L5')
         """State 33"""
         ClearTalkProgressData()
         def ExitPause():
@@ -242,5 +243,15 @@ def t101630_1():
     if HasTalkEnded() == 1:
         Goto('L0')
     elif GetDistanceToPlayer() >= 5:
+        Goto('L1')
+    """Unused"""
+    """State 17"""
+    DisplayOneLineHelp(-1)
+    # talk:40000020:"I entreat you. Have pity on this powerless knight."
+    TalkToPlayer(40000020, -1, -1)
+    if IsAttackedBySomeone() == 1 or CheckSelfDeath() == 1:
+        Goto('L2')
+    elif (IsTalkingToSomeoneElse() or CheckSelfDeath() or IsCharacterDisabled() or IsClientPlayer() ==
+          1 or GetRelativeAngleBetweenPlayerAndSelf() > 120 or GetDistanceToPlayer() > 7):
         Goto('L1')
 

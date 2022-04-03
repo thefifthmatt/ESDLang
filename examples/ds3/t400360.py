@@ -10,7 +10,7 @@ def t400360_1():
         call = t400360_x11()
         assert not IsClientPlayer()
 
-def t400360_x0(z1=6000, flag2=1495, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
+def t400360_x0(actionbutton1=6000, flag2=1495, flag3=6000, flag4=6000, flag5=6000, flag6=6000):
     """State 0"""
     while True:
         """State 1"""
@@ -26,7 +26,7 @@ def t400360_x0(z1=6000, flag2=1495, flag3=6000, flag4=6000, flag5=6000, flag6=60
         elif (not GetEventStatus(flag2) and not GetEventStatus(flag3) and not GetEventStatus(flag4) and
               not GetEventStatus(flag5) and not GetEventStatus(flag6)):
             pass
-        elif CheckActionButtonArea(z1):
+        elif CheckActionButtonArea(actionbutton1):
             break
     """State 4"""
     return 0
@@ -169,7 +169,12 @@ def t400360_x8():
         """State 2"""
         pass
     """State 7"""
+    Label('L0')
     return 0
+    """Unused"""
+    """State 6"""
+    assert t400360_x1()
+    Goto('L0')
 
 def t400360_x9():
     """State 0,1,2,3"""
@@ -186,6 +191,9 @@ def t400360_x10():
         """State 2"""
         call = t400360_x13()
         assert GetEventStatus(1482) == 1
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400360_x11():
     """State 0,1"""
@@ -199,9 +207,17 @@ def t400360_x12():
     assert CheckSelfDeath() == 1
     """State 1"""
     t400360_x7()
+    Quit()
+    """Unused"""
+    """State 3"""
+    return 0
 
 def t400360_x13():
     """State 0"""
+    Quit()
+    """Unused"""
+    """State 1"""
+    return 0
 
 def t400360_x14():
     """State 0,1,2,3"""
@@ -220,7 +236,7 @@ def t400360_x16():
     """State 0"""
     while True:
         """State 5"""
-        call = t400360_x0(z1=6000, flag2=1495, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
+        call = t400360_x0(actionbutton1=6000, flag2=1495, flag3=6000, flag4=6000, flag5=6000, flag6=6000)
         if call.Done():
             """State 3"""
             call = t400360_x5()
@@ -251,4 +267,8 @@ def t400360_x16():
             break
     """State 2"""
     t400360_x8()
+    Quit()
+    """Unused"""
+    """State 6"""
+    return 0
 
