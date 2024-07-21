@@ -1,0 +1,6 @@
+[submodule "SoulsFormats"]
+	path = SoulsFormats
+	url = git@github.com:soulsmods/SoulsFormatsNEXT.git
+[submodule "SoulsIds"]
+	path = SoulsIds
+	url = git@github.com:thefifthmatt/SoulsIds.git
