@@ -198,12 +198,21 @@
       <Maximum>1</Maximum>
       <SortID>2501</SortID>
     </Field>
-    <Field Def="dummy8 Reserve_2:1">
+    
+    <Field Def="dummy8 Reserve_2:1" RemovedVersion="11210015">
       <DisplayName>リザーブ2</DisplayName>
       <DisplayFormat>%d</DisplayFormat>
       <EditFlags>Wrap</EditFlags>
       <SortID>99999</SortID>
     </Field>
+    
+    <Field Def="u8 unknown_0x3b_7:1" FirstVersion="11210015">
+      <DisplayName>リザーブ2</DisplayName>
+      <DisplayFormat>%d</DisplayFormat>
+      <EditFlags>Wrap</EditFlags>
+      <SortID>99999</SortID>
+    </Field>
+    
     <Field Def="u8 isLadder:1">
       <DisplayName>ハシゴか</DisplayName>
       <Description>ハシゴか(0:ちがう, 1:そう)</Description>
@@ -643,13 +652,13 @@
       <Maximum>4</Maximum>
       <SortID>2502</SortID>
     </Field>
-    <Field Def="dummy8 Reserve_3[1]">
+    <Field Def="u8 unkR3">
       <DisplayName>リザーブ3</DisplayName>
       <DisplayFormat>%d</DisplayFormat>
       <EditFlags>Wrap</EditFlags>
       <SortID>99999</SortID>
     </Field>
-    <Field Def="dummy8 Reserve_4[4]">
+    <Field Def="f32 unkR4">
       <DisplayName>リザーブ4</DisplayName>
       <DisplayFormat>%d</DisplayFormat>
       <EditFlags>Wrap</EditFlags>
@@ -768,7 +777,7 @@
       <Maximum>1</Maximum>
       <SortID>4102</SortID>
     </Field>
-    <Field Def="dummy8 Reserve_1:2">
+    <Field Def="u8 unkR1:2">
       <DisplayName>リザーブ1</DisplayName>
       <SortID>100000</SortID>
     </Field>
@@ -855,7 +864,21 @@
       <Description>レガシー_PS4除外割合【GR】SEQ25310</Description>
       <SortID>3</SortID>
     </Field>
-    <Field Def="dummy8 Reserve_0[32]">
+    
+    <Field Def="dummy8 Reserve_0_old[32]" RemovedVersion="11210015" >
+      <DisplayName>リザーブ0</DisplayName>
+      <Description>リザーブ0</Description>
+      <SortID>99999</SortID>
+    </Field>
+    
+    <Field Def="u8 unknown_0x120" FirstVersion="11210015" />
+    <Field Def="u8 unknown_0x121" FirstVersion="11210015" />
+    <Field Def="u8 unknown_0x122" FirstVersion="11210015" />
+    <Field Def="u8 unknown_0x123" FirstVersion="11210015" />
+    <Field Def="u8 unknown_0x124" FirstVersion="11210015" />
+    <Field Def="u8 unknown_0x125" FirstVersion="11210015" />
+    
+    <Field Def="dummy8 Reserve_0[26]" FirstVersion="11210015">
       <DisplayName>リザーブ0</DisplayName>
       <Description>リザーブ0</Description>
       <SortID>99999</SortID>

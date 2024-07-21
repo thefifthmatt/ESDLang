@@ -139,7 +139,7 @@
       <Maximum>999</Maximum>
       <SortID>840</SortID>
     </Field>
-    <Field Def="s8 shieldIconType">
+    <Field Def="s8 shieldIconType" RemovedVersion="10701000">
       <DisplayName>盾種別アイコン（上書き）</DisplayName>
       <Enum>SWORD_ARTS_SHIELD_ICON_TYPE</Enum>
       <Description>上書きしない場合は、武器パラの剣戟IDを元にアイコン表示されます。</Description>
@@ -147,11 +147,9 @@
       <Maximum>128</Maximum>
       <SortID>990</SortID>
     </Field>
-    <Field Def="dummy8 pad[1]">
-      <DisplayFormat>%d</DisplayFormat>
-      <EditFlags>Wrap</EditFlags>
-      <SortID>1104</SortID>
-    </Field>
+    
+    <Field Def="u16 swordArtsTypeNew" FirstVersion="10701000" />
+    
     <Field Def="u16 iconId">
       <DisplayName>アイコンID</DisplayName>
       <Description>FEなどで表示するアイコンのID</Description>
