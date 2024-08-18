@@ -21,6 +21,7 @@ namespace ESDLang.Script
         static void Main(string[] args)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             if (args.Length == 0)
             {
                 Console.WriteLine(ESDOptions.GetShortUsage());
