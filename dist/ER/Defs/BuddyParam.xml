@@ -222,10 +222,27 @@
       <Maximum>999999</Maximum>
       <SortID>750</SortID>
     </Field>
-    <Field Def="dummy8 Reserve2[4]">
+    <Field Def="dummy8 Reserve2[4]" RemovedVersion="10801000">
       <DisplayName>リザーブ2</DisplayName>
       <Description>リザーブ２</Description>
       <SortID>1114</SortID>
     </Field>
+    <Field Def="u32 unknown_0x5c" FirstVersion="10801000" />
+    <Field Def="u32 unknown_0x60" FirstVersion="10801000" />
+    <Field Def="s32 unknown_0x64" FirstVersion="10801000" />
+    <Field Def="s32 unknown_0x68" FirstVersion="10801000" />
+    <Field Def="s32 unknown_0x6c" FirstVersion="10801000" />
+    <Field Def="s32 unknown_0x70" FirstVersion="10801000" />
+    <Field Def="s32 unknown_0x74" FirstVersion="10801000" />
+    <Field Def="s32 unknown_0x78" FirstVersion="10801000" />
+    <Field Def="s32 unknown_0x7c" FirstVersion="10801000" />
+    <Field Def="s32 unknown_0x80" FirstVersion="10801000" />
+    <Field Def="u32 unknown_0x84" FirstVersion="10801000" />
+    <Field Def="s32 unknown_0x88" FirstVersion="10801000" />
+    <Field Def="s32 unknown_0x8c" FirstVersion="10801000" />
+    <Field Def="s32 unknown_0x90" FirstVersion="10801000" />
+    <Field Def="s32 unknown_0x94" FirstVersion="10801000" />
+    <Field Def="s32 unknown_0x98" FirstVersion="10801000" />
+    <Field Def="u32 unknown_0x9c" FirstVersion="10801000" />
   </Fields>
 </PARAMDEF>
