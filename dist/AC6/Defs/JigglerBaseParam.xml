@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PARAMDEF XmlVersion="3">
+  <ParamType>JIGGLER_BASE_PARAM_ST</ParamType>
+  <DataVersion>1</DataVersion>
+  <BigEndian>False</BigEndian>
+  <Unicode>True</Unicode>
+  <FormatVersion>203</FormatVersion>
+  <Fields>
+    <Field Def="u8 UnkByte0x00"></Field>
+    <Field Def="u8 UnkByte0x01"></Field>
+    <Field Def="u8 Unk0x02"></Field>
+    <Field Def="u8 Unk0x03"></Field>
+    <Field Def="s32 UnkInt0x04"></Field>
+    
+    <Field Def="fixstr boneName[20]"></Field>
+    <Field Def="s32 UnkInt0x1C"></Field>
+    <Field Def="s32 UnkInt0x20"></Field>
+    <Field Def="s32 UnkInt0x24"></Field>
+    <Field Def="u8 UnkByte0x28"></Field>
+    <Field Def="u8 UnkByte0x29"></Field>
+    <Field Def="u8 UnkByte0x2A"></Field>
+    <Field Def="s8 UnkSbyte0x2B"></Field>
+    
+    <Field Def="s8 offsetAxis_X_Range_Min"></Field>
+    <Field Def="s8 offsetAxis_X_Range_Max"></Field>
+    <Field Def="s8 offsetAxis_Z_Range_Min"></Field>
+    <Field Def="s8 offsetAxis_Z_Range_Max"></Field>
+    <Field Def="s32 jigglerBehaviorParamId"></Field>
+    <Field Def="s32 jigglerBehaviorSlideParamId"></Field>
+    <Field Def="f32 axisLeftMoveSpeed"></Field>
+    <Field Def="f32 axisRightMoveSpeed"></Field>
+    <Field Def="f32 axisDownwardMoveSpeed"></Field>
+    <Field Def="f32 axisUpwardMoveSpeed"></Field>
+    <Field Def="f32 axisBackwardMoveSpeed"></Field>
+    <Field Def="f32 axisForwardMoveSpeed"></Field>
+    <Field Def="s32 jiggleBehaviorTargetBoneRateParam1"></Field>
+    <Field Def="s32 jiggleBehaviorTargetBoneRateParam2"></Field>
+    <Field Def="s32 UnkInt0x58"></Field>
+    <Field Def="s32 UnkInt0x5C"></Field>
+    <Field Def="s32 UnkInt0x60"></Field>
+    <Field Def="s32 UnkInt0x64"></Field>
+    <Field Def="f32 UnkFloat0x68"></Field>
+    <Field Def="f32 UnkFloat0x6C"></Field>
+    <Field Def="f32 UnkFloat0x70"></Field>
+    <Field Def="f32 UnkFloat0x74"></Field>
+    <Field Def="f32 UnkFloat0x78"></Field>
+    <Field Def="s32 UnkInt0x7C"></Field>
+    <Field Def="s32 UnkInt0x80"></Field>
+    <Field Def="s32 UnkInt0x84"></Field>
+    <Field Def="s32 UnkInt0x88"></Field>
+    <Field Def="s32 UnkInt0x8C"></Field>
+    <Field Def="s32 UnkInt0x90"></Field>
+    <Field Def="s32 UnkInt0x94"></Field>
+    <Field Def="s32 UnkInt0x98"></Field>
+    <Field Def="s32 UnkInt0x9C"></Field>
+    <Field Def="s32 UnkInt0xA0"></Field>
+  </Fields>
+</PARAMDEF>

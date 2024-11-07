@@ -20,9 +20,12 @@ namespace ESDLang.EzSemble
             [0x96] = "!=",
             [0x98] = "&&",
             [0x99] = "||",
+            [0x9A] = "!",
         };
 
         public static Dictionary<string, byte> BytesByOperator = OperatorsByByte.ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
+
+        public static byte[] UnaryOperators = new byte[] { 0x8D, 0x9A };
 
         public static Dictionary<byte, string> TerminatorsByByte = new Dictionary<byte, string>
         {

@@ -1,0 +1,2332 @@
+{
+  "commands": [
+    {
+      "bank": 1,
+      "id": 0,
+      "name": "ChangeGeneralAnim",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 1,
+      "name": "ChangeUpperBodyAnim",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2,
+      "name": "ChangeStayAnim",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 3,
+      "name": "ChangeGeneralAnimCategorized",
+      "games_used": ["ds1", "ds1r"],
+      "comment": "I\u0027m a monkey.",
+      "args": [
+        {
+          "name": "AnimCategory",
+          "type": "enum",
+          "enum": "AnimCategory",
+          "comment": "Category of animation ID to choose from."
+        },
+        {
+          "name": "AnimID",
+          "type": "int",
+          "comment": "Animation ID. Uses the Category to determine which exact animation ID to play."
+        },
+        {
+          "name": "AnimLayerIndex",
+          "type": "enum",
+          "enum": "AnimLayerIndex",
+          "comment": "Animation Mediator Layer in which to play the animation."
+        },
+        {
+          "name": "Blend",
+          "type": "float",
+          "comment": "Not much is known about this value. Usually something like 0.2 for attacks."
+        },
+        {
+          "name": "IsLoop",
+          "type": "int",
+          "comment": "Whether the animation will continue to loop or stop on the last frame."
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 4,
+      "name": "ChangeUpperBodyAnimCategorized",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5,
+      "name": "ChangeGeneralAnimAdditiveCategorized",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 6,
+      "name": "ChangeUpperBodyAnimAdditiveCategorized",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7,
+      "name": "ChangeGeneralAnimCategorizedMatchPlaybackTime",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 8,
+      "name": "ChangeUpperBodyAnimCategorizedMatchPlaybackTime",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 9,
+      "name": "SetAnimIDOffset",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 10,
+      "name": "SetAdditiveBlendAnimation",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 11,
+      "name": "SetAdditiveBlendAnimationSlotted",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 12,
+      "name": "ChangeBlendAnimationCategorized",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 13,
+      "name": "ChangeUpperAndLowerBodySyncedAnimCategorized",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 100,
+      "name": "SwitchActiveActionState",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 101,
+      "name": "SwitchMotion",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 102,
+      "name": "SetThrowAttackTypePossible",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 103,
+      "name": "SetThrowDefenseTypePossible",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 104,
+      "name": "SwitchEquippedWeapon",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 105,
+      "name": "SetReadyForAtkFinish",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 106,
+      "name": "SetEquipmentChangeable",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 107,
+      "name": "SetUnableToDrop",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 108,
+      "name": "IssueMessageIDToEvents",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 109,
+      "name": "SetAttackType",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 110,
+      "name": "SetNoStaminaRecover",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 111,
+      "games": ["ds1", "ds1r"],
+      "games_used": ["ds1", "ds1r"]
+    },
+    {
+      "bank": 1,
+      "id": 112,
+      "name": "SetAIBusyDoingAction",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 113,
+      "name": "BowTurn",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 114,
+      "name": "SetIsHoldingBow",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 115,
+      "name": "SwitchSpecificRangeMode",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 116,
+      "name": "SwitchSpecialMotion",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 117,
+      "name": "SetIsWeaponChanging",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 118,
+      "name": "SetIsItemInUse",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 119,
+      "name": "SetIsItemAnimPlaying",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 120,
+      "name": "RemoveBinoculars",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 121,
+      "name": "SetIsMagicInUse",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 122,
+      "name": "IsHeadTurnPossible",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 123,
+      "name": "ChangeHoveringState",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 124,
+      "name": "ChangeToSpecialStay",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 125,
+      "name": "OpenMenuWhenUsingItem",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 126,
+      "name": "OpenMenuWhenUsingMagic",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 127,
+      "name": "BlowDamageTurn",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 128,
+      "name": "SetDeathStay",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 129,
+      "name": "CloseMenuWhenUsingItem",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 130,
+      "name": "CloseMenuWhenUsingMagic",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 131,
+      "name": "AdditionNoTurning",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 132,
+      "name": "WhiffPossibility",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 133,
+      "name": "ChangeFlightStatus",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 134,
+      "name": "SetStatsNotMetAnimID",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 135,
+      "name": "ShowFixedYAxisDirectionDisplay",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 136,
+      "name": "SetLadderActionState",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 137,
+      "name": "ForceCancelThrowAnim",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 138,
+      "name": "SetThrowState",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 139,
+      "name": "LadderSlideStart",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 140,
+      "name": "SetIsEventActionPossible",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 141,
+      "name": "RequestThrowAnimInterrupt",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 142,
+      "name": "SetHandStateOfLadder",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 143,
+      "name": "SetDamageAnimType",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 144,
+      "name": "SlideTurn",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 145,
+      "name": "InterruptAttack",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 146,
+      "name": "MidairDeathWarp",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 147,
+      "name": "ClearSlopeInfo",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 148,
+      "name": "StateInputRecieve",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 149,
+      "name": "EquipmentChangeableFromMenu",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 151,
+      "name": "AimAtSelfPosition",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 152,
+      "name": "StateIdentifier",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 153,
+      "name": "DoAIReplanningAtCancelTiming",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 154,
+      "name": "DenyEventAnimPlaybackDemand",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 155,
+      "name": "InvokeBackstab",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 156,
+      "name": "WeaponParamReferent",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 157,
+      "name": "AINotifyAttackType",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 158,
+      "name": "SetAutoTrapTarget",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 159,
+      "name": "ClearAutoTrapTarget",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 200,
+      "name": "SetVariable",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 1000,
+      "name": "AddHP",
+      "games_used": [],
+      "args": [
+        {
+          "name": "HPToAdd",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 1001,
+      "name": "AddStamina",
+      "games_used": ["ds1", "ds1r"],
+      "args": [
+        {
+          "name": "StaminaToAdd",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 1100,
+      "name": "SyncAtInit_Active",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 1101,
+      "name": "SyncAtInit_Passive",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2000,
+      "name": "SetIsTurnAnimInProgress",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2001,
+      "name": "CalculateTurnAnimCorrectionFactor",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2002,
+      "name": "SetStealthState",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2003,
+      "name": "SetMoveMult",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2004,
+      "name": "SpEffectAccomodation",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2005,
+      "name": "StealthyHighSpeedThrowEffective",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2006,
+      "name": "SetTurnSpeed",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2007,
+      "name": "SetCeremonyState",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2008,
+      "name": "SetDamageMotionBlendRatio",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2009,
+      "name": "SetForceTurnTarget",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2010,
+      "name": "InSpecialGuard",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2011,
+      "name": "SetWeaponCancelType",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2012,
+      "name": "IsPreciseShootingPossible",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2013,
+      "name": "ChooseBowAndArrowSlot",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2014,
+      "name": "Set4DirectionMovementThreshold",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2015,
+      "name": "LockonSystemUnableToTurnAngle",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2016,
+      "name": "ReserveArtsPointsUse",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2017,
+      "name": "SetArtsPointFEDisplayState",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2018,
+      "name": "LockonFixedAngleCancel",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2019,
+      "name": "TurnToLockonTargetImmediately",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2020,
+      "name": "SetSpecialInterpolation",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2021,
+      "name": "LadderSlideDownCancel",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2022,
+      "name": "DisableMagicIDSwitching",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2023,
+      "name": "DisableToolIDSwitching",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 9000,
+      "name": "DebugLogOutput",
+      "games_used": ["ds1", "ds1r"],
+      "args": [
+        {
+          "name": "PrintText",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 9001,
+      "name": "Test_SpEffectDelete",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 9002,
+      "name": "Test_SpEffectTypeSpecifyDelete",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 9100,
+      "name": "AnimationCancel",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 9101,
+      "name": "RequestAIReprogramming",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 9102,
+      "name": "MarkOfGreedyPersonSlipDamageDisable ",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 9103,
+      "name": "ResetInputQueue",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 9104,
+      "name": "SetIsEventAnim",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 9105,
+      "name": "AIAttackState",
+      "games_used": [],
+      "args": []
+    }
+  ],
+  "functions": [
+    {
+      "id": 0,
+      "name": "IsGeneralAnimEnd",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 1,
+      "name": "IsAttackAnimEnd",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 9,
+      "name": "AnimIDOffset",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 10,
+      "name": "AdditiveBlendAnim",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 11,
+      "name": "AdditiveBlendAnimOfSlot",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 100,
+      "name": "IsAtkRequest",
+      "games_used": ["ds1", "ds1r"],
+      "comment": "Gets whether a specific type of attack request has been received.",
+      "args": [
+        {
+          "name": "RequestType",
+          "type": "enum",
+          "enum": "AttackRequestType",
+          "comment": "The type of request to check for."
+        }
+      ]
+    },
+    {
+      "id": 101,
+      "name": "IsAtkReleaseRequest",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 102,
+      "name": "IsChainAtkRequest",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 103,
+      "name": "GetAtkDuration",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 104,
+      "name": "GetWeaponSwitchRequest",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 105,
+      "name": "GetCommandIDFromEvent",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 106,
+      "name": "GetAIActionType",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 107,
+      "name": "GetAIChainActionType",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 108,
+      "name": "GetChainEvadeRequest",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 109,
+      "name": "GetWeaponChangeRequest",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 110,
+      "name": "GetAnimIDFromMoveParam",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 111,
+      "name": "IsThereAnyAtkRequest",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 112,
+      "name": "IsThereAnyChainAtkRequest",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 113,
+      "name": "IsItemUseMenuOpening",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 114,
+      "name": "IsMagicUseMenuOpening",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 115,
+      "name": "IsItemUseMenuOpened",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 116,
+      "name": "IsMagicUseMenuOpened",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 117,
+      "name": "GetBlendAnimIDFromMoveParam",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 118,
+      "name": "GetAIChainStepType",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 119,
+      "name": "GetTransitionToSpecialStayAnimID",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 120,
+      "name": "GetAIAtkCancelType",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 121,
+      "name": "GetWeaponCancelType",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 122,
+      "name": "IsWeaponCancelPossible",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 123,
+      "name": "GetAIDefenseCancelType",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 124,
+      "name": "GetAIVersusBackstabCancelType",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 200,
+      "name": "IsFalling",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 201,
+      "name": "IsLanding",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 202,
+      "name": "GetReceivedDamageType",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 203,
+      "name": "IsActiveActionValid",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 204,
+      "name": "GetActionEventNumber",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 205,
+      "name": "IsNormalDmgPassThroughDuringThrow",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 206,
+      "name": "IsThrowing",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 207,
+      "name": "GetWeaponSwitchState",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 209,
+      "name": "IsEquipmentSwitchPossible",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 210,
+      "name": "IsAnimCancelPossibleInAtkRelease",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 211,
+      "name": "IsEmergencyStopAnimPlaying",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 212,
+      "name": "GetLockRangeState",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 213,
+      "name": "GetLockAngleState",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 214,
+      "name": "IsAnimCancelPossibleInDamageHit",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 215,
+      "name": "IsChangeToScrapeAtk",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 216,
+      "name": "IsChangeToDeflectAtk",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 217,
+      "name": "IsChangeToAfterParrySuccess",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 218,
+      "name": "IsChangeFromNormalToBigAtk",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 219,
+      "name": "GetMovementType",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 220,
+      "name": "IsLargeAtkComboPossible",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 221,
+      "name": "IsMapActionPossible",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 222,
+      "name": "GetReceivedDamageDirection",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 223,
+      "name": "GetMapActionID",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 224,
+      "name": "GetFallHeight",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 225,
+      "name": "GetEquipWeaponCategory",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 226,
+      "name": "IsHoldingBow",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 227,
+      "name": "GetMagicAnimType",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 228,
+      "name": "WasNotLargeAtk",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 229,
+      "name": "IsBackAtkPossible",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 230,
+      "name": "IsAfterParryAtkPossible",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 231,
+      "name": "GetItemAnimType",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 232,
+      "name": "IsMagicUseable",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 233,
+      "name": "IsItemUseable",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 234,
+      "name": "IsPrecisionShoot",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 235,
+      "name": "IsFireDamaged",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 236,
+      "name": "GetDamageLevel",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 237,
+      "name": "GetGuardLevelAction",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 238,
+      "name": "IsNewLeftHandAtkFromStay",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 239,
+      "name": "IsParryFromIdle",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 240,
+      "name": "IsGuardFromIdle",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 241,
+      "name": "IsNewLeftHandAtkFromAtkCancel",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 242,
+      "name": "IsParryFromAtkCancel",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 243,
+      "name": "IsGuardFromAtkCancel",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 244,
+      "name": "IsTiedUp",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 245,
+      "name": "IsOutOfAmmo",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 246,
+      "name": "IsUseCatLanding",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 247,
+      "name": "GetHoverMoveState",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 248,
+      "name": "IsTruelyLanding",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 249,
+      "name": "IsRightHandMagic",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 250,
+      "name": "IsChangeToSpecialStayAnim",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 251,
+      "name": "GetSpecialStayAnimID",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 252,
+      "name": "AcquireSpecialDamageAnimationID",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 253,
+      "name": "IsRunTurnAnimPlaying",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 254,
+      "name": "IsGenerateAction",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 255,
+      "name": "GetSpecialStayCancelAnimID",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 256,
+      "name": "HasReceivedAnyDamage",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 257,
+      "name": "GetMoveAnimParamID",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 258,
+      "name": "GetGuardLevel",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 259,
+      "name": "IsRequestTurnAnimStart",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 260,
+      "name": "IsTurningWithAnim",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 261,
+      "name": "IsFlying",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 262,
+      "name": "IsAbilityInsufficient",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 263,
+      "name": "GetEquipWeightRatioForFalling",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 264,
+      "name": "GetFlightMotionState",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 265,
+      "name": "GetIsWeakPoint",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 266,
+      "name": "GetMoveAnimBlendRatio",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 267,
+      "name": "GetLadderActionState",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 268,
+      "name": "IsInDisguise",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 269,
+      "name": "IsCoopWait",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 270,
+      "name": "IsCoop",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 271,
+      "name": "IsSpecialTransitionPossible",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 272,
+      "name": "GetLandingAnimBlendRatio",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 273,
+      "name": "GetThrowAnimID",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 274,
+      "name": "DidOpponentDieFromThrow",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 275,
+      "name": "HasThrowEnded",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 276,
+      "name": "IsThrowSelfDeath",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 277,
+      "name": "IsThrowSuccess",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 278,
+      "name": "GetGuardMotionCategory",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 279,
+      "name": "IsBeingThrown",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 280,
+      "name": "IsSelfThrow",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 281,
+      "name": "IsThrowDeathState",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 282,
+      "name": "GetNewLockState",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 283,
+      "name": "IsOnLadder",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 284,
+      "name": "GetPhysicalAttribute",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 285,
+      "name": "GetSpecialAttribute",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 286,
+      "name": "GetSpecialStayDeathAnimID",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 287,
+      "name": "HasReceivedAnyDamage_AnimEnd",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 288,
+      "name": "EggGrowth_IsHeadScratch",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 289,
+      "name": "EggGrowth_IsBecomeEggHead",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 290,
+      "name": "IsStop",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 291,
+      "name": "IsSomeoneOnLadder",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 292,
+      "name": "IsSomeoneUnderLadder",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 293,
+      "name": "GetLadderHandState",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 294,
+      "name": "DoesLadderHaveCharacters",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 295,
+      "name": "IsLadderRightHandStayState",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 296,
+      "name": "DescendingToFloor",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 297,
+      "name": "IsInputDirectionMatch",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 298,
+      "name": "IsSpecialTransition2Possible",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 299,
+      "name": "IsVersusDivineDamage",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 300,
+      "name": "IsGeneralAnimCancelPossible",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 301,
+      "name": "GetEventEzStateFlag",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 302,
+      "name": "IsLadderEventEnd",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 303,
+      "name": "IsReachBottomOfLadder",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 304,
+      "name": "IsReachTopOfLadder",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 305,
+      "name": "GetStateChangeType",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 306,
+      "name": "IsOnLastRungOfLadder",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 311,
+      "name": "GetWeaponDurability",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 312,
+      "name": "IsWeaponBroken",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 313,
+      "name": "IsAnimEndBySkillCancel",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 314,
+      "name": "EggGrowth_IsBecomeEgghead_SecondStage",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 315,
+      "name": "IsHamariFallDeath",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 316,
+      "name": "IsClient",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 317,
+      "name": "IsSlope",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 318,
+      "name": "IsSwitchState",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 319,
+      "name": "IsPressUpKey",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 320,
+      "name": "IsSpecialTurning",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 321,
+      "name": "GetIntValueForTest",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 322,
+      "name": "IsObjActInterpolatedMotion",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 323,
+      "name": "GetObjActTargetDirection",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 324,
+      "name": "GetObjActRemainingInterpolateTime",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 325,
+      "name": "IsGap",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 326,
+      "name": "GetWeaponID",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 327,
+      "name": "IsMovingLaterally",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 328,
+      "name": "IsNet",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 329,
+      "name": "HasBrokenSA",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 330,
+      "name": "IsEmergencyQuickTurnActivated",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 331,
+      "name": "IsDoubleChantPossible",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 332,
+      "name": "IsAnimOver",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 333,
+      "name": "ObtainedDT",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 334,
+      "name": "GetBehaviorID",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 335,
+      "name": "IsTwoHandPossible",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 336,
+      "name": "IsPartDamageAdditiveBlendInvalid",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 337,
+      "name": "IsThrowPosRealign",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 338,
+      "name": "GetBoltLoadingState",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 339,
+      "name": "IsAnimEnd",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 340,
+      "name": "IsTwinSwords",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 341,
+      "name": "DS3GetTurnAngleForDelayedTurn",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 342,
+      "name": "DS3GetThrowDefenseCount",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 343,
+      "name": "DS3IsEmergencyEvasionPossible",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 344,
+      "name": "DS3HasEnoughArtsPoints",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 345,
+      "name": "DS3GetEquipWeaponSpecialCategoryNumber",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 346,
+      "name": "DS3CheckForEventAnimPlaybackRequest",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 347,
+      "name": "DS3IsFemale",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 348,
+      "name": "DS3GetDelayTurnAngleDifference",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 349,
+      "name": "DS3IsDamageMotionOff",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 350,
+      "name": "DS3HasReachedStatsNeededForWeapon",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 351,
+      "name": "DS3UpperArmControlOuterAngle",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 352,
+      "name": "DS3UpperArmControlTopAndBottomAngle",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 353,
+      "name": "DS3CompleteLadderSlideDown",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 354,
+      "name": "DS3GetLadderRungCount",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 355,
+      "name": "DS3GetNumberOfRungsBelowOnLadder",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 356,
+      "name": "DS3GetBowAndArrowSlot",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 357,
+      "name": "DS3GetWeaponStorageSpotType",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 358,
+      "name": "DS3GetStayAnimCategory",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 359,
+      "name": "DS3GetWeaponSwitchState",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 360,
+      "name": "DS3IsEquipmentMenuOpen",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 361,
+      "name": "DS3GetRemainingArrowCount",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1000,
+      "name": "GetHP",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 1001,
+      "name": "GetStamina",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 1002,
+      "name": "IsGhost",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1003,
+      "name": "GetRandomInt",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 1004,
+      "name": "GetRandomFloat",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1005,
+      "name": "IsUnableToDie",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1006,
+      "name": "IsResurrectionPossible",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1007,
+      "name": "IsCOMPlayer",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 1008,
+      "name": "GetAITargetAwareState",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1009,
+      "name": "IsAIChangeToAwareState",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1010,
+      "name": "GetAITargetAwareStatePreviousFrame",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1100,
+      "name": "GetTestDamageAnimID",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1101,
+      "name": "IsInvincibleDebugMode",
+      "games_used": ["ds1", "ds1r"],
+      "args": []
+    },
+    {
+      "id": 1102,
+      "name": "WasGameLaunchedInPGTestMode",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1103,
+      "name": "IsTiltingStick",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1104,
+      "name": "DS3GetGestureRequestNumber",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1105,
+      "name": "DS3IsStayState",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1106,
+      "name": "DS3ActionRequest",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1107,
+      "name": "DS3ActionCancelRequest",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1108,
+      "name": "DS3ActionDuration",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1109,
+      "name": "DS3HasActionRequest",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1110,
+      "name": "DS3MovementRequest",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1111,
+      "name": "DS3MovementRequestDuration",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1112,
+      "name": "DS3HasThrowRequest",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1113,
+      "name": "DS3IsGuardCancelPossible",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1114,
+      "name": "DS3DoesAnimExist",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1115,
+      "name": "DS3GetAIMovementType",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1116,
+      "name": "DS3GetSpecialEffectID",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1117,
+      "name": "DS3IsConversationEnd",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1118,
+      "name": "DS3IsLocked",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1119,
+      "name": "DS3GetAtkDirection",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1120,
+      "name": "DS3GetPartGroup",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 1121,
+      "name": "DS3GetKnockbackDistance",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2000,
+      "name": "DS3IsMoveCancelPossible",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2002,
+      "name": "DS3GetSpecialMovementType",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2003,
+      "name": "DS3GetGeneralTAEFlag",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2004,
+      "name": "DS3IsSwingHitTarget",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2005,
+      "name": "DS3GetCeremonyState",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2006,
+      "name": "DS3GetSuccessiveGuardCount",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2007,
+      "name": "DS3GetMinLuck",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2008,
+      "name": "DS3GetAccumulatedLuck",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2009,
+      "name": "DS3GetMaxLuck",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2010,
+      "name": "DS3GetMaxStamina",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2011,
+      "name": "DS3GetGeneralMSBParameter",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2012,
+      "name": "DS3IsHitWall",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2013,
+      "name": "DS3GetSafetyDirection",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2014,
+      "name": "DS3IsInCeremony",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2015,
+      "name": "DS3IsDoingCorpseCarryKeyframe",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2016,
+      "name": "DS3GetMP",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2017,
+      "name": "DS3IsCeremonyComplete",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 2018,
+      "name": "DS3IsCeremonyInterrupt",
+      "games_used": [],
+      "args": []
+    }
+  ],
+  "enums": [
+    {
+      "name": "AnimCategory",
+      "entries": [
+        {"value": 0, "name": "BasedOnLeftHandMotionCategory"},
+        {"value": 1, "name": "BasedOnRightHandMotionCategory"},
+        {"value": 2, "name": "BasedOnCurrentMoveParam"},
+        {"value": 3, "name": "AbsoluteAnimationID"}
+      ]
+    },
+    {
+      "name": "AnimLayerIndex",
+      "entries": [
+        {"value": 0, "name": "Wait"},
+        {"value": 1, "name": "SpWait"},
+        {"value": 2, "name": "WalkLR"},
+        {"value": 3, "name": "WalkFB"},
+        {"value": 4, "name": "Guard"},
+        {"value": 5, "name": "Attack"},
+        {"value": 6, "name": "SpecialAttack"},
+        {"value": 7, "name": "Action"},
+        {"value": 8, "name": "DamageS"},
+        {"value": 9, "name": "DamageL"},
+        {"value": 10, "name": "Event"},
+        {"value": 11, "name": "ExtraAnim"},
+        {"value": 12, "name": "TaeExtraAnim"}
+      ]
+    },
+    {
+      "name": "AttackRequestType",
+      "entries": [
+        {"value": 0, "name": "R1"},
+        {"value": 1, "name": "L1"},
+        {"value": 2, "name": "CatalystTalismanPyromancyFlameR1"},
+        {"value": 3, "name": "CatalystTalismanPyromancyFlameL1"},
+        {"value": 10, "name": "Backstep"},
+        {"value": 14, "name": "UseGoods"},
+        {"value": 15, "name": "RollForward"},
+        {"value": 16, "name": "RollBackward"},
+        {"value": 17, "name": "RollLeft"},
+        {"value": 18, "name": "RollRight"},
+        {"value": 22, "name": "AttackArm_Gesture0_Beckon"},
+        {"value": 23, "name": "AttackArm_Gesture1_PointForward"},
+        {"value": 24, "name": "AttackArm_Gesture2_Hurrah"},
+        {"value": 25, "name": "AttackArm_Gesture3_Bow"},
+        {"value": 26, "name": "AttackArm_Gesture4_Joy"},
+        {"value": 27, "name": "AttackArm_Gesture5_Shrug"},
+        {"value": 28, "name": "AttackArm_Gesture6_Wave"},
+        {"value": 29, "name": "AttackArm_Gesture7_PraiseTheSun"},
+        {"value": 30, "name": "AttackArm_Gesture8_PointUp"},
+        {"value": 31, "name": "AttackArm_Gesture9_PointDown"},
+        {"value": 32, "name": "AttackArm_Gesture10_LookSkyward"},
+        {"value": 33, "name": "AttackArm_Gesture11_WellWhatIsIt"},
+        {"value": 34, "name": "AttackArm_Gesture12_Prostration"},
+        {"value": 35, "name": "AttackArm_Gesture13_ProperBow"},
+        {"value": 36, "name": "AttackArm_Gesture14_Prayer"},
+        {"value": 37, "name": "AttackArm_Gesture15_Unused"},
+        {"value": 38, "name": "AttackArm_Gesture16_Unused"},
+        {"value": 39, "name": "AttackArm_Gesture17_Unused"},
+        {"value": 40, "name": "AttackArm_Gesture18_Unused"},
+        {"value": 41, "name": "AttackArm_Gesture19_Unused"},
+        {"value": 42, "name": "Jump"},
+        {"value": 52, "name": "LeftHandCrossbowAmmoSwap"}
+      ]
+    }
+  ],
+  "condition_arg": {
+    "name": "condition",
+    "type": "bool"
+  }
+}

@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PARAMDEF XmlVersion="3">
+  <ParamType>GRASS_TYPE_PARAM_ST</ParamType>
+  <DataVersion>1</DataVersion>
+  <BigEndian>False</BigEndian>
+  <Unicode>True</Unicode>
+  <FormatVersion>203</FormatVersion>
+  <Fields>
+    <Field Def="u8 lod0ClusterType"></Field>
+    <Field Def="u8 lod1ClusterType"></Field>
+    <Field Def="u8 lod2ClusterType"></Field>
+    <Field Def="dummy8 pad0[1]"></Field>
+    <Field Def="f32 baseDensity"></Field>
+    <Field Def="fixstrW model0Name[16]"></Field>
+    <Field Def="fixstrW flatTextureName[32]"></Field>
+    <Field Def="fixstrW billboardTextureName[32]"></Field>
+    <Field Def="u8 normalInfluence"></Field>
+    <Field Def="u8 inclinationMax"></Field>
+    <Field Def="u8 inclinationJitter"></Field>
+    <Field Def="u8 scaleBaseMin"></Field>
+    <Field Def="u8 scaleBaseMax"></Field>
+    <Field Def="u8 scaleHeightMin"></Field>
+    <Field Def="u8 scaleHeightMax"></Field>
+    <Field Def="u8 colorShade1_r"></Field>
+    <Field Def="u8 colorShade1_g"></Field>
+    <Field Def="u8 colorShade1_b"></Field>
+    <Field Def="u8 colorShade2_r"></Field>
+    <Field Def="u8 colorShade2_g"></Field>
+    <Field Def="u8 colorShade2_b"></Field>
+    <Field Def="u8 flatSplitType"></Field>
+    <Field Def="u8 flatBladeCount"></Field>
+    <Field Def="u8 flatSlant"></Field>
+    <Field Def="f32 flatRadius"></Field>
+    <Field Def="u8 castShadow"></Field>
+    <Field Def="u8 windAmplitude"></Field>
+    <Field Def="u8 Unk0xBD"></Field>
+    <Field Def="u8 windCycle"></Field>
+    <Field Def="f32 orientationAngle"></Field>
+    <Field Def="f32 orientationRange"></Field>
+    <Field Def="fixstrW simpleModelName[16]"></Field>
+    <Field Def="s32 lodRange"></Field>
+    <Field Def="s32 Unk0xEC"></Field>
+    <Field Def="s32 Unk0xF0"></Field>
+    <Field Def="s32 Unk0xF4"></Field>
+    <Field Def="s32 Unk0xF8"></Field>
+    <Field Def="s32 Unk0xFC"></Field>
+    <Field Def="s32 Unk0x100"></Field>
+    <Field Def="s32 Unk0x104"></Field>
+  </Fields>
+</PARAMDEF>

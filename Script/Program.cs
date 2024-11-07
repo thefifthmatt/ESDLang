@@ -7,6 +7,8 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace ESDLang.Script
 {
@@ -21,28 +23,46 @@ namespace ESDLang.Script
         static void Main(string[] args)
         {
             Thread.CurrentThread.CurrentCulture = CultureInfo.InvariantCulture;
-            if (args.Length == 0)
+#if DEBUG
+            // Pile of scripts, TODO clean it up and add it to release workflow
+            if (args.Contains("-docgen"))
             {
-                Console.WriteLine(ESDOptions.GetShortUsage());
+                new DocGenerator().Run(args);
+                return;
             }
-            else if (args.Contains("-h") || args.Contains("-H"))
+#endif
+            if (args.Contains("-h") || args.Contains("-H"))
             {
                 Console.WriteLine(ESDOptions.GetUsage());
             }
             else
             {
-                if (args.Length > 0 && args.All(a => File.Exists(a) || Directory.Exists(a)))
+                if (args.Length == 0)
+                {
+                    Console.WriteLine(ESDOptions.GetShortUsage());
+                }
+                if (args.Length == 0 || args.All(a => File.Exists(a) || Directory.Exists(a)))
                 {
                     // Assume drag and drop mode
-                    Directory.SetCurrentDirectory(Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location));
+                    List<string> files = args.ToList();
                     AllocConsole();
                     try
                     {
+                        string loc = Assembly.GetEntryAssembly()?.Location;
+                        if (string.IsNullOrEmpty(loc))
+                        {
+                            // Evidently needed for PublishSingleFile
+                            loc = AppDomain.CurrentDomain.BaseDirectory;
+                        }
+                        if (!string.IsNullOrEmpty(loc))
+                        {
+                            Directory.SetCurrentDirectory(Path.GetDirectoryName(loc));
+                        }
                         Console.WriteLine();
                         OptionsConfig config = null;
                         try
                         {
-                            config = OptionsConfig.GetOrCreate(args[0]);
+                            config = OptionsConfig.GetOrCreate(files);
                         }
                         catch (Exception e)
                         {
@@ -52,7 +72,7 @@ namespace ESDLang.Script
                         Console.WriteLine();
                         if (config != null)
                         {
-                            List<string> configArgs = config.MakeOptions(args);
+                            List<string> configArgs = config.MakeOptions(files);
                             if (configArgs != null)
                             {
                                 Console.WriteLine($"esdtool.exe {string.Join(" ", configArgs.Select(t => t.Contains(' ') ? $"\"{t}\"" : t))}");
@@ -82,7 +102,7 @@ namespace ESDLang.Script
         {
             if (!Directory.Exists("dist"))
             {
-                throw new Exception($"Error: dist directory not found! Keep it in the same directory as esdtool.exe");
+                throw new Exception($"Error: dist directory not found! Keep it in the same directory as esdtool.exe (working directory: {Directory.GetCurrentDirectory()})");
             }
             ESDOptions options;
             try

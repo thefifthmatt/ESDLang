@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PARAMDEF XmlVersion="3">
+  <ParamType>FE_TEXT_EFFECT_PARAM_ST</ParamType>
+  <DataVersion>1</DataVersion>
+  <BigEndian>False</BigEndian>
+  <Unicode>True</Unicode>
+  <FormatVersion>203</FormatVersion>
+  <Fields>
+    <Field Def="s16 resId"></Field>
+    <Field Def="dummy8 pad1[2]"></Field>
+    <Field Def="s32 textId1 = -1"></Field>
+    <Field Def="s32 seId = -1"></Field>
+    <Field Def="s32 textId2 = -1"></Field>
+    <Field Def="s32 textId3 = -1"></Field>
+    <Field Def="s8 slot"></Field>
+    <Field Def="u8 unk15"></Field>
+    <Field Def="u8 unk16"></Field>
+    <Field Def="u8 unk17"></Field>
+    <Field Def="s32 movieId"></Field>
+    <Field Def="s32 unk1c = -1"></Field>
+  </Fields>
+</PARAMDEF>

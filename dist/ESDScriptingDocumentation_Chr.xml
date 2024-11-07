@@ -6,10 +6,10 @@
         <Command Bank="1" ID="2" Name="ChangeStayAnim" Description=""/>
         <Command Bank="1" ID="3" Name="ChangeGeneralAnimCategorized" Description="I'm a monkey.">
             <Arg Name="AnimCategory" ValueType="AnimCategory" Description="Category of animation ID to choose from."/>
-            <Arg Name="AnimID" ValueType="Number" Description="Animation ID. Uses the Category to determine which exact animation ID to play."/>
-            <Arg Name="LayerIndex" ValueType="AnimLayerIndex" Description="Animation Mediator Layer in which to play the animation."/>
-            <Arg Name="Blend" ValueType="Number" Description="Not much is known about this value. Usually something like 0.2 for attacks."/>
-            <Arg Name="IsLoop" ValueType="Number" Description="Whether the animation will continue to loop or stop on the last frame."/>
+            <Arg Name="AnimID" ValueType="int" Description="Animation ID. Uses the Category to determine which exact animation ID to play."/>
+            <Arg Name="AnimLayerIndex" ValueType="AnimLayerIndex" Description="Animation Mediator Layer in which to play the animation."/>
+            <Arg Name="Blend" ValueType="float" Description="Not much is known about this value. Usually something like 0.2 for attacks."/>
+            <Arg Name="IsLoop" ValueType="int" Description="Whether the animation will continue to loop or stop on the last frame."/>
         </Command>
         <Command Bank="1" ID="4" Name="ChangeUpperBodyAnimCategorized" Description=""/>
         <Command Bank="1" ID="5" Name="ChangeGeneralAnimAdditiveCategorized" Description=""/>
@@ -81,10 +81,10 @@
         <Command Bank="1" ID="158" Name="SetAutoTrapTarget" Description=""/>
         <Command Bank="1" ID="159" Name="ClearAutoTrapTarget" Description=""/>
         <Command Bank="1" ID="1000" Name="AddHP" Description="">
-            <Arg Name="HPToAdd" ValueType="Number" Description=""/>
+            <Arg Name="HPToAdd" ValueType="int" Description=""/>
         </Command>
         <Command Bank="1" ID="1001" Name="AddStamina" Description="">
-            <Arg Name="StaminaToAdd" ValueType="Number" Description=""/>
+            <Arg Name="StaminaToAdd" ValueType="int" Description=""/>
         </Command>
         <Command Bank="1" ID="1100" Name="SyncAtInit_Active" Description=""/>
         <Command Bank="1" ID="1101" Name="SyncAtInit_Passive" Description=""/>
@@ -117,7 +117,7 @@
         <Command Bank="1" ID="2023" Name="DisableToolIDSwitching" Description=""/>
         
         <Command Bank="1" ID="9000" Name="DebugLogOutput" Description="">
-            <Arg Name="PrintText" ValueType="String" Description=""/>
+            <Arg Name="PrintText" ValueType="string" Description=""/>
         </Command>
         
         <!-- These are likely only added in Dark Souls 3: -->
@@ -379,42 +379,42 @@
         <Enum Name="AttackRequestType">
             <EnumEntry Value="0" Name="R1" Description=""/>
             <EnumEntry Value="1" Name="L1" Description=""/>
-            <EnumEntry Value="2" Name="Catalyst / Talisman / Pyromancy Flame R1" Description=""/>
-            <EnumEntry Value="3" Name="Catalyst / Talisman / Pyromancy Flame L1" Description=""/>
+            <EnumEntry Value="2" Name="CatalystTalismanPyromancyFlameR1" Description=""/>
+            <EnumEntry Value="3" Name="CatalystTalismanPyromancyFlameL1" Description=""/>
             <EnumEntry Value="10" Name="Backstep" Description=""/>
-            <EnumEntry Value="14" Name="Use Goods" Description=""/>
-            <EnumEntry Value="15" Name="Roll Forward" Description=""/>
-            <EnumEntry Value="16" Name="Roll Backward" Description=""/>
-            <EnumEntry Value="17" Name="Roll Left" Description=""/>
-            <EnumEntry Value="18" Name="Roll Right" Description=""/>
-            <EnumEntry Value="22" Name="AttackArm_Gesture0 (Beckon)" Description=""/>
-            <EnumEntry Value="23" Name="AttackArm_Gesture1 (Point Forward)" Description=""/>
-            <EnumEntry Value="24" Name="AttackArm_Gesture2 (Hurrah!)" Description=""/>
-            <EnumEntry Value="25" Name="AttackArm_Gesture3 (Bow)" Description=""/>
-            <EnumEntry Value="26" Name="AttackArm_Gesture4 (Joy)" Description=""/>
-            <EnumEntry Value="27" Name="AttackArm_Gesture5 (Shrug)" Description=""/>
-            <EnumEntry Value="28" Name="AttackArm_Gesture6 (Wave)" Description=""/>
-            <EnumEntry Value="29" Name="AttackArm_Gesture7 (Praise the Sun)" Description=""/>
-            <EnumEntry Value="30" Name="AttackArm_Gesture8 (Point Up)" Description=""/>
-            <EnumEntry Value="31" Name="AttackArm_Gesture9 (Point Down)" Description=""/>
-            <EnumEntry Value="32" Name="AttackArm_Gesture10 (Look Skyward)" Description=""/>
-            <EnumEntry Value="33" Name="AttackArm_Gesture11 (Well! What is it!)" Description=""/>
-            <EnumEntry Value="34" Name="AttackArm_Gesture12 (Prostration)" Description=""/>
-            <EnumEntry Value="35" Name="AttackArm_Gesture13 (Proper Bow)" Description=""/>
-            <EnumEntry Value="36" Name="AttackArm_Gesture14 (Prayer)" Description=""/>
-            <EnumEntry Value="37" Name="AttackArm_Gesture15 (Unused)" Description="Has Prayer animation as placeholder"/>
-            <EnumEntry Value="38" Name="AttackArm_Gesture16 (Unused)" Description="Has carving toss animation as placeholder"/>
-            <EnumEntry Value="39" Name="AttackArm_Gesture17 (Unused)" Description="Has lever pull animation as placeholder"/>
-            <EnumEntry Value="40" Name="AttackArm_Gesture18 (Unused)" Description="Has turn crank animation as placeholder"/>
-            <EnumEntry Value="41" Name="AttackArm_Gesture19 (Unused)" Description="Has turn rotunda animation as placeholder"/>
+            <EnumEntry Value="14" Name="UseGoods" Description=""/>
+            <EnumEntry Value="15" Name="RollForward" Description=""/>
+            <EnumEntry Value="16" Name="RollBackward" Description=""/>
+            <EnumEntry Value="17" Name="RollLeft" Description=""/>
+            <EnumEntry Value="18" Name="RollRight" Description=""/>
+            <EnumEntry Value="22" Name="AttackArm_Gesture0_Beckon" Description=""/>
+            <EnumEntry Value="23" Name="AttackArm_Gesture1_PointForward" Description=""/>
+            <EnumEntry Value="24" Name="AttackArm_Gesture2_Hurrah" Description=""/>
+            <EnumEntry Value="25" Name="AttackArm_Gesture3_Bow" Description=""/>
+            <EnumEntry Value="26" Name="AttackArm_Gesture4_Joy" Description=""/>
+            <EnumEntry Value="27" Name="AttackArm_Gesture5_Shrug" Description=""/>
+            <EnumEntry Value="28" Name="AttackArm_Gesture6_Wave" Description=""/>
+            <EnumEntry Value="29" Name="AttackArm_Gesture7_PraiseTheSun" Description=""/>
+            <EnumEntry Value="30" Name="AttackArm_Gesture8_PointUp" Description=""/>
+            <EnumEntry Value="31" Name="AttackArm_Gesture9_PointDown" Description=""/>
+            <EnumEntry Value="32" Name="AttackArm_Gesture10_LookSkyward" Description=""/>
+            <EnumEntry Value="33" Name="AttackArm_Gesture11_WellWhatIsIt" Description=""/>
+            <EnumEntry Value="34" Name="AttackArm_Gesture12_Prostration" Description=""/>
+            <EnumEntry Value="35" Name="AttackArm_Gesture13_ProperBow" Description=""/>
+            <EnumEntry Value="36" Name="AttackArm_Gesture14_Prayer" Description=""/>
+            <EnumEntry Value="37" Name="AttackArm_Gesture15_Unused" Description="Has Prayer animation as placeholder"/>
+            <EnumEntry Value="38" Name="AttackArm_Gesture16_Unused" Description="Has carving toss animation as placeholder"/>
+            <EnumEntry Value="39" Name="AttackArm_Gesture17_Unused" Description="Has lever pull animation as placeholder"/>
+            <EnumEntry Value="40" Name="AttackArm_Gesture18_Unused" Description="Has turn crank animation as placeholder"/>
+            <EnumEntry Value="41" Name="AttackArm_Gesture19_Unused" Description="Has turn rotunda animation as placeholder"/>
             <EnumEntry Value="42" Name="Jump" Description=""/>
-            <EnumEntry Value="52" Name="Left Hand Crossbow Ammo Swap" Description=""/>
+            <EnumEntry Value="52" Name="LeftHandCrossbowAmmoSwap" Description=""/>
         </Enum>
         <Enum Name="AnimCategory">
-            <EnumEntry Value="0" Name="Based on Left Hand Motion Category" Description=""/>
-            <EnumEntry Value="1" Name="Based on Right Hand Motion Category" Description=""/>
-            <EnumEntry Value="2" Name="Based on current Move Param" Description=""/>
-            <EnumEntry Value="3" Name="Absolute Animation ID" Description=""/>
+            <EnumEntry Value="0" Name="BasedOnLeftHandMotionCategory" Description=""/>
+            <EnumEntry Value="1" Name="BasedOnRightHandMotionCategory" Description=""/>
+            <EnumEntry Value="2" Name="BasedOnCurrentMoveParam" Description=""/>
+            <EnumEntry Value="3" Name="AbsoluteAnimationID" Description=""/>
         </Enum>
         <Enum Name="AnimLayerIndex">
             <EnumEntry Value="0" Name="Wait" Description=""/>
@@ -425,8 +425,8 @@
             <EnumEntry Value="5" Name="Attack" Description=""/>
             <EnumEntry Value="6" Name="SpecialAttack" Description=""/>
             <EnumEntry Value="7" Name="Action" Description=""/>
-            <EnumEntry Value="8" Name="Damage S" Description=""/>
-            <EnumEntry Value="9" Name="Damage L" Description=""/>
+            <EnumEntry Value="8" Name="DamageS" Description=""/>
+            <EnumEntry Value="9" Name="DamageL" Description=""/>
             <EnumEntry Value="10" Name="Event" Description=""/>
             <EnumEntry Value="11" Name="ExtraAnim" Description=""/>
             <EnumEntry Value="12" Name="TaeExtraAnim" Description=""/>

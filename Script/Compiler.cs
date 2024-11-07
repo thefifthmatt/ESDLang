@@ -19,6 +19,8 @@ using SoulsFormats;
 
 using static ESDLang.EzSemble.AST;
 using static ESDLang.Script.Common;
+using ESDLang.Doc;
+using static ESDLang.Script.Decompiler;
 
 namespace ESDLang.Script
 {
@@ -26,6 +28,7 @@ namespace ESDLang.Script
     {
         private readonly EzSembleContext ezContext;
         private readonly ESDOptions options;
+
         public Compiler(EzSembleContext ezContext, ESDOptions options)
         {
             this.ezContext = ezContext;
@@ -75,6 +78,7 @@ namespace ESDLang.Script
             }
             return ret;
         }
+
         public ESD MakeESD(string mEsd, Dictionary<int, Machine> machines, ESD o)
         {
             ESD esd = new ESD(o.LongFormat, o.DarkSoulsCount);
@@ -541,14 +545,14 @@ namespace ESDLang.Script
                 {
                     if (ann.Type == ProgAnnotationType.Pass)
                     {
-                        if (mode == ControlMode.POST_CONDITION)
+                        // Previously this could only transition from POST_CONDITION, but a few examples outside of DS1
+                        // use it as the only command in the state, like t241314_1 in Bloodborne, AC6 in t010420000_x21
+                        if (mode != ControlMode.POST_CONDITION)
                         {
-                            mode = ControlMode.POST_CONDITION_PASS;
+                            cond = new Condition();
+                            // context.Error($"Can only use \"\"\"Pass\"\"\" annotation directly after a condition branch");
                         }
-                        else
-                        {
-                            context.Error("Can only use \"\"\"Pass\"\"\" annotation directly after a condition branch");
-                        }
+                        mode = ControlMode.POST_CONDITION_PASS;
                     }
                     else if (ann.Type == ProgAnnotationType.States)
                     {
@@ -863,7 +867,7 @@ namespace ESDLang.Script
                 // TODO: ElseStatement
                 if (debug) Console.WriteLine($"{sp}Loop");
                 ProgLoop loopNode = new ProgLoop();
-                if (loop.Test is Py.NameExpression name && name.Name == "True")
+                if (hasBool(loop.Test, out bool loopBool) && loopBool)
                 {
                     // Unnamed loop
                 }
@@ -893,7 +897,7 @@ namespace ESDLang.Script
                     next.Branches.Add(branch);
                     if (debug) Console.WriteLine($"{sp}Cond");
                     Expr condExpr = null;
-                    if (!(test.Test is Py.NameExpression name && name.Name == "True"))
+                    if (!(hasBool(test.Test, out bool testBool) && testBool))
                     {
                         condExpr = WalkExpr(test.Test, condContext, d + 1);
                     }
@@ -1054,7 +1058,7 @@ namespace ESDLang.Script
             {
                 // This is used to return specific values. BB+ only
                 ProgReturn retNode = new ProgReturn();
-                if (ret.Expression is Py.ConstantExpression ce && ce.Value is int val)
+                if (ret.Expression is Py.ConstantExpression ce && hasInt(ce, out int val))
                 {
                     retNode.Value = val;
                 }
@@ -1111,10 +1115,44 @@ namespace ESDLang.Script
         private static bool hasSimpleArg<T>(Py.CallExpression call, out T arg)
         {
             arg = default(T);
-            if (call.Args.Count != 1 || call.Args[0].Name != null) return false;
-            if (call.Args[0].Expression is Py.ConstantExpression ce && ce.Value is T val)
+            // IP2: call.Args[0].Name != null, Args[0].Expression
+            if (call.Args.Count != 1 || call.Kwargs.Count > 0) return false;
+            if (call.Args[0] is Py.ConstantExpression ce && ce.Value is T val)
             {
                 arg = val;
+                return true;
+            }
+            return false;
+        }
+        private static bool hasBool(Py.Expression expr, out bool val)
+        {
+            // IP2, different representation
+            if (expr is Py.NameExpression name)
+            {
+                val = name.Name == "True";
+                return true;
+            }
+            else if (expr is Py.ConstantExpression ce && ce.Value is bool cb)
+            {
+                val = cb;
+                return true;
+            }
+            val = false;
+            return false;
+        }
+        private static bool hasInt(Py.ConstantExpression expr, out int val)
+        {
+            // IP2: it's now long instead
+            val = 0;
+            if (expr.Value is int ival)
+            {
+                val = ival;
+                return true;
+            }
+            else if (expr.Value is long lval)
+            {
+                // Can use safer cast here?
+                val = (int)lval;
                 return true;
             }
             return false;
@@ -1122,20 +1160,34 @@ namespace ESDLang.Script
         private static bool hasConstant(Py.Expression expr, out object val)
         {
             val = null;
-            if (expr is Py.UnaryExpression unary && unary.Op == PythonOperator.Negate && hasConstant(unary.Expression, out object bval))
+            // IP2: unary.Op
+            if (expr is Py.UnaryExpression unary && unary.Operator == PythonOperator.Negate && hasConstant(unary.Expression, out object uval))
             {
-                if (bval is int ival) val = -ival;
-                else if (bval is float fval) val = -fval;
-                else if (bval is double dval) val = -dval;
+                if (uval is int ival) val = -ival;
+                else if (uval is float fval) val = -fval;
+                else if (uval is double dval) val = -dval;
                 if (val != null)
                 {
                     return true;
                 }
             }
-            if (expr is Py.ConstantExpression ce && (ce.Value is int || ce.Value is float || ce.Value is double || ce.Value is string))
+            if (expr is Py.ConstantExpression ce)
             {
-                val = ce.Value;
-                return true;
+                if (ce.Value is int || ce.Value is long || ce.Value is float || ce.Value is double || ce.Value is string)
+                {
+                    val = ce.Value;
+                    return true;
+                }
+                else if (ce.Value is long lval)
+                {
+                    val = (int)lval;
+                    return true;
+                }
+                else if (ce.Value is bool bval)
+                {
+                    val = bval ? 1 : 0;
+                    return true;
+                }
             }
             return false;
         }
@@ -1190,7 +1242,9 @@ namespace ESDLang.Script
                 if (debug) Console.WriteLine($"{sp}Name {name}");
                 // TODO: Validate name. This is at least done later when writing out the ESD.
                 SortedDictionary<int, Expr> indexArgs = new SortedDictionary<int, Expr>();
-                foreach (Py.Arg arg in call.Args)
+                // IP2: Py.Arg arg had these fields
+                List<(Py.Expression Expression, string Name)> combinedArgs = call.Args.Select(a => (a, (string)null)).Concat(call.Kwargs.Select(a => (a.Expression, a.Name))).ToList();
+                foreach (var arg in combinedArgs)
                 {
                     if (debug) Console.WriteLine($"{sp}Arg {arg.Name}");
                     // Note: arg names * and ** are used to mean unpacked args
@@ -1205,7 +1259,7 @@ namespace ESDLang.Script
                         CommandParam param = context.Param(name, arg.Name);
                         if (param == null)
                         {
-                            context.Error(arg, $"Unrecognized function arg {arg.Name} calling {name}");
+                            context.Error(call, $"Unrecognized function arg {arg.Name} calling {name}");
                         }
                         else
                         {
@@ -1214,7 +1268,7 @@ namespace ESDLang.Script
                     }
                     else
                     {
-                        context.Error(arg, $"Function {name} does not support named arguments");
+                        context.Error(call, $"Function {name} does not support named arguments");
                         indexArgs[indexArgs.Count] = expr;
                     }
                 }
@@ -1296,15 +1350,16 @@ namespace ESDLang.Script
                 }
                 else
                 {
-                    context.Error(node, $"Unknown constant type {val.GetType()}");
+                    context.Error(node, $"Unknown constant type");
                     return new Unknown();
                 }
             }
             else if (node is Py.UnaryExpression unary)
             {
-                if (debug) Console.WriteLine($"{sp}UnOp {unary.Op}");
+                PythonOperator op = unary.Operator; // IP2: unary.Op
+                if (debug) Console.WriteLine($"{sp}UnOp {op}");
                 Expr arg = WalkExpr(unary.Expression, context, d + 1);
-                switch (unary.Op)
+                switch (op)
                 {
                     case PythonOperator.Not:
                         return new BinaryExpr { Op = "==", Lhs = arg, Rhs = new ConstExpr { Value = 0 } };
@@ -1313,7 +1368,7 @@ namespace ESDLang.Script
                         if (hasConstant(unary, out object val)) return new ConstExpr { Value = val };
                         return new UnaryExpr { Op = "N", Arg = arg };
                     default:
-                        context.Error(node, $"Unsupported operator {unary.Op}");
+                        context.Error(node, $"Unsupported operator {op}");
                         return new Unknown();
                 }
             }
@@ -1335,7 +1390,7 @@ namespace ESDLang.Script
                     case PythonOperator.Add: op = "+"; break;
                     case PythonOperator.Subtract: op = "-"; break;
                     case PythonOperator.Multiply: op = "*"; break;
-                    case PythonOperator.Divide: op = "/"; break;
+                    case PythonOperator.TrueDivide: op = "/"; break; // IP2: Divide
                     default:
                         context.Error(node, $"Unsupported operator {bin.Operator}");
                         return new Unknown();
@@ -1377,14 +1432,14 @@ namespace ESDLang.Script
             else if (node is Py.IndexExpression index)
             {
                 if (debug) Console.WriteLine($"{sp}Index {index.Index} or {index.Target}");
-                if (index.Target is Py.NameExpression iname && iname.Name == "args" && index.Index is Py.ConstantExpression ic && ic.Value is int ival)
+                if (index.Target is Py.NameExpression iname && iname.Name == "args" && index.Index is Py.ConstantExpression ic && hasInt(ic, out int ival))
                 {
                     // This happens without any real validation. May cause issues potentially?
                     return new FunctionCall { Name = "StateGroupArg", Args = new List<Expr> { new ConstExpr { Value = ival } } };
                 }
                 else
                 {
-                    context.Error(node);
+                    context.Error(node, "Unsupported index expression");
                     return new Unknown();
                 }
             }
@@ -1392,13 +1447,34 @@ namespace ESDLang.Script
             {
                 // Could be useful for something at some point?
                 if (debug) Console.WriteLine($"{sp}Member {mem.Name} of {mem.Target}");
-                context.Error(node);
+                if (mem.Target is Py.NameExpression iname && EzSembleContext.UseNew)
+                {
+                    if (ezContext.Doc.Enums.TryGetValue(iname.Name, out ESDDocumentation.EnumDoc enumDoc))
+                    {
+                        if (enumDoc.Values.TryGetValue(mem.Name, out int value))
+                        {
+                            return new ConstExpr { Value = value };
+                        }
+                        else
+                        {
+                            context.Error(node, $"Unknown enum value {iname.Name}.{mem.Name}");
+                        }
+                    }
+                    else
+                    {
+                        context.Error(node, $"Unknown enum name {iname.Name}");
+                    }
+                }
+                else
+                {
+                    context.Error(node, "Unsupported member expression");
+                }
                 return new Unknown();
             }
             else
             {
                 if (debug) Console.WriteLine($"{sp}Unknown {node}");
-                context.Error(node);
+                context.Error(node, "Unsupported expression");
                 return new Unknown();
             }
         }

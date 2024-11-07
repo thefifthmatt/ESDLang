@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using ESDLang.Doc;
+using ESDLang.EzSemble;
 using SoulsFormats;
 using SoulsIds;
 
@@ -27,7 +28,9 @@ namespace ESDLang.Script
             public List<int> Calls = new List<int>();
             public List<int> Prev = new List<int>();
             public List<int> Next = new List<int>();
+
             public override string ToString() => $"State({Machine}-{ID}, Entry=[{Entry}], While=[{While}], Exit=[{Exit}], {string.Join(", ", Conditions)})";
+
             public void VisitConds(AstVisitor visitor, List<Condition> conds=null)
             {
                 if (conds == null) conds = Conditions;
@@ -44,6 +47,7 @@ namespace ESDLang.Script
                     VisitConds(visitor, cond.Sub);
                 }
             }
+
             public void Visit(AstVisitor visitor)
             {
                 if (Entry != null) Entry.Visit(visitor);
@@ -51,8 +55,40 @@ namespace ESDLang.Script
                 if (Exit != null) Exit.Visit(visitor);
                 VisitConds(visitor);
             }
+
             public List<List<Condition>> FlattenConds() => Conditions.SelectMany(cond => cond.Flatten()).ToList();
+
+            // Optimization to reduce redundant conditions and gotos
+            // Needs more investigation across games
+            public List<Condition> CombineConds()
+            {
+                List<Condition> conds = Conditions.SelectMany(cond => cond.Flatten()).Select(cs => Condition.Combine(cs, true)).ToList();
+                if (conds.Count <= 1) return conds;
+                List<int> eligible = null;
+                // Try to have a fast-ish path here
+                for (int i = 0; i < conds.Count - 1; i++)
+                {
+                    if (conds[i].TargetState is int t1 && conds[i + 1].TargetState is int t2 && t1 == t2
+                        && conds[i].Expr != null && conds[i].Pass == null
+                        && conds[i + 1].Expr != null && conds[i + 1].Pass == null)
+                    {
+                        if (eligible == null) eligible = Enumerable.Range(-conds.Count, conds.Count).ToList();
+                        eligible[i] = t1;
+                        eligible[i + 1] = t2;
+                    }
+                }
+                if (eligible == null) return conds;
+                // Now the linq spaghetti
+                List<List<Condition>> grouping = conds
+                    .Select((c, i) => (c, i))
+                    .GroupBy(e => eligible[e.Item2])
+                    .Select(g => g.Select(e => e.Item1).ToList())
+                    .ToList();
+                conds = grouping.Select(cs => Condition.Combine(cs, false)).ToList();
+                return conds;
+            }
         }
+
         public class Condition
         {
             public ESD.Condition Inner { get; set; }
@@ -60,7 +96,10 @@ namespace ESDLang.Script
             public List<Condition> Sub = new List<Condition>();
             public Block Pass { get; set; }
             public int? TargetState { get; set; }
-            public override string ToString() => $"Condition(TargetState={TargetState}, Expr={Expr}, Sub=[{string.Join(", ", Sub)}], Pass=[{Pass}])";
+            public int? DupeID { get; set; }
+
+            public override string ToString() => $"Condition({(DupeID is int ? $"DupeID={DupeID}, " : "")}TargetState={TargetState}, Expr={Expr}, Sub=[{string.Join(", ", Sub)}], Pass=[{Pass}])";
+
             public List<List<Condition>> Flatten()
             {
                 List<List<Condition>> ret = new List<List<Condition>>();
@@ -81,6 +120,7 @@ namespace ESDLang.Script
                 }
                 return ret;
             }
+
             // For this condition only, not subconditions
             public int CountCallUsages()
             {
@@ -92,12 +132,18 @@ namespace ESDLang.Script
                 if (Expr != null) Expr.Visit(AstVisitor.PostAct(countCalls));
                 return counts;
             }
+
             // Combines expressions for conditions, preserving most properties of the last one in the list
             public static Condition Combine(List<Condition> cond, bool and)
             {
                 if (cond.Count == 0) throw new Exception("None in list");
                 if (cond.Count == 1) return cond[0];
                 Condition baseCond = (Condition)cond.Last().MemberwiseClone();
+                // It's up to the caller to ensure null isn't important (especially in 'or' case)
+                if (cond.Take(cond.Count - 1).Any(c => c.Pass != null))
+                {
+                    throw new Exception($"Internal error: losing info in converting {string.Join(", ", cond)}");
+                }
                 List<Expr> exprs = cond.Where(c => c.Expr != null).Select(c => c.Expr).ToList();
                 if (exprs.Count == 0)
                 {
@@ -115,6 +161,14 @@ namespace ESDLang.Script
                 return baseCond;
             }
         }
+
+        public class ESDStructure
+        {
+            public SortedDictionary<int, SortedDictionary<int, State>> Machines { get; set; }
+            public Dictionary<int, MachineArgs> MachineArgs { get; set; }
+            public Dictionary<string, string> GlobalReplace { get; set; }
+        }
+
         public static string FormatMachine(int id)
         {
             string asHex = $"{id:X}";
@@ -127,6 +181,7 @@ namespace ESDLang.Script
             }
             return id.ToString();
         }
+
         public static bool ParseMachine(string mIdStr, out int mId)
         {
             if (!int.TryParse(mIdStr, out mId))
@@ -142,6 +197,7 @@ namespace ESDLang.Script
             }
             return true;
         }
+
         public static int MachineSort(int id)
         {
             string asHex = $"{id:X}";
@@ -152,7 +208,7 @@ namespace ESDLang.Script
             return id;
         }
 
-        // Shared AST used by both compiler and decompiler
+        // Shared program AST used by both compiler and decompiler
         public class Machine
         {
             public int ID { get; set; }
@@ -160,12 +216,14 @@ namespace ESDLang.Script
             public ProgramNode Unused { get; set; }
             public SortedDictionary<int, State> States { get; set; }
         }
+
         public abstract class ProgramNode
         {
             public int State = -1;
             public abstract bool IsEmpty();
             public static bool IsEmpty(ProgramNode node) => node == null || node.IsEmpty();
         }
+
         public class ProgError : ProgramNode
         {
             public override bool IsEmpty() => true;
@@ -309,7 +367,9 @@ namespace ESDLang.Script
             if (d == 0) Console.WriteLine();
         }
 
-        public static void PrintProgramNode(ProgramNode node, int indent, Dictionary<string, string> replace, Universe u = null)
+        public record PrintData(Universe Universe, ESDOptions Options);
+
+        public static void PrintProgramNode(ProgramNode node, int indent, Dictionary<string, string> replace, PrintData data = null)
         {
             string col = "    ";
             string sp = string.Concat(Enumerable.Repeat(col, indent));
@@ -319,11 +379,19 @@ namespace ESDLang.Script
                 {
                     Console.WriteLine($"{sp}# {name}");
                 }
-                string comment = WriteSourceInfo(u, statement: statement, expr: expr);
-                if (comment != null)
+                bool combine = false;
+                List<string> comments = WriteSourceInfo(data, statement: statement, expr: expr);
+                if (comments.Count > 0)
                 {
-                    comment = comment.Replace("\r", "").Replace("\n", "\\n");
-                    Console.WriteLine($"{sp}# {comment}");
+                    if (combine)
+                    {
+                        comments = new List<string> { string.Join(", ", comments) };
+                    }
+                    foreach (string str in comments)
+                    {
+                        string comment = str.Replace("\r", "").Replace("\n", "\\n");
+                        Console.WriteLine($"{sp}# {comment}");
+                    }
                 }
             }
             if (node is ProgAnnotation label)
@@ -362,46 +430,55 @@ namespace ESDLang.Script
             else if (node is ProgNext next)
             {
                 List<ProgBranch> branches = next.Branches;
-                bool inlineCall = next.Call != null && branches.All(br => br.CallUsages == 1);
+                // bool inlineCall = next.Call != null && branches.All(br => br.CallUsages == 1);
                 if (branches.Count == 1)
                 {
                     ProgBranch branch = branches[0];
                     Dictionary<string, string> subreplace = replace;
-                    if (inlineCall)
+                    if (next.Call != null)
                     {
-                        // Preblock is an issue here...
-                        maybeComment(statement: next.Call, name: next.CallDoc);
-                        subreplace = new Dictionary<string, string>(replace);
-                        subreplace["done"] = subreplace["result"] = WriteStatement(null, next.Call, replace);
-                    }
-                    else if (next.Call != null)
-                    {
-                        maybeComment(statement: next.Call, name: next.CallDoc);
-                        Console.WriteLine(WriteStatement($"{sp}call = ", next.Call, replace));
+                        if (branch.CallUsages == 1)
+                        {
+                            // Preblock is an issue here...
+                            maybeComment(statement: next.Call, name: next.CallDoc);
+                            // TODO: Is this expensive for very large ESDs?
+                            subreplace = new Dictionary<string, string>(replace);
+                            // This isn't just getting thrown away because next.Call != null means it's a specialCmd which
+                            // is the last one in the block, and the CallUsage must be due to branch.Cond.Expr != null.
+                            // This system is not great given how complicated the invariants are - can this be transformed before printing?
+                            // This can't easily use StringTree, so hopefully most calls are short.
+                            subreplace["done"] = subreplace["result"] = WriteStatement(null, next.Call, replace);
+                        }
+                        else
+                        {
+                            maybeComment(statement: next.Call, name: next.CallDoc);
+                            Console.WriteLine(WriteStatement($"{sp}call = ", next.Call, replace));
+                        }
                     }
                     if (next.PreBranch != null)
                     {
-                        PrintProgramNode(next.PreBranch, indent, replace, u);
+                        PrintProgramNode(next.PreBranch, indent, replace, data);
                     }
                     if (branch.Cond.Expr != null)
                     {
                         maybeComment(expr: branch.Cond.Expr);
                         Console.WriteLine(WordWrap($"{sp}assert ", WriteExpr(branch.Cond.Expr, subreplace).Split(' ')));
                     }
-                    PrintProgramNode(branch.Result, indent, replace, u);
+                    PrintProgramNode(branch.Result, indent, replace, data);
                 }
                 else
                 {
                     Dictionary<string, string> subreplace = replace;
                     if (next.Call != null)
                     {
-                        // TODO: Also use inline call? But that would require syntax to identify when it's being used
+                        // TODO: Also use inline call? But that would require syntax to identify when it's being used.
+                        // As a result, subreplace is not getting updated.
                         maybeComment(statement: next.Call, name: next.CallDoc);
                         Console.WriteLine(WriteStatement($"{sp}call = ", next.Call, replace));
                     }
                     if (next.PreBranch != null)
                     {
-                        PrintProgramNode(next.PreBranch, indent, replace, u);
+                        PrintProgramNode(next.PreBranch, indent, replace, data);
                     }
                     int num = 0;
                     foreach (ProgBranch branch in branches)
@@ -440,14 +517,14 @@ namespace ESDLang.Script
                             }
                             foreach (ProgAnnotation ann in progs)
                             {
-                                PrintProgramNode(ann, indent + 1, replace, u);
+                                PrintProgramNode(ann, indent + 1, replace, data);
                             }
                             // This is not strictly needed if there are ProgAnnotations, but it makes output not dependent on printing them or not
                             Console.WriteLine($"{sp}{col}pass");
                         }
                         else
                         {
-                            PrintProgramNode(branch.Result, indent + 1, replace, u);
+                            PrintProgramNode(branch.Result, indent + 1, replace, data);
                         }
                         num++;
                     }
@@ -489,7 +566,7 @@ namespace ESDLang.Script
                 {
                     Console.WriteLine($"{sp}while Loop('{loop.Label}'):");
                 }
-                PrintProgramNode(loop.Node, indent + 1, replace, u);
+                PrintProgramNode(loop.Node, indent + 1, replace, data);
             }
             else if (node is ProgSeq seq)
             {
@@ -507,7 +584,7 @@ namespace ESDLang.Script
                 }
                 foreach (ProgramNode sub in nodes)
                 {
-                    PrintProgramNode(sub, indent, replace, u);
+                    PrintProgramNode(sub, indent, replace, data);
                 }
             }
         }
@@ -522,12 +599,14 @@ namespace ESDLang.Script
             // If checked for equality with a constant
             public bool Check { get; set; }
         }
+
         public class IdExtractor
         {
             public List<int> Indices { get; set; }
             public Func<List<int>, Obj> Extract { get; set; }
             public Namespace Type { get; set; }
         }
+
         public class ValueSource
         {
             public ConstExpr Value { get; set; }
@@ -535,6 +614,7 @@ namespace ESDLang.Script
             // public List<ValueUsage> Usages = new List<ValueUsage>();
             public Dictionary<ValueUsage, List<Obj>> Usages = new Dictionary<ValueUsage, List<Obj>>();
         }
+
         public class MachineArgs
         {
             public int ID { get; set; }
@@ -547,6 +627,7 @@ namespace ESDLang.Script
             // The final inferred list of params
             public List<CommandParam> Params = new List<CommandParam>();
         }
+
         public class CommandParam
         {
             public string Name { get; set; }
@@ -554,11 +635,20 @@ namespace ESDLang.Script
             public object Default { get; set; }
             public bool HideInCall { get; set; }
         }
-        public static string WriteSourceInfo(Universe u, Statement statement = null, Expr expr = null)
+
+        public static List<string> WriteSourceInfo(PrintData data, Statement statement = null, Expr expr = null)
         {
-            if (u == null) return null;
+            Universe u = data?.Universe;
+            if (u == null) return new List<string>();
+            bool multiline = data.Options?.Flag("dialogue") ?? true;
             List<ValueSource> sources = new List<ValueSource>();
-            void addSource(Expr e) { if (e.SourceInfo != null) sources.Add((ValueSource)e.SourceInfo); }
+            void addSource(Expr e)
+            {
+                if (e.SourceInfo != null)
+                {
+                    sources.Add((ValueSource)e.SourceInfo);
+                }
+            }
             if (statement != null) statement.Visit(AstVisitor.PreAct(addSource));
             if (expr != null) expr.Visit(AstVisitor.PreAct(addSource));
             List<string> infos = new List<string>();
@@ -571,18 +661,120 @@ namespace ESDLang.Script
                     {
                         if (objs.Contains(obj) || !u.Names.ContainsKey(obj)) continue;
                         objs.Add(obj);
+                        if (obj.Type == Namespace.Talk)
+                        {
+                            int talkId = int.Parse(obj.ID);
+                            int i = 0;
+                            while (true)
+                            {
+                                Obj text = Obj.Talk(talkId + i);
+                                // TODO: Can universe be null here?
+                                if (!u.Names.ContainsKey(text)) break;
+                                infos.Add($"{u.Name(text)}");
+                                if (!multiline) break;
+                                i++;
+                            }
+                            continue;
+                        }
                         infos.Add($"{(u == null ? obj.ToString() : u.Name(obj))}");
                     }
                 }
             }
-            return infos.Count == 0 ? null : string.Join(", ", infos);
+            return infos;
+        }
+
+        private readonly static int LineWidth = 110;
+        private readonly static string SingleIndent = "    ";
+
+        // For pretty printing recursive structures, based on DarkScript3
+        // TODO finish implementing
+        /*
+         * Because things can get super heavily indented, there's still a line-local limit.
+         * Patterns:
+         * if (x and y
+         *     and z and v):
+         * if (x
+         *     and y
+         *     and z):
+         * funcline(
+         *     a=1, b=2,
+         *     c=3, d=4)
+         * funcline(
+         *     a=1,
+         *     b=2,
+         *     c=3)
+         * (b1
+         *  and not (c1
+         *           and d2))
+         */
+        public class StringTree
+        {
+            public string Start = "";
+            public List<StringTree> Children { get; set; }
+            public string Sep = "";
+            public string End = "";
+            private int _Length;
+
+            private int Length
+            {
+                get
+                {
+                    if (_Length == 0)
+                    {
+                        _Length = (Children != null ? Children.Sum(c => c.Length) + Sep.Length * (Children.Count - 1) : 0) + Start.Length + End.Length;
+                    }
+                    return _Length;
+                }
+            }
+
+            // A simple unbreakable string
+            public static StringTree Of(object s) => new StringTree { Start = s.ToString() };
+            // A start which can appear on its own line when the rest of it is too long
+            public static StringTree IsolatedStart(string start, StringTree mid, string end) => new StringTree
+            {
+                Children = new List<StringTree> { Of(start), mid },
+                End = end
+            };
+            // A start where the rest of it can be broken up, but it doesn't appear on its own line.
+            public static StringTree CombinedStart(string start, StringTree mid, string end) => new StringTree
+            {
+                Start = start,
+                Children = new List<StringTree> { mid },
+                End = end
+            };
+
+            private string RenderOneLine() => Start + (Children == null ? "" : string.Join(Sep, Children.Select(c => c.RenderOneLine()))) + End;
+
+            public string Render(string sp)
+            {
+                // TODO: Consider passing in a StringBuilder to use recursively for a rather minor efficiency gain.
+                // Most printed lines won't use StringTree in any case.
+                if (Children == null || Children.Count == 0 || sp.Length + Length <= LineWidth)
+                {
+                    return RenderOneLine();
+                }
+                string sp2 = sp + SingleIndent;
+                if (Children.Count == 1)
+                {
+                    return Start + Children[0].Render(sp) + End;
+                }
+                StringBuilder ret = new StringBuilder();
+                ret.AppendLine(Start + Children[0].Render(sp));
+                for (int i = 1; i < Children.Count - 1; i++)
+                {
+                    ret.AppendLine(sp2 + Sep.TrimStart() + Children[i].Render(sp2));
+                }
+                ret.Append(sp2 + Sep.TrimStart() + Children[Children.Count - 1].Render(sp2) + End);
+                return ret.ToString();
+            }
         }
 
         // Utilities to output Python
+        // TODO: Rectangle rule please
         public static string WordWrap(string prefix, string[] words, bool alwaysParens = false)
         {
             string text;
-            if (prefix.Length + words.Select(w => w.Length).Sum() < 100)
+            if (prefix.Length + words.Select(w => w.Length).Sum() < LineWidth)
             {
                 text = string.Join(" ", words);
             }
@@ -590,7 +782,7 @@ namespace ESDLang.Script
             {
                 StringBuilder sb = new StringBuilder();
                 string spPrefix = string.Concat(Enumerable.Repeat(' ', prefix.Length + 1));
-                int localLimit = Math.Max(100 - spPrefix.Length, 40);
+                int localLimit = Math.Max(LineWidth - spPrefix.Length, 40);
                 int cur = 0;
                 bool first = true;
                 foreach (string word in words)
@@ -612,12 +804,13 @@ namespace ESDLang.Script
             }
             return prefix + (alwaysParens || text.Contains("\n") ? $"({text})" : text);
         }
+
         public static string WriteStatement(string prefix, Statement st, Dictionary<string, string> replace = null)
         {
             string name = st.Name;
             List<string> args = st.Args.Select(e => WriteExpr(e, replace: replace)).ToList();
             if (name == "7:-1") return $"return {args.FirstOrDefault()}";
-            if (name.Contains(":"))
+            if (name.Contains(':'))
             {
                 string[] parts = name.Split(':');
                 name = $"c{parts[0]}_{parts[1]}";
@@ -628,7 +821,15 @@ namespace ESDLang.Script
             args = args.Select((arg, i) => arg + (i == st.Args.Count - 1 ? "" : ",")).ToList();
             return prefix == null ? $"{name}({string.Join(" ", args)})" : WordWrap(prefix + name, args.ToArray(), alwaysParens: true);
         }
-        public static string WriteExpr(Expr expr, Dictionary<string, string> replace = null, string parent=null, bool rhs=false)
+
+        public static bool HasBoolOp(Expr expr)
+        {
+            return expr is BinaryExpr be2 && BoolOps.Contains(be2.Op)
+                || expr is UnaryExpr ue2 && BoolOps.Contains(ue2.Op)
+                ;//|| expr is FunctionCall fn && fn.Method != null && fn.Method.BinaryReturn;
+        }
+
+        public static string WriteExpr(Expr expr, Dictionary<string, string> replace = null, string parent = null, bool rhs = false)
         {
             string s;
             if (expr is ConstExpr ce)
@@ -640,11 +841,33 @@ namespace ESDLang.Script
                 else
                 {
                     s = ce.Value.ToString();
+                    // Special formatting. This is purely an output-time thing for the time being.
+                    if (EzSembleContext.UseNew && expr.ArgDoc != null && ce.TryAsInt(out int enumVal))
+                    {
+                        if (expr.ArgDoc.Enum != null && expr.ArgDoc.Enum.Names.TryGetValue(enumVal, out string enumName))
+                        {
+                            // Is this always the formatting to use? Flags may want to use ON/OFF
+                            s = $"{expr.ArgDoc.Enum.Name}.{enumName}";
+                        }
+                        else if (expr.ArgDoc.Type == "bool" && (enumVal == 0 || enumVal == 1))
+                        {
+                            s = enumVal == 1 ? "True" : "False";
+                        }
+                    }
                 }
             }
             else if (expr is UnaryExpr ue)
             {
-                s = $"{getPythonOp(ue.Op)}{WriteExpr(ue.Arg, parent: ue.Op, replace: replace)}";
+                // Unary case: (not 1) == 1
+                string op = getPythonOp(ue.Op);
+                s = $"{op}{(op == "not" ? " " : "")}{WriteExpr(ue.Arg, parent: op, replace: replace)}";
+                if (parent == null) return s;
+                int prec1 = pythonOpPrec[parent];
+                int prec2 = pythonOpPrec[op];
+                if (prec1 > prec2)
+                {
+                    s = $"({s})";
+                }
             }
             else if (expr is BinaryExpr be)
             {
@@ -659,15 +882,6 @@ namespace ESDLang.Script
                     }
                     string lhs = replace != null && replace.ContainsKey("result") ? replace["result"] : "call.Get()";
                     s = $"{lhs} {op} {WriteExpr(be.Rhs, parent: op, rhs: true, replace: replace)}";
-                }
-                else if (op == "==" && be.Rhs is ConstExpr bce && bce.Value.ToString() == "0")
-                {
-                    op = "not";
-                    s = $"{op} {WriteExpr(be.Lhs, parent: op, rhs: true, replace: replace)}";
-                }
-                else if (op == "==" && be.Rhs is ConstExpr bce2 && bce2.Value.ToString() == "1" && be.Lhs is BinaryExpr be2 && BoolOps.Contains(be2.Op))
-                {
-                    return WriteExpr(be.Lhs, parent: parent, replace: replace);
                 }
                 else
                 {
@@ -714,6 +928,7 @@ namespace ESDLang.Script
             else throw new Exception($"Unknown expression subclass {expr.GetType()} in current context");
             return s;
         }
+
         public static bool TryEvalInt(Expr expr, out int ret, Dictionary<int, int> args=null)
         {
             ret = 0;
@@ -767,16 +982,20 @@ namespace ESDLang.Script
             }
             return false;
         }
-        public static HashSet<string> BoolOps = new HashSet<string> { "&&", "||", "<", "<=", ">", ">=", "!=", "==" };
+
         public static HashSet<string> ComparisonOps = new HashSet<string> { "<", "<=", ">", ">=", "!=", "==" };
+
+        private static HashSet<string> BoolOps = new HashSet<string> { "!", "&&", "||", "<", "<=", ">", ">=", "!=", "==" };
         private static List<string> pythonOpPrecs = new List<string> { "or", "and", "not", "< <= > >= != ==", "+ -", "* /", "N" };
         private static Dictionary<string, int> pythonOpPrec = pythonOpPrecs.SelectMany((ops, i) => ops.Split(' ').Select(op => (op, i))).ToDictionary(i => i.Item1, i => i.Item2);
-        private static string getPythonOp(string op)
+        private static Dictionary<string, string> astToPythonOps = new Dictionary<string, string>
         {
-            if (op == "&&") return "and";
-            if (op == "||") return "or";
-            if (op == "N") return "-";
-            return op;
-        }
+            ["&&"] = "and",
+            ["||"] = "or",
+            ["N"] = "-",
+            ["!"] = "not",
+        };
+
+        private static string getPythonOp(string op) => astToPythonOps.TryGetValue(op, out string pyOp) ? pyOp : op;
     }
 }

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PARAMDEF XmlVersion="3">
+  <ParamType>PARTS_DRAW_PARAM_ST</ParamType>
+  <DataVersion>5</DataVersion>
+  <BigEndian>False</BigEndian>
+  <Unicode>True</Unicode>
+  <FormatVersion>203</FormatVersion>
+  <Fields>
+    <Field Def="s32 reserve"></Field>
+    <Field Def="f32 lv01_BorderDist"></Field>
+    <Field Def="f32 lv01_PlayDist"></Field>
+    <Field Def="f32 lv12_BorderDist"></Field>
+    <Field Def="f32 lv12_PlayDist"></Field>
+    <Field Def="f32 lv23_BorderDist"></Field>
+    <Field Def="f32 lv23_PlayDist"></Field>
+    <Field Def="f32 lv34_BorderDist"></Field>
+    <Field Def="f32 lv34_PlayDist"></Field>
+    <Field Def="f32 lv45_BorderDist"></Field>
+    <Field Def="f32 lv45_PlayDist"></Field>
+    <Field Def="f32 tex_lv01_BorderDist"></Field>
+    <Field Def="f32 tex_lv01_PlayDist"></Field>
+    <Field Def="u32 enableCrossFade:1"></Field>
+    <Field Def="s32 UnkInt0x38"></Field>
+    <Field Def="s32 UnkInt0x3C"></Field>
+    <Field Def="s32 UnkInt0x40"></Field>
+    <Field Def="f32 UnkInt0x44"></Field>
+    <Field Def="f32 UnkInt0x48"></Field>
+    <Field Def="u8 UnkInt0x5C"></Field>
+    <Field Def="u8 UnkInt0x5D"></Field>
+    <Field Def="u8 UnkInt0x5E"></Field>
+    <Field Def="u8 UnkInt0x5F"></Field>
+    <Field Def="f32 drawDist"></Field>
+    <Field Def="f32 drawFadeRange"></Field>
+    <Field Def="f32 shadowDrawDist"></Field>
+    <Field Def="f32 shadowFadeRange"></Field>
+    <Field Def="f32 motionBlur_BorderDist"></Field>
+    <Field Def="s8 isPointLightShadowSrc"></Field>
+    <Field Def="s8 isDirLightShadowSrc"></Field>
+    <Field Def="s8 isShadowDst"></Field>
+    <Field Def="s8 isShadowOnly"></Field>
+    <Field Def="s8 drawByReflectCam"></Field>
+    <Field Def="s8 drawOnlyReflectCam"></Field>
+    <Field Def="s8 0x6a"></Field>
+    <Field Def="u8 drawLodType"></Field>
+    <Field Def="f32 DistantViewModel_BorderDist"></Field>
+    <Field Def="f32 DistantViewModel_PlayDist"></Field>
+    <Field Def="f32 LimtedActivate_BorderDist_forGrid"></Field>
+    <Field Def="f32 LimtedActivate_PlayDist_forGrid"></Field>
+    <Field Def="f32 zSortOffsetForNoFarClipDraw"></Field>
+    <Field Def="f32 shadowDrawAlphaTestDist"></Field>
+    <Field Def="s8 fowardDrawEnvmapBlendType"></Field>
+    <Field Def="u8 Unk0x85"></Field>
+    <Field Def="u8 Unk0x86"></Field>
+    <Field Def="u8 Unk0x87"></Field>
+    <Field Def="s32 UnkInt0x88"></Field>
+    <Field Def="s32 UnkInt0x8C"></Field>
+  </Fields>
+</PARAMDEF>

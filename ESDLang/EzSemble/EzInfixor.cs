@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ESDLang.Doc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,8 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static ESDLang.EzSemble.AST;
 using static ESDLang.EzSemble.Common;
+using static ESDLang.EzSemble.EzSembleContext;
+using static SoulsFormats.MSBAC6.Event;
 
 namespace ESDLang.EzSemble
 {
@@ -148,7 +151,17 @@ namespace ESDLang.EzSemble
                     else
                         return exp;
                 }
+            }
 
+            public static void AnnotateArgExprs(EzSembleContext context, ESDDocumentation.MethodDoc method, List<Expr> args)
+            {
+                if (method == null || method.Args == null) return;
+                int count = Math.Min(args.Count, method.Args.Count);
+                for (int i = 0; i < count; i++)
+                {
+                    Expr arg = args[i];
+                    arg.ArgDoc = method.Args[i];
+                }
             }
 
             public static Expr BytecodeToInfix(EzSembleContext context, byte[] Bytes)
@@ -165,6 +178,22 @@ namespace ESDLang.EzSemble
                     }
                     args.Reverse();
                     return args;
+                }
+                FunctionCall popCall(int amount)
+                {
+                    List<Expr> args = popArgs(amount);
+                    int id = exprs.Pop().AsInt();
+                    if (EzSembleContext.UseNew)
+                    {
+                        context.Doc.Functions.TryGetValue(id, out ESDDocumentation.MethodDoc methodDoc);
+                        AnnotateArgExprs(context, methodDoc, args);
+                        return new FunctionCall { Args = args, Name = methodDoc?.Name ?? $"f{id}", ID = id, Method = methodDoc, ArgDoc = methodDoc?.ReturnValue };
+                    }
+                    else
+                    {
+                        EzSembleMethodInfo method = context.GetFunctionInfo(id);
+                        return new FunctionCall { Args = args, Name = method.Name, ID = id };
+                    }
                 }
 
                 for (int i = 0; i < Bytes.Length; i++)
@@ -235,37 +264,37 @@ namespace ESDLang.EzSemble
                     }
                     else if (b == 0x84)
                     {
-                        exprs.Push(new FunctionCall { Args = popArgs(0), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
+                        exprs.Push(popCall(0));
                     }
                     else if (b == 0x85)
                     {
-                        exprs.Push(new FunctionCall { Args = popArgs(1), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
+                        exprs.Push(popCall(1));
                     }
                     else if (b == 0x86)
                     {
-                        exprs.Push(new FunctionCall { Args = popArgs(2), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
+                        exprs.Push(popCall(2));
                     }
                     else if (b == 0x87)
                     {
-                        exprs.Push(new FunctionCall { Args = popArgs(3), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
+                        exprs.Push(popCall(3));
                     }
                     else if (b == 0x88)
                     {
-                        exprs.Push(new FunctionCall { Args = popArgs(4), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
+                        exprs.Push(popCall(4));
                     }
                     else if (b == 0x89)
                     {
-                        exprs.Push(new FunctionCall { Args = popArgs(5), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
+                        exprs.Push(popCall(5));
                     }
                     else if (b == 0x8A)
                     {
-                        exprs.Push(new FunctionCall { Args = popArgs(6), Name = context.GetFunctionInfo(exprs.Pop().AsInt()).Name });
+                        exprs.Push(popCall(6));
                     }
                     else if (OperatorsByByte.ContainsKey(b))
                     {
-                        if (OperatorsByByte[b] == "N")
+                        if (UnaryOperators.Contains(b))
                         {
-                            exprs.Push(new UnaryExpr { Op = "N", Arg = exprs.Pop() });
+                            exprs.Push(new UnaryExpr { Op = OperatorsByByte[b], Arg = exprs.Pop() });
                         }
                         else
                         {
@@ -319,7 +348,14 @@ namespace ESDLang.EzSemble
                         exprs.Push(new Unknown { Opcode = b });
                     }
                 }
-                if (exprs.Count != 1) throw new Exception("Could not parse expr. Remaining stack: " + string.Join("; ", exprs) + $"; = {string.Join(" ", Bytes.Select(x => x.ToString("X2")))}");
+                if (exprs.Count != 1)
+                {
+                    string err = $"Could not parse expr:\n  Data: {string.Join(" ", Bytes.Select(x => x.ToString("X2")))}\n  Remaining stack: " + string.Join("; ", exprs);
+                    throw new Exception(err);
+                    // Console.WriteLine(err);
+                    // The actual result here seems to be the deepest entry in the stack (index 0)
+                    // return new FunctionCall { Args = new List<Expr> { exprs.Last() }, Name = "XXX" };
+                }
                 return exprs.Pop();
             }
 

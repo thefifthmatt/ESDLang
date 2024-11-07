@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ESDLang.Doc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -34,6 +35,9 @@ namespace ESDLang.EzSemble
         public class Statement
         {
             public string Name { get; set; }
+            // If a command, these are the ids
+            public int Bank { get; set; }
+            public int ID { get; set; }
             public List<Expr> Args { get; set; }
             public override string ToString() => $"{Name}({string.Join(", ", Args)})";
 
@@ -65,8 +69,11 @@ namespace ESDLang.EzSemble
         {
             // Any special handling if the expression is false. Seems to be no-op for game ESDs in DS3 and on, used for optimization.
             public FalseCond IfFalse { get; set; }
-            // Tag for AST node
+            // Tag for AST node. This is a ValueSource, is this runtime dependency inversion horror worth it?
             public object SourceInfo { get; set; }
+            // Arg info (and enum) for this expression in context, effectively used for typing info during decompilation.
+            // Potentially could be combined into SourceInfo. Really only useful for ConstExpr.
+            public ESDDocumentation.ArgDoc ArgDoc { get; set; }
 
             public int AsInt()
             {
@@ -218,7 +225,12 @@ namespace ESDLang.EzSemble
             // GetReg[0-7]()
             // StateGroupArg[<index>] (with brackets instead of parens for fun)
             public string Name { get; set; }
+            // If a command function, the function's id, set during decompilation
+            public int ID { get; set; } = -1;
             public List<Expr> Args { get; set; }
+
+            // Docs for real functions, set during decompilation
+            public ESDDocumentation.MethodDoc Method { get; set; }
         }
         public class BinaryExpr : Expr
         {
@@ -229,7 +241,7 @@ namespace ESDLang.EzSemble
         }
         public class UnaryExpr : Expr
         {
-            // Supported ops: N
+            // Supported ops: N !
             public string Op { get; set; }
             public Expr Arg { get; set; }
         }
@@ -245,9 +257,11 @@ namespace ESDLang.EzSemble
             public static AstVisitor Pre(Func<Expr, Expr> func) => new AstVisitor { Previsit = func };
             public static AstVisitor Pre(Func<Expr, Expr, Expr> func) => new AstVisitor { PrevisitParent = func };
             public static AstVisitor PreAct(Action<Expr> func) => new AstVisitor { Previsit = e => { func(e); return null; } };
+            public static AstVisitor PreAct(Action<Expr, Expr> func) => new AstVisitor { PrevisitParent = (e, parent) => { func(e, parent); return null; } };
             public static AstVisitor Post(Func<Expr, Expr> func) => new AstVisitor { Postvisit = func };
             public static AstVisitor Post(Func<Expr, Expr, Expr> func) => new AstVisitor { PostvisitParent = func };
             public static AstVisitor PostAct(Action<Expr> func) => new AstVisitor { Postvisit = e => { func(e); return null; } };
+            public static AstVisitor PostAct(Action<Expr, Expr> func) => new AstVisitor { PostvisitParent = (e, parent) => { func(e, parent); return null; } };
 
             // AST visitor functions.
             // If they return a non-null value, that node will be replaced in the tree, or returned at the top level.

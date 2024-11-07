@@ -6,6 +6,8 @@ using System.Text;
 using SoulsFormats;
 using static ESDLang.EzSemble.AST;
 using static ESDLang.EzSemble.Common;
+using System.Text.RegularExpressions;
+using ESDLang.Doc;
 
 namespace ESDLang.EzSemble
 {
@@ -105,9 +107,6 @@ namespace ESDLang.EzSemble
             };
         }
 
-        /// <summary>
-        /// Assembles a plain text "EzLanguage" script into a list of CommandCall's.
-        /// </summary>
         public static List<ESD.CommandCall> AssembleCommandScript(EzSembleContext context, string plaintext)
         {
             var result = new List<ESD.CommandCall>();
@@ -126,25 +125,68 @@ namespace ESDLang.EzSemble
             return result;
         }
 
+        private static (int, int) ParseCommandID(string name)
+        {
+            // With ESDDocumentation, this format is no longer necessary, but may require a FunctionCall rewrite to eradicate entirely
+            var regex = Regex.Match(name, @"(\d+):(-?\d+)");
+            if (regex.Groups.Count == 3
+                && int.TryParse(regex.Groups[1].Value, out int cmdBank)
+                && int.TryParse(regex.Groups[2].Value, out int cmdID))
+            {
+                return (cmdBank, cmdID);
+            }
+            else
+            {
+                throw new Exception($"Command name '{name}' does not exist in loaded documentation and" +
+                    $" couldn't be parsed as a <Bank>:<ID>() representation of the command.");
+            }
+        }
+
+        private static int ParseFunctionID(string name)
+        {
+            if (name.StartsWith("f") && int.TryParse(name.Substring(1), out int funcID))
+            {
+                return funcID;
+            }
+            else
+            {
+                throw new Exception($"Function name '{name}' does not exist in the loaded documentation and" +
+                    $" couldn't be parsed as a f<ID>() representation of the function.");
+            }
+        }
+
         public static List<ESD.CommandCall> AssembleCommandScript(EzSembleContext context, Block block)
         {
             var result = new List<ESD.CommandCall>();
             foreach (Statement st in block.Cmds)
             {
-                var cmdId = context.GetCommandID(st.Name);
-                result.Add(new ESD.CommandCall()
+                if (EzSembleContext.UseNew)
                 {
-                    CommandBank = cmdId.Bank,
-                    CommandID = cmdId.ID,
-                    Arguments = st.Args.Select(x => AssembleExpression(context, x)).ToList(),
-                });
+                    int bank, id;
+                    if (context.Doc.CommandsByName.TryGetValue(st.Name, out ESDDocumentation.MethodDoc methodDoc))
+                    {
+                        bank = methodDoc.Bank;
+                        id = methodDoc.ID;
+                    }
+                    else
+                    {
+                        (bank, id) = ParseCommandID(st.Name);
+                    }
+                }
+                else
+                {
+                    (int bank, int id) = context.GetCommandID(st.Name);
+                    result.Add(new ESD.CommandCall()
+                    {
+                        CommandBank = bank,
+                        CommandID = id,
+                        Arguments = st.Args.Select(x => AssembleExpression(context, x)).ToList(),
+                    });
+                }
             }
             return result;
         }
 
-        /// <summary>
-        /// Assembles an Expr into bytecode.
-        /// </summary>
         public static byte[] AssembleExpression(EzSembleContext context, Expr topExpr)
         {
             using (var ms = new MemoryStream())
@@ -183,7 +225,8 @@ namespace ESDLang.EzSemble
                         }
                         else throw new Exception($"Invalid type {ce.Value.GetType()} for ConstExpr {ce} in {topExpr}");
                     }
-                    else if (expr is UnaryExpr ue) {
+                    else if (expr is UnaryExpr ue)
+                    {
                         writeExpr(ue.Arg);
                         bw.Write(BytesByOperator[ue.Op]);
                     }
@@ -215,7 +258,22 @@ namespace ESDLang.EzSemble
                         }
                         else
                         {
-                            int id = context.GetFunctionID(name);
+                            int id;
+                            if (EzSembleContext.UseNew)
+                            {
+                                if (context.Doc.FunctionsByName.TryGetValue(name, out ESDDocumentation.MethodDoc methodDoc))
+                                {
+                                    id = methodDoc.ID;
+                                }
+                                else
+                                {
+                                    id = ParseFunctionID(name);
+                                }
+                            }
+                            else
+                            {
+                                id = context.GetFunctionID(name);
+                            }
                             if (id >= -64 && id <= 63)
                             {
                                 bw.Write((byte)(id + 64));

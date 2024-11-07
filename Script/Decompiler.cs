@@ -7,11 +7,13 @@ using ESDLang.EzSemble;
 using SoulsFormats;
 using SoulsIds;
 
-using static ESDLang.EzSemble.AST;
 using static SoulsIds.Universe;
 using static SoulsFormats.EDD;
+using static ESDLang.EzSemble.AST;
 using static ESDLang.Script.Util;
 using static ESDLang.Script.Common;
+using ESDLang.DLSE;
+using ESDLang.Doc;
 
 namespace ESDLang.Script
 {
@@ -22,7 +24,8 @@ namespace ESDLang.Script
         private readonly string esdId;
         private readonly Universe u;
         private readonly EDD edd;
-        public Decompiler(EzSembleContext ezContext, ESDOptions options, string esdId, Universe u=null, EDD edd=null)
+
+        public Decompiler(EzSembleContext ezContext, ESDOptions options, string esdId, Universe u = null, EDD edd = null)
         {
             this.ezContext = ezContext;
             this.options = options;
@@ -31,16 +34,86 @@ namespace ESDLang.Script
             this.edd = edd ?? new EDD();
         }
 
-        public void Decompile(ESD esd, TextWriter writer)
+        public void Decompile(object esd, TextWriter writer)
+        {
+            ESDStructure structure = ProcessESD(esd);
+
+            // Perform decompilation per machine
+            foreach (KeyValuePair<int, SortedDictionary<int, State>> machineEntry in structure.Machines.OrderBy(e => MachineSort(e.Key)))
+            {
+                int machine = machineEntry.Key;
+                SortedDictionary<int, State> states = machineEntry.Value;
+
+                // Print states - for determining whether to do AC6 condition combination
+                // Condition(TargetState=25, Expr=GetMissionState(2211, 1) == 1, Sub=[], Pass=[]),
+                // Condition(TargetState=25, Expr=GetEventFlag(8101) == 1, Sub=[], Pass=[]),
+                // Condition(TargetState=25, Expr=GetMissionState(2230, 1) == 1, Sub=[], Pass=[]),
+                // Condition(TargetState=4, Expr=AbortIfFalse(!GetMissionState(4010, 0) == 1) && !GetMissionState(4010, 1) == 1, Sub=[], Pass=[]),
+                // Condition(TargetState=5, Expr=, Sub=[], Pass=[]))
+                // if (FormatMachine(machine) == "x5")
+                // foreach (State state in states.Values) Console.WriteLine(state);
+
+                // Redirect stdout for Python output
+                TextWriter stdout = Console.Out;
+                try
+                {
+                    if (options.Flag("cfg"))
+                    {
+                        CFG stateCfg = CFG.FromStates(states);
+                        // stateCfg.Debug = stateCfg.Explain = true;
+                        stateCfg.Classify();
+                        Subtree tree = stateCfg.Structure();
+                        // Make a DAG of states.
+                        // If they have diamond structure, is fine. If they have multi join points, more difficult.
+                        Machine m = GetProgram(machine, states, tree, options.Flag("deadstates"));
+
+                        Console.SetOut(writer);
+                        PrintProgram(esdId, m, structure.MachineArgs[machine], structure.GlobalReplace);
+                    }
+                    else
+                    {
+                        // Individual state Python
+                        Machine m = GetProgram(machine, states, null, true);
+                        // m.Node = m.Unused;
+
+                        Console.SetOut(writer);
+                        PrintProgram(esdId, m, structure.MachineArgs[machine], structure.GlobalReplace);
+                    }
+                    Console.WriteLine();
+                }
+                finally
+                {
+                    Console.SetOut(stdout);
+                }
+            }
+        }
+
+        public SortedDictionary<int, SortedDictionary<int, State>> ProcessMachines(ESD esd)
         {
             SortedDictionary<int, SortedDictionary<int, State>> machines = new SortedDictionary<int, SortedDictionary<int, State>>();
-            Condition getCond(State state, ESD.Condition esdCond, bool sub=false)
+            // Dupe ids are not currently used, could be for chr esd to not be awful
+            bool calculateDupe = !false;
+            Dictionary<ESD.Condition, Condition> seenConditions = new Dictionary<ESD.Condition, Condition>();
+            int dupeIds = 0;
+            Condition getCond(State state, ESD.Condition esdCond, bool sub = false)
             {
                 Condition cond = new Condition
                 {
                     Inner = esdCond,
                     TargetState = (int?)esdCond.TargetState,
                 };
+                if (calculateDupe)
+                {
+                    if (seenConditions.TryGetValue(esdCond, out Condition existCond))
+                    {
+                        existCond.DupeID ??= dupeIds++;
+                        cond.DupeID = existCond.DupeID;
+                    }
+                    else
+                    {
+                        seenConditions[esdCond] = cond;
+                    }
+                }
                 Expr expr = EzSembler.DissembleExpression(ezContext, esdCond.Evaluator);
                 if (!(expr is ConstExpr con && con.Value.ToString().Equals("1")))
                 {
@@ -62,11 +135,19 @@ namespace ESDLang.Script
                     // In bloodborne, this is perfectly fine
                     // if (hasPass && cond.Expr != null) throw new Exception($"Conditional pass block in {state}\n\n{cond}");
                 }
+                // Require either subconditions, or a target state and/or a trivial pass command
                 int modes = (cond.TargetState == null ? 0 : 1) + (cond.Sub.Count == 0 ? 0 : 1) + (hasPass ? 1 : 0);
-                // In bloodborne, pass blocks and target states can exit together...
+                // In bloodborne, pass blocks and target states can exit together.
                 if (modes == 0 || (cond.Sub.Count > 0 && modes > 1))
                 {
-                    throw new Exception($"Unexpected condition structure in {esdId} {state}\n\nIssue: {cond}");
+                    // In AC6 t010390000 unused state, there are no valid followups to a call.Done() cond
+                    // This isn't expressible in the language currently, and this is the only case of it
+                    if (modes == 0 && esdId == "t010390000" && state.Machine == 2147483630)
+                    {
+                        cond.Pass = Block.MakeEmpty();
+                        cond.Pass.Cmds.Add(new Statement { Name = "DebugEvent", Args = new List<Expr>() { new ConstExpr { Value = "ESDLang: invalid condition has no target state, ignoring because it's a known unused state" } } });
+                    }
+                    else throw new Exception($"Unexpected condition structure in {esdId} {state}\nIssue: {cond}");
                 }
                 return cond;
             }
@@ -87,17 +168,6 @@ namespace ESDLang.Script
                 int targets = 0;
                 if (esdState.EntryCommands.Count > 0)
                 {
-                    foreach (ESD.CommandCall c in esdState.EntryCommands)
-                    {
-                        if (c.CommandBank == 6)
-                        {
-                            // Console.WriteLine($"Calling {c.CommandBank} {c.CommandID}");
-                            foreach (byte[] arg in c.Arguments)
-                            {
-                                // Console.WriteLine($"- Arg: {string.Join(" ", arg.Select(x => x.ToString("X2")))}");
-                            }
-                        }
-                    }
                     state.Entry = EzSembler.DissembleCommandScript(ezContext, esdState.EntryCommands);
                     foreach (Statement st in state.Entry.Cmds)
                     {
@@ -127,6 +197,95 @@ namespace ESDLang.Script
                 if (!machines.ContainsKey(machine)) machines[machine] = new SortedDictionary<int, State>();
                 machines[machine][id] = state;
             }
+            return machines;
+        }
+
+        public SortedDictionary<int, SortedDictionary<int, State>> ProcessMachines(ESDDLSE esd)
+        {
+            SortedDictionary<int, SortedDictionary<int, State>> machines = new SortedDictionary<int, SortedDictionary<int, State>>();
+            // DupeID is not filled in here either
+            Condition getCond(State state, ESDDLSE.Transition esdCond)
+            {
+                Condition cond = new Condition
+                {
+                    Inner = null,
+                    // Using global map: esd.Transitions[esdCond]?.ID
+                    TargetState = esdCond.State?.ID,
+                };
+                Expr expr = EzSembler.DissembleExpression(ezContext, esdCond.Evaluator);
+                if (!(expr is ConstExpr con && con.Value.ToString().Equals("1")))
+                {
+                    cond.Expr = expr;
+                }
+                if (cond.TargetState != null)
+                {
+                    state.Next.Add((int)cond.TargetState);
+                }
+                bool hasPass = false;
+                if (esdCond.PassEvents.Count > 0)
+                {
+                    cond.Pass = EzSembler.DissembleCommandScript(ezContext, esdCond.PassEvents);
+                    hasPass = cond.Pass.Cmds.Any(c => c.Name != "DebugLogOutput" && c.Name != "DebugEvent");
+                }
+                // Is this sufficient/necessary validation?
+                if (hasPass && cond.TargetState is null)
+                {
+                    throw new Exception($"Unexpected condition structure in {esdId} {state}\n\nIssue: {cond}");
+                }
+                return cond;
+            }
+            // TODO: Add this as header? So we don't have to rely on baseESD hack
+            // Console.WriteLine($"# {esd.LongFormat} {esd.DarkSoulsCount} - {esd.Unk70} {esd.Unk74} {esd.Unk78} {esd.Unk7C}");
+
+            foreach (ESDDLSE.Map map in esd.Maps)
+            {
+                int machine = map.ID;
+                // TODO: See if start state is needed
+                foreach (ESDDLSE.MapState esdState in map.States)
+                {
+                    int id = esdState.ID;
+                    State state = new State
+                    {
+                        Machine = machine,
+                        ID = id,
+                        Inner = null,
+                    };
+                    if (esdState.EntryEvents.Count > 0)
+                    {
+                        // There should be no calls, as banks don't even exist here
+                        state.Entry = EzSembler.DissembleCommandScript(ezContext, esdState.EntryEvents);
+                    }
+                    if (esdState.ExitEvents.Count > 0)
+                    {
+                        state.Exit = EzSembler.DissembleCommandScript(ezContext, esdState.ExitEvents);
+                    }
+                    foreach (ESDDLSE.Transition cond in esdState.Transitions)
+                    {
+                        state.Conditions.Add(getCond(state, cond));
+                    }
+                    // Decompilation checks
+                    bool show = false;
+                    if (show) Console.Error.WriteLine(esdId + ": " + state + "\n");
+                    if (!machines.ContainsKey(machine)) machines[machine] = new SortedDictionary<int, State>();
+                    machines[machine][id] = state;
+                }
+            }
+            return machines;
+        }
+
+        public ESDStructure ProcessESD(object esdObj, bool shortCall = false)
+        {
+            SortedDictionary<int, SortedDictionary<int, State>> machines;
+            if (esdObj is ESD esd)
+            {
+                machines = ProcessMachines(esd);
+            }
+            else if (esdObj is ESDDLSE esdl)
+            {
+                machines = ProcessMachines(esdl);
+            }
+            else throw new Exception($"Invalid format {esdObj?.GetType()}");
+
             // Add reverse mapping, do some state rewriting
             // TODO: Simplify expressions for output? Probably shouldn't be done in WriteExpr itself
             foreach (SortedDictionary<int, State> states in machines.Values)
@@ -143,66 +302,33 @@ namespace ESDLang.Script
                     {
                         CollapseRegisterCalls(state);
                     }
+                    RewriteBools(state);
                 }
             }
+
             // One caveats with args: they are calculated for all states, not just used ones.
             // If we prune any states, arg data from dead code will be lost forever.
             Dictionary<int, MachineArgs> machineArgs = CalculateArgs(machines);
             CalculateArgNames(machineArgs);
+
             // Renamed values in this block
             Dictionary<string, string> replace = new Dictionary<string, string>();
             foreach (int machine in machines.Keys)
             {
-                replace[$"c6_{machine}"] = $"{esdId}_{FormatMachine(machine)}";
+                replace[$"c6_{machine}"] = shortCall ? FormatMachine(machine) : $"{esdId}_{FormatMachine(machine)}";
                 MachineArgs args = machineArgs[machine];
                 for (int i = 0; i < args.Count; i++)
                 {
                     replace[$"c6_{machine}_{i}"] = args.Params[i].Name;
                 }
             }
-            // Perform decompilation per machine
-            foreach (KeyValuePair<int, SortedDictionary<int, State>> machineEntry in machines.OrderBy(e => MachineSort(e.Key)))
+
+            return new ESDStructure
             {
-                int machine = machineEntry.Key;
-                SortedDictionary<int, State> states = machineEntry.Value;
-
-                // Print states
-                // foreach (State state in states.Values) Console.WriteLine(state);
-
-                // Redirect stdout for Python output
-                TextWriter stdout = Console.Out;
-                try
-                {
-                    if (options.Flag("cfg"))
-                    {
-                        CFG stateCfg = CFG.FromStates(states);
-                        // stateCfg.Debug = stateCfg.Explain = true;
-                        stateCfg.Classify();
-                        Subtree tree = stateCfg.Structure();
-                        // Make a DAG of states.
-                        // If they have diamond structure, is fine. If they have multi join points, more difficult.
-                        Machine m = GetProgram(machine, states, tree, options.Flag("deadstates"));
-
-                        Console.SetOut(writer);
-                        PrintProgram(esdId, m, machineArgs[machine], replace);
-                    }
-                    else
-                    {
-                        // Individual state Python
-                        Machine m = GetProgram(machine, states, null, true);
-                        // m.Node = m.Unused;
-
-                        Console.SetOut(writer);
-                        PrintProgram(esdId, m, machineArgs[machine], replace);
-                    }
-                    Console.WriteLine();
-                }
-                finally
-                {
-                    Console.SetOut(stdout);
-                }
-
-            }
+                Machines = machines,
+                MachineArgs = machineArgs,
+                GlobalReplace = replace,
+            };
         }
 
         public void CollapseRegisterCalls(State state)
@@ -234,6 +360,69 @@ namespace ESDLang.Script
                 return null;
             }
             state.VisitConds(AstVisitor.Pre(simplifyRegisters));
+        }
+
+        private static readonly ESDDocumentation.ArgDoc BoolType = new ESDDocumentation.ArgDoc { Type = "bool" };
+        public void RewriteBools(State state)
+        {
+            // This was previously partly done in PrintExpr, but is really an AST-level change.
+            bool simplifyBinaryReturn = options.Flag("simplifybools");
+            Expr simplifyBool(Expr expr)
+            {
+                // Can also implement != but this is only used much in DS2 and DS1 chr. Keep it simple for now.
+                if (expr is BinaryExpr be && (be.Op == "==" || be.Op == "!="))
+                {
+                    ConstExpr ce;
+                    Expr cmp;
+                    if (be.Rhs is ConstExpr rce)
+                    {
+                        // Much more common case
+                        ce = rce;
+                        cmp = be.Lhs;
+                    }
+                    else if (be.Lhs is ConstExpr lce)
+                    {
+                        ce = lce;
+                        cmp = be.Rhs;
+                    }
+                    else return null;
+                    // First see if it can be eliminated
+                    if (simplifyBinaryReturn && ((cmp is FunctionCall fn && fn.Method != null && fn.Method.BinaryReturn) || HasBoolOp(cmp)))
+                    {
+                        if (ce.TryAsInt(out int val) && (val == 0 || val == 1))
+                        {
+                            bool cmpTrue = val == 1;
+                            bool eqCmp = be.Op == "==";
+                            if (cmpTrue == eqCmp)
+                            {
+                                // cmp == 1 or cmp != 0, both redundant for boolean (but not equivalent if can be other numbers like 2)
+                                return cmp;
+                            }
+                            else
+                            {
+                                // cmp == 0 or cmp != 1, if not true
+                                return new UnaryExpr { Op = "!", Arg = cmp };
+                            }
+                        }
+                    }
+                    // Otherwise try propagate type of non-constant
+                    if (ce.ArgDoc != null)
+                    {
+                        return null;
+                    }
+                    if (cmp.ArgDoc != null)
+                    {
+                        ce.ArgDoc = cmp.ArgDoc;
+                    }
+                    else if (HasBoolOp(cmp))
+                    {
+                        ce.ArgDoc = BoolType;
+                    }
+                }
+                return null;
+            }
+            // Go depth-first, though the propagation is still fairly limited.
+            state.VisitConds(AstVisitor.Post(simplifyBool));
         }
 
         public void PrintProgram(string esdId, Machine machine, MachineArgs args, Dictionary<string, string> replace)
@@ -277,8 +466,9 @@ namespace ESDLang.Script
                     Console.WriteLine($"    \"\"\"{name}\"\"\"");
                 }
             }
-            PrintProgramNode(machine.Node, 1, replace, u);
+            PrintProgramNode(machine.Node, 1, replace, new PrintData(u, options));
         }
+
         public ProgramNode AnnotateStructure(ProgramNode top)
         {
             HashSet<int> loopTargets = new HashSet<int>();
@@ -547,7 +737,8 @@ namespace ESDLang.Script
                 (ProgBlock block, Statement call, string callDoc) = processBlock(state.Entry, desc?.EntryCommands, specialCmd: "6:");
                 if (block != null) nodes.Add(block);
                 // Print call if eligible, to end the entry block. Otherwise if the call is part of the conditions, move that down there.
-                List<List<Condition>> conds = state.FlattenConds();
+                // List<List<Condition>> conds = state.FlattenConds();
+                List<Condition> conds = state.CombineConds();
                 // If this is not part of an if statement, there are a few cases
                 // No destination: tail call or end of the line. No value returns, since those are always within transitions.
                 if (conds.Count == 0)
@@ -566,13 +757,18 @@ namespace ESDLang.Script
                     ProgNext progNext = new ProgNext { State = start, Call = call };
                     List<ProgramNode> extras = processExtraBlocks(state);
                     if (extras.Count > 0) progNext.PreBranch = ProgSeq.From(extras);
-                    foreach (List<Condition> cond in conds)
+                    foreach (Condition cond in conds)
                     {
-                        ProgBranch br = new ProgBranch { Cond = Condition.Combine(cond, true), CallUsages = cond.Sum(c => c.CountCallUsages()) };
+                        // ProgBranch br = new ProgBranch { Cond = Condition.Combine(cond, true), CallUsages = cond.Sum(c => c.CountCallUsages()) };
+                        ProgBranch br = new ProgBranch { Cond = cond, CallUsages = cond.CountCallUsages() };
+                        if (br.Cond.CountCallUsages() != br.CallUsages) throw new Exception("?");
                         progNext.Branches.Add(br);
-                        Condition resCond = cond.Last();
+                        Condition resCond = cond; //.Last();
                         List<ProgramNode> bnodes = new List<ProgramNode>();
-                        if (resCond.Pass == null && resCond.TargetState == null) throw new Exception($"Invalid condition set {string.Join(", ", conds)}");
+                        if (resCond.Pass == null && resCond.TargetState == null)
+                        {
+                            throw new Exception($"Invalid condition set {string.Join(", ", cond)}");
+                        }
                         if (resCond.Pass != null)
                         {
                             ProgramNode subnode = processPassBlock(resCond.Pass);
@@ -596,20 +792,24 @@ namespace ESDLang.Script
                 (ProgBlock block, Statement call, string callDoc) = processBlock(state.Entry, desc?.EntryCommands, specialCmd: "6:");
                 if (block != null) nodes.Add(block);
                 // Print call if eligible, to end the entry block. Otherwise if the call is part of the conditions, move that down there.
-                List<List<Condition>> conds = state.FlattenConds();
+                // List<List<Condition>> conds = state.FlattenConds();
+                List<Condition> conds = state.CombineConds();
+                // TODO: Do this before structuring, or else fallback to non-combined version
                 if (conds.Count < 2) throw new Exception($"If statement generated for {state} but not enough branches");
                 ProgNext progNext = new ProgNext { State = start, Call = call, CallDoc = callDoc };
                 nodes.Add(progNext);
                 List<ProgramNode> extras = processExtraBlocks(state);
                 if (extras.Count > 0) progNext.PreBranch = ProgSeq.From(extras);
                 // TODO: Can combine adjacent nodes leading to the same target with or condition
-                foreach (List<Condition> cond in conds)
+                foreach (Condition cond in conds)
                 {
-                    ProgBranch br = new ProgBranch { Cond = Condition.Combine(cond, true), CallUsages = cond.Sum(c => c.CountCallUsages()) };
+                    // ProgBranch br = new ProgBranch { Cond = Condition.Combine(cond, true), CallUsages = cond.Sum(c => c.CountCallUsages()) };
+                    ProgBranch br = new ProgBranch { Cond = cond, CallUsages = cond.CountCallUsages() };
+                    if (br.Cond.CountCallUsages() != br.CallUsages) throw new Exception("?");
                     progNext.Branches.Add(br);
-                    Condition resCond = cond.Last();
+                    Condition resCond = cond; //.Last();
                     List<ProgramNode> bnodes = new List<ProgramNode>();
-                    if (resCond.Pass == null && resCond.TargetState == null) throw new Exception($"Invalid condition set {string.Join(", ", conds)}");
+                    if (resCond.Pass == null && resCond.TargetState == null) throw new Exception($"Invalid condition set {string.Join(", ", cond)}");
                     if (resCond.Pass != null)
                     {
                         ProgramNode subnode = processPassBlock(resCond.Pass);
@@ -1222,6 +1422,26 @@ namespace ESDLang.Script
                 return order;
             }
 
+            public List<int> GetPreorder()
+            {
+                List<int> order = new List<int>();
+                HashSet<int> visited = new HashSet<int>();
+                void visit(int n)
+                {
+                    visited.Add(n);
+                    order.Add(n);
+                    foreach (int next in Nodes[n].Next)
+                    {
+                        if (!visited.Contains(next))
+                        {
+                            visit(next);
+                        }
+                    }
+                }
+                visit(0);
+                return order;
+            }
+
             public static CFG FromStates(SortedDictionary<int, State> states)
             {
                 CFG cfg = new CFG();
@@ -1630,11 +1850,13 @@ namespace ESDLang.Script
                 else ns = declNamespaces.First();
                 switch (ns)
                 {
+                    // Shorter versions
                     case Namespace.Global: return "z";
                     case Namespace.Protector: return "armor";
-                    case Namespace.Accessory: return "ring";
+                    case Namespace.Accessory: return "acc";
                     case Namespace.EventFlag: return "flag";
                     case Namespace.Talk: return "text";
+                    // Otherwise the name itself
                     default: return ns.ToString().ToLower();
                 }
             }
@@ -1701,6 +1923,11 @@ namespace ESDLang.Script
                         {
                             param.Default = sourceValues.First();
                         }
+                        if (param.Default is string)
+                        {
+                            // Args are not escaped by default
+                            param.Default = null;
+                        }
                         // If it does not exist as args in parent, it must have been a literal in the parent. In that case, create a name.
                         // Console.WriteLine($"#    {i}: {string.Join("; ", values.Select(v => $"{v.Value}[{string.Join(" - ", v.Usages.Values.Select(os => string.Join(", ", os)))}]"))}");
                         // ValueSource main = values.OrderBy(v => v.Usages.Values.Select(o => o.Count).Sum())
@@ -1719,114 +1946,122 @@ namespace ESDLang.Script
         {
             // For now, hardcode these. No args are yet 'checked' outside of this.
             Dictionary<string, List<IdExtractor>> extractors = new Dictionary<string, List<IdExtractor>>();
+
             // Functions
-            AddMulti(extractors, "ComparePlayerInventoryNumber", new IdExtractor
+            // Talk ESD is fully config migrated
+            if (!EzSembleContext.UseNew)
             {
-                Indices = new List<int> { 0, 1 },
-                Extract = args => Obj.Item((uint)args[0], args[1]),
-                Type = Namespace.Item,
-            });
-            AddMulti(extractors, "IsEquipmentIDObtained", extractors["ComparePlayerInventoryNumber"][0]);
-            AddMulti(extractors, "IsEquipmentIDEquipped", extractors["ComparePlayerInventoryNumber"][0]);
-            AddMulti(extractors, "GetEventStatus", new IdExtractor
-            {
-                Indices = new List<int> { 0 },
-                Extract = args => Obj.EventFlag(args[0]),
-                Type = Namespace.EventFlag,
-            });
-            AddMulti(extractors, "TalkToPlayer", new IdExtractor
-            {
-                Indices = new List<int> { 0 },
-                Extract = args => Obj.Talk(args[0]),
-                Type = Namespace.Talk,
-            });
-            AddMulti(extractors, "TalkToPlayer", new IdExtractor
-            {
-                Indices = new List<int> { 3 },
-                Extract = args => args.Count == 0 || args[0] == -1 ? null : Obj.EventFlag(args[0]),
-                Type = Namespace.EventFlag,
-            });
-            // Commands
-            AddMulti(extractors, "GetEventState", new IdExtractor
-            {
-                Indices = new List<int> { 0 },
-                Extract = args => Obj.EventFlag(args[0]),
-                Type = Namespace.EventFlag,
-            });
-            AddMulti(extractors, "OpenRegularShop", new IdExtractor
-            {
-                Indices = new List<int> { 0, 1 },
-                Extract = args => Obj.Shop(args[0], args[1]),
-                Type = Namespace.Shop,
-            });
-            AddMulti(extractors, "AddTalkListData", new IdExtractor
-            {
-                Indices = new List<int> { 1 },
-                Extract = args => Obj.Action(args[0]),
-                Type = Namespace.Action,
-            });
-            AddMulti(extractors, "OpenGenericDialog", extractors["AddTalkListData"][0]);
-            AddMulti(extractors, "AddTalkListData", new IdExtractor
-            {
-                Indices = new List<int> { 2 },
-                Extract = args => args[0] == -1 ? null : Obj.EventFlag(args[0]),
-                Type = Namespace.EventFlag,
-            });
-            AddMulti(extractors, "AddTalkListDataIf", new IdExtractor
-            {
-                Indices = new List<int> { 2 },
-                Extract = args => Obj.Action(args[0]),
-                Type = Namespace.Action,
-            });
-            AddMulti(extractors, "DisplayOneLineHelp", new IdExtractor
-            {
-                Indices = new List<int> { 0 },
-                Extract = args => Obj.Action(args[0]),
-                Type = Namespace.Action,
-            });
-            AddMulti(extractors, "GetItemFromItemLot", new IdExtractor
-            {
-                Indices = new List<int> { 0 },
-                Extract = args => Obj.Lot(args[0]),
-                Type = Namespace.Lot,
-            });
-            AddMulti(extractors, "PlayerEquipmentQuantityChange", new IdExtractor
-            {
-                Indices = new List<int> { 0, 1 },
-                Extract = args => Obj.Item((uint)args[0], args[1]),
-                Type = Namespace.Item,
-            });
-            AddMulti(extractors, "GetItemHeldNumLimit", extractors["PlayerEquipmentQuantityChange"][0]);
-            AddMulti(extractors, "ReplaceTool", new IdExtractor
-            {
-                Indices = new List<int> { 0 },
-                Extract = args => Obj.Item(3, args[0]),
-                Type = Namespace.Goods,
-            });
-            AddMulti(extractors, "ReplaceTool", new IdExtractor
-            {
-                Indices = new List<int> { 1 },
-                Extract = args => Obj.Item(3, args[0]),
-                Type = Namespace.Goods,
-            });
-            AddMulti(extractors, "AcquireGesture", new IdExtractor
-            {
-                Indices = new List<int> { 0 },
-                Extract = args => Obj.Of(Namespace.Gesture, args[0]),
-                Type = Namespace.Gesture,
-            });
-            AddMulti(extractors, "CheckActionButtonArea", new IdExtractor
-            {
-                Indices = new List<int> { 0 },
-                Extract = args => Obj.Of(Namespace.ActionButton, args[0]),
-                Type = Namespace.ActionButton,
-            });
-            // Elden Ring aliases
-            AddMulti(extractors, "AwardItemLot", extractors["GetItemFromItemLot"][0]);
-            AddMulti(extractors, "GetEventFlag", extractors["GetEventStatus"][0]);
-            AddMulti(extractors, "GetEventFlagValue", extractors["GetEventFlag"][0]);
-            AddMulti(extractors, "DoesPlayerHaveItem", extractors["ComparePlayerInventoryNumber"][0]);
-            AddMulti(extractors, "DoesPlayerHaveItemEquipped", extractors["ComparePlayerInventoryNumber"][0]);
+                AddMulti(extractors, "ComparePlayerInventoryNumber", new IdExtractor
+                {
+                    Indices = new List<int> { 0, 1 },
+                    Extract = args => Obj.Item((uint)args[0], args[1]),
+                    Type = Namespace.Item,
+                });
+                AddMulti(extractors, "IsEquipmentIDObtained", extractors["ComparePlayerInventoryNumber"][0]);
+                AddMulti(extractors, "IsEquipmentIDEquipped", extractors["ComparePlayerInventoryNumber"][0]);
+                AddMulti(extractors, "GetEventStatus", new IdExtractor
+                {
+                    Indices = new List<int> { 0 },
+                    Extract = args => Obj.EventFlag(args[0]),
+                    Type = Namespace.EventFlag,
+                });
+                AddMulti(extractors, "TalkToPlayer", new IdExtractor
+                {
+                    Indices = new List<int> { 0 },
+                    Extract = args => Obj.Talk(args[0]),
+                    Type = Namespace.Talk,
+                });
+                AddMulti(extractors, "TalkToPlayer", new IdExtractor
+                {
+                    Indices = new List<int> { 3 },
+                    Extract = args => args.Count == 0 || args[0] <= 0 ? null : Obj.EventFlag(args[0]),
+                    Type = Namespace.EventFlag,
+                });
+                // Commands
+                AddMulti(extractors, "GetEventState", new IdExtractor
+                {
+                    Indices = new List<int> { 0 },
+                    Extract = args => Obj.EventFlag(args[0]),
+                    Type = Namespace.EventFlag,
+                });
+                AddMulti(extractors, "OpenRegularShop", new IdExtractor
+                {
+                    Indices = new List<int> { 0, 1 },
+                    // This doesn't actually do anything since the range does not have any text associated with it.
+                    // This could just show the first item instead, but that's not very useful.
+                    Extract = args => Obj.Shop(args[0], args[1]),
+                    Type = Namespace.Shop,
+                });
+                AddMulti(extractors, "AddTalkListData", new IdExtractor
+                {
+                    Indices = new List<int> { 1 },
+                    Extract = args => Obj.Action(args[0]),
+                    Type = Namespace.Action,
+                });
+                AddMulti(extractors, "OpenGenericDialog", extractors["AddTalkListData"][0]);
+                AddMulti(extractors, "AddTalkListData", new IdExtractor
+                {
+                    Indices = new List<int> { 2 },
+                    Extract = args => args[0] <= 0 ? null : Obj.EventFlag(args[0]),
+                    Type = Namespace.EventFlag,
+                });
+                AddMulti(extractors, "AddTalkListDataIf", new IdExtractor
+                {
+                    Indices = new List<int> { 2 },
+                    Extract = args => Obj.Action(args[0]),
+                    Type = Namespace.Action,
+                });
+                AddMulti(extractors, "DisplayOneLineHelp", new IdExtractor
+                {
+                    Indices = new List<int> { 0 },
+                    Extract = args => Obj.Action(args[0]),
+                    Type = Namespace.Action,
+                });
+                AddMulti(extractors, "GetItemFromItemLot", new IdExtractor
+                {
+                    Indices = new List<int> { 0 },
+                    Extract = args => Obj.Lot(args[0]),
+                    Type = Namespace.Lot,
+                });
+                AddMulti(extractors, "PlayerEquipmentQuantityChange", new IdExtractor
+                {
+                    Indices = new List<int> { 0, 1 },
+                    Extract = args => Obj.Item((uint)args[0], args[1]),
+                    Type = Namespace.Item,
+                });
+                AddMulti(extractors, "GetItemHeldNumLimit", extractors["PlayerEquipmentQuantityChange"][0]);
+                AddMulti(extractors, "ReplaceTool", new IdExtractor
+                {
+                    Indices = new List<int> { 0 },
+                    Extract = args => Obj.Item(3, args[0]),
+                    Type = Namespace.Goods,
+                });
+                AddMulti(extractors, "ReplaceTool", new IdExtractor
+                {
+                    Indices = new List<int> { 1 },
+                    Extract = args => Obj.Item(3, args[0]),
+                    Type = Namespace.Goods,
+                });
+                AddMulti(extractors, "AcquireGesture", new IdExtractor
+                {
+                    Indices = new List<int> { 0 },
+                    Extract = args => Obj.Of(Namespace.Gesture, args[0]),
+                    Type = Namespace.Gesture,
+                });
+                AddMulti(extractors, "CheckActionButtonArea", new IdExtractor
+                {
+                    Indices = new List<int> { 0 },
+                    Extract = args => Obj.Of(Namespace.ActionButton, args[0]),
+                    Type = Namespace.ActionButton,
+                });
+                // Elden Ring aliases
+                AddMulti(extractors, "AwardItemLot", extractors["GetItemFromItemLot"][0]);
+                AddMulti(extractors, "GetEventFlag", extractors["GetEventStatus"][0]);
+                AddMulti(extractors, "GetEventFlagValue", extractors["GetEventFlag"][0]);
+                AddMulti(extractors, "DoesPlayerHaveItem", extractors["ComparePlayerInventoryNumber"][0]);
+                AddMulti(extractors, "DoesPlayerHaveItemEquipped", extractors["ComparePlayerInventoryNumber"][0]);
+            }
+
             // DS2
             IdExtractor messageExtractor = new IdExtractor
             {
@@ -1850,7 +2085,6 @@ namespace ESDLang.Script
             AddMulti(extractors, "DisplayYesNoMenu", messageItemExtractor(4));
             AddMulti(extractors, "DisplayOwnOkMenu", messageItemExtractor(4));
             AddMulti(extractors, "DisplayOkMenu", messageItemExtractor(5));
-
             IdExtractor dialogueExtractor = new IdExtractor
             {
                 Indices = new List<int> { 0 },
@@ -1895,6 +2129,106 @@ namespace ESDLang.Script
                 Extract = args => Obj.Bonfire(args[0]),
                 Type = Namespace.Bonfire
             });
+
+            // Add from xmls. TODO move everything to this. Also is simpleFuncExtractor needed...?
+            IdExtractor simpleFuncExtractor(int i, Namespace n, Func<int, Obj> func) => new IdExtractor
+            {
+                Indices = new List<int> { i },
+                Extract = args => func(args[0]),
+                Type = n,
+            };
+            IdExtractor simpleExtractor(int i, Namespace n) => simpleFuncExtractor(i, n, v => Obj.Of(n, v));
+            void addItemExtractor(EzSembleContext.EzSembleMethodInfo info)
+            {
+                int itemArg = info.Args.FindIndex(a => a.Namespace == "Item");
+                int typeArg = info.Args.FindIndex(a => a.Namespace == "ItemType");
+                if (itemArg >= 0 && typeArg >= 0)
+                {
+                    AddMulti(extractors, info.Name, new IdExtractor
+                    {
+                        Indices = new List<int> { typeArg, itemArg },
+                        // TODO: Disambiguate correctly
+                        Extract = args => Obj.AC6Item(args[0], args[1]),
+                        Type = Namespace.Item,
+                    });
+                }
+            }
+            bool ac6Items = options.Game == GameSpec.FromGame.AC6;
+            void addItemDocExtractor(ESDDocumentation.MethodDoc doc)
+            {
+                int typeArg = doc.Args.FindIndex(a => a.Namespace == "ItemType");
+                int itemArg = doc.Args.FindIndex(a => a.Namespace == "Item");
+                if (itemArg >= 0 && typeArg >= 0)
+                {
+                    AddMulti(extractors, doc.Name, new IdExtractor
+                    {
+                        Indices = new List<int> { typeArg, itemArg },
+                        // Somewhat awkward way to disambiguate this
+                        Extract = args => ac6Items ? Obj.AC6Item(args[0], args[1]) : Obj.Item((uint)args[0], args[1]),
+                        Type = Namespace.Item,
+                    });
+                }
+            }
+            if (EzSembleContext.UseNew)
+            {
+                Dictionary<string, Namespace> namespaces = Enum.GetValues(typeof(Namespace)).Cast<Namespace>().ToDictionary(n => n.ToString(), n => n);
+                foreach (ESDDocumentation.MethodDoc doc in ezContext.Doc.Commands.Values.Concat(ezContext.Doc.Functions.Values))
+                {
+                    // Ideally extractors are not by name, but there's no unified id used currently
+                    // Don't enable at the same time as builtin extractors, as otherwise duplicates may be added
+                    if (doc.Name == null || doc.Args == null) continue;
+                    for (int i = 0; i < doc.Args.Count; i++)
+                    {
+                        ESDDocumentation.ArgDoc arg = doc.Args[i];
+                        if (arg.Namespace == null) continue;
+                        if (arg.Namespace == "Item")
+                        {
+                            addItemDocExtractor(doc);
+                        }
+                        else if (arg.Namespace == "Shop")
+                        {
+                            // Don't show individual shop items but still count for variable naming
+                            AddMulti(extractors, doc.Name, simpleFuncExtractor(i, Namespace.Shop, v => Obj.Shop(-1)));
+                        }
+                        else if (namespaces.TryGetValue(arg.Namespace, out Namespace n))
+                        {
+                            // Notably this excludes ItemType as it's not in Namespace
+                            AddMulti(extractors, doc.Name, simpleExtractor(i, n));
+                        }
+                    }
+                }
+            }
+            else
+            {
+                foreach (EzSembleContext.EzSembleMethodInfo info in ezContext.GetAllMethods())
+                {
+                    if (extractors.ContainsKey(info.Name)) continue;
+                    for (int i = 0; i < info.Args.Count; i++)
+                    {
+                        EzSembleContext.EzSembleMethodArgInfo arg = info.Args[i];
+                        switch (arg.Namespace)
+                        {
+                            case "EventFlag":
+                                AddMulti(extractors, info.Name, simpleExtractor(i, Namespace.EventFlag));
+                                break;
+                            case "Mission":
+                                AddMulti(extractors, info.Name, simpleExtractor(i, Namespace.Mission));
+                                break;
+                            case "Tutorial":
+                                AddMulti(extractors, info.Name, simpleExtractor(i, Namespace.Tutorial));
+                                break;
+                            case "Arena":
+                                AddMulti(extractors, info.Name, simpleExtractor(i, Namespace.Arena));
+                                break;
+                            case "Item":
+                                addItemExtractor(info);
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
 
             return extractors;
         }

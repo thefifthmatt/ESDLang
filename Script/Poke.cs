@@ -185,7 +185,7 @@ namespace ESDLang.Script
                 }
                 string outPath = $@"{dir}\{toDir}\{fname}";
                 Console.WriteLine($"Writing to {outPath}");
-                bnd.Write(outPath, DCX.Type.SekiroKRAK);
+                bnd.Write(outPath, DCX.Type.DCX_KRAK);
             }
         }
 

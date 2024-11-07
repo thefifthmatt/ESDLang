@@ -5,17 +5,26 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml;
-using static ESDLang.Adapter.ESDL;
+using ESDLang.Doc;
 
 namespace ESDLang.EzSemble
 {
     public class EzSembleContext
     {
+        // Pointers to new config
+        // Eventually this file and much of the EzSemble namespace could be removed or split out.
+        public static bool UseNew { get; set; } = true;
+        public ESDDocumentation Doc { get; set; }
+
         public class EzSembleMethodArgInfo
         {
             public string Name;
-            public string ValueType = "Number";
+            public string ValueType;
             public string Description = "";
+            public string EnumName;
+            public string Namespace;
+            public bool Optional;
+
             public EzSembleMethodArgInfo()
             {
 
@@ -34,6 +43,8 @@ namespace ESDLang.EzSemble
             {
                 return (EzSembleMethodArgInfo)MemberwiseClone();
             }
+
+            public override string ToString() => $"Arg[{Name}:Type={ValueType}{(Description == null ? "" : ",Comment=")}{Description}]";
         }
 
         public class EzSembleEnumEntry
@@ -53,9 +64,12 @@ namespace ESDLang.EzSemble
 
         public class EzSembleMethodInfo
         {
+            // TODO: Previous names
             public string Name;
             public string Description = "";
             public List<EzSembleMethodArgInfo> Args = new List<EzSembleMethodArgInfo>();
+            public EzSembleMethodArgInfo ReturnValue;
+
             public EzSembleMethodInfo()
             {
 
@@ -70,15 +84,19 @@ namespace ESDLang.EzSemble
                 if (other.Args != null) other.Args = other.Args.Select(a => a.Clone()).ToList();
                 return other;
             }
+
+            public override string ToString() => $"Method[{Name}{(ReturnValue == null ? "" : $"->{ReturnValue}")}{(Args.Count > 0 ? ": " : "")}{string.Join(", ", Args)}]";
         }
 
         internal bool IsBigEndian = false;
 
-        internal Dictionary<(int Bank, int ID), EzSembleMethodInfo> CommandInfoByID;
+        // Temporarily public for migration
+        public readonly Dictionary<(int Bank, int ID), EzSembleMethodInfo> CommandInfoByID;
+        public readonly Dictionary<int, EzSembleMethodInfo> FunctionInfoByID;
+        public readonly Dictionary<string, List<EzSembleEnumEntry>> EnumInfo;
+
         internal Dictionary<string, (int Bank, int ID)> CommandIDsByName;
-        internal Dictionary<int, EzSembleMethodInfo> FunctionInfoByID;
         internal Dictionary<string, int> FunctionIDsByName;
-        internal Dictionary<string, List<EzSembleEnumEntry>> EnumInfo;
 
         public EzSembleContext()
         {
@@ -88,6 +106,9 @@ namespace ESDLang.EzSemble
             FunctionIDsByName = new Dictionary<string, int>();
             EnumInfo = new Dictionary<string, List<EzSembleEnumEntry>>();
         }
+
+        // Temporarily made private to migrate
+        public IEnumerable<EzSembleMethodInfo> GetAllMethods() => CommandInfoByID.Values.Concat(FunctionInfoByID.Values);
 
         public EzSembleMethodInfo GetCommandInfo(int bank, int id)
         {
@@ -134,7 +155,6 @@ namespace ESDLang.EzSemble
             {
                 return new EzSembleMethodInfo($"f{id}");
             }
-                
         }
 
         public int GetFunctionID(string name)
@@ -154,7 +174,6 @@ namespace ESDLang.EzSemble
                     throw new Exception($"Function name '{name}' does not exist in the loaded XML documentation and" +
                         $" couldn't be parsed as a f<ID>() representation of the function.");
                 }
-                
             }
         }
 
@@ -176,6 +195,11 @@ namespace ESDLang.EzSemble
         public List<EzSembleEnumEntry> GetEnumEntries(string enumName)
         {
             return EnumInfo[enumName];
+        }
+
+        public bool TryGetEnumEntries(string enumName, out List<EzSembleEnumEntry> entries)
+        {
+            return EnumInfo.TryGetValue(enumName, out entries);
         }
 
         public static EzSembleContext LoadFromXml(string xmlFileName)
@@ -202,6 +226,7 @@ namespace ESDLang.EzSemble
                     newArgInfo.Name = argNode.Attributes["Name"].InnerText;
                     newArgInfo.ValueType = argNode.Attributes["ValueType"].InnerText;
                     newArgInfo.Description = argNode.Attributes["Description"].InnerText;
+                    newArgInfo.Namespace = argNode.Attributes["Namespace"]?.InnerText;
 
                     newCommandInfo.Args.Add(newArgInfo);
                 }
@@ -218,7 +243,8 @@ namespace ESDLang.EzSemble
                     {
                         ifInfo.Args.Insert(0, new EzSembleMethodArgInfo
                         {
-                            Name = "ExecIf"
+                            Name = "ExecIf",
+                            ValueType = "Bool",
                         });
                     }
                     context.CommandInfoByID.Add((5, commandID), ifInfo);
@@ -241,6 +267,7 @@ namespace ESDLang.EzSemble
                     newArgInfo.Name = argNode.Attributes["Name"].InnerText;
                     newArgInfo.ValueType = argNode.Attributes["ValueType"].InnerText;
                     newArgInfo.Description = argNode.Attributes["Description"].InnerText;
+                    newArgInfo.Namespace = argNode.Attributes["Namespace"]?.InnerText;
 
                     newFunctionInfo.Args.Add(newArgInfo);
                 }
@@ -275,6 +302,7 @@ namespace ESDLang.EzSemble
 
         public void WriteToXml(string xmlFileName)
         {
+            // TODO: Update with all attributes
             XmlWriterSettings xws = new XmlWriterSettings();
             xws.Encoding = Encoding.Unicode;
             xws.Indent = true;

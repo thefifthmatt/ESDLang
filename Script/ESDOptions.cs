@@ -29,8 +29,11 @@ namespace ESDLang.Script
         public CmdType Type = CmdType.Unknown;
         public EDDText.EDDFormat EddFormat = EDDText.EDDFormat.Flat;
         public GameSpec Spec = new GameSpec();
+        public string ModDir = null;
         public Option LastAction = null;
+        public FromGame Game => Spec.Game;
 
+        // All games happen to be supported here, but if any are added without ESD, this will require manual filtering
         public static readonly EnumOption<FromGame> Games = EnumOption<FromGame>.Create();
 
         // TODO: Change default... also in accessor function
@@ -40,15 +43,23 @@ namespace ESDLang.Script
             { "deadstates", true },
             { "newstates", true },
             { "regsubstitute", true },
+            { "simplifybools", true },
             { "cmdedd", false },
             { "copysame", false },
             { "backup", false },
+            { "annotate", true },
+            { "dialogue", true },
         };
         private static readonly HashSet<string> allFlags = new HashSet<string>(defaultFlags.Keys.Concat(defaultFlags.Keys.Select(f => $"no{f}")));
         private static readonly EnumOption<DCX.Type> dcxs = EnumOption<DCX.Type>.Create();
         private static readonly EnumOption<CmdType> cmdTypes = EnumOption<CmdType>.Create();
         private static readonly EnumOption<EDDText.EDDFormat> eddFormats = EnumOption<EDDText.EDDFormat>.Create();
-        private static readonly HashSet<string> specFlags = new HashSet<string> { "basedir", "esddir", "maps", "msgs", "names", "layouts", "defs", "params", "outdcx" };
+        private static readonly HashSet<string> specFlags = new HashSet<string>
+        {
+            "basedir", "esddir", "maps", "msgs", "names", "layouts", "defs", "params", "outdcx",
+            // Tracked separately but is set similarly
+            "moddir",
+        };
 
         public class EnumOption<T>
         {
@@ -81,12 +92,13 @@ namespace ESDLang.Script
         public static string GetShortUsage()
         {
             return $@"Usage: esdtool.exe [-h] [{string.Join(" | ", Games.List.Select(g => $"-{g}".ToLower()))}]
-                   [-basedir DIR] [-esddir DIR] [-maps DIR] [-msgs DIR] [-params FILE] [-names DIR]
+                   [-basedir DIR] [-moddir DIR] [-esddir DIR] [-maps DIR] [-msgs DIR] [-params FILE] [-names DIR]
                    [-layouts DIR] [-outdcx DCXTYPE] [-i FILE1 FILE2 etc] [-f ESD MAP CHR etc] [-extra ESD=BND etc]
-                   [-[no]cfg] [-[no]stateinfo] [-[no]deadstates] [-[no]newstates] [-[no]regsubstitute]
-                   [-[no]cmdedd] [-[no]copysame] [-[no]backup] [-cmdtype TYPE] [-edddir DIR]
+                   [-[no]cfg] [-[no]stateinfo] [-[no]deadstates] [-[no]newstates] [-[no]regsubstitute] [-[no]simplifybools]
+                   [-[no]cmdedd] [-[no]copysame] [-[no]backup] [-no[annotate]] [-no[dialogue]] [-cmdtype TYPE] [-edddir DIR]
                    [-writepy TEMPLATE] [-writebndfile FILE] [-writebndfile DIR] [-writeloose TEMPLATE]
                    [-writeedd DIR] [-info]
+   Or: esdtool.exe [FILES]  (drag-and-drop mode)
 ";
         }
 
@@ -108,17 +120,21 @@ the subdirectory used for ESD inputs. The other way around will not work.
 > Game data flags
 (not necessary to set if set by the game flag)
 -basedir DIR
-    Sets the base directory for esddir, maps, msgs, and params. UXM or similar tool must be used.
+    Sets the directory for base-relative lookups, particularly esddir, maps, msgs, and params.
+    UXM or similar tool must be used.
+-moddir DIR
+    Sets a mod override directory for base-relative lookups. If set, files will first be looked
+    up in moddir before defaulting to basedir.
 -esddir DIR
-    Sets the relative dir for all ESDs, meaning all .esd, .esd.dcx, and esdbnd.dcx files in
-    that directory. Overrides -i for a list of ESDs and clears -f.
+    Sets the base-relative dir for all vanilla ESDs, meaning all .esd, .esd.dcx, and esdbnd.dcx
+    files in that directory. Overrides -i for a list of ESDs and clears -f.
 -maps DIR
-    Sets the relative dir for all MSB files. Used to look up chr info on ESDs, currently for
+    Sets the base-relative dir for all MSB files. Used to look up chr info on ESDs, currently for
     DS1, DS1R, DS3, and Sekiro.
 -msgs DIR
-    Sets the relative dir where FMG bnds can be found. Used to annotate ESDs with game info.
+    Sets the base-relative dir where FMG bnds can be found. Used to annotate ESDs with game info.
 -params FILE
-    Sets the relative file with game params. Used to annotate ESDs with game info.
+    Sets the base-relative file with game params. Used to annotate ESDs with game info.
     Requires -layouts or -defs.
 -names DIR
     A directory with names for game ids. Currently ModelName.txt is used alongside chr info.
@@ -209,10 +225,23 @@ the subdirectory used for ESD inputs. The other way around will not work.
     When enabled (default true), decompilation substitutes GetREG expressions with the contents of
     equivalent SetREG expressions from within the same state. The reverse optimization is not
     currently done during compilation.
+-[no]simplifybools
+    When enabled (default true), decompilation rewrites equality comparisons with True and False
+    to eliminate redundancy, e.g. replacing 'IsPlayerDead() == True' with 'IsPlayerDead()'.
+    This is performed for functions marked as binary_return in the documentation, which have been
+    checked in the game exe. If a function can return non-0-or-1 values, it is unsafe to perform
+    this optimization on them.
 -[no]cmdedd
     When enabled (default false) and EDD is available, output text for each individual command
     where given a description. This appears to be automatically inserted based on the command id,
     rather than custom text like state or machine descriptions.
+-[no]annotate
+    When enabled (default true), output annotations for text containing dialogue, menu text, item
+    names, and various other named data in the game. If disabled, game files other than ESD files
+    are not read.
+-[no]dialogue
+    When enabled (default true), dialogue annotations are added with one line per dialogue based on
+    adjacent TalkParam rows. If disabled, only the first line is added.
 -cmdtype [{string.Join(" | ", cmdTypes.List)}]
     The source to use for command and function names, for both reading and writing. If not
     provided, this is inferred from .esd/.py name and provided game where possible. Otherwise, None
@@ -256,7 +285,7 @@ Recompile the given Python files into a subdirectory of the game, copying releva
             while (args.Count > 0)
             {
                 string arg = args.Dequeue();
-                if (!isFlag(arg)) throw new Exception($"Expected flag; got argument -{arg}");
+                if (!isFlag(arg)) throw new Exception($"Expected flag; got argument {arg}");
                 arg = arg.Substring(1);
                 string getOnlyArg()
                 {
@@ -414,13 +443,19 @@ Recompile the given Python files into a subdirectory of the game, copying releva
                     EsdInputs.Clear();
                     ExtraEsds.Clear();
                     ClearFilters();
+                    ModDir = null;
                 }
                 else if (opt is SetGameOpt gameOpt)
                 {
                     string val = gameOpt.Value;
+                    if (string.IsNullOrWhiteSpace(val))
+                    {
+                        val = null;
+                    }
                     switch (gameOpt.Name)
                     {
                         case "basedir": Spec.GameDir = WindowsifyPath(val); break;
+                        case "moddir": ModDir = WindowsifyPath(val); break;
                         case "esddir":
                             Spec.EsdDir = WindowsifyPath(val);
                             EsdInputs.Clear();
@@ -473,9 +508,10 @@ Recompile the given Python files into a subdirectory of the game, copying releva
                     {
                         foreach (string val in input.Name)
                         {
-                            if (!(val.EndsWith(".esd") || val.EndsWith("esdbnd.dcx") || val.EndsWith(".esd.dcx")))
+                            Console.WriteLine(val);
+                            if (!(val.EndsWith(".esd") || val.EndsWith("esdbnd") || val.EndsWith("esdbnd.dcx") || val.EndsWith(".esd.dcx")))
                             {
-                                throw new Exception($"ESD input files must end in .esd, .esdbnd.dcx, or .esd.dcx");
+                                throw new Exception($"ESD input files must end in .esd.dcx, esdbnd.dcx, .esd, or .esdbnd");
                             }
                         }
                         EsdInputs.Clear();

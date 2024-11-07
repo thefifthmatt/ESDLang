@@ -1,5 +1,9 @@
 oo2core_6_win64.dll
 testdata/
+dumps/
+/*.txt
+/*.csv
+/*.py
 
 # User-specific files
 *.suo

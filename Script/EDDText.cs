@@ -12,10 +12,18 @@ namespace ESDLang.Script
 {
     public class EDDText
     {
-        public enum EDDFormat { Flat, Chunk, Join }
+        public enum EDDFormat
+        {
+            Flat,
+            Chunk,
+            Join,
+        }
 
+        // The EDD itself
         public EDD edd { get; set; }
+        // Map from to machine/state id to unique string index
         private Dictionary<string, int> locs = new Dictionary<string, int>();
+        // All unique strings. These may be shared across multiple instances of EDDText
         private List<string> order;
 
         public EDDText() { }
@@ -32,21 +40,22 @@ namespace ESDLang.Script
             order.Clear();
             while (true)
             {
-                string path = $@"{dir}\s{i:d3}.edd.txt";
+                string path = $@"{dir}\s{i:d3}.txt";
                 if (!File.Exists(path)) return;
                 order.AddRange(File.ReadLines(path));
                 i++;
             }
         }
+
         public static void WriteEddStrs(string dir, List<string> order, int chunkSize)
         {
-            foreach (string path in Directory.EnumerateFiles(dir, "s*.edd.txt").ToList())
+            foreach (string path in Directory.EnumerateFiles(dir, "s*.txt").ToList())
             {
                 File.Delete(path);
             }
             for (int start = 0; start < order.Count; start += chunkSize)
             {
-                using (TextWriter writer = File.CreateText($@"{dir}\s{start / chunkSize:d3}.edd.txt"))
+                using (TextWriter writer = File.CreateText($@"{dir}\s{start / chunkSize:d3}.txt"))
                 {
                     int limit = Math.Min(start + chunkSize, order.Count);
                     for (int i = start; i < limit; i++)
@@ -61,6 +70,7 @@ namespace ESDLang.Script
         {
             return (id + (command ? 100000 : 0), $"        <{(command ? "Command" : "Function")} {(command ? "Bank=\"1\" " : "")}ID=\"{id}\" Name=\"{name}\" Description=\"\"/>");
         }
+
         // Writes to the given path, or if chunks are involved, selects multiple paths. Does not write strings in chunks.
         public void Write(string path, EDDFormat format)
         {
@@ -69,6 +79,7 @@ namespace ESDLang.Script
                 string part = path.Replace(".edd.txt", "");
                 using (TextWriter writer = File.CreateText(part + "_part.edd.txt"))
                 {
+                    // Also call WriteEddStrs alongside this
                     foreach (KeyValuePair<string, int> entry in locs)
                     {
                         writer.WriteLine($"{entry.Key}: #{entry.Value}");
@@ -79,22 +90,21 @@ namespace ESDLang.Script
             {
                 using (TextWriter writer = File.CreateText(path))
                 {
-                    Console.WriteLine($"edd is {edd}");
                     if (edd != null)
                     {
                         List<(int, string)> xmls = new List<(int, string)>();
                         foreach (FunctionSpec f in edd.FunctionSpecs)
                         {
-                            writer.WriteLine($"f{f.ID}: {f.Name}");
+                            writer.WriteLine($"f{f.ID:d3}: {f.Name}");
                             xmls.Add(DumpXml(false, f.ID, f.Name));
                         }
                         foreach (CommandSpec f in edd.CommandSpecs)
                         {
-                            writer.WriteLine($"c{f.ID}: {f.Name}");
+                            writer.WriteLine($"c{f.ID:d3}: {f.Name}");
                             xmls.Add(DumpXml(true, (int)f.ID, f.Name));
                         }
                         // Informal utility to generate XML
-                        writer.WriteLine(string.Join("\r\n", xmls.OrderBy(s => s).Select(s => s.Item2)));
+                        // writer.WriteLine(string.Join("\r\n", xmls.OrderBy(s => s).Select(s => s.Item2)));
                     }
                     foreach (KeyValuePair<string, int> entry in locs)
                     {
@@ -127,6 +137,8 @@ namespace ESDLang.Script
                 }
                 string name = order[locs[desc]];
                 parts = desc.Split('_');
+                // These should just be command names
+                if (desc.StartsWith('c') || desc.StartsWith('f')) continue;
                 if (!Common.ParseMachine(parts[0], out int machineId)) throw new Exception($"Bad machine id in {desc}");
                 if (!machines.TryGetValue(machineId, out MachineDesc machine))
                 {
@@ -184,7 +196,16 @@ namespace ESDLang.Script
         public void ReadEDD(string path, List<string> sharedStrings = null)
         {
             // Read the given EDD. If shared strings is provided, we should dump our strings into it.
-            edd = EDD.Read(path);
+            try
+            {
+                edd = EDD.Read(path);
+            }
+            catch (Exception e)
+            {
+                // Some format errors, not everything is known yet
+                Console.WriteLine($"Error reading {path}: {e}");
+                return;
+            }
             order = sharedStrings ?? new List<string>();
             // 1179 at the start. 1101 with builtin dedupe
             // return;

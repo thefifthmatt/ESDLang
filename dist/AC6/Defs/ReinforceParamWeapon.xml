@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PARAMDEF XmlVersion="3">
+  <ParamType>REINFORCE_PARAM_WEAPON_ST</ParamType>
+  <DataVersion>2</DataVersion>
+  <BigEndian>False</BigEndian>
+  <Unicode>True</Unicode>
+  <FormatVersion>203</FormatVersion>
+  <Fields>
+    <Field Def="s32 UnkInt0x00"></Field>
+    <Field Def="f32 atkRate_Kinetic"></Field>
+    <Field Def="f32 atkRate_Energy"></Field>
+    <Field Def="f32 atkRate_Explosive"></Field>
+    <Field Def="f32 atkRate_Coral"></Field>
+    <Field Def="f32 atkRate_Stamina"></Field>
+    <Field Def="f32 atkRate_Poise"></Field>
+    <Field Def="f32 poiseDurabilityRate"></Field>
+    <Field Def="f32 correctStrengthRate"></Field>
+    <Field Def="f32 correctAgilityRate"></Field>
+    <Field Def="f32 correctMagicRate"></Field>
+    <Field Def="f32 correctFaithRate"></Field>
+    <Field Def="f32 guardCutRate_Kinetic"></Field>
+    <Field Def="f32 guardCutRate_Energy"></Field>
+    <Field Def="f32 guardCutRate_Explosive"></Field>
+    <Field Def="f32 guardCutRate_Coral"></Field>
+    <Field Def="f32 guardResistRate_AcsAnomaly"></Field>
+    <Field Def="f32 guardResistRate_ElecDischarge"></Field>
+    <Field Def="f32 guardResistRate_Plasma"></Field>
+    <Field Def="f32 guardResistRate_ElecDischargeType2"></Field>
+    <Field Def="f32 guardDefRate_Stamina"></Field>
+    <Field Def="u8 spEffectId1"></Field>
+    <Field Def="u8 spEffectId2"></Field>
+    <Field Def="u8 spEffectId3"></Field>
+    <Field Def="u8 residentSpEffectId1"></Field>
+    <Field Def="u8 residentSpEffectId2"></Field>
+    <Field Def="u8 residentSpEffectId3"></Field>
+    <Field Def="u8 materialSetId"></Field>
+    <Field Def="u8 maxReinforceLevel"></Field>
+    <Field Def="f32 atkRate_Unknown"></Field>
+    <Field Def="f32 guardCutRate_Unknown"></Field>
+    <Field Def="f32 correctLuckRate"></Field>
+    <Field Def="f32 guardResistRate_Uranium"></Field>
+    <Field Def="f32 reinforcePriceRate"></Field>
+    <Field Def="f32 baseChangePriceRate"></Field>
+    <Field Def="dummy8 endPadding[16]"></Field>
+  </Fields>
+</PARAMDEF>

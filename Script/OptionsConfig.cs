@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using SoulsIds;
 using static SoulsIds.GameSpec;
+using System.Runtime;
 
 namespace ESDLang.Script
 {
@@ -18,6 +19,8 @@ namespace ESDLang.Script
         public string Game { get; set; }
         [JsonProperty(PropertyName = "basedir")]
         public string BaseDir { get; set; }
+        [JsonProperty(PropertyName = "moddir")]
+        public string ModDir { get; set; }
         [JsonProperty(PropertyName = "backup")]
         public bool Backup { get; set; }
         [JsonProperty(PropertyName = "extra")]
@@ -25,109 +28,346 @@ namespace ESDLang.Script
         [JsonProperty(PropertyName = "other_options")]
         public string Options { get; set; }
 
-        public static OptionsConfig GetOrCreate(string file)
+        // If BaseDir and ModDir are set, new files to copy from the BaseDir and then decompile
+        [JsonIgnore]
+        public Dictionary<string, string> Decompile { get; set; } = new();
+
+        private static OptionsConfig ReadExistingConfig(string configPath)
         {
-            string configDir = Path.GetDirectoryName(file);
-            string configPath = Path.Combine(configDir, "esdtoolconfig.json");
-            configPath = new FileInfo(configPath).FullName;
-            if (File.Exists(configPath))
+            try
             {
-                try
+                OptionsConfig readConfig = JsonConvert.DeserializeObject<OptionsConfig>(File.ReadAllText(configPath));
+                Console.WriteLine($"Using config {configPath}");
+                Console.WriteLine();
+                return readConfig;
+            }
+            catch (JsonException ex)
+            {
+                throw new Exception($"Failed to parse {configPath}. Please either fix it or delete it so it can be recreated.", ex);
+            }
+        }
+
+        public static OptionsConfig GetOrCreate(List<string> files)
+        {
+            // If given no files, or a project.json/esdtoolconfig.json file, files to decompile should also be prompted.
+            bool promptDecompile = false;
+            if (files.Count == 0)
+            {
+                promptDecompile = true;
+            }
+            string argConfigPath = null;
+            string argProjectPath = null;
+            files.RemoveAll(path =>
+            {
+                string name = Path.GetFileName(path);
+                if (name == "project.json")
                 {
-                    OptionsConfig readConfig = JsonConvert.DeserializeObject<OptionsConfig>(File.ReadAllText(configPath));
-                    Console.WriteLine($"Using config {configPath}");
-                    Console.WriteLine();
-                    return readConfig;
+                    promptDecompile = true;
+                    argProjectPath ??= path;
+                    return true;
                 }
-                catch (JsonException ex)
+                if (name == "esdtoolconfig.json")
                 {
-                    throw new Exception($"Failed to parse {configPath}. Please either fix it or delete it so it can be recreated.", ex);
+                    promptDecompile = true;
+                    argConfigPath ??= path;
+                    return true;
+                }
+                return false;
+            });
+            string configPath = argConfigPath;
+            string inputFile = files.FirstOrDefault();
+            if (configPath == null && inputFile != null)
+            {
+                string configDir = Path.GetDirectoryName(inputFile);
+                configPath = Path.Combine(configDir, "esdtoolconfig.json");
+            }
+
+            if (promptDecompile)
+            {
+                Console.WriteLine($"Welcome to esdtool.");
+                Console.WriteLine($"You've initiated a setup process to copy ESDs from the game directory into a mod-specific");
+                Console.WriteLine($"project directory and then decompile them. If you want to compile/decompile files without");
+                Console.WriteLine($"copying anything, close this window and drag those files into esdtool.exe directly instead.");
+                Console.WriteLine();
+            }
+
+            OptionsConfig config = new();
+            if (configPath != null)
+            {
+                configPath = new FileInfo(configPath).FullName;
+                if (File.Exists(configPath))
+                {
+                    // All data is already provided, and can be returned if nothing else is needed.
+                    config = ReadExistingConfig(configPath);
+                }
+                else
+                {
+                    Console.WriteLine($"Creating {configPath}");
+                    Console.WriteLine();
                 }
             }
 
-            // Guided approach
-            Console.WriteLine($"Creating {configPath}");
-            Console.WriteLine();
-            FromGame game = FromGame.UNKNOWN;
-            while (game == FromGame.UNKNOWN)
+            bool firstTimeRun = !File.Exists(configPath);
+
+            bool promptYesNo()
+            {
+                string text = Console.ReadLine();
+                if (text == null) throw new IOException("Input error");
+                return text.Trim().ToLowerInvariant().StartsWith("y");
+            }
+            void promptAny()
+            {
+                string text = Console.ReadLine();
+                if (text == null) throw new IOException("Input error");
+            }
+
+            // Prompt for project file if needed
+            ProjectSettingsFile project = null;
+            if (config.Game == null || config.BaseDir == null && (promptDecompile && string.IsNullOrWhiteSpace(config.ModDir)))
+            {
+                if (argProjectPath != null)
+                {
+                    project = ProjectSettingsFile.LoadProjectFile(argProjectPath);
+                }
+                else
+                {
+                    while (true)
+                    {
+                        Console.Write($"Select a project.json file to load game and mod info [y/n]? ");
+                        if (!promptYesNo())
+                        {
+                            Console.WriteLine();
+                            break;
+                        }
+                        string defaultDir = null;
+                        if (configPath != null && !ProjectSettingsFile.TryGetProjectFile(configPath, out string projectPath))
+                        {
+                            defaultDir = Path.GetDirectoryName(projectPath);
+                        }
+                        if (FileDialog.OpenFileDialog(new[] { "json" }, out string selected, defaultDir))
+                        {
+                            Console.WriteLine();
+                            project = ProjectSettingsFile.LoadProjectFile(selected);
+                            if (project.Game != FromGame.UNKNOWN)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine($"Project file \"{project.FilePath}\" does not seem to have a game supported by esdtool.");
+                                Console.WriteLine();
+                                project = null;
+                            }
+                        }
+                    }
+                }
+            }
+            if (project != null)
+            {
+                // Load basic data from there. ModDir requires knowing where decompiled files are; find that later.
+                config.Game = project.Game.ToString().ToLowerInvariant();
+                config.BaseDir = project.GameDir;
+            }
+
+            while (config.Game == null || !ESDOptions.Games.Names.ContainsKey(config.Game))
             {
                 Console.WriteLine($"Supported games: [{string.Join(", ", ESDOptions.Games.Names.Keys)}]");
                 Console.Write("Select a game type: ");
                 string text = Console.ReadLine();
                 if (text == null) return null;
                 text = text.Trim().ToLowerInvariant();
-                if (!ESDOptions.Games.Names.TryGetValue(text, out game))
-                {
-                    Console.WriteLine();
-                    Console.WriteLine($"Error: Unrecognized game type \"{text}\"");
-                }
                 Console.WriteLine();
+                if (!ESDOptions.Games.Names.ContainsKey(text))
+                {
+                    Console.WriteLine($"Error: Unrecognized game type \"{text}\"");
+                    Console.WriteLine();
+                    continue;
+                }
+                config.Game = text;
             }
-            GameSpec gameInfo = ForGame(game);
+            GameSpec gameInfo = ForGame(ESDOptions.Games.Names[config.Game]);
 
-            string baseDir = gameInfo.GameDir;
-            if (Directory.Exists(baseDir))
+            if (config.BaseDir == null)
             {
-                Console.WriteLine($"Detected game directory: {baseDir}");
-                Console.WriteLine("Make sure to unpack your game with UXM/UDSFM first.");
-                Console.Write($"Use this directory [y/n]? ");
-                string text = Console.ReadLine();
-                if (text == null) return null;
-                if (!text.Trim().ToLowerInvariant().StartsWith("y"))
+                string baseDir = gameInfo.GameDir;
+                if (Directory.Exists(baseDir))
+                {
+                    Console.WriteLine($"Detected game directory: {baseDir}");
+                    Console.WriteLine("Make sure to unpack your game with UXM/UDSFM first.");
+                    Console.Write($"Use this directory [y/n]? ");
+                    if (!promptYesNo())
+                    {
+                        baseDir = null;
+                    }
+                    Console.WriteLine();
+                }
+                else
                 {
                     baseDir = null;
                 }
-                Console.WriteLine();
-            }
-            else
-            {
-                baseDir = null;
-            }
-            while (baseDir == null)
-            {
-                Console.WriteLine("Unpack your game with UXM/UDSFM and paste the game directory here. (Right-click to paste.)");
-                Console.Write($"Enter {game} game directory: ");
-                string text = Console.ReadLine();
-                if (text == null) return null;
-                text = text.Trim();
-                if (!string.IsNullOrWhiteSpace(text))
+                while (baseDir == null)
                 {
-                    try
+                    Console.Write("Unpack your game with UXM/UDSFM and press enter to select a game directory. ");
+                    promptAny();
+                    if (FileDialog.OpenFolderDialog(out string path))
                     {
-                        DirectoryInfo dirInfo = new DirectoryInfo(text);
-                        if (!Path.IsPathRooted(text))
+                        Console.WriteLine();
+                        if (Directory.Exists(path))
                         {
-                            Console.WriteLine();
-                            Console.WriteLine($"Error: Provide an absolute directory, not a relative one");
-                        }
-                        else if (!dirInfo.Exists)
-                        {
-                            Console.WriteLine();
-                            Console.WriteLine($"Error: Directory \"{dirInfo.FullName}\" not found");
+                            baseDir = path;
                         }
                         else
                         {
-                            baseDir = dirInfo.FullName;
+                            Console.WriteLine($"Error: Directory \"{path}\" not found");
+                            Console.WriteLine();
                         }
                     }
-                    catch (ArgumentException ex)
-                    {
-                        Console.WriteLine();
-                        Console.WriteLine($"Error: {ex.Message}");
-                    }
                 }
-                Console.WriteLine();
+                config.BaseDir = Path.GetFullPath(baseDir);
             }
 
-            bool backup = false;
+            // Mod directory has a few odd cases if unset. Try to ask as few questions as possible.
+            // If both project and configPath exist, it can be automatically calculated.
+            // If not promptDecompile, it can be optionally queried.
+            // If promptDecompile and no project, it must be queried.
+            // Finally actually prompt game files.
+            // Make the path relative if possible.
+            if (project != null)
             {
-                Console.Write($"Create backups of overwritten files [y/n]? ");
-                string text = Console.ReadLine();
-                if (text == null) return null;
-                if (text.Trim().ToLowerInvariant().StartsWith("y"))
+                config.ModDir = project.ModDir;
+            }
+            while (string.IsNullOrWhiteSpace(config.ModDir) && (promptDecompile || firstTimeRun))
+            {
+                if (promptDecompile)
                 {
-                    backup = true;
+                    Console.Write("Press enter to select the top-level mod directory to decompile vanilla files into. ");
+                    promptAny();
                 }
+                else
+                {
+                    Console.Write($"Select a top-level mod directory to use mod data [y/n]? ");
+                    if (!promptYesNo())
+                    {
+                        Console.WriteLine();
+                        break;
+                    }
+                }
+                if (FileDialog.OpenFolderDialog(out string path))
+                {
+                    Console.WriteLine();
+                    if (!Directory.Exists(path))
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine($"Error: Directory \"{path}\" not found");
+                        continue;
+                    }
+                    {
+                        if (path.EndsWith(@"\script\talk"))
+                        {
+                            string realPath = Path.GetFullPath(Path.Combine(path, @"..\.."));
+                            Console.WriteLine($"You've selected an ESD directory, not the top-level mod directory.");
+                            Console.Write($"Use \"{realPath}\" instead [y/n]? ");
+                            if (promptYesNo())
+                            {
+                                path = realPath;
+                            }
+                            Console.WriteLine();
+                        }
+                        if (path == config.BaseDir)
+                        {
+                            Console.WriteLine($"Error: You selected the game directory. Select a separate mod directory.");
+                            Console.WriteLine();
+                            continue;
+                        }
+                        config.ModDir = path;
+                    }
+                }
+            }
+            if (promptDecompile)
+            {
+                while (config.Decompile.Count == 0)
+                {
+                    Console.WriteLine("Select one more esd or esdbnd files in the game directory to decompile.");
+                    if (gameInfo.EsdDir != null) Console.WriteLine($"These are usually found in {gameInfo.EsdDir} after unpacking with UXM/UDSFM.");
+                    Console.Write("Press enter to select files. ");
+                    promptAny();
+                    string gamePrefix = config.BaseDir + @"\";
+                    if (FileDialog.OpenMultiFileDialog(Array.Empty<string>(), out IReadOnlyList<string> paths, config.BaseDir))
+                    {
+                        Console.WriteLine();
+                        foreach (string path in paths)
+                        {
+                            string gamePath = Path.GetFullPath(path);
+                            if (!gamePath.StartsWith(gamePrefix))
+                            {
+                                Console.WriteLine($"Ignoring \"{gamePath}\" because it's not in the game directory.");
+                                continue;
+                            }
+                            string relPath = gamePath.Substring(gamePrefix.Length);
+                            string modPath = Path.GetFullPath(Path.Combine(config.ModDir, relPath));
+                            if (File.Exists(modPath))
+                            {
+                                Console.WriteLine($"Ignoring \"{gamePath}\" because it already exists in the mod directory.");
+                                continue;
+                            }
+                            Console.WriteLine($"Copying \"{gamePath}\" to the mod directory");
+                            Directory.CreateDirectory(Path.GetDirectoryName(modPath));
+                            File.Copy(gamePath, modPath);
+                            config.Decompile[gamePath] = modPath;
+                            files.Add(modPath);
+                        }
+                        Console.WriteLine();
+                    }
+                }
+            }
+
+            if (configPath == null)
+            {
+                if (config.Decompile.Count > 0)
+                {
+                    inputFile = config.Decompile.Values.First();
+                    string configDir = Path.GetDirectoryName(inputFile);
+                    configPath = Path.Combine(configDir, "esdtoolconfig.json");
+                    if (File.Exists(configPath))
+                    {
+                        // Merge the configs here.
+                        // The user should really drag this config file instead, though.
+                        OptionsConfig oldConfig = config;
+                        config = ReadExistingConfig(configPath);
+                        config.Game = oldConfig.Game;
+                        config.BaseDir = oldConfig.BaseDir;
+                        config.ModDir = oldConfig.ModDir;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Error: No input files given! Nothing to do...");
+                    Console.WriteLine();
+                    return null;
+                }
+            }
+
+            string getPathToParent(string parentDir, string childDir)
+            {
+                parentDir = Path.GetFullPath(parentDir);
+                childDir = Path.GetFullPath(childDir);
+                if (childDir.StartsWith(parentDir))
+                {
+                    return Path.GetRelativePath(childDir, parentDir);
+                }
+                return parentDir;
+            }
+            if (!string.IsNullOrWhiteSpace(config.ModDir))
+            {
+                // Paths are currently relative to the esdtool.exe directory, TODO make them relative to the file directory
+                // config.ModDir = getPathToParent(config.ModDir, Path.GetDirectoryName(configPath));
+            }
+
+            // This is not great because it duplicates esdbnds, but is still useful for py files.
+            if (firstTimeRun)
+            {
+                Console.Write($"Create backups when overwriting files [y/n]? ");
+                config.Backup = promptYesNo();
                 Console.WriteLine();
             }
 
@@ -135,14 +375,10 @@ namespace ESDLang.Script
             Console.WriteLine();
             Console.WriteLine("Use the command line interface directly if you want to access exciting advanced functionality. You can also edit the config.");
             Console.WriteLine();
-            OptionsConfig config = new OptionsConfig
-            {
-                Game = game.ToString().ToLowerInvariant(),
-                BaseDir = baseDir,
-                Backup = backup,
-                Options = "",
-                ExtraESDs = new Dictionary<string, string>(),
-            };
+            // Add optional fields for documentation's sake
+            config.ModDir ??= "";
+            config.Options ??= "";
+            config.ExtraESDs ??= new();
             File.WriteAllText(configPath, JsonConvert.SerializeObject(config, Formatting.Indented) + Environment.NewLine);
             return config;
         }
@@ -160,6 +396,11 @@ namespace ESDLang.Script
             {
                 ret.Add($"-basedir");
                 ret.Add(BaseDir);
+            }
+            if (!string.IsNullOrWhiteSpace(ModDir))
+            {
+                ret.Add($"-moddir");
+                ret.Add(ModDir);
             }
             if (Backup)
             {
@@ -220,7 +461,7 @@ namespace ESDLang.Script
                 Console.WriteLine();
                 while (true)
                 {
-                    Console.Write("Single directory to write to: ");
+                    Console.Write("Shared directory name for all ESDs, or else nothing: ");
                     string text = Console.ReadLine();
                     if (text == null) return null;
                     text = text.Trim();

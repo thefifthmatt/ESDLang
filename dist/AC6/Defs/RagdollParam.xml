@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PARAMDEF XmlVersion="3">
+  <ParamType>RAGDOLL_PARAM_ST</ParamType>
+  <DataVersion>1</DataVersion>
+  <BigEndian>False</BigEndian>
+  <Unicode>True</Unicode>
+  <FormatVersion>203</FormatVersion>
+  <Fields>
+    <Field Def="f32 hierarchyGain"></Field>
+    <Field Def="f32 velocityDamping"></Field>
+    <Field Def="f32 accelGain"></Field>
+    <Field Def="f32 velocityGain"></Field>
+    <Field Def="f32 positionGain"></Field>
+    <Field Def="f32 maxLinerVelocity"></Field>
+    <Field Def="f32 maxAngularVelocity"></Field>
+    <Field Def="f32 snapGain"></Field>
+    <Field Def="u8 enable"></Field>
+    <Field Def="s8 partsHitMaskNo"></Field>
+    <Field Def="dummy8 endPadding[14]"></Field>
+  </Fields>
+</PARAMDEF>

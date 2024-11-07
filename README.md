@@ -4,13 +4,11 @@ ESDLang is a high-level language for viewing and editing ESD scripts, primarily 
 make significant quest edits, and add convenience features to bonfires.
 It decompiles ESD files into a subset of Python. These Python files cannot be executed as Python. They can only be recompiled.
 
-DS1, DS2, Bloodborne, DS3, Sekiro, and Elden Ring are supported. See game dumps in the examples/ directory.
-
-**For Sekiro and Elden Ring, copy oo2core_6_win64.dll from your game directory into the esdtool directory.**
+DS1, DS2, Bloodborne, DS3, Sekiro, Elden Ring, and AC6 are supported, with read-only support for Demon's Souls.
 
 ## Running esdtool.exe
 
-There are two officially supported ways to run esdtool.exe:
+There are three officially supported ways to run esdtool.exe:
 
 1. Drag and drop files into the esdtool.exe program. This tries to construct command line arguments automatically.
 
@@ -20,7 +18,8 @@ There are two officially supported ways to run esdtool.exe:
 
    See [Command Line Flags](#command-line-flags).
 
-Double-clicking on esdtool.exe won't do anything. It needs arguments.
+3. If you're unsure about what to do, run esdtool.exe by itself, and it will guide you to copy game files to a mod directory
+   and decompile them.
 
 ## ESD overview
 
@@ -156,57 +155,61 @@ The first time you run esdtool.exe for files in a given directory, it will promp
 
 **Make sure to unpack the game using UXM/USDFM before running anything. Avoid modifying unpacked game files if you can.**
 
-You can drag these types of files (with or without the .dcx extension):
+You can drag these files to decompile ESDs (with or without the .dcx extension):
 
-* ESD files: .esd files can be dragged into esdtool.exe to decompile them and write .py files with the same name(s).
-* Python files: .py files can be dragged into esdtool.exe to compile them and write .esd files with the ESD name(s).
-* talkesdbnd files: these can be dragged into esdtool.exe to produce a directory with .py files decompiled from all ESDs in the archive(s).
+* project.json files: If you have a project file from DSMapStudio/Smithbox, you can drag this into esdtool.exe and be prompted to select
+  game files to copy into your project directory and decompile.
+* esdtoolconfig.json files: If you've already run esdtool.exe before, you can drag this into esdtool.exe and be prompted to select
+  game files to copy into your project directory and decompile.
+* Loose ESD files: Individual .esd files can be dragged into esdtool.exe to decompile them and write .py files with the same name(s).
+* talkesdbnd files: These can be dragged into esdtool.exe to produce a directory with .py files decompiled from all ESDs in the archive(s).
 
   You will be given a choice of whether to use a single directory or multiple directories per bnd (suffixed with -only).
-  I would recommend a single directory because it allows you to update all bnds simultaneously.
-* Directories with Python files: these can be dragged into esdtool.exe to create bnds in the parent directory.
+
+You can drag these files to compile ESDs:
+
+* Python files: Individual .py files can be dragged into esdtool.exe to compile them and write .esd files with the ESD name(s).
+* Directories with Python files: these can be dragged into esdtool.exe to create bnds in the containing directory.
   These bnds do not need to exist beforehand. They are based on bnds from the game directory.
 * Directories with an -only suffix with Python files: this is a special case where only *one* specific bnd in the parent
   directory will be modified. For example, the m10_00_00_00-only\ directory will only update m10_00_00_00.talkesdbnd.dcx.
-  The bnd file *does* need to already exist.
+  The destination bnd file *does* need to exist.
   
 Note that by default, **compiled bnd files are copied from bnds in the unpacked game directory!**
 When esdtool.exe updates a bnd file, it starts with the game bnds, modifies only the ESDs requested for compilation, and passes the rest of them through.
-This means you should be very careful about modifying the unpacked game files, or else those modifications
+This means you should be careful about modifying the unpacked game files, or else those modifications
 will propagate to all instances of esdtool for that game. (You can set esddir to get around this. See below.)
 
 After running esdtool.exe for the first time, you can edit options in a file called `esdtoolconfig.json`.
 It supports these fields:
 
 * `game`: The lowercase game abbreviation like `"ds1"` or `"sdt"`.
-* `basedir`: The game directory which includes the exe and all unpacked files.
+* `basedir`: The game directory which includes the exe and all unpacked files. This should be an absolute path.
+* `moddir`: A ModEngine directory with mod files overriding the game's files. This should be an absolute path.
 * `backup`: Whether to create backups when writing a file that already exists. You're explicitly asked this before esdtool writes any files.
-* `extra`: A key-value dictionary from ESD names to BND names indicating extra ESDs to add to those BNDs which do not exist in the vanilla versions. This is used for adding brand new ESDs rather than just modifying existing ones.
+* `extra`: A key-value dictionary from new ESD names to existing BND names indicating extra ESDs to add to those BNDs which do not exist in the vanilla versions. This is used for adding brand new ESDs rather than just modifying existing ones.
 * `other_options`: Regular command line options which are automatically added to the command line string.
 
 Finally, here are some recommended workflows:
 
 ### Decompiling the entire game
 
-1. Copy oo2core_6_win64.dll from your game directory into the esdtool directory for Sekiro or Elden Ring
-2. Copy all game talkesdbnds into a different directory where you can safely browse and modify files
-3. Select all of the talkesdbnds and drag them into esdtool.exe together
-4. When prompted, enter a directory name like `py` or `all` or `esds` to place all decompiled files
+1. Double-click on esdtool.exe directly, or drag a project.json file into it
+2. When prompted for files to decompile, select all talkesdbnds in the game ESD directory (usually `script\talk`)
+3. When prompted for a destination directory, either enter a directory name like `py` or `all` or `esds` to place all decompiled files,
+   or leave it blank to automatically name the directory after the talkesdbnds.
 
 ### Recompiling the entire game
 
-1. Drag your main Python file directory into esdtool.exe
-2. This will update all the talkesdbnds
-
-This isn't recommended if you can avoid it. Instead...
+1. Drag your directories of Python files into esdtool.exe
+2. This will update all the talkesdbnds with all compiled files in those directories.
 
 ### Recompiling only specific files
 
-1. After decompiling the entire game, create a completely different directory which doesn't contain any talkesdbnds, and create another directory nested inside of it
-2. Copy the Python files you wish to modify into the inner directory
-3. Make edits
-4. Drag the inner directory into esdtool.exe
-5. This will create talkesdbnds in the outer directory. You can then place these in `script\talk` in a Mod Engine directory, or just do it within a Mod Engine directory to begin with.
+1. Copy only the Python files you wish to modify into a new directory
+2. Make edits in that directory
+3. Drag the directory into esdtool.exe
+4. This will create talkesdbnds in the outer directory. Only the ESDs in the directory will be compiled. All others will be copied from the base game without modification.
 
 ### Making UXM/UDSFM patching work
 
@@ -227,7 +230,7 @@ operations. For instance, -ds1 -esddir chr will default everything to DS1, but t
 the subdirectory used for ESD inputs. The other way around will not work.
 
 > Game flag
--ds1, -ds1r, -ds2, -ds2s, -bb, -ds3, -sdt, -er
+-des, -ds1, -ds1r, -ds2, -ds2s, -bb, -ds3, -sdt, -er, -ac6
     Sets all game data flags to default known values for Steam installations of the given game, or
     clears them if unknown. This overrides all values which were there before. These default values
     are kept in SoulsIds in GameSpec.cs
@@ -235,17 +238,21 @@ the subdirectory used for ESD inputs. The other way around will not work.
 > Game data flags
 (not necessary to set if set by the game flag)
 -basedir DIR
-    Sets the base directory for esddir, maps, msgs, and params. UXM or similar tool must be used.
+    Sets the directory for base-relative lookups, particularly esddir, maps, msgs, and params.
+    UXM or similar tool must be used.
+-moddir DIR
+    Sets a mod override directory for base-relative lookups. If set, files will first be looked
+    up in moddir before defaulting to basedir.
 -esddir DIR
-    Sets the relative dir for all ESDs, meaning all .esd, .esd.dcx, and esdbnd.dcx files in
-    that directory. Overrides -i for a list of ESDs and clears -f.
+    Sets the base-relative dir for all vanilla ESDs, meaning all .esd, .esd.dcx, and esdbnd.dcx
+    files in that directory. Overrides -i for a list of ESDs and clears -f.
 -maps DIR
-    Sets the relative dir for all MSB files. Used to look up chr info on ESDs, currently for
+    Sets the base-relative dir for all MSB files. Used to look up chr info on ESDs, currently for
     DS1, DS1R, DS3, and Sekiro.
 -msgs DIR
-    Sets the relative dir where FMG bnds can be found. Used to annotate ESDs with game info.
+    Sets the base-relative dir where FMG bnds can be found. Used to annotate ESDs with game info.
 -params FILE
-    Sets the relative file with game params. Used to annotate ESDs with game info.
+    Sets the base-relative file with game params. Used to annotate ESDs with game info.
     Requires -layouts or -defs.
 -names DIR
     A directory with names for game ids. Currently ModelName.txt is used alongside chr info.
@@ -253,7 +260,7 @@ the subdirectory used for ESD inputs. The other way around will not work.
     A directory with layout xml files, required to use -params in most games.
 -defs DIR
     A directory with paramdef xml files, required to use -params in Elden Ring.
--outdcx [None | Zlib | DCP_EDGE | DCP_DFLT | DCX_EDGE | DCX_DFLT_10000_24_9 | DCX_DFLT_10000_44_9 | DCX_DFLT_11000_44_8 | DCX_DFLT_11000_44_9 | DCX_DFLT_11000_44_9_15 | DCX_KRAK]
+-outdcx [None | Zlib | DCP_EDGE | DCP_DFLT | DCX_EDGE | DCX_DFLT_10000_24_9 | DCX_DFLT_10000_44_9 | DCX_DFLT_11000_44_8 | DCX_DFLT_11000_44_9 | DCX_DFLT_11000_44_9_15 | DCX_KRAK | DCX_KRAK_MAX | DCX_ZSTD]
     Sets the DCX type to use when writing ESDs (writebnd/writeloose).
 
 > Input/output flags
@@ -336,10 +343,23 @@ the subdirectory used for ESD inputs. The other way around will not work.
     When enabled (default true), decompilation substitutes GetREG expressions with the contents of
     equivalent SetREG expressions from within the same state. The reverse optimization is not
     currently done during compilation.
+-[no]simplifybools
+    When enabled (default true), decompilation rewrites equality comparisons with True and False
+    to eliminate redundancy, e.g. replacing 'GetEventFlag(50) == True' with 'GetEventFlag(50)'.
+    This is performed for functions marked as binary_return in the documentation, which are
+    checked in the game exe. If a function can return non-0-or-1 values, it is unsafe to perform
+    this optimization on them.
 -[no]cmdedd
     When enabled (default false) and EDD is available, output text for each individual command
     where given a description. This appears to be automatically inserted based on the command id,
     rather than custom text like state or machine descriptions.
+-[no]annotate
+    When enabled (default true), output annotations for text containing dialogue, menu text, item
+    names, and various other named data in the game. If disabled, game files other than ESD files
+    are not read.
+-[no]dialogue
+    When enabled (default true), dialogue annotations are added with one line per dialogue based on
+    adjacent TalkParam rows. If disabled, only the first line is added.
 -cmdtype [None | Talk | TalkER | Chr | Event | AI]
     The source to use for command and function names, for both reading and writing. If not
     provided, this is inferred from .esd/.py name and provided game where possible. Otherwise, None

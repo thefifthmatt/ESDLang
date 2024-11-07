@@ -12,7 +12,10 @@
         <Command Bank="1" ID="8"   Name="ForceEndTalk" Description=""/>
         <Command Bank="1" ID="9"   Name="ClearTalkProgressData" Description=""/>
         <Command Bank="1" ID="10"  Name="ShowShopMessage" Description=""/>
-        <Command Bank="1" ID="11"  Name="SetEventFlag" Description=""/>
+        <Command Bank="1" ID="11"  Name="SetEventFlag" Description="">
+            <Arg Name="EventFlagID" ValueType="Number" Description="" Namespace="EventFlag" />
+            <Arg Name="State" ValueType="Number" Description="" />
+        </Command>
         <Command Bank="1" ID="12"  Name="CloseShopMessage" Description=""/>
         <Command Bank="1" ID="13"  Name="OpenCampMenu" Description="Unused"/>
         <Command Bank="1" ID="14"  Name="CloseCampMenu" Description="Unused"/>
@@ -61,7 +64,7 @@
         <Command Bank="1" ID="60"  Name="BreakCovenantPledge" Description="Unused"/>
         <Command Bank="1" ID="61"  Name="PlayerRespawn" Description="Unused"/>
         <Command Bank="1" ID="62"  Name="GiveSpEffectToPlayer" Description=""/>
-        <Command Bank="1" ID="63"  Name="ShowGrandioseTextPresentation" Description="Unused"/>
+        <Command Bank="1" ID="63"  Name="ShowGrandioseTextPresentation" Description="Unused - FeTextEffectParam in AC6??"/>
         <Command Bank="1" ID="64"  Name="AddIzalithRankingPoints" Description="Unused"/>
         <Command Bank="1" ID="65"  Name="OpenItemAcquisitionMenu" Description="Unused"/>
         <Command Bank="1" ID="66"  Name="AcquireGestureOld" Description="Unused"/>
@@ -100,6 +103,26 @@
         <Command Bank="1" ID="146" Name="OpenDupeShop" Description=""/>
         <Command Bank="1" ID="147" Name="SetEventFlagValue" Description=""/>
         <Command Bank="1" ID="148" Name="OpenChampionsEquipmentShop" Description=""/>
+
+        <!-- <Command Bank="1" ID="120" Name="UnkSpEffect" Description=""/> -->
+        <Command Bank="1" ID="214" Name="StartEvent" Description=""/>
+        <Command Bank="1" ID="215" Name="StartCommonEvent" Description=""/>
+        <Command Bank="1" ID="221" Name="SetMissionState" Description="">
+            <Arg Name="MissionID" ValueType="Number" Description="" Namespace="Mission" />
+            <Arg Name="IsComplete" ValueType="MissionState" Description="" />
+            <Arg Name="State" ValueType="Bool" Description="" />
+        </Command>
+        <Command Bank="1" ID="226" Name="ShowTutorialMessage" Description="">
+            <Arg Name="TutorialID" ValueType="Number" Description="" Namespace="Tutorial" />
+        </Command>
+        <Command Bank="1" ID="250" Name="GiveItemDirectly" Description="">
+            <Arg Name="ItemType" ValueType="Number" Description="" Namespace="ItemType" />
+            <Arg Name="Item" ValueType="Number" Description="TODO localize to AC6 somehow" Namespace="Item" />
+            <Arg Name="Quantity" ValueType="Number" Description="" />
+        </Command>
+        <Command Bank="1" ID="259" Name="UnlockDecal" Description="">
+            <Arg Name="Decal" ValueType="Number" Description="" />
+        </Command>
     </CommandList>
     <FunctionList>
         <Function ID="0"   Name="GetWhetherEnemiesAreNearby" Description=""/>
@@ -117,7 +140,9 @@
         <Function ID="12"  Name="GetTalkInterruptReason" Description=""/>
         <Function ID="13"  Name="GetShopCondition" Description="Unused"/>
         <Function ID="14"  Name="GetOneLineHelpStatus" Description=""/>
-        <Function ID="15"  Name="GetEventFlag" Description=""/>
+        <Function ID="15"  Name="GetEventFlag" Description="">
+            <Arg Name="EventFlagID" ValueType="Number" Description="" Namespace="EventFlag" />
+        </Function>
         <Function ID="16"  Name="DoesPlayerHaveItem" Description=""/>
         <Function ID="17"  Name="DoesPlayerHaveItemEquipped" Description=""/>
         <Function ID="18"  Name="IsFightingAlone" Description="Unused"/>
@@ -178,7 +203,28 @@
         <Function ID="110" Name="GetTotalBonfireLevel" Description=""/>
         <Function ID="111" Name="GetIsOnline" Description="Unused"/>
         <Function ID="112" Name="GetIsNetPenalizedForArena" Description=""/>
+
+        <Function ID="312" Name="EventComplete" Description="Or EventFlag"/>
+        <Function ID="314" Name="GetMissionState" Description="">
+            <Arg Name="MissionID" ValueType="Number" Description="" Namespace="Mission" />
+            <Arg Name="State" ValueType="MissionState" Description="" />
+        </Function>
+        <Function ID="322" Name="GetGameCycle" Description=""/>
+        <Function ID="331" Name="IsArenaComplete" Description="">
+            <Arg Name="ArenaID" ValueType="Number" Description="" Namespace="Arena" />
+        </Function>
+        <Function ID="327" Name="GetCurrentChapter" Description=""/>
+        <Function ID="337" Name="GetMercenaryRank" Description=""/>
     </FunctionList>
     <EnumList>
+        <!-- TODO make this a coherent type in the context -->
+        <Enum Name="Bool">
+            <EnumEntry Value="0" Name="False" Description=""/>
+            <EnumEntry Value="1" Name="True" Description=""/>
+        </Enum>
+        <Enum Name="MissionState">
+            <EnumEntry Value="0" Name="MissionState.Unlocked" Description=""/>
+            <EnumEntry Value="1" Name="MissionState.Complete" Description=""/>
+        </Enum>
     </EnumList>
 </EzSembleContext>

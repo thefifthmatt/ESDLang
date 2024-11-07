@@ -1,0 +1,2348 @@
+{
+  "commands": [
+    {
+      "bank": 1,
+      "id": 1,
+      "name": "GenerateRandomNumber",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 2,
+      "name": "StartTimer",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 3,
+      "name": "ResetTimer",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 4,
+      "name": "StopTimer",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 90,
+      "name": "LogDebug",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 91,
+      "name": "LogDebugTicker",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 92,
+      "name": "DebugStop",
+      "games_used": [],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 93,
+      "name": "CreateDebugPopcorn",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 94,
+      "name": "LogDebugWith3Ints",
+      "games_used": [],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 95,
+      "name": "LogDebugWith3Floats",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5000,
+      "name": "SetNpcActionVariable",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5204,
+      "name": "MeleeAttack",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5205,
+      "name": "EndNonCombatAction",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5206,
+      "name": "Defend",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5207,
+      "name": "CancelAttack",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5208,
+      "name": "CancelComboAttack",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5210,
+      "name": "SwitchWeapons",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5220,
+      "name": "RandomEvasion",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5221,
+      "name": "RandomEvasionAtAngle",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5230,
+      "name": "SetDamageLowRankLogicReset",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5231,
+      "name": "ResetDamageInfo",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5232,
+      "name": "ResetAttackFailure",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5233,
+      "name": "ResetDamageTypeCount",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5234,
+      "name": "SetPermanentDamageType",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5235,
+      "name": "CancelBladeDash",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5236,
+      "games": ["ds2", "ds2s"],
+      "games_used": ["ds2", "ds2s"]
+    },
+    {
+      "bank": 1,
+      "id": 5250,
+      "name": "UseObj",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5251,
+      "name": "LeaveObj",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5252,
+      "name": "UsePositionAdjustingObj",
+      "games_used": [],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5253,
+      "name": "UseObjFromNavmesh",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5254,
+      "games": ["ds2", "ds2s"],
+      "games_used": ["ds2", "ds2s"]
+    },
+    {
+      "bank": 1,
+      "id": 5260,
+      "name": "EnableInvincibility",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5261,
+      "name": "DisableDamage",
+      "games_used": ["ds2"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5262,
+      "name": "DisableInvincibilityEnableDamage",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5265,
+      "name": "CreateSfx",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5270,
+      "name": "StandJump",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5271,
+      "name": "CancelStartupState",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5272,
+      "name": "ClearStartupStateResetFlag",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5280,
+      "name": "EndBossSpecialAction",
+      "games_used": ["ds2"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5281,
+      "name": "SetSpEffect",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5282,
+      "name": "ClearSpEffect",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5283,
+      "name": "SetMirrorKnightSummon",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5290,
+      "name": "ClimbLadder",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5291,
+      "name": "ClimbLadderQuickly",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5292,
+      "name": "DescendLadder",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5293,
+      "name": "DescendLadderQuickly",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5294,
+      "name": "JumpOffLadder",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5295,
+      "name": "SlideDownLadder",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5296,
+      "name": "LadderUpwardAttack",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5297,
+      "name": "LadderDownwardAttack",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5298,
+      "name": "BeginWhiteGatePassageCheck",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5300,
+      "name": "SetSharedFlag",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5301,
+      "name": "ChangeSubStateID",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5302,
+      "name": "RequestCrystalLizardFleeing",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5303,
+      "games": ["ds2", "ds2s"],
+      "games_used": ["ds2", "ds2s"]
+    },
+    {
+      "bank": 1,
+      "id": 5304,
+      "games": ["ds2", "ds2s"],
+      "games_used": ["ds2", "ds2s"]
+    },
+    {
+      "bank": 1,
+      "id": 5400,
+      "name": "SetMovementPredictionAccuracy",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5405,
+      "name": "RandomMovement",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5406,
+      "name": "NavmeshMovement",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5408,
+      "name": "MovementToAssistedWorldPositionOfTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5420,
+      "name": "ResetMovementFailure",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5421,
+      "name": "DisableMovement",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5435,
+      "name": "RandomDash",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5436,
+      "name": "NavmeshDash",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5438,
+      "name": "DashToAssistedWorldPositionOfTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5465,
+      "name": "RandomHorizontalMovement",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5466,
+      "name": "NavmeshHorizontalMovement",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5468,
+      "name": "HorizontalMovementToAssistedWorldPositionOfTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5469,
+      "name": "HorizontalMovementToNavmeshCenter",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5470,
+      "name": "HorizontalMovementToNextNavmeshCenterInRoute",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5471,
+      "games": ["ds2", "ds2s"],
+      "games_used": ["ds2", "ds2s"]
+    },
+    {
+      "bank": 1,
+      "id": 5490,
+      "name": "Rise",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5491,
+      "name": "Descend",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5505,
+      "name": "RandomLockMovement",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5506,
+      "name": "NavmeshLockMovement",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5508,
+      "name": "LockMovementToAssistedPositionOfTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5535,
+      "name": "RandomLockDash",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5536,
+      "name": "NavmeshLockDash",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5538,
+      "name": "LockDashToAssistedPositionOfTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5565,
+      "name": "RandomHorizontalLockMovement",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5566,
+      "name": "NavmeshHorizontalLockMovement",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5568,
+      "name": "HorizontalLockMovementToAssistedPositionOfTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5569,
+      "name": "HorizontalLockMovementToAssistedWorldPositionOfTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5570,
+      "name": "RandomHorizontalLockMovementInDirection",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5600,
+      "name": "Warp",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5601,
+      "name": "WarpGenerator",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5602,
+      "name": "WarpTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5604,
+      "games": ["ds2"],
+      "games_used": ["ds2"]
+    },
+    {
+      "bank": 1,
+      "id": 5631,
+      "games": ["ds2"],
+      "games_used": ["ds2"]
+    },
+    {
+      "bank": 1,
+      "id": 5700,
+      "name": "SetGroupFlag",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5701,
+      "name": "FollowOffsetPositionFromGroupLeader",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5702,
+      "name": "SetGroupMemberOffsetPosition",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5703,
+      "name": "BecomeGroupLeader",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5750,
+      "name": "SetPlatoonFlag",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5751,
+      "name": "SetPlatoonWeightMultiplier",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5800,
+      "name": "SearchNavmesh",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5801,
+      "name": "SearchNavmeshToGenerator",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5803,
+      "name": "SearchNavmeshToNavPoint",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5804,
+      "name": "SearchNavmeshToGenNavPoint",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5805,
+      "name": "OverwriteGeneratorPositionToCurrentPosition",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5806,
+      "name": "SearchNavmeshToObj",
+      "games_used": ["ds2"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5807,
+      "name": "SearchNavmeshToHeardSound",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5808,
+      "name": "DebugSearchNavmeshToClickedPoint",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5809,
+      "name": "DebugSearchNavGraphTestRoute",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5810,
+      "name": "SearchNavmeshAtOffsetFromGroupLeader",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5811,
+      "name": "DebugSearchNavGraphTestRouteToEnd",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5812,
+      "name": "SearchNavmeshToNearbyGate",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5820,
+      "name": "SetNavmeshRouteSearch",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5821,
+      "name": "SetEffectiveShortNavmeshSearchSize",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5900,
+      "name": "QuickTurnInDirection",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5901,
+      "name": "TurnInPlaceLock",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5902,
+      "name": "TurnInPlaceNavmeshDirection",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5903,
+      "name": "QuickTurnLock",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5904,
+      "name": "QuickTurnNavmeshDirection",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5905,
+      "name": "QuickTurnSoundDirection",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5906,
+      "name": "QuickTurnGeneratorDirection",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 5999,
+      "name": "RequestDeath",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 6000,
+      "name": "NpcAttack",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 6001,
+      "name": "NpcSwitchEquipment",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 6002,
+      "name": "NpcUseSpell",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 6003,
+      "name": "NpcChangeWeaponHolding",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 6004,
+      "name": "NpcUseItem",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 6005,
+      "name": "NpcUseGesture",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7000,
+      "name": "SetCharacterTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7001,
+      "name": "SetObjectTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7002,
+      "name": "SetGeneratorTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7003,
+      "name": "SetMovementAreaTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7004,
+      "name": "SetAttackerTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7005,
+      "name": "SetNavPointTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7006,
+      "name": "SetGenMovementAreaTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7007,
+      "name": "SetGenNavPointTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7008,
+      "name": "SetGroupAttackerTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7009,
+      "name": "ClearTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7010,
+      "name": "SaveTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7011,
+      "name": "LoadTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7012,
+      "name": "SetTargetToPlayerUpdatingYou",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7013,
+      "name": "SetNpcTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7014,
+      "name": "SetWhiteDoorTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7015,
+      "games": ["ds2", "ds2s"],
+      "games_used": ["ds2", "ds2s"]
+    },
+    {
+      "bank": 1,
+      "id": 7050,
+      "name": "OverwriteLastSightInfo",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7051,
+      "name": "EraseLastSightInfo",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7060,
+      "games": ["ds2", "ds2s"],
+      "games_used": ["ds2", "ds2s"]
+    },
+    {
+      "bank": 1,
+      "id": 7301,
+      "name": "LockOn",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7302,
+      "name": "LockOff",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 7303,
+      "name": "LockList",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    }
+  ],
+  "functions": [
+    {
+      "id": 1,
+      "name": "GetRandomValue",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 2,
+      "name": "GetTimerValue",
+      "games_used": ["ds2", "ds2s"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 3,
+      "name": "GetStateTime",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 4,
+      "name": "GetRandomValueForStateTime",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5,
+      "name": "GetCommonParameters",
+      "games_used": [],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 6,
+      "name": "GetEventFlag",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5000,
+      "name": "ReadyToAttack",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5001,
+      "name": "IsUnderAttack",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5002,
+      "name": "InNonCombatAction",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5003,
+      "name": "IsAvoiding",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5004,
+      "name": "IsDefending",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5005,
+      "name": "IsDamaged",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5006,
+      "name": "IsAttacking",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5007,
+      "name": "IsBeingThrown",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5008,
+      "name": "GetCurrentComboCount",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5009,
+      "name": "GetNumberOfDamageTypes",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5010,
+      "name": "GetAttackFailure",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5011,
+      "name": "IsWaiting",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5012,
+      "name": "IsFasterThanWalkingSpeed",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5013,
+      "name": "DuringBladeDash",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5014,
+      "name": "AreSpellsProhibited",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5015,
+      "name": "ShouldChase",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5016,
+      "name": "GetPursuitActionNumber",
+      "games_used": [],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5017,
+      "name": "GetPursuitActionDistance",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5018,
+      "name": "ShouldAttackBehind",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5019,
+      "name": "GetBehindAttackNumber",
+      "games_used": [],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5020,
+      "name": "GetBehindAttackRange",
+      "games_used": [],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5021,
+      "name": "CanUseRecoveryItems",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5022,
+      "name": "GetAvoidanceType",
+      "games_used": ["ds2", "ds2s"],
+      "comment": "1/2 is step, 3 is roll",
+      "args": []
+    },
+    {
+      "id": 5023,
+      "name": "IsStunned",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5024,
+      "games": ["ds2", "ds2s"],
+      "games_used": ["ds2", "ds2s"]
+    },
+    {
+      "id": 5050,
+      "name": "CheckTargetStatus",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5051,
+      "name": "DistanceFromAssistedPosition",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5052,
+      "name": "CheckBulletTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5053,
+      "name": "ConfirmReservedAssistedMovement",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5054,
+      "name": "CompareOwnStatus",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5060,
+      "name": "UsingObj",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5061,
+      "name": "ObjInUse",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5062,
+      "name": "SomeoneUsingObj",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5063,
+      "name": "ObjUseFailure",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5064,
+      "name": "IsJumping",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5065,
+      "name": "InStartupState",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5066,
+      "name": "IsBossSpecialAction",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5067,
+      "name": "IsBossSpecialActionOver",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5068,
+      "name": "GetObjType",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5069,
+      "name": "IsObjDestroyed",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5070,
+      "name": "IsOnlooker",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5071,
+      "name": "IsStartupStateReset",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5072,
+      "name": "HasSpEffect",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5073,
+      "name": "GetOnlookerLevel",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5074,
+      "name": "GetPlatoonFlag",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5075,
+      "name": "GetMemberCountOfPlatoonFlag",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5076,
+      "name": "ArePlatoonAndTargetSame",
+      "games_used": [],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5077,
+      "name": "GetStartStateID",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5078,
+      "name": "IsMirrorKnightPhantomReady",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5079,
+      "name": "CanSummonMirrorKnightNpc",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5080,
+      "name": "IsInCamera",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5081,
+      "name": "IsVisibleComposite",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5082,
+      "games": ["ds2", "ds2s"],
+      "games_used": ["ds2", "ds2s"]
+    },
+    {
+      "id": 5090,
+      "name": "GetActionPriority",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5091,
+      "name": "IsActionPossible",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5092,
+      "name": "IsInContactWithTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5093,
+      "name": "CanThrowTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5094,
+      "games": ["ds2", "ds2s"],
+      "games_used": ["ds2", "ds2s"]
+    },
+    {
+      "id": 5100,
+      "name": "GetEquippedWeapon",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5101,
+      "name": "GetActionLapTimeMultiplier",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5102,
+      "name": "GetWeaponDestruction",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5103,
+      "name": "IsTragetWeaponLongRange",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5104,
+      "name": "CanUseEquippedWeapon",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5105,
+      "games": ["ds2", "ds2s"],
+      "games_used": ["ds2", "ds2s"]
+    },
+    {
+      "id": 5200,
+      "name": "GetHP",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5201,
+      "name": "GetDamageTaken",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5202,
+      "name": "PerformedResetFromDamageTaken",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5203,
+      "name": "IsAttackingOpponentAPlayerCamp",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5204,
+      "name": "GuardSuccess",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5205,
+      "name": "WasCaught",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5206,
+      "name": "InABrightPlace",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5207,
+      "name": "IsPartDestroyed",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5208,
+      "name": "GetLogicLevel",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5209,
+      "name": "GetAbsoluteHpValue",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5210,
+      "name": "GetPartHp",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5211,
+      "name": "PartDamageTaken",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5212,
+      "name": "ObjDamageTaken",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5213,
+      "name": "MapDamageTaken",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5214,
+      "games": ["ds2", "ds2s"],
+      "games_used": ["ds2", "ds2s"]
+    },
+    {
+      "id": 5310,
+      "games": ["ds2", "ds2s"],
+      "games_used": ["ds2", "ds2s"]
+    },
+    {
+      "id": 5600,
+      "name": "GetRouteSearchStatus",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5601,
+      "name": "IsRouteSearchMovementCompleted",
+      "games_used": [],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5602,
+      "name": "IsRouteSearchSuccessful",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5603,
+      "name": "DistanceFromRouteEndpoint",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5604,
+      "name": "AngleToNextPathPoint",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5605,
+      "name": "IsTargetAtRouteEndpoint",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5606,
+      "name": "GetClickPointUpdate",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5607,
+      "name": "DistanceToNextRoutePoint",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5608,
+      "name": "VerticalDistanceToNextRoutePoint",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5610,
+      "name": "GetMovementPredictionAccuracy",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 5620,
+      "name": "GetMovementFailure",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5621,
+      "name": "IsGrounded",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5622,
+      "name": "IsDoingQuickTurn",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5630,
+      "name": "WithinForcedReturnArea",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5640,
+      "name": "ObjectNeededToMove",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5641,
+      "name": "LadderClimbNeededToMove",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5642,
+      "name": "LadderDismountNeededToMove",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5643,
+      "name": "OnNavmesh",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5644,
+      "name": "DistanceFromNavmeshCenter",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5645,
+      "name": "DistanceToNextNavmeshCenter",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5646,
+      "name": "NeedToGetOffWallToMove",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5647,
+      "name": "IsSomeoneAboveOnLadder",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5648,
+      "name": "IsSomeoneBelowOnLadder",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5650,
+      "name": "ShouldWarp",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5660,
+      "name": "GetReturnExtensionRange",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5661,
+      "name": "GetReturnMethod",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5662,
+      "name": "RetreatDistanceWhenReturning",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5663,
+      "name": "RetreatTimeWhenReturning",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5664,
+      "name": "CheckSoundOnReturn",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5700,
+      "name": "GetGroupFlag",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5701,
+      "name": "DistanceFromGroupOffsetPosition",
+      "games_used": ["ds2"],
+      "args": []
+    },
+    {
+      "id": 5702,
+      "name": "GroupMemberNumber",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5703,
+      "name": "GroupSize",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5704,
+      "name": "VerticalDistanceFromGroupOffsetPosition",
+      "games_used": ["ds2"],
+      "args": []
+    },
+    {
+      "id": 5705,
+      "name": "IsAnyChrAttackingTheGroup",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5706,
+      "name": "GetNumberOfPeopleWithSharedFlagSet",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5707,
+      "name": "DistanceToGroupMember",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5708,
+      "name": "AngleToGroupMember",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5709,
+      "name": "DistanceToAllGroupMembers",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5710,
+      "name": "AngleToAllGroupMembers",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5711,
+      "name": "AngleRangeToGroupMember",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5712,
+      "name": "AngleRangeToAllGroupMembers",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5713,
+      "name": "HaveGroupMembersBeenAttackedByPlayers",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5900,
+      "name": "GetSharedFlag",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5901,
+      "name": "GetSubStateID",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5902,
+      "name": "GetNpcActionID",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5903,
+      "name": "GetGenEventFlag",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5904,
+      "name": "GetItemCount",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5905,
+      "name": "IsPlayerUsingBonfire",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5906,
+      "name": "GetNpcActionVariable",
+      "games_used": [],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5907,
+      "name": "GetNpcCharacterLocalVariable",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 5908,
+      "name": "GetGenWaitTime",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5909,
+      "name": "CheckGenEventFlag",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5910,
+      "name": "DuringBossBattle",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5911,
+      "name": "IsNpcConversationOver",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 5912,
+      "name": "DuringNpcConversation",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 5913,
+      "name": "GetEventVariable",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 6000,
+      "name": "NpcReadyToAttack",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 6001,
+      "name": "GetNpcEquipmentSlot",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 6002,
+      "name": "NpcEquipmentCanCastSpells",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 6003,
+      "name": "NpcCanCastSpells",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 6004,
+      "name": "HowIsNpcHoldingWeapon",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 6005,
+      "name": "IsUsingItem",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 6006,
+      "name": "IsUsingGesture",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 6007,
+      "name": "IsItemEquipped",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 6008,
+      "name": "GetNpcWeaponCategory",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7001,
+      "name": "DistanceToTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7002,
+      "name": "AngleToTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7003,
+      "name": "TargetInAngleRange",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7004,
+      "name": "TargetInUpDownLeftRightAngleRange",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7005,
+      "name": "AngleFromTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7006,
+      "name": "HorizontalDistanceFromTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7007,
+      "name": "VerticalDistanceFromTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7008,
+      "name": "GetTargetHP",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7009,
+      "name": "DistanceBetweenTargetAndDummyPoly",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7010,
+      "name": "DistanceToGenerator",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7011,
+      "name": "GenDistanceToGenerator",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7012,
+      "name": "AngleBetweenTargetAndDummyPoly",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7013,
+      "name": "InAngleRangeFromTarget",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7014,
+      "name": "IsTargetInBrightArea",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7015,
+      "name": "GenDistanceToGeneratorPercent",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7016,
+      "name": "HorizontalDistanceBetweenTargetAndOffset",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7017,
+      "name": "HorizontalAngleOfTargetAndOffset",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7018,
+      "name": "CheckDistanceFromFutureTargetPosition",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7020,
+      "name": "CheckDistanceToPlayer",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7021,
+      "name": "DistanceBetweenPlayerAndDummyPoly",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7022,
+      "name": "AngleBetweenPlayerAndDummyPoly",
+      "games_used": ["ds2"],
+      "args": []
+    },
+    {
+      "id": 7023,
+      "games": ["ds2", "ds2s"],
+      "games_used": ["ds2", "ds2s"]
+    },
+    {
+      "id": 7060,
+      "name": "IsTargetOutsideTrackingDistance",
+      "games_used": [],
+      "args": []
+    },
+    {
+      "id": 7061,
+      "name": "IsTargetInNoGoZone",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7062,
+      "name": "IsTargetInGenExclusionZone",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7070,
+      "name": "DistanceToMovementArea",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7071,
+      "name": "DistanceBetweenPlayerAndMovementArea",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7072,
+      "name": "DistanceToNavPoint",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7073,
+      "name": "DistanceToGenNavPoint",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7074,
+      "name": "InLockInhibitedArea",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 7075,
+      "name": "DistanceBetweenTargetAndMovementArea",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7080,
+      "name": "AnyObstaclesToGoal",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7081,
+      "name": "AnyObstaclesToMovement",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7082,
+      "name": "WallInFront",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7083,
+      "name": "ObjectInFront",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7084,
+      "name": "WallInFront2",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7085,
+      "name": "ObjectInFront2",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7086,
+      "name": "SearchFailed",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7087,
+      "name": "IsPressed",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7090,
+      "name": "DistanceToGenMovementArea",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7091,
+      "name": "DistanceBetweenPlayerAndGenMovementArea",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7092,
+      "name": "GenMovementAreaExists",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7093,
+      "name": "DistanceBetweenTargetAndGenMovementArea",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7094,
+      "name": "DistanceToGenReturnArea",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7095,
+      "name": "IsFrontTouchingWall",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7100,
+      "name": "InTorchOrNot",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7101,
+      "name": "IsWithinTorchRange",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7110,
+      "name": "GetNumberOfPlayers",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7120,
+      "name": "LineOfSightBlockedForPeriod",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7200,
+      "name": "CheckIfSameLadder",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7201,
+      "name": "CheckIfAboveOnLadder",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7202,
+      "name": "CheckIfBelowOnLadder",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7300,
+      "name": "AreGoalsSet",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7301,
+      "name": "GoalType",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7302,
+      "name": "LockedOnOrNot",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7303,
+      "name": "HasSearchCompleted",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7304,
+      "name": "WasLockedOn",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7305,
+      "name": "ExistsLastSightingInfo",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7306,
+      "name": "IsOnLockList",
+      "games_used": ["ds2"],
+      "comment": "Unused",
+      "args": []
+    },
+    {
+      "id": 7310,
+      "name": "IsGoalWithinSight",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7320,
+      "name": "HeardSound",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7321,
+      "name": "GetHeardSoundHorizontalAngle",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7331,
+      "games": ["ds2", "ds2s"],
+      "games_used": ["ds2", "ds2s"]
+    },
+    {
+      "id": 7800,
+      "name": "ShouldGoToWhiteDoor",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    },
+    {
+      "id": 7801,
+      "name": "ParticipatedInBossBattle",
+      "games_used": ["ds2", "ds2s"],
+      "args": []
+    }
+  ],
+  "enums": [],
+  "condition_arg": {
+    "name": "condition",
+    "type": "bool"
+  }
+}

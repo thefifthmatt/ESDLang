@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PARAMDEF XmlVersion="3">
+  <ParamType>SKYDOME_ASSET_PARAM_ST</ParamType>
+  <DataVersion>1</DataVersion>
+  <BigEndian>False</BigEndian>
+  <Unicode>True</Unicode>
+  <FormatVersion>203</FormatVersion>
+  <Fields>
+    <Field Def="s32 assetEnvironmentGeometryParamId1"></Field>
+    <Field Def="s32 assetEnvironmentGeometryParamId2"></Field>
+    <Field Def="s32 assetEnvironmentGeometryParamId3"></Field>
+    <Field Def="s32 assetEnvironmentGeometryParamId4"></Field>
+    <Field Def="s32 assetEnvironmentGeometryParamId5"></Field>
+    <Field Def="s32 assetEnvironmentGeometryParamId6"></Field>
+    <Field Def="s32 assetEnvironmentGeometryParamId7"></Field>
+    <Field Def="s32 assetEnvironmentGeometryParamId8"></Field>
+    <Field Def="s32 pad1"></Field>
+    <Field Def="s32 pad2"></Field>
+  </Fields>
+</PARAMDEF>
