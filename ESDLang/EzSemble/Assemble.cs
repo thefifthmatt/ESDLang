@@ -172,6 +172,12 @@ namespace ESDLang.EzSemble
                     {
                         (bank, id) = ParseCommandID(st.Name);
                     }
+                    result.Add(new ESD.CommandCall()
+                    {
+                        CommandBank = bank,
+                        CommandID = id,
+                        Arguments = st.Args.Select(x => AssembleExpression(context, x)).ToList(),
+                    });
                 }
                 else
                 {
