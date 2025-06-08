@@ -17,15 +17,15 @@ namespace ESDLang.Script
         public ProjectSettings Settings { get; set; }
         // Project file path, which exists
         public string FilePath { get; set; }
-        // Main mod directory based on FilePath
-        public string ModDir => Path.GetDirectoryName(FilePath);
+        // Main mod directory previously based on FilePath, can now be independent
+        public string ModDir { get; set; }
         // Supported ESDLang game, if any
         public FromGame Game { get; set; } = FromGame.UNKNOWN;
         // Game directory, if it exists
         public string GameDir { get; set; }
 
         // https://github.com/soulsmods/DSMapStudio/blob/master/StudioCore/GameType.cs
-        // https://github.com/vawser/Smithbox/blob/main/src/StudioCore/Core/Project/ProjectType.cs
+        // https://github.com/vawser/Smithbox/blob/main/src/Smithbox.Program/Core/ProjectType.cs
         public enum GameType
         {
             Undefined = 0,
@@ -54,15 +54,23 @@ namespace ESDLang.Script
             ACFA = 12,
             ACV = 13,
             ACVD = 14,
+            NR = 15,
         }
 
         // https://github.com/soulsmods/DSMapStudio/blob/master/StudioCore/Editor/ProjectSettings.cs
         // https://github.com/vawser/Smithbox/blob/main/src/StudioCore/Core/Project/ProjectConfiguration.cs
+        // Now https://github.com/vawser/Smithbox/blob/main/src/Smithbox.Program/Core/ProjectEntry.cs
         public class ProjectSettings
         {
+            // Shared
             public string ProjectName { get; set; } = "";
+            // DSMS/Smithbox
             public string GameRoot { get; set; } = "";
             public GameType GameType { get; set; } = GameType.Undefined;
+            // Smithbox
+            public string ProjectPath { get; set; } = "";
+            public string DataPath { get; set; } = "";
+            public GameType ProjectType { get; set; } = GameType.Undefined;
         }
 
         private static readonly List<string> knownRelativeDirs = new()
@@ -82,6 +90,7 @@ namespace ESDLang.Script
             [GameType.SDT] = FromGame.SDT,
             [GameType.ER] = FromGame.ER,
             [GameType.AC6] = FromGame.AC6,
+            [GameType.NR] = FromGame.NR,
         };
 
         // Expects a fully specified valid project JSON path.
@@ -132,14 +141,17 @@ namespace ESDLang.Script
             {
                 Settings = settings,
                 FilePath = jsonPath,
+                ModDir = settings.ProjectPath ?? Path.GetDirectoryName(jsonPath),
             };
-            if (supportedGames.TryGetValue(settings.GameType, out FromGame game))
+            GameType type = settings.ProjectType != GameType.Undefined ? settings.ProjectType : settings.GameType;
+            if (supportedGames.TryGetValue(type, out FromGame game))
             {
                 file.Game = game;
             }
-            if (settings.GameRoot != null && Directory.Exists(settings.GameRoot))
+            string gameDir = settings.GameRoot ?? settings.DataPath;
+            if (gameDir != null && Directory.Exists(gameDir))
             {
-                file.GameDir = Path.GetFullPath(settings.GameRoot);
+                file.GameDir = Path.GetFullPath(gameDir);
             }
             return file;
         }

@@ -4,7 +4,7 @@ ESDLang is a high-level language for viewing and editing ESD scripts, primarily 
 make significant quest edits, and add convenience features to bonfires.
 It decompiles ESD files into a subset of Python. These Python files cannot be executed as Python. They can only be recompiled.
 
-DS1, DS2, Bloodborne, DS3, Sekiro, Elden Ring, and AC6 are supported, with read-only support for Demon's Souls.
+DS1, DS2, Bloodborne, DS3, Sekiro, Elden Ring, AC6, and Nightreign are supported, with read-only support for Demon's Souls.
 
 ## Running esdtool.exe
 
@@ -153,6 +153,8 @@ You can drag different types of files into esdtool.exe to compile/decompile ESDs
 In all cases, esdtool.exe needs to know which game you're modifying and where it's installed.
 The first time you run esdtool.exe for files in a given directory, it will prompt you for these things.
 
+For Nightreign, it's currently necessary to copy Oodle (oo2core_6_win64.dll) from the Elden Ring directory to the esdtool directory.
+
 **Make sure to unpack the game using UXM/USDFM before running anything. Avoid modifying unpacked game files if you can.**
 
 You can drag these files to decompile ESDs (with or without the .dcx extension):
@@ -230,7 +232,7 @@ operations. For instance, -ds1 -esddir chr will default everything to DS1, but t
 the subdirectory used for ESD inputs. The other way around will not work.
 
 > Game flag
--des, -ds1, -ds1r, -ds2, -ds2s, -bb, -ds3, -sdt, -er, -ac6
+-des, -ds1, -ds1r, -ds2, -ds2s, -bb, -ds3, -sdt, -er, -ac6, -nr
     Sets all game data flags to default known values for Steam installations of the given game, or
     clears them if unknown. This overrides all values which were there before. These default values
     are kept in SoulsIds in GameSpec.cs

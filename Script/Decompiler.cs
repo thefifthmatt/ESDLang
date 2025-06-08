@@ -422,7 +422,8 @@ namespace ESDLang.Script
                 return null;
             }
             // Go depth-first, though the propagation is still fairly limited.
-            state.VisitConds(AstVisitor.Post(simplifyBool));
+            // This used to be VisitConds but this misses bank 5 commands
+            state.Visit(AstVisitor.Post(simplifyBool));
         }
 
         public void PrintProgram(string esdId, Machine machine, MachineArgs args, Dictionary<string, string> replace)

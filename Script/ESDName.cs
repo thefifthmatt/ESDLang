@@ -29,6 +29,8 @@ namespace ESDLang.Script
             [FromGame.DS2] = CmdType.Event,
             [FromGame.DS2S] = CmdType.Event,
             [FromGame.ER] = CmdType.TalkER,
+            [FromGame.AC6] = CmdType.TalkER,
+            [FromGame.NR] = CmdType.TalkER,
         };
         public static CmdType GetCmdType(string esd, FromGame game = FromGame.UNKNOWN)
         {

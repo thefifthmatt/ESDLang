@@ -101,6 +101,34 @@
     },
     {
       "bank": 1,
+      "id": 1,
+      "name": "TalkToPlayer",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "talkParamRow",
+          "type": "int",
+          "namespace": "Talk"
+        },
+        {
+          "name": "unk",
+          "type": "int",
+          "comment": "use -1"
+        },
+        {
+          "name": "unk",
+          "type": "int",
+          "comment": "use -1"
+        },
+        {
+          "name": "unk",
+          "type": "bool"
+        }
+      ]
+    },
+    {
+      "bank": 1,
       "id": 2,
       "name": "InvokeEvent",
       "games_used": ["des"],
@@ -129,7 +157,7 @@
       "bank": 1,
       "id": 5,
       "name": "RemoveMyAggro",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": []
     },
     {
@@ -168,7 +196,7 @@
       "bank": 1,
       "id": 9,
       "name": "ClearTalkProgressData",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": []
     },
     {
@@ -209,10 +237,24 @@
     },
     {
       "bank": 1,
+      "id": 10,
+      "name": "ShowShopMessage",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "optionsType",
+          "type": "enum",
+          "enum": "TalkOptionsType"
+        }
+      ]
+    },
+    {
+      "bank": 1,
       "id": 11,
       "name": "SetEventFlag",
       "deprecated_names": ["SetEventState"],
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [
         {
           "name": "eventFlagId",
@@ -270,7 +312,7 @@
       "bank": 1,
       "id": 17,
       "name": "OpenGenericDialog",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [
         {
           "name": "boxType",
@@ -285,12 +327,14 @@
         {
           "name": "defaultResult",
           "type": "enum",
-          "enum": "DialogResult"
+          "enum": "DialogResult",
+          "comment": "May be text id in Nightreign"
         },
         {
           "name": "boxStyle",
           "type": "enum",
-          "enum": "DialogBoxStyle"
+          "enum": "DialogBoxStyle",
+          "comment": "May be text id in Nightreign"
         },
         {
           "name": "unk",
@@ -303,15 +347,15 @@
       "bank": 1,
       "id": 18,
       "name": "ForceCloseGenericDialog",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": []
     },
     {
       "bank": 1,
       "id": 19,
       "name": "AddTalkListData",
-      "games": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
-      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "slot",
@@ -351,7 +395,7 @@
       "bank": 1,
       "id": 20,
       "name": "ClearTalkListData",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": []
     },
     {
@@ -374,7 +418,7 @@
       "bank": 1,
       "id": 22,
       "name": "OpenRegularShop",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "StartShopLineupParamRow",
@@ -399,7 +443,7 @@
       "bank": 1,
       "id": 24,
       "name": "OpenEnhanceShop",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "er"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "er", "nr"],
       "args": [
         {
           "name": "type",
@@ -499,7 +543,7 @@
       "bank": 1,
       "id": 31,
       "name": "OpenSoul",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "er"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "er", "nr"],
       "args": []
     },
     {
@@ -536,7 +580,7 @@
       "bank": 1,
       "id": 35,
       "name": "ClearTalkActionState",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "er"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "er", "nr"],
       "args": []
     },
     {
@@ -562,7 +606,7 @@
       "bank": 1,
       "id": 38,
       "name": "SetUpdateDistance",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "er", "ac6"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "er", "ac6", "nr"],
       "args": [
         {
           "name": "distance",
@@ -574,15 +618,15 @@
       "bank": 1,
       "id": 39,
       "name": "ClearPlayerDamageInfo",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": []
     },
     {
       "bank": 1,
       "id": 40,
       "name": "OfferHumanity",
-      "games": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er"],
-      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": []
     },
     {
@@ -619,8 +663,8 @@
       "bank": 1,
       "id": 42,
       "name": "StartBonfireAnimLoop",
-      "games": ["er"],
-      "games_used": ["er"],
+      "games": ["er", "nr"],
+      "games_used": ["er", "nr"],
       "args": [
         {
           "name": "unk",
@@ -660,8 +704,8 @@
       "bank": 1,
       "id": 43,
       "name": "EndBonfireKindleAnimLoop",
-      "games": ["er", "ac6"],
-      "games_used": ["er"],
+      "games": ["er", "ac6", "nr"],
+      "games_used": ["er", "nr"],
       "args": [
         {
           "name": "unk",
@@ -692,7 +736,7 @@
       "id": 47,
       "name": "ChangePlayerStat",
       "deprecated_names": ["ChangePlayerStats"],
-      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "stat",
@@ -737,7 +781,7 @@
       "bank": 1,
       "id": 50,
       "name": "RequestSave",
-      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "unk",
@@ -762,7 +806,7 @@
       "bank": 1,
       "id": 52,
       "name": "PlayerEquipmentQuantityChange",
-      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "itemCategory",
@@ -853,7 +897,7 @@
       "bank": 1,
       "id": 57,
       "name": "ShuffleRNGSeed",
-      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "maxValue",
@@ -866,14 +910,14 @@
       "bank": 1,
       "id": 58,
       "name": "SetRNGSeed",
-      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": []
     },
     {
       "bank": 1,
       "id": 59,
       "name": "ReplaceTool",
-      "games_used": ["ds1", "ds1r", "ds3", "er"],
+      "games_used": ["ds1", "ds1r", "ds3", "er", "nr"],
       "args": [
         {
           "name": "itemIdToReplace",
@@ -909,7 +953,7 @@
       "bank": 1,
       "id": 62,
       "name": "GiveSpEffectToPlayer",
-      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [
         {
           "name": "SpEffectParamRow",
@@ -1003,14 +1047,14 @@
       "bank": 1,
       "id": 67,
       "name": "ForceCloseMenu",
-      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": []
     },
     {
       "bank": 1,
       "id": 68,
       "name": "SetTalkTime",
-      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "time",
@@ -1041,8 +1085,8 @@
       "bank": 1,
       "id": 71,
       "name": "ReportConversationEndToHavokBehavior",
-      "games": ["des", "ds1", "bb", "ds3", "sdt", "er", "ac6"],
-      "games_used": ["bb", "ds3", "sdt", "er", "ac6"],
+      "games": ["des", "ds1", "bb", "ds3", "sdt", "er", "ac6", "nr"],
+      "games_used": ["bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": []
     },
     {
@@ -1127,8 +1171,8 @@
       "bank": 1,
       "id": 76,
       "name": "OpenConversationChoicesMenu",
-      "games": ["ds3", "sdt", "er", "ac6"],
-      "games_used": ["ds3", "sdt", "er"],
+      "games": ["ds3", "sdt", "er", "ac6", "nr"],
+      "games_used": ["ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "unk",
@@ -1162,7 +1206,7 @@
       "bank": 1,
       "id": 80,
       "name": "StopEventAnimWithoutForcingConversationEnd",
-      "games_used": ["bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [
         {
           "name": "unk",
@@ -1284,8 +1328,7 @@
       "bank": 1,
       "id": 100,
       "name": "SetWorkValue",
-      "games": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
-      "games_used": ["ds3", "sdt", "er"],
+      "games_used": ["ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "workValueIndex",
@@ -1302,14 +1345,14 @@
       "bank": 1,
       "id": 101,
       "name": "UpdatePlayerRespawnPoint",
-      "games_used": ["ds3", "sdt", "er"],
+      "games_used": ["ds3", "sdt", "er", "nr"],
       "args": []
     },
     {
       "bank": 1,
       "id": 102,
       "name": "SetMessageTagValue",
-      "games_used": ["ds3", "sdt", "er"],
+      "games_used": ["ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "unk",
@@ -1349,8 +1392,8 @@
       "bank": 1,
       "id": 103,
       "name": "TurnCharacterToFaceEntity",
-      "games": ["er"],
-      "games_used": ["er"],
+      "games": ["er", "nr"],
+      "games_used": ["er", "nr"],
       "args": [
         {
           "name": "animationId",
@@ -1421,7 +1464,7 @@
       "bank": 1,
       "id": 108,
       "name": "EstusAllocationUpdate",
-      "games_used": ["ds3", "sdt", "er"],
+      "games_used": ["ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "newFlaskCount",
@@ -1437,7 +1480,7 @@
       "bank": 1,
       "id": 109,
       "name": "BonfireActivation",
-      "games_used": ["ds3", "er"],
+      "games_used": ["ds3", "er", "nr"],
       "args": [
         {
           "name": "newBonfireLevelTotal",
@@ -1457,8 +1500,8 @@
       "bank": 1,
       "id": 110,
       "name": "ClearPreviousMenuSelection",
-      "games": ["er"],
-      "games_used": ["er"],
+      "games": ["er", "nr"],
+      "games_used": ["er", "nr"],
       "args": []
     },
     {
@@ -1664,6 +1707,66 @@
     },
     {
       "bank": 1,
+      "id": 117,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "float"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "float"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "float"
+        },
+        {
+          "name": "unk",
+          "type": "float"
+        }
+      ]
+    },
+    {
+      "bank": 1,
       "id": 118,
       "name": "RunMachine",
       "games": ["sdt", "ac6"],
@@ -1680,8 +1783,8 @@
       "bank": 1,
       "id": 119,
       "name": "RunMachine",
-      "games": ["er"],
-      "games_used": ["er"],
+      "games": ["er", "nr"],
+      "games_used": ["er", "nr"],
       "args": [
         {
           "name": "machineId",
@@ -1752,8 +1855,8 @@
       "bank": 1,
       "id": 120,
       "name": "EndMachine",
-      "games": ["er"],
-      "games_used": ["er"],
+      "games": ["er", "nr"],
+      "games_used": ["er", "nr"],
       "args": [
         {
           "name": "machineId",
@@ -1792,8 +1895,8 @@
       "bank": 1,
       "id": 121,
       "name": "GiveSpEffectToSelf",
-      "games": ["er"],
-      "games_used": ["er"],
+      "games": ["er", "nr"],
+      "games_used": ["er", "nr"],
       "args": [
         {
           "name": "speffectId",
@@ -1831,8 +1934,8 @@
       "bank": 1,
       "id": 123,
       "name": "RequestAnimation",
-      "games": ["er", "ac6"],
-      "games_used": ["er"],
+      "games": ["er", "ac6", "nr"],
+      "games_used": ["er", "nr"],
       "args": [
         {
           "name": "unk",
@@ -2220,8 +2323,8 @@
       "bank": 1,
       "id": 138,
       "name": "ChangeCamera",
-      "games": ["er"],
-      "games_used": ["er"],
+      "games": ["er", "nr"],
+      "games_used": ["er", "nr"],
       "args": [
         {
           "name": "unk",
@@ -2233,8 +2336,8 @@
       "bank": 1,
       "id": 139,
       "name": "SetLookAtEntityForTalk",
-      "games": ["er"],
-      "games_used": ["er"],
+      "games": ["er", "nr"],
+      "games_used": ["er", "nr"],
       "args": [
         {
           "name": "unk",
@@ -2250,8 +2353,8 @@
       "bank": 1,
       "id": 140,
       "name": "SetCanOpenMap",
-      "games": ["er"],
-      "games_used": ["er"],
+      "games": ["er", "nr"],
+      "games_used": ["er", "nr"],
       "args": [
         {
           "name": "canOpen",
@@ -2396,8 +2499,8 @@
       "bank": 1,
       "id": 149,
       "name": "AddTalkListDataAlt",
-      "games": ["er"],
-      "games_used": ["er"],
+      "games": ["er", "nr"],
+      "games_used": ["er", "nr"],
       "args": [
         {
           "name": "slot",
@@ -2427,8 +2530,8 @@
       "bank": 1,
       "id": 150,
       "name": "ShowShopMessageAlt",
-      "games": ["er"],
-      "games_used": ["er"],
+      "games": ["er", "nr"],
+      "games_used": ["er", "nr"],
       "args": [
         {
           "name": "optionsType",
@@ -2464,6 +2567,14 @@
     },
     {
       "bank": 1,
+      "id": 151,
+      "name": "OpenCommenceExpeditionMenu",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": []
+    },
+    {
+      "bank": 1,
       "id": 152,
       "name": "SetScadutreeLevel",
       "games": ["er"],
@@ -2477,6 +2588,14 @@
     },
     {
       "bank": 1,
+      "id": 152,
+      "name": "OpenChangeCharacterMenu",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": []
+    },
+    {
+      "bank": 1,
       "id": 153,
       "name": "SetReveredSpiritAshLevel",
       "games": ["er"],
@@ -2485,6 +2604,358 @@
         {
           "name": "level",
           "type": "int"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 153,
+      "name": "OpenVisualCodex",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 154,
+      "name": "OpenRelicMenu",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 155,
+      "name": "OpenJarShop",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "StartShopLineupParamRow",
+          "type": "int",
+          "namespace": "Shop"
+        },
+        {
+          "name": "EndShopLineupParamRow",
+          "type": "int",
+          "namespace": "Shop"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 156,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "comment": "Some auxiliary bonfire effect",
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 157,
+      "name": "OpenJournal",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 158,
+      "name": "UnlockGarb",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "unk",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 159,
+      "name": "OpenSparringEquipmentMenu",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 160,
+      "name": "OpenReplicateArmamentMenu",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 162,
+      "name": "AddMurk",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "amount",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 163,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "comment": "Related to Iron Menial (map marker?). Uses mission data",
+      "args": [
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 164,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "comment": "Uses team session data",
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 166,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "comment": "Related to roundtable state?",
+      "args": [
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 167,
+      "name": "OpenGarbShop",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "StartShopLineupParamRow",
+          "type": "int",
+          "namespace": "Shop"
+        },
+        {
+          "name": "EndShopLineupParamRow",
+          "type": "int",
+          "namespace": "Shop"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 169,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "comment": "Related to roundtable state?",
+      "args": [
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 170,
+      "name": "OpenLegendaryEnhanceShop",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 171,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 172,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        },
+        {
+          "name": "unk",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 173,
+      "name": "AwardItemLotEquipment",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "itemLotParamRow",
+          "type": "int",
+          "namespace": "Lot"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 174,
+      "name": "ShowShopMessageWithTalk",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "unk",
+          "type": "int",
+          "comment": "always 0, maybe TalkOptionType"
+        },
+        {
+          "name": "talkParamRow",
+          "type": "int",
+          "namespace": "Talk"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 176,
+      "name": "OpenSparringSettingsMenu",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 178,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "comment": "Related to roundtable state?",
+      "args": [
+        {
+          "name": "unk",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 180,
+      "name": "ConcludeRemembrance",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 181,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "comment": "Warp to revenant encounter in tutorial map? Needs testing",
+      "args": []
+    },
+    {
+      "bank": 1,
+      "id": 182,
+      "name": "AddSovereignSigils",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "amount",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 183,
+      "name": "OpenCatalogShop",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "comment": "Uses unique currency. Needs further investigation",
+      "args": [
+        {
+          "name": "StartShopLineupParamRow",
+          "type": "int",
+          "namespace": "Shop"
+        },
+        {
+          "name": "EndShopLineupParamRow",
+          "type": "int",
+          "namespace": "Shop"
+        }
+      ]
+    },
+    {
+      "bank": 1,
+      "id": 184,
+      "name": "ExchangeAntiques",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "givenItem",
+          "type": "int",
+          "namespace": "Antique"
+        },
+        {
+          "name": "receivedItems",
+          "type": "int",
+          "namespace": "Antique"
         }
       ]
     },
@@ -3201,7 +3672,7 @@
     {
       "id": 1,
       "name": "GetDistanceToPlayer",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [],
       "return_value": {
         "name": "horizontalDistance",
@@ -3218,7 +3689,7 @@
     {
       "id": 3,
       "name": "CheckSelfDeath",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [],
       "return_value": {
         "name": "selfIsDead",
@@ -3235,7 +3706,7 @@
     {
       "id": 5,
       "name": "IsAttackedBySomeone",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": [],
       "return_value": {
         "name": "attacked",
@@ -3276,7 +3747,7 @@
     {
       "id": 9,
       "name": "IsPlayerAttacking",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [],
       "return_value": {
         "name": "playerIsAttacking",
@@ -3287,7 +3758,7 @@
     {
       "id": 10,
       "name": "GetRelativeAngleBetweenSelfAndPlayer",
-      "games_used": ["er"],
+      "games_used": ["er", "nr"],
       "args": [],
       "return_value": {
         "name": "angleInDegrees",
@@ -3307,7 +3778,7 @@
     {
       "id": 12,
       "name": "GetTalkInterruptReason",
-      "games_used": ["sdt", "er"],
+      "games_used": ["sdt", "er", "nr"],
       "args": []
     },
     {
@@ -3323,7 +3794,7 @@
     {
       "id": 14,
       "name": "GetOneLineHelpStatus",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [],
       "return_value": {
         "type": "bool"
@@ -3334,7 +3805,7 @@
       "id": 15,
       "name": "GetEventFlag",
       "deprecated_names": ["GetEventStatus"],
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [
         {
           "name": "eventFlagId",
@@ -3353,7 +3824,7 @@
       "id": 16,
       "name": "DoesPlayerHaveItem",
       "deprecated_names": ["IsEquipmentIDObtained"],
-      "games_used": ["des", "ds1", "ds1r", "ds3", "er"],
+      "games_used": ["des", "ds1", "ds1r", "ds3", "er", "nr"],
       "args": [
         {
           "name": "itemCategory",
@@ -3407,7 +3878,7 @@
     {
       "id": 19,
       "name": "IsClientPlayer",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [],
       "return_value": {
         "name": "playerIsNotInOwnWorld",
@@ -3436,7 +3907,7 @@
     {
       "id": 22,
       "name": "GetGenericDialogButtonResult",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [],
       "return_value": {
         "name": "dialogResult",
@@ -3447,7 +3918,7 @@
     {
       "id": 23,
       "name": "GetTalkListEntryResult",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": [],
       "return_value": {
         "name": "chosenTalkListSlot",
@@ -3463,7 +3934,7 @@
     {
       "id": 25,
       "name": "IsMenuOpen",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "menu",
@@ -3480,7 +3951,7 @@
     {
       "id": 26,
       "name": "IsCharacterDisabled",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [],
       "return_value": {
         "name": "selfIsHidden",
@@ -3491,7 +3962,7 @@
     {
       "id": 27,
       "name": "IsPlayerDead",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [],
       "return_value": {
         "name": "playerIsDead",
@@ -3502,7 +3973,7 @@
     {
       "id": 28,
       "name": "DidYouDoSomethingInTheMenu",
-      "games_used": ["des", "ds1", "ds1r", "ds3", "er"],
+      "games_used": ["des", "ds1", "ds1r", "ds3", "er", "nr"],
       "args": [
         {
           "name": "menu",
@@ -3519,7 +3990,7 @@
     {
       "id": 29,
       "name": "GetStatus",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "nr"],
       "args": [
         {
           "name": "stat",
@@ -3583,7 +4054,7 @@
     {
       "id": 34,
       "name": "GetPlayerYDistance",
-      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": [],
       "return_value": {
         "name": "verticalDistance",
@@ -3614,7 +4085,7 @@
     {
       "id": 37,
       "name": "CompareBonfireState",
-      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "unk",
@@ -3630,7 +4101,7 @@
     {
       "id": 38,
       "name": "CompareBonfireLevel",
-      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "comparison",
@@ -3689,7 +4160,7 @@
       "id": 45,
       "name": "ComparePlayerStat",
       "deprecated_names": ["ComparePlayerStatus"],
-      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "stat",
@@ -3727,7 +4198,7 @@
     {
       "id": 47,
       "name": "ComparePlayerInventoryNumber",
-      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [
         {
           "name": "itemCategory",
@@ -3796,7 +4267,7 @@
     {
       "id": 50,
       "name": "CompareRNGValue",
-      "games_used": ["bb", "ds3", "sdt", "er"],
+      "games_used": ["bb", "ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "comparison",
@@ -3828,7 +4299,7 @@
     {
       "id": 52,
       "name": "IsMultiplayerInProgress",
-      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "args": [],
       "return_value": {
         "name": "multiplayerIsInProgress",
@@ -3863,8 +4334,8 @@
     {
       "id": 56,
       "name": "CheckActionButtonArea",
-      "games": ["des", "ds1", "bb", "ds3", "sdt", "er", "ac6"],
-      "games_used": ["bb", "ds3", "sdt", "er", "ac6"],
+      "games": ["des", "ds1", "bb", "ds3", "sdt", "er", "ac6", "nr"],
+      "games_used": ["bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [
         {
           "name": "actionButtonParamRow",
@@ -3891,7 +4362,7 @@
     {
       "id": 57,
       "name": "CheckSpecificPersonTalkHasEnded",
-      "games_used": ["bb", "ds3", "sdt", "er", "ac6"],
+      "games_used": ["bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [
         {
           "name": "unk",
@@ -3908,8 +4379,8 @@
     {
       "id": 58,
       "name": "CheckSpecificPersonGenericDialogIsOpen",
-      "games": ["des", "ds1", "bb", "ds3", "sdt", "er", "ac6"],
-      "games_used": ["bb", "ds3", "sdt", "er", "ac6"],
+      "games": ["des", "ds1", "bb", "ds3", "sdt", "er", "ac6", "nr"],
+      "games_used": ["bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [
         {
           "name": "unk",
@@ -3935,8 +4406,8 @@
     {
       "id": 59,
       "name": "CheckSpecificPersonMenuIsOpen",
-      "games": ["des", "ds1", "bb", "ds3", "sdt", "er", "ac6"],
-      "games_used": ["bb", "ds3", "sdt", "er", "ac6"],
+      "games": ["des", "ds1", "bb", "ds3", "sdt", "er", "ac6", "nr"],
+      "games_used": ["bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [
         {
           "name": "unk",
@@ -3971,8 +4442,8 @@
     {
       "id": 60,
       "name": "DoesSelfHaveSpEffect",
-      "games": ["des", "ds1", "bb", "ds3", "sdt", "er", "ac6"],
-      "games_used": ["bb", "ds3", "sdt", "er", "ac6"],
+      "games": ["des", "ds1", "bb", "ds3", "sdt", "er", "ac6", "nr"],
+      "games_used": ["bb", "ds3", "sdt", "er", "ac6", "nr"],
       "args": [
         {
           "name": "SpEffectParamRow",
@@ -4007,8 +4478,8 @@
     {
       "id": 61,
       "name": "DoesPlayerHaveSpEffect",
-      "games": ["des", "ds1", "bb", "ds3", "sdt", "er", "ac6"],
-      "games_used": ["bb", "sdt", "er", "ac6"],
+      "games": ["des", "ds1", "bb", "ds3", "sdt", "er", "ac6", "nr"],
+      "games_used": ["bb", "sdt", "er", "ac6", "nr"],
       "args": [
         {
           "name": "SpEffectParamRow",
@@ -4041,7 +4512,7 @@
     {
       "id": 100,
       "name": "GetWorkValue",
-      "games_used": ["ds3", "sdt", "er"],
+      "games_used": ["ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "unk",
@@ -4076,7 +4547,7 @@
     {
       "id": 102,
       "name": "GetCurrentStateElapsedFrames",
-      "games_used": ["ds3", "sdt", "er", "ac6"],
+      "games_used": ["ds3", "sdt", "er", "ac6", "nr"],
       "args": [],
       "return_value": {
         "name": "elapsedFrames",
@@ -4086,7 +4557,7 @@
     {
       "id": 103,
       "name": "GetCurrentStateElapsedTime",
-      "games_used": ["ds3", "sdt", "er", "ac6"],
+      "games_used": ["ds3", "sdt", "er", "ac6", "nr"],
       "args": [],
       "return_value": {
         "name": "elapsedTime",
@@ -4097,7 +4568,7 @@
       "id": 104,
       "name": "GetPlayerStat",
       "deprecated_names": ["GetPlayerStatus"],
-      "games_used": ["ds3", "sdt", "er"],
+      "games_used": ["ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "stat",
@@ -4113,7 +4584,7 @@
     {
       "id": 105,
       "name": "GetLevelUpSoulCost",
-      "games_used": ["ds3"],
+      "games_used": ["ds3", "nr"],
       "args": [
         {
           "name": "currentLevel",
@@ -4142,7 +4613,7 @@
     {
       "id": 107,
       "name": "GetWhetherChrEventAnimHasEnded",
-      "games_used": ["ds3", "sdt", "er"],
+      "games_used": ["ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "CharacterEntityId",
@@ -4180,7 +4651,7 @@
     {
       "id": 109,
       "name": "GetEstusAllocation",
-      "games_used": ["ds3", "sdt", "er"],
+      "games_used": ["ds3", "sdt", "er", "nr"],
       "args": [
         {
           "name": "flaskToCheck",
@@ -4196,7 +4667,7 @@
     {
       "id": 110,
       "name": "GetTotalBonfireLevel",
-      "games_used": ["ds3", "er"],
+      "games_used": ["ds3", "er", "nr"],
       "args": [],
       "return_value": {
         "name": "totalBonfireLevel",
@@ -4428,8 +4899,8 @@
     {
       "id": 202,
       "name": "GetMachineResult",
-      "games": ["er", "ac6"],
-      "games_used": ["er", "ac6"],
+      "games": ["er", "ac6", "nr"],
+      "games_used": ["er", "ac6", "nr"],
       "args": [],
       "return_value": {
         "type": "int"
@@ -4438,8 +4909,8 @@
     {
       "id": 203,
       "name": "MachineExists",
-      "games": ["er", "ac6"],
-      "games_used": ["er", "ac6"],
+      "games": ["er", "ac6", "nr"],
+      "games_used": ["er", "ac6", "nr"],
       "args": [
         {
           "name": "machineId",
@@ -4712,8 +5183,8 @@
     {
       "id": 228,
       "name": "PlayerDiedFromFallInstantly",
-      "games": ["er"],
-      "games_used": ["er"],
+      "games": ["er", "nr"],
+      "games_used": ["er", "nr"],
       "args": [],
       "return_value": {
         "type": "bool"
@@ -4722,8 +5193,8 @@
     {
       "id": 229,
       "name": "PlayerDiedFromFallDamage",
-      "games": ["er"],
-      "games_used": ["er"],
+      "games": ["er", "nr"],
+      "games_used": ["er", "nr"],
       "args": [],
       "return_value": {
         "type": "bool"
@@ -4784,16 +5255,19 @@
     {
       "id": 236,
       "name": "GetEquipmentSortID",
-      "games": ["er"],
-      "games_used": ["er"],
+      "games": ["er", "nr"],
+      "games_used": ["er", "nr"],
       "args": [
         {
-          "name": "unk",
-          "type": "int"
+          "name": "itemCategory",
+          "type": "enum",
+          "enum": "ItemType",
+          "namespace": "ItemType"
         },
         {
-          "name": "unk",
-          "type": "int"
+          "name": "itemId",
+          "type": "int",
+          "namespace": "Item"
         }
       ],
       "return_value": {
@@ -4830,6 +5304,98 @@
       }
     },
     {
+      "id": 300,
+      "name": "GetMaxRuneLevel",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": []
+    },
+    {
+      "id": 301,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "unk",
+          "type": "int"
+        }
+      ],
+      "return_value": {
+        "type": "enum",
+        "enum": "Hero",
+        "comment": "Speculative based on usage"
+      }
+    },
+    {
+      "id": 302,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "comment": "Used for defeated Nightlord count, but may be part of personal scenarios",
+      "args": [
+        {
+          "name": "unk",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "id": 303,
+      "name": "GetHeroExpeditionCount",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "type": "enum",
+          "enum": "Hero"
+        }
+      ]
+    },
+    {
+      "id": 304,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "comment": "Ids look similar to c1_163. Uses mission data",
+      "args": [
+        {
+          "name": "unk",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "id": 305,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "comment": "Used with c1_164",
+      "args": [],
+      "return_value": {
+        "type": "bool"
+      },
+      "binary_return": true
+    },
+    {
+      "id": 308,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "unk",
+          "type": "int"
+        }
+      ]
+    },
+    {
+      "id": 309,
+      "name": "GetChrHero",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [],
+      "return_value": {
+        "type": "enum",
+        "enum": "Hero"
+      }
+    },
+    {
       "id": 310,
       "name": "GetHackingDurability",
       "games": ["ac6"],
@@ -4838,6 +5404,17 @@
       "return_value": {
         "type": "float"
       }
+    },
+    {
+      "id": 310,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "unk",
+          "type": "int"
+        }
+      ]
     },
     {
       "id": 312,
@@ -4856,6 +5433,12 @@
         "enum": "FlagState"
       },
       "binary_return": true
+    },
+    {
+      "id": 312,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": []
     },
     {
       "id": 313,
@@ -4900,6 +5483,22 @@
       "binary_return": true
     },
     {
+      "id": 314,
+      "name": "CountEventFlags",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "startingFlagId",
+          "type": "int"
+        },
+        {
+          "name": "endingFlagId",
+          "type": "int"
+        }
+      ]
+    },
+    {
       "id": 315,
       "name": "GetMailStatus",
       "games": ["ac6"],
@@ -4913,6 +5512,17 @@
       "return_value": {
         "type": "int"
       }
+    },
+    {
+      "id": 315,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "unk",
+          "type": "int"
+        }
+      ]
     },
     {
       "id": 316,
@@ -4934,6 +5544,23 @@
       }
     },
     {
+      "id": 316,
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": []
+    },
+    {
+      "id": 317,
+      "name": "GetCurrentScenarioSection",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [],
+      "return_value": {
+        "type": "enum",
+        "enum": "Hero"
+      }
+    },
+    {
       "id": 318,
       "name": "GetCompanyContributionAmount",
       "games": ["ac6"],
@@ -4947,6 +5574,19 @@
       "return_value": {
         "type": "int"
       }
+    },
+    {
+      "id": 318,
+      "name": "GetHeroWinCount",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "hero",
+          "type": "enum",
+          "enum": "Hero"
+        }
+      ]
     },
     {
       "id": 319,
@@ -4965,6 +5605,13 @@
       "binary_return": true
     },
     {
+      "id": 319,
+      "name": "GetRequestGameMode",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": []
+    },
+    {
       "id": 320,
       "name": "IsTextEffectDone",
       "games": ["ac6"],
@@ -4977,6 +5624,28 @@
         }
       ],
       "return_value": {
+        "type": "bool"
+      },
+      "binary_return": true
+    },
+    {
+      "id": 320,
+      "name": "CompareSovereignSigils",
+      "games": ["nr"],
+      "games_used": ["nr"],
+      "args": [
+        {
+          "name": "comparison",
+          "type": "enum",
+          "enum": "CompareType"
+        },
+        {
+          "name": "value",
+          "type": "int"
+        }
+      ],
+      "return_value": {
+        "name": "comparisonResult",
         "type": "bool"
       },
       "binary_return": true
@@ -5226,7 +5895,7 @@
     },
     {
       "name": "EnhanceType",
-      "games": ["er", "ac6"],
+      "games": ["er", "ac6", "nr"],
       "entries": [
         {"value": 0, "name": "UnlimitedRange"},
         {"value": 1, "name": "LimitedRange"}
@@ -5248,7 +5917,7 @@
     },
     {
       "name": "ItemType",
-      "games": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games": ["des", "ds1", "ds1r", "bb", "ds3", "sdt", "er", "nr"],
       "entries": [
         {"value": 0, "name": "Weapon"},
         {"value": 1, "name": "Protector"},
@@ -5330,7 +5999,7 @@
     },
     {
       "name": "PlayerStat",
-      "games": ["er", "ac6"],
+      "games": ["er", "ac6", "nr"],
       "entries": [
         {"value": 0, "name": "Vigor"},
         {"value": 1, "name": "Mind"},
@@ -5586,6 +6255,20 @@
       "entries": [
         {"value": 0, "name": "Original"},
         {"value": 1, "name": "Alt"}
+      ]
+    },
+    {
+      "name": "Hero",
+      "games": ["nr"],
+      "entries": [
+        {"value": 1, "name": "Wylder"},
+        {"value": 2, "name": "Guardian"},
+        {"value": 3, "name": "Ironeye"},
+        {"value": 4, "name": "Duchess"},
+        {"value": 5, "name": "Raider"},
+        {"value": 6, "name": "Revenant"},
+        {"value": 7, "name": "Recluse"},
+        {"value": 8, "name": "Executor"}
       ]
     }
   ],
