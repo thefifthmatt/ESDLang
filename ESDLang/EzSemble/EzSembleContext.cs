@@ -205,6 +205,10 @@ namespace ESDLang.EzSemble
         public static EzSembleContext LoadFromXml(string xmlFileName)
         {
             var context = new EzSembleContext();
+            if (UseNew)
+            {
+                return context;
+            }
 
             XmlDocument xml = new XmlDocument();
             xml.Load(xmlFileName);

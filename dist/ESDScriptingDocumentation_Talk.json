@@ -829,8 +829,8 @@
       "bank": 1,
       "id": 53,
       "name": "RequestUnlockTrophy",
-      "games": ["ds1", "ds1r", "bb", "ds3"],
-      "games_used": ["ds1", "ds1r", "bb", "ds3"],
+      "games": ["ds1", "ds1r", "bb", "ds3", "sdt", "er"],
+      "games_used": ["ds1", "ds1r", "bb", "ds3", "sdt"],
       "args": [
         {
           "name": "achievement",
@@ -843,8 +843,7 @@
       "bank": 1,
       "id": 53,
       "name": "RequestUnlockTrophy",
-      "games": ["des", "sdt", "er", "ac6"],
-      "games_used": ["sdt"],
+      "games": ["des", "ac6"],
       "args": [
         {
           "name": "achievementId",
