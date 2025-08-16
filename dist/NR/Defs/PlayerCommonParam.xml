@@ -4,7 +4,7 @@
   <DataVersion>1</DataVersion>
   <BigEndian>False</BigEndian>
   <Unicode>True</Unicode>
-  <FormatVersion>203</FormatVersion>
+  <FormatVersion>0</FormatVersion>
   <Fields>
     <Field Def="s32 playerFootEffect_bySFX">
       <DisplayName>プレイヤーの自動フットエフェクトのSFX識別子[3桁]</DisplayName>
@@ -46,7 +46,7 @@
       <SortID>500</SortID>
     </Field>
     
-    <Field Def="u8 unknownByte_1" />
+    <Field Def="u8 defaultNumberOfItemSlots" />
     <Field Def="u8 unknownByte_2" />
     
     <Field Def="s32 animeID_DropItemPick">
@@ -513,5 +513,14 @@
     <Field Def="s32 unknown_50" />
     <Field Def="f32 unknown_51" />
     
+    <Field Def="s32 unk_00" FirstVersion="10200000"/>
+    <Field Def="s32 unk_01" FirstVersion="10200000"/>
+    <Field Def="s32 unk_02" FirstVersion="10200000"/>
+    <Field Def="s32 unk_03" FirstVersion="10200000"/>
+    <Field Def="s32 unk_04" FirstVersion="10200000"/>
+    <Field Def="s32 unk_05" FirstVersion="10200000"/>
+    <Field Def="s32 unk_06" FirstVersion="10200000"/>
+    <Field Def="s32 unk_07" FirstVersion="10200000"/>
+    <Field Def="s32 unk_08" FirstVersion="10200000"/>
   </Fields>
 </PARAMDEF>
