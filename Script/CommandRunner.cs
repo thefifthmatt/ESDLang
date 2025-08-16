@@ -81,7 +81,7 @@ namespace ESDLang.Script
             return LoadContext(options.Type == ESDOptions.CmdType.Unknown ? ESDName.GetCmdType(Path.GetFileNameWithoutExtension(esdName), game) : options.Type, game);
         }
 
-        private static readonly List<FromGame> oodleGames = new() { FromGame.SDT, FromGame.ER, FromGame.AC6 };
+        private static readonly List<FromGame> oodleGames = new() { FromGame.SDT, FromGame.ER, FromGame.AC6, FromGame.NR };
 
         public void Run()
         {
@@ -96,15 +96,16 @@ namespace ESDLang.Script
                 }
             }
             // Hacky oodle copy
-            if (oodleGames.Contains(spec.Game) && spec.GameDir != null && !File.Exists("oo2core_6_win64.dll") && !File.Exists("oo2core_8_win64.dll"))
+            List<string> oodles = new() { "oo2core_6_win64.dll", "oo2core_8_win64.dll", "oo2core_9_win64.dll" };
+            if (oodleGames.Contains(spec.Game) && spec.GameDir != null && !oodles.Any(File.Exists))
             {
-                if (File.Exists(Path.Combine(spec.GameDir, "oo2core_6_win64.dll")))
+                foreach (string oodle in oodles)
                 {
-                    File.Copy(Path.Combine(spec.GameDir, "oo2core_6_win64.dll"), "oo2core_6_win64.dll");
-                }
-                else if (File.Exists(Path.Combine(spec.GameDir, "oo2core_8_win64.dll")))
-                {
-                    File.Copy(Path.Combine(spec.GameDir, "oo2core_8_win64.dll"), "oo2core_8_win64.dll");
+                    if (File.Exists(Path.Combine(spec.GameDir, oodle)))
+                    {
+                        File.Copy(Path.Combine(spec.GameDir, oodle), oodle);
+                        break;
+                    }
                 }
             }
             if (opt is ESDOptions.Info)
