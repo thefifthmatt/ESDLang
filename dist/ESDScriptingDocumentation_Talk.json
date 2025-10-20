@@ -667,27 +667,27 @@
       "games_used": ["er", "nr"],
       "args": [
         {
-          "name": "unk",
+          "name": "resetWorld",
+          "type": "bool"
+        },
+        {
+          "name": "resetMainCharacter",
+          "type": "bool"
+        },
+        {
+          "name": "resetMagicCharges",
+          "type": "bool"
+        },
+        {
+          "name": "restoreEstus",
+          "type": "bool"
+        },
+        {
+          "name": "animationIdOffset",
           "type": "int"
         },
         {
-          "name": "unk",
-          "type": "int"
-        },
-        {
-          "name": "unk",
-          "type": "int"
-        },
-        {
-          "name": "unk",
-          "type": "int"
-        },
-        {
-          "name": "unk",
-          "type": "int"
-        },
-        {
-          "name": "unk",
+          "name": "worldResetDelayS",
           "type": "float"
         }
       ]
@@ -1594,55 +1594,55 @@
       "games_used": ["er"],
       "args": [
         {
-          "name": "unk",
+          "name": "resetWorld",
+          "type": "bool"
+        },
+        {
+          "name": "resetMainCharacter",
+          "type": "bool"
+        },
+        {
+          "name": "resetMagicCharges",
+          "type": "bool"
+        },
+        {
+          "name": "restoreEstus",
+          "type": "bool"
+        },
+        {
+          "name": "addHours",
           "type": "int"
         },
         {
-          "name": "unk",
+          "name": "addMinutes",
           "type": "int"
         },
         {
-          "name": "unk",
+          "name": "addSeconds",
           "type": "int"
         },
         {
-          "name": "unk",
-          "type": "int"
-        },
-        {
-          "name": "unk",
-          "type": "int"
-        },
-        {
-          "name": "unk",
-          "type": "int"
-        },
-        {
-          "name": "unk",
-          "type": "int"
-        },
-        {
-          "name": "unk",
+          "name": "blackScreenTime",
           "type": "float"
         },
         {
-          "name": "unk",
-          "type": "int"
-        },
-        {
-          "name": "unk",
+          "name": "clockStartupDelayS",
           "type": "float"
         },
         {
-          "name": "unk",
-          "type": "int"
-        },
-        {
-          "name": "unk",
+          "name": "clockMoveTimeS",
           "type": "float"
         },
         {
-          "name": "unk",
+          "name": "clockFinishDelayS",
+          "type": "float"
+        },
+        {
+          "name": "fadeOutTime",
+          "type": "float"
+        },
+        {
+          "name": "fadeInTime",
           "type": "float"
         }
       ]
